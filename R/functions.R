@@ -722,6 +722,99 @@ numbers2words <- function(x){
 }
 
 
+#' Convert number to text string. 
+#' 
+#' Convert number to text string to the 'st, 'nd, 'rd, or 'th. 
+#' @param x The numbers that need to be converted to string. 
+#' @param type How the numbers should be converted. Default = "word" (which produces "fifty-third"), but you can also select "val_th" (which produces "53rd"). 
+#' @keywords Text editing
+#' @export
+#' @examples
+#' numbers2words_th()
+numbers2words_th<-function(x, type = "word"){
+  
+  # type = col name = c("val_th", "word")
+  
+  # First
+  first2twen<-data.frame(matrix(data = c("first",	"1st",
+                                         "second",	"2nd",
+                                         "third",	"3rd",
+                                         "fourth",	"4th",
+                                         "fifth",	"5th",
+                                         "sixth",	"6th",
+                                         "seventh",	"7th",
+                                         "eighth",	"8th",
+                                         "ninth",	"9th",
+                                         "tenth",	"10th",
+                                         "eleventh",	"11th",
+                                         "twelfth",	"12th",
+                                         "thirteenth",	"13th",
+                                         "fourteenth",	"14th",
+                                         "fifteenth",	"15th",
+                                         "sixteenth",	"16th",
+                                         "seventeenth",	"17th",
+                                         "eighteenth",	"18th",
+                                         "nineteenth",	"19th", 
+                                         "twentieth",	"20th"), ncol = 2, byrow =  T))
+  names(first2twen)<-c("word", "val_th")
+  first2twen$val<-1:20
+  
+  # Tens
+  tens<-data.frame(matrix(data = c("twentieth", 20,
+                                   "thirtieth", 30,
+                                   "fortieth",	40,
+                                   "fiftieth",	50,
+                                   "sixtieth",	60,
+                                   "seventieth",	70,
+                                   "eightieth",	80,
+                                   "ninetieth",	90), ncol = 2, byrow =  T))
+  names(tens)<-c("word", "val")
+  tens$word0<-paste0(substr(x = tens$word, start = 1, stop = nchar(tens$word)-4), "y")
+  tens$val_th<-paste0(tens$val, "th")
+  
+  # Hundred
+  hund<-data.frame(matrix(data = c(
+    "hundredth", 100,
+    "thousandth", 1000,
+    "millionth",	1000000,
+    "billionth",	1000000000,
+    "trillionth",	1000000000000), ncol = 2, byrow =  T))
+  names(hund)<-c("word", "val")
+  hund$word0<-paste0(substr(x = hund$word, start = 1, stop = nchar(hund$word)-2), "")
+  tens$val_th<-paste0(tens$val, "th")
+  
+  if (x %in% 1:20) {
+    xx<-first2twen[first2twen$val %in% x, type]
+  } else if (substr(x = x, start = nchar(x), stop = nchar(x)) %in% 0) {
+    xx<-tens[tens$val %in% round(x = x, digits = -1), type]
+  } else {
+    
+    if (type %in% "word") {
+      xx<-paste0(tens[tens$val %in% as.numeric(paste0(substr(x = x, start = 1, stop = 1), 0)), "word0"], 
+                 "-", 
+                 first2twen[(first2twen$val %in% (x-as.numeric(paste0(substr(x = x, start = 1, stop = 1), 0)))), type])
+    } else {
+      x1<-substr(x = x, start = nchar(x), stop = nchar(x))
+      stndrdth<-"th"
+      if (x1 %in% 1) {
+        stndrdth<-"st"
+      } else if (x1 %in% 2) {
+        stndrdth<-"nd"
+      } else if (x1 %in% 3) {
+        stndrdth<-"rd"
+      }
+      xx<-paste0(x, stndrdth)
+      
+    }
+    
+    
+  }
+  
+  return(xx)
+  
+}
+
+
 #' Calculate the percent change. 
 #' 
 #' Calculate the percent change. 
