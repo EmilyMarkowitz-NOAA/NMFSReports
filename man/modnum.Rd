@@ -4,14 +4,16 @@
 \alias{modnum}
 \title{Modify number.}
 \usage{
-modnum(x, divideby = 1000, commaseperator = T)
+modnum(x, divideby = 1000, commaseperator = T, digits = 0)
 }
 \arguments{
 \item{x}{A numeric.}
 
-\item{divideby}{Default = 1000.}
+\item{divideby}{The value you want all of your values divided by. Default = 1000.}
 
-\item{commaseperator}{Default = T.}
+\item{commaseperator}{Do you want numbers to have commas in it ("1,000" (T) vs. "1000" (F). Default = T.}
+
+\item{digits}{How many digits you would like your number to have. Default = 0.}
 }
 \description{
 Modify number.

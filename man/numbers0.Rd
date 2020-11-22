@@ -2,18 +2,19 @@
 % Please edit documentation in R/functions.R
 \name{numbers0}
 \alias{numbers0}
-\title{Convert a value.}
+\title{Name nth item in order (001)}
 \usage{
 numbers0(x)
 }
 \arguments{
-\item{x}{The value.}
+\item{x}{The values.}
 }
 \description{
 Convert a value.
 }
 \examples{
-numbers0()
+numbers0(x = c(1, 3, 6, 101))
+#[1] "001" "003" "006" "101"
 }
 \keyword{Data}
 \keyword{Management}

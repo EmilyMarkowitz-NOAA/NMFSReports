@@ -4,10 +4,10 @@
 \alias{xunitspct}
 \title{Determine the appropriate unit for a percent value.}
 \usage{
-xunitspct(temp00, sign = T)
+xunitspct(value, sign = T)
 }
 \arguments{
-\item{temp00}{A numeric.}
+\item{value}{A numeric.}
 
 \item{sign}{Include percent sign. Default = T.}
 }

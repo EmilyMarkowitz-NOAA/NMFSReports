@@ -4,10 +4,10 @@
 \alias{xunits}
 \title{Determine the appropriate unit for a value.}
 \usage{
-xunits(temp00, combine = T)
+xunits(value, combine = T)
 }
 \arguments{
-\item{temp00}{A numeric.}
+\item{value}{A numeric value.}
 
 \item{combine}{Should this be combined in a single string (T) or as two seperate strings in a list (F). Default = T.}
 }
