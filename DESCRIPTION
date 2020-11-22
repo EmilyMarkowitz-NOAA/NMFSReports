@@ -8,6 +8,7 @@ Authors@R:
            email = "Emily.Markowitz@noaa.gov",
            comment = c(ORCID = "0000-0001-5757-4230"))
 Description: Write smart R Markdown reports with these basic and easy funcitons!
+Date: November 2020
 License: `use_mit_license()`
 Encoding: UTF-8
 LazyData: true
