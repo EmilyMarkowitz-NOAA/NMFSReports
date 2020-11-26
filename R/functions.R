@@ -786,9 +786,6 @@ CreateMetadata<-function(dir.out, title){
     body_add_par(title,
                  # body_add_par(paste0("Population Narrative of ", commorg, " (", fp_text(sciname, italic = T, color = "black", font.size=10), ")"," in ", region),
                  style = "heading 1") %>%
-    
-    body_add_par("Code Author", style = "heading 2") %>%
-    body_add_par("Writiten by Emily Markowitz, emilyhmarkowitz@gmail.com/emily.markowitz@noaa.gov", style = "Normal") %>%  
     body_add_par("Date Code Ran:", style = "heading 2") %>%
     body_add_par(Sys.time(), style = "Normal") %>%
     body_add_par("System Info:", style = "heading 2") %>%

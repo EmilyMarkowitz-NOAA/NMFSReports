@@ -31,5 +31,4 @@ Imports:
     roxygen2, 
     devtools, 
     extrafont, 
-    jsonlite, 
-    taxize
+    jsonlite
