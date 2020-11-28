@@ -2,6 +2,8 @@
 
 export(CreateLoadedDataMetadata)
 export(CreateMetadata)
+export(SaveGraphs)
+export(SaveTables)
 export(addfootnotes)
 export(ageoffile)
 export(auto_counter)

@@ -706,6 +706,106 @@ ageoffile<-function(path) {
 }
 
 
+#' Systematically save your ggplot figure for your report
+#'
+#' @param plot The ggplot you would like to be saved
+#' @param filename0 # The filename for your chapter
+#' @param cnt.chapt.content # The order number that this exists in the chapter
+#' @param cnt.figures # The figure number 
+#' @param width # Default = 6 inches
+#' @param height # Default = 6 inches
+#'
+#' @return
+#' @export
+#'
+#' @examples
+SaveGraphs<-function(plot, plot.list, filename0, cnt.chapt.content, cnt.figures, 
+                     path, width = 6, height = 6){
+  ggsave( # save your plot
+    path = path, 
+    filename = paste0(filename0, cnt.chapt.content, "_Fig_", cnt.figures, 
+                      ".pdf"), # Always save in pdf so you can make last minute edits in adobe acrobat!
+    plot = plot, # call the plot you are saving
+    width = width, height = height, units = "in") #recall, A4 pages are 8.5 x 11 in - 1 in margins
+  
+  plot.list<-c(plot.list, plot)
+  
+  return(plot.list)
+}
+
+
+
+#' Systematically save your report tables for your report
+#'
+#' @param table.raw Optional. The data.frame that has no rounding and no dividing of numbers (good to save this for record keeping)
+#' @param table.print The data.frame as table will be seen in the report.
+#' @param filename0 The name you want to save this file as.
+#' @param dir.chapters Directory where you are saving all of your chapter word documents to.
+#' @param dir.tables Directory where you are saving all of your tables to. 
+#' @param Header The header or title of your table
+#' @param cnt.chapt.content # The order number that this exists in the chapter
+#' @param cnt.tables # The figure table 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+SaveTables<-function(table.raw = NULL, table.print, Header, Footnotes = NA, 
+                     filename00, dir.chapters, dir.tables){
+  
+  # Save raw file (no rounding, no dividing)
+  if (!(is.null(table.raw))) {
+    write.table(x = table.raw,  
+                file = paste0(dir.tables, filename00, "_raw.csv"), 
+                sep = ",",
+                row.names=FALSE, col.names = F, append = F)
+  }
+  
+  # Save file of content going into the report
+  write.table(x = table.print,  
+              file = paste0(dir.tables, filename00, "_print.csv"), 
+              sep = ",",
+              row.names=FALSE, col.names = F, append = F)
+  
+  write.table(x = table.print,  
+              file = paste0(dir.chapters, filename00, ".csv"), 
+              sep = ",",
+              row.names=FALSE, col.names = F, append = F)
+  
+  # Save file with header and footnotes
+  
+  write.table(Header,  
+              file = paste0(dir.tables, filename00, "_handout.csv"), 
+              sep = ",",
+              row.names=FALSE, col.names = F, append = F)
+  
+  write.table(table.print,  
+              file = paste0(dir.tables, filename00, "_handout.csv"), 
+              sep = ",",
+              row.names=FALSE, col.names = F, append = T)
+  
+  if (!is.null(Footnotes) | Footnotes %in% "") {
+    
+    write.table("",  
+                file = paste0(dir.tables, filename00, "_handout.csv"), 
+                sep = ",",
+                row.names=FALSE, col.names = F, append = T)
+    
+    a<-strsplit(x = Footnotes, split = " 123456789 ")[[1]]
+    a<-unique(a)
+    write.table(a,  
+                file = paste0(dir.tables, filename00, "_handout.csv"), 
+                sep = ",",
+                row.names=FALSE, col.names = F, append = T)
+  }
+  
+  # #footnote-ify table.print footnote column for rmarkdown
+  # if (is.data.frame(table.print)) {
+  #   table.print$Footnotes<-list2string.ft(x = table.print$Footnotes)
+  # }
+}
+
+
 #' Create Metadata. 
 #' 
 #' Create Metadata. 
