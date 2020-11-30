@@ -725,7 +725,7 @@ SaveGraphs<-function(plot0, plot.list, filename0, cnt.chapt.content, cnt.figures
     path = path, 
     filename = paste0(filename0, cnt.chapt.content, "_Fig_", cnt.figures, 
                       ".pdf"), # Always save in pdf so you can make last minute edits in adobe acrobat!
-    plot = plot, # call the plot you are saving
+    plot = plot0, # call the plot you are saving
     width = width, height = height, units = "in") #recall, A4 pages are 8.5 x 11 in - 1 in margins
   
   plot.list<-c(plot.list, plot)
