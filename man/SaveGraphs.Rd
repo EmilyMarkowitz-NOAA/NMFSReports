@@ -5,7 +5,7 @@
 \title{Systematically save your ggplot figure for your report}
 \usage{
 SaveGraphs(
-  plot,
+  plot0,
   plot.list,
   filename0,
   cnt.chapt.content,
@@ -16,7 +16,7 @@ SaveGraphs(
 )
 }
 \arguments{
-\item{plot}{The ggplot you would like to be saved}
+\item{plot0}{The ggplot you would like to be saved}
 
 \item{filename0}{The filename for your chapter}
 

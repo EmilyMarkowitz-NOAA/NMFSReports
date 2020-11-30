@@ -708,7 +708,7 @@ ageoffile<-function(path) {
 
 #' Systematically save your ggplot figure for your report
 #'
-#' @param plot The ggplot you would like to be saved
+#' @param plot0 The ggplot you would like to be saved
 #' @param filename0 # The filename for your chapter
 #' @param cnt.chapt.content # The order number that this exists in the chapter
 #' @param cnt.figures # The figure number 
@@ -719,7 +719,7 @@ ageoffile<-function(path) {
 #' @export
 #'
 #' @examples
-SaveGraphs<-function(plot, plot.list, filename0, cnt.chapt.content, cnt.figures, 
+SaveGraphs<-function(plot0, plot.list, filename0, cnt.chapt.content, cnt.figures, 
                      path, width = 6, height = 6){
   ggsave( # save your plot
     path = path, 
