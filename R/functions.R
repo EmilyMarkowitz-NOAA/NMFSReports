@@ -696,6 +696,7 @@ ageoffile<-function(path, format = "%B %d, %Y") {
 #'
 #' @param plot0 The ggplot you would like to be saved
 #' @param plot.list The list where all plots will be saved. 
+#' @param Header The name and title of the figure. Default = "".
 #' @param filename0 The filename for your chapter
 #' @param cnt.chapt.content The order number that this exists in the chapter
 #' @param cnt.figures The figure number 
@@ -708,7 +709,7 @@ ageoffile<-function(path, format = "%B %d, %Y") {
 #'
 #' @examples
 #' SaveGraphs()
-SaveGraphs<-function(plot0, plot.list, filename0, cnt.chapt.content, cnt.figures, 
+SaveGraphs<-function(plot0, plot.list, Header = "", filename0, cnt.chapt.content, cnt.figures, 
                      path, width = 6, height = 6){
   ggsave( # save your plot
     path = path, 
@@ -718,6 +719,7 @@ SaveGraphs<-function(plot0, plot.list, filename0, cnt.chapt.content, cnt.figures
     width = width, height = height, units = "in") #recall, A4 pages are 8.5 x 11 in - 1 in margins
   
   plot.list<-c(plot.list, plot)
+  names(plot.list)[length(plot.list)]<-Header
   
   return(plot.list)
 }

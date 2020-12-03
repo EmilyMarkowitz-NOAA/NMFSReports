@@ -7,6 +7,7 @@
 SaveGraphs(
   plot0,
   plot.list,
+  Header = "",
   filename0,
   cnt.chapt.content,
   cnt.figures,
@@ -19,6 +20,8 @@ SaveGraphs(
 \item{plot0}{The ggplot you would like to be saved}
 
 \item{plot.list}{The list where all plots will be saved.}
+
+\item{Header}{The name and title of the figure. Default = "".}
 
 \item{filename0}{The filename for your chapter}
 
