@@ -4,7 +4,7 @@
 \alias{ageoffile}
 \title{Find the age of the file, when it was created.}
 \usage{
-ageoffile(path)
+ageoffile(path, format = "\%B \%d, \%Y")
 }
 \arguments{
 \item{path}{Path to the file.}

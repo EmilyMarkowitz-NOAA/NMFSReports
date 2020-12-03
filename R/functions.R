@@ -1,44 +1,8 @@
-# ################COMMON FUNCTIONS TO BE USED IN ALL SECTIONS#########################
-# 
-# #####LIBRARY FUNCTIONS#####
-# #Seperating species by taxonomic group
-# # install.packages("remotes")
-# # remotes::install_github("ropensci/taxize")
-# library()
-# 
-# loadfonts()
-# extrafont::font_import()
-# windowsFonts()
 
-# options(java.parameters = "-Xmx1000m")
-# options(scipen=10000)
-# 
-# ln<-log #tricky, tricky, Base R! Didn't fool me this time!!!
-# 
-# 
-# ####COLOR PALLET#####
-# #mostly for figures
-# NOAALightBlue<-"#C9E1E6"
-# NOAADarkBlue<-"#0098A6"
-# NOAADarkGrey<-"#56575A" #text
-# NOAABlueScale<-colorRampPalette(colors = c(NOAALightBlue, NOAADarkBlue))
-# 
-# counter0<-"000"
 
-# createdir<-function(TF = T){
-# # Establish directories
-# date00<-paste0(Sys.Date())
-# dir.in<-getwd()
-# dir.parent<-dirname(dir.in)
-# dir.scripts<-paste0(dir.in, "/rscripts/")
-# dir.output<-paste0(dir.in, "/output/")
-# dir.data<-paste0(dir.in, "/data/")
-# 
-# #Create directories
-# if () {
-#   dir.create(dir.output)
-# }
-# }
+
+##########SEARCH STUFF############
+
 
 #' Is something in a matrix.
 #'
@@ -65,45 +29,7 @@ issomethinginthismatrix<-function(x, searchfor) {
   }
 }
 
-#' Add footnotes to table.
-#'
-#' This function adds a footnote to a dataframe.
-#' @param df.dat The data frame you want to add the footnote to.
-#' @param table0 Name of the table you want the footnote added to. Default: NA.
-#' @param state0 The state you want the footnote attached to. Default: NA.
-#' @param region0 The region you want the footnote attached to. Default: NA.
-#' @param species0 The species you want the footnote attached to. Default: NA.
-#' @param footnote0 The list of footnotes you want to be added to.
-#' @keywords footnote, matrix, footnotes
-#' @export
-#' @examples
-#' addfootnotes()
-addfootnotes<-function(df.dat, table0 = NA, state0 = NA, region0 = NA, species0 = NA, footnote0) {
-  
-  #find all of the places where this footnote should be placed
-  if (!is.na(species0[1])) { #for HR tables
-    idx<-df.dat$keyspecies %in% species0
-  } else if (is.na(region0[1])) { 
-    idx<-df.dat$Table %in% table0 & (df.dat$State %in% state0)
-  } else if (is.na(state0[1])) {
-    idx<-df.dat$Table %in% table0 & (df.dat$Region %in% region0)
-  } else { 
-    idx<-df.dat$Table %in% table0 & (df.dat$State %in% state0 & df.dat$Region %in% region0)
-  }
-  
-  #If the cell is blank, overwrite with new data. Otherwise, append. 
-  idx<-which(idx %in% T)
-  for (i in 1:length(idx)){
-    if (df.dat$Footnotes[idx[i]][1] %in% c("", NA)) {
-      a<-as.character(footnote0)
-    } else {
-      a<-paste0(df.dat$Footnotes[idx[i]], " 123456789 ", footnote0)
-    }
-    df.dat$Footnotes[idx[i]]<-a
-  }  
-  return(data.frame(df.dat))
-}
-
+###########CONVERT STUFF###########
 
 #' Convert dataframe to javascript
 #'
@@ -160,6 +86,51 @@ funct_df2js<-function(df.dat, minyr, maxyr) {
 
   return(str0)
 }
+
+
+############MODIFY TEXT################
+
+
+
+#' Make a String Title Case
+#'
+#' Make a String Title Case (making and, the, an, etc. lower case)
+#' @param str A string that you want to be in title case
+#' @keywords Title, Case, word strings
+#' @export
+#'
+#' @examples
+#' TitleCase()
+TitleCase <- function(str) {
+  
+  z <- strsplit(str, " ")[[1]]
+  z <- paste(toupper(substring(z, 1,1)), substring(z, 2),
+             sep="", collapse=" ")
+  
+  dontcap<-c( # Which words should not be capitalized in a title?
+    "a", "an", "the", # articles
+    "for", "and", "nor", "but", "or", "yet", "so", # Coordinate conjunctions (FANBOYS).
+    "at", "around", "by", "after", "along", "for", "from", "of", "on", "to", "with", "without") # Prepositions
+  dontcap<-unique(dontcap)
+  
+  for (i in 1:length(dontcap)){
+    whoisgoinglow<-which(tolower(strsplit(z, " ")[[1]]) %in% dontcap[i])
+    
+    # whoisgoinglow<-grep(pattern = paste0(dontcap[i]), 
+    #                     x = strsplit(z, " ")[[1]], 
+    #                     ignore.case = T)
+    if (length(whoisgoinglow)!= 0 && 
+        whoisgoinglow != 1) {
+      z0<-tolower(strsplit(z, " ")[[1]][whoisgoinglow])
+      z00<-strsplit(z, " ")[[1]]
+      z00[whoisgoinglow]<-z0
+      z<-paste(z00,sep="", collapse=" ")
+    }
+  }
+  
+  return(z)
+}
+
 
 #' Make a string lower case except for stated proper nouns. 
 #'
@@ -297,6 +268,10 @@ text_list<-function(x) {
   }
   return(str1)
 }
+
+
+############MODIFY NUMBERS IN TEXT################
+
 
 #' Convert number to text string. 
 #' 
@@ -654,6 +629,10 @@ format_cells <- function(df.dat, rows, cols, fonttype) {
   return(df.dat)
 }
 
+
+########FILE ORGANIZATION#########
+
+
 #' Name nth item in order (001) 
 #' 
 #' Convert a value. 
@@ -690,6 +669,10 @@ auto_counter<-function(counter0) {
   return(counter)
 }
 
+
+#######FILE CONTENT#######
+
+
 #' Find the age of the file, when it was created. 
 #' 
 #' Find the age of the file, when it was created. 
@@ -698,27 +681,33 @@ auto_counter<-function(counter0) {
 #' @export
 #' @examples
 #' ageoffile()
-ageoffile<-function(path) {
+ageoffile<-function(path, format = "%B %d, %Y") {
   # system("touch temp")
   info <- file.info(path)
-  x<-format(info$mtime,"%B %d, %Y")
+  x<-format(info$mtime, format)
   return(x)
 }
+
+
+#######TABLE AND GRAPHS#######
 
 
 #' Systematically save your ggplot figure for your report
 #'
 #' @param plot0 The ggplot you would like to be saved
-#' @param filename0 # The filename for your chapter
-#' @param cnt.chapt.content # The order number that this exists in the chapter
-#' @param cnt.figures # The figure number 
-#' @param width # Default = 6 inches
-#' @param height # Default = 6 inches
+#' @param plot.list The list where all plots will be saved. 
+#' @param filename0 The filename for your chapter
+#' @param cnt.chapt.content The order number that this exists in the chapter
+#' @param cnt.figures The figure number 
+#' @param path The path the file needs to be saved to.
+#' @param width Default = 6 inches
+#' @param height Default = 6 inches
 #'
 #' @return
 #' @export
 #'
 #' @examples
+#' SaveGraphs()
 SaveGraphs<-function(plot0, plot.list, filename0, cnt.chapt.content, cnt.figures, 
                      path, width = 6, height = 6){
   ggsave( # save your plot
@@ -737,26 +726,27 @@ SaveGraphs<-function(plot0, plot.list, filename0, cnt.chapt.content, cnt.figures
 
 #' Systematically save your report tables for your report
 #'
-#' @param table.raw Optional. The data.frame that has no rounding and no dividing of numbers (good to save this for record keeping)
+#' @param table.raw Optional. The data.frame that has no rounding and no dividing of numbers (good to save this for record keeping). Default = NA. 
 #' @param table.print The data.frame as table will be seen in the report.
+#' @param Header The header or title of your table
+#' @param Footnotes Footnotes for the whole table. Default = NA.
 #' @param filename0 The name you want to save this file as.
 #' @param dir.chapters Directory where you are saving all of your chapter word documents to.
 #' @param dir.tables Directory where you are saving all of your tables to. 
-#' @param Header The header or title of your table
-#' @param cnt.chapt.content # The order number that this exists in the chapter
-#' @param cnt.tables # The figure table 
+#' @param cnt.chapt.content The order number that this exists in the chapter
 #'
 #' @return
 #' @export
 #'
 #' @examples
+#' SaveTables()
 SaveTables<-function(table.raw = NULL, table.print, Header, Footnotes = NA, 
-                     filename00, dir.chapters, dir.tables){
+                     filename0, dir.chapters, dir.tables, cnt.chapt.content){
   
   # Save raw file (no rounding, no dividing)
   if (!(is.null(table.raw))) {
     write.table(x = table.raw,  
-                file = paste0(dir.tables, filename00, "_raw.csv"), 
+                file = paste0(dir.tables, filename0, "_raw.csv"), 
                 sep = ",",
                 row.names=FALSE, col.names = F, append = F)
   }
@@ -804,6 +794,9 @@ SaveTables<-function(table.raw = NULL, table.print, Header, Footnotes = NA,
   #   table.print$Footnotes<-list2string.ft(x = table.print$Footnotes)
   # }
 }
+
+
+########METADATA########
 
 
 #' Create Metadata. 

@@ -18,11 +18,15 @@ SaveGraphs(
 \arguments{
 \item{plot0}{The ggplot you would like to be saved}
 
+\item{plot.list}{The list where all plots will be saved.}
+
 \item{filename0}{The filename for your chapter}
 
 \item{cnt.chapt.content}{The order number that this exists in the chapter}
 
 \item{cnt.figures}{The figure number}
+
+\item{path}{The path the file needs to be saved to.}
 
 \item{width}{Default = 6 inches}
 
@@ -33,4 +37,7 @@ SaveGraphs(
 }
 \description{
 Systematically save your ggplot figure for your report
+}
+\examples{
+SaveGraphs()
 }
