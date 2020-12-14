@@ -21,7 +21,7 @@ Seattle, WA 98195
 library(devtools)
 
 # Functions for Writing R Markdown Reports 
-devtools::install_github("emilyhmarkowitz/RMarkReports")
+devtools::install_github("EmilyMarkowitz-NOAA/RMarkReports")
 
 ```
 
@@ -34,7 +34,7 @@ install.packages("usethis")
 
 library(usethis) # Automate package and project setup tasks that are otherwise performed manually.
 
-usethis::use_course(url = 'https://github.com/emilyhmarkowitz/NOAATechMemoStarterKit/archive/master.zip', 
+usethis::use_course(url = 'https://github.com/EmilyMarkowitz-NOAA/NOAATechMemoStarterKit/archive/master.zip', 
                     destdir = "your/local/directory/")
 
 # nfmspalette                    
