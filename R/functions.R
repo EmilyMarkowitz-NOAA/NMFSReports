@@ -270,6 +270,29 @@ text_list<-function(x) {
 }
 
 
+#' Takes a string of words and combines them into a sentance that lists them.
+#'
+#' This function alows you to take a string of words and combine them into a sentance list. For example, 'apples', 'oranges', 'pears' would become 'apples, oranges, and pears'. This function uses oxford commas.
+#' @param x Character strings you want in your string.
+#' @keywords list, strings
+#' @export
+#' @examples ABandC(c(1,2,"hello",4,"world",6))
+ABandC <- function(x) {
+  x <- x[which(x != "")]
+  # x<-x[which(!is.null(x))]
+  x <- x[which(!is.na(x))]
+  # x<-x[order(x)]
+  if (length(x) == 2) {
+    str1 <- paste(x, collapse = " and ")
+  } else if (length(x) > 2) {
+    str1 <- paste(x[1:(length(x) - 1)], collapse = ", ")
+    str1 <- paste0(str1, ", and ", x[length(x)])
+  } else {
+    str1 <- x
+  }
+  return(str1)
+}
+
 ############MODIFY NUMBERS IN TEXT################
 
 
