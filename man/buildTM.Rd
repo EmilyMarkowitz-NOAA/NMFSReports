@@ -6,9 +6,6 @@
 \usage{
 buildTM()
 }
-\value{
-
-}
 \description{
 Create Structure for your new Tech Memo Project!
 }

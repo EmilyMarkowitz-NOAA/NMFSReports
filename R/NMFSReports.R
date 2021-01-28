@@ -4,11 +4,6 @@
 #################################
 
 #' Create Structure for your new Tech Memo Project!
-#'
-#' @return
-#' @export
-#'
-#' @examples
 buildTM<-function(){
   # Create Architecture
   dirs <- c("code", "data", "documentation", "img", "citationStyles", "output")
@@ -743,21 +738,6 @@ auto_counter<-function(counter0) {
 }
 
 
-#######FILE CONTENT#######
-
-
-#' Find the age of the file, when it was created. 
-#'
-#' @param path Path to the file. 
-#' @param format default = "%B %d, %Y"
-#' @return x
-#' @export
-ageoffile<-function(path, format = "%B %d, %Y") {
-  # system("touch temp")
-  info <- file.info(path)
-  x<-format(info$mtime, format)
-  return(x)
-}
 
 
 #######TABLE AND GRAPHS#######

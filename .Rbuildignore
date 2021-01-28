@@ -10,3 +10,4 @@
 ^pkgdown
 ^\./pkgdown/_pkgdown\.yml$
 ^pkgdown$
+^docs$
