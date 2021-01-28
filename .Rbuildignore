@@ -1,2 +1,14 @@
-^RMarkReports\.Rproj$
+^.*\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
+^\.httr-oauth$
+^CRAN-RELEASE$
+^README\.Rmd
+^cran-comments\.md$
+^notes\.R
+^LICENSE\.md
+^docs
+^pkgdown
+^\./pkgdown/_pkgdown\.yml$
+^docs$
+^pkgdown$

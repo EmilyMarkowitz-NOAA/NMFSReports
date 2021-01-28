@@ -1,34 +1,39 @@
-Package: RMarkReports
+Package: NMFSReports
+Type: Package
 Title: Write smart R Markdown reports with these basic and easy funcitons!
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Emily",
-           family = "Markowitz",
+  c(person(given = "Emily",
+           family = "Markowitz", 
            role = c("aut", "cre"),
-           email = "Emily.Markowitz@noaa.gov",
-           comment = c(ORCID = "0000-0001-5757-4230"))
+           comment = c(ORCID = "0000-0001-5757-4230"),
+           email = "Emily.Markowitz@noaa.gov"))
 Description: Write smart R Markdown reports with these basic and easy funcitons!
 Date: `Sys.Date()`
-License: `use_mit_license()`
+URL: https://EmilyMarkowitz-NOAA.github.io/NMFSReports/, https://github.com/EmilyMarkowitz-NOAA/NMFSReports
+BugReports: https://github.com/EmilyMarkowitz-NOAA/NMFSReports/issues/
+License: GPL-3
+Depends: R (>= 3.6.0)
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports:
     tidyverse, 
+    ggplot2,
+    magrittr,
     filesstrings, 
     data.table, 
     plyr, 
     rlist, 
     pipeR, 
-    rmarkdown, 
     knitr, 
     gridExtra, 
     officer,
     xlsx, 
     dichromat, 
     readxl, 
-    roxygen2, 
-    devtools, 
     extrafont, 
-    jsonlite
+    jsonlite, 
+    kableExtra
+VignetteBuilder: knitr
+Suggests: rmarkdown

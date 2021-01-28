@@ -1,4 +1,4 @@
-# RMarkReports
+# NMFSReports
 
 **PRELIMINARY**: Write smart R Markdown reports with these basic and easy funcitons!
 
@@ -21,7 +21,7 @@ Seattle, WA 98195
 library(devtools)
 
 # Functions for Writing R Markdown Reports 
-devtools::install_github("EmilyMarkowitz-NOAA/RMarkReports")
+devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports")
 
 ```
 
