@@ -21,10 +21,6 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
-# https://r-pkgs.org/vignettes.html
-  # %\VignetteIndexEntry{FEUS-tables}
-  # %\VignetteEngine{knitr::rmarkdown}
-  # %\VignetteEncoding{UTF-8}
 knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, 
   collapse = TRUE,
   comment = "#>"

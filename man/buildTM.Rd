@@ -2,20 +2,38 @@
 % Please edit documentation in R/NMFSReports.R
 \name{buildTM}
 \alias{buildTM}
-\title{Build your intitial architecture for your new NOAA Tech Memo or Report}
+\title{#' ---
+purpose: Package Functions
+author: Emily Markowitz (Emily.Markowitz AT noaa.gov)
+start date: 2020-2021
+Notes: This is cool data... 
+---
+Build your intitial architecture for your new NOAA Tech Memo or Report}
 \usage{
 buildTM(
   sections = c("frontmatter", "abstract", "introduction", "methods", "results",
     "discussion", "workscited", "workscitedR"),
-  support_scripts = c("functions", "dataDL", "data")
+  support_scripts = c("directories", "functions", "dataDL", "data"),
+  wordstylesreference.docx = "refdoc_NOAATechMemo",
+  csl = "apa"
 )
 }
 \arguments{
-\item{sections}{a string of the different sections of your TM}
+\item{sections}{a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR")}
 
-\item{support_scripts}{To make sure we nice and neatly compartemantalize our work, I'm going to create the below supporting .R files that I will source into my 'run' file:}
+\item{support_scripts}{To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")}
+
+\item{wordstylesreference.docx}{Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("refdoc_NOAATechMemo" or "refdoc_FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"}
+
+\item{csl}{Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa"). Default = "apa"}
 }
 \description{
+#' ---
+purpose: Package Functions
+author: Emily Markowitz (Emily.Markowitz AT noaa.gov)
+start date: 2020-2021
+Notes: This is cool data... 
+---
 Build your intitial architecture for your new NOAA Tech Memo or Report
 }
 \examples{

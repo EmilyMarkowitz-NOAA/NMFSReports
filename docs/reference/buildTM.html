@@ -6,7 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Build your intitial architecture for your new NOAA Tech Memo or Report — buildTM • NMFSReports</title>
+<title>#' ---
+purpose: Package Functions
+author: Emily Markowitz (Emily.Markowitz AT noaa.gov)
+start date: 2020-2021
+Notes: This is cool data... 
+---
+Build your intitial architecture for your new NOAA Tech Memo or Report — buildTM • NMFSReports</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +52,20 @@
 
 
 
-<meta property="og:title" content="Build your intitial architecture for your new NOAA Tech Memo or Report — buildTM" />
-<meta property="og:description" content="Build your intitial architecture for your new NOAA Tech Memo or Report" />
+<meta property="og:title" content="#' ---
+purpose: Package Functions
+author: Emily Markowitz (Emily.Markowitz AT noaa.gov)
+start date: 2020-2021
+Notes: This is cool data... 
+---
+Build your intitial architecture for your new NOAA Tech Memo or Report — buildTM" />
+<meta property="og:description" content="#' ---
+purpose: Package Functions
+author: Emily Markowitz (Emily.Markowitz AT noaa.gov)
+start date: 2020-2021
+Notes: This is cool data... 
+---
+Build your intitial architecture for your new NOAA Tech Memo or Report" />
 
 
 
@@ -151,19 +169,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Build your intitial architecture for your new NOAA Tech Memo or Report</h1>
+    <h1>#' ---
+purpose: Package Functions
+author: Emily Markowitz (Emily.Markowitz AT noaa.gov)
+start date: 2020-2021
+Notes: This is cool data... 
+---
+Build your intitial architecture for your new NOAA Tech Memo or Report</h1>
     <small class="dont-index">Source: <a href='https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/R/NMFSReports.R'><code>R/NMFSReports.R</code></a></small>
     <div class="hidden name"><code>buildTM.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Build your intitial architecture for your new NOAA Tech Memo or Report</p>
+    <p>#' ---
+purpose: Package Functions
+author: Emily Markowitz (Emily.Markowitz AT noaa.gov)
+start date: 2020-2021
+Notes: This is cool data... 
+---
+Build your intitial architecture for your new NOAA Tech Memo or Report</p>
     </div>
 
     <pre class="usage"><span class='fu'>buildTM</span><span class='op'>(</span>
   sections <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"frontmatter"</span>, <span class='st'>"abstract"</span>, <span class='st'>"introduction"</span>, <span class='st'>"methods"</span>, <span class='st'>"results"</span>,
     <span class='st'>"discussion"</span>, <span class='st'>"workscited"</span>, <span class='st'>"workscitedR"</span><span class='op'>)</span>,
-  support_scripts <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"functions"</span>, <span class='st'>"dataDL"</span>, <span class='st'>"data"</span><span class='op'>)</span>
+  support_scripts <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"directories"</span>, <span class='st'>"functions"</span>, <span class='st'>"dataDL"</span>, <span class='st'>"data"</span><span class='op'>)</span>,
+  wordstylesreference.docx <span class='op'>=</span> <span class='st'>"refdoc_NOAATechMemo"</span>,
+  csl <span class='op'>=</span> <span class='st'>"apa"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -171,11 +203,19 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>sections</th>
-      <td><p>a string of the different sections of your TM</p></td>
+      <td><p>a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR")</p></td>
     </tr>
     <tr>
       <th>support_scripts</th>
-      <td><p>To make sure we nice and neatly compartemantalize our work, I'm going to create the below supporting .R files that I will source into my 'run' file:</p></td>
+      <td><p>To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")</p></td>
+    </tr>
+    <tr>
+      <th>wordstylesreference.docx</th>
+      <td><p>Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("refdoc_NOAATechMemo" or "refdoc_FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"</p></td>
+    </tr>
+    <tr>
+      <th>csl</th>
+      <td><p>Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa"). Default = "apa"</p></td>
     </tr>
     </table>
 

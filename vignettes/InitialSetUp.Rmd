@@ -21,10 +21,6 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
-# https://r-pkgs.org/vignettes.html
-  # %\VignetteIndexEntry{FEUS-tables}
-  # %\VignetteEngine{knitr::rmarkdown}
-  # %\VignetteEncoding{UTF-8}
 knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, 
   collapse = TRUE,
   comment = "#>"
@@ -33,11 +29,33 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE,
 TF<-FALSE
 ```
 
+# Load Package
+
 ```{r setup}
-library(devtools)
-devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports")
+PKG <- c(# devtools::install_github("emilymarkowitz-NOAA/NMFSReports", force = TRUE)
+         "NMFSReports",
+         
+         # Data Managment
+         "tidyverse",
+         "filesstrings", 
+         "data.table", 
+         "plyr",  
+         "dplyr",
+         
+         # #RMarkdown
+         "rmarkdown",
+         "kableExtra"
+)
+
+
+for (p in PKG) {
+  if(!require(p,character.only = TRUE)) {  
+    install.packages(p, repos = "http://cran.us.r-project.org")
+    require(p,character.only = TRUE)}
+}
 ```
 
+# Create initial structure of report
 
 Do everyone here a favor and create a new r project or at least set up a working directory (`setwd()`). There will be a lot of file management here...
 
@@ -59,7 +77,7 @@ sections <- c("frontmatter", # This is a specific template that matches the NOAA
                "workscitedR") # This is a specific template that will document all of the R packages you used to create this report. I'm biased, but please give credit where credit is due!
 ```
 
-# support_scripts
+## support_scripts
 
 And to make sure we nice and neatly compartemantalize our work, I'm going to create the below supporting .R files that I will source into my 'run' file:
 
@@ -78,17 +96,19 @@ support_scripts <-
 
 ```{r}
 wordstylesreference.docx = "NOAATechMemo"
+
+# ### NOAATechMemo
+# 
+# ![NOAATechMemo](./figures/NOAATechMemo.JPG)
+# 
+# ### FisheriesEconomicsOfTheUS
+# 
+# ![FisheriesEconomicsOfTheUS](../figures/FisheriesEconomicsOfTheUS.JPG)
 ```
 
 Here's what they look like: 
 
-### NOAATechMemo
 
-![NOAATechMemo](../img/NOAATechMemo.JPG)
-
-### FisheriesEconomicsOfTheUS
-
-![FisheriesEconomicsOfTheUS](../img/FisheriesEconomicsOfTheUS.JPG)
 
 ## csl
 
@@ -98,7 +118,7 @@ Here's what they look like:
 csl = "apa"
 
 # it looks something like this:
-apa <- readLines(system.file("cit","apa.csl", package="NMFSReports"))
+apa <- base::readLines(system.file("cit","apa.csl", package="NMFSReports"))
 head(apa)
 ```
 
