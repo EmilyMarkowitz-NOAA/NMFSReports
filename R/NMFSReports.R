@@ -1,12 +1,18 @@
-#################################
-# Created by Emily Markowitz (Emily.Markowitz@noaa.gov)
-# 2020-2021
-#################################
+#' #' ---
+#' purpose: Package Functions
+#' author: Emily Markowitz (Emily.Markowitz AT noaa.gov)
+#' start date: 2020-2021
+#' Notes: This is cool data... 
+#' ---
+
+
 
 #' Build your intitial architecture for your new NOAA Tech Memo or Report
 #'
-#' @param sections a string of the different sections of your TM
-#' @param support_scripts To make sure we nice and neatly compartemantalize our work, I'm going to create the below supporting .R files that I will source into my 'run' file:
+#' @param sections a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR")
+#' @param support_scripts To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")
+#' @param wordstylesreference.docx Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("refdoc_NOAATechMemo" or "refdoc_FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"
+#' @param csl Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa"). Default = "apa"
 #' @examples 
 #' # not run:
 #' # buildTM()
@@ -18,9 +24,173 @@ buildTM<-function(sections = c("frontmatter",
                                "discussion", 
                                "workscited", 
                                "workscitedR"), 
-                    support_scripts = c("functions", 
-                                        "dataDL", 
-                                        "data")){
+                  support_scripts = c("directories", 
+                                      "functions", 
+                                      "dataDL", 
+                                      "data"), 
+                  wordstylesreference.docx = "NOAATechMemo", 
+                  csl = "apa"){
+  
+  ##################  Create Architecture
+  dirs <- c("code", "data", "documentation", "img", "cit", "output")
+  
+  for (i in 1:length(dirs)) {
+    if (dir.exists(dirs[i]) == FALSE) {
+      dir.create(dirs[i])
+    }
+  }
+  
+  # Now... Load those folders with stuff you care about
+  
+  ################## RMD scripts
+  a<-list.files(path = system.file("rmd", package="NMFSReports"), pattern = "0_")
+  b<-sections
+  counter<-NMFSReports::numbers0(x = c(0, length(b)))[1]
+  for (i in 1:length(b)){
+    temp<-gsub(pattern = "\\.Rmd", replacement = "", 
+               x = gsub(pattern = "0_", replacement = "", x = a, ignore.case = T))
+    if (sum(temp %in% b[i]) == 1) {
+      copyfrom<-a[which(temp %in% b[i])]
+    } else {
+      copyfrom<-"0_blank.Rmd"
+    }
+    counter<-NMFSReports::auto_counter(counter)
+    file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
+              to = paste0("./code/", counter,"_",b[i]), 
+              overwrite = T)
+  }
+  
+  
+  ################## R scripts
+  a<-list.files(path = system.file("rmd", package="NMFSReports"), pattern = "1_")
+  b<-support_scripts
+  for (i in 1:length(b)){
+    temp<-gsub(pattern = "\\.R", replacement = "", 
+               x = gsub(pattern = "1_", replacement = "", x = a, ignore.case = T))
+    if (sum(temp %in% b[i]) == 1) {
+      copyfrom<-a[which(temp %in% b[i])]
+    } else {
+      copyfrom<-"1_blank.Rmd"
+    }
+    
+    file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
+              to = paste0("./code/0_", b[i]), 
+              overwrite = T)
+  }
+  
+  ################## other content
+  b<-c("header.yaml", 
+       wordstylesreference.docx, 
+       "TableFigureHeader.Rmd", 
+       "bibliography.bib")
+  copyfrom <- b[i]
+  for (i in 1:length(b)){
+    file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
+              to = paste0("./code/", b[i]), 
+              overwrite = T)
+  }
+  
+  # wordstylesreference.docx
+  # if the user wants to use their own reference document
+  if (!(wordstylesreference.docx %in% c("NOAATechMemo", "FisheriesEconomicsOfTheUS"))) {
+    if (dir.exists(dirname(wordstylesreference.docx))) {
+      file.copy(from = wordstylesreference.docx, 
+                to = paste0("./code/word-styles-reference.docx"), 
+                overwrite = T)    
+    }
+    # if the user wants to use one of the package's reference documents
+  } else {
+    copyfrom <- b<-paste0("refdoc_", wordstylesreference.docx, ".docx")
+    for (i in 1:length(b)){
+      file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
+                to = paste0("./code/", b[i]), 
+                overwrite = T)
+    }
+  }
+  
+  # csl
+  # if the user wants to use their own csl
+  
+  if (!(wordstylesreference.docx %in% 
+        gsub(pattern = "\\.csl", 
+             replacement = "", 
+             x = list.files(system.file("cit", 
+                                        package="NMFSReports"), 
+                            pattern = ".csl")))) {
+    if (dir.exists(dirname(wordstylesreference.docx))) {
+      file.copy(from = wordstylesreference.docx, 
+                to = paste0("./citationStyles/cit.csl"), 
+                overwrite = T)    
+    }
+    # if the user wants to use one of the package's reference documents
+  } else {
+    copyfrom <- b<-paste0(csl, ".csl")
+    for (i in 1:length(b)){
+      file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
+                to = paste0("./citationStyles/", b[i]), 
+                overwrite = T)
+    }
+  }
+  
+  ################## images
+  # Load those folders with stuff you care about
+  a<-list.files(path = system.file("img", package="NMFSReports"))
+  for (i in 1:length(a)){
+    file.copy(from = system.file("img", a[i], package="NMFSReports"), 
+              to = paste0("./img/", a[i]), 
+              overwrite = T)
+  }
+  
+  
+  ################## citation styles
+  # Load those folders with stuff you care about
+  a<-list.files(path = system.file("cit", package="NMFSReports"))
+  for (i in 1:length(a)){
+    file.copy(from = system.file("cit", a[i], package="NMFSReports"), 
+              to = paste0("./citationStyles/", a[i]), 
+              overwrite = T)
+  }
+  
+  ################## Write run.R
+  
+  run0 <- readLines(system.file("rmd","run.R", package="NMFSReports"))
+  
+  # support_scripts
+  a<-paste("source(here('code','0_", support_scripts, "'))
+
+", collapse = "")
+  
+  run0<-gsub(pattern = "# INSERT_SUPPORT_SCRIPTS", 
+             replacement = a, 
+             x = run0)
+  
+  # sections
+  sections_no<-1:length(sections)
+  a<-paste(paste0('
+  ############# ', sections_no,' - ', sections,' ####################
+  cnt.chapt<-auto_counter(cnt.chapt)
+  cnt.chapt.content<-"001" 
+  filename0<-paste0(cnt.chapt, "_', sections,'_") 
+  rmarkdown::render(paste0(dir.code, "/',sections_no,'_',sections,'.Rmd"),
+                    output_dir = dir.chapters,
+                    output_file = paste0(filename0, cnt.chapt.content, "_Text.docx"))
+                    
+  
+  '), collapse = "")
+  
+  run0<-gsub(pattern = "# INSERT_SECTIONS", 
+             replacement = a, 
+             x = run0)
+  
+  # write new run file
+  write.table(x = run0, 
+              file = "./code/0_run.R", 
+              row.names = FALSE, 
+              quote = FALSE)
+  
+  # done!
+  
+}
   
   # Create Architecture
   dirs <- c("code", "data", "documentation", "img", "citationStyles", "output")
@@ -46,7 +216,7 @@ buildTM<-function(sections = c("frontmatter",
     }
 
     file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-              to = paste0("./code/", b[i]), 
+              to = paste0("./code/", i,"_",b[i]), 
               overwrite = T)
   }
   
@@ -87,7 +257,7 @@ buildTM<-function(sections = c("frontmatter",
               overwrite = T)
   }
   
-  ##########Write run.R########
+  ##########Write run.R
   
   run0 <- readLines(system.file("rmd","run.R", package="NMFSReports"))
 

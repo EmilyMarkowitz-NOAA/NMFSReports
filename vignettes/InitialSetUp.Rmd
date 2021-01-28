@@ -38,7 +38,12 @@ library(devtools)
 devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports")
 ```
 
+
+Do everyone here a favor and create a new r project or at least set up a working directory (`setwd()`). There will be a lot of file management here...
+
 To build your intitial architecture for your new NOAA Tech Memo or Report, simply run the below script: 
+
+## sections
 
 Let's first think about what you want/need your Tech Memo to look like. For my purposes, I'll assume that you need the below sections:
 
@@ -54,6 +59,8 @@ sections <- c("frontmatter", # This is a specific template that matches the NOAA
                "workscitedR") # This is a specific template that will document all of the R packages you used to create this report. I'm biased, but please give credit where credit is due!
 ```
 
+# support_scripts
+
 And to make sure we nice and neatly compartemantalize our work, I'm going to create the below supporting .R files that I will source into my 'run' file:
 
 ```{r}
@@ -65,6 +72,35 @@ support_scripts <-
 )
 ```
 
+## wordstylesreference.docx
+
+`wordstylesreference.docx` is a document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("refdoc_NOAATechMemo" or "refdoc_FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"
+
+```{r}
+wordstylesreference.docx = "NOAATechMemo"
+```
+
+Here's what they look like: 
+
+### NOAATechMemo
+
+![NOAATechMemo](../img/NOAATechMemo.JPG)
+
+### FisheriesEconomicsOfTheUS
+
+![FisheriesEconomicsOfTheUS](../img/FisheriesEconomicsOfTheUS.JPG)
+
+## csl
+
+`csl` is a citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa"). Default = "apa" because it was easy to find. 
+
+```{r}
+csl = "apa"
+
+# it looks something like this:
+apa <- readLines(system.file("cit","apa.csl", package="NMFSReports"))
+head(apa)
+```
 
 # Create Report Outline
 
@@ -73,7 +109,9 @@ Now, magic! Now for the sake of the vignette, I can't actually run it here, but 
 ```{r}
 # NMFSReports::buildTM(
 #   sections, 
-#   support_scripts
+#   support_scripts, 
+#   wordstylesreference.docx,
+#   csl
 #   ) 
 ```
 

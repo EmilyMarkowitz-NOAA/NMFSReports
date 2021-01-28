@@ -1,7 +1,7 @@
-#' ---
-#' title: REPORT
-#' purpose: SOMETHING
-#' author: YOU AT noaa.gov
-#' start date: DATE
+#' #' ---
+#' purpose: Something
+#' author: Me, myself, and I (me.noaa.gov)
+#' start date: YYYY-MM
+#' Notes: This is cool... 
 #' ---
 
