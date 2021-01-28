@@ -1,12 +1,3 @@
-#' #' ---
-#' purpose: Package Functions
-#' author: Emily Markowitz (Emily.Markowitz AT noaa.gov)
-#' start date: 2020-2021
-#' Notes: This is cool data... 
-#' ---
-
-
-
 #' Build your intitial architecture for your new NOAA Tech Memo or Report
 #'
 #' @param sections a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR")

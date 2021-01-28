@@ -2,13 +2,7 @@
 % Please edit documentation in R/NMFSReports.R
 \name{buildTM}
 \alias{buildTM}
-\title{#' ---
-purpose: Package Functions
-author: Emily Markowitz (Emily.Markowitz AT noaa.gov)
-start date: 2020-2021
-Notes: This is cool data... 
----
-Build your intitial architecture for your new NOAA Tech Memo or Report}
+\title{Build your intitial architecture for your new NOAA Tech Memo or Report}
 \usage{
 buildTM(
   sections = c("frontmatter", "abstract", "introduction", "methods", "results",
@@ -28,12 +22,6 @@ buildTM(
 \item{csl}{Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa"). Default = "apa"}
 }
 \description{
-#' ---
-purpose: Package Functions
-author: Emily Markowitz (Emily.Markowitz AT noaa.gov)
-start date: 2020-2021
-Notes: This is cool data... 
----
 Build your intitial architecture for your new NOAA Tech Memo or Report
 }
 \examples{

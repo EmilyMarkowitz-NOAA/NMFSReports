@@ -96,18 +96,17 @@ support_scripts <-
 
 ```{r}
 wordstylesreference.docx = "NOAATechMemo"
-
-# ### NOAATechMemo
-# 
-# ![NOAATechMemo](./figures/NOAATechMemo.JPG)
-# 
-# ### FisheriesEconomicsOfTheUS
-# 
-# ![FisheriesEconomicsOfTheUS](../figures/FisheriesEconomicsOfTheUS.JPG)
 ```
 
 Here's what they look like: 
 
+# ### NOAATechMemo
+# 
+# ![NOAATechMemo](../man/figures/NOAATechMemo.JPG)
+# 
+# ### FisheriesEconomicsOfTheUS
+# 
+# ![FisheriesEconomicsOfTheUS](../man/figures/FisheriesEconomicsOfTheUS.JPG)
 
 
 ## csl
