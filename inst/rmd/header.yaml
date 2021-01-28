@@ -1,0 +1,10 @@
+---
+title: ""
+author: ""
+date: ""
+link-citations: true
+reference-section-title: References
+output: 
+   word_document:
+     df_print: kable
+---

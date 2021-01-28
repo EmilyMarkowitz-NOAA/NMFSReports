@@ -1,4 +1,44 @@
+#################################
+# Created by Emily Markowitz (Emily.Markowitz@noaa.gov)
+# 2020-2021
+#################################
 
+#' Create Structure for your new Tech Memo Project!
+#'
+#' @return
+#' @export
+#'
+#' @examples
+buildTM<-function(){
+  # Create Architecture
+  dirs <- c("code", "data", "documentation", "img", "citationStyles", "output")
+  
+  for (i in 1:length(dirs)) {
+    if (dir.exists(dirs[i]) == FALSE) {
+      dir.create(dirs[i])
+    }
+  }
+  
+  # Load those folders with stuff you care about
+  
+  # R scripts
+  a<-list.files(path = system.file("rmd", package="NMFSReports"))
+  for (i in 1:length(a)){
+    file.copy(from = system.file("rmd", a[i], package="NMFSReports"), 
+              to = paste0("./", a[i]), 
+              overwrite = T)
+  }
+  
+  # images
+  # Load those folders with stuff you care about
+  a<-list.files(path = system.file("img", package="NMFSReports"))
+  for (i in 1:length(a)){
+    file.copy(from = system.file("img", a[i], package="NMFSReports"), 
+              to = paste0("./", a[i]), 
+              overwrite = T)
+  }
+  
+}
 
 
 ##########SEARCH STUFF############

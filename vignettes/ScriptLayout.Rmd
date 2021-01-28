@@ -15,7 +15,7 @@ output:
     toc: true
     highlight: tango
 vignette: >
-  %\VignetteIndexEntry{NEFSC-Fishery}
+  %\VignetteIndexEntry{ScriptLayout}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -58,7 +58,7 @@ for (p in PKG) {
 
 
 ## From run file: 
-```{r}
+```{r a}
 cnt.chapt<-"000" # Keep everything in a proper order
 plot.list<-c() # This will help us by saving R-ready plots so we can easily go back and edit them if necessary. 
 cnt.figures<-0 # This will autoname your figures with consecutive numbers (e.g., Figure 1.)
@@ -74,7 +74,7 @@ Here is the report content!
 
 ## Example Text 
 
-```{r}
+```{r b}
 # Don't forget to load your example data!
 dat <- datasets::beaver1
 head(dat)

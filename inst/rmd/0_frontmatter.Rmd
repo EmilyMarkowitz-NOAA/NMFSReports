@@ -1,0 +1,104 @@
+---
+output:
+  word_document:
+    pandoc_args: ["--metadata-file=header.yaml"]
+    reference_docx: word-styles-reference.docx
+csl: "../citationStyles/citationstyle.csl"
+bibliography: "../data/bibliography.bib"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, error = FALSE)
+counter.inside<-0
+```
+
+</br>
+
+# `r title0 `
+
+By
+
+`r authors0 `
+
+
+</br>
+
+
+
+![](../img/DeptOfCommerce.jpg){width=25%}
+
+
+U.S. Department of Commerce
+
+National Oceanic and Atmospheric Administration
+
+National Marine Fisheries Service
+
+
+`r OfficeLocation0`
+
+`r months(Sys.Date()) ` `r as.numeric(format(as.Date(Sys.Date(),'%Y-%m-%d'),'%Y')) `
+
+\newpage
+
+
+</br>
+
+
+# `r title0`
+
+
+By
+
+
+`r authors0 `
+
+</br>
+
+
+**NOAA Technical Memorandum NMFS-[`r office0`]-`r reportnum0` `r months(Sys.Date()) ` `r as.numeric(format(as.Date(Sys.Date(),'%Y-%m-%d'),'%Y')) `
+**
+
+
+![](../img/noaa-gray.png){width=20%}
+
+`r NOAALeaders0`
+
+
+\newpage
+
+
+
+**Recommended citation:**
+
+`r authors0 `. `r maxyr `. `r title0 ` NOAA Tech. Memo. NMFS-[`r office0`]-`r reportnum0`,
+
+> ## p.
+
+
+
+**Copies of this report may be obtained from:**
+
+
+`r OfficeLocation0`
+
+Or online at:
+
+http://spo.nmfs.noaa.gov/tech-memos/ 
+
+> [or alternate URL for OHC, OSF or OPR pages]
+
+
+\newpage
+
+**This document is available to the public through:**
+
+National Technical Information Service
+U.S.Department of Commerce 
+5285 Port Royal Road
+Springfield, VA 22161
+
+www.ntis.gov
+
+
+
