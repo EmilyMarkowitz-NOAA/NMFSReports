@@ -9,10 +9,11 @@ ageoffile(path, format = "\%B \%d, \%Y")
 \arguments{
 \item{path}{Path to the file.}
 
-\item{format}{default = "\%B \%d, \%Y"}
+\item{format}{default = "%B %d, %Y"}
+}
+\value{
+x
 }
 \description{
 Find the age of the file, when it was created.
 }
-\keyword{Data}
-\keyword{Management}

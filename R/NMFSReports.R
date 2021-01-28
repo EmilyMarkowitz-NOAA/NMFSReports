@@ -707,13 +707,11 @@ auto_counter<-function(counter0) {
 
 
 #' Find the age of the file, when it was created. 
-#' 
-#' Find the age of the file, when it was created. 
+#'
 #' @param path Path to the file. 
 #' @param format default = "%B %d, %Y"
-#' @keywords Data Management
+#' @return x
 #' @export
-#' @examples
 ageoffile<-function(path, format = "%B %d, %Y") {
   # system("touch temp")
   info <- file.info(path)

@@ -1,0 +1,162 @@
+---
+title: "ScriptLayout"
+author: Emily Markowitz (Emily.Markowitz AT NOAA.gov / EmilyMarkowitz-NOAA)
+date: "`r format(Sys.Date(), format='%B %d %Y') `"
+output: 
+  html_document:
+    standalone: true
+    smart: true
+    normalize: true
+    toc: true
+    highlight: tango
+    self-contained: true
+    theme: cerulean
+  pdf_document:
+    toc: true
+    highlight: tango
+vignette: >
+  %\VignetteIndexEntry{NEFSC-Fishery}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+# https://r-pkgs.org/vignettes.html
+  # %\VignetteIndexEntry{FEUS-tables}
+  # %\VignetteEngine{knitr::rmarkdown}
+  # %\VignetteEncoding{UTF-8}
+knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, 
+  collapse = TRUE,
+  comment = "#>"
+)
+
+TF<-FALSE
+```
+
+```{r setup}
+PKG <- c(# devtools::install_github("emilymarkowitz-NOAA/NMFSReports", force = TRUE)
+         "NMFSReports",
+         
+         # Data Managment
+         "tidyverse",
+         "filesstrings", 
+         "data.table", 
+         "plyr",  
+         "dplyr",
+         
+         # #RMarkdown
+         "rmarkdown",
+         "kableExtra"
+)
+
+for (p in PKG) {
+  if(!require(p,character.only = TRUE)) {  
+    install.packages(p, repos = "http://cran.us.r-project.org")
+    require(p,character.only = TRUE)}
+}
+```
+
+
+## From run file: 
+```{r}
+cnt.chapt<-"000" # Keep everything in a proper order
+plot.list<-c() # This will help us by saving R-ready plots so we can easily go back and edit them if necessary. 
+cnt.figures<-0 # This will autoname your figures with consecutive numbers (e.g., Figure 1.)
+cnt.tables<-0 # This will autoname your tables with consecutive numbers (e.g., Table 1.)
+cnt.equ<-0
+counter.inside<-0
+cnt.chapt.content<-0
+filename0<-"example"
+designflowin<-FALSE
+```
+
+Here is the report content!
+
+## Example Text 
+
+```{r}
+# Don't forget to load your example data!
+dat <- datasets::beaver1
+head(dat)
+
+# And some footnotes you might reuse throughout your report
+Footnotes.list<-list(ExOfStandardFt = "A footnote!")
+```
+
+My example dataset has `r xunits(nrow(dat))` rows in it and `r xunits(ncol(dat))` columns in it.`r paste0("^[", Footnotes.list$ExOfStandardFt,"]") ` That is `r pchange(start = nrow(dat), end = ncol(dat))`^[Here's another, free-written footnote!]. 
+
+## Equations
+
+Here is some equation you'll need to have in this report, of which produces the variable $X$. 
+
+```{r Eq1}
+cnt.equ<-auto_counter(cnt.equ)
+```
+
+Eq. `r cnt.equ`
+
+$$X = Y + Z$$
+
+## Example Figure
+
+```{r G1a}
+# Don't Edit This:
+cnt.chapt.content<-auto_counter(cnt.chapt.content)
+cnt.figures<-cnt.figures+1
+```
+
+
+```{r G1b}
+# Edit This:
+Header<-paste0("Figure ",cnt.figures,". Here's a plot")
+Footnotes<-"A footnote for this figure!"
+
+# Select data and make plot
+dat1<-dat[dat$day %in% 346,]
+plt<-qplot(x = dat1$time, y = dat1$temp, col = as.factor(dat1$activ)) #+ # create plot
+   # nmfspalette::scale_color_nmfs() # Use NMFS Color Pallet
+
+```
+
+
+```{r G1c}
+# Don't Edit This:
+Header<-str_to_sentence(Header)
+Title0<-paste0(Header, "^[", Footnotes, "]")
+filename00<-paste0(filename0, cnt.chapt.content, "_Fig_",cnt.figures)
+
+if (designflowin %in% T){
+  cnt.chapt.content<-funct_counter(cnt.chapt.content)
+  rmarkdown::render(TableFigureHeader, 
+                    quiet = T,
+                  output_dir = dir.chapters, 
+                  output_file = paste0(filename00,cnt.chapt.content,"_Title.docx"))
+}
+```
+
+
+```{r G1d, fig.cap=ifelse(designflowin %in% T, "", Title0)}
+# Don't Edit This:
+
+# Systematically save your plot with this simple function
+plot.list<-SaveGraphs(plot0 = plt, plot.list = plot.list, 
+           filename0 = filename0, 
+           Header = Title0,
+           cnt.chapt.content = cnt.chapt.content, 
+           cnt.figures = cnt.figures, 
+           path = NULL, #dir.chapters, 
+           width = 6, height = 6) # but you can change this if you need...
+
+# Print or Don't Print Plot in Text
+# You don't want to print this in the document if this text will be flowed into InDesign. 
+# However, sometimes its nice to see everything all together, so this variable is something you might like to toggle on and off. Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
+if (designflowin %in% FALSE) { 
+  plt #print plot in text
+}
+```
+
+
+
+
+
+

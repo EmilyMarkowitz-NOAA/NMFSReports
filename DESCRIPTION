@@ -36,4 +36,5 @@ Imports:
     jsonlite, 
     kableExtra
 VignetteBuilder: knitr
-Suggests: rmarkdown
+Suggests: 
+    rmarkdown
