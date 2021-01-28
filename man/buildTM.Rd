@@ -17,7 +17,7 @@ buildTM(
 
 \item{support_scripts}{To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")}
 
-\item{wordstylesreference.docx}{Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("refdoc_NOAATechMemo" or "refdoc_FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"}
+\item{wordstylesreference.docx}{Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("NOAATechMemo" or "FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"}
 
 \item{csl}{Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa"). Default = "apa"}
 }

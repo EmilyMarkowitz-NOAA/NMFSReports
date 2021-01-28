@@ -1,8 +1,15 @@
+
+
+
+############BUILD THE TM#################
+
+
+
 #' Build your intitial architecture for your new NOAA Tech Memo or Report
 #'
 #' @param sections a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR")
 #' @param support_scripts To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")
-#' @param wordstylesreference.docx Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("refdoc_NOAATechMemo" or "refdoc_FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"
+#' @param wordstylesreference.docx Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("NOAATechMemo" or "FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"
 #' @param csl Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa"). Default = "apa"
 #' @examples 
 #' # not run:
