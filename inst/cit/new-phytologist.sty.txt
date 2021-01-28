@@ -1,0 +1,90 @@
+%%% Notes:
+% This is a latex style file formatted for New Phytologist.
+% Should be compiled with XeLaTeX (supports unicode chars).
+
+% Set margins
+\usepackage[margin=1in]{geometry}
+
+% Set line spacing to 1.5
+\usepackage{setspace}
+\onehalfspace
+
+% set style for units and abbreviations
+
+%%% SI units
+\usepackage{siunitx}
+
+% over-ride SI units following journal style
+\DeclareSIUnit{\hour}{h}
+\DeclareSIUnit{\second}{s}
+
+% make custom units
+\DeclareSIUnit{\ma}{MA}
+\DeclareSIUnit{\year}{yr}
+\DeclareSIUnit{\month}{mo}
+\DeclareSIUnit{\week}{wk}
+\DeclareSIUnit{\day}{d}
+\DeclareSIUnit{\basepair}{bp}
+
+% commas between digits for large numbers, starting with 10 thousands
+\sisetup{group-separator = {,}}
+\sisetup{group-minimum-digits = 5}
+
+%%% Abbreviations
+% custom commands for abbreviations that can vary from journal to journal.
+% use package xspace to control spacing
+% (note that \xspace can't be nested)
+% see https://tex.stackexchange.com/questions/31091/space-after-latex-commands
+
+\usepackage{xspace}
+% Figures
+\newcommand{\fig}{Fig.\xspace}
+\newcommand{\figs}{Figs\xspace}
+% Tables
+\newcommand{\tab}{Table\xspace}
+\newcommand{\tabs}{Tables\xspace}
+% Diameter
+\newcommand{\diameter}{diam.\xspace}
+% Latin
+\newcommand{\sensulato}{s. l.\xspace}
+\newcommand{\sensustricto}{s. s.\xspace}
+\newcommand{\ie}{i.e.\xspace}
+\newcommand{\eg}{e.g.\xspace}
+\newcommand{\sensu}{\textit{sensu}\xspace}
+\newcommand{\circa}{\textit{c.}\xspace}
+
+% Statistics
+% Sample size
+\newcommand{\n}{\textit{n}\xspace}
+% Species
+\newcommand{\species}{spp.\xspace}
+% P value
+\newcommand{\pval}{\textit{P}}
+% R2 value
+\newcommand{\rval}{\textit{R}}
+% T test
+\newcommand{\tval}{\textit{t}\xspace}
+% Z score
+\newcommand{\zval}{\textit{Z}\xspace}
+% degrees of freedom
+\newcommand{\df}{df\xspace}
+% F value
+\newcommand{\fval}{\textit{F}\xspace}
+
+% Standard deviation
+\newcommand{\stdev}{SD\xspace}
+% Standard error
+\newcommand{\stderr}{SE\xspace}
+
+% Obscure statistics
+% Blomberg's K
+\newcommand{\K}{\textit{K}\xspace}
+% Fritz Purvis D
+\newcommand{\D}{\textit{D}\xspace}
+% Pagel's lambda
+\newcommand{\plam}{λ\xspace}
+
+% Computer commands / functions
+\newcommand{\function}[1]{`{#1}'\xspace}
+% R packages
+\newcommand{\package}[1]{`{#1}'\xspace}

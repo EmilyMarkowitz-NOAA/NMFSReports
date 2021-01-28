@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create Structure for your new Tech Memo Project! — buildTM • NMFSReports</title>
+<title>Build your intitial architecture for your new NOAA Tech Memo or Report — buildTM • NMFSReports</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Create Structure for your new Tech Memo Project! — buildTM" />
-<meta property="og:description" content="Create Structure for your new Tech Memo Project!" />
+<meta property="og:title" content="Build your intitial architecture for your new NOAA Tech Memo or Report — buildTM" />
+<meta property="og:description" content="Build your intitial architecture for your new NOAA Tech Memo or Report" />
 
 
 
@@ -105,6 +105,9 @@
       <a href="../articles/ExampleRunFile.html">ExampleRunFile</a>
     </li>
     <li>
+      <a href="../articles/InitialSetUp.html">InitialSetUp</a>
+    </li>
+    <li>
       <a href="../articles/ScriptLayout.html">ScriptLayout</a>
     </li>
   </ul>
@@ -148,19 +151,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create Structure for your new Tech Memo Project!</h1>
+    <h1>Build your intitial architecture for your new NOAA Tech Memo or Report</h1>
     <small class="dont-index">Source: <a href='https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/R/NMFSReports.R'><code>R/NMFSReports.R</code></a></small>
     <div class="hidden name"><code>buildTM.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create Structure for your new Tech Memo Project!</p>
+    <p>Build your intitial architecture for your new NOAA Tech Memo or Report</p>
     </div>
 
-    <pre class="usage"><span class='fu'>buildTM</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>buildTM</span><span class='op'>(</span>
+  sections <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"frontmatter"</span>, <span class='st'>"abstract"</span>, <span class='st'>"introduction"</span>, <span class='st'>"methods"</span>, <span class='st'>"results"</span>,
+    <span class='st'>"discussion"</span>, <span class='st'>"workscited"</span>, <span class='st'>"workscitedR"</span><span class='op'>)</span>,
+  support_scripts <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"functions"</span>, <span class='st'>"dataDL"</span>, <span class='st'>"data"</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>sections</th>
+      <td><p>a string of the different sections of your TM</p></td>
+    </tr>
+    <tr>
+      <th>support_scripts</th>
+      <td><p>To make sure we nice and neatly compartemantalize our work, I'm going to create the below supporting .R files that I will source into my 'run' file:</p></td>
+    </tr>
+    </table>
 
 
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># not run:</span>
+<span class='co'># buildTM()</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -3,8 +3,25 @@
 # 2020-2021
 #################################
 
-#' Create Structure for your new Tech Memo Project!
-buildTM<-function(){
+#' Build your intitial architecture for your new NOAA Tech Memo or Report
+#'
+#' @param sections a string of the different sections of your TM
+#' @param support_scripts To make sure we nice and neatly compartemantalize our work, I'm going to create the below supporting .R files that I will source into my 'run' file:
+#' @examples 
+#' # not run:
+#' # buildTM()
+buildTM<-function(sections = c("frontmatter", 
+                               "abstract", 
+                               "introduction", 
+                               "methods", 
+                               "results", 
+                               "discussion", 
+                               "workscited", 
+                               "workscitedR"), 
+                    support_scripts = c("functions", 
+                                        "dataDL", 
+                                        "data")){
+  
   # Create Architecture
   dirs <- c("code", "data", "documentation", "img", "citationStyles", "output")
   
@@ -16,11 +33,38 @@ buildTM<-function(){
   
   # Load those folders with stuff you care about
   
+  # RMD scripts
+  a<-list.files(path = system.file("rmd", package="NMFSReports"), pattern = "0_")
+  b<-sections
+  for (i in 1:length(b)){
+    temp<-gsub(pattern = "\\.Rmd", replacement = "", 
+               x = gsub(pattern = "0_", replacement = "", x = a, ignore.case = T))
+    if (temp %in% b[i]) {
+      copyfrom<-a[which(temp %in% b[i])]
+    } else {
+      copyfrom<-"0_blank.Rmd"
+    }
+
+    file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
+              to = paste0("./code/", b[i]), 
+              overwrite = T)
+  }
+  
+  
   # R scripts
-  a<-list.files(path = system.file("rmd", package="NMFSReports"))
-  for (i in 1:length(a)){
-    file.copy(from = system.file("rmd", a[i], package="NMFSReports"), 
-              to = paste0("./", a[i]), 
+  a<-list.files(path = system.file("r", package="NMFSReports"), pattern = "1_")
+  b<-support_scripts
+  for (i in 1:length(b)){
+    temp<-gsub(pattern = "\\.R", replacement = "", 
+               x = gsub(pattern = "1_", replacement = "", x = a, ignore.case = T))
+    if (temp %in% b[i]) {
+      copyfrom<-a[which(temp %in% b[i])]
+    } else {
+      copyfrom<-"1_blank.Rmd"
+    }
+    
+    file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
+              to = paste0("./code/", b[i]), 
               overwrite = T)
   }
   
@@ -29,9 +73,55 @@ buildTM<-function(){
   a<-list.files(path = system.file("img", package="NMFSReports"))
   for (i in 1:length(a)){
     file.copy(from = system.file("img", a[i], package="NMFSReports"), 
-              to = paste0("./", a[i]), 
+              to = paste0("./img/", a[i]), 
               overwrite = T)
   }
+  
+  
+  # citation styles
+  # Load those folders with stuff you care about
+  a<-list.files(path = system.file("cit", package="NMFSReports"))
+  for (i in 1:length(a)){
+    file.copy(from = system.file("cit", a[i], package="NMFSReports"), 
+              to = paste0("./citationStyles/", a[i]), 
+              overwrite = T)
+  }
+  
+  ##########Write run.R########
+  
+  run0 <- readLines(system.file("rmd","run.R", package="NMFSReports"))
+
+  # directories
+    
+  # support_scripts
+  a<-paste(paste0("source(here('code','", support_scripts, "')"), collapse = "/n/n ")
+  
+  run0<-gsub(pattern = "# INSERT_SUPPORT_SCRIPTS", 
+             replacement = a, 
+             x = run0)
+  
+  # sections
+  sections_no<-1:length(sections)
+  a<-paste(paste0('
+  cnt.chapt<-auto_counter(cnt.chapt)
+  cnt.chapt.content<-"001" 
+  filename0<-paste0(cnt.chapt, "_', sections,'_") 
+  rmarkdown::render(paste0(dir.code, "/',sections_no,'_',sections,'.Rmd"),
+                    output_dir = dir.chapters,
+                    output_file = paste0(filename0, cnt.chapt.content, "_Text.docx"))
+                    
+  
+  '), collapse = "/n/n ")
+  
+  run0<-gsub(pattern = "# INSERT_SECTIONS", 
+             replacement = a, 
+             x = res)
+  
+  # write new run file
+  write.table(x = run0, 
+              file = "./code/run.R", 
+              row.names = FALSE, 
+              quote = FALSE)
   
 }
 

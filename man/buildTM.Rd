@@ -2,10 +2,23 @@
 % Please edit documentation in R/NMFSReports.R
 \name{buildTM}
 \alias{buildTM}
-\title{Create Structure for your new Tech Memo Project!}
+\title{Build your intitial architecture for your new NOAA Tech Memo or Report}
 \usage{
-buildTM()
+buildTM(
+  sections = c("frontmatter", "abstract", "introduction", "methods", "results",
+    "discussion", "workscited", "workscitedR"),
+  support_scripts = c("functions", "dataDL", "data")
+)
+}
+\arguments{
+\item{sections}{a string of the different sections of your TM}
+
+\item{support_scripts}{To make sure we nice and neatly compartemantalize our work, I'm going to create the below supporting .R files that I will source into my 'run' file:}
 }
 \description{
-Create Structure for your new Tech Memo Project!
+Build your intitial architecture for your new NOAA Tech Memo or Report
+}
+\examples{
+# not run:
+# buildTM()
 }

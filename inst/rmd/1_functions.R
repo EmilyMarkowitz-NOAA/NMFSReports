@@ -45,14 +45,14 @@ for (p in PKG) {
     require(p,character.only = TRUE)}
 }
 
-renv::snapshot()
+# renv::snapshot()
 
 #############SAVE FILE LOCATIONS###############
 # Just in case you change the base name for any reason, it will change for anytime you load the files inside the folder, too! (e.g., if you have something against "scripts" being the name of the folder, just let the script know in one place aka right here). 
 library(here)
 
 # Where the files we will need are saved
-dir.scripts<-paste0(here::here(), "/rscripts/")
+dir.scripts<-paste0(here::here(), "/code/")
 
 # Where we save everything
 dir.output<-paste0(here::here(), "/output/")
@@ -64,7 +64,7 @@ dir.rawdata<-paste0(dir.output.todaysrun, "/rawdata/")
 dir.create(dir.rawdata)
 dir.tables<-paste0(dir.output.todaysrun, "/tables/")
 dir.create(dir.tables)
-dir.create(paste0(dir.output.todaysrun, "/rscripts/"))
+dir.create(paste0(dir.output.todaysrun, "/code/"))
 dir.create(paste0(dir.output.todaysrun, "/plots/"))
 dir.create(paste0(dir.output.todaysrun, "/metadata/"))
 
@@ -121,7 +121,7 @@ listfiles0<-listfiles0[!(grepl(pattern = "~",ignore.case = T, x = listfiles0))]
 
 for (i in 1:length(listfiles0)){
   file.copy(from = paste0(dir.scripts, listfiles0[i]), 
-            to = paste0(dir.output.todaysrun, "/rscripts/", listfiles0[i]), 
+            to = paste0(dir.output.todaysrun, "/code/", listfiles0[i]), 
             overwrite = T)
 }
 

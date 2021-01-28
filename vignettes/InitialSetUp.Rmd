@@ -1,0 +1,82 @@
+---
+title: "InitialSetUp"
+author: Emily Markowitz (Emily.Markowitz AT NOAA.gov / EmilyMarkowitz-NOAA)
+date: "`r format(Sys.Date(), format='%B %d %Y') `"
+output: 
+  html_document:
+    standalone: true
+    smart: true
+    normalize: true
+    toc: true
+    highlight: tango
+    self-contained: true
+    theme: cerulean
+  pdf_document:
+    toc: true
+    highlight: tango
+vignette: >
+  %\VignetteIndexEntry{InitialSetUp}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+# https://r-pkgs.org/vignettes.html
+  # %\VignetteIndexEntry{FEUS-tables}
+  # %\VignetteEngine{knitr::rmarkdown}
+  # %\VignetteEncoding{UTF-8}
+knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, 
+  collapse = TRUE,
+  comment = "#>"
+)
+
+TF<-FALSE
+```
+
+```{r setup}
+library(devtools)
+devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports")
+```
+
+To build your intitial architecture for your new NOAA Tech Memo or Report, simply run the below script: 
+
+Let's first think about what you want/need your Tech Memo to look like. For my purposes, I'll assume that you need the below sections:
+
+```{r}
+  # list the sections (that you will have different rmd scripts for) in order and with no spaces
+sections <- c("frontmatter", # This is a specific template that matches the NOAA Template
+               "abstract", # This, and all others unless otherwise mentioned, come from the same plain-slate document but are appropriately named and linked up in the 'run' file. 
+               "introduction", 
+               "methods", 
+               "results", 
+               "discussion", 
+               "workscited", 
+               "workscitedR") # This is a specific template that will document all of the R packages you used to create this report. I'm biased, but please give credit where credit is due!
+```
+
+And to make sure we nice and neatly compartemantalize our work, I'm going to create the below supporting .R files that I will source into my 'run' file:
+
+```{r}
+support_scripts <-
+    c(# note a 'run' file is automatically created. Think of this as the spine of your document. 
+      "functions", # where I will save all report-specific functions
+      "dataDL", # Where we will download the data (e.g., from Oracle or an API). You may only want to run this every so often or regularly, up to you
+      "data" # Where I will load that data kept locally that was either downloaded in "dataDL" or created locally
+)
+```
+
+
+# Create Report Outline
+
+Now, magic! Now for the sake of the vignette, I can't actually run it here, but below is a picture of what this looks like:
+
+```{r}
+# NMFSReports::buildTM(
+#   sections, 
+#   support_scripts
+#   ) 
+```
+
+
+
+
