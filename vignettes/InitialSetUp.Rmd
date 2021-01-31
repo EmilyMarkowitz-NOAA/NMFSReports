@@ -100,13 +100,13 @@ wordstylesreference.docx = "NOAATechMemo"
 
 Here's what they look like: 
 
-# ### NOAATechMemo
-# 
-# ![NOAATechMemo](../man/figures/NOAATechMemo.JPG)
-# 
-# ### FisheriesEconomicsOfTheUS
-# 
-# ![FisheriesEconomicsOfTheUS](../man/figures/FisheriesEconomicsOfTheUS.JPG)
+### NOAATechMemo
+
+![NOAATechMemo](../man/figures/NOAATechMemo.JPG)
+
+### FisheriesEconomicsOfTheUS
+
+![FisheriesEconomicsOfTheUS](../man/figures/FisheriesEconomicsOfTheUS.JPG)
 
 
 ## csl
@@ -125,13 +125,13 @@ head(apa)
 
 Now, magic! Now for the sake of the vignette, I can't actually run it here, but below is a picture of what this looks like:
 
-```{r}
-# NMFSReports::buildTM(
-#   sections, 
-#   support_scripts, 
-#   wordstylesreference.docx,
-#   csl
-#   ) 
+```{r, eval = FALSE}
+NMFSReports::buildTM(
+  sections,
+  support_scripts,
+  wordstylesreference.docx,
+  csl
+  )
 ```
 
 

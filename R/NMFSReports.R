@@ -11,6 +11,7 @@
 #' @param support_scripts To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")
 #' @param wordstylesreference.docx Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("NOAATechMemo" or "FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"
 #' @param csl Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa"). Default = "apa"
+#' @export
 #' @examples 
 #' # not run:
 #' # buildTM()
@@ -286,7 +287,6 @@ funct_df2js<-function(df.dat) {
 #' @param add_dont_cap A vector of strings that the user does not want capitalized
 #' @keywords Title, Case, word strings
 #' @export
-#'
 #' @examples
 #' TitleCase("HelLo WoRLD OR good-bye?")
 TitleCase <- function(str = "", add_dont_cap = "") {
@@ -818,6 +818,7 @@ xunitspct<-function(value, sign = TRUE) {
 #' @param cols The columns you want to apply formatting to. 
 #' @param fonttype fonttype = c("italics", "bold", "strikethrough"). 
 #' @keywords Modify number, units
+#' @export
 #' @examples
 #' df <- data.frame(char = c('a','b','c'),
 #'                  num = c(1,2,3))
@@ -943,86 +944,110 @@ SaveGraphs<-function(plot0,
 }
 
 
-
 #' Systematically save your report tables for your report
 #'
 #' @param table.raw Optional. The data.frame that has no rounding and no dividing of numbers (good to save this for record keeping). Default = NA. 
 #' @param table.print The data.frame as table will be seen in the report.
-#' @param Header The header or title of your table
+#' @param table.list Save tables in a list
+#' @param Title The header or title of your table. 
 #' @param Footnotes Footnotes for the whole table. Default = NA.
 #' @param filename0 The name you want to save this file as.
 #' @param dir.chapters Directory where you are saving all of your chapter word documents to. Defult = NULL, meaning that it wont save anything. 
 #' @param dir.tables Directory where you are saving all of your tables to. Defult = NULL, meaning that it wont save anything. 
-#' @param cnt.chapt.content The order number that this exists in the chapter
+#' @param cnt.tables The order number that this exists in the chapter.
+#' @param cnt.chapt.content The order number that this exists in the chapter.
 #' @importFrom magrittr %>%
-#' @return table.print
-#' @export 
+#' @export
 #' @examples
 #' table.print<-data.frame(matrix(data = 1:9, nrow = 3, byrow = 3))
 #' SaveTables(table.print=table.print)
 SaveTables<-function(table.raw = NULL, 
                      table.print, 
-                     Header = "", 
+                     table.list = c(), 
+                     Title = "", 
                      Footnotes = NA, 
                      filename0 = "x", 
                      dir.chapters = NULL, 
                      dir.tables = NULL, 
+                     cnt.tables = 1, 
                      cnt.chapt.content = "001"){
+  
+  cnt.chapt.content<-auto_counter(cnt.chapt.content)
+  cnt.tables<-cnt.tables+1
+  Caption <- stringr::str_to_sentence(paste0("Table ",cnt.tables,". ", 
+                                    ifelse(substr(x = Title, start = nchar(Title), stop = nchar(Title)) %in% ".", 
+                                           Title, 
+                                           paste0(Title, "."))))
+  
+  Caption <- ifelse(is.na(Footnotes), 
+                    Caption, 
+                    paste0(Caption, "^[", Footnotes, "]"))
+  
+  
   if (!is.null(dir.tables)){
-  # Save raw file (no rounding, no dividing)
+    # Save raw file (no rounding, no dividing)
     if (!(is.null(table.raw))) {
       utils::write.table(x = table.raw,  
-                  file = paste0(dir.tables, filename0, "_raw.csv"), 
-                  sep = ",",
-                  row.names=FALSE, col.names = F, append = F)
+                         file = paste0(dir.tables, filename0, "_raw.csv"), 
+                         sep = ",",
+                         row.names=FALSE, col.names = F, append = F)
     }
-  
-  # Save file of content going into the report
-  utils::write.table(x = table.print,  
-              file = paste0(dir.tables, filename0, "_print.csv"), 
-              sep = ",",
-              row.names=FALSE, col.names = F, append = F)
+    
+    # Save file of content going into the report
+    utils::write.table(x = table.print,  
+                       file = paste0(dir.tables, filename0, "_print.csv"), 
+                       sep = ",",
+                       row.names=FALSE, col.names = F, append = F)
   }
   
   if (!is.null(dir.chapters)){
-  utils::write.table(x = table.print,  
-              file = paste0(dir.chapters, filename0, ".csv"), 
-              sep = ",",
-              row.names=FALSE, col.names = F, append = F)
+    utils::write.table(x = table.print,  
+                       file = paste0(dir.chapters, filename0, ".csv"), 
+                       sep = ",",
+                       row.names=FALSE, col.names = F, append = F)
   }
   # Save file with header and footnotes
   
   if (!is.null(dir.tables)){
-  utils::write.table(Header,  
-              file = paste0(dir.tables, filename0, "_handout.csv"), 
-              sep = ",",
-              row.names=FALSE, col.names = F, append = F)
-  
-  utils::write.table(table.print,  
-              file = paste0(dir.tables, filename0, "_handout.csv"), 
-              sep = ",",
-              row.names=FALSE, col.names = F, append = T)
-  
-  if (!is.null(Footnotes) | Footnotes %in% "") {
+    utils::write.table(Title,  
+                       file = paste0(dir.tables, filename0, "_handout.csv"), 
+                       sep = ",",
+                       row.names=FALSE, col.names = F, append = F)
     
-    utils::write.table("",  
-                file = paste0(dir.tables, filename0, "_handout.csv"), 
-                sep = ",",
-                row.names=FALSE, col.names = F, append = T)
+    utils::write.table(table.print,  
+                       file = paste0(dir.tables, filename0, "_handout.csv"), 
+                       sep = ",",
+                       row.names=FALSE, col.names = F, append = T)
     
-    a<-strsplit(x = Footnotes, split = " 123456789 ")[[1]]
-    a<-unique(a)
-    utils::write.table(a,  
-                file = paste0(dir.tables, filename0, "_handout.csv"), 
-                sep = ",",
-                row.names=FALSE, col.names = F, append = T)
-  }
+    if (!is.null(Footnotes) | Footnotes %in% "") {
+      
+      utils::write.table("",  
+                         file = paste0(dir.tables, filename0, "_handout.csv"), 
+                         sep = ",",
+                         row.names=FALSE, col.names = F, append = T)
+      
+      a<-strsplit(x = Footnotes, split = " 123456789 ")[[1]]
+      a<-unique(a)
+      utils::write.table(a,  
+                         file = paste0(dir.tables, filename0, "_handout.csv"), 
+                         sep = ",",
+                         row.names=FALSE, col.names = F, append = T)
+    }
   }
   # #footnote-ify table.print footnote column for rmarkdown
   # if (is.data.frame(table.print)) {
   #   table.print$Footnotes<-list2string.ft(x = table.print$Footnotes)
   # }
-  return(table.print)
+  
+  table.list<-c(table.list, 
+                list(Title = list("raw" = table.raw, 
+                                  "print" = table.print)))
+  
+  return(list("Caption" = Caption, 
+              "table.print" = table.print, 
+              "table.list" = table.list,
+              "cnt.tables" = cnt.tables, 
+              "cnt.chapt.content" = cnt.chapt.content))
 }
 
 

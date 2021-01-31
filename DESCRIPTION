@@ -23,7 +23,6 @@ Imports:
     magrittr,
     filesstrings, 
     data.table, 
-    plyr, 
     rlist, 
     pipeR, 
     knitr, 
@@ -34,7 +33,8 @@ Imports:
     readxl, 
     extrafont, 
     jsonlite, 
-    kableExtra
+    kableExtra, 
+    stringr
 VignetteBuilder: knitr
 Suggests: 
     rmarkdown

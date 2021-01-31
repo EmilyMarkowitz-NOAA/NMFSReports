@@ -7,11 +7,13 @@
 SaveTables(
   table.raw = NULL,
   table.print,
-  Header = "",
+  table.list = c(),
+  Title = "",
   Footnotes = NA,
   filename0 = "x",
   dir.chapters = NULL,
   dir.tables = NULL,
+  cnt.tables = 1,
   cnt.chapt.content = "001"
 )
 }
@@ -20,7 +22,9 @@ SaveTables(
 
 \item{table.print}{The data.frame as table will be seen in the report.}
 
-\item{Header}{The header or title of your table}
+\item{table.list}{Save tables in a list}
+
+\item{Title}{The header or title of your table.}
 
 \item{Footnotes}{Footnotes for the whole table. Default = NA.}
 
@@ -30,10 +34,9 @@ SaveTables(
 
 \item{dir.tables}{Directory where you are saving all of your tables to. Defult = NULL, meaning that it wont save anything.}
 
-\item{cnt.chapt.content}{The order number that this exists in the chapter}
-}
-\value{
-table.print
+\item{cnt.tables}{The order number that this exists in the chapter.}
+
+\item{cnt.chapt.content}{The order number that this exists in the chapter.}
 }
 \description{
 Systematically save your report tables for your report
