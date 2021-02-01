@@ -1,6 +1,6 @@
 # NMFSReports
 
-Easily write R Markdown NOAA reports and Tech Memos!
+Easily write NOAA reports and Tech Memos in R Markdown
 
 > Code is still in development
 
