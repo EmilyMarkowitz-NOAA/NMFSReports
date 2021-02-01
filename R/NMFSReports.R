@@ -55,7 +55,7 @@ buildTM<-function(sections = c("frontmatter",
     }
     counter<-NMFSReports::auto_counter(counter)
     file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-              to = paste0("./code/", counter,"_",b[i]), 
+              to = paste0("./code/", counter,"_",b[i], ".Rmd"), 
               overwrite = T)
   }
   
@@ -73,7 +73,7 @@ buildTM<-function(sections = c("frontmatter",
     }
     
     file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-              to = paste0("./code/0_", b[i]), 
+              to = paste0("./code/0_", b[i], ".R"), 
               overwrite = T)
   }
   
@@ -102,7 +102,7 @@ buildTM<-function(sections = c("frontmatter",
     copyfrom <- b<-paste0("refdoc_", wordstylesreference.docx, ".docx")
     for (i in 1:length(b)){
       file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-                to = paste0("./code/", b[i]), 
+                to = paste0("./code/word-styles-reference.docx"), 
                 overwrite = T)
     }
   }
