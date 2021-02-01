@@ -118,7 +118,7 @@ buildTM<-function(sections = c("frontmatter",
                             pattern = ".csl")))) {
     if (dir.exists(dirname(wordstylesreference.docx))) {
       file.copy(from = wordstylesreference.docx, 
-                to = paste0("./citationStyles/cit.csl"), 
+                to = paste0("./cit/cit.csl"), 
                 overwrite = T)    
     }
     # if the user wants to use one of the package's reference documents
@@ -126,7 +126,7 @@ buildTM<-function(sections = c("frontmatter",
     copyfrom <- b<-paste0(csl, ".csl")
     for (i in 1:length(b)){
       file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-                to = paste0("./citationStyles/", b[i]), 
+                to = paste0("./cit/", b[i]), 
                 overwrite = T)
     }
   }
@@ -146,7 +146,7 @@ buildTM<-function(sections = c("frontmatter",
   a<-list.files(path = system.file("cit", package="NMFSReports"))
   for (i in 1:length(a)){
     file.copy(from = system.file("cit", a[i], package="NMFSReports"), 
-              to = paste0("./citationStyles/", a[i]), 
+              to = paste0("./cit/", a[i]), 
               overwrite = T)
   }
   

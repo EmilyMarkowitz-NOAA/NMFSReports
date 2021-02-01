@@ -1,6 +1,6 @@
 Package: NMFSReports
 Type: Package
-Title: Write smart R Markdown reports with these basic and easy funcitons!
+Title: Easily write R Markdown NOAA reports and Tech Memos!
 Version: 0.0.0.9000
 Authors@R: 
   c(person(given = "Emily",
@@ -8,7 +8,7 @@ Authors@R:
            role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5757-4230"),
            email = "Emily.Markowitz@noaa.gov"))
-Description: Write smart R Markdown reports with these basic and easy funcitons!
+Description: Easily write R Markdown NOAA reports and Tech Memos with these easy funcitons and structured workflow!
 Date: `Sys.Date()`
 URL: https://EmilyMarkowitz-NOAA.github.io/NMFSReports/, https://github.com/EmilyMarkowitz-NOAA/NMFSReports
 BugReports: https://github.com/EmilyMarkowitz-NOAA/NMFSReports/issues/
