@@ -52,6 +52,196 @@ for (p in PKG) {
 }
 ```
 
-```{r}
+When `r NMFSReports::buildTM` run many files are created, but among them is the run.R file. 
+
+```{r, eval=FALSE}
+NMFSReports::buildTM()
+```
+
+# run.R
+
+```{r, eval=FALSE}
+#' ---
+#' title: ''
+#' author: ''
+#' purpose: Run Scripts and R Markdown Files
+#' start date: 2021-02-11
+#' date modified: YYYY-MM
+#' Notes:  
+#' ---
+
+######START#######
+
+# Always start with a clean state by removing everything in your environment!
+rm(list=ls())
+# renv::init()
+
+######***KNOWNS#########
+report_title <- ''
+report_authors <- ''
+report_office_location <- "" 
+# For example: 
+# "National Oceanic and Atmospheric Administration 
+# 1315 East-West Highway [bldg./room]
+# Silver Spring, MD 20910"
+report_office <- "" # 
+report_num <- "###"
+report_NOAA_leaders <- "U.S. Department of Commerce
+Wynn Coggins, Acting Secretary  
+
+National Oceanic and Atmospheric Administration
+Benjamin Friedman, Acting NOAA Administrator
+ 
+National Marine Fisheries Service
+Paul Doremus, Acting Assistant Administrator for Fisheries"
+
+#######***WHAT KIND OF OUTPUT#######
+#Is this for InDesign? 
+designflowin <- FALSE
+
+#######SOURCE SUPPORT SCRIPTS#############
+
+source(here('code', '0_directories.R' ))
+
+source(here('code', '0_functions.R' ))
+
+source(here('code', '0_dataDL.R' ))
+
+source(here('code', '0_data.R' ))
+
+
+
+######MAKE REPORT########
+cnt.chapt<-"000" # Keep everything in a proper order
+plot.list<-c() # This will help us by saving R-ready plots so we can easily go back and edit them if necessary. 
+cnt.figures<-0 # This will autoname your figures with consecutive numbers (e.g., Figure 1.)
+cnt.tables<-0 # This will autoname your tables with consecutive numbers (e.g., Table 1.)
+cnt.equ<-0
+
+#######RUN EACH SECTION#############
+
+# ######***EXAMPLE############
+# cnt.chapt<-auto_counter(cnt.chapt) # The order of the chapter in the report
+# cnt.chapt.content<-"001" # The order of the content in the report (e.g., figures, images, tables)
+# filename0<-paste0(cnt.chapt, "_Example_") #Seperated because we'll need it inside the RMarkdown
+# rmarkdown::render(paste0(dir.scripts, "/00_example.Rmd"),
+#                   output_dir = dir.chapters,
+#                   output_file = paste0(filename0, cnt.chapt.content, "_Text.docx"))
+
+
+
+  ############# 1 - frontmatter ####################
+  cnt.chapt<-auto_counter(cnt.chapt)
+  cnt.chapt.content<-"001" 
+  filename0<-paste0(cnt.chapt, "_frontmatter_") 
+  rmarkdown::render(paste0(dir.code, "/1_frontmatter.Rmd"),
+                    output_dir = dir.chapters,
+                    output_file = paste0(filename0, cnt.chapt.content, "_Text.docx"))
+                    
+  
+  
+  ############# 2 - abstract ####################
+  cnt.chapt<-auto_counter(cnt.chapt)
+  cnt.chapt.content<-"001" 
+  filename0<-paste0(cnt.chapt, "_abstract_") 
+  rmarkdown::render(paste0(dir.code, "/2_abstract.Rmd"),
+                    output_dir = dir.chapters,
+                    output_file = paste0(filename0, cnt.chapt.content, "_Text.docx"))
+                    
+  
+  
+  ############# 3 - introduction ####################
+  cnt.chapt<-auto_counter(cnt.chapt)
+  cnt.chapt.content<-"001" 
+  filename0<-paste0(cnt.chapt, "_introduction_") 
+  rmarkdown::render(paste0(dir.code, "/3_introduction.Rmd"),
+                    output_dir = dir.chapters,
+                    output_file = paste0(filename0, cnt.chapt.content, "_Text.docx"))
+                    
+  
+  
+  ############# 4 - methods ####################
+  cnt.chapt<-auto_counter(cnt.chapt)
+  cnt.chapt.content<-"001" 
+  filename0<-paste0(cnt.chapt, "_methods_") 
+  rmarkdown::render(paste0(dir.code, "/4_methods.Rmd"),
+                    output_dir = dir.chapters,
+                    output_file = paste0(filename0, cnt.chapt.content, "_Text.docx"))
+                    
+  
+  
+  ############# 5 - results ####################
+  cnt.chapt<-auto_counter(cnt.chapt)
+  cnt.chapt.content<-"001" 
+  filename0<-paste0(cnt.chapt, "_results_") 
+  rmarkdown::render(paste0(dir.code, "/5_results.Rmd"),
+                    output_dir = dir.chapters,
+                    output_file = paste0(filename0, cnt.chapt.content, "_Text.docx"))
+                    
+  
+  
+  ############# 6 - discussion ####################
+  cnt.chapt<-auto_counter(cnt.chapt)
+  cnt.chapt.content<-"001" 
+  filename0<-paste0(cnt.chapt, "_discussion_") 
+  rmarkdown::render(paste0(dir.code, "/6_discussion.Rmd"),
+                    output_dir = dir.chapters,
+                    output_file = paste0(filename0, cnt.chapt.content, "_Text.docx"))
+                    
+  
+  
+  ############# 7 - workscited ####################
+  cnt.chapt<-auto_counter(cnt.chapt)
+  cnt.chapt.content<-"001" 
+  filename0<-paste0(cnt.chapt, "_workscited_") 
+  rmarkdown::render(paste0(dir.code, "/7_workscited.Rmd"),
+                    output_dir = dir.chapters,
+                    output_file = paste0(filename0, cnt.chapt.content, "_Text.docx"))
+                    
+  
+  
+  ############# 8 - workscitedR ####################
+  cnt.chapt<-auto_counter(cnt.chapt)
+  cnt.chapt.content<-"001" 
+  filename0<-paste0(cnt.chapt, "_workscitedR_") 
+  rmarkdown::render(paste0(dir.code, "/8_workscitedR.Rmd"),
+                    output_dir = dir.chapters,
+                    output_file = paste0(filename0, cnt.chapt.content, "_Text.docx"))
+                    
+  
+  
+
+save(plot.list, file=paste0(dir.output.todaysrun, "/plots/reportPlots"))
+
+########***MAKE MASTER DOCX################
+
+#USE GUIDENCE FROM THIS LINK
+#https://support.microsoft.com/en-us/help/2665750/how-to-merge-multiple-word-documents-into-one
+
+
+###############***METADATA##################
+# So we can 
+#    1. Go back and recreate this exactly with the libraries you used to create this script and 
+#    2. Cite the apropriate versions of the packages you used in your report
+# More info here: https://rstudio.github.io/packrat/walkthrough.html
+
+CreateMetadata(dir.out = paste0(dir.output.todaysrun, "/metadata"), 
+               title = paste0(title0, " Metadata ", Sys.Date()))
+
+# setwd(paste0(dir.output.todaysrun))
 
 ```
+
+# Things to change
+
+## Metadata
+
+Update the metadata to include your name, purpose, etc. 
+
+# Knowns
+
+Depending on the type of report, there may be things you want to define the report as a whole. If an annual report, a goot known to add there might be something like ` yr <- 2021 `
+
+# Sections
+
+Actually, what is written in this script is pretty customary and really shouldn't need to be changed unless you changed your mind about the organization of the report. Here, go into each of the .Rmd documents to edit them. 

@@ -38,6 +38,8 @@ designflowin <- FALSE
 
 #######SOURCE SUPPORT SCRIPTS#############
 
+library(here)
+
 # INSERT_SUPPORT_SCRIPTS
 
 ######MAKE REPORT########

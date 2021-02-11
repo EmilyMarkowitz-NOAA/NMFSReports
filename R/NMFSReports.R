@@ -7,7 +7,7 @@
 
 #' Build your intitial architecture for your new NOAA Tech Memo or Report
 #'
-#' @param sections a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR")
+#' @param sections a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR"). Note that frontmatter and workcitedR both have specific templates, and all others are from a blank template. 
 #' @param support_scripts To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")
 #' @param authors Default = "". Here, add your First Lastname (email). 
 #' @param title Default = "". Here, put the title of your report. 
@@ -87,20 +87,21 @@ buildTM<-function(sections = c("frontmatter",
     rfile <- base::readLines(paste0("./code/0_", b[i], ".R"))
     
     rfile<-gsub(pattern = "# INSERT_REPORT_TITLE", 
-                replacement = title, 
+                replacement = ifelse(title %in% "", "''", title), 
                 x = rfile)
     
     rfile<-gsub(pattern = "# INSERT_AUTHOR", 
-                replacement = authors, 
+                replacement = ifelse(authors %in% "", "''", authors), 
                 x = rfile)
     
     rfile<-gsub(pattern = "# YYYY-MM", 
                 replacement = Sys.Date(), 
                 x = rfile)
     
-    utils::write.table(x = run0, 
+    utils::write.table(x = rfile, 
                        file = paste0("./code/0_", b[i], ".R"), 
                        row.names = FALSE, 
+                       col.names = FALSE, 
                        quote = FALSE)
   }
   
@@ -201,7 +202,7 @@ buildTM<-function(sections = c("frontmatter",
   # directories
   
   # support_scripts
-  a<-paste("source(here('code','0_", support_scripts, "'))
+  a<-paste("source(here('code',", paste0("'0_", support_scripts, ".R'"),"))
 
 ", collapse = "")
   
@@ -228,11 +229,11 @@ buildTM<-function(sections = c("frontmatter",
              x = run0)
   
   run0<-gsub(pattern = "# INSERT_REPORT_TITLE", 
-             replacement = title, 
+             replacement = ifelse(title %in% "", "''", title), 
              x = run0)
   
   run0<-gsub(pattern = "# INSERT_AUTHOR", 
-             replacement = authors, 
+             replacement = ifelse(authors %in% "", "''", authors), 
              x = run0)
   
   run0<-gsub(pattern = "# YYYY-MM", 
@@ -242,13 +243,15 @@ buildTM<-function(sections = c("frontmatter",
   
   # write new run file
   utils::write.table(x = run0, 
-              file = "./code/0_run.R", 
-              row.names = FALSE, 
-              quote = FALSE)
+                     file = "./code/0_run.R", 
+                     row.names = FALSE, 
+                     col.names = FALSE, 
+                     quote = FALSE)
   
   # done!
   
 }
+
 
 
 ##########SEARCH STUFF############
