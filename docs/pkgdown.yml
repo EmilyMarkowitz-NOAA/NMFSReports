@@ -2,10 +2,10 @@ pandoc: 2.7.2
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  1_Use_BuildTM: 1_Use_BuildTM.html
-  2_run_script_demo: 2_run_script_demo.html
-  3_functions_to_help_write_report: 3_functions_to_help_write_report.html
-last_built: 2021-02-11T07:38Z
+  A_use-buildTM: A_use-buildTM.html
+  B_run-script-demo: B_run-script-demo.html
+  C_functions-to-help-write-report: C_functions-to-help-write-report.html
+last_built: 2021-02-11T08:25Z
 urls:
   reference: https://emilymarkowitz-noaa.github.io/NMFSReports//reference
   article: https://emilymarkowitz-noaa.github.io/NMFSReports//articles

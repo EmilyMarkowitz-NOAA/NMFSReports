@@ -1,5 +1,5 @@
 ---
-title: "3_functions_to_help_write_report"
+title: "Functions in Action to Help You Write Your Report"
 author: Emily Markowitz (Emily.Markowitz AT NOAA.gov / EmilyMarkowitz-NOAA)
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: 
@@ -15,7 +15,7 @@ output:
     toc: true
     highlight: tango
 vignette: >
-  %\VignetteIndexEntry{3_functions_to_help_write_report}
+  %\VignetteIndexEntry{C_functions-to-help-write-report}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -1,5 +1,5 @@
 ---
-title: "1_use_buildTM"
+title: "Use buildTM() to Begin Writing Your Report"
 author: Emily Markowitz (Emily.Markowitz AT NOAA.gov / EmilyMarkowitz-NOAA)
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: 
@@ -15,7 +15,7 @@ output:
     toc: true
     highlight: tango
 vignette: >
-  %\VignetteIndexEntry{1_use_buildTM}
+  %\VignetteIndexEntry{A_use-buildTM}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

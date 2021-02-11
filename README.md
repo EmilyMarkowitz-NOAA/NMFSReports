@@ -19,6 +19,9 @@ Seattle, WA 98195
 
 Learn more about this package at this pkgdown webpage! https://emilymarkowitz-noaa.github.io/NMFSReports/
 
+The NMFSReports Package has all of the basic files you need to create reproducible and repeatable NOAA Tech Memos in R Markdown! This approach is perfect for efficiently rolling out annual (or other regular time-stepped) reports but can easily also be used for one-time reports. Scripts integrate table, figure, and data management, bibliography management, and design automation.
+
+
 ```r
 library(devtools)
 
