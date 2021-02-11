@@ -1,8 +1,10 @@
-#' #' ---
-#' purpose: store functions you'll use throughout the report
-#' author: Me, myself, and I (me.noaa.gov)
-#' start date: YYYY-MM
-#' Notes: This is cool data... 
+#' ---
+#' title: # INSERT_REPORT_TITLE
+#' author: # INSERT_AUTHOR
+#' purpose: Store functions
+#' start date: # YYYY-MM
+#' modified date date: YYYY-MM
+#' Notes: 
 #' ---
 
 #############INSTALL PACKAGES##############

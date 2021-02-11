@@ -1,7 +1,9 @@
-#' #' ---
-#' purpose: Something
-#' author: Me, myself, and I (me.noaa.gov)
-#' start date: YYYY-MM
-#' Notes: This is cool... 
+#' ---
+#' title: # INSERT_REPORT_TITLE
+#' author: # INSERT_AUTHOR
+#' purpose: 
+#' start date: # YYYY-MM
+#' modified date date: YYYY-MM
+#' Notes: 
 #' ---
 

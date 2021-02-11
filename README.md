@@ -17,6 +17,8 @@ Seattle, WA 98195
 
 ## Install this package: 
 
+Learn more about this package at this pkgdown webpage! https://emilymarkowitz-noaa.github.io/NMFSReports/
+
 ```r
 library(devtools)
 
@@ -25,17 +27,9 @@ devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports")
 
 ```
 
-## Use this package with `NOAATechMemoStarterKit` and `nmfspalette`:
+## Use this package with `nmfspalette`:
 
 ```r
-# NOAATechMemoStarterKit
-
-install.packages("usethis")
-
-library(usethis) # Automate package and project setup tasks that are otherwise performed manually.
-
-usethis::use_course(url = 'https://github.com/EmilyMarkowitz-NOAA/NOAATechMemoStarterKit/archive/master.zip', 
-                    destdir = "your/local/directory/")
 
 # nfmspalette                    
 
@@ -45,6 +39,12 @@ library(devtools)
 devtools::install_github("nmfs-general-modeling-tools/nmfspalette")                    
                     
 ```
+
+## Inspiration
+
+As the previous editor of the fisheries economics of the US report (FEUS, published by the office of science and technology in Silver Spring Maryland) I’ve been thinking about how to create reproducible documents and rmarkdown for some time now. Using what I learned from producing FEUS, I started building a personal package for me to use in future report writing. It’s clear to me that reproducible reports is a massive need across NOAA, and this pet project snowballed into an opportunity to help others and I decided to make that package available to others who might also find it helpful. It’s very much in the development stage, but I think it has many of the nuts and bolts to be something that can be tested and worked on collaboratively. Anyone who’s interested in putting this to use and seeing what improvements can be made or even collaborating on making this package that more useful I welcome their interest and their insight!
+
+This package takes you through most of the steps of writing a report. The buildTM() create the initial skeleton and architecture for the report, And the rest of the functions help you systematically and reproducibly write your report. I created a detailed package down page I’ll make it up that explains the function of each of these functions and vignettes of what to expect at each step of the process.
 
 ## NOAA README
 

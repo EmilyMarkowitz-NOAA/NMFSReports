@@ -14,11 +14,11 @@ counter.inside<-0
 
 </br>
 
-# `r title0 `
+# `r report_title `
 
 By
 
-`r authors0 `
+`r report_authors `
 
 
 </br>
@@ -35,7 +35,7 @@ National Oceanic and Atmospheric Administration
 National Marine Fisheries Service
 
 
-`r OfficeLocation0`
+`r report_office_location`
 
 `r months(Sys.Date()) ` `r as.numeric(format(as.Date(Sys.Date(),'%Y-%m-%d'),'%Y')) `
 
@@ -45,18 +45,18 @@ National Marine Fisheries Service
 </br>
 
 
-# `r title0`
+# `r report_title`
 
 
 By
 
 
-`r authors0 `
+`r report_authors `
 
 </br>
 
 
-**NOAA Technical Memorandum NMFS-[`r office0`]-`r reportnum0` `r months(Sys.Date()) ` `r as.numeric(format(as.Date(Sys.Date(),'%Y-%m-%d'),'%Y')) `
+**NOAA Technical Memorandum NMFS-[`r report_office`]-`r report_num` `r months(Sys.Date()) ` `r as.numeric(format(as.Date(Sys.Date(),'%Y-%m-%d'),'%Y')) `
 **
 
 

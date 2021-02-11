@@ -1,5 +1,5 @@
 ---
-title: "ScriptLayout"
+title: "3_functions_to_help_write_report"
 author: Emily Markowitz (Emily.Markowitz AT NOAA.gov / EmilyMarkowitz-NOAA)
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: 
@@ -15,7 +15,7 @@ output:
     toc: true
     highlight: tango
 vignette: >
-  %\VignetteIndexEntry{ScriptLayout}
+  %\VignetteIndexEntry{3_functions_to_help_write_report}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

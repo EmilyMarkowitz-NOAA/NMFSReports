@@ -1,9 +1,10 @@
 #' ---
-#' title: Report Template: Run Scripts and R Markdown Files
+#' title: # INSERT_REPORT_TITLE
+#' author: # INSERT_AUTHOR
 #' purpose: Run Scripts and R Markdown Files
-#' author: Me, myself, and I (me.noaa.gov)
-#' start date: YYYY-MM
-#' Notes: I've updated this script several times, specifically... 
+#' start date: # YYYY-MM
+#' date modified: YYYY-MM
+#' Notes:  
 #' ---
 
 ######START#######
@@ -13,7 +14,23 @@ rm(list=ls())
 # renv::init()
 
 ######***KNOWNS#########
-maxyr <- 2021 # or the year of the report, for example
+report_title <- # INSERT_REPORT_TITLE
+report_authors <- # INSERT_AUTHOR
+report_office_location <- "" 
+# For example: 
+# "National Oceanic and Atmospheric Administration 
+# 1315 East-West Highway [bldg./room]
+# Silver Spring, MD 20910"
+report_office <- "" # 
+report_num <- "###"
+report_NOAA_leaders <- "U.S. Department of Commerce
+Wynn Coggins, Acting Secretary  
+
+National Oceanic and Atmospheric Administration
+Benjamin Friedman, Acting NOAA Administrator
+ 
+National Marine Fisheries Service
+Paul Doremus, Acting Assistant Administrator for Fisheries"
 
 #######***WHAT KIND OF OUTPUT#######
 #Is this for InDesign? 

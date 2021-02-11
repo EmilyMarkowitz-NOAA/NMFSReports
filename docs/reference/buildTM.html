@@ -102,13 +102,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/ExampleRunFile.html">ExampleRunFile</a>
+      <a href="../articles/1_Use_BuildTM.html">1_use_buildTM</a>
     </li>
     <li>
-      <a href="../articles/InitialSetUp.html">InitialSetUp</a>
+      <a href="../articles/2_run_script_demo.html">2_run_script_demo</a>
     </li>
     <li>
-      <a href="../articles/ScriptLayout.html">ScriptLayout</a>
+      <a href="../articles/3_functions_to_help_write_report.html">3_functions_to_help_write_report</a>
     </li>
   </ul>
 </li>
@@ -164,6 +164,9 @@
   sections <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"frontmatter"</span>, <span class='st'>"abstract"</span>, <span class='st'>"introduction"</span>, <span class='st'>"methods"</span>, <span class='st'>"results"</span>,
     <span class='st'>"discussion"</span>, <span class='st'>"workscited"</span>, <span class='st'>"workscitedR"</span><span class='op'>)</span>,
   support_scripts <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"directories"</span>, <span class='st'>"functions"</span>, <span class='st'>"dataDL"</span>, <span class='st'>"data"</span><span class='op'>)</span>,
+  authors <span class='op'>=</span> <span class='st'>""</span>,
+  title <span class='op'>=</span> <span class='st'>""</span>,
+  pptxstylesreference.pptx <span class='op'>=</span> <span class='st'>"refdoc_NMFS_ppt_template"</span>,
   wordstylesreference.docx <span class='op'>=</span> <span class='st'>"refdoc_NOAATechMemo"</span>,
   csl <span class='op'>=</span> <span class='st'>"apa"</span>
 <span class='op'>)</span></pre>
@@ -178,6 +181,18 @@
     <tr>
       <th>support_scripts</th>
       <td><p>To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")</p></td>
+    </tr>
+    <tr>
+      <th>authors</th>
+      <td><p>Default = "". Here, add your First Lastname (email).</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p>Default = "". Here, put the title of your report.</p></td>
+    </tr>
+    <tr>
+      <th>pptxstylesreference.pptx</th>
+      <td><p>Default = "refdoc_NMFS_ppt_template", but only active if you include "presentation" in the sections argument.</p></td>
     </tr>
     <tr>
       <th>wordstylesreference.docx</th>

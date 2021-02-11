@@ -8,6 +8,9 @@ buildTM(
   sections = c("frontmatter", "abstract", "introduction", "methods", "results",
     "discussion", "workscited", "workscitedR"),
   support_scripts = c("directories", "functions", "dataDL", "data"),
+  authors = "",
+  title = "",
+  pptxstylesreference.pptx = "refdoc_NMFS_ppt_template",
   wordstylesreference.docx = "refdoc_NOAATechMemo",
   csl = "apa"
 )
@@ -16,6 +19,12 @@ buildTM(
 \item{sections}{a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR")}
 
 \item{support_scripts}{To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")}
+
+\item{authors}{Default = "". Here, add your First Lastname (email).}
+
+\item{title}{Default = "". Here, put the title of your report.}
+
+\item{pptxstylesreference.pptx}{Default = "refdoc_NMFS_ppt_template", but only active if you include "presentation" in the sections argument.}
 
 \item{wordstylesreference.docx}{Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("NOAATechMemo" or "FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"}
 

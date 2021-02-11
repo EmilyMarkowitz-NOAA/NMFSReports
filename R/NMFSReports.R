@@ -9,6 +9,9 @@
 #'
 #' @param sections a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR")
 #' @param support_scripts To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")
+#' @param authors Default = "". Here, add your First Lastname (email). 
+#' @param title Default = "". Here, put the title of your report. 
+#' @param pptxstylesreference.pptx Default = "refdoc_NMFS_ppt_template", but only active if you include "presentation" in the sections argument. 
 #' @param wordstylesreference.docx Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("NOAATechMemo" or "FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"
 #' @param csl Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa"). Default = "apa"
 #' @export
@@ -22,11 +25,14 @@ buildTM<-function(sections = c("frontmatter",
                                "results", 
                                "discussion", 
                                "workscited", 
-                               "workscitedR"), 
+                               "workscitedR"), # , "presentation"
                   support_scripts = c("directories", 
                                       "functions", 
                                       "dataDL", 
                                       "data"), 
+                  authors = "",
+                  title = "", 
+                  pptxstylesreference.pptx = "refdoc_NMFS_ppt_template", 
                   wordstylesreference.docx = "refdoc_NOAATechMemo", 
                   csl = "apa"){
   
@@ -75,6 +81,27 @@ buildTM<-function(sections = c("frontmatter",
     file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
               to = paste0("./code/0_", b[i], ".R"), 
               overwrite = T)
+    
+    
+    
+    rfile <- base::readLines(paste0("./code/0_", b[i], ".R"))
+    
+    rfile<-gsub(pattern = "# INSERT_REPORT_TITLE", 
+                replacement = title, 
+                x = rfile)
+    
+    rfile<-gsub(pattern = "# INSERT_AUTHOR", 
+                replacement = authors, 
+                x = rfile)
+    
+    rfile<-gsub(pattern = "# YYYY-MM", 
+                replacement = Sys.Date(), 
+                x = rfile)
+    
+    utils::write.table(x = run0, 
+                       file = paste0("./code/0_", b[i], ".R"), 
+                       row.names = FALSE, 
+                       quote = FALSE)
   }
   
   ################## other content
@@ -88,6 +115,24 @@ buildTM<-function(sections = c("frontmatter",
               to = paste0("./code/", b[i]), 
               overwrite = T)
   }
+  
+  # pptxstylesreference.pptx
+  # if the user wants to use their own reference document
+  if (!(pptxstylesreference.pptx %in% c("refdoc_NMFS_ppt_template"))) {
+    if (dir.exists(dirname(pptxstylesreference.pptx))) {
+      file.copy(from = pptxstylesreference.pptx, 
+                to = paste0("./code/pptx-styles-reference.docx"), 
+                overwrite = T)    
+    }
+    # if the user wants to use one of the package's reference documents
+  } else {
+    copyfrom <- b<-paste0("refdoc_", wordstylesreference.docx, ".pptx")
+    for (i in 1:length(b)){
+      file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
+                to = paste0("./code/word-styles-reference.docx"), 
+                overwrite = T)
+    }
+  }  
   
   # wordstylesreference.docx
   # if the user wants to use their own reference document
@@ -151,7 +196,6 @@ buildTM<-function(sections = c("frontmatter",
   }
   
   ################## Write run.R
-  
   run0 <- base::readLines(system.file("rmd","run.R", package="NMFSReports"))
   
   # directories
@@ -182,6 +226,19 @@ buildTM<-function(sections = c("frontmatter",
   run0<-gsub(pattern = "# INSERT_SECTIONS", 
              replacement = a, 
              x = run0)
+  
+  run0<-gsub(pattern = "# INSERT_REPORT_TITLE", 
+             replacement = title, 
+             x = run0)
+  
+  run0<-gsub(pattern = "# INSERT_AUTHOR", 
+             replacement = authors, 
+             x = run0)
+  
+  run0<-gsub(pattern = "# YYYY-MM", 
+             replacement = Sys.Date(), 
+             x = run0)
+  
   
   # write new run file
   utils::write.table(x = run0, 

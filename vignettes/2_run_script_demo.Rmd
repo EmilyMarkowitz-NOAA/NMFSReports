@@ -1,5 +1,5 @@
 ---
-title: "ExampleRunFile"
+title: "2_run_script_demo"
 author: Emily Markowitz (Emily.Markowitz AT NOAA.gov / EmilyMarkowitz-NOAA)
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: 
@@ -15,16 +15,12 @@ output:
     toc: true
     highlight: tango
 vignette: >
-  %\VignetteIndexEntry{ExampleRunFile}
+  %\VignetteIndexEntry{2_run_script_demo}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
-# https://r-pkgs.org/vignettes.html
-  # %\VignetteIndexEntry{FEUS-tables}
-  # %\VignetteEngine{knitr::rmarkdown}
-  # %\VignetteEncoding{UTF-8}
 knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, 
   collapse = TRUE,
   comment = "#>"

@@ -1,0 +1,39 @@
+---
+title: "`r report_title`"
+author: "`r report_authors`"
+csl: "../cit/cit.csl"
+bibliography: "../data/bibliography.bib"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  powerpoint_presentation:
+    reference_doc: NOAAFisheriesPowerPointTemplate.pptx
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+#   dev = "svg",
+  fig.width = 12,
+  fig.height = 12
+  # fig.retina = 3
+  )
+counter.inside<-0
+```
+
+# Example of how to use this R Markdown document
+
+```{r ChunkName_NameMeAnythingAsLongAsItIsUnique}
+#Chunks are were we can write code for something later in the code. 
+
+
+```
+
+
+# Slide 2
+
+
+# Slide 3
+
+

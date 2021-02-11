@@ -1,5 +1,5 @@
 ---
-title: "InitialSetUp"
+title: "1_use_buildTM"
 author: Emily Markowitz (Emily.Markowitz AT NOAA.gov / EmilyMarkowitz-NOAA)
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: 
@@ -15,7 +15,7 @@ output:
     toc: true
     highlight: tango
 vignette: >
-  %\VignetteIndexEntry{InitialSetUp}
+  %\VignetteIndexEntry{1_use_buildTM}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -97,18 +97,17 @@ support_scripts <-
 ```{r}
 wordstylesreference.docx = "NOAATechMemo"
 
-# ### NOAATechMemo
-# 
-# ![NOAATechMemo](../man/figures/NOAATechMemo.JPG)
-# 
-# ### FisheriesEconomicsOfTheUS
-# 
-# ![FisheriesEconomicsOfTheUS](../man/figures/FisheriesEconomicsOfTheUS.JPG)
-
 ```
 
 Here's what they look like: 
 
+### NOAATechMemo
+
+![NOAATechMemo](../man/figures/NOAATechMemo.JPG)
+
+### FisheriesEconomicsOfTheUS
+
+![FisheriesEconomicsOfTheUS](../man/figures/FisheriesEconomicsOfTheUS.JPG)
 
 ## csl
 
@@ -134,6 +133,12 @@ NMFSReports::buildTM(
   csl
   )
 ```
+
+![buildTM() output](../man/figures/buildTM.JPG)
+
+
+
+
 
 
 
