@@ -34,12 +34,11 @@ PKG <- c(# devtools::install_github("emilymarkowitz-NOAA/NMFSReports", force = T
          "NMFSReports",
          
          # Data Managment
-         "tidyverse",
          "filesstrings", 
          "data.table", 
          "plyr",  
-         "dplyr",
-         
+         "tidyverse",
+
          # #RMarkdown
          "rmarkdown",
          "kableExtra"

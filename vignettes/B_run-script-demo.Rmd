@@ -34,11 +34,10 @@ PKG <- c(# devtools::install_github("emilymarkowitz-NOAA/NMFSReports", force = T
          "NMFSReports",
          
          # Data Managment
-         "tidyverse",
          "filesstrings", 
          "data.table", 
          "plyr",  
-         "dplyr",
+         "tidyverse",
          
          # #RMarkdown
          "rmarkdown",
@@ -52,7 +51,7 @@ for (p in PKG) {
 }
 ```
 
-When `r NMFSReports::buildTM` run many files are created, but among them is the run.R file. 
+When NMFSReports::buildTM run many files are created, but among them is the run.R file. 
 
 ```{r, eval=FALSE}
 NMFSReports::buildTM()
