@@ -82,12 +82,14 @@ buildTM<-function(sections = c("frontmatter",
     
     rfile <- base::readLines(paste0("./code/0_", b[i], ".R"))
     
-    rfile<-gsub(pattern = "# INSERT_REPORT_TITLE", 
-                replacement = ifelse(title %in% "", "''", title), 
+    rfile <- gsub(pattern = "# INSERT_REPORT_TITLE", 
+                replacement = ifelse(title %in% "", "''", 
+                                     paste0("'", title, "'")), 
                 x = rfile)
     
-    rfile<-gsub(pattern = "# INSERT_AUTHOR", 
-                replacement = ifelse(authors %in% "", "''", authors), 
+    rfile <- gsub(pattern = "# INSERT_AUTHOR", 
+                replacement = ifelse(authors %in% "", "''", 
+                                     paste0("'", authors, "'")), 
                 x = rfile)
     
     rfile<-gsub(pattern = "# YYYY-MM", 
