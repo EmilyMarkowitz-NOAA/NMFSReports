@@ -2,9 +2,9 @@
 output:
   word_document:
     pandoc_args: ["--metadata-file=header.yaml"]
-    reference_docx: word-styles-reference.docx
-csl: "../cit/cit.csl"
-bibliography: "../data/bibliography.bib"
+    reference_docx: refdoc_NOAATechMemo.docx
+csl: "../cit/apa.csl"
+bibliography: bibliography.bib
 ---
 
 ```{r setup, include=FALSE}

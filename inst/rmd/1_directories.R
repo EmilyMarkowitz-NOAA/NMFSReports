@@ -29,7 +29,7 @@ dir.create(dir_out_todaysrun)
 dirs <- c("chapters", "rawdata", "documentation", "code", "figures", "tables")
 for (i in 1:length(dirs)) {
   if (dir.exists(dirs[i]) == FALSE) {
-    dir.create(dirs[i])
+    dir.create(paste0(dir_out_todaysrun, "/", dirs[i]))
   }
   assign(x = paste0("dir_out_", dirs[i]), value = paste0(dir_out_todaysrun, "/",dirs[i],"/"))
 }

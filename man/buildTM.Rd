@@ -11,7 +11,7 @@ buildTM(
   authors = "",
   title = "",
   pptxstylesreference.pptx = "refdoc_NMFS_ppt_template",
-  wordstylesreference.docx = "refdoc_NOAATechMemo",
+  wordstylesreference.docx = "refdoc_NOAATechMemo.docx",
   csl = "apa"
 )
 }
