@@ -2,7 +2,7 @@
 output:
   word_document:
     pandoc_args: ["--metadata-file=header.yaml"]
-    reference_docx: refdoc_NOAATechMemo.docx
+    reference_docx: word-styles-reference.docx
 csl: "../cit/apa.csl"
 bibliography: bibliography.bib
 ---

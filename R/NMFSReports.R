@@ -108,10 +108,12 @@ buildTM<-function(sections = c("frontmatter",
        wordstylesreference.docx, 
        "TableFigureHeader.Rmd", 
        "bibliography.bib")
-  copyfrom <- b[i]
   for (i in 1:length(b)){
+    copyfrom <- b[i]
+    copyto <- dplyr::case_when(b[i] == wordstylesreference.docx ~ "word-styles-reference.docx",
+                               TRUE ~ b[i])
     file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-              to = paste0("./code/", b[i]), 
+              to = paste0("./code/", copyto), 
               overwrite = T)
   }
   
