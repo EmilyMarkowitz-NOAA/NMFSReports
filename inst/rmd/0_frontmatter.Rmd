@@ -3,7 +3,7 @@ output:
   word_document:
     pandoc_args: ["--metadata-file=header.yaml"]
     reference_docx: word-styles-reference.docx
-csl: "../cit/apa.csl"
+csl: "../cit/cit.csl"
 bibliography: bibliography.bib
 ---
 

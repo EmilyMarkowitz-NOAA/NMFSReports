@@ -171,8 +171,9 @@ buildTM<-function(sections = c("frontmatter",
   } else {
     copyfrom <- b<-paste0(csl, ".csl")
     for (i in 1:length(b)){
+      
       file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-                to = paste0("./cit/", b[i]), 
+                to = paste0("./cit/cit.cls"), 
                 overwrite = T)
     }
   }
@@ -252,11 +253,13 @@ buildTM<-function(sections = c("frontmatter",
 
   # OTHER CONTENT  
   run0<-gsub(pattern = "# INSERT_REPORT_TITLE", 
-             replacement = ifelse(title %in% "", "''", title), 
+             replacement = ifelse(title %in% "", "''", 
+                                  paste0("'", title, "'")), 
              x = run0)
   
   run0<-gsub(pattern = "# INSERT_AUTHOR", 
-             replacement = ifelse(authors %in% "", "''", authors), 
+             replacement = ifelse(authors %in% "", "''", 
+                                  paste0("'", authors, "'")), 
              x = run0)
   
   run0<-gsub(pattern = "# YYYY-MM-DD", 
