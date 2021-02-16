@@ -2,9 +2,9 @@
 #' title: # INSERT_REPORT_TITLE
 #' author: # INSERT_AUTHOR
 #' purpose: Download data
-#' start date: # YYYY-MM
-#' modified date date: YYYY-MM
-#' Notes: 
+#' start date: # YYYY-MM-DD
+#' date modified: # YYYY-MM-DD        # CHANGE
+#' Notes:                             # CHANGE
 #' ---
 
 # Example Data

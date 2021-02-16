@@ -21,8 +21,7 @@ PKG <- c(
   
   # Keeping Organized
   "devtools", # Package development tools for R; used here for downloading packages from GitHub
-  # "packrat", # Packrat is a dependency management system for R.
-  "renv",
+  "renv", # saves the packages in the R environment
 
   
   # Graphics

@@ -1,9 +1,5 @@
 
-
-
-############BUILD THE TM#################
-
-
+############ BUILD THE TM #################
 
 #' Build your intitial architecture for your new NOAA Tech Memo or Report
 #'
@@ -11,9 +7,9 @@
 #' @param support_scripts To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")
 #' @param authors Default = "". Here, add your First Lastname (email). 
 #' @param title Default = "". Here, put the title of your report. 
-#' @param pptxstylesreference.pptx Default = "refdoc_NMFS_ppt_template", but only active if you include "presentation" in the sections argument. 
+#' @param pptxstylesreference.pptx Default = "refdoc_NMFS_ppt_template". Alternatively, you can add the path here to your own reference pptx. You can also opt out of a powerpoint by setting this parameter to NA. 
 #' @param wordstylesreference.docx Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("NOAATechMemo" or "FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"
-#' @param csl Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa"). Default = "apa"
+#' @param csl Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa", "new-phytologist"). A NOAA TM citation style needs to be created, but until then, the default = "apa".
 #' @export
 #' @examples 
 #' # not run:
@@ -49,7 +45,7 @@ buildTM<-function(sections = c("frontmatter",
   
   ################## RMD scripts
   a<-list.files(path = system.file("rmd", package="NMFSReports"), pattern = "0_")
-  b<-sections
+  b<-c(sections, "example") # TOLEDO
   counter<-NMFSReports::numbers0(x = c(0, length(b)))[1]
   for (i in 1:length(b)){
     temp<-gsub(pattern = "\\.Rmd", replacement = "", 
@@ -210,16 +206,16 @@ buildTM<-function(sections = c("frontmatter",
              replacement = a, 
              x = run0)
   
-  # sections
+  # INSERT_SECTIONS
   sections_no<-1:length(sections)
   a<-paste(paste0('
   ############# ', sections_no,' - ', sections,' ####################
-  cnt.chapt<-auto_counter(cnt.chapt)
-  cnt.chapt.content<-"001" 
-  filename0<-paste0(cnt.chapt, "_', sections,'_") 
-  rmarkdown::render(paste0(dir.code, "/',sections_no,'_',sections,'.Rmd"),
-                    output_dir = dir.chapters,
-                    output_file = paste0(filename0, cnt.chapt.content, "_Text.docx"))
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_', sections,'_") 
+  rmarkdown::render(paste0(dir_code, "/',sections_no,'_',sections,'.Rmd"),
+                    output_dir = dir_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
                     
   
   '), collapse = "")
@@ -228,6 +224,29 @@ buildTM<-function(sections = c("frontmatter",
              replacement = a, 
              x = run0)
   
+  
+  # INSERT_POWERPOINT
+  # only if there is a reference type specified
+  a<-dplyr::if_else(is.na(pptxstylesreference.pptx), 
+                    "", 
+                    paste(paste0('
+  ############# ', sections_no,' - ', sections,' ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_', sections,'_") 
+  rmarkdown::render(paste0(dir_code, "/',sections_no,'_',sections,'.Rmd"),
+                    output_dir = dir_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
+                    
+  
+  '), collapse = ""))
+  
+  run0<-gsub(pattern = "# INSERT_POWERPOINT", 
+             replacement = a, 
+             x = run0)
+
+
+  # OTHER CONTENT  
   run0<-gsub(pattern = "# INSERT_REPORT_TITLE", 
              replacement = ifelse(title %in% "", "''", title), 
              x = run0)
@@ -236,7 +255,7 @@ buildTM<-function(sections = c("frontmatter",
              replacement = ifelse(authors %in% "", "''", authors), 
              x = run0)
   
-  run0<-gsub(pattern = "# YYYY-MM", 
+  run0<-gsub(pattern = "# YYYY-MM-DD", 
              replacement = Sys.Date(), 
              x = run0)
   
@@ -254,67 +273,64 @@ buildTM<-function(sections = c("frontmatter",
 
 
 
-##########SEARCH STUFF############
+########## SEARCH STUFF ############
 
 
 #' Is something in a matrix.
 #'
 #' This function searches to see if item 'searchfor' is within the matrix 'x' and returns a respective true (T) and false (F).
 #' @param x The matrix that needs to be searched.
-#' @param searchfor Items to be searched for in matrix x.
+#' @param search_for Items to be searched for in matrix x.
 #' @keywords search, matrix, footnote, footnotes
 #' @export
+#' @return TRUE or FALSE
 #' @examples
 #' issomethinginthismatrix(x = data.frame(matrix(1:9, nrow = 3, ncol = 3)), 
-#'                        searchfor = 9)
+#'                        search_for = 9)
 #' issomethinginthismatrix(x = data.frame(matrix(LETTERS[1:9], nrow = 3, ncol = 3)), 
-#'                        searchfor = "J")
-issomethinginthismatrix<-function(x, searchfor) {
+#'                        search_for = "J")
+is_something_in_this_matrix<-function(x, search_for) {
   xx<-c()
   for (r in 1:nrow(x)) {
-    if (is.na(searchfor)) {
+    if (is.na(search_for)) {
       xx<-c(xx, sum(is.na(x[r,]), na.rm = T))
     } else {
-      xx<-c(xx, sum(x[r,] == searchfor, na.rm = T))
+      xx<-c(xx, sum(x[r,] == search_for, na.rm = T))
     }
   }
-  if (sum(xx)==0) {
-    return(F)
-  } else {
-    return(T)
-  }
+  return(sum(xx)!=0) # This returns a logical T/F
 }
 
-###########CONVERT STUFF###########
+########### CONVERT STUFF ###########
 
 #' Convert dataframe to javascript
 #'
 #' Convert dataframe to javascript matrix.
-#' @param df.dat The data frame you want to add the footnote to.
+#' @param dat The data frame you want to add the footnote to.
 #' @keywords data.frame, javascript, footnotes, footnote
 #' @export
 #' @examples
-#' df.dat <- cbind.data.frame(matrix(LETTERS[1:8], nrow = 4), 
+#' dat <- cbind.data.frame(matrix(LETTERS[1:8], nrow = 4), 
 #'                            matrix(1:8, nrow = 4))
-#' funct_df2js(df.dat = df.dat)
-funct_df2js<-function(df.dat) {
+#' funct_df2js(dat = dat)
+df2js<-function(dat) {
   
-  if (sum(names(df.dat) %in% "Footnotes") != 0) {
-    df.dat$Footnotes<-as.character(df.dat$Footnotes)
-    df.dat$Footnotes[df.dat$Footnotes %in% c("", "[]")]<-"null"
+  if (sum(names(dat) %in% "Footnotes") != 0) {
+    dat$Footnotes<-as.character(dat$Footnotes)
+    dat$Footnotes[dat$Footnotes %in% c("", "[]")]<-"null"
   }
-  # df.dat<-lapply(X = df.dat, FUN = as.character)
-  for (col in 1:(ncol(df.dat)-1)){ #not footnotes
-    df.dat[,col]<-as.character(df.dat[,col])
-    for (row in 1:nrow(df.dat)){
-      df.dat[row,col]<-trimws(df.dat[row,col])
-      df.dat[row,col]<-gsub(pattern = "\\*", replacement = "", x = df.dat[row,col])
-      df.dat[row,col]<-ifelse(is.na(df.dat[row,col]),  "NA", df.dat[row,col])
+  # dat<-lapply(X = dat, FUN = as.character)
+  for (col in 1:(ncol(dat)-1)){ #not footnotes
+    dat[,col]<-as.character(dat[,col])
+    for (row in 1:nrow(dat)){
+      dat[row,col]<-trimws(dat[row,col])
+      dat[row,col]<-gsub(pattern = "\\*", replacement = "", x = dat[row,col])
+      dat[row,col]<-ifelse(is.na(dat[row,col]),  "NA", dat[row,col])
     }
   }
-  df.dat<-rbind.data.frame(names(df.dat), df.dat)
+  dat<-rbind.data.frame(names(dat), dat)
   
-  str0<-(jsonlite::toJSON(as.matrix(df.dat)))
+  str0<-(jsonlite::toJSON(as.matrix(dat)))
   # str0<-gsub(pattern = "null", replacement = 'NA', str0)
   str0<-gsub(pattern = '"null"', replacement = 'null', str0)
   str0<-gsub(pattern = '""', replacement = '"', str0)
@@ -336,7 +352,7 @@ funct_df2js<-function(df.dat) {
 }
 
 
-############MODIFY TEXT################
+############ MODIFY TEXT ################
 
 
 
@@ -381,9 +397,9 @@ TitleCase <- function(str = "", add_dont_cap = "") {
 }
 
 
-#' Make a string lower case except for stated proper nouns. 
+#' Make a string lower case except for stated (and common NOAA) proper nouns. 
 #'
-#' Make a string lower case except for stated proper nouns. 
+#' Make a string lower case except for stated (and common NOAA) proper nouns. 
 #' @param str0 The text string.
 #' @param capitalizefirst Default = FALSE
 #' @param add_cap A vector of strings that the user does not want capitalized
@@ -515,7 +531,7 @@ text_list<-function(x, oxford = TRUE) {
 }
 
 
-############MODIFY NUMBERS IN TEXT################
+############ MODIFY NUMBERS IN TEXT ################
 
 
 #' Convert number to text string. 
@@ -741,22 +757,22 @@ pchange<-function(start, end, ending="", percent_first=TRUE){
 #' Modify number. 
 #' @param x A numeric. 
 #' @param divideby The value you want all of your values divided by. Default = 1000. 
-#' @param commaseperator Do you want numbers to have commas in it ("1,000" (T) vs. "1000" (F). Default = T. 
+#' @param comma_seperator Do you want numbers to have commas in it ("1,000" (T) vs. "1000" (F). Default = T. 
 #' @param digits How many digits you would like your number to have. Default = 0. 
 #' @keywords Modify number
 #' @export
 #' @examples
-#' modnum(x = data.frame(matrix(data = c(20000678660, 234567, 1, NA, 2345, 23), 
+#' mod_number(x = data.frame(matrix(data = c(20000678660, 234567, 1, NA, 2345, 23), 
 #'        ncol = 2)))
-#' modnum(x = data.frame(matrix(data = c(20000678660, 234567, 1, NA, 2345, 23), 
+#' mod_number(x = data.frame(matrix(data = c(20000678660, 234567, 1, NA, 2345, 23), 
 #'                              ncol = 2)), 
-#'        commaseperator = FALSE)
-#' modnum(x = data.frame(matrix(data = c(200000, 234567, 1, NA, 2345, 23))), 
+#'        comma_seperator = FALSE)
+#' mod_number(x = data.frame(matrix(data = c(200000, 234567, 1, NA, 2345, 23))), 
 #'        divideby = 1, 
 #'        digits = 2)
-modnum<-function(x, 
+mod_number<-function(x, 
                  divideby = 1000, 
-                 commaseperator = TRUE, 
+                 comma_seperator = TRUE, 
                  digits = 0) { 
   xxx<-matrix(data = NA, nrow = nrow(x), ncol = ncol(x))
   
@@ -771,7 +787,7 @@ modnum<-function(x,
           xx<-"1"    
         } else {
           xx<-format(xx/divideby, digits = digits, trim = F, 
-                     big.mark = ifelse(commaseperator == T, ",", ""), scientific = F)
+                     big.mark = ifelse(comma_seperator == T, ",", ""), scientific = F)
         }
       }
       xxx[r,c]<-xx
@@ -873,7 +889,7 @@ xunitspct<-function(value, sign = TRUE) {
 #' Add bold, italics, strikethrough in formating to table. 
 #' 
 #' https://stackoverflow.com/questions/28166168/how-to-change-fontface-bold-italics-for-a-cell-in-a-kable-table-in-rmarkdown 
-#' @param df.dat A data.frame. 
+#' @param dat A data.frame. 
 #' @param rows The rows you want to apply formatting to. 
 #' @param cols The columns you want to apply formatting to. 
 #' @param fonttype fonttype = c("italics", "bold", "strikethrough"). 
@@ -896,7 +912,7 @@ xunitspct<-function(value, sign = TRUE) {
 # #   format_cells(2, 2, "bold") %>%
 # #   format_cells(3, 1:2, "strikethrough") %>%
 # #   knitr::kable()
-format_cells <- function(df.dat, rows, cols, fonttype) {
+format_cells <- function(dat, rows, cols, fonttype) {
   # https://stackoverflow.com/questions/28166168/how-to-change-fontface-bold-italics-for-a-cell-in-a-kable-table-in-rmarkdown
   # select the correct markup
   map <- stats::setNames(c("*", "**", "~~"), c("italics", "bold", "strikethrough"))
@@ -906,26 +922,26 @@ format_cells <- function(df.dat, rows, cols, fonttype) {
     for(c in cols){
       
       # Make sure fonttypes are not factors
-      df.dat[[c]] <- as.character( df.dat[[c]])
+      dat[[c]] <- as.character( dat[[c]])
       
       # Update formatting
-      df.dat[r, c] <- paste0(markup, df.dat[r, c], markup)
+      dat[r, c] <- paste0(markup, dat[r, c], markup)
     }
   }
   
-  return(df.dat)
+  return(dat)
 }
 
-
-########FILE ORGANIZATION#########
+######## FILE ORGANIZATION #########
 
 
 #' Name nth item in order (001) 
 #' 
 #' Convert a value. 
-#' @param x The values. 
+#' @param x a numeric or integer value or vector of numeric or integer values.  
 #' @keywords Data Management
 #' @export
+#' @return the values in the "0..X" format. All values will take on the number of 0s of the longest charcter value. 
 #' @examples 
 #' numbers0(x = c(1, 3, 6, 101))
 numbers0<-function(x) {
@@ -945,6 +961,7 @@ numbers0<-function(x) {
 #' @param counter0 The value it was to be added 1 to 
 #' @keywords Data Management
 #' @export
+#' @return The number entered + 1, in the "0..X" format. All values will take on the number of 0s of the longest charcter value. 
 #' @examples
 #' auto_counter(1)
 auto_counter<-function(counter0) {
@@ -958,32 +975,32 @@ auto_counter<-function(counter0) {
 
 
 
-#######TABLE AND GRAPHS#######
+####### TABLE AND GRAPHS #######
 
 
 #' Systematically save your ggplot figure for your report
 #'
 #' @param plot0 The ggplot you would like to be saved
-#' @param plot.list The list where all plots will be saved. 
+#' @param plot_list The list where all plots will be saved. 
 #' @param Header The name and title of the figure. Default = "".
 #' @param filename0 The filename for your chapter
-#' @param cnt.chapt.content The order number that this exists in the chapter
-#' @param cnt.figures The figure number 
+#' @param cnt_chapt_content The order number that this exists in the chapter
+#' @param cnt_figures The figure number 
 #' @param path The path the file needs to be saved to. Defult = NULL, meaning that it wont save anything. 
 #' @param width Default = 6 inches
 #' @param height Default = 6 inches
-#' @return plot.list
 #' @export
+#' @return plot_list updated with the new plot and metadata. 
 #' @examples
 #' plot0<-ggplot2::ggplot(x=1,y=1)
-#' plot.list<-c()
-#' SaveGraphs(plot0 = plot0, plot.list = plot.list)
+#' plot_list<-c()
+#' SaveGraphs(plot0 = plot0, plot_list = plot_list)
 SaveGraphs<-function(plot0, 
-                     plot.list, 
+                     plot_list, 
                      Header = "", 
                      filename0 = "x", 
-                     cnt.chapt.content = "001", 
-                     cnt.figures = 1, 
+                     cnt_chapt_content = "001", 
+                     cnt_figures = 1, 
                      path = NULL, 
                      width = 6, 
                      height = 6){
@@ -991,50 +1008,50 @@ SaveGraphs<-function(plot0,
   if (!is.null(path)){
     ggplot2::ggsave( # save your plot
       path = path, 
-      filename = paste0(filename0, cnt.chapt.content, "_Fig_", cnt.figures, 
+      filename = paste0(filename0, cnt_chapt_content, "_Fig_", cnt_figures, 
                         ".pdf"), # Always save in pdf so you can make last minute edits in adobe acrobat!
     plot = plot0, # call the plot you are saving
     width = width, height = height, units = "in") #recall, A4 pages are 8.5 x 11 in - 1 in margins
   }
   
-  plot.list<-c(plot.list, plot)
-  names(plot.list)[length(plot.list)]<-Header
+  plot_list<-c(plot_list, plot)
+  names(plot_list)[length(plot_list)]<-Header
   
-  return(plot.list)
+  return(plot_list)
 }
 
 
 #' Systematically save your report tables for your report
 #'
-#' @param table.raw Optional. The data.frame that has no rounding and no dividing of numbers (good to save this for record keeping). Default = NA. 
-#' @param table.print The data.frame as table will be seen in the report.
-#' @param table.list Save tables in a list
+#' @param table_raw Optional. The data.frame that has no rounding and no dividing of numbers (good to save this for record keeping). Default = NA. 
+#' @param table_print The data.frame as table will be seen in the report.
+#' @param table_list Save tables in a list
 #' @param Title The header or title of your table. 
 #' @param Footnotes Footnotes for the whole table. Default = NA.
 #' @param filename0 The name you want to save this file as.
-#' @param dir.chapters Directory where you are saving all of your chapter word documents to. Defult = NULL, meaning that it wont save anything. 
-#' @param dir.tables Directory where you are saving all of your tables to. Defult = NULL, meaning that it wont save anything. 
-#' @param cnt.tables The order number that this exists in the chapter.
-#' @param cnt.chapt.content The order number that this exists in the chapter.
+#' @param dir_chapters Directory where you are saving all of your chapter word documents to. Defult = NULL, meaning that it wont save anything. 
+#' @param dir_tables Directory where you are saving all of your tables to. Defult = NULL, meaning that it wont save anything. 
+#' @param cnt_tables The order number that this exists in the chapter.
+#' @param cnt_chapt_content The order number that this exists in the chapter.
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
-#' table.print<-data.frame(matrix(data = 1:9, nrow = 3, byrow = 3))
-#' SaveTables(table.print=table.print)
-SaveTables<-function(table.raw = NULL, 
-                     table.print, 
-                     table.list = c(), 
+#' table_print<-data.frame(matrix(data = 1:9, nrow = 3, byrow = 3))
+#' SaveTables(table_print=table_print)
+SaveTables<-function(table_raw = NULL, 
+                     table_print, 
+                     table_list = c(), 
                      Title = "", 
                      Footnotes = NA, 
                      filename0 = "x", 
-                     dir.chapters = NULL, 
-                     dir.tables = NULL, 
-                     cnt.tables = 1, 
-                     cnt.chapt.content = "001"){
+                     dir_chapters = NULL, 
+                     dir_tables = NULL, 
+                     cnt_tables = 1, 
+                     cnt_chapt_content = "001"){
   
-  cnt.chapt.content<-auto_counter(cnt.chapt.content)
-  cnt.tables<-cnt.tables+1
-  Caption <- stringr::str_to_sentence(paste0("Table ",cnt.tables,". ", 
+  cnt_chapt_content<-auto_counter(cnt_chapt_content)
+  cnt_tables<-cnt_tables+1
+  Caption <- stringr::str_to_sentence(paste0("Table ",cnt_tables,". ", 
                                     ifelse(substr(x = Title, start = nchar(Title), stop = nchar(Title)) %in% ".", 
                                            Title, 
                                            paste0(Title, "."))))
@@ -1044,85 +1061,85 @@ SaveTables<-function(table.raw = NULL,
                     paste0(Caption, "^[", Footnotes, "]"))
   
   
-  if (!is.null(dir.tables)){
+  if (!is.null(dir_tables)){
     # Save raw file (no rounding, no dividing)
-    if (!(is.null(table.raw))) {
-      utils::write.table(x = table.raw,  
-                         file = paste0(dir.tables, filename0, "_raw.csv"), 
+    if (!(is.null(table_raw))) {
+      utils::write.table(x = table_raw,  
+                         file = paste0(dir_tables, filename0, "_raw.csv"), 
                          sep = ",",
                          row.names=FALSE, col.names = F, append = F)
     }
     
     # Save file of content going into the report
-    utils::write.table(x = table.print,  
-                       file = paste0(dir.tables, filename0, "_print.csv"), 
+    utils::write.table(x = table_print,  
+                       file = paste0(dir_tables, filename0, "_print.csv"), 
                        sep = ",",
                        row.names=FALSE, col.names = F, append = F)
   }
   
-  if (!is.null(dir.chapters)){
-    utils::write.table(x = table.print,  
-                       file = paste0(dir.chapters, filename0, ".csv"), 
+  if (!is.null(dir_chapters)){
+    utils::write.table(x = table_print,  
+                       file = paste0(dir_chapters, filename0, ".csv"), 
                        sep = ",",
                        row.names=FALSE, col.names = F, append = F)
   }
   # Save file with header and footnotes
   
-  if (!is.null(dir.tables)){
+  if (!is.null(dir_tables)){
     utils::write.table(Title,  
-                       file = paste0(dir.tables, filename0, "_handout.csv"), 
+                       file = paste0(dir_tables, filename0, "_handout.csv"), 
                        sep = ",",
                        row.names=FALSE, col.names = F, append = F)
     
-    utils::write.table(table.print,  
-                       file = paste0(dir.tables, filename0, "_handout.csv"), 
+    utils::write.table(table_print,  
+                       file = paste0(dir_tables, filename0, "_handout.csv"), 
                        sep = ",",
                        row.names=FALSE, col.names = F, append = T)
     
     if (!is.null(Footnotes) | Footnotes %in% "") {
       
       utils::write.table("",  
-                         file = paste0(dir.tables, filename0, "_handout.csv"), 
+                         file = paste0(dir_tables, filename0, "_handout.csv"), 
                          sep = ",",
                          row.names=FALSE, col.names = F, append = T)
       
       a<-strsplit(x = Footnotes, split = " 123456789 ")[[1]]
       a<-unique(a)
       utils::write.table(a,  
-                         file = paste0(dir.tables, filename0, "_handout.csv"), 
+                         file = paste0(dir_tables, filename0, "_handout.csv"), 
                          sep = ",",
                          row.names=FALSE, col.names = F, append = T)
     }
   }
-  # #footnote-ify table.print footnote column for rmarkdown
-  # if (is.data.frame(table.print)) {
-  #   table.print$Footnotes<-list2string.ft(x = table.print$Footnotes)
+  # #footnote-ify table_print footnote column for rmarkdown
+  # if (is.data.frame(table_print)) {
+  #   table_print$Footnotes<-list2string.ft(x = table_print$Footnotes)
   # }
   
-  table.list<-c(table.list, 
-                list(Title = list("raw" = table.raw, 
-                                  "print" = table.print)))
+  table_list<-c(table_list, 
+                list(Title = list("raw" = table_raw, 
+                                  "print" = table_print)))
   
   return(list("Caption" = Caption, 
-              "table.print" = table.print, 
-              "table.list" = table.list,
-              "cnt.tables" = cnt.tables, 
-              "cnt.chapt.content" = cnt.chapt.content))
+              "table_print" = table_print, 
+              "table_list" = table_list,
+              "cnt_tables" = cnt_tables, 
+              "cnt_chapt_content" = cnt_chapt_content))
 }
 
 
-########METADATA########
+######## METADATA ########
 
 
 #' Create CreateMetadata 
 #' 
 #' Create Metadata. 
-#' @param dir.out Path file will be saved to.
+#' @param dir_out Path file will be saved to.
 #' @param title Title of file.
 #' @importFrom magrittr %>%
 #' @keywords metadata
 #' @export
-CreateMetadata<-function(dir.out = ".", title = "My Project"){
+CreateMetadata<-function(dir_out = ".", title = "My Project"){
   my_doc <- officer::read_docx() 
   officer::styles_info(my_doc)
   
@@ -1163,7 +1180,7 @@ CreateMetadata<-function(dir.out = ".", title = "My Project"){
       officer::body_add_par(temp$URL, style = "Normal")
   }
   
-  print(my_doc, target = paste0(dir.out, "/Metadata_", Sys.Date(), ".docx"))
+  print(my_doc, target = paste0(dir_out, "/Metadata_", Sys.Date(), ".docx"))
 }
 
 
