@@ -214,7 +214,7 @@ buildTM<-function(sections = c("frontmatter",
   cnt_chapt_content<-"001" 
   filename0<-paste0(cnt_chapt, "_', sections,'_") 
   rmarkdown::render(paste0(dir_code, "/',sections_no,'_',sections,'.Rmd"),
-                    output_dir = dir_chapters,
+                    output_dir = dir_out_chapters,
                     output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
                     
   
@@ -235,7 +235,7 @@ buildTM<-function(sections = c("frontmatter",
   cnt_chapt_content<-"001" 
   filename0<-paste0(cnt_chapt, "_', sections,'_") 
   rmarkdown::render(paste0(dir_code, "/',sections_no,'_',sections,'.Rmd"),
-                    output_dir = dir_chapters,
+                    output_dir = dir_out_chapters,
                     output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
                     
   
@@ -1029,7 +1029,7 @@ SaveGraphs<-function(plot0,
 #' @param Title The header or title of your table. 
 #' @param Footnotes Footnotes for the whole table. Default = NA.
 #' @param filename0 The name you want to save this file as.
-#' @param dir_chapters Directory where you are saving all of your chapter word documents to. Defult = NULL, meaning that it wont save anything. 
+#' @param dir_out_chapters Directory where you are saving all of your chapter word documents to. Defult = NULL, meaning that it wont save anything. 
 #' @param dir_tables Directory where you are saving all of your tables to. Defult = NULL, meaning that it wont save anything. 
 #' @param cnt_tables The order number that this exists in the chapter.
 #' @param cnt_chapt_content The order number that this exists in the chapter.
@@ -1044,7 +1044,7 @@ SaveTables<-function(table_raw = NULL,
                      Title = "", 
                      Footnotes = NA, 
                      filename0 = "x", 
-                     dir_chapters = NULL, 
+                     dir_out_chapters = NULL, 
                      dir_tables = NULL, 
                      cnt_tables = 1, 
                      cnt_chapt_content = "001"){
@@ -1077,9 +1077,9 @@ SaveTables<-function(table_raw = NULL,
                        row.names=FALSE, col.names = F, append = F)
   }
   
-  if (!is.null(dir_chapters)){
+  if (!is.null(dir_out_chapters)){
     utils::write.table(x = table_print,  
-                       file = paste0(dir_chapters, filename0, ".csv"), 
+                       file = paste0(dir_out_chapters, filename0, ".csv"), 
                        sep = ",",
                        row.names=FALSE, col.names = F, append = F)
   }

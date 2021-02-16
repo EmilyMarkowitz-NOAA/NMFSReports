@@ -11,7 +11,7 @@ SaveTables(
   Title = "",
   Footnotes = NA,
   filename0 = "x",
-  dir_chapters = NULL,
+  dir_out_chapters = NULL,
   dir_tables = NULL,
   cnt_tables = 1,
   cnt_chapt_content = "001"
@@ -30,7 +30,7 @@ SaveTables(
 
 \item{filename0}{The name you want to save this file as.}
 
-\item{dir_chapters}{Directory where you are saving all of your chapter word documents to. Defult = NULL, meaning that it wont save anything.}
+\item{dir_out_chapters}{Directory where you are saving all of your chapter word documents to. Defult = NULL, meaning that it wont save anything.}
 
 \item{dir_tables}{Directory where you are saving all of your tables to. Defult = NULL, meaning that it wont save anything.}
 

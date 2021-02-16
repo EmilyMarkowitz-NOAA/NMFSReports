@@ -57,7 +57,7 @@ cnt_equ<-0
 # cnt_chapt_content<-"001" # The order of the content in the report (e.g., figures, images, tables)
 # filename0<-paste0(cnt_chapt, "_Example_") #Seperated because we'll need it inside the RMarkdown
 # rmarkdown::render(paste0(dir_scripts, "/0_example.Rmd"),
-#                   output_dir = dir_chapters,
+#                   output_dir = dir_out_chapters,
 #                   output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
 
 
