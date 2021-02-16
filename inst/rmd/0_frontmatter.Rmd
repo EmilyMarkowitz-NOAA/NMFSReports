@@ -71,7 +71,7 @@ By
 
 **Recommended citation:**
 
-`r authors0 `. `r maxyr `. `r title0 ` NOAA Tech. Memo. NMFS-[`r office0`]-`r reportnum0`,
+`r authors0 `. `r report_yr `. `r title0 ` NOAA Tech. Memo. NMFS-[`r office0`]-`r reportnum0`,
 
 > ## p.
 

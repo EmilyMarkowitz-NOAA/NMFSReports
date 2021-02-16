@@ -12,6 +12,7 @@
 ######***KNOWNS#########
 report_title <- # INSERT_REPORT_TITLE
 report_authors <- # INSERT_AUTHOR
+report_yr <- substr(x = Sys.Date(), start = 1, stop = 4)                # CHANGE
 report_office_location <- ""                                            # CHANGE
 # For example: 
 # "National Oceanic and Atmospheric Administration 
