@@ -7,7 +7,10 @@
 numbers0(x)
 }
 \arguments{
-\item{x}{The values.}
+\item{x}{a numeric or integer value or vector of numeric or integer values.}
+}
+\value{
+the values in the "0..X" format. All values will take on the number of 0s of the longest charcter value.
 }
 \description{
 Convert a value.

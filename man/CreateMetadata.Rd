@@ -4,10 +4,10 @@
 \alias{CreateMetadata}
 \title{Create CreateMetadata}
 \usage{
-CreateMetadata(dir.out = ".", title = "My Project")
+CreateMetadata(dir_out = ".", title = "My Project")
 }
 \arguments{
-\item{dir.out}{Path file will be saved to.}
+\item{dir_out}{Path file will be saved to.}
 
 \item{title}{Title of file.}
 }

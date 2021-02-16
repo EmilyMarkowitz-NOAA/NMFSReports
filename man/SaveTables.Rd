@@ -5,24 +5,24 @@
 \title{Systematically save your report tables for your report}
 \usage{
 SaveTables(
-  table.raw = NULL,
-  table.print,
-  table.list = c(),
+  table_raw = NULL,
+  table_print,
+  table_list = c(),
   Title = "",
   Footnotes = NA,
   filename0 = "x",
-  dir.chapters = NULL,
-  dir.tables = NULL,
-  cnt.tables = 1,
-  cnt.chapt.content = "001"
+  dir_chapters = NULL,
+  dir_tables = NULL,
+  cnt_tables = 1,
+  cnt_chapt_content = "001"
 )
 }
 \arguments{
-\item{table.raw}{Optional. The data.frame that has no rounding and no dividing of numbers (good to save this for record keeping). Default = NA.}
+\item{table_raw}{Optional. The data.frame that has no rounding and no dividing of numbers (good to save this for record keeping). Default = NA.}
 
-\item{table.print}{The data.frame as table will be seen in the report.}
+\item{table_print}{The data.frame as table will be seen in the report.}
 
-\item{table.list}{Save tables in a list}
+\item{table_list}{Save tables in a list}
 
 \item{Title}{The header or title of your table.}
 
@@ -30,18 +30,18 @@ SaveTables(
 
 \item{filename0}{The name you want to save this file as.}
 
-\item{dir.chapters}{Directory where you are saving all of your chapter word documents to. Defult = NULL, meaning that it wont save anything.}
+\item{dir_chapters}{Directory where you are saving all of your chapter word documents to. Defult = NULL, meaning that it wont save anything.}
 
-\item{dir.tables}{Directory where you are saving all of your tables to. Defult = NULL, meaning that it wont save anything.}
+\item{dir_tables}{Directory where you are saving all of your tables to. Defult = NULL, meaning that it wont save anything.}
 
-\item{cnt.tables}{The order number that this exists in the chapter.}
+\item{cnt_tables}{The order number that this exists in the chapter.}
 
-\item{cnt.chapt.content}{The order number that this exists in the chapter.}
+\item{cnt_chapt_content}{The order number that this exists in the chapter.}
 }
 \description{
 Systematically save your report tables for your report
 }
 \examples{
-table.print<-data.frame(matrix(data = 1:9, nrow = 3, byrow = 3))
-SaveTables(table.print=table.print)
+table_print<-data.frame(matrix(data = 1:9, nrow = 3, byrow = 3))
+SaveTables(table_print=table_print)
 }

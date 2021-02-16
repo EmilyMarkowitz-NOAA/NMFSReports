@@ -24,11 +24,11 @@ buildTM(
 
 \item{title}{Default = "". Here, put the title of your report.}
 
-\item{pptxstylesreference.pptx}{Default = "refdoc_NMFS_ppt_template", but only active if you include "presentation" in the sections argument.}
+\item{pptxstylesreference.pptx}{Default = "refdoc_NMFS_ppt_template". Alternatively, you can add the path here to your own reference pptx. You can also opt out of a powerpoint by setting this parameter to NA.}
 
 \item{wordstylesreference.docx}{Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("NOAATechMemo" or "FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"}
 
-\item{csl}{Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa"). Default = "apa"}
+\item{csl}{Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa", "new-phytologist"). A NOAA TM citation style needs to be created, but until then, the default = "apa".}
 }
 \description{
 Build your intitial architecture for your new NOAA Tech Memo or Report

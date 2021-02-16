@@ -9,6 +9,9 @@ auto_counter(counter0)
 \arguments{
 \item{counter0}{The value it was to be added 1 to}
 }
+\value{
+The number entered + 1, in the "0..X" format. All values will take on the number of 0s of the longest charcter value.
+}
 \description{
 Add a counter number, 1, 1+1=2, 2+1=3.
 }

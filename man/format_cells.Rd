@@ -4,10 +4,10 @@
 \alias{format_cells}
 \title{Add bold, italics, strikethrough in formating to table.}
 \usage{
-format_cells(df.dat, rows, cols, fonttype)
+format_cells(dat, rows, cols, fonttype)
 }
 \arguments{
-\item{df.dat}{A data.frame.}
+\item{dat}{A data.frame.}
 
 \item{rows}{The rows you want to apply formatting to.}
 

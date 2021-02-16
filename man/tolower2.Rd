@@ -2,7 +2,7 @@
 % Please edit documentation in R/NMFSReports.R
 \name{tolower2}
 \alias{tolower2}
-\title{Make a string lower case except for stated proper nouns.}
+\title{Make a string lower case except for stated (and common NOAA) proper nouns.}
 \usage{
 tolower2(str0, capitalizefirst = FALSE, add_cap = "")
 }
@@ -14,7 +14,7 @@ tolower2(str0, capitalizefirst = FALSE, add_cap = "")
 \item{add_cap}{A vector of strings that the user does not want capitalized}
 }
 \description{
-Make a string lower case except for stated proper nouns.
+Make a string lower case except for stated (and common NOAA) proper nouns.
 }
 \examples{
 tolower2(str0 = "notice how there are built-in proper nouns are capitalized: 

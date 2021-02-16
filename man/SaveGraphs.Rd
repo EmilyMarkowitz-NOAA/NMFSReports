@@ -6,11 +6,11 @@
 \usage{
 SaveGraphs(
   plot0,
-  plot.list,
+  plot_list,
   Header = "",
   filename0 = "x",
-  cnt.chapt.content = "001",
-  cnt.figures = 1,
+  cnt_chapt_content = "001",
+  cnt_figures = 1,
   path = NULL,
   width = 6,
   height = 6
@@ -19,15 +19,15 @@ SaveGraphs(
 \arguments{
 \item{plot0}{The ggplot you would like to be saved}
 
-\item{plot.list}{The list where all plots will be saved.}
+\item{plot_list}{The list where all plots will be saved.}
 
 \item{Header}{The name and title of the figure. Default = "".}
 
 \item{filename0}{The filename for your chapter}
 
-\item{cnt.chapt.content}{The order number that this exists in the chapter}
+\item{cnt_chapt_content}{The order number that this exists in the chapter}
 
-\item{cnt.figures}{The figure number}
+\item{cnt_figures}{The figure number}
 
 \item{path}{The path the file needs to be saved to. Defult = NULL, meaning that it wont save anything.}
 
@@ -36,13 +36,13 @@ SaveGraphs(
 \item{height}{Default = 6 inches}
 }
 \value{
-plot.list
+plot_list updated with the new plot and metadata.
 }
 \description{
 Systematically save your ggplot figure for your report
 }
 \examples{
 plot0<-ggplot2::ggplot(x=1,y=1)
-plot.list<-c()
-SaveGraphs(plot0 = plot0, plot.list = plot.list)
+plot_list<-c()
+SaveGraphs(plot0 = plot0, plot_list = plot_list)
 }
