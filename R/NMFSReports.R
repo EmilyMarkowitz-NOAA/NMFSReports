@@ -169,13 +169,13 @@ buildTM<-function(sections = c("frontmatter",
     }
     # if the user wants to use one of the package's reference documents
   } else {
-    copyfrom <- b<-paste0(csl, ".csl")
-    for (i in 1:length(b)){
-      
-      file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-                to = paste0("./cit/cit.cls"), 
+    copyfrom <- b <-paste0(csl, ".csl")
+    # for (i in 1:length(b)){
+      file.copy(from = system.file("cit", copyfrom, 
+                                   package="NMFSReports"), 
+                to = paste0("./cit/cit.csl"), 
                 overwrite = T)
-    }
+    # }
   }
   
   ################## images
@@ -192,14 +192,15 @@ buildTM<-function(sections = c("frontmatter",
   # Load those folders with stuff you care about
   # a<-list.files(path = system.file("cit", package="NMFSReports"))
   # for (i in 1:length(a)){
-    file.copy(from = system.file(paste0("cit", csl, ".csl"), 
-                                 package="NMFSReports"), 
-              to = paste0("./cit/cit.csl"), 
+    file.copy(from = system.file(paste0("cit/", csl, ".csl"),
+                                 package="NMFSReports"),
+              to = paste0("./cit/cit.csl"),
               overwrite = T)
   # }
   
   ################## Write run.R
-  run0 <- base::readLines(system.file("rmd","run.R", package="NMFSReports"))
+  run0 <- base::readLines(system.file("rmd","run.R", 
+                                      package="NMFSReports"))
   
   # directories
   
