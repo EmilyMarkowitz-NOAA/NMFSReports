@@ -190,12 +190,13 @@ buildTM<-function(sections = c("frontmatter",
   
   ################## citation styles
   # Load those folders with stuff you care about
-  a<-list.files(path = system.file("cit", package="NMFSReports"))
-  for (i in 1:length(a)){
-    file.copy(from = system.file("cit", a[i], package="NMFSReports"), 
-              to = paste0("./cit/", a[i]), 
+  # a<-list.files(path = system.file("cit", package="NMFSReports"))
+  # for (i in 1:length(a)){
+    file.copy(from = system.file(paste0("cit", csl, ".csl"), 
+                                 package="NMFSReports"), 
+              to = paste0("./cit/cit.csl"), 
               overwrite = T)
-  }
+  # }
   
   ################## Write run.R
   run0 <- base::readLines(system.file("rmd","run.R", package="NMFSReports"))
