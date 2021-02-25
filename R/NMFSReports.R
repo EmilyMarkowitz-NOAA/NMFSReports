@@ -177,7 +177,7 @@ buildTM<-function(sections = c("frontmatter",
   # directories
   
   # support_scripts
-  a<-paste("source(here('code',", paste0("'0_", support_scripts, ".R'"),"))
+  a<-paste("source(here('code',", paste0("'", support_scripts, ".R'"),"))
 
 ", collapse = "")
   
@@ -243,7 +243,7 @@ buildTM<-function(sections = c("frontmatter",
   
   # write new run file
   utils::write.table(x = run0, 
-                     file = "./code/0_run.R", 
+                     file = "./code/run.R", 
                      row.names = FALSE, 
                      col.names = FALSE, 
                      quote = FALSE)
@@ -251,6 +251,7 @@ buildTM<-function(sections = c("frontmatter",
   # done!
   
 }
+
 
 ########## SEARCH STUFF ############
 
