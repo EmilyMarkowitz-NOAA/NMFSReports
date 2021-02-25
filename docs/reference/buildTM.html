@@ -162,12 +162,13 @@
 
     <pre class="usage"><span class='fu'>buildTM</span><span class='op'>(</span>
   sections <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"frontmatter"</span>, <span class='st'>"abstract"</span>, <span class='st'>"introduction"</span>, <span class='st'>"methods"</span>, <span class='st'>"results"</span>,
-    <span class='st'>"discussion"</span>, <span class='st'>"workscited"</span>, <span class='st'>"workscitedR"</span><span class='op'>)</span>,
+    <span class='st'>"discussion"</span>, <span class='st'>"workscited"</span>, <span class='st'>"workscitedR"</span>, <span class='st'>"presentation"</span><span class='op'>)</span>,
   support_scripts <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"directories"</span>, <span class='st'>"functions"</span>, <span class='st'>"dataDL"</span>, <span class='st'>"data"</span><span class='op'>)</span>,
   authors <span class='op'>=</span> <span class='st'>""</span>,
   title <span class='op'>=</span> <span class='st'>""</span>,
-  pptxstylesreference.pptx <span class='op'>=</span> <span class='st'>"refdoc_NMFS_ppt_template"</span>,
-  wordstylesreference.docx <span class='op'>=</span> <span class='st'>"refdoc_NOAATechMemo.docx"</span>,
+  pptxstylesreference.pptx <span class='op'>=</span> <span class='st'>"refppt_nmfs"</span>,
+  wordstylesreference.docx <span class='op'>=</span> <span class='st'>"refdoc_noaa_tech_memo"</span>,
+  bibliography.bib <span class='op'>=</span> <span class='st'>"bib_example"</span>,
   csl <span class='op'>=</span> <span class='st'>"apa"</span>
 <span class='op'>)</span></pre>
 
@@ -176,7 +177,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>sections</th>
-      <td><p>a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR"). Note that frontmatter and workcitedR both have specific templates, and all others are from a blank template.</p></td>
+      <td><p>a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR", "presentation"). Note that frontmatter, workcitedR, and presentation both have specific templates, and all others are from a blank template.</p></td>
     </tr>
     <tr>
       <th>support_scripts</th>
@@ -192,11 +193,15 @@
     </tr>
     <tr>
       <th>pptxstylesreference.pptx</th>
-      <td><p>Default = "refdoc_NMFS_ppt_template". Alternatively, you can add the path here to your own reference pptx. You can also opt out of a powerpoint by setting this parameter to NA.</p></td>
+      <td><p>A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("nmfs"). Default = "nmfs".</p></td>
     </tr>
     <tr>
       <th>wordstylesreference.docx</th>
-      <td><p>Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("NOAATechMemo" or "FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"</p></td>
+      <td><p>A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo".</p></td>
+    </tr>
+    <tr>
+      <th>bibliography.bib</th>
+      <td><p>Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example".</p></td>
     </tr>
     <tr>
       <th>csl</th>

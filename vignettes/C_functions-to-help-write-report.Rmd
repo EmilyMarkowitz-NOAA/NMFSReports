@@ -55,12 +55,12 @@ for (p in PKG) {
 ## From run file: 
 ```{r a}
 cnt.chapt<-"000" # Keep everything in a proper order
-plot.list<-c() # This will help us by saving R-ready plots so we can easily go back and edit them if necessary. 
-cnt.figures<-0 # This will autoname your figures with consecutive numbers (e.g., Figure 1.)
+plot_list<-c() # This will help us by saving R-ready plots so we can easily go back and edit them if necessary. 
+cnt_figures<-0 # This will autoname your figures with consecutive numbers (e.g., Figure 1.)
 cnt.tables<-0 # This will autoname your tables with consecutive numbers (e.g., Table 1.)
 cnt.equ<-0
 counter.inside<-0
-cnt.chapt.content<-0
+cnt_chapt_content<-0
 filename0<-"example"
 designflowin<-FALSE
 ```
@@ -96,14 +96,14 @@ $$X = Y + Z$$
 
 ```{r G1a}
 # Don't Edit This:
-cnt.chapt.content<-auto_counter(cnt.chapt.content)
-cnt.figures<-cnt.figures+1
+cnt_chapt_content<-auto_counter(cnt_chapt_content)
+cnt_figures<-cnt_figures+1
 ```
 
 
 ```{r G1b}
 # Edit This:
-Header<-paste0("Figure ",cnt.figures,". Here's a plot")
+Header<-paste0("Figure ",cnt_figures,". Here's a plot")
 Footnotes<-"A footnote for this figure!"
 
 # Select data and make plot
@@ -118,14 +118,14 @@ plt<-qplot(x = dat1$time, y = dat1$temp, col = as.factor(dat1$activ)) #+ # creat
 # Don't Edit This:
 Header<-str_to_sentence(Header)
 Title0<-paste0(Header, "^[", Footnotes, "]")
-filename00<-paste0(filename0, cnt.chapt.content, "_Fig_",cnt.figures)
+filename00<-paste0(filename0, cnt_chapt_content, "_Fig_",cnt_figures)
 
 if (designflowin %in% T){
-  cnt.chapt.content<-funct_counter(cnt.chapt.content)
+  cnt_chapt_content<-funct_counter(cnt_chapt_content)
   rmarkdown::render(TableFigureHeader, 
                     quiet = T,
                   output_dir = dir.chapters, 
-                  output_file = paste0(filename00,cnt.chapt.content,"_Title.docx"))
+                  output_file = paste0(filename00,cnt_chapt_content,"_Title.docx"))
 }
 ```
 
@@ -134,13 +134,14 @@ if (designflowin %in% T){
 # Don't Edit This:
 
 # Systematically save your plot with this simple function
-plot.list<-SaveGraphs(plot0 = plt, plot.list = plot.list, 
+plot_list<-SaveGraphs(plot0 = plt, plot_list = plot_list, 
            filename0 = filename0, 
            Header = Title0,
-           cnt.chapt.content = cnt.chapt.content, 
-           cnt.figures = cnt.figures, 
+           cnt_chapt_content = cnt_chapt_content, 
+           cnt_figures = cnt_figures, 
            path = NULL, #dir.chapters, 
-           width = 6, height = 6) # but you can change this if you need...
+           width = 6, 
+           height = 6) # but you can change this if you need...
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 

@@ -6,17 +6,18 @@
 \usage{
 buildTM(
   sections = c("frontmatter", "abstract", "introduction", "methods", "results",
-    "discussion", "workscited", "workscitedR"),
+    "discussion", "workscited", "workscitedR", "presentation"),
   support_scripts = c("directories", "functions", "dataDL", "data"),
   authors = "",
   title = "",
-  pptxstylesreference.pptx = "refdoc_NMFS_ppt_template",
-  wordstylesreference.docx = "refdoc_NOAATechMemo.docx",
+  pptxstylesreference.pptx = "refppt_nmfs",
+  wordstylesreference.docx = "refdoc_noaa_tech_memo",
+  bibliography.bib = "bib_example",
   csl = "apa"
 )
 }
 \arguments{
-\item{sections}{a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR"). Note that frontmatter and workcitedR both have specific templates, and all others are from a blank template.}
+\item{sections}{a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR", "presentation"). Note that frontmatter, workcitedR, and presentation both have specific templates, and all others are from a blank template.}
 
 \item{support_scripts}{To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")}
 
@@ -24,9 +25,11 @@ buildTM(
 
 \item{title}{Default = "". Here, put the title of your report.}
 
-\item{pptxstylesreference.pptx}{Default = "refdoc_NMFS_ppt_template". Alternatively, you can add the path here to your own reference pptx. You can also opt out of a powerpoint by setting this parameter to NA.}
+\item{pptxstylesreference.pptx}{A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("nmfs"). Default = "nmfs".}
 
-\item{wordstylesreference.docx}{Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("NOAATechMemo" or "FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"}
+\item{wordstylesreference.docx}{A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo".}
+
+\item{bibliography.bib}{Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example".}
 
 \item{csl}{Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa", "new-phytologist"). A NOAA TM citation style needs to be created, but until then, the default = "apa".}
 }
