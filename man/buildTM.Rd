@@ -17,7 +17,7 @@ buildTM(
 )
 }
 \arguments{
-\item{sections}{a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR", "presentation"). Note that frontmatter, workcitedR, and presentation both have specific templates, and all others are from a blank template.}
+\item{sections}{a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR"). Note that frontmatter and workcitedR both have specific templates, and all others are from a blank template.}
 
 \item{support_scripts}{To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")}
 

@@ -3,7 +3,7 @@
 
 #' Build your intitial architecture for your new NOAA Tech Memo or Report
 #'
-#' @param sections a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR", "presentation"). Note that frontmatter, workcitedR, and presentation both have specific templates, and all others are from a blank template. 
+#' @param sections a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR"). Note that frontmatter and workcitedR both have specific templates, and all others are from a blank template. 
 #' @param support_scripts To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")
 #' @param authors Default = "". Here, add your First Lastname (email). 
 #' @param title Default = "". Here, put the title of your report. 
@@ -23,7 +23,7 @@ buildTM<-function(sections = c("frontmatter",
                                "discussion", 
                                "workscited", 
                                "workscitedR", 
-                               "presentation"), 
+                               "presentation"),  
                   support_scripts = c("directories", 
                                       "functions", 
                                       "dataDL", 
@@ -61,17 +61,17 @@ buildTM<-function(sections = c("frontmatter",
                      a[which(temp %in% b[i])], 
                      "0_blank.Rmd")
     
-    copyto <- paste0(counter,"_",b[i], ".Rmd")
+    copyto <- paste0("./code/", counter,"_",b[i], ".Rmd")
     
     counter<-NMFSReports::auto_counter(counter)
     
     file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-              to = paste0("./code/", copyto), 
+              to = copyto, 
               overwrite = T)
     
     if (copyfrom %in% "0_blank.Rmd") {
       
-      rfile <- base::readLines(paste0("./code/", copyto))
+      rfile <- base::readLines(paste0(copyto))
       
       rfile <- gsub(pattern = "SECTION_TITLE", 
                     replacement = NMFSReports::TitleCase(b[i]), 
@@ -140,6 +140,7 @@ buildTM<-function(sections = c("frontmatter",
     
     b[i]<-dplyr::case_when(grepl(pattern = "refdoc", x = b[i]) ~ paste0(b[i], ".docx"), 
                            grepl(pattern = "refppt", x = b[i]) ~ paste0(b[i], ".pptx"), 
+                           grepl(pattern = "bib_", x = b[i]) ~ paste0(b[i], ".bib"), 
                            TRUE ~ b[i])
     
     if (system.file("rmd", b[i], package="NMFSReports") != "") { # is a file from the package
@@ -250,7 +251,6 @@ buildTM<-function(sections = c("frontmatter",
   # done!
   
 }
-
 
 ########## SEARCH STUFF ############
 
