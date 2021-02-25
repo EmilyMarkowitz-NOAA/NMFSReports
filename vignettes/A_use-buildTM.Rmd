@@ -93,19 +93,18 @@ support_scripts <-
 `wordstylesreference.docx` is a document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("refdoc_NOAATechMemo" or "refdoc_FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"
 
 ```{r}
-wordstylesreference.docx = "NOAATechMemo"
 
 ```
 
 Here's what they look like: 
 
-### NOAATechMemo
+### refdoc_noaa_tech_memo
 
-![NOAATechMemo](../man/figures/NOAATechMemo.JPG)
+![refdoc_noaa_tech_memo](../man/figures/NOAATechMemo.JPG)
 
-### FisheriesEconomicsOfTheUS
+### refdoc_fisheries_economics_of_the_us
 
-![FisheriesEconomicsOfTheUS](../man/figures/FisheriesEconomicsOfTheUS.JPG)
+![refdoc_fisheries_economics_of_the_us](../man/figures/FisheriesEconomicsOfTheUS.JPG)
 
 ## csl
 
@@ -127,7 +126,10 @@ Now, magic! Now for the sake of the vignette, I can't actually run it here, but 
 NMFSReports::buildTM(
   sections,
   support_scripts,
-  wordstylesreference.docx,
+        stylesreference_pptx = "refppt_nmfs", 
+        stylesreference_docx = "refdoc_noaa_tech_memo", 
+          bibliography.bib = "bib_example",
+
   csl
   )
 ```

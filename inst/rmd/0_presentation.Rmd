@@ -6,7 +6,7 @@ bibliography: bibliography.bib
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   powerpoint_presentation:
-    reference_doc: pptx_styles_reference.pptx
+    reference_doc: styles_reference.pptx
 ---
 
 ```{r setup, include=FALSE}

@@ -7,8 +7,8 @@
 #' @param support_scripts To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")
 #' @param authors Default = "". Here, add your First Lastname (email). 
 #' @param title Default = "". Here, put the title of your report. 
-#' @param pptxstylesreference.pptx A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("nmfs"). Default = "nmfs". 
-#' @param wordstylesreference.docx A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo". 
+#' @param styles_reference_pptx A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("nmfs"). Default = "nmfs". 
+#' @param styles_reference_docx A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo". 
 #' @param bibliography.bib Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example". 
 #' @param csl Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa", "new-phytologist"). A NOAA TM citation style needs to be created, but until then, the default = "apa".
 #' @export
@@ -30,8 +30,8 @@ buildTM<-function(sections = c("frontmatter",
                                       "data"), 
                   authors = "",
                   title = "", 
-                  pptxstylesreference.pptx = "refppt_nmfs", 
-                  wordstylesreference.docx = "refdoc_noaa_tech_memo", 
+                  styles_reference_pptx = "refppt_nmfs", 
+                  styles_reference_docx = "refdoc_noaa_tech_memo", 
                   bibliography.bib = "bib_example",
                   csl = "apa"){
   
@@ -78,7 +78,7 @@ buildTM<-function(sections = c("frontmatter",
                     x = rfile)
       
       utils::write.table(x = rfile, 
-                         file = paste0("./code/", copyto), 
+                         file = copyto, 
                          row.names = FALSE, 
                          col.names = FALSE, 
                          quote = FALSE)
@@ -130,8 +130,8 @@ buildTM<-function(sections = c("frontmatter",
   
   ################## other content
   b<-c("header.yaml", 
-       wordstylesreference.docx, 
-       pptxstylesreference.pptx, 
+       styles_reference_docx, 
+       styles_reference_pptx, 
        csl, 
        "TableFigureHeader.Rmd", 
        bibliography.bib) # bib_example
@@ -151,9 +151,12 @@ buildTM<-function(sections = c("frontmatter",
       copyfrom <- b[i]    
     } 
     
-    copyto <- dplyr::case_when(b[i] == wordstylesreference.docx ~ "./code/word_styles_reference.docx",
-                               b[i] == pptxstylesreference.pptx ~ "./code/pptx_styles_reference.pptx", 
-                               b[i] == bibliography.bib ~ "./code/bibliography.bib",
+    copyto <- dplyr::case_when(b[i] == paste0(styles_reference_docx, ".docx") ~ 
+                                 "./code/styles_reference.docx",
+                               b[i] == paste0(styles_reference_pptx, ".pptx") ~ 
+                                 "./code/styles_reference.pptx", 
+                               b[i] == paste0(bibliography.bib, ".bib") ~ 
+                                 "./code/bibliography.bib",
                                b[i] == csl ~ "./cit/cit.csl", 
                                TRUE ~ paste0("./code/", b[i]))
     file.copy(from = copyfrom, 
@@ -206,7 +209,7 @@ buildTM<-function(sections = c("frontmatter",
   
   # INSERT_POWERPOINT
   # only if there is a reference type specified
-  a<-dplyr::if_else(is.na(pptxstylesreference.pptx), 
+  a<-dplyr::if_else(is.na(styles_reference_pptx), 
                     "", 
                     paste(paste0('
   ############# ', sections_no,' - ', sections,' ####################
@@ -251,6 +254,7 @@ buildTM<-function(sections = c("frontmatter",
   # done!
   
 }
+
 
 
 ########## SEARCH STUFF ############
