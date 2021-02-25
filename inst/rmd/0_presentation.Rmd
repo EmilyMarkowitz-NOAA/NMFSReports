@@ -2,11 +2,11 @@
 title: "`r report_title`"
 author: "`r report_authors`"
 csl: "../cit/cit.csl"
-bibliography: "../data/bibliography.bib"
+bibliography: bibliography.bib
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   powerpoint_presentation:
-    reference_doc: NOAAFisheriesPowerPointTemplate.pptx
+    reference_doc: pptx_styles_reference.pptx
 ---
 
 ```{r setup, include=FALSE}

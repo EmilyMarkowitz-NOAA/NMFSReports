@@ -41,7 +41,7 @@ TableFigureHeader<-paste0(dir_code, "TableFigureHeader.Rmd")
 
 options("citation_format" = "pandoc")
 
-#######SAVE ALL R FILES USED###########
+#######SAVE ALL R FILES USED FOR EACH RUN###########
 listfiles<-list.files(path = dir_code) 
 listfiles0<-c(listfiles[grepl(pattern = "\\.r", 
                               x = listfiles, ignore.case = T)], 
@@ -56,13 +56,7 @@ for (i in 1:length(listfiles0)){
 }
 
 
-# #######REFERENCE WORD DOCUMENT###########
-# file.copy(from = paste0(dir_code, refdoc),
-#           to = paste0(dir_code, "word-styles-reference.docx"),
-#           overwrite = TRUE)
-# 
-# #######CITATION STYLE###########
-# file.copy(from = paste0(here(), "/cit/", cls),
-#           to = paste0(here(), "/cit/", "cit.csl"),
-#           overwrite = TRUE)
+#######REFERENCE WORD DOCUMENT###########
+
+#######CITATION STYLE###########
 options("citation_format" = "pandoc")

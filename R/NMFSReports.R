@@ -1,14 +1,18 @@
 
 ############ BUILD THE TM #################
 
+
+############ BUILD THE TM #################
+
 #' Build your intitial architecture for your new NOAA Tech Memo or Report
 #'
 #' @param sections a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR"). Note that frontmatter and workcitedR both have specific templates, and all others are from a blank template. 
 #' @param support_scripts To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")
 #' @param authors Default = "". Here, add your First Lastname (email). 
 #' @param title Default = "". Here, put the title of your report. 
-#' @param pptxstylesreference.pptx Default = "refdoc_NMFS_ppt_template". Alternatively, you can add the path here to your own reference pptx. You can also opt out of a powerpoint by setting this parameter to NA. 
-#' @param wordstylesreference.docx Document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("NOAATechMemo" or "FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"
+#' @param pptxstylesreference.pptx A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("nmfs"). Default = "nmfs". 
+#' @param wordstylesreference.docx A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo". 
+#' @param bibliography.bib Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example". 
 #' @param csl Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa", "new-phytologist"). A NOAA TM citation style needs to be created, but until then, the default = "apa".
 #' @export
 #' @examples 
@@ -28,8 +32,9 @@ buildTM<-function(sections = c("frontmatter",
                                       "data"), 
                   authors = "",
                   title = "", 
-                  pptxstylesreference.pptx = "refdoc_NMFS_ppt_template", 
-                  wordstylesreference.docx = "refdoc_NOAATechMemo.docx", 
+                  pptxstylesreference.pptx = "refppt_nmfs", 
+                  wordstylesreference.docx = "refdoc_noaa_tech_memo", 
+                  bibliography.bib = "bib_example",
                   csl = "apa"){
   
   ##################  Create Architecture
@@ -45,59 +50,81 @@ buildTM<-function(sections = c("frontmatter",
   
   ################## RMD scripts
   a<-list.files(path = system.file("rmd", package="NMFSReports"), pattern = "0_")
-  b<-c(sections, "example") # TOLEDO
+  b<-c("example", sections) 
   counter<-NMFSReports::numbers0(x = c(0, length(b)))[1]
-  for (i in 1:length(b)){
-    temp<-gsub(pattern = "\\.Rmd", replacement = "", 
-               x = gsub(pattern = "0_", replacement = "", x = a, ignore.case = T))
-    if (sum(temp %in% b[i]) == 1) {
-      copyfrom<-a[which(temp %in% b[i])]
-    } else {
-      copyfrom<-"0_blank.Rmd"
-    }
-    counter<-NMFSReports::auto_counter(counter)
-    file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-              to = paste0("./code/", counter,"_",b[i], ".Rmd"), 
-              overwrite = T)
-  }
+  temp<-gsub(pattern = "\\.Rmd", replacement = "", 
+             x = gsub(pattern = "0_", replacement = "", 
+                      x = a, 
+                      ignore.case = T))
   
+  for (i in 1:length(b)){
+    
+    copyfrom<-ifelse((sum(temp %in% b[i]) == 1), 
+                     a[which(temp %in% b[i])], 
+                     "0_blank.Rmd")
+    
+    copyto <- paste0(counter,"_",b[i], ".Rmd")
+    
+    counter<-NMFSReports::auto_counter(counter)
+    
+    file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
+              to = paste0("./code/", copyto), 
+              overwrite = T)
+    
+    if (copyfrom %in% "0_blank.Rmd") {
+      
+      rfile <- base::readLines(paste0("./code/", copyto))
+      
+      rfile <- gsub(pattern = "SECTION_TITLE", 
+                    replacement = NMFSReports::TitleCase(b[i]), 
+                    x = rfile)
+      
+      utils::write.table(x = rfile, 
+                         file = paste0("./code/", copyto), 
+                         row.names = FALSE, 
+                         col.names = FALSE, 
+                         quote = FALSE)
+    }
+  }
   
   ################## R scripts
   a<-list.files(path = system.file("rmd", package="NMFSReports"), pattern = "1_")
   b<-support_scripts
   for (i in 1:length(b)){
+    
     temp<-gsub(pattern = "\\.R", replacement = "", 
-               x = gsub(pattern = "1_", replacement = "", x = a, ignore.case = T))
-    if (sum(temp %in% b[i]) == 1) {
-      copyfrom<-a[which(temp %in% b[i])]
-    } else {
-      copyfrom<-"1_blank.Rmd"
-    }
+               x = gsub(pattern = "1_", replacement = "", 
+                        x = a, 
+                        ignore.case = T))
+    
+    copyfrom <- ifelse((sum(temp %in% b[i]) == 1), 
+                       a[which(temp %in% b[i])], 
+                       "1_blank.R")
+    
+    copyto <- paste0("./code/", b[i], ".R")
     
     file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-              to = paste0("./code/0_", b[i], ".R"), 
+              to = copyto, 
               overwrite = T)
     
-    
-    
-    rfile <- base::readLines(paste0("./code/0_", b[i], ".R"))
+    rfile <- base::readLines(copyto)
     
     rfile <- gsub(pattern = "# INSERT_REPORT_TITLE", 
-                replacement = ifelse(title %in% "", "''", 
-                                     paste0("'", title, "'")), 
-                x = rfile)
+                  replacement = ifelse(title %in% "", "''", 
+                                       paste0("'", title, "'")), 
+                  x = rfile)
     
     rfile <- gsub(pattern = "# INSERT_AUTHOR", 
-                replacement = ifelse(authors %in% "", "''", 
-                                     paste0("'", authors, "'")), 
-                x = rfile)
+                  replacement = ifelse(authors %in% "", "''", 
+                                       paste0("'", authors, "'")), 
+                  x = rfile)
     
-    rfile<-gsub(pattern = "# YYYY-MM", 
+    rfile<-gsub(pattern = "# YYYY-MM-DD", 
                 replacement = Sys.Date(), 
                 x = rfile)
     
     utils::write.table(x = rfile, 
-                       file = paste0("./code/0_", b[i], ".R"), 
+                       file = copyto, 
                        row.names = FALSE, 
                        col.names = FALSE, 
                        quote = FALSE)
@@ -106,76 +133,33 @@ buildTM<-function(sections = c("frontmatter",
   ################## other content
   b<-c("header.yaml", 
        wordstylesreference.docx, 
+       pptxstylesreference.pptx, 
+       csl, 
        "TableFigureHeader.Rmd", 
-       "bibliography.bib")
+       bibliography.bib) # bib_example
+  
   for (i in 1:length(b)){
-    copyfrom <- b[i]
-    copyto <- dplyr::case_when(b[i] == wordstylesreference.docx ~ "word-styles-reference.docx",
-                               TRUE ~ b[i])
-    file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-              to = paste0("./code/", copyto), 
+    
+    b[i]<-dplyr::case_when(grepl(pattern = "refdoc", x = b[i]) ~ paste0(b[i], ".docx"), 
+                           grepl(pattern = "refppt", x = b[i]) ~ paste0(b[i], ".pptx"), 
+                           TRUE ~ b[i])
+    
+    if (system.file("rmd", b[i], package="NMFSReports") != "") { # is a file from the package
+      copyfrom <- system.file("rmd", b[i], package="NMFSReports")
+    } else if (system.file("cit", paste0(b[i], ".csl"), package="NMFSReports") != "") {
+      copyfrom <- system.file("cit", paste0(b[i], ".csl"), package="NMFSReports")
+    } else if (dir.exists(dirname(b[i]))) { # is a local path
+      copyfrom <- b[i]    
+    } 
+    
+    copyto <- dplyr::case_when(b[i] == wordstylesreference.docx ~ "./code/word_styles_reference.docx",
+                               b[i] == pptxstylesreference.pptx ~ "./code/pptx_styles_reference.pptx", 
+                               b[i] == bibliography.bib ~ "./code/bibliography.bib",
+                               b[i] == csl ~ "./cit/cit.csl", 
+                               TRUE ~ paste0("./code/", b[i]))
+    file.copy(from = copyfrom, 
+              to = copyto, 
               overwrite = T)
-  }
-  
-  # pptxstylesreference.pptx
-  # if the user wants to use their own reference document
-  if (!(pptxstylesreference.pptx %in% c("refdoc_NMFS_ppt_template"))) {
-    if (dir.exists(dirname(pptxstylesreference.pptx))) {
-      file.copy(from = pptxstylesreference.pptx, 
-                to = paste0("./code/pptx-styles-reference.docx"), 
-                overwrite = T)    
-    }
-    # if the user wants to use one of the package's reference documents
-  } else {
-    copyfrom <- b<-paste0("refdoc_", wordstylesreference.docx, ".pptx")
-    for (i in 1:length(b)){
-      file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-                to = paste0("./code/word-styles-reference.docx"), 
-                overwrite = T)
-    }
-  }  
-  
-  # wordstylesreference.docx
-  # if the user wants to use their own reference document
-  if (!(wordstylesreference.docx %in% c("NOAATechMemo", "FisheriesEconomicsOfTheUS"))) {
-    if (dir.exists(dirname(wordstylesreference.docx))) {
-      file.copy(from = wordstylesreference.docx, 
-                to = paste0("./code/word-styles-reference.docx"), 
-                overwrite = T)    
-    }
-    # if the user wants to use one of the package's reference documents
-  } else {
-    copyfrom <- b<-paste0("refdoc_", wordstylesreference.docx, ".docx")
-    for (i in 1:length(b)){
-      file.copy(from = system.file("rmd", copyfrom, package="NMFSReports"), 
-                to = paste0("./code/word-styles-reference.docx"), 
-                overwrite = T)
-    }
-  }
-  
-  # csl
-  # if the user wants to use their own csl
-  
-  if (!(wordstylesreference.docx %in% 
-        gsub(pattern = "\\.csl", 
-             replacement = "", 
-             x = list.files(system.file("cit", 
-                                        package="NMFSReports"), 
-                            pattern = ".csl")))) {
-    if (dir.exists(dirname(wordstylesreference.docx))) {
-      file.copy(from = wordstylesreference.docx, 
-                to = paste0("./cit/cit.csl"), 
-                overwrite = T)    
-    }
-    # if the user wants to use one of the package's reference documents
-  } else {
-    copyfrom <- b <-paste0(csl, ".csl")
-    # for (i in 1:length(b)){
-      file.copy(from = system.file("cit", copyfrom, 
-                                   package="NMFSReports"), 
-                to = paste0("./cit/cit.csl"), 
-                overwrite = T)
-    # }
   }
   
   ################## images
@@ -186,17 +170,6 @@ buildTM<-function(sections = c("frontmatter",
               to = paste0("./img/", a[i]), 
               overwrite = T)
   }
-  
-  
-  ################## citation styles
-  # Load those folders with stuff you care about
-  # a<-list.files(path = system.file("cit", package="NMFSReports"))
-  # for (i in 1:length(a)){
-    file.copy(from = system.file(paste0("cit/", csl, ".csl"),
-                                 package="NMFSReports"),
-              to = paste0("./cit/cit.csl"),
-              overwrite = T)
-  # }
   
   ################## Write run.R
   run0 <- base::readLines(system.file("rmd","run.R", 
@@ -251,8 +224,8 @@ buildTM<-function(sections = c("frontmatter",
   run0<-gsub(pattern = "# INSERT_POWERPOINT", 
              replacement = a, 
              x = run0)
-
-
+  
+  
   # OTHER CONTENT  
   run0<-gsub(pattern = "# INSERT_REPORT_TITLE", 
              replacement = ifelse(title %in% "", "''", 
@@ -279,7 +252,6 @@ buildTM<-function(sections = c("frontmatter",
   # done!
   
 }
-
 
 
 ########## SEARCH STUFF ############
