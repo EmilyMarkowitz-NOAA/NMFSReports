@@ -1,0 +1,26 @@
+---
+title: "D_explore_layout"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{D_explore_layout}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(NMFSReports)
+```
+
+`r xunits(value = c(12))`
+
+`r xunits(value = c(123456))`
+
+`r xunits(value = c(123456789))`
+

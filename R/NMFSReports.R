@@ -966,9 +966,9 @@ xunitspct<-function(value, sign = TRUE) {
 #' df <- data.frame(char = c('a','b','c'),
 #'                  num = c(1,2,3))
 #'                  
-#' # format_cells(df, 1, 1, "italics")
-#' # format_cells(df, 2, 2, "bold") 
-#' # format_cells(df, 3, 1:2, "strikethrough") 
+#' format_cells(df, 1, 1, "italics")
+#' format_cells(df, 2, 2, "bold") 
+#' format_cells(df, 3, 1:2, "strikethrough") 
 #' 
 # # not run:
 # # library(knitr)

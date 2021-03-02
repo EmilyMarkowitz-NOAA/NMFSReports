@@ -1,9 +1,8 @@
 ---
-title: "C_functions-to-help-write-report"
+title: "Functions in Action to Help You Write Your Report"
 author: Emily Markowitz (Emily.Markowitz AT NOAA.gov / EmilyMarkowitz-NOAA)
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
-output: 
-  html_document
+output: rmarkdown::html_vignette
 csl: "../inst/cit/apa.csl"
 bibliography: "../inst/rmd/bib_example.bib"
 vignette: >
@@ -13,11 +12,14 @@ vignette: >
 ---
 
 ```{r, setup, include = FALSE}
-# Functions in Action to Help You Write Your Report
+
+# 3: The vignette title specified in \VignetteIndexEntry{} is different from the title in the YAML metadata. The former is "C_functions-to-help-write-report", and the latter is "Functions in Action to Help You Write Your Report". If that is intentional, you may set options(rmarkdown.html_vignette.check_title = FALSE) to suppress this check. 
+
 knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, 
   collapse = TRUE,
   comment = "#>"
 )
+options(rmarkdown.html_vignette.check_title = FALSE)
 
 TF<-FALSE
 
