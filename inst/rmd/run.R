@@ -14,27 +14,27 @@ report_title <- # INSERT_REPORT_TITLE
 report_authors <- # INSERT_AUTHOR
 report_yr <- substr(x = Sys.Date(), start = 1, stop = 4)                # CHANGE
 report_office_location <- ""                                            # CHANGE
-# For example: 
-# "National Oceanic and Atmospheric Administration 
+# For example:
+# "National Oceanic and Atmospheric Administration
 # 1315 East-West Highway [bldg./room]
 # Silver Spring, MD 20910"
-report_office <- ""                                                     # CHANGE 
+report_office <- ""                                                     # CHANGE
 report_num <- "###"                                                     # CHANGE
 report_NOAA_leaders <- "U.S. Department of Commerce
-Wynn Coggins, Acting Secretary  
+Wynn Coggins, Acting Secretary
 
 National Oceanic and Atmospheric Administration
 Benjamin Friedman, Acting NOAA Administrator
- 
+
 National Marine Fisheries Service
 Paul Doremus, Acting Assistant Administrator for Fisheries"
 
 #######***WHAT KIND OF OUTPUT#######
-#Is this for InDesign? 
+#Is this for InDesign?
 indesign_flowin <- FALSE
 
 #######SOURCE SUPPORT SCRIPTS#############
-library(here) # Other functions load in the 0_functions.R 
+library(here) # Other functions load in the 0_functions.R
 
 # INSERT_SUPPORT_SCRIPTS
 
@@ -45,21 +45,13 @@ library(here) # Other functions load in the 0_functions.R
 
 ######MAKE REPORT########
 cnt_chapt <- "000" # Keep everything in a proper order
-plot_list <- c() # This will help us by saving R-ready plots so we can easily go back and edit them if necessary. 
-table_list <- c() # This will help us by saving R-ready tables  so we can easily go back and edit them if necessary. 
+plot_list <- c() # This will help us by saving R-ready plots so we can easily go back and edit them if necessary.
+table_list <- c() # This will help us by saving R-ready tables  so we can easily go back and edit them if necessary.
 cnt_figures <- 0 # This will autoname your figures with consecutive numbers (e.g., Figure 1.)
 cnt_tables <- 0 # This will autoname your tables with consecutive numbers (e.g., Table 1.)
 cnt_equ <- 0
 
 ####### RUN EACH SECTION#############
-
-# ######***EXAMPLE############
-# cnt_chapt<-auto_counter(cnt_chapt) # The order of the chapter in the report
-# cnt_chapt_content<-"001" # The order of the content in the report (e.g., figures, images, tables)
-# filename0<-paste0(cnt_chapt, "_Example_") #Seperated because we'll need it inside the RMarkdown
-# rmarkdown::render(paste0(dir_scripts, "/0_example.Rmd"),
-#                   output_dir = dir_out_chapters,
-#                   output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
 
 
 # INSERT_SECTIONS
@@ -71,10 +63,10 @@ cnt_equ <- 0
 
 ##### SAVE OTHER OUTPUTS#############
 
-save(plot_list, 
+save(plot_list,
      file=paste0(dir_output_todaysrun, "/plots/report_plots.rdata"))
 
-save(table_list, 
+save(table_list,
      file=paste0(dir_output_todaysrun, "/plots/report_tables.rdata"))
 
 ########***MAKE MASTER DOCX################
@@ -84,12 +76,12 @@ save(table_list,
 
 
 ###############***METADATA##################
-# So we can 
-#    1. Go back and recreate this exactly with the libraries you used to create this script and 
+# So we can
+#    1. Go back and recreate this exactly with the libraries you used to create this script and
 #    2. Cite the apropriate versions of the packages you used in your report
 # More info here: https://rstudio.github.io/packrat/walkthrough.html
 
-CreateMetadata(dir_out = paste0(dir_output_todaysrun, "/metadata"), 
+CreateMetadata(dir_out = paste0(dir_output_todaysrun, "/metadata"),
                title = paste0(report_title, " Metadata ", Sys.Date()))
 
 # setwd(paste0(dir_output_todaysrun))

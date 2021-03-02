@@ -1154,7 +1154,7 @@ save_graphs<-function(plot0,
 
   names(plot_list)[names(plot_list) %in% "temp"] <- header
 
-  print(paste0("This figure was saved to ", path, filename00, ".*"))
+  # print(paste0("This figure was saved to ", path, filename00, ".*"))
 
 
   return(plot_list)
@@ -1260,7 +1260,7 @@ save_tables<-function(table_raw = NULL,
 
   names(table_list)[names(table_list) %in% "temp"] <- header
 
-  print(paste0("This table was saved to ", path, filename00, ".*"))
+  # print(paste0("This table was saved to ", path, filename00, ".*"))
 
   return(table_list)
 
