@@ -245,13 +245,24 @@
   <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span>,
   colour <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>col</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># create plot</span>
   <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span>
-<span class='va'>plt_list</span><span class='op'>&lt;-</span><span class='fu'>save_graphs</span><span class='op'>(</span>plot0 <span class='op'>=</span> <span class='va'>plot0</span>,
+<span class='va'>plot_list</span><span class='op'>&lt;-</span><span class='fu'>save_graphs</span><span class='op'>(</span>plot0 <span class='op'>=</span> <span class='va'>plot0</span>,
                       plot_list <span class='op'>=</span> <span class='va'>plot_list</span>,
                       header <span class='op'>=</span> <span class='st'>"example"</span>,
                       footnote <span class='op'>=</span> <span class='st'>"footnote example"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "This figure was saved to x001_fig_1.*"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>plot_list</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='va'>plot_list</span><span class='op'>$</span><span class='va'>plot</span>
-</div><div class='output co'>#&gt; NULL</div></pre>
+</div><div class='output co'>#&gt; [1] "Figure 1. Example."</div><div class='input'><span class='va'>plot_list</span>
+</div><div class='output co'>#&gt; $`Figure 1. Example.`
+#&gt; $`Figure 1. Example.`$plot</div><div class='img'><img src='save_graphs-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
+#&gt; $`Figure 1. Example.`$caption
+#&gt; [1] "Figure 1. Example.^[footnote example]"
+#&gt; 
+#&gt; $`Figure 1. Example.`$header
+#&gt; [1] "Figure 1. Example."
+#&gt; 
+#&gt; $`Figure 1. Example.`$footnote
+#&gt; [1] "footnote example"
+#&gt; 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

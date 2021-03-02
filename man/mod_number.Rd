@@ -11,7 +11,7 @@ mod_number(x, divideby = 1000, comma_seperator = TRUE, digits = 0)
 
 \item{divideby}{The value you want all of your values divided by. Default = 1000.}
 
-\item{comma_seperator}{Do you want numbers to have commas in it ("1,000" (T) vs. "1000" (F). Default = T.}
+\item{comma_seperator}{Do you want numbers to have commas in it ("1,000" (T) vs. "1000" (F). Default = TRUE.}
 
 \item{digits}{How many digits you would like your number to have. Default = 0.}
 }

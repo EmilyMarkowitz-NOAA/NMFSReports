@@ -3,18 +3,37 @@
 
 #' Build your intitial architecture for your new NOAA Tech Memo or Report
 #'
-#' @param sections a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "workscitedR"). Note that frontmatter and workcitedR both have specific templates, and all others are from a blank template.
+#' @param sections a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "endmatter"). Note that "frontmatter" and "endmatter both have specific templates, and all others are from a blank template. "endmatter" will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's O
 #' @param support_scripts To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")
-#' @param authors Default = "". Here, add your First Lastname (email).
+#' @param authors Default = "". Here, add your First Lastname.
 #' @param title Default = "". Here, put the title of your report.
-#' @param styles_reference_pptx A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("nmfs"). Default = "nmfs".
+#' @param styles_reference_pptx A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("refppt_nmfs"). Default = "nmfs".
 #' @param styles_reference_docx A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo".
 #' @param bibliography.bib Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example".
 #' @param csl Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa", "new-phytologist"). A NOAA TM citation style needs to be created, but until then, the default = "apa".
 #' @export
 #' @examples
+#' sections = c("frontmatter", "abstract", "introduction", "methods", "results",
+#'             "discussion", "workscited", "workscitedR", "presentation")
+#' support_scripts = c("directories", "functions", "dataDL", "data")
+#' authors = "Me, Myself, and I"
+#' title = "Awesome Report!"
+#' styles_reference_pptx = "refppt_nmfs"
+#' styles_reference_docx = "refdoc_noaa_tech_memo"
+#' bibliography.bib = "bib_example"
+#' csl = "apa"
+#'
 #' # not run:
-#' # buildTM()
+#' # buildTM(
+#' #   sections = sections,
+#' #   support_scripts = support_scripts,
+#' #   authors = authors,
+#' #   title = title,
+#' #   styles_reference_pptx = styles_reference_pptx,
+#' #   styles_reference_docx = styles_reference_docx,
+#' #   bibliography.bib = bibliography.bib,
+#' #   csl = csl
+#' # )
 buildTM<-function(sections = c("frontmatter",
                                "abstract",
                                "introduction",
@@ -86,8 +105,8 @@ buildTM<-function(sections = c("frontmatter",
   }
 
   ################## R scripts
-  a<-list.files(path = system.file("rmd", package="NMFSReports"), pattern = "1_")
-  b<-support_scripts
+  a <- list.files(path = system.file("rmd", package="NMFSReports"), pattern = "1_")
+  b <- support_scripts
   for (i in 1:length(b)){
 
     temp<-gsub(pattern = "\\.R", replacement = "",
@@ -190,15 +209,17 @@ buildTM<-function(sections = c("frontmatter",
              x = run0)
 
   # INSERT_SECTIONS
-  sections_no<-NMFSReports::auto_counter(1:length(sections))
-
+  b<-c("example", sections)
+  counter<-NMFSReports::numbers0(x = c(0, length(b)))[1]
+  sections_no<-NMFSReports::numbers0(c(0:length(sections), length(b)))
+  sections_no<-sections_no[-length(sections_no)]
 
   a<-paste(paste0('
-  ############# ', sections_no,' - ', NMFSReports::TitleCase(sections),' ####################
+  ############# ', sections_no,' - ', NMFSReports::TitleCase(b),' ####################
   cnt_chapt<-auto_counter(cnt_chapt)
   cnt_chapt_content<-"001"
-  filename0<-paste0(cnt_chapt, "_', sections,'_")
-  rmarkdown::render(paste0(dir_code, "/',sections_no,'_',sections,'.Rmd"),
+  filename0<-paste0(cnt_chapt, "_', b,'_")
+  rmarkdown::render(paste0(dir_code, "/',sections_no,'_',b,'.Rmd"),
                     output_dir = dir_out_chapters,
                     output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
 
@@ -257,6 +278,7 @@ buildTM<-function(sections = c("frontmatter",
   # done!
 
 }
+
 
 
 
@@ -828,7 +850,7 @@ pchange<-function(start, end, ending="", percent_first=TRUE){
 #' Modify numbers.
 #' @param x A numeric.
 #' @param divideby The value you want all of your values divided by. Default = 1000.
-#' @param comma_seperator Do you want numbers to have commas in it ("1,000" (T) vs. "1000" (F). Default = T.
+#' @param comma_seperator Do you want numbers to have commas in it ("1,000" (T) vs. "1000" (F). Default = TRUE.
 #' @param digits How many digits you would like your number to have. Default = 0.
 #' @keywords Modify number
 #' @export
@@ -1077,12 +1099,12 @@ auto_counter<-function(counter0) {
 #'   ggplot(aes(x = x, y = y,
 #'   colour = as.factor(col))) + # create plot
 #'   geom_point()
-#' plt_list<-save_graphs(plot0 = plot0,
+#' plot_list<-save_graphs(plot0 = plot0,
 #'                       plot_list = plot_list,
 #'                       header = "example",
 #'                       footnote = "footnote example")
 #' names(plot_list)
-#' plot_list$plot
+#' plot_list
 save_graphs<-function(plot0,
                      plot_list,
                      header = "",

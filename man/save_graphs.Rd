@@ -65,10 +65,10 @@ plot0<- dat \%>\%
   ggplot(aes(x = x, y = y,
   colour = as.factor(col))) + # create plot
   geom_point()
-plt_list<-save_graphs(plot0 = plot0,
+plot_list<-save_graphs(plot0 = plot0,
                       plot_list = plot_list,
                       header = "example",
                       footnote = "footnote example")
 names(plot_list)
-plot_list$plot
+plot_list
 }
