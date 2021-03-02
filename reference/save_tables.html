@@ -227,44 +227,44 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Select data and make plot</span>
-<span class='va'>table_raw</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>, 
-                      y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>, 
-                      col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep_len</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span><span class='op'>)</span>, length.out <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span> 
+<span class='va'>table_raw</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
+                      y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
+                      col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep_len</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span><span class='op'>)</span>, length.out <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>table_print</span> <span class='op'>&lt;-</span> <span class='va'>table_raw</span>
-<span class='va'>table_print</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"y"</span><span class='op'>)</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'>NMFSReports</span><span class='fu'>::</span><span class='fu'><a href='mod_number.html'>mod_number</a></span><span class='op'>(</span><span class='va'>table_print</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"y"</span><span class='op'>)</span><span class='op'>]</span>, 
-                                                     divideby <span class='op'>=</span> <span class='fl'>1</span>, 
-                                                     comma_seperator <span class='op'>=</span> <span class='cn'>TRUE</span>, 
+<span class='va'>table_print</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"y"</span><span class='op'>)</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'>NMFSReports</span><span class='fu'>::</span><span class='fu'><a href='mod_number.html'>mod_number</a></span><span class='op'>(</span><span class='va'>table_print</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"y"</span><span class='op'>)</span><span class='op'>]</span>,
+                                                     divideby <span class='op'>=</span> <span class='fl'>1</span>,
+                                                     comma_seperator <span class='op'>=</span> <span class='cn'>TRUE</span>,
                                                      digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-<span class='fu'>save_tables</span><span class='op'>(</span>table_raw <span class='op'>=</span> <span class='va'>table_raw</span>, 
-           table_print<span class='op'>=</span><span class='va'>table_print</span>, 
-           header <span class='op'>=</span> <span class='st'>"Here is a table!"</span>, 
+<span class='fu'>save_tables</span><span class='op'>(</span>table_raw <span class='op'>=</span> <span class='va'>table_raw</span>,
+           table_print<span class='op'>=</span><span class='va'>table_print</span>,
+           header <span class='op'>=</span> <span class='st'>"Here is a table!"</span>,
            footnote <span class='op'>=</span> <span class='st'>"A footnote for this table!"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "This table was saved to x001_tab_1.*"</div><div class='output co'>#&gt; $`Table 1. Here is a table!`
 #&gt; $`Table 1. Here is a table!`$raw
-#&gt;              x          y col
-#&gt; 1   0.46815442  0.9353632   a
-#&gt; 2   0.36295126  0.1764886   b
-#&gt; 3  -1.30454355  0.2436855   a
-#&gt; 4   0.73777632  1.6235489   b
-#&gt; 5   1.88850493  0.1120381   a
-#&gt; 6  -0.09744510 -0.1339970   a
-#&gt; 7  -0.93584735 -1.9100875   b
-#&gt; 8  -0.01595031 -0.2792372   a
-#&gt; 9  -0.82678895 -0.3134460   b
-#&gt; 10 -1.51239965  1.0673079   a
+#&gt;              x           y col
+#&gt; 1   0.07003485  0.86208648   a
+#&gt; 2  -0.63912332 -0.24323674   b
+#&gt; 3  -0.04996490 -0.20608719   a
+#&gt; 4  -0.25148344  0.01917759   b
+#&gt; 5   0.44479712  0.02956075   a
+#&gt; 6   2.75541758  0.54982754   a
+#&gt; 7   0.04653138 -2.27411486   b
+#&gt; 8   0.57770907  2.68255718   a
+#&gt; 9   0.11819487 -0.36122126   b
+#&gt; 10 -1.91172049  0.21335575   a
 #&gt; 
 #&gt; $`Table 1. Here is a table!`$print
-#&gt;         x     y col
-#&gt; 1    0.47  0.94   a
-#&gt; 2    0.36  0.18   b
-#&gt; 3    -1.3  0.24   a
-#&gt; 4    0.74   1.6   b
-#&gt; 5     1.9  0.11   a
-#&gt; 6  -0.097 -0.13   a
-#&gt; 7   -0.94  -1.9   b
-#&gt; 8  -0.016 -0.28   a
-#&gt; 9   -0.83 -0.31   b
-#&gt; 10   -1.5   1.1   a
+#&gt;        x     y col
+#&gt; 1   0.07  0.86   a
+#&gt; 2  -0.64 -0.24   b
+#&gt; 3  -0.05 -0.21   a
+#&gt; 4  -0.25 0.019   b
+#&gt; 5   0.44  0.03   a
+#&gt; 6    2.8  0.55   a
+#&gt; 7  0.047  -2.3   b
+#&gt; 8   0.58   2.7   a
+#&gt; 9   0.12 -0.36   b
+#&gt; 10  -1.9  0.21   a
 #&gt; 
 #&gt; $`Table 1. Here is a table!`$caption
 #&gt; [1] "Table 1. Here is a table!^[A footnote for this table!]"

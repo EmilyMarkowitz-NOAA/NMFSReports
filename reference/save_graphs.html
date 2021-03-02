@@ -234,21 +234,24 @@
     <p>plot_list updated with the new plot and metadata.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>plot0</span><span class='op'>&lt;-</span><span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='fl'>1</span>,y<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>
-<span class='va'>plot_list</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'>save_graphs</span><span class='op'>(</span>plot0 <span class='op'>=</span> <span class='va'>plot0</span>, plot_list <span class='op'>=</span> <span class='va'>plot_list</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "This figure was saved to x001_fig_1.*"</div><div class='output co'>#&gt; $`Figure 1. .`
-#&gt; $`Figure 1. .`$plot</div><div class='img'><img src='save_graphs-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
-#&gt; $`Figure 1. .`$caption
-#&gt; [1] "Figure 1. ."
-#&gt; 
-#&gt; $`Figure 1. .`$header
-#&gt; [1] "Figure 1. ."
-#&gt; 
-#&gt; $`Figure 1. .`$footnote
-#&gt; [1] ""
-#&gt; 
-#&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='va'>plot_list</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
+                  y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
+                  col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep_len</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span><span class='op'>)</span>,
+                                length.out <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
+<span class='co'># Select data and make plot</span>
+<span class='va'>plot0</span><span class='op'>&lt;-</span>
+<span class='va'>plot0</span><span class='op'>&lt;-</span> <span class='va'>dat</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span>,
+  colour <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>col</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># create plot</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in ggplot(., aes(x = x, y = y, colour = as.factor(col))): could not find function "ggplot"</span></div><div class='input'><span class='va'>plt_list</span><span class='op'>&lt;-</span><span class='fu'>save_graphs</span><span class='op'>(</span>plot0 <span class='op'>=</span> <span class='va'>plot0</span>,
+                      plot_list <span class='op'>=</span> <span class='va'>plot_list</span>,
+                      header <span class='op'>=</span> <span class='st'>"example"</span>,
+                      footnote <span class='op'>=</span> <span class='st'>"footnote example"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in save_graphs(plot0 = plot0, plot_list = plot_list, header = "example",     footnote = "footnote example"): object 'plot0' not found</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>plot_list</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='va'>plot_list</span><span class='op'>$</span><span class='va'>plot</span>
+</div><div class='output co'>#&gt; NULL</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
