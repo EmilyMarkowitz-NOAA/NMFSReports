@@ -1,4 +1,6 @@
 
+# https://pkgdown.r-lib.org/reference/build_site.html
+
 ########### Document Package ############
 
 Sys.setenv('PATH' = paste0('C:/Program Files/qpdf-10.0.1/bin;', Sys.getenv('PATH')))
@@ -23,6 +25,7 @@ library(pkgdown)
 # pkgdown::build_favicons()
 usethis::use_pkgdown(config_file = "./pkgdown/_pkgdown.yml")
 pkgdown::build_site(pkg = here())
+usethis::use_github_action("pkgdown")
 
 ########### Submit to CRAN ############
 
