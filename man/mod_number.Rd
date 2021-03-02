@@ -2,7 +2,7 @@
 % Please edit documentation in R/NMFSReports.R
 \name{mod_number}
 \alias{mod_number}
-\title{Modify number.}
+\title{Modify numbers.}
 \usage{
 mod_number(x, divideby = 1000, comma_seperator = TRUE, digits = 0)
 }
@@ -16,16 +16,17 @@ mod_number(x, divideby = 1000, comma_seperator = TRUE, digits = 0)
 \item{digits}{How many digits you would like your number to have. Default = 0.}
 }
 \description{
-Modify number.
+Modify numbers.
 }
 \examples{
-mod_number(x = data.frame(matrix(data = c(20000678660, 234567, 1, NA, 2345, 23), 
-       ncol = 2)))
-mod_number(x = data.frame(matrix(data = c(20000678660, 234567, 1, NA, 2345, 23), 
-                             ncol = 2)), 
+x = data.frame(matrix(data = c(20000678660, 234567, 1, NA, 2345, 23),
+       ncol = 2))
+mod_number(x)
+mod_number(x,
        comma_seperator = FALSE)
-mod_number(x = data.frame(matrix(data = c(200000, 234567, 1, NA, 2345, 23))), 
-       divideby = 1, 
+x = data.frame(matrix(data = c(200000, 234567, 1, NA, 2345, 23)))
+mod_number(x,
+       divideby = 1,
        digits = 2)
 }
 \keyword{Modify}

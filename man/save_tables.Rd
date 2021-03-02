@@ -49,16 +49,16 @@ Systematically save your report tables for your report
 }
 \examples{
 # Select data and make plot
-table_raw<-data.frame(x = rnorm(n = 10), 
-                      y = rnorm(n = 10), 
-                      col = rep_len(x = c("a", "b"), length.out = 5)) 
+table_raw<-data.frame(x = rnorm(n = 10),
+                      y = rnorm(n = 10),
+                      col = rep_len(x = c("a", "b"), length.out = 5))
 table_print <- table_raw
-table_print[,c("x", "y")] <- NMFSReports::mod_number(table_print[,c("x", "y")], 
-                                                     divideby = 1, 
-                                                     comma_seperator = TRUE, 
+table_print[,c("x", "y")] <- NMFSReports::mod_number(table_print[,c("x", "y")],
+                                                     divideby = 1,
+                                                     comma_seperator = TRUE,
                                                      digits = 2)
-save_tables(table_raw = table_raw, 
-           table_print=table_print, 
-           header = "Here is a table!", 
+save_tables(table_raw = table_raw,
+           table_print=table_print,
+           header = "Here is a table!",
            footnote = "A footnote for this table!")
 }

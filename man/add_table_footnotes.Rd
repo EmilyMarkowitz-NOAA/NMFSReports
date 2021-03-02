@@ -36,29 +36,29 @@ The table "tab" with the footnotes inserted into the table.
 Add footnotes within your tables in a smart way
 }
 \examples{
-table<-data.frame(col = LETTERS[1:10], 
-                      x = rnorm(n = 10), 
-                      y = rnorm(n = 10), 
-                      footnotes = NA) 
+table<-data.frame(col = LETTERS[1:10],
+                      x = rnorm(n = 10),
+                      y = rnorm(n = 10),
+                      footnotes = NA)
 table$footnotes[3]<-"Example footnote in a table 1."
 table$footnotes[4]<-"Example footnote in a table 2.&&&Example footnote in a table 3."
-table[,c("x", "y")] <- NMFSReports::mod_number(table[,c("x", "y")], 
-                                                     divideby = 1, #' 
-                                                     comma_seperator = TRUE, 
+table[,c("x", "y")] <- NMFSReports::mod_number(table[,c("x", "y")],
+                                                     divideby = 1, #'
+                                                     comma_seperator = TRUE,
                                                      digits = 2)
 # Here, add footnotes from the "footnotes" column to the content in the first column where necessary
-table <- add_table_footnotes(tab = table, 
+table <- add_table_footnotes(tab = table,
                                    from_col = "footnotes", # either use the name of the column
                                    to_col = 1) # or the number of that column in that table
 # Here, add a specific footnote to a specific place in the table
-table <- add_table_footnotes(tab = table, 
-                                   footnote = "Example footnote in a table 4.", 
-                                   to_row = 2, 
+table <- add_table_footnotes(tab = table,
+                                   footnote = "Example footnote in a table 4.",
+                                   to_row = 2,
                                    to_col = 2)
-table <- add_table_footnotes(tab = table, 
-                                   footnote = c("Example footnote in a table 5.", 
-                                                "Example footnote in a table 6."), 
-                                   to_row = 4, 
+table <- add_table_footnotes(tab = table,
+                                   footnote = c("Example footnote in a table 5.",
+                                                "Example footnote in a table 6."),
+                                   to_row = 4,
                                    to_col = 2)
-table
+knitr::kable(table)
 }

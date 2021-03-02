@@ -54,7 +54,21 @@ plot_list updated with the new plot and metadata.
 Systematically save your ggplot figure for your report
 }
 \examples{
-plot0<-ggplot2::ggplot(x=1,y=1)
 plot_list<-c()
-save_graphs(plot0 = plot0, plot_list = plot_list)
+dat <- data.frame(x = rnorm(n = 10),
+                  y = rnorm(n = 10),
+                  col = rep_len(x = c("a", "b"),
+                                length.out = 5))
+# Select data and make plot
+plot0<-
+plot0<- dat \%>\%
+  ggplot(aes(x = x, y = y,
+  colour = as.factor(col))) + # create plot
+  geom_point()
+plt_list<-save_graphs(plot0 = plot0,
+                      plot_list = plot_list,
+                      header = "example",
+                      footnote = "footnote example")
+names(plot_list)
+plot_list$plot
 }

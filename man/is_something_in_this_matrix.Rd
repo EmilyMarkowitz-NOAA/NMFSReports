@@ -15,12 +15,14 @@ is_something_in_this_matrix(x, search_for)
 TRUE or FALSE
 }
 \description{
-This function searches to see if item 'search_for' is within the matrix 'x' and returns a respective TRUE (T) and FALSE (F).
+This function searches to see if item 'search_for' is within the matrix 'x' and returns a respective TRUE (T) and FALSE (F). This can be useful for adding footnotes, adding conditional text to your document, and much more!
 }
 \examples{
-is_something_in_this_matrix(x = data.frame(matrix(1:9, nrow = 3, ncol = 3)), 
+x = data.frame(matrix(1:9, nrow = 3, ncol = 3))
+is_something_in_this_matrix(x,
                        search_for = 9)
-is_something_in_this_matrix(x = data.frame(matrix(LETTERS[1:9], nrow = 3, ncol = 3)), 
+x = data.frame(matrix(LETTERS[1:9], nrow = 3, ncol = 3))
+is_something_in_this_matrix(x,
                        search_for = "J")
 }
 \keyword{footnote,}

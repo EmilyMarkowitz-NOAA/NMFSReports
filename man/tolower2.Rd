@@ -17,8 +17,8 @@ tolower2(str0, capitalizefirst = FALSE, add_cap = "")
 Make a string lower case except for stated (and common NOAA) proper nouns.
 }
 \examples{
-tolower2(str0 = "notice how there are built-in proper nouns are capitalized: 
-alaska is not in the south atlantic.", 
+tolower2(str0 = "notice how there are built-in proper nouns are capitalized:
+alaska is not in the south atlantic.",
          capitalizefirst = TRUE,
          add_cap = "Proper nouns")
 }

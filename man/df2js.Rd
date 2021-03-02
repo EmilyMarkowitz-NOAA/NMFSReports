@@ -13,7 +13,7 @@ df2js(dat)
 Convert dataframe to javascript matrix.
 }
 \examples{
-dat <- cbind.data.frame(matrix(LETTERS[1:8], nrow = 4), 
+dat <- cbind.data.frame(matrix(LETTERS[1:8], nrow = 4),
                            matrix(1:8, nrow = 4))
 df2js(dat = dat)
 }
