@@ -7,9 +7,6 @@
 #' Notes:                             # CHANGE
 #' ---
 
-#Example Data
-dat<-data.frame(matrix(data = 1:20, ncol = 2))
-Footnotes.list<-list("ExOfStandardFt" = "Wow, this project is so cool!")
 
 
 

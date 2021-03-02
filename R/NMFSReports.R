@@ -180,7 +180,7 @@ buildTM<-function(sections = c("frontmatter",
   # directories
   
   # support_scripts
-  a<-paste("source(here('code',", 
+  a<-paste("source(here::here('code',", 
            paste0("'", support_scripts, ".R'"),"))
 
 ", collapse = "")
@@ -263,18 +263,18 @@ buildTM<-function(sections = c("frontmatter",
 ########## SEARCH STUFF ############
 
 
-#' Is something in a matrix.
+#' Is something in a matrix? Let's check!
 #'
-#' This function searches to see if item 'searchfor' is within the matrix 'x' and returns a respective true (T) and false (F).
+#' This function searches to see if item 'search_for' is within the matrix 'x' and returns a respective TRUE (T) and FALSE (F).
 #' @param x The matrix that needs to be searched.
 #' @param search_for Items to be searched for in matrix x.
 #' @keywords search, matrix, footnote, footnotes
 #' @export
 #' @return TRUE or FALSE
 #' @examples
-#' issomethinginthismatrix(x = data.frame(matrix(1:9, nrow = 3, ncol = 3)), 
+#' is_something_in_this_matrix(x = data.frame(matrix(1:9, nrow = 3, ncol = 3)), 
 #'                        search_for = 9)
-#' issomethinginthismatrix(x = data.frame(matrix(LETTERS[1:9], nrow = 3, ncol = 3)), 
+#' is_something_in_this_matrix(x = data.frame(matrix(LETTERS[1:9], nrow = 3, ncol = 3)), 
 #'                        search_for = "J")
 is_something_in_this_matrix<-function(x, search_for) {
   xx<-c()
@@ -299,7 +299,7 @@ is_something_in_this_matrix<-function(x, search_for) {
 #' @examples
 #' dat <- cbind.data.frame(matrix(LETTERS[1:8], nrow = 4), 
 #'                            matrix(1:8, nrow = 4))
-#' funct_df2js(dat = dat)
+#' df2js(dat = dat)
 df2js<-function(dat) {
   
   if (sum(names(dat) %in% "Footnotes") != 0) {
@@ -527,34 +527,29 @@ text_list<-function(x, oxford = TRUE) {
 #' @param to_row What row number or name you want add footnotes to.  
 #' @param delim A deliminator string that seperates if you have multiple footnotes stored in a cell. The deliminator can be anything, as long as it does not conflict with anything that can be interpreted by regex. Default = "&&&"
 #'
-#' @return
+#' @return The table "tab" with the footnotes inserted into the table. 
 #' @export
-#'
 #' @examples
 #' table<-data.frame(col = LETTERS[1:10], 
 #'                       x = rnorm(n = 10), 
 #'                       y = rnorm(n = 10), 
 #'                       footnotes = NA) 
-#'  
 #' table$footnotes[3]<-"Example footnote in a table 1."
 #' table$footnotes[4]<-"Example footnote in a table 2.&&&Example footnote in a table 3."
 #' table[,c("x", "y")] <- NMFSReports::mod_number(table[,c("x", "y")], 
 #'                                                      divideby = 1, #' 
-#'                                                      comma_seperator = T, 
+#'                                                      comma_seperator = TRUE, 
 #'                                                      digits = 2)
-#' 
-#' # Here, add footnotes from the "footnotes" column to the content in the first column, where necessary
-#' table_print <- add_table_footnotes(tab = table_print, 
+#' # Here, add footnotes from the "footnotes" column to the content in the first column where necessary
+#' table <- add_table_footnotes(tab = table, 
 #'                                    from_col = "footnotes", # either use the name of the column
 #'                                    to_col = 1) # or the number of that column in that table
-#' 
 #' # Here, add a specific footnote to a specific place in the table
-#' table_print <- add_table_footnotes(tab = table_print, 
+#' table <- add_table_footnotes(tab = table, 
 #'                                    footnote = "Example footnote in a table 4.", 
 #'                                    to_row = 2, 
 #'                                    to_col = 2)
-#' 
-#' table_print <- add_table_footnotes(tab = table_print, 
+#' table <- add_table_footnotes(tab = table, 
 #'                                    footnote = c("Example footnote in a table 5.", 
 #'                                                 "Example footnote in a table 6."), 
 #'                                    to_row = 4, 
@@ -582,7 +577,7 @@ add_table_footnotes<-function(tab,
   from_row_idx <- idx(tab, area = from_row, dimension = 1)
   to_row_idx <- idx(tab, area = to_row, dimension = 1)
   
-  if (footnote %in% "") { # if pulling from somewhere in the table
+  if (sum(footnote %in% "") > 0) { # if pulling from somewhere in the table
     tab[from_row_idx, from_col_idx]<-trimws(tab[from_row_idx, from_col_idx])
     
     for (rr in 1:length(from_row_idx)) {
@@ -1069,7 +1064,7 @@ auto_counter<-function(counter0) {
 #' @examples
 #' plot0<-ggplot2::ggplot(x=1,y=1)
 #' plot_list<-c()
-#' SaveGraphs(plot0 = plot0, plot_list = plot_list)
+#' save_graphs(plot0 = plot0, plot_list = plot_list)
 save_graphs<-function(plot0, 
                      plot_list, 
                      header = "", 
@@ -1086,7 +1081,7 @@ save_graphs<-function(plot0,
   
   # Title
   header<-trimws(header)
-  header<-str_to_sentence(header)
+  header<-stringr::str_to_sentence(header)
   header<-paste0(type, " ",cnt,". ", 
                  ifelse(substr(x = header, 
                                start = nchar(header), 
@@ -1125,18 +1120,18 @@ save_graphs<-function(plot0,
   return(plot_list)
 }
 
+
 #' Systematically save your report tables for your report
 #'
 #' @param table_raw Optional. The data.frame that has no rounding and no dividing of numbers (good to save this for record keeping). Default = NA. 
 #' @param table_print The data.frame as table will be seen in the report.
 #' @param table_list Save tables in a list
-#' @param Title The header or title of your table. 
-#' @param footnote footnote for the whole table. Default = NA.
-#' @param filename0 The name you want to save this file as.
-#' @param dir_out_chapters Directory where you are saving all of your chapter word documents to. Defult = NULL, meaning that it wont save anything. 
-#' @param dir_tables Directory where you are saving all of your tables to. Defult = NULL, meaning that it wont save anything. 
-#' @param cnt_tables The order number that this exists in the chapter.
-#' @param cnt_chapt_content The order number that this exists in the chapter.
+#' @param header The name and title of the figure. Default = "".
+#' @param footnote Any footnote you want attached to this figure. 
+#' @param filename0 The filename set at the begining of the chapter
+#' @param cnt_chapt_content The order number that this exists in the chapter. 
+#' @param cnt The figure number 
+#' @param path The path the file needs to be saved to. Defult = NULL, meaning that it wont save anything. 
 #' @param output_type Default = c(".csv"). Can be anything supported by utils::write.table. 
 #' @param type Default = "Table", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Table 1. This is my spreadsheet!". Always save in pdf so you can make last minute edits in adobe acrobat!
 #' @param filename_desc Additional description text for the filename that will be added at the name of file before the filename extention, before the "_raw" or "_print". Default = "". Can be use to add a species name, location, or anything else that would make it easier to know what that file shows. 
@@ -1150,9 +1145,9 @@ save_graphs<-function(plot0,
 #' table_print <- table_raw
 #' table_print[,c("x", "y")] <- NMFSReports::mod_number(table_print[,c("x", "y")], 
 #'                                                      divideby = 1, 
-#'                                                      comma_seperator = T, 
+#'                                                      comma_seperator = TRUE, 
 #'                                                      digits = 2)
-#' SaveTables(table_raw = table_raw, 
+#' save_tables(table_raw = table_raw, 
 #'            table_print=table_print, 
 #'            header = "Here is a table!", 
 #'            footnote = "A footnote for this table!")
@@ -1172,7 +1167,7 @@ save_tables<-function(table_raw = NULL,
   
   # Title
   header<-trimws(header)
-  header<-str_to_sentence(header)
+  header<-stringr::str_to_sentence(header)
   header<-paste0(type, " ",cnt,". ", 
                  ifelse(substr(x = header, 
                                start = nchar(header), 

@@ -10,8 +10,8 @@ buildTM(
   support_scripts = c("directories", "functions", "dataDL", "data"),
   authors = "",
   title = "",
-  pptxstylesreference.pptx = "refppt_nmfs",
-  wordstylesreference.docx = "refdoc_noaa_tech_memo",
+  styles_reference_pptx = "refppt_nmfs",
+  styles_reference_docx = "refdoc_noaa_tech_memo",
   bibliography.bib = "bib_example",
   csl = "apa"
 )
@@ -25,9 +25,9 @@ buildTM(
 
 \item{title}{Default = "". Here, put the title of your report.}
 
-\item{pptxstylesreference.pptx}{A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("nmfs"). Default = "nmfs".}
+\item{styles_reference_pptx}{A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("nmfs"). Default = "nmfs".}
 
-\item{wordstylesreference.docx}{A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo".}
+\item{styles_reference_docx}{A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo".}
 
 \item{bibliography.bib}{Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example".}
 

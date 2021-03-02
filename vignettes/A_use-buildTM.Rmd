@@ -36,15 +36,12 @@ PKG <- c(# devtools::install_github("emilymarkowitz-NOAA/NMFSReports", force = T
          "NMFSReports",
          
          # Data Managment
-         "filesstrings", 
-         "data.table", 
-         "plyr",  
          "tidyverse",
-
-         # #RMarkdown
-         "rmarkdown"
+         "here",
+         
+         # Visuals
+         "nmfspalette"
 )
-
 
 for (p in PKG) {
   if(!require(p,character.only = TRUE)) {  
@@ -72,7 +69,9 @@ sections <- c("frontmatter", # This is a specific template that matches the NOAA
                "results", 
                "discussion", 
                "workscited", 
-               "workscitedR") # This is a specific template that will document all of the R packages you used to create this report. I'm biased, but please give credit where credit is due!
+               "workscitedR", # This is a specific template that will document all of the R packages you used to create this report. I'm biased, but please give credit where credit is due!
+               "presentations" # This is a specific template that matches the NOAA Template
+              ) 
 ```
 
 ## support_scripts
@@ -88,13 +87,9 @@ support_scripts <-
 )
 ```
 
-## wordstylesreference.docx
+## stylesreference_docx
 
-`wordstylesreference.docx` is a document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("refdoc_NOAATechMemo" or "refdoc_FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"
-
-```{r}
-
-```
+`stylesreference_docx` is a document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("refdoc_NOAATechMemo" or "refdoc_FisheriesEconomicsOfTheUS"). Default = "NOAATechMemo"
 
 Here's what they look like: 
 
@@ -126,12 +121,14 @@ Now, magic! Now for the sake of the vignette, I can't actually run it here, but 
 NMFSReports::buildTM(
   sections,
   support_scripts,
-        stylesreference_pptx = "refppt_nmfs", 
-        stylesreference_docx = "refdoc_noaa_tech_memo", 
-          bibliography.bib = "bib_example",
-
+  authors = "Me, myself, and I",
+  title = "My amazing report!", 
+  stylesreference_pptx = "refppt_nmfs", 
+  stylesreference_docx = "refdoc_noaa_tech_memo", 
+  bibliography.bib = "bib_example",
+  
   csl
-  )
+)
 ```
 
 ![buildTM() output](../man/figures/buildTM.JPG)

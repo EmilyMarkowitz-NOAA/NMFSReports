@@ -2,7 +2,7 @@
 % Please edit documentation in R/NMFSReports.R
 \name{is_something_in_this_matrix}
 \alias{is_something_in_this_matrix}
-\title{Is something in a matrix.}
+\title{Is something in a matrix? Let's check!}
 \usage{
 is_something_in_this_matrix(x, search_for)
 }
@@ -15,12 +15,12 @@ is_something_in_this_matrix(x, search_for)
 TRUE or FALSE
 }
 \description{
-This function searches to see if item 'searchfor' is within the matrix 'x' and returns a respective true (T) and false (F).
+This function searches to see if item 'search_for' is within the matrix 'x' and returns a respective TRUE (T) and FALSE (F).
 }
 \examples{
-issomethinginthismatrix(x = data.frame(matrix(1:9, nrow = 3, ncol = 3)), 
+is_something_in_this_matrix(x = data.frame(matrix(1:9, nrow = 3, ncol = 3)), 
                        search_for = 9)
-issomethinginthismatrix(x = data.frame(matrix(LETTERS[1:9], nrow = 3, ncol = 3)), 
+is_something_in_this_matrix(x = data.frame(matrix(LETTERS[1:9], nrow = 3, ncol = 3)), 
                        search_for = "J")
 }
 \keyword{footnote,}

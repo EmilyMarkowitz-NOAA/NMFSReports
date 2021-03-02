@@ -9,13 +9,19 @@ bibliography: "../data/bibliography.bib"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, error = FALSE)
-counter_inside<-0
 ```
 
 # Example of how to use this R Markdown document
 
 ```{r ChunkName_NameMeAnythingAsLongAsItIsUnique}
-#Chunks are were we can write code for something later in the code. 
+# Chunks are were we can write code for something later in the code. 
+
+# example data
+dat <- data.frame(x = rnorm(n = 10), 
+                y = rnorm(n = 10), 
+                col = rep_len(x = c("a", "b"), length.out = 5))
+Footnotes.list<-list("ExOfStandardFt" = "Wow, this project is so cool!")
+
 ```
 
 Here is the report content!
@@ -46,9 +52,7 @@ header <- "Here is a figure!"
 footnote<-c("A footnote for this figure!", "A second footnote for this figure!")
 
 # Select data and make plot
-plot0<-data.frame(x = rnorm(n = 10), 
-                y = rnorm(n = 10), 
-                col = rep_len(x = c("a", "b"), length.out = 5)) %>%
+plot0<- dat %>%
   ggplot(aes(x = x, y = y, colour = as.factor(col))) + # create plot
   geom_point() +
   nmfspalette::scale_color_nmfs(palette = "coral") # Use NMFS Color Pallet
@@ -75,7 +79,7 @@ plot_list<-save_graphs(plot0 = plot0,
 ```
 
 
-```{r G1c, fig.cap=ifelse(indesign_flowin %in% T, "", plot_list[[length(plot_list)]]$caption)}
+```{r G1c, fig.cap=ifelse(indesign_flowin %in% TRUE, "", plot_list[[length(plot_list)]]$caption)}
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
 # However, sometimes its nice to see everything all together, so this variable is 
@@ -83,9 +87,9 @@ plot_list<-save_graphs(plot0 = plot0,
 # Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
 if (indesign_flowin %in% FALSE) { 
   plot0 # print plot in text
-} else if (indesign_flowin %in% T){ # for reports that need to be flowed into InDesign 
+} else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign 
   rmarkdown::render(TableFigureHeader, 
-                    quiet = T,
+                    quiet = TRUE,
                   output_dir = dir_chapters, 
                   output_file = paste0(filename00,cnt_chapt_content,"_Title.docx"))
 }
@@ -100,8 +104,8 @@ footnote<-c("A footnote for this figure!")
 
 # Select data and make plot
 plot0 <- 
-  ggdraw() +
-  draw_image(readPNG(here::here("img", "noaa-gray.png"))) 
+  cowplot::ggdraw() +
+  cowplot::draw_image(readPNG(here::here("img", "noaa-gray.png"))) 
 ```
 
 
@@ -126,7 +130,7 @@ plot_list<-save_graphs(plot0 = plot0,
 ```
 
 
-```{r G2c, fig.cap=ifelse(indesign_flowin %in% T, "", plot_list[[length(plot_list)]]$caption)}
+```{r G2c, fig.cap=ifelse(indesign_flowin %in% TRUE, "", plot_list[[length(plot_list)]]$caption)}
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
 # However, sometimes its nice to see everything all together, so this variable is 
@@ -134,9 +138,9 @@ plot_list<-save_graphs(plot0 = plot0,
 # Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
 if (indesign_flowin %in% FALSE) { 
   plot0 # print plot in text
-} else if (indesign_flowin %in% T){ # for reports that need to be flowed into InDesign 
+} else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign 
   rmarkdown::render(TableFigureHeader, 
-                    quiet = T,
+                    quiet = TRUE,
                   output_dir = dir_chapters, 
                   output_file = paste0(filename00,cnt_chapt_content,"_Title.docx"))
 }
@@ -156,7 +160,7 @@ table_raw<-data.frame(col = LETTERS[1:10],
 table_print <- table_raw
 table_print[,c("x", "y")] <- NMFSReports::mod_number(table_print[,c("x", "y")], 
                                                      divideby = 1, 
-                                                     comma_seperator = T, 
+                                                     comma_seperator = TRUE, 
                                                      digits = 2)
 
 ```
@@ -180,17 +184,17 @@ table_list<-save_tables(table_raw = table_raw,
 ```
 
 
-```{r T1c, fig.cap=ifelse(indesign_flowin %in% T, "", table_list[[length(table_list)]]$caption)}
+```{r T1c, fig.cap=ifelse(indesign_flowin %in% TRUE, "", table_list[[length(table_list)]]$caption)}
 
 # Print or Don't Print Table in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
 # However, sometimes its nice to see everything all together, so this variable is something you might like to toggle on and off. Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
-if (indesign_flowin %in% F) {
+if (indesign_flowin %in% FALSE) {
   table_print %>%
           format_cells(rows = 0, # make column names
                        cols = 1:ncol(table_print), # for all columns
                        fonttype = "bold") %>% # bold
-          knitr::kable(row.names = F, booktabs = T) #print table in text
+          knitr::kable(row.names = FALSE, booktabs = TRUE) #print table in text
 }
 ```
 
@@ -212,7 +216,7 @@ table_raw$footnotes[4]<-"Example footnote in a table 2.&&&Example footnote in a 
 table_print <- table_raw
 table_print[,c("x", "y")] <- NMFSReports::mod_number(table_print[,c("x", "y")], 
                                                      divideby = 1, 
-                                                     comma_seperator = T, 
+                                                     comma_seperator = TRUE, 
                                                      digits = 2)
 
 # example of how to add footnotes from a column of footnotes
@@ -256,17 +260,17 @@ table_list<-save_tables(table_raw = table_raw,
 ```
 
 
-```{r T2c, fig.cap=ifelse(indesign_flowin %in% T, "", table_list[[length(table_list)]]$caption)}
+```{r T2c, fig.cap=ifelse(indesign_flowin %in% TRUE, "", table_list[[length(table_list)]]$caption)}
 
 # Print or Don't Print Table in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
 # However, sometimes its nice to see everything all together, so this variable is something you might like to toggle on and off. Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
-if (indesign_flowin %in% F) {
+if (indesign_flowin %in% FALSE) {
   table_print %>%
           format_cells(rows = 0, # make column names
                        cols = 1:ncol(table_print), # for all columns
                        fonttype = "bold") %>% # bold
-          knitr::kable(row.names = F, booktabs = T) #print table in text
+          knitr::kable(row.names = FALSE, booktabs = TRUE) #print table in text
 }
 ```
 

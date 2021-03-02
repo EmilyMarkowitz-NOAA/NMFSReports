@@ -21,23 +21,19 @@ Imports:
     tidyverse, 
     ggplot2,
     magrittr,
-    filesstrings, 
-    data.table, 
-    rlist, 
-    pipeR, 
     knitr, 
     gridExtra, 
     officer,
     xlsx, 
-    dichromat, 
-    readxl, 
     extrafont, 
     jsonlite, 
     kableExtra, 
     stringr, 
-    magick, 
-    cowplot, 
-    png
+    dplyr, 
+    here, 
+    nmfspalette
 VignetteBuilder: knitr
 Suggests: 
-    rmarkdown
+    rmarkdown,
+    cowplot, 
+    png

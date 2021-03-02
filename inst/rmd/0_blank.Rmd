@@ -9,7 +9,6 @@ bibliography: "../data/bibliography.bib"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, error = FALSE)
-cnt_inside<-0
 ```
 
 # SECTION_TITLE
