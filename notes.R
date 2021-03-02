@@ -2,7 +2,7 @@
 # https://pkgdown.r-lib.org/reference/build_site.html
 
 ########### Document Package ############
-
+options(rmarkdown.html_vignette.check_title = FALSE)
 Sys.setenv('PATH' = paste0('C:/Program Files/qpdf-10.0.1/bin;', Sys.getenv('PATH')))
 library(here)
 library(devtools)

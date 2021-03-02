@@ -9,3 +9,6 @@ navbar:
       href: https://github.com/EmilyMarkowitz-NOAA/NMFSReports
     - icon: fa-fish
       href: https://nmfs-general-modeling-tools.github.io/
+template:
+  params:
+    bootswatch: sandstone

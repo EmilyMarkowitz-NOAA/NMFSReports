@@ -1,6 +1,6 @@
 Package: NMFSReports
 Title: Easily write NOAA reports and Tech Memos in R Markdown!
-Version: 0.0.0.9000
+Version: 0.0.1.0
 Authors@R: 
   person(given = "Emily",
            family = "Markowitz", 

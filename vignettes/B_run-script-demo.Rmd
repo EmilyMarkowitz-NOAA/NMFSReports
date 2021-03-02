@@ -1,5 +1,6 @@
 ---
-title: "B_run-script-demo"
+title: "How to use the run.R file to be the skeleton of your report"
+date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{B_run-script-demo}
