@@ -34,7 +34,10 @@ Imports:
     extrafont, 
     jsonlite, 
     kableExtra, 
-    stringr
+    stringr, 
+    magick, 
+    cowplot, 
+    png
 VignetteBuilder: knitr
 Suggests: 
     rmarkdown

@@ -10,7 +10,7 @@ nocite: '@*'
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, error = FALSE, message = FALSE)
-counter.inside<-0
+cnt_inside<-0
 ```
 
 ## Works Cited

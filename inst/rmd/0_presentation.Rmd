@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
   fig.height = 12
   # fig.retina = 3
   )
-counter.inside<-0
+cnt_inside<-0
 ```
 
 # Example of how to use this R Markdown document

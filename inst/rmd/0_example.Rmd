@@ -2,14 +2,14 @@
 output:
   word_document:
     pandoc_args: ["--metadata-file=header.yaml"]
-    reference_docx: styles_reference.docx
+    reference_docx: word_styles_reference.docx
 csl: "../cit/cit.csl"
 bibliography: "../data/bibliography.bib"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, error = FALSE)
-counter.inside<-0
+counter_inside<-0
 ```
 
 # Example of how to use this R Markdown document
@@ -31,138 +31,240 @@ Note that references will appear at the bottom of this document (and any documen
 Here is some equation you'll need to have in this report, of which produces the variable $X$. 
 
 ```{r Eq1}
-cnt.equ<-auto_counter(cnt.equ)
+cnt_equ<-auto_counter(cnt_equ)
 ```
 
-Eq. `r cnt.equ`
+Eq. `r cnt_equ`
 
-$$X = Y +Z$$
+$$X = Y + Z$$
 
-## Example Figure
+## Example Figure (Plot)
 
 ```{r G1a}
-# Don't Edit This:
-cnt.chapt.content<-auto_counter(cnt.chapt.content)
-cnt.figures<-cnt.figures+1
+# Edit This:
+header <- "Here is a figure!"
+footnote<-c("A footnote for this figure!", "A second footnote for this figure!")
+
+# Select data and make plot
+plot0<-data.frame(x = rnorm(n = 10), 
+                y = rnorm(n = 10), 
+                col = rep_len(x = c("a", "b"), length.out = 5)) %>%
+  ggplot(aes(x = x, y = y, colour = as.factor(col))) + # create plot
+  geom_point() +
+  nmfspalette::scale_color_nmfs(palette = "coral") # Use NMFS Color Pallet
 ```
 
 
 ```{r G1b}
-# Edit This:
-Header<-paste0("Figure ",cnt.figures,". Here's a plot")
-Footnotes<-"A footnote for this figure!"
-
-# Select data and make plot
-dat1<-dat[dat$YEAR %in% 2017,]
-plt<-qplot(dat1$LATITUDE, dat1$LONGITUDE, col = as.factor(dat1$VESSEL)) + # create plot
-   nmfspalette::scale_color_nmfs() # Use NMFS Color Pallet
-
-```
-
-
-```{r G1c}
 # Don't Edit This:
-Header<-str_to_sentence(Header)
-Title0<-paste0(Header, "^[", Footnotes, "]")
-filename00<-paste0(filename0, cnt.chapt.content, "_Fig_",cnt.figures)
-
-if (designflowin %in% T){
-  cnt.chapt.content<-funct_counter(cnt.chapt.content)
-  rmarkdown::render(TableFigureHeader, 
-                    quiet = T,
-                  output_dir = dir.chapters, 
-                  output_file = paste0(filename00,cnt.chapt.content,"_Title.docx"))
-}
-```
-
-
-```{r G1d, fig.cap=ifelse(designflowin %in% T, "", Title0)}
-# Don't Edit This:
+cnt_chapt_content<-auto_counter(cnt_chapt_content)
+cnt_figures<-cnt_figures+1
 
 # Systematically save your plot with this simple function
-plot.list<-SaveGraphs(plot0 = plt, plot.list = plot.list, 
-           filename0 = filename0, 
-           Header = Title0,
-           cnt.chapt.content = cnt.chapt.content, 
-           cnt.figures = cnt.figures, 
-           path = dir.chapters, 
-           width = 6, height = 6) # but you can change this if you need...
+plot_list<-save_graphs(plot0 = plot0, 
+                      plot_list = plot_list, 
+                      header = header,
+                      footnote = footnote,
+                      filename0 = filename0, 
+                      cnt_chapt_content = cnt_chapt_content, 
+                      cnt = cnt_figures, 
+                      path = dir_out_figures, 
+                      width = 6, # you can change this if you need to...
+                      height = 6) # you can change this if you need to...
 
+```
+
+
+```{r G1c, fig.cap=ifelse(indesign_flowin %in% T, "", plot_list[[length(plot_list)]]$caption)}
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
-# However, sometimes its nice to see everything all together, so this variable is something you might like to toggle on and off. Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
-if (designflowin %in% FALSE) { 
-  plt #print plot in text
-}
-```
-
-## Example Table
-
-```{r T1a}
-# Don't Edit This:
-cnt.chapt.content<-auto_counter(cnt.chapt.content)
-cnt.tables<-cnt.tables+1
-```
-
-```{r T1b, echo=FALSE, warning=FALSE, message=FALSE}
-# Edit This:
-
-Footnotes<-"Here is a Footnote for this table"# Footnote
-Header = str_to_sentence(paste0("Table ",cnt.tables,". Here's a table"))
-
-# Select data for table
-# Make a table of content, but don't edit your content. This is just good record keeping so peolpe can check your work. 
-table.raw<-head(dat[dat$YEAR %in% 2017,
-          c("LATITUDE", "LONGITUDE", "VESSEL")])
-
-names(table.raw)<-firstup(tolower(names(table.raw)))
-
-table.raw<-dplyr::rename(table.raw, 
-                         "Vessel ID Number" = "Vessel")
-
-# Make the table pretty, like as you would have it show in the report. 
-table.print<- table.raw %>% 
-  mutate_at(vars(Latitude, Longitude), 
-            funs(round(., 1)))
-```
-
-
-```{r T1c}
-# Don't Edit This:
-Header<-str_to_sentence(Header)
-Title0<-paste0(Header, "^[", Footnotes, "]")
-filename00<-paste0(filename0, cnt.chapt.content, "_Table_",cnt.figures)
-
-if (designflowin %in% T){
-  cnt.chapt.content<-funct_counter(cnt.chapt.content)
+# However, sometimes its nice to see everything all together, so this variable is 
+# something you might like to toggle on and off. 
+# Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
+if (indesign_flowin %in% FALSE) { 
+  plot0 # print plot in text
+} else if (indesign_flowin %in% T){ # for reports that need to be flowed into InDesign 
   rmarkdown::render(TableFigureHeader, 
                     quiet = T,
-                  output_dir = dir.chapters, 
-                  output_file = paste0(filename00,cnt.chapt.content,"_Title.docx"))
+                  output_dir = dir_chapters, 
+                  output_file = paste0(filename00,cnt_chapt_content,"_Title.docx"))
 }
 ```
 
+## Example Figure (Refernce Image)
 
-### `r ifelse(designflowin %in% T, "", Title0)`
+```{r G2a}
+# Edit This:
+header <- "Here is a figure!"
+footnote<-c("A footnote for this figure!")
 
-```{r T1d}
+# Select data and make plot
+plot0 <- 
+  ggdraw() +
+  draw_image(readPNG(here::here("img", "noaa-gray.png"))) 
+```
+
+
+```{r G2b}
 # Don't Edit This:
+cnt_chapt_content<-auto_counter(cnt_chapt_content)
+cnt_figures<-cnt_figures+1
 
 # Systematically save your plot with this simple function
-SaveTables(table.raw, table.print, Header, Footnotes, 
-                     filename00, dir.chapters, dir.tables)
+plot_list<-save_graphs(plot0 = plot0, 
+                      plot_list = plot_list, 
+                      header = header,
+                      footnote = footnote,
+                      filename0 = filename0, 
+                      cnt_chapt_content = cnt_chapt_content, 
+                      cnt = cnt_figures, 
+                      path = dir_out_figures, 
+                      width = 1, # you can change this if you need to...
+                      height = 1,  # you can change this if you need to...
+                      filename_desc = "noaalogo")
+
+```
+
+
+```{r G2c, fig.cap=ifelse(indesign_flowin %in% T, "", plot_list[[length(plot_list)]]$caption)}
+# Print or Don't Print Plot in Text
+# You don't want to print this in the document if this text will be flowed into InDesign. 
+# However, sometimes its nice to see everything all together, so this variable is 
+# something you might like to toggle on and off. 
+# Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
+if (indesign_flowin %in% FALSE) { 
+  plot0 # print plot in text
+} else if (indesign_flowin %in% T){ # for reports that need to be flowed into InDesign 
+  rmarkdown::render(TableFigureHeader, 
+                    quiet = T,
+                  output_dir = dir_chapters, 
+                  output_file = paste0(filename00,cnt_chapt_content,"_Title.docx"))
+}
+```
+
+## Example Table (Basic)
+
+```{r T1a}
+# Edit This:
+header <- "Here is a table!"
+footnote<-"A footnote for this table!"
+
+# Select data and make plot
+table_raw<-data.frame(col = LETTERS[1:10], 
+                      x = rnorm(n = 10), 
+                y = rnorm(n = 10)) 
+table_print <- table_raw
+table_print[,c("x", "y")] <- NMFSReports::mod_number(table_print[,c("x", "y")], 
+                                                     divideby = 1, 
+                                                     comma_seperator = T, 
+                                                     digits = 2)
+
+```
+
+
+```{r T1b}
+# Don't Edit This:
+cnt_chapt_content<-auto_counter(cnt_chapt_content)
+cnt_tables<-cnt_tables+1
+
+# Systematically save your plot with this simple function
+table_list<-save_tables(table_raw = table_raw, 
+                        table_print = table_print, 
+                        table_list = table_list, 
+                        header = header,
+                        footnote = footnote,
+                        filename0 = filename0, 
+                        cnt_chapt_content = cnt_chapt_content, 
+                        cnt = cnt_tables, 
+                        path = dir_out_tables)
+```
+
+
+```{r T1c, fig.cap=ifelse(indesign_flowin %in% T, "", table_list[[length(table_list)]]$caption)}
 
 # Print or Don't Print Table in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
 # However, sometimes its nice to see everything all together, so this variable is something you might like to toggle on and off. Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
-if (designflowin %in% F) {
-  
-  # names(b)<-paste0("**", names(b), "**") #Bold your table column names
-  # names(b)[names(b) %in% "****"]<-"" #But don't bold where there is no column name
-  
-  table.print %>%
+if (indesign_flowin %in% F) {
+  table_print %>%
           format_cells(rows = 0, # make column names
-                       cols = 1:ncol(table.print), # for all columns
+                       cols = 1:ncol(table_print), # for all columns
+                       fonttype = "bold") %>% # bold
+          knitr::kable(row.names = F, booktabs = T) #print table in text
+}
+```
+
+## Example Table (With Footnotes)
+
+```{r T2a}
+# Edit This:
+header <- "Here is a table!"
+footnote<-"A footnote for this table!"
+
+# Select data
+table_raw<-data.frame(col = LETTERS[1:10], 
+                      x = rnorm(n = 10), 
+                y = rnorm(n = 10), 
+                footnotes = NA) 
+
+table_raw$footnotes[3]<-"Example footnote in a table 1."
+table_raw$footnotes[4]<-"Example footnote in a table 2.&&&Example footnote in a table 3."
+table_print <- table_raw
+table_print[,c("x", "y")] <- NMFSReports::mod_number(table_print[,c("x", "y")], 
+                                                     divideby = 1, 
+                                                     comma_seperator = T, 
+                                                     digits = 2)
+
+# example of how to add footnotes from a column of footnotes
+# here, we'll add footnotes from the "footnotes" column to the content in the first column, where necessary
+table_print <- add_table_footnotes(tab = table_print, 
+                             from_col = "footnotes", # either use the name of the column
+                             to_col = 1) # or the number of that column in that table
+
+# here, I'll add a specific footnote to a specific place in the table
+table_print <- add_table_footnotes(tab = table_print, 
+                                   footnote = "Example footnote in a table 4.", 
+                             to_row = 2, 
+                             to_col = 2)
+
+table_print <- add_table_footnotes(tab = table_print, 
+                                   footnote = c("Example footnote in a table 5.", 
+                                                "Example footnote in a table 6."), 
+                             to_row = 4, 
+                             to_col = 2)
+
+table_print$footnotes<-NULL # remove column from final table
+
+```
+
+
+```{r T2b}
+# Don't Edit This:
+cnt_chapt_content<-auto_counter(cnt_chapt_content)
+cnt_tables<-cnt_tables+1
+
+# Systematically save your plot with this simple function
+table_list<-save_tables(table_raw = table_raw, 
+                        table_print = table_print, 
+                        table_list = table_list, 
+                        header = header,
+                        footnote = footnote,
+                        filename0 = filename0, 
+                        cnt_chapt_content = cnt_chapt_content, 
+                        cnt = cnt_tables, 
+                        path = dir_out_tables)
+```
+
+
+```{r T2c, fig.cap=ifelse(indesign_flowin %in% T, "", table_list[[length(table_list)]]$caption)}
+
+# Print or Don't Print Table in Text
+# You don't want to print this in the document if this text will be flowed into InDesign. 
+# However, sometimes its nice to see everything all together, so this variable is something you might like to toggle on and off. Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
+if (indesign_flowin %in% F) {
+  table_print %>%
+          format_cells(rows = 0, # make column names
+                       cols = 1:ncol(table_print), # for all columns
                        fonttype = "bold") %>% # bold
           knitr::kable(row.names = F, booktabs = T) #print table in text
 }

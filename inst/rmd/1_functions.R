@@ -26,12 +26,13 @@ PKG <- c(
   
   # Graphics
   # "ggplot2", # Create Elegant Data Visualisations Using the Grammar of Graphics
-  "nmfspalette",  # devtools::install_github("nmfs-general-modeling-tools/nmfspalette")
-
-  
+  "nmfspalette",  # devtools::install_github("nmfs-general-modeling-tools/nmfspalette"
+  "magick", # install.packages("magick")
+  "cowplot", 
+  "png",
   
   # Text
-  "RMarkReports", # devtools::install_github("emilyhmarkowitz/RMarkReports") # Package of my favorite grammar and file managment functions for writing reproducible reports
+  "NMFSReports", # devtools::install_github("emilyhmarkowitz/NMFSReports") # Package of my favorite grammar and file managment functions for writing reproducible reports
   
   # Citations
   "knitcitations", # devtools::install_github("cboettig/knitcitations")

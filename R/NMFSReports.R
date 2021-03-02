@@ -180,7 +180,8 @@ buildTM<-function(sections = c("frontmatter",
   # directories
   
   # support_scripts
-  a<-paste("source(here('code',", paste0("'", support_scripts, ".R'"),"))
+  a<-paste("source(here('code',", 
+           paste0("'", support_scripts, ".R'"),"))
 
 ", collapse = "")
   
@@ -189,9 +190,11 @@ buildTM<-function(sections = c("frontmatter",
              x = run0)
   
   # INSERT_SECTIONS
-  sections_no<-1:length(sections)
+  sections_no<-NMFSReports::auto_counter(1:length(sections))
+  
+  
   a<-paste(paste0('
-  ############# ', sections_no,' - ', sections,' ####################
+  ############# ', sections_no,' - ', NMFSReports::TitleCase(sections),' ####################
   cnt_chapt<-auto_counter(cnt_chapt)
   cnt_chapt_content<-"001" 
   filename0<-paste0(cnt_chapt, "_', sections,'_") 
@@ -514,6 +517,92 @@ text_list<-function(x, oxford = TRUE) {
   return(str1)
 }
 
+#' Add footnotes within your tables in a smart way
+#'
+#' @param tab The data.frame you are adding footnotes to (and possibly from). 
+#' @param footnote A string that you want to add as a footnote to the table. Optional.  
+#' @param from_col What column number or name you want to pull footnotes from.  
+#' @param to_col What column number or name you want add footnotes to.  
+#' @param from_row What row number or name you want to pull footnotes from. 
+#' @param to_row What row number or name you want add footnotes to.  
+#' @param delim A deliminator string that seperates if you have multiple footnotes stored in a cell. The deliminator can be anything, as long as it does not conflict with anything that can be interpreted by regex. Default = "&&&"
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' table<-data.frame(col = LETTERS[1:10], 
+#'                       x = rnorm(n = 10), 
+#'                       y = rnorm(n = 10), 
+#'                       footnotes = NA) 
+#'  
+#' table$footnotes[3]<-"Example footnote in a table 1."
+#' table$footnotes[4]<-"Example footnote in a table 2.&&&Example footnote in a table 3."
+#' table[,c("x", "y")] <- NMFSReports::mod_number(table[,c("x", "y")], 
+#'                                                      divideby = 1, #' 
+#'                                                      comma_seperator = T, 
+#'                                                      digits = 2)
+#' 
+#' # Here, add footnotes from the "footnotes" column to the content in the first column, where necessary
+#' table_print <- add_table_footnotes(tab = table_print, 
+#'                                    from_col = "footnotes", # either use the name of the column
+#'                                    to_col = 1) # or the number of that column in that table
+#' 
+#' # Here, add a specific footnote to a specific place in the table
+#' table_print <- add_table_footnotes(tab = table_print, 
+#'                                    footnote = "Example footnote in a table 4.", 
+#'                                    to_row = 2, 
+#'                                    to_col = 2)
+#' 
+#' table_print <- add_table_footnotes(tab = table_print, 
+#'                                    footnote = c("Example footnote in a table 5.", 
+#'                                                 "Example footnote in a table 6."), 
+#'                                    to_row = 4, 
+#'                                    to_col = 2)
+add_table_footnotes<-function(tab, 
+                              footnote = "", 
+                              from_col = "", 
+                              to_col = "", 
+                              from_row = "",
+                              to_row = "", 
+                              delim = "&&&") {
+  
+  tab<-data.frame(tab)
+  footnote <-trimws(footnote)
+  
+  idx <- function(tab, area, dimension) {
+    idx0<-ifelse(area %in% "", list(1:(dim(tab)[dimension])), # all rows or columns
+                 ifelse(is.numeric(area), area, 
+                        ifelse(is.character(area), which(names(tab) %in% area), "")))
+    return(unlist(idx0))
+  }
+  
+  from_col_idx <- idx(tab, area = from_col, dimension = 2)
+  to_col_idx <- idx(tab, area = to_col, dimension = 2)
+  from_row_idx <- idx(tab, area = from_row, dimension = 1)
+  to_row_idx <- idx(tab, area = to_row, dimension = 1)
+  
+  if (footnote %in% "") { # if pulling from somewhere in the table
+    tab[from_row_idx, from_col_idx]<-trimws(tab[from_row_idx, from_col_idx])
+    
+    for (rr in 1:length(from_row_idx)) {
+      for (cc in 1:length(from_col_idx)) {
+        if (!(is.na(tab[from_row_idx[rr], from_col_idx[cc]]))) { # if there is a footnote
+          tab[to_row_idx[rr], to_col_idx[cc]] <- paste0(tab[to_row_idx[rr], to_col_idx[cc]], 
+                                                        paste0(paste0("^[", strsplit(x = tab[from_row_idx[rr], from_col_idx[cc]], 
+                                                                                     split = delim)[[1]], "] "), collapse = "")) # otherwise, apend it
+        }
+      }
+    }
+    
+  } else { # if adding footnote text directly to the table 
+    tab[to_row_idx, to_col_idx] <- paste0(tab[to_row_idx, to_col_idx], 
+                                          paste(paste0("^[", footnote, "] "), collapse = ""))
+  }
+  
+  return(tab)
+  
+}
 
 ############ MODIFY NUMBERS IN TEXT ################
 
@@ -762,17 +851,15 @@ mod_number<-function(x,
   
   for (c in 1:ncol(x)){
     for (r in 1:nrow(x)){
-      xx<-ifelse(is.na(x[r,c]), NA, as.numeric(gsub(x = x[r,c], pattern = ",", replacement = "")))
+      xx<-ifelse(is.na(x[r,c]), NA, 
+                 as.numeric(gsub(x = x[r,c], 
+                                 pattern = ",", 
+                                 replacement = "")))
       # print(paste0(r,", ",c, ", ", xx))
       if (!is.na(xx)) {
-        if(xx>0 & xx<999) {
-          xx<-"< 1"
-        } else if (xx>=1000 & xx<1499) {
-          xx<-"1"    
-        } else {
           xx<-format(xx/divideby, digits = digits, trim = F, 
-                     big.mark = ifelse(comma_seperator == T, ",", ""), scientific = F)
-        }
+                     big.mark = ifelse(comma_seperator == T, ",", ""), 
+                     scientific = F)
       }
       xxx[r,c]<-xx
     }}
@@ -966,44 +1053,77 @@ auto_counter<-function(counter0) {
 #'
 #' @param plot0 The ggplot you would like to be saved
 #' @param plot_list The list where all plots will be saved. 
-#' @param Header The name and title of the figure. Default = "".
-#' @param filename0 The filename for your chapter
+#' @param header The name and title of the figure. Default = "".
+#' @param footnote Any footnote you want attached to this figure. 
+#' @param filename0 The filename set at the begining of the chapter
 #' @param cnt_chapt_content The order number that this exists in the chapter
-#' @param cnt_figures The figure number 
+#' @param cnt The figure number 
 #' @param path The path the file needs to be saved to. Defult = NULL, meaning that it wont save anything. 
 #' @param width Default = 6 inches
 #' @param height Default = 6 inches
+#' @param output_type Default = c(".pdf", ".png"). Can be anything supported by ggsave()
+#' @param type Default = "Figure", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Figure 1. This is my plot!"
+#' @param filename_desc Additional description text for the filename that will be added at the name of file before the filename extention. Can be use to add a species name, location, or anything else that would make it easier to know what that file shows. 
 #' @export
 #' @return plot_list updated with the new plot and metadata. 
 #' @examples
 #' plot0<-ggplot2::ggplot(x=1,y=1)
 #' plot_list<-c()
 #' SaveGraphs(plot0 = plot0, plot_list = plot_list)
-SaveGraphs<-function(plot0, 
+save_graphs<-function(plot0, 
                      plot_list, 
-                     Header = "", 
-                     filename0 = "x", 
+                     header = "", 
+                     footnote = "", 
+                     filename0 = "x",
                      cnt_chapt_content = "001", 
-                     cnt_figures = 1, 
-                     path = NULL, 
+                     cnt = 1, 
+                     path = ".", 
                      width = 6, 
-                     height = 6){
+                     height = 6, 
+                     output_type = c(".pdf", ".png"), 
+                     type = "Figure", 
+                     filename_desc = ""){
   
+  # Title
+  header<-trimws(header)
+  header<-str_to_sentence(header)
+  header<-paste0(type, " ",cnt,". ", 
+                 ifelse(substr(x = header, 
+                               start = nchar(header), 
+                               stop = nchar(header)) %in% 
+                          c(".", "!", "?", "...", "...."), 
+                        header, paste0(header, ".")))
+  footnote<-trimws(footnote)
+  caption<-ifelse(footnote %in% "", 
+                 header, 
+                 paste0(header, "^[", footnote, "]"))
+  filename00<-paste0(filename0, cnt_chapt_content, "_fig_",cnt, 
+                     ifelse(filename_desc!="", paste0("_", filename_desc), ""))
+  
+  # Save
   if (!is.null(path)){
-    ggplot2::ggsave( # save your plot
-      path = path, 
-      filename = paste0(filename0, cnt_chapt_content, "_Fig_", cnt_figures, 
-                        ".pdf"), # Always save in pdf so you can make last minute edits in adobe acrobat!
-    plot = plot0, # call the plot you are saving
-    width = width, height = height, units = "in") #recall, A4 pages are 8.5 x 11 in - 1 in margins
+    
+    # Save Graphic/Figure
+    for (i in 1:length(output_type)){
+      ggplot2::ggsave( # save your plot
+        path = path, 
+        filename = paste0(filename00, ".", output_type[i]), # Always save in pdf so you can make last minute edits in adobe acrobat!
+      plot = plot0, # call the plot you are saving
+      width = width, height = height, units = "in") #recall, A4 pages are 8.5 x 11 in - 1 in margins
+    }
   }
+  plot_list$temp <- list("plot" = plot0, 
+                              "caption" = caption, 
+                               "header" = header, 
+                               "footnote" = footnote)
   
-  plot_list<-c(plot_list, plot)
-  names(plot_list)[length(plot_list)]<-Header
+  names(plot_list)[names(plot_list) %in% "temp"] <- header
+  
+  print(paste0("This figure was saved to ", path, filename00, ".*"))
+  
   
   return(plot_list)
 }
-
 
 #' Systematically save your report tables for your report
 #'
@@ -1011,104 +1131,104 @@ SaveGraphs<-function(plot0,
 #' @param table_print The data.frame as table will be seen in the report.
 #' @param table_list Save tables in a list
 #' @param Title The header or title of your table. 
-#' @param Footnotes Footnotes for the whole table. Default = NA.
+#' @param footnote footnote for the whole table. Default = NA.
 #' @param filename0 The name you want to save this file as.
 #' @param dir_out_chapters Directory where you are saving all of your chapter word documents to. Defult = NULL, meaning that it wont save anything. 
 #' @param dir_tables Directory where you are saving all of your tables to. Defult = NULL, meaning that it wont save anything. 
 #' @param cnt_tables The order number that this exists in the chapter.
 #' @param cnt_chapt_content The order number that this exists in the chapter.
+#' @param output_type Default = c(".csv"). Can be anything supported by utils::write.table. 
+#' @param type Default = "Table", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Table 1. This is my spreadsheet!". Always save in pdf so you can make last minute edits in adobe acrobat!
+#' @param filename_desc Additional description text for the filename that will be added at the name of file before the filename extention, before the "_raw" or "_print". Default = "". Can be use to add a species name, location, or anything else that would make it easier to know what that file shows. 
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
-#' table_print<-data.frame(matrix(data = 1:9, nrow = 3, byrow = 3))
-#' SaveTables(table_print=table_print)
-SaveTables<-function(table_raw = NULL, 
-                     table_print, 
+#' # Select data and make plot
+#' table_raw<-data.frame(x = rnorm(n = 10), 
+#'                       y = rnorm(n = 10), 
+#'                       col = rep_len(x = c("a", "b"), length.out = 5)) 
+#' table_print <- table_raw
+#' table_print[,c("x", "y")] <- NMFSReports::mod_number(table_print[,c("x", "y")], 
+#'                                                      divideby = 1, 
+#'                                                      comma_seperator = T, 
+#'                                                      digits = 2)
+#' SaveTables(table_raw = table_raw, 
+#'            table_print=table_print, 
+#'            header = "Here is a table!", 
+#'            footnote = "A footnote for this table!")
+save_tables<-function(table_raw = NULL, 
+                     table_print = NULL, 
                      table_list = c(), 
-                     Title = "", 
-                     Footnotes = NA, 
-                     filename0 = "x", 
-                     dir_out_chapters = NULL, 
-                     dir_tables = NULL, 
-                     cnt_tables = 1, 
-                     cnt_chapt_content = "001"){
+                     header = "", 
+                     footnote = "", 
+                     filename0 = "x",
+                     cnt_chapt_content = "001",
+                     cnt = 1, 
+                     path = NULL, 
+                     output_type = c(".csv"), 
+                     type = "Table", 
+                     filename_desc = ""){
+
   
-  cnt_chapt_content<-auto_counter(cnt_chapt_content)
-  cnt_tables<-cnt_tables+1
-  Caption <- stringr::str_to_sentence(paste0("Table ",cnt_tables,". ", 
-                                    ifelse(substr(x = Title, start = nchar(Title), stop = nchar(Title)) %in% ".", 
-                                           Title, 
-                                           paste0(Title, "."))))
-  
-  Caption <- ifelse(is.na(Footnotes), 
-                    Caption, 
-                    paste0(Caption, "^[", Footnotes, "]"))
-  
-  
-  if (!is.null(dir_tables)){
+  # Title
+  header<-trimws(header)
+  header<-str_to_sentence(header)
+  header<-paste0(type, " ",cnt,". ", 
+                 ifelse(substr(x = header, 
+                               start = nchar(header), 
+                               stop = nchar(header)) %in% 
+                          c(".", "!", "?", "...", "...."), 
+                        header, paste0(header, ".")))
+  footnote<-trimws(footnote)
+  caption<-ifelse(footnote %in% "", 
+                  header, 
+                  paste0(header, "^[", footnote, "]"))
+  filename00<-paste0(filename0, cnt_chapt_content, "_tab_",cnt, 
+                     ifelse(filename_desc!="", paste0("_", filename_desc), ""))  
+  # Save
+  if (!is.null(path)){
+
+    # raw
+    
     # Save raw file (no rounding, no dividing)
     if (!(is.null(table_raw))) {
-      utils::write.table(x = table_raw,  
-                         file = paste0(dir_tables, filename0, "_raw.csv"), 
-                         sep = ",",
-                         row.names=FALSE, col.names = F, append = F)
+      for (i in 1:length(output_type)){
+        utils::write.table(x = table_raw,  
+                           file = paste0(path, filename00, 
+                                         "_raw.", output_type[i]), 
+                           sep = ",",
+                           row.names=FALSE, col.names = F, append = F)
+        }
+    } else {
+      table_raw <- ""
     }
     
-    # Save file of content going into the report
-    utils::write.table(x = table_print,  
-                       file = paste0(dir_tables, filename0, "_print.csv"), 
+    if (!(is.null(table_print))) {
+      for (i in 1:length(output_type)){
+        utils::write.table(x = table_print,  
+                           file = paste0(path, filename00, 
+                                         "_print.", output_type[i]), 
                        sep = ",",
                        row.names=FALSE, col.names = F, append = F)
-  }
-  
-  if (!is.null(dir_out_chapters)){
-    utils::write.table(x = table_print,  
-                       file = paste0(dir_out_chapters, filename0, ".csv"), 
-                       sep = ",",
-                       row.names=FALSE, col.names = F, append = F)
-  }
-  # Save file with header and footnotes
-  
-  if (!is.null(dir_tables)){
-    utils::write.table(Title,  
-                       file = paste0(dir_tables, filename0, "_handout.csv"), 
-                       sep = ",",
-                       row.names=FALSE, col.names = F, append = F)
+      }
     
-    utils::write.table(table_print,  
-                       file = paste0(dir_tables, filename0, "_handout.csv"), 
-                       sep = ",",
-                       row.names=FALSE, col.names = F, append = T)
-    
-    if (!is.null(Footnotes) | Footnotes %in% "") {
-      
-      utils::write.table("",  
-                         file = paste0(dir_tables, filename0, "_handout.csv"), 
-                         sep = ",",
-                         row.names=FALSE, col.names = F, append = T)
-      
-      a<-strsplit(x = Footnotes, split = " 123456789 ")[[1]]
-      a<-unique(a)
-      utils::write.table(a,  
-                         file = paste0(dir_tables, filename0, "_handout.csv"), 
-                         sep = ",",
-                         row.names=FALSE, col.names = F, append = T)
+    } else {
+      table_print <- ""
     }
   }
-  # #footnote-ify table_print footnote column for rmarkdown
-  # if (is.data.frame(table_print)) {
-  #   table_print$Footnotes<-list2string.ft(x = table_print$Footnotes)
-  # }
   
-  table_list<-c(table_list, 
-                list(Title = list("raw" = table_raw, 
-                                  "print" = table_print)))
+  table_list$temp <- list("raw" = table_raw, 
+                          "print" = table_print, 
+                          "caption" = caption, 
+                          "header" = header, 
+                          "footnote" = footnote)
   
-  return(list("Caption" = Caption, 
-              "table_print" = table_print, 
-              "table_list" = table_list,
-              "cnt_tables" = cnt_tables, 
-              "cnt_chapt_content" = cnt_chapt_content))
+  names(table_list)[names(table_list) %in% "temp"] <- header
+  
+  print(paste0("This table was saved to ", path, filename00, ".*"))
+  
+  return(table_list)
+  
 }
 
 
