@@ -28,7 +28,6 @@ Imports:
 Suggests: 
     testthat (>= 3.0.0),
     rmarkdown,
-    pkgdown,
     nmfspalette,
     cowplot,
     png,

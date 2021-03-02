@@ -1,5 +1,6 @@
 ---
-title: "C_functions-to-help-write-report"
+title: "Functions in Action to Help You Write Your Report"
+date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{C_functions-to-help-write-report}
