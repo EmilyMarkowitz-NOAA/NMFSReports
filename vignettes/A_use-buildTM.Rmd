@@ -3,17 +3,7 @@ title: "Use buildTM() to Begin Writing Your Report"
 author: Emily Markowitz (Emily.Markowitz AT NOAA.gov / EmilyMarkowitz-NOAA)
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: 
-  html_document:
-    standalone: true
-    smart: true
-    normalize: true
-    toc: true
-    highlight: tango
-    self-contained: true
-    theme: cerulean
-  pdf_document:
-    toc: true
-    highlight: tango
+  html_document
 vignette: >
   %\VignetteIndexEntry{A_use-buildTM}
   %\VignetteEngine{knitr::rmarkdown}

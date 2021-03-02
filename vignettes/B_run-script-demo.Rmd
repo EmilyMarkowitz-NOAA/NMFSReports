@@ -11,9 +11,6 @@ output:
     highlight: tango
     self-contained: true
     theme: cerulean
-  pdf_document:
-    toc: true
-    highlight: tango
 vignette: >
   %\VignetteIndexEntry{B_run-script-demo}
   %\VignetteEngine{knitr::rmarkdown}
