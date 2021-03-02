@@ -3,14 +3,7 @@ title: "How to use the run.R file to be the skeleton of your report"
 author: Emily Markowitz (Emily.Markowitz AT NOAA.gov / EmilyMarkowitz-NOAA)
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: 
-  html_document:
-    standalone: true
-    smart: true
-    normalize: true
-    toc: true
-    highlight: tango
-    self-contained: true
-    theme: cerulean
+  html_document
 vignette: >
   %\VignetteIndexEntry{B_run-script-demo}
   %\VignetteEngine{knitr::rmarkdown}

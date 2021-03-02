@@ -60,4 +60,5 @@ table <- add_table_footnotes(tab = table,
                                                 "Example footnote in a table 6."), 
                                    to_row = 4, 
                                    to_col = 2)
+table
 }

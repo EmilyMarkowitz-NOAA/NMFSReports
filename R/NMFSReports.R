@@ -554,6 +554,7 @@ text_list<-function(x, oxford = TRUE) {
 #'                                                 "Example footnote in a table 6."), 
 #'                                    to_row = 4, 
 #'                                    to_col = 2)
+#' table
 add_table_footnotes<-function(tab, 
                               footnote = "", 
                               from_col = "", 

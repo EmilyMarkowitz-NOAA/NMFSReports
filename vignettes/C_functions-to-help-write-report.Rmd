@@ -1,16 +1,9 @@
 ---
-title: "Functions in Action to Help You Write Your Report"
+title: "C_functions-to-help-write-report"
 author: Emily Markowitz (Emily.Markowitz AT NOAA.gov / EmilyMarkowitz-NOAA)
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: 
-  html_document:
-    standalone: true
-    smart: true
-    normalize: true
-    toc: true
-    highlight: tango
-    self-contained: true
-    theme: cerulean
+  html_document
 csl: "../inst/cit/apa.csl"
 bibliography: "../inst/rmd/bib_example.bib"
 vignette: >
@@ -20,6 +13,7 @@ vignette: >
 ---
 
 ```{r, setup, include = FALSE}
+# Functions in Action to Help You Write Your Report
 knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, 
   collapse = TRUE,
   comment = "#>"

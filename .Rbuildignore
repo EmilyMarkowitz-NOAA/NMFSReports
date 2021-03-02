@@ -10,5 +10,5 @@
 ^pkgdown
 ^\./pkgdown/_pkgdown\.yml$
 ^pkgdown$
-^docs$
 ^img$
+^docs$
