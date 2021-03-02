@@ -14,7 +14,7 @@ save_tables(
   cnt_chapt_content = "001",
   cnt = 1,
   path = NULL,
-  output_type = c(".csv"),
+  output_type = c("csv"),
   type = "Table",
   filename_desc = ""
 )
@@ -38,7 +38,7 @@ save_tables(
 
 \item{path}{The path the file needs to be saved to. Defult = NULL, meaning that it wont save anything.}
 
-\item{output_type}{Default = c(".csv"). Can be anything supported by utils::write.table.}
+\item{output_type}{Default = c("csv"). Can be anything supported by utils::write.table.}
 
 \item{type}{Default = "Table", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Table 1. This is my spreadsheet!". Always save in pdf so you can make last minute edits in adobe acrobat!}
 

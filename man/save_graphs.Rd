@@ -15,7 +15,7 @@ save_graphs(
   path = ".",
   width = 6,
   height = 6,
-  output_type = c(".pdf", ".png"),
+  output_type = c("pdf", "png"),
   type = "Figure",
   filename_desc = ""
 )
@@ -41,7 +41,7 @@ save_graphs(
 
 \item{height}{Default = 6 inches}
 
-\item{output_type}{Default = c(".pdf", ".png"). Can be anything supported by ggsave()}
+\item{output_type}{Default = c("pdf", "png"). Can be anything supported by ggsave()}
 
 \item{type}{Default = "Figure", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Figure 1. This is my plot!"}
 
