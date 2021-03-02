@@ -12,7 +12,7 @@ save_graphs(
   filename0 = "x",
   cnt_chapt_content = "001",
   cnt = 1,
-  path = ".",
+  path = NULL,
   width = 6,
   height = 6,
   output_type = c("pdf", "png"),
@@ -35,7 +35,7 @@ save_graphs(
 
 \item{cnt}{The figure number}
 
-\item{path}{The path the file needs to be saved to. Defult = NULL, meaning that it wont save anything.}
+\item{path}{The path the file needs to be saved to. Default = "NULL", meaning it wont save anything and will override all other saving elements.}
 
 \item{width}{Default = 6 inches}
 

@@ -36,7 +36,7 @@ save_tables(
 
 \item{cnt}{The figure number}
 
-\item{path}{The path the file needs to be saved to. Defult = NULL, meaning that it wont save anything.}
+\item{path}{The path the file needs to be saved to. Default = "NULL", meaning it wont save anything and will override all other saving elements.}
 
 \item{output_type}{Default = c("csv"). Can be anything supported by utils::write.table.}
 
