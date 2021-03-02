@@ -1,23 +1,39 @@
 Package: NMFSReports
-Title: What the Package Does (One Line, Title Case)
+Title: Easily write NOAA reports and Tech Memos in R Markdown!
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+  person(given = "Emily",
+           family = "Markowitz", 
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+           email = "Emily.Markowitz@noaa.gov",
+           comment = c(ORCID = "0000-0001-5757-4230"))
+Description: Easily write NOAA reports and Tech Memos in R Markdown with these easy funcitons and structured workflow!
+Date: `Sys.Date()`
+URL: https://EmilyMarkowitz-NOAA.github.io/NMFSReports/, https://github.com/EmilyMarkowitz-NOAA/NMFSReports
+BugReports: https://github.com/EmilyMarkowitz-NOAA/NMFSReports/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
-    ggplot2
+    dplyr,
+    officer,
+    ggplot2,
+    magrittr,
+    extrafont,
+    stringr,
+    here,
+    jsonlite
 Suggests: 
     testthat (>= 3.0.0),
-    rmarkdown
+    rmarkdown,
+    nmfspalette,
+    cowplot,
+    png,
+    kableExtra,
+    knitr
 Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
+VignetteBuilder: knitr

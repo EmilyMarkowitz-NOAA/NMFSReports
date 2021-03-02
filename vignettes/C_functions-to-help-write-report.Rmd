@@ -1,0 +1,19 @@
+---
+title: "C_functions-to-help-write-report"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{C_functions-to-help-write-report}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(NMFSReports)
+```

@@ -1,0 +1,19 @@
+---
+title: "B_run-script-demo"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{B_run-script-demo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(NMFSReports)
+```

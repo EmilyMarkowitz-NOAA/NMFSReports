@@ -1,3 +1,8 @@
 ^NMFSReports\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
+
+^notes\.R
+^\./pkgdown/_pkgdown\.yml$
+^docs$
+^pkgdown$
