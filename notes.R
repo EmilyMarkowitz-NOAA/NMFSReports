@@ -42,6 +42,9 @@ usethis::use_github_action("pkgdown")
 
 #########NOTES#########
 
+# bootstrap shiny design
+# https://gallery.shinyapps.io/117-shinythemes/
+
 # Guide for checking CMD CHECK()
 #    https://r-pkgs.org/r-cmd-check.html
 
