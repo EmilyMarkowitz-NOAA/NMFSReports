@@ -12,8 +12,321 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+options(rmarkdown.html_vignette.check_title = FALSE)
+
 ```
 
 ```{r setup}
 library(NMFSReports)
+library(here)
+library(ggplot2)
 ```
+
+When NMFSReports::buildTM run many files are created, but among them is the run.R file. 
+
+```{r, eval=FALSE}
+NMFSReports::buildTM()
+```
+
+# run.R
+
+```{r, eval=FALSE}
+#' ---
+#' title: ''
+#' author: ''
+#' purpose: Run Scripts and R Markdown Files
+#' start date: 2021-02-25
+#' date modified: 2021-02-25                                          # CHANGE
+#' Notes:                                                               # CHANGE
+#' ---
+
+######START#######
+
+######***KNOWNS#########
+report_title <- ''
+report_authors <- ''
+report_yr <- substr(x = Sys.Date(), start = 1, stop = 4)                # CHANGE
+report_office_location <- ""                                            # CHANGE
+# For example: 
+# "National Oceanic and Atmospheric Administration 
+# 1315 East-West Highway [bldg./room]
+# Silver Spring, MD 20910"
+report_office <- ""                                                     # CHANGE 
+report_num <- "###"                                                     # CHANGE
+report_NOAA_leaders <- "U.S. Department of Commerce
+Wynn Coggins, Acting Secretary  
+
+National Oceanic and Atmospheric Administration
+Benjamin Friedman, Acting NOAA Administrator
+ 
+National Marine Fisheries Service
+Paul Doremus, Acting Assistant Administrator for Fisheries"
+
+#######***WHAT KIND OF OUTPUT#######
+#Is this for InDesign? 
+indesign_flowin <- FALSE
+
+#######SOURCE SUPPORT SCRIPTS#############
+library(here) # Other functions load in the 0_functions.R 
+
+source(here::here('code', 'directories.R' ))
+
+source(here::here('code', 'functions.R' ))
+
+source(here::here('code', 'dataDL.R' ))
+
+source(here::here('code', 'data.R' ))
+
+
+
+#######SAVE PACKAGES USED TO CREATE THIS REPORT#############
+# renv::init()
+# renv::snapshot()
+
+
+######MAKE REPORT########
+cnt_chapt<-"000" # Keep everything in a proper order
+plot_list<-c() # This will help us by saving R-ready plots so we can easily go back and edit them if necessary. 
+table_list<-c() # This will help us by saving R-ready tables  so we can easily go back and edit them if necessary. 
+cnt_figures<-0 # This will autoname your figures with consecutive numbers (e.g., Figure 1.)
+cnt_tables<-0 # This will autoname your tables with consecutive numbers (e.g., Table 1.)
+cnt_equ<-0
+
+####### RUN EACH SECTION#############
+
+# ######***EXAMPLE############
+# cnt_chapt<-auto_counter(cnt_chapt) # The order of the chapter in the report
+# cnt_chapt_content<-"001" # The order of the content in the report (e.g., figures, images, tables)
+# filename0<-paste0(cnt_chapt, "_Example_") #Seperated because we'll need it inside the RMarkdown
+# rmarkdown::render(paste0(dir_scripts, "/0_example.Rmd"),
+#                   output_dir = dir_out_chapters,
+#                   output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
+
+
+
+  ############# 1 - frontmatter ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_frontmatter_") 
+  rmarkdown::render(paste0(dir_code, "/1_frontmatter.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
+                    
+  
+  
+  ############# 2 - abstract ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_abstract_") 
+  rmarkdown::render(paste0(dir_code, "/2_abstract.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
+                    
+  
+  
+  ############# 3 - introduction ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_introduction_") 
+  rmarkdown::render(paste0(dir_code, "/3_introduction.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
+                    
+  
+  
+  ############# 4 - methods ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_methods_") 
+  rmarkdown::render(paste0(dir_code, "/4_methods.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
+                    
+  
+  
+  ############# 5 - results ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_results_") 
+  rmarkdown::render(paste0(dir_code, "/5_results.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
+                    
+  
+  
+  ############# 6 - discussion ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_discussion_") 
+  rmarkdown::render(paste0(dir_code, "/6_discussion.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
+                    
+  
+  
+  ############# 7 - workscited ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_workscited_") 
+  rmarkdown::render(paste0(dir_code, "/7_workscited.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
+                    
+  
+  
+  ############# 8 - workscitedR ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_workscitedR_") 
+  rmarkdown::render(paste0(dir_code, "/8_workscitedR.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
+                    
+  
+  
+  ############# 9 - presentation ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_presentation_") 
+  rmarkdown::render(paste0(dir_code, "/9_presentation.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
+                    
+  
+  
+
+
+
+  ############# 1 - frontmatter ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_frontmatter_") 
+  rmarkdown::render(paste0(dir_code, "/1_frontmatter.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
+                    
+  
+  
+  ############# 2 - abstract ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_abstract_") 
+  rmarkdown::render(paste0(dir_code, "/2_abstract.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
+                    
+  
+  
+  ############# 3 - introduction ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_introduction_") 
+  rmarkdown::render(paste0(dir_code, "/3_introduction.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
+                    
+  
+  
+  ############# 4 - methods ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_methods_") 
+  rmarkdown::render(paste0(dir_code, "/4_methods.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
+                    
+  
+  
+  ############# 5 - results ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_results_") 
+  rmarkdown::render(paste0(dir_code, "/5_results.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
+                    
+  
+  
+  ############# 6 - discussion ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_discussion_") 
+  rmarkdown::render(paste0(dir_code, "/6_discussion.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
+                    
+  
+  
+  ############# 7 - workscited ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_workscited_") 
+  rmarkdown::render(paste0(dir_code, "/7_workscited.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
+                    
+  
+  
+  ############# 8 - workscitedR ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_workscitedR_") 
+  rmarkdown::render(paste0(dir_code, "/8_workscitedR.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
+                    
+  
+  
+  ############# 9 - presentation ####################
+  cnt_chapt<-auto_counter(cnt_chapt)
+  cnt_chapt_content<-"001" 
+  filename0<-paste0(cnt_chapt, "_presentation_") 
+  rmarkdown::render(paste0(dir_code, "/9_presentation.Rmd"),
+                    output_dir = dir_out_chapters,
+                    output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
+                    
+  
+  
+
+
+
+##### SAVE OTHER OUTPUTS#############
+
+save(plot_list, 
+     file=paste0(dir_output_todaysrun, "/plots/report_plots.rdata"))
+
+save(table_list, 
+     file=paste0(dir_output_todaysrun, "/plots/report_tables.rdata"))
+
+########***MAKE MASTER DOCX################
+
+#USE GUIDENCE FROM THIS LINK
+#https://support.microsoft.com/en-us/help/2665750/how-to-merge-multiple-word-documents-into-one
+
+
+###############***METADATA##################
+# So we can 
+#    1. Go back and recreate this exactly with the libraries you used to create this script and 
+#    2. Cite the apropriate versions of the packages you used in your report
+# More info here: https://rstudio.github.io/packrat/walkthrough.html
+
+CreateMetadata(dir_out = paste0(dir_output_todaysrun, "/metadata"), 
+               title = paste0(report_title, " Metadata ", Sys.Date()))
+
+# setwd(paste0(dir_output_todaysrun))
+
+```
+
+# Things to change
+
+## Metadata
+
+Update the metadata to include your name, purpose, etc. 
+
+# Knowns
+
+Depending on the type of report, there may be things you want to define the report as a whole. If an annual report, a goot known to add there might be something like ` yr <- 2021 `
+
+# Sections
+
+Actually, what is written in this script is pretty customary and really shouldn't need to be changed unless you changed your mind about the organization of the report. Here, go into each of the .Rmd documents to edit them. 

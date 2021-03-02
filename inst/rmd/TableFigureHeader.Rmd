@@ -1,0 +1,19 @@
+---
+title: ""
+author: ""
+date: ""
+output: 
+   word_document:
+     df_print: kable
+     reference_docx: word-styles-reference.docx
+---
+  
+```{r, aa, echo=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo=T)
+```
+
+```{r Paragraph_000, echo = FALSE, warning=FALSE}
+  
+```
+
+#### `r Title0`

@@ -1,47 +1,22 @@
 ---
-title: "C_functions-to-help-write-report"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{C_functions-to-help-write-report}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output:
+  word_document:
+    pandoc_args: ["--metadata-file=header.yaml"]
+    reference_docx: word_styles_reference.docx
+csl: "../cit/cit.csl"
+bibliography: "../data/bibliography.bib"
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  message = FALSE, echo = TRUE, warning = FALSE,
-  collapse = TRUE,
-  comment = "#>"
-)
-options(rmarkdown.html_vignette.check_title = FALSE)
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, error = FALSE)
 ```
 
-```{r setup}
-library(NMFSReports)
-library(here)
-library(magrittr)
-library(ggplot2)
-library(png)
-library(cowplot)
-```
+# Example of how to use this R Markdown document
 
+```{r ChunkName_NameMeAnythingAsLongAsItIsUnique}
+# Chunks are were we can write code for something later in the code. 
 
-
-## From run file: 
-```{r a}
-cnt_chapt <- "000" # Keep everything in a proper order
-plot_list <- c() # This will help us by saving R-ready plots so we can easily go back and edit them if necessary. 
-table_list <- c() # This will help us by saving R-ready tables  so we can easily go back and edit them if necessary. 
-cnt_figures <- 0 # This will autoname your figures with consecutive numbers (e.g., Figure 1.)
-cnt_tables <- 0 # This will autoname your tables with consecutive numbers (e.g., Table 1.)
-cnt_equ <- 0
-
-cnt_chapt_content<-0
-filename0<-"example"
-indesign_flowin<-FALSE
-
-# example data from what would be in the data.R file
+# example data
 dat <- data.frame(x = rnorm(n = 10), 
                 y = rnorm(n = 10), 
                 col = rep_len(x = c("a", "b"), length.out = 5))
@@ -49,13 +24,11 @@ Footnotes.list<-list("ExOfStandardFt" = "Wow, this project is so cool!")
 
 ```
 
-# Example of how to use this R Markdown document
-
 Here is the report content!
 
 ## Citations
 
-My example dataset has `r xunits(nrow(dat))` rows in it and `r xunits(ncol(dat))` columns in it.`r paste0("^[", Footnotes.list$ExOfStandardFt,"]") ` That is `r pchange(start = dat$x[1], end = dat$x[10])`^[Here's another, free-written footnote!]. This work has nothing to do with [@RN170], but I'll cite it here anyway. I am sure that @RN621 would like to have something to say about that!
+My example dataset has `r xunits(nrow(dat))` rows in it and `r xunits(ncol(dat))` columns in it.`r paste0("^[", Footnotes.list$ExOfStandardFt,"]") ` That is `r pchange(start = nrow(dat), end = ncol(dat))`^[Here's another, free-written footnote!]. This work has nothing to do with [@RN170], but I'll cite it here anyway. I am sure that @RN621 would like to have something to say about that!
 
 Note that references will appear at the bottom of this document (and any document that you put references in) but when you combine this document with all of the other documents that you create, it will shift to the bottom of the report.
 
@@ -81,14 +54,15 @@ footnote<-c("A footnote for this figure!", "A second footnote for this figure!")
 # Select data and make plot
 plot0<- dat %>%
   ggplot(aes(x = x, y = y, colour = as.factor(col))) + # create plot
-  geom_point() 
+  geom_point() +
+  nmfspalette::scale_color_nmfs(palette = "coral") # Use NMFS Color Pallet
 ```
 
 
 ```{r G1b}
 # Don't Edit This:
-cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_figures<-cnt_figures + 1
+cnt_chapt_content<-auto_counter(cnt_chapt_content)
+cnt_figures<-cnt_figures+1
 
 # Systematically save your plot with this simple function
 plot_list<-save_graphs(plot0 = plot0, 
@@ -98,7 +72,7 @@ plot_list<-save_graphs(plot0 = plot0,
                       filename0 = filename0, 
                       cnt_chapt_content = cnt_chapt_content, 
                       cnt = cnt_figures, 
-                      # path = dir_out_figures, 
+                      path = dir_out_figures, 
                       width = 6, # you can change this if you need to...
                       height = 6) # you can change this if you need to...
 
@@ -131,7 +105,7 @@ footnote<-c("A footnote for this figure!")
 # Select data and make plot
 plot0 <- 
   cowplot::ggdraw() +
-  cowplot::draw_image(readPNG(here::here("inst", "img", "noaa-gray.png"))) 
+  cowplot::draw_image(readPNG(here::here("img", "noaa-gray.png"))) 
 ```
 
 
@@ -148,7 +122,7 @@ plot_list<-save_graphs(plot0 = plot0,
                       filename0 = filename0, 
                       cnt_chapt_content = cnt_chapt_content, 
                       cnt = cnt_figures, 
-                      # path = dir_out_figures, 
+                      path = dir_out_figures, 
                       width = 1, # you can change this if you need to...
                       height = 1,  # you can change this if you need to...
                       filename_desc = "noaalogo")
@@ -205,9 +179,8 @@ table_list<-save_tables(table_raw = table_raw,
                         footnote = footnote,
                         filename0 = filename0, 
                         cnt_chapt_content = cnt_chapt_content, 
-                        cnt = cnt_tables#, 
-                        # path = dir_out_tables
-                        )
+                        cnt = cnt_tables, 
+                        path = dir_out_tables)
 ```
 
 
@@ -282,9 +255,8 @@ table_list<-save_tables(table_raw = table_raw,
                         footnote = footnote,
                         filename0 = filename0, 
                         cnt_chapt_content = cnt_chapt_content, 
-                        cnt = cnt_tables#, 
-                        # path = dir_out_tables
-                        )
+                        cnt = cnt_tables, 
+                        path = dir_out_tables)
 ```
 
 
