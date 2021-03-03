@@ -2,6 +2,10 @@
 output:
   word_document:
     pandoc_args: ["--metadata-file=header.yaml"]
+    reference_docx: styles_reference.docx
+    df_print: kable
+csl: "../cit/cit.csl"
+bibliography: "../code/bibliography.bib"
 ---
 
 ```{r setup, include=FALSE}

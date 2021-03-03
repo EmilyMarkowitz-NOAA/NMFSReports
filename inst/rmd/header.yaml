@@ -2,9 +2,5 @@
 link-citations: true
 reference-section-title: References
 output:
-   word_document:
-     df_print: kable
-     reference_docx: styles_reference.docx
-csl: "../cit/cit.csl"
-bibliography: "../code/bibliography.bib"
+   word_document
 ---

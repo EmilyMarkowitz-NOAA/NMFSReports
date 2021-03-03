@@ -214,14 +214,19 @@ buildTM<-function(sections = c("frontmatter",
   sections_no<-NMFSReports::numbers0(c(0:length(sections), length(b)))
   sections_no<-sections_no[-length(sections_no)]
 
+  b<-b[b %in% presentation]
+
   a<-paste(paste0('
-  ############# ', sections_no,' - ', NMFSReports::TitleCase(b),' ####################
+  ############# ', sections_no,' - ', stringr::str_to_title(b),' ####################
   cnt_chapt<-auto_counter(cnt_chapt)
   cnt_chapt_content<-"001"
   filename0<-paste0(cnt_chapt, "_', b,'_")
   rmarkdown::render(paste0(dir_code, "/',sections_no,'_',b,'.Rmd"),
                     output_dir = dir_out_chapters,
                     output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
+
+
+  '), collapse = "")
 
 
   '), collapse = "")
