@@ -13,20 +13,20 @@
 report_title <- # INSERT_REPORT_TITLE
 report_authors <- # INSERT_AUTHOR
 report_yr <- substr(x = Sys.Date(), start = 1, stop = 4)                # CHANGE
-report_office_location <- ""                                            # CHANGE
+report_office_location <- " > [Office Location]"                          # CHANGE
 # For example:
-# "National Oceanic and Atmospheric Administration
-# 1315 East-West Highway [bldg./room]
-# Silver Spring, MD 20910"
-report_office <- ""                                                     # CHANGE
+# "National Oceanic and Atmospheric Administration\n
+# 1315 East-West Highway [bldg./room]\n
+# Silver Spring, MD 20910"\n
+report_office <- "" # For example: AFSC, NEFSC                          # CHANGE
 report_num <- "###"                                                     # CHANGE
-report_NOAA_leaders <- "U.S. Department of Commerce
+report_NOAA_leaders <- "U.S. Department of Commerce\n
 Wynn Coggins, Acting Secretary
 
-National Oceanic and Atmospheric Administration
+National Oceanic and Atmospheric Administration\n
 Benjamin Friedman, Acting NOAA Administrator
 
-National Marine Fisheries Service
+National Marine Fisheries Service/n
 Paul Doremus, Acting Assistant Administrator for Fisheries"
 
 #######***WHAT KIND OF OUTPUT#######
