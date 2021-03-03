@@ -60,7 +60,7 @@
       <a href="../articles/B_run-script-demo.html">How to use the run.R file to be the skeleton of your report</a>
     </li>
     <li>
-      <a href="../articles/C_functions-to-help-write-report.html">Functions in Action to Help You Write Your Report</a>
+      <a href="../articles/C_functions-to-help-write-report.html">Functions and Examples to Help You Write Your Report</a>
     </li>
   </ul>
 </li>
@@ -154,18 +154,6 @@
                <span class="st">"endmatter"</span> <span class="co"># This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. </span>
               <span class="op">)</span> </code></pre></div>
 </div>
-<div id="support_scripts" class="section level2">
-<h2 class="hasAnchor">
-<a href="#support_scripts" class="anchor"></a>support_scripts</h2>
-<p>And to make sure we nice and neatly compartemantalize our work, I’m going to create the below supporting .R files that I will source into my ‘run’ file:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">support_scripts</span> <span class="op">&lt;-</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="co"># note a 'run' file is automatically created. Think of this as the spine of your document. </span>
-      <span class="st">"functions"</span>, <span class="co"># where I will save all report-specific functions</span>
-      <span class="st">"dataDL"</span>, <span class="co"># Where we will download the data (e.g., from Oracle or an API). You may only want to run this every so often or regularly, up to you</span>
-      <span class="st">"data"</span> <span class="co"># Where I will load that data kept locally that was either downloaded in "dataDL" or created locally</span>
-<span class="op">)</span></code></pre></div>
-</div>
 <div id="styles_reference_docx" class="section level2">
 <h2 class="hasAnchor">
 <a href="#styles_reference_docx" class="anchor"></a>styles_reference_docx</h2>
@@ -204,7 +192,7 @@
 <h2 class="hasAnchor">
 <a href="#csl" class="anchor"></a>csl</h2>
 <p><code>csl</code> is a citation style. Either use a local document (insert “path”) or some of the pre-made templates (“apa”). Default = “apa” because it was easy to find.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">csl</span> <span class="op">=</span> <span class="st">"apa"</span>
 
 <span class="co"># it looks something like this:</span>
@@ -216,7 +204,7 @@
 <h2 class="hasAnchor">
 <a href="#bibliography-bib" class="anchor"></a>bibliography.bib</h2>
 <p><code>bibliography.bib</code>: Either use a local document (.bib format; insert full “path”) or the example file from the package (“bib_example”). Default = “bib_example”.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">csl</span> <span class="op">=</span> <span class="st">"bib_example"</span>
 
 <span class="co"># it looks something like this:</span>
@@ -270,10 +258,9 @@
 <h1 class="hasAnchor">
 <a href="#create-report-outline" class="anchor"></a>Create Report Outline</h1>
 <p>Now, magic! Now for the sake of the vignette, I can’t actually run it here, but below is a picture of what this looks like:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
         sections <span class="op">=</span> <span class="va">sections</span>,
-        support_scripts <span class="op">=</span> <span class="va">support_scripts</span>,
         authors <span class="op">=</span> <span class="va">authors</span>,
         title <span class="op">=</span> <span class="va">title</span>,
         styles_reference_pptx <span class="op">=</span> <span class="va">styles_reference_pptx</span>,
@@ -291,39 +278,17 @@
 <div id="alternative-report-structures" class="section level1">
 <h1 class="hasAnchor">
 <a href="#alternative-report-structures" class="anchor"></a>Alternative report structures:</h1>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span>
 
 <span class="co"># Input variables for buildReport()</span>
-<span class="va">sections</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"frontmatter"</span>, <span class="st">"abstract"</span>, <span class="st">"introduction"</span>, <span class="st">"methods"</span>, <span class="st">"results"</span>,
-             <span class="st">"discussion"</span>, <span class="st">"endmatter"</span><span class="op">)</span>
-<span class="va">support_scripts</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"directories"</span>, <span class="st">"functions"</span>, <span class="st">"dataDL"</span>, <span class="st">"data"</span><span class="op">)</span>
-<span class="va">authors</span> <span class="op">=</span> <span class="st">"Me, Myself, and I"</span>
-<span class="va">title</span> <span class="op">=</span> <span class="st">"Awesome Report!"</span>
-<span class="va">styles_reference_pptx</span> <span class="op">=</span> <span class="st">"refpptx_nmfs"</span>
-<span class="va">styles_reference_docx</span> <span class="op">=</span> <span class="st">"refdoc_noaa_tech_memo"</span>
-<span class="va">bibliography.bib</span> <span class="op">=</span> <span class="st">"bib_example"</span>
-<span class="va">csl</span> <span class="op">=</span> <span class="st">"bulletin-of-marine-science"</span>
+<span class="va">sections</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"coverpage"</span>, <span class="co"># This is a specific template for a 1 page coverpage</span>
+             <span class="st">"history"</span>, 
+             <span class="st">"studyimportance"</span>, 
+             <span class="st">"actions"</span>, 
+             <span class="st">"endmatter"</span><span class="op">)</span> <span class="co"># This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. </span>
 
-<span class="co"># Run buildReport() function</span>
-<span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
-        sections <span class="op">=</span> <span class="va">sections</span>,
-        support_scripts <span class="op">=</span> <span class="va">support_scripts</span>,
-        authors <span class="op">=</span> <span class="va">authors</span>,
-        title <span class="op">=</span> <span class="va">title</span>,
-        styles_reference_pptx <span class="op">=</span> <span class="va">styles_reference_pptx</span>,
-        styles_reference_docx <span class="op">=</span> <span class="va">styles_reference_docx</span>,
-        bibliography.bib <span class="op">=</span> <span class="va">bibliography.bib</span>,
-        csl <span class="op">=</span> <span class="va">csl</span>
-<span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span>
-
-<span class="co"># Input variables for buildReport()</span>
-<span class="va">sections</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"coverpage"</span>, <span class="st">"history"</span>, <span class="st">"studyimportance"</span>, <span class="st">"actions"</span>, <span class="st">"endmatter"</span><span class="op">)</span>
-<span class="va">support_scripts</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"directories"</span>, <span class="st">"functions"</span>, <span class="st">"dataDL"</span>, <span class="st">"data"</span><span class="op">)</span>
 <span class="va">authors</span> <span class="op">=</span> <span class="st">"Very important people"</span>
 <span class="va">title</span> <span class="op">=</span> <span class="st">"Shorter Report!"</span>
 <span class="va">styles_reference_pptx</span> <span class="op">=</span> <span class="st">"refpptx_nmfs"</span>
@@ -338,7 +303,6 @@
 <span class="co"># Run buildReport() function</span>
 <span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
         sections <span class="op">=</span> <span class="va">sections</span>,
-        support_scripts <span class="op">=</span> <span class="va">support_scripts</span>,
         authors <span class="op">=</span> <span class="va">authors</span>,
         title <span class="op">=</span> <span class="va">title</span>,
         styles_reference_pptx <span class="op">=</span> <span class="va">styles_reference_pptx</span>,

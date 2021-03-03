@@ -60,7 +60,7 @@
       <a href="../articles/B_run-script-demo.html">How to use the run.R file to be the skeleton of your report</a>
     </li>
     <li>
-      <a href="../articles/C_functions-to-help-write-report.html">Functions in Action to Help You Write Your Report</a>
+      <a href="../articles/C_functions-to-help-write-report.html">Functions and Examples to Help You Write Your Report</a>
     </li>
   </ul>
 </li>
@@ -130,7 +130,6 @@
 <span class="co"># Input variables for buildReport()</span>
 <span class="va">sections</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"frontmatter"</span>, <span class="st">"abstract"</span>, <span class="st">"introduction"</span>, <span class="st">"methods"</span>, <span class="st">"results"</span>,
              <span class="st">"discussion"</span>, <span class="st">"endmatter"</span><span class="op">)</span>
-<span class="va">support_scripts</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"directories"</span>, <span class="st">"functions"</span>, <span class="st">"dataDL"</span>, <span class="st">"data"</span><span class="op">)</span>
 <span class="va">authors</span> <span class="op">=</span> <span class="st">"Me, Myself, and I"</span>
 <span class="va">title</span> <span class="op">=</span> <span class="st">"Awesome Report!"</span>
 <span class="va">styles_reference_pptx</span> <span class="op">=</span> <span class="st">"refppt_nmfs"</span>
@@ -343,6 +342,20 @@ Paul Doremus, Acting Assistant Administrator for Fisheries"</span>
 <p>This is useful because your progress is saved each day that you work on this project and you can easily find your outputs to make sure they look like you want them too!</p>
 <div class="figure">
 <img src="../man/figures/folder_output_post_run.JPG" alt=""><p class="caption">Output folder post running the run.R script</p>
+</div>
+</div>
+<div id="notes" class="section level1">
+<h1 class="hasAnchor">
+<a href="#notes" class="anchor"></a>Notes:</h1>
+<div id="support_scripts" class="section level2">
+<h2 class="hasAnchor">
+<a href="#support_scripts" class="anchor"></a>support_scripts</h2>
+<p>To make sure we nice and neatly compartemantalize our work, I’m going to create the below supporting .R files that I will source into my ‘run’ file:</p>
+<p>*note a ‘run’ file is automatically created. Think of this as the spine of your document.</p>
+<p><em>functions</em>: Where we will save all report-specific functions.</p>
+<p><em>directories</em>: Where we will systematically create and save objects describing all of our directories. I’ve found that it can be helpful to have these as objects to cut down on verboseness.</p>
+<p><em>dataDL</em>: Where we will download the data (e.g., from Oracle or an API). You may only want to run this every so often or regularly, up to you.</p>
+<p><em>data</em>: Where we will load that data kept locally that was either downloaded in “dataDL” or created locally.</p>
 </div>
 </div>
 <div id="things-to-change" class="section level1">
