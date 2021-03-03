@@ -2,7 +2,7 @@
 title: "Functions in Action to Help You Write Your Report"
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: rmarkdown::html_vignette
-csl: "../inst/cit/apa.csl"
+csl: "../inst/cite/apa.csl"
 bibliography: "../inst/rmd/bib_example.bib"
 vignette: >
   %\VignetteIndexEntry{C_functions-to-help-write-report}
@@ -43,24 +43,32 @@ cnt_equ <- 0
 cnt_chapt_content<-0
 filename0<-"example"
 indesign_flowin<-FALSE
-
-# example data from what would be in the data.R file
-dat <- data.frame(x = rnorm(n = 10), 
-                y = rnorm(n = 10), 
-                col = rep_len(x = c("a", "b"), length.out = 5))
-Footnotes.list<-list("ExOfStandardFt" = "Wow, this project is so cool!")
-
 ```
 
 # Example of how to use this R Markdown document
 
-Here is the report content!
+```{r ChunkName_NameMeAnythingAsLongAsItIsUnique}
+# Chunks are were we can write code for something later in the code. 
 
-## Citations
+# example data
+dat <- data.frame(x = rnorm(n = 100), 
+                y = rnorm(n = 100), 
+                col = rep_len(x = c("a", "b"), length.out = 5))
 
-My example dataset has `r xunits(nrow(dat))` rows in it and `r xunits(ncol(dat))` columns in it.`r paste0("^[", Footnotes.list$ExOfStandardFt,"]") ` That is `r pchange(start = dat$x[1], end = dat$x[10])`^[Here's another, free-written footnote!]. This work has nothing to do with [@RN170], but I'll cite it here anyway. I am sure that @RN621 would like to have something to say about that!
+Footnotes.list<-list("ExOfStandardFt" = "Wow, this project is so cool!")
 
-Note that references will appear at the bottom of this document (and any document that you put references in) but when you combine this document with all of the other documents that you create, it will shift to the bottom of the report.
+types_of_vessels <- c("NOAAS Vessel", "F/V Fishing Boat", "R/V University Vessel", "Private Charter")
+```
+
+Here is the report content:
+
+## Systematic writing of content
+
+My example dataset has `r xunits(nrow(dat))` rows in it and `r xunits(ncol(dat))` columns in it.`r paste0("^[", Footnotes.list$ExOfStandardFt,"]") ` 
+
+This sentance examplifies how to systematically calculate a percent change: `r pchange(start = nrow(dat), end = ncol(dat))`^[Here's another, free-written footnote!]. 
+
+Here are several types of vessels: `r NMFSReports::text_list(types_of_vessels)`. 
 
 ## Equations
 

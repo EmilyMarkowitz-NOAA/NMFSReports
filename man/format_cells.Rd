@@ -26,10 +26,9 @@ format_cells(df, 1, 1, "italics")
 format_cells(df, 2, 2, "bold")
 format_cells(df, 3, 1:2, "strikethrough")
 
-# not run:
- library(knitr)
+library(knitr)
 library(kableExtra)
-library(tidyverse)
+library(magrittr)
 df \%>\%
   format_cells(1, 1, "italics") \%>\%
   format_cells(2, 2, "bold") \%>\%

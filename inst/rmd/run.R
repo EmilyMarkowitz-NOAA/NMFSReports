@@ -20,13 +20,18 @@ report_office_location <- " > [Office Location]"                          # CHAN
 # Silver Spring, MD 20910"\n
 report_office <- "" # For example: AFSC, NEFSC                          # CHANGE
 report_num <- "###"                                                     # CHANGE
-report_NOAA_leaders <- "U.S. Department of Commerce\n
+report_NOAA_leaders <- "U.S. Department of Commerce
+
 Wynn Coggins, Acting Secretary
 
-National Oceanic and Atmospheric Administration\n
+
+National Oceanic and Atmospheric Administration
+
 Benjamin Friedman, Acting NOAA Administrator
 
-National Marine Fisheries Service/n
+
+National Marine Fisheries Service
+
 Paul Doremus, Acting Assistant Administrator for Fisheries"
 
 #######***WHAT KIND OF OUTPUT#######

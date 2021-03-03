@@ -151,8 +151,7 @@
                <span class="st">"methods"</span>, 
                <span class="st">"results"</span>, 
                <span class="st">"discussion"</span>, 
-               <span class="st">"endmatter"</span>, <span class="co"># This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. </span>
-               <span class="st">"presentations"</span> <span class="co"># This is a specific template that matches the NOAA Template</span>
+               <span class="st">"endmatter"</span> <span class="co"># This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. </span>
               <span class="op">)</span> </code></pre></div>
 </div>
 <div id="support_scripts" class="section level2">
@@ -191,15 +190,12 @@
 <div id="styles_reference_pptx" class="section level2">
 <h2 class="hasAnchor">
 <a href="#styles_reference_pptx" class="anchor"></a>styles_reference_pptx</h2>
-<p><code>styles_reference_pptx</code> is a document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert “path”) or some of the pre-made templates (“refdoc_noaa_tech_memo” or “refdoc_fisheries_economics_of_the_us”). Default = “NOAATechMemo”</p>
+<p><code>styles_reference_pptx</code> is a document style reference guide is essentially a word document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made templates (“refppt_nmfs”). Default = “refppt_nmfs”. You can change this later by renaming the file in the code folder.</p>
 <p>Here’s what they look like:</p>
 <div id="refppt_nmfs" class="section level3">
 <h3 class="hasAnchor">
 <a href="#refppt_nmfs" class="anchor"></a>refppt_nmfs</h3>
-<p>A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use a local document (insert full “path”) or some of the pre-made templates (“nmfs”). Default = “refppt_nmfs”.</p>
-<div class="figure">
-<img src="../man/figures/refppt_nmfs.JPG" alt="refppt_nmfs"><p class="caption">refppt_nmfs</p>
-</div>
+<!-- ![refppt_nmfs](../man/figures/refppt_nmfs.JPG) -->
 </div>
 </div>
 <div id="csl" class="section level2">
@@ -212,12 +208,7 @@
 <span class="co"># it looks something like this:</span>
 <span class="va">apa</span> <span class="op">&lt;-</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"cit"</span>,<span class="st">"apa.csl"</span>, package<span class="op">=</span><span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">apa</span><span class="op">)</span>
-<span class="co">#&gt; [1] "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;"                                                                                </span>
-<span class="co">#&gt; [2] "&lt;style xmlns=\"http://purl.org/net/xbiblio/csl\" class=\"in-text\" version=\"1.0\" demote-non-dropping-particle=\"never\"&gt;"</span>
-<span class="co">#&gt; [3] "  &lt;!-- This style was edited with the Visual CSL Editor (http://steveridout.com/csl/visualEditor/) --&gt;"                    </span>
-<span class="co">#&gt; [4] "  &lt;info&gt;"                                                                                                                  </span>
-<span class="co">#&gt; [5] "    &lt;title&gt;American Psychological Association 6th edition&lt;/title&gt;"                                                         </span>
-<span class="co">#&gt; [6] "    &lt;title-short&gt;APA&lt;/title-short&gt;"</span></code></pre></div>
+<span class="co">#&gt; character(0)</span></code></pre></div>
 </div>
 <div id="bibliography-bib" class="section level2">
 <h2 class="hasAnchor">

@@ -58,8 +58,7 @@ sections <- c("frontmatter", # This is a specific template that matches the NOAA
                "methods", 
                "results", 
                "discussion", 
-               "endmatter", # This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. 
-               "presentations" # This is a specific template that matches the NOAA Template
+               "endmatter" # This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. 
               ) 
 ```
 
@@ -94,16 +93,13 @@ Here's what they look like:
 
 ## styles_reference_pptx
 
-`styles_reference_pptx` is a document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "NOAATechMemo"
+`styles_reference_pptx` is a document style reference guide is essentially a word document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made templates ("refppt_nmfs"). Default = "refppt_nmfs". You can change this later by renaming the file in the code folder. 
 
 Here's what they look like: 
 
 ### refppt_nmfs
 
-A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("nmfs"). Default = "refppt_nmfs".
-
-![refppt_nmfs](../man/figures/refppt_nmfs.JPG)
-
+<!-- ![refppt_nmfs](../man/figures/refppt_nmfs.JPG) -->
 
 ## csl
 

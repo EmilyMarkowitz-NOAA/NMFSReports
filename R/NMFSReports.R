@@ -3,18 +3,18 @@
 
 #' Build your intitial architecture for your new NOAA Tech Memo or Report
 #'
-#' @param sections a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "endmatter"). Note that "frontmatter" and "endmatter both have specific templates, and all others are from a blank template. "endmatter" will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's O
+#' @param sections a string of the different sections of your report. Sections must be listed in order. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "endmatter"). Note that "frontmatter" and "endmatter" both have specific templates, and all others are from a blank template. "endmatter" will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list authors's ORCID and acknowlegelments.
 #' @param support_scripts To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")
-#' @param authors Default = "". Here, add your First Lastname.
-#' @param title Default = "". Here, put the title of your report.
-#' @param styles_reference_pptx A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("refppt_nmfs"). Default = "nmfs".
-#' @param styles_reference_docx A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo".
-#' @param bibliography.bib Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example".
-#' @param csl Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa", "new-phytologist"). A NOAA TM citation style needs to be created, but until then, the default = "apa".
+#' @param authors Default = "". Here, add all author's first and last name as it should appear in the report.You can change this later by editing this in the run.R file.
+#' @param title Default = "". Here, put the title of your report. You can change this later by editing this in the run.R file.
+#' @param styles_reference_pptx A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made templates ("refppt_nmfs"). Default = "refppt_nmfs". You can change this later by renaming the file in the code folder.
+#' @param styles_reference_docx A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full path to local document) or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo". You can change this later by renaming the file in the code folder.
+#' @param bibliography.bib Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example". You can change this later by renaming the file in the cite folder.
+#' @param csl Citation style. Either use a local document (insert full path to local document) or some of the pre-made templates ("apa", "new-phytologist"). A NOAA TM citation style needs to be created, but until then, the default = "apa". You can change this later by renaming the file in the cite folder. Find citation styles at: https://github.com/citation-style-language/styles
 #' @export
 #' @examples
 #' sections = c("frontmatter", "abstract", "introduction", "methods", "results",
-#'             "discussion", "workscited", "workscitedR", "presentation")
+#'             "discussion", "endmatter")
 #' support_scripts = c("directories", "functions", "dataDL", "data")
 #' authors = "Me, Myself, and I"
 #' title = "Awesome Report!"
@@ -40,8 +40,7 @@ buildTM<-function(sections = c("frontmatter",
                                "methods",
                                "results",
                                "discussion",
-                               "workscited",
-                               "workscitedR",
+                               "endmatter",
                                "presentation"),
                   support_scripts = c("directories",
                                       "functions",
@@ -55,7 +54,7 @@ buildTM<-function(sections = c("frontmatter",
                   csl = "apa"){
 
   ##################  Create Architecture
-  dirs <- c("code", "data", "documentation", "img", "cit", "output")
+  dirs <- c("code", "data", "documentation", "img", "cite", "output")
 
   for (i in 1:length(dirs)) {
     if (dir.exists(dirs[i]) == FALSE) {
@@ -66,8 +65,11 @@ buildTM<-function(sections = c("frontmatter",
   # Now... Load those folders with stuff you care about
 
   ################## RMD scripts
-  a<-list.files(path = system.file("rmd", package="NMFSReports"), pattern = "0_")
-  b<-c("example", sections)
+  a <- list.files(path = system.file("rmd", package="NMFSReports"), pattern = "0_")
+  b <- c("example", sections)
+  if (!(is.null(styles_reference_pptx))) {
+    b <- c(b, "presentation")
+  }
   counter<-NMFSReports::numbers0(x = c(0, length(b)))[1]
   temp<-gsub(pattern = "\\.Rmd", replacement = "",
              x = gsub(pattern = "0_", replacement = "",
@@ -157,15 +159,18 @@ buildTM<-function(sections = c("frontmatter",
 
   for (i in 1:length(b)){
 
-    b[i]<-dplyr::case_when(grepl(pattern = "refdoc", x = b[i]) ~ paste0(b[i], ".docx"),
-                           grepl(pattern = "refppt", x = b[i]) ~ paste0(b[i], ".pptx"),
-                           grepl(pattern = "bib_", x = b[i]) ~ paste0(b[i], ".bib"),
+    b[i]<-dplyr::case_when(grepl(pattern = "refdoc", x = b[i]) ~
+                             paste0(b[i], ".docx"),
+                           grepl(pattern = "refppt", x = b[i]) ~
+                             paste0(b[i], ".pptx"),
+                           grepl(pattern = "bib_", x = b[i]) ~
+                             paste0(b[i], ".bib"),
                            TRUE ~ b[i])
 
     if (system.file("rmd", b[i], package="NMFSReports") != "") { # is a file from the package
       copyfrom <- system.file("rmd", b[i], package="NMFSReports")
-    } else if (system.file("cit", paste0(b[i], ".csl"), package="NMFSReports") != "") {
-      copyfrom <- system.file("cit", paste0(b[i], ".csl"), package="NMFSReports")
+    } else if (system.file("cite", paste0(b[i], ".csl"), package="NMFSReports") != "") {
+      copyfrom <- system.file("cite", paste0(b[i], ".csl"), package="NMFSReports")
     } else if (dir.exists(dirname(b[i]))) { # is a local path
       copyfrom <- b[i]
     }
@@ -175,8 +180,9 @@ buildTM<-function(sections = c("frontmatter",
                                b[i] == paste0(styles_reference_pptx, ".pptx") ~
                                  "./code/styles_reference.pptx",
                                b[i] == paste0(bibliography.bib, ".bib") ~
-                                 "./code/bibliography.bib",
-                               b[i] == csl ~ "./cit/cit.csl",
+                                 "./cite/bibliography.bib",
+                               b[i] == csl ~
+                                 "./cite/citestyle.csl",
                                TRUE ~ paste0("./code/", b[i]))
     file.copy(from = copyfrom,
               to = copyto,
@@ -214,8 +220,6 @@ buildTM<-function(sections = c("frontmatter",
   sections_no<-NMFSReports::numbers0(c(0:length(sections), length(b)))
   sections_no<-sections_no[-length(sections_no)]
 
-  b<-b[b %in% presentation]
-
   a<-paste(paste0('
   ############# ', sections_no,' - ', stringr::str_to_title(b),' ####################
   cnt_chapt<-auto_counter(cnt_chapt)
@@ -228,9 +232,6 @@ buildTM<-function(sections = c("frontmatter",
 
   '), collapse = "")
 
-
-  '), collapse = "")
-
   run0<-gsub(pattern = "# INSERT_SECTIONS",
              replacement = a,
              x = run0)
@@ -238,24 +239,30 @@ buildTM<-function(sections = c("frontmatter",
 
   # INSERT_POWERPOINT
   # only if there is a reference type specified
-  a<-dplyr::if_else(is.na(styles_reference_pptx),
-                    "",
-                    paste(paste0('
-  ############# ', sections_no,' - ', sections,' ####################
-  cnt_chapt<-auto_counter(cnt_chapt)
-  cnt_chapt_content<-"001"
-  filename0<-paste0(cnt_chapt, "_', sections,'_")
-  rmarkdown::render(paste0(dir_code, "/',sections_no,'_',sections,'.Rmd"),
-                    output_dir = dir_out_chapters,
-                    output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
+  if (!(is.null(styles_reference_pptx))) {
+    sections_no_pres <- auto_counter(sections_no[length(sections_no)])
+    a<-dplyr::if_else(is.na(styles_reference_pptx),
+                      "",
+                      paste(paste0('
+    ############# ', sections_no_pres,' - Presentation ####################
+    cnt_chapt<-auto_counter(cnt_chapt)
+    cnt_chapt_content<-"001"
+    filename0<-paste0(cnt_chapt, "_presentation_")
+    rmarkdown::render(paste0(dir_code, "/',sections_no_pres,'_presentation.Rmd"),
+                      output_dir = dir_out_chapters,
+                      output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
 
 
-  '), collapse = ""))
+    '), collapse = ""))
 
-  run0<-gsub(pattern = "# INSERT_POWERPOINT",
-             replacement = a,
-             x = run0)
-
+    run0<-gsub(pattern = "# INSERT_POWERPOINT",
+               replacement = a,
+               x = run0)
+  } else {
+    run0<-gsub(pattern = "# INSERT_POWERPOINT",
+               replacement = "",
+               x = run0)
+  }
 
   # OTHER CONTENT
   run0<-gsub(pattern = "# INSERT_REPORT_TITLE",
@@ -283,6 +290,7 @@ buildTM<-function(sections = c("frontmatter",
   # done!
 
 }
+
 
 
 
@@ -1000,10 +1008,9 @@ xunitspct<-function(value, sign = TRUE) {
 #' format_cells(df, 2, 2, "bold")
 #' format_cells(df, 3, 1:2, "strikethrough")
 #'
-#' # not run:
-#'  library(knitr)
+#' library(knitr)
 #' library(kableExtra)
-#' library(tidyverse)
+#' library(magrittr)
 #' df %>%
 #'   format_cells(1, 1, "italics") %>%
 #'   format_cells(2, 2, "bold") %>%
@@ -1090,16 +1097,18 @@ auto_counter<-function(counter0) {
 #' @param output_type Default = c("pdf", "png"). Can be anything supported by ggsave()
 #' @param type Default = "Figure", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Figure 1. This is my plot!"
 #' @param filename_desc Additional description text for the filename that will be added at the name of file before the filename extention. Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.
+#' @importFrom magrittr %>%
 #' @export
 #' @return plot_list updated with the new plot and metadata.
 #' @examples
-#' plot_list<-c()
+#' library(magrittr)
+#' library(ggplot2)
+#' plot_list <- c()
 #' dat <- data.frame(x = rnorm(n = 10),
 #'                   y = rnorm(n = 10),
 #'                   col = rep_len(x = c("a", "b"),
 #'                                 length.out = 5))
 #' # Select data and make plot
-#' plot0<-
 #' plot0<- dat %>%
 #'   ggplot(aes(x = x, y = y,
 #'   colour = as.factor(col))) + # create plot

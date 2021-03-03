@@ -54,13 +54,14 @@ plot_list updated with the new plot and metadata.
 Systematically save your ggplot figure for your report
 }
 \examples{
-plot_list<-c()
+library(magrittr)
+library(ggplot2)
+plot_list <- c()
 dat <- data.frame(x = rnorm(n = 10),
                   y = rnorm(n = 10),
                   col = rep_len(x = c("a", "b"),
                                 length.out = 5))
 # Select data and make plot
-plot0<-
 plot0<- dat \%>\%
   ggplot(aes(x = x, y = y,
   colour = as.factor(col))) + # create plot

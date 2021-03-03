@@ -6,7 +6,7 @@
 \usage{
 buildTM(
   sections = c("frontmatter", "abstract", "introduction", "methods", "results",
-    "discussion", "workscited", "workscitedR", "presentation"),
+    "discussion", "endmatter", "presentation"),
   support_scripts = c("directories", "functions", "dataDL", "data"),
   authors = "",
   title = "",
@@ -17,28 +17,28 @@ buildTM(
 )
 }
 \arguments{
-\item{sections}{a string of the different sections of your TM. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "workscited", "endmatter"). Note that "frontmatter" and "endmatter both have specific templates, and all others are from a blank template. "endmatter" will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's O}
+\item{sections}{a string of the different sections of your report. Sections must be listed in order. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "endmatter"). Note that "frontmatter" and "endmatter" both have specific templates, and all others are from a blank template. "endmatter" will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list authors's ORCID and acknowlegelments.}
 
 \item{support_scripts}{To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")}
 
-\item{authors}{Default = "". Here, add your First Lastname.}
+\item{authors}{Default = "". Here, add all author's first and last name as it should appear in the report.You can change this later by editing this in the run.R file.}
 
-\item{title}{Default = "". Here, put the title of your report.}
+\item{title}{Default = "". Here, put the title of your report. You can change this later by editing this in the run.R file.}
 
-\item{styles_reference_pptx}{A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("refppt_nmfs"). Default = "nmfs".}
+\item{styles_reference_pptx}{A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made templates ("refppt_nmfs"). Default = "refppt_nmfs". You can change this later by renaming the file in the code folder.}
 
-\item{styles_reference_docx}{A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full "path") or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo".}
+\item{styles_reference_docx}{A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full path to local document) or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo". You can change this later by renaming the file in the code folder.}
 
-\item{bibliography.bib}{Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example".}
+\item{bibliography.bib}{Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example". You can change this later by renaming the file in the cite folder.}
 
-\item{csl}{Citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa", "new-phytologist"). A NOAA TM citation style needs to be created, but until then, the default = "apa".}
+\item{csl}{Citation style. Either use a local document (insert full path to local document) or some of the pre-made templates ("apa", "new-phytologist"). A NOAA TM citation style needs to be created, but until then, the default = "apa". You can change this later by renaming the file in the cite folder. Find citation styles at: https://github.com/citation-style-language/styles}
 }
 \description{
 Build your intitial architecture for your new NOAA Tech Memo or Report
 }
 \examples{
 sections = c("frontmatter", "abstract", "introduction", "methods", "results",
-            "discussion", "workscited", "workscitedR", "presentation")
+            "discussion", "endmatter")
 support_scripts = c("directories", "functions", "dataDL", "data")
 authors = "Me, Myself, and I"
 title = "Awesome Report!"
