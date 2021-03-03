@@ -5,7 +5,7 @@ output:
     reference_docx: styles_reference.docx
     df_print: kable
 csl: "../cite/citestyle.csl"
-bibliography: "../code/bibliography.bib"
+bibliography: "../cite/bibliography.bib"
 ---
 
 ```{r setup, include=FALSE}

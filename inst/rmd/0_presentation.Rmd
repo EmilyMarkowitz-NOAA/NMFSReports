@@ -32,9 +32,28 @@ knitr::opts_chunk$set(
 ```
 
 
-# Slide 2
+
+# `r plot_list[[1]]$header `
+
+```{r}
+print(plot_list[[1]]$plot)
+```
+
+# `r table_list[[1]]$header `
+
+`r table_list[[1]]$print `
 
 
 # Slide 3
 
+:::::: {.columns}
+::: {.column}
+ - Text 1.
+ - Text 2. 
+:::
+
+::: {.column}
+![](../img/DeptOfCommerce.jpg){width=25%}
+:::
+::::::
 

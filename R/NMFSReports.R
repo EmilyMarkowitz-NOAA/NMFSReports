@@ -227,7 +227,7 @@ buildTM<-function(sections = c("frontmatter",
   filename0<-paste0(cnt_chapt, "_', b,'_")
   rmarkdown::render(paste0(dir_code, "/',sections_no,'_',b,'.Rmd"),
                     output_dir = dir_out_chapters,
-                    output_file = paste0(filename0, cnt_chapt_content, "_Text.docx"))
+                    output_file = paste0(filename0, cnt_chapt_content, ".docx"))
 
 
   '), collapse = "")
@@ -250,7 +250,7 @@ buildTM<-function(sections = c("frontmatter",
     filename0<-paste0(cnt_chapt, "_presentation_")
     rmarkdown::render(paste0(dir_code, "/',sections_no_pres,'_presentation.Rmd"),
                       output_dir = dir_out_chapters,
-                      output_file = paste0(filename0, cnt_chapt_content, "_Text.pptx"))
+                      output_file = paste0(filename0, cnt_chapt_content, ".pptx"))
 
 
     '), collapse = ""))

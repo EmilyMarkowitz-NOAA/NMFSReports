@@ -29,7 +29,7 @@ library(png)
 library(cowplot)
 ```
 
-
+This file is essentially the example file included in the `buidTM()` function. 
 
 ## From run file: 
 ```{r a}

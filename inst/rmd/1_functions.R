@@ -48,7 +48,7 @@ PKG <- c(
   "jsonlite")
 
 
-p <- unique(p)
+PKG <- unique(PKG)
 for (p in PKG) {
   if(!require(p,character.only = TRUE)) {
     install.packages(p)
