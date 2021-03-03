@@ -156,8 +156,13 @@ styles_reference_docx = "refdoc_fisheries_economics_of_the_us"
 bibliography.bib = "bib_example"
 
 # Find citation styles at: https://github.com/citation-style-language/styles
-write(x = read.delim(file = "https://raw.githubusercontent.com/citation-style-language/styles/master/nature.csl",
-                 as.is = TRUE), file = "csl.csl")
+csl0 <- read.delim(file = "https://raw.githubusercontent.com/citation-style-language/styles/master/american-fisheries-society.csl", header = FALSE)
+colnames(csl0)<-NULL
+rownames(csl0)<-NULL
+write.table(x = csl0, file = "csl.csl", 
+            quote = FALSE, row.names = FALSE, col.names = FALSE)
+
+library(here)
 csl = here("csl.csl")
 
 # Run buildReport() function

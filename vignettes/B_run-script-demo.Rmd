@@ -52,7 +52,11 @@ buildReport(
 )
 ```
 
-We'll navigate to the spine of this report, the `run.R` file, in the code folder. This is where we run all of our files (.R, .Rmd, etc.) from. 
+We'll navigate to the spine of this report, the `run.R` file, in the code folder. This is where we run all of our files (.R, .Rmd, etc.) from.
+
+```{r, eval=FALSE}
+source("./code/run.R")
+```
 
 # run.R
 
@@ -218,10 +222,10 @@ cnt_equ <- 0
 ##### SAVE OTHER OUTPUTS#############
 
 save(plot_list,
-     file=paste0(dir_out_todaysrun, "/plots/report_plots.rdata"))
+     file=paste0(dir_out_figures, "/report_plots.rdata"))
 
 save(table_list,
-     file=paste0(dir_out_todaysrun, "/plots/report_tables.rdata"))
+     file=paste0(dir_out_tables, "/report_tables.rdata"))
 
 ########***MAKE MASTER DOCX################
 
@@ -235,7 +239,7 @@ save(table_list,
 #    2. Cite the apropriate versions of the packages you used in your report
 # More info here: https://rstudio.github.io/packrat/walkthrough.html
 
-CreateMetadata(dir_out = paste0(dir_out_todaysrun, "/metadata"),
+CreateMetadata(dir_out = paste0(dir_out_todaysrun, "/documentation"),
                title = paste0(report_title, " Metadata ", Sys.Date()))
 
 # setwd(paste0(dir_out_todaysrun))

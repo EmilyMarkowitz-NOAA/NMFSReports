@@ -9,7 +9,6 @@ output:
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, error = FALSE)
 ```
 
-</br>
 
 # `r report_title `
 

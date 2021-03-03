@@ -44,7 +44,7 @@ buildReport<-function(sections = c("frontmatter",
                   styles_reference_pptx = "refppt_nmfs",
                   styles_reference_docx = "refdoc_noaa_tech_memo",
                   bibliography.bib = "bib_example",
-                  csl = "apa"){
+                  csl = "bulletin-of-marine-science"){
 
   ##################  Create Architecture
   dirs <- c("code", "data", "documentation", "img", "cite", "output")
@@ -1289,7 +1289,10 @@ save_tables<-function(table_raw = NULL,
 #' @importFrom magrittr %>%
 #' @keywords metadata
 #' @export
-CreateMetadata<-function(dir_out = ".", title = "My Project"){
+CreateMetadata<-function(
+  dir_out = ".",
+  title = "My Project") {
+
   my_doc <- officer::read_docx()
   officer::styles_info(my_doc)
 

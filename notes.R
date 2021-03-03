@@ -2,6 +2,8 @@
 # https://pkgdown.r-lib.org/reference/build_site.html
 
 ########### Document Package ############
+.rs.restartR()
+
 options(rmarkdown.html_vignette.check_title = FALSE)
 Sys.setenv('PATH' = paste0('C:/Program Files/qpdf-10.0.1/bin;', Sys.getenv('PATH')))
 library(here)
@@ -16,6 +18,7 @@ setwd(here())
 
 ########### Create Documentation GitHub-Pages ############
 
+.rs.restartR()
 # devtools::install_github("rstudio/fontawesome", force = T)
 # library(fontawesome)
 library(here)

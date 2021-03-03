@@ -149,10 +149,12 @@
         csl <span class="op">=</span> <span class="va">csl</span>
 <span class="op">)</span></code></pre></div>
 <p>We’ll navigate to the spine of this report, the <code>run.R</code> file, in the code folder. This is where we run all of our files (.R, .Rmd, etc.) from.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"./code/run.R"</span><span class="op">)</span></code></pre></div>
 <div id="run-r" class="section level1">
 <h1 class="hasAnchor">
 <a href="#run-r" class="anchor"></a>run.R</h1>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' ---</span>
 <span class="co">#' title: ''</span>
 <span class="co">#' author: ''</span>
@@ -313,10 +315,10 @@ Paul Doremus, Acting Assistant Administrator for Fisheries"</span>
 <span class="co">##### SAVE OTHER OUTPUTS#############</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">plot_list</span>,
-     file<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_todaysrun</span>, <span class="st">"/plots/report_plots.rdata"</span><span class="op">)</span><span class="op">)</span>
+     file<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_figures</span>, <span class="st">"/report_plots.rdata"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">table_list</span>,
-     file<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_todaysrun</span>, <span class="st">"/plots/report_tables.rdata"</span><span class="op">)</span><span class="op">)</span>
+     file<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_tables</span>, <span class="st">"/report_tables.rdata"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co">########***MAKE MASTER DOCX################</span>
 
@@ -330,7 +332,7 @@ Paul Doremus, Acting Assistant Administrator for Fisheries"</span>
 <span class="co">#    2. Cite the apropriate versions of the packages you used in your report</span>
 <span class="co"># More info here: https://rstudio.github.io/packrat/walkthrough.html</span>
 
-<span class="fu"><a href="../reference/CreateMetadata.html">CreateMetadata</a></span><span class="op">(</span>dir_out <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_todaysrun</span>, <span class="st">"/metadata"</span><span class="op">)</span>,
+<span class="fu"><a href="../reference/CreateMetadata.html">CreateMetadata</a></span><span class="op">(</span>dir_out <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_todaysrun</span>, <span class="st">"/documentation"</span><span class="op">)</span>,
                title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">report_title</span>, <span class="st">" Metadata "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># setwd(paste0(dir_out_todaysrun))</span></code></pre></div>
