@@ -24,7 +24,8 @@ Imports:
     extrafont,
     stringr,
     here,
-    jsonlite
+    jsonlite, 
+    knitcitations
 Suggests: 
     testthat (>= 3.0.0),
     rmarkdown,

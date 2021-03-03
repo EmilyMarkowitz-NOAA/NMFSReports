@@ -4,7 +4,7 @@ output:
     pandoc_args: ["--metadata-file=header.yaml"]
     reference_docx: styles_reference.docx
     df_print: kable
-csl: "../cit/cit.csl"
+csl: "../cite/citestyle.csl"
 bibliography: "../code/bibliography.bib"
 ---
 

@@ -25,8 +25,8 @@ PKG <- c(
 
 
   # Graphics
-  # "ggplot2", # Create Elegant Data Visualisations Using the Grammar of Graphics
-  # "nmfspalette",  # devtools::install_github("nmfs-general-modeling-tools/nmfspalette"
+  "ggplot2", # Create Elegant Data Visualisations Using the Grammar of Graphics
+  "nmfspalette",  # devtools::install_github("nmfs-general-modeling-tools/nmfspalette"
   "cowplot",
   "png",
   "extrafont",
@@ -35,11 +35,10 @@ PKG <- c(
   "NMFSReports", # devtools::install_github("emilyhmarkowitz/NMFSReports") # Package of my favorite grammar and file managment functions for writing reproducible reports
 
   # Citations
-  # "knitcitations", # devtools::install_github("cboettig/knitcitations")
+  "knitcitations", # devtools::install_github("cboettig/knitcitations")
 
-  # tidyverse
+  # other tidyverse
   "dplyr",
-  "ggplot2",
   "magrittr",
 
   # Text Management
@@ -49,7 +48,7 @@ PKG <- c(
   "jsonlite")
 
 
-
+p <- unique(p)
 for (p in PKG) {
   if(!require(p,character.only = TRUE)) {
     install.packages(p)
@@ -64,21 +63,13 @@ loadfonts(device = "win")
 #######CITE R PACKAGES###########
 tmp <- tempfile(fileext=".bib")
 
-
-a<-write.bibtex(entry = c(citation("knitr"),
-                          citation("rmarkdown"),
-                          citation("here"),
-                          citation("officer"),
-                          citation("devtools"),
-                          citation("packrat"),
-                          citation("tidyverse"),
-                          citation("RMarkReports"),
-                          citation("nmfspalette"),
-                          citation("knitcitations")),
+a<-write.bibtex(entry = eval(parse(text=paste0("c(", paste(paste0("citation('",PKG,"')"), collapse = ", "), ")"))),
                 file = tmp)
 
-write.bibtex(entry = a, file = paste0(dir_out_data, "bibliography_RPack.bib"))
-write.bibtex(entry = a, file = paste0(dir_data,"/bibliography_RPack.bib"))
+write.bibtex(entry = a,
+             file = paste0(dir_out_rawdata, "bibliography_RPack.bib"))
+write.bibtex(entry = a,
+             file = paste0(dir_cite,"/bibliography_RPack.bib"))
 
 ################Functions#############
 
