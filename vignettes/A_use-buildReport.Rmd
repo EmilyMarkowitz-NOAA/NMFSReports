@@ -1,9 +1,9 @@
 ---
-title: "Use buildTM() to Begin Writing Your Report"
+title: "Use buildReport() to Begin Writing Your Report"
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{A_use-buildTM}
+  %\VignetteIndexEntry{A_use-buildReport}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -93,13 +93,13 @@ Here's what they look like:
 
 ## styles_reference_pptx
 
-`styles_reference_pptx` is a document style reference guide is essentially a word document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made templates ("refppt_nmfs"). Default = "refppt_nmfs". You can change this later by renaming the file in the code folder. 
+`styles_reference_pptx` is a document style reference guide is essentially a word document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made templates ("refpptx_nmfs"). Default = "refpptx_nmfs". You can change this later by renaming the file in the code folder. 
 
 Here's what they look like: 
 
-### refppt_nmfs
+### refpptx_nmfs
 
-<!-- ![refppt_nmfs](../man/figures/refppt_nmfs.JPG) -->
+![refpptx_nmfs](../man/figures/refpptx_nmfs.JPG)
 
 ## csl
 
@@ -131,7 +131,7 @@ bib
 Now, magic! Now for the sake of the vignette, I can't actually run it here, but below is a picture of what this looks like:
 
 ```{r, eval = FALSE}
-buildTM(
+buildReport(
         sections = sections,
         support_scripts = support_scripts,
         authors = authors,
@@ -143,6 +143,72 @@ buildTM(
 )
 ```
 
-![buildTM() output](../man/figures/buildTM.JPG)
 
+![buildReport() output](../man/figures/buildReport.JPG)
+
+
+![Folder architecture post-buildReport()](../man/figures/folder_architecture_post_buildReport.JPG)
+
+
+# Alternative report structures: 
+
+```{r, eval=FALSE}
+
+library(NMFSReports)
+
+# Input variables for buildReport()
+sections = c("frontmatter", "abstract", "introduction", "methods", "results",
+             "discussion", "endmatter")
+support_scripts = c("directories", "functions", "dataDL", "data")
+authors = "Me, Myself, and I"
+title = "Awesome Report!"
+styles_reference_pptx = "refpptx_nmfs"
+styles_reference_docx = "refdoc_noaa_tech_memo"
+bibliography.bib = "bib_example"
+csl = "bulletin-of-marine-science"
+
+# Run buildReport() function
+buildReport(
+        sections = sections,
+        support_scripts = support_scripts,
+        authors = authors,
+        title = title,
+        styles_reference_pptx = styles_reference_pptx,
+        styles_reference_docx = styles_reference_docx,
+        bibliography.bib = bibliography.bib,
+        csl = csl
+)
+```
+
+
+```{r, eval=FALSE}
+
+library(NMFSReports)
+
+# Input variables for buildReport()
+sections = c("coverpage", "history", "studyimportance", "actions", "endmatter")
+support_scripts = c("directories", "functions", "dataDL", "data")
+authors = "Very important people"
+title = "Shorter Report!"
+styles_reference_pptx = "refpptx_nmfs"
+styles_reference_docx = "refdoc_fisheries_economics_of_the_us"
+bibliography.bib = "bib_example"
+
+# Find citation styles at: https://github.com/citation-style-language/styles
+write(x = read.delim(file = "https://raw.githubusercontent.com/citation-style-language/styles/master/nature.csl",
+                 as.is = TRUE), file = "csl.csl")
+csl = here("csl.csl")
+
+# Run buildReport() function
+buildReport(
+        sections = sections,
+        support_scripts = support_scripts,
+        authors = authors,
+        title = title,
+        styles_reference_pptx = styles_reference_pptx,
+        styles_reference_docx = styles_reference_docx,
+        bibliography.bib = bibliography.bib,
+        csl = csl
+)
+```
 

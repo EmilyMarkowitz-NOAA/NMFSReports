@@ -69,10 +69,10 @@ cnt_equ <- 0
 ##### SAVE OTHER OUTPUTS#############
 
 save(plot_list,
-     file=paste0(dir_output_todaysrun, "/plots/report_plots.rdata"))
+     file=paste0(dir_out_todaysrun, "/plots/report_plots.rdata"))
 
 save(table_list,
-     file=paste0(dir_output_todaysrun, "/plots/report_tables.rdata"))
+     file=paste0(dir_out_todaysrun, "/plots/report_tables.rdata"))
 
 ########***MAKE MASTER DOCX################
 
@@ -86,7 +86,7 @@ save(table_list,
 #    2. Cite the apropriate versions of the packages you used in your report
 # More info here: https://rstudio.github.io/packrat/walkthrough.html
 
-CreateMetadata(dir_out = paste0(dir_output_todaysrun, "/metadata"),
+CreateMetadata(dir_out = paste0(dir_out_todaysrun, "/metadata"),
                title = paste0(report_title, " Metadata ", Sys.Date()))
 
-# setwd(paste0(dir_output_todaysrun))
+# setwd(paste0(dir_out_todaysrun))

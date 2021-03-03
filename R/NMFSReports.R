@@ -10,7 +10,7 @@
 #' @param styles_reference_pptx A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made templates ("refppt_nmfs"). Default = "refppt_nmfs". You can change this later by renaming the file in the code folder.
 #' @param styles_reference_docx A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full path to local document) or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo". You can change this later by renaming the file in the code folder.
 #' @param bibliography.bib Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example". You can change this later by renaming the file in the cite folder.
-#' @param csl Citation style. Either use a local document (insert full path to local document) or some of the pre-made templates ("apa", "new-phytologist"). A NOAA TM citation style needs to be created, but until then, the default = "apa". You can change this later by renaming the file in the cite folder. Find citation styles at: https://github.com/citation-style-language/styles
+#' @param csl Citation style. Either use a local document (insert full path to local document) or some of the pre-made templates ("bulletin-of-marine-science"). A NOAA TM citation style needs to be created, but until then, the default = "bulletin-of-marine-science". You can change this later by renaming the file in the cite folder. Find citation styles at: https://github.com/citation-style-language/styles
 #' @export
 #' @examples
 #' sections = c("frontmatter", "abstract", "introduction", "methods", "results",
@@ -34,7 +34,7 @@
 #' #   bibliography.bib = bibliography.bib,
 #' #   csl = csl
 #' # )
-buildTM<-function(sections = c("frontmatter",
+buildReport<-function(sections = c("frontmatter",
                                "abstract",
                                "introduction",
                                "methods",

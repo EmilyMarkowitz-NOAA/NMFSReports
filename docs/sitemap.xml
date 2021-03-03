@@ -10,7 +10,7 @@
     <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/auto_counter.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/buildTM.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/buildReport.html</loc>
   </url>
   <url>
     <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/CreateMetadata.html</loc>
@@ -61,7 +61,7 @@
     <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/xunitspct.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//articles/A_use-buildTM.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//articles/A_use-buildReport.html</loc>
   </url>
   <url>
     <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//articles/B_run-script-demo.html</loc>
