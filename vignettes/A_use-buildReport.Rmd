@@ -62,19 +62,6 @@ sections <- c("frontmatter", # This is a specific template that matches the NOAA
               ) 
 ```
 
-## support_scripts
-
-And to make sure we nice and neatly compartemantalize our work, I'm going to create the below supporting .R files that I will source into my 'run' file:
-
-```{r}
-support_scripts <-
-    c(# note a 'run' file is automatically created. Think of this as the spine of your document. 
-      "functions", # where I will save all report-specific functions
-      "dataDL", # Where we will download the data (e.g., from Oracle or an API). You may only want to run this every so often or regularly, up to you
-      "data" # Where I will load that data kept locally that was either downloaded in "dataDL" or created locally
-)
-```
-
 ## styles_reference_docx
 
 `styles_reference_docx` is a document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo"
@@ -133,7 +120,6 @@ Now, magic! Now for the sake of the vignette, I can't actually run it here, but 
 ```{r, eval = FALSE}
 buildReport(
         sections = sections,
-        support_scripts = support_scripts,
         authors = authors,
         title = title,
         styles_reference_pptx = styles_reference_pptx,
@@ -157,37 +143,12 @@ buildReport(
 library(NMFSReports)
 
 # Input variables for buildReport()
-sections = c("frontmatter", "abstract", "introduction", "methods", "results",
-             "discussion", "endmatter")
-support_scripts = c("directories", "functions", "dataDL", "data")
-authors = "Me, Myself, and I"
-title = "Awesome Report!"
-styles_reference_pptx = "refpptx_nmfs"
-styles_reference_docx = "refdoc_noaa_tech_memo"
-bibliography.bib = "bib_example"
-csl = "bulletin-of-marine-science"
+sections = c("coverpage", # This is a specific template for a 1 page coverpage
+             "history", 
+             "studyimportance", 
+             "actions", 
+             "endmatter") # This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. 
 
-# Run buildReport() function
-buildReport(
-        sections = sections,
-        support_scripts = support_scripts,
-        authors = authors,
-        title = title,
-        styles_reference_pptx = styles_reference_pptx,
-        styles_reference_docx = styles_reference_docx,
-        bibliography.bib = bibliography.bib,
-        csl = csl
-)
-```
-
-
-```{r, eval=FALSE}
-
-library(NMFSReports)
-
-# Input variables for buildReport()
-sections = c("coverpage", "history", "studyimportance", "actions", "endmatter")
-support_scripts = c("directories", "functions", "dataDL", "data")
 authors = "Very important people"
 title = "Shorter Report!"
 styles_reference_pptx = "refpptx_nmfs"
@@ -202,7 +163,6 @@ csl = here("csl.csl")
 # Run buildReport() function
 buildReport(
         sections = sections,
-        support_scripts = support_scripts,
         authors = authors,
         title = title,
         styles_reference_pptx = styles_reference_pptx,

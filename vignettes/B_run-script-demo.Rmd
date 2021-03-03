@@ -32,7 +32,6 @@ library(NMFSReports)
 # Input variables for buildReport()
 sections = c("frontmatter", "abstract", "introduction", "methods", "results",
              "discussion", "endmatter")
-support_scripts = c("directories", "functions", "dataDL", "data")
 authors = "Me, Myself, and I"
 title = "Awesome Report!"
 styles_reference_pptx = "refppt_nmfs"
@@ -253,6 +252,22 @@ This is useful because your progress is saved each day that you work on this pro
 
 ![Output folder post running the run.R script](../man/figures/folder_output_post_run.JPG)
 
+
+# Notes: 
+
+## support_scripts
+
+To make sure we nice and neatly compartemantalize our work, I'm going to create the below supporting .R files that I will source into my 'run' file:
+
+*note a 'run' file is automatically created. Think of this as the spine of your document. 
+
+*functions*: Where we will save all report-specific functions. 
+
+*directories*: Where we will systematically create and save objects describing all of our directories. I've found that it can be helpful to have these as objects to cut down on verboseness. 
+
+*dataDL*: Where we will download the data (e.g., from Oracle or an API). You may only want to run this every so often or regularly, up to you. 
+
+*data*: Where we will load that data kept locally that was either downloaded in "dataDL" or created locally. 
 
 # Things to change
 

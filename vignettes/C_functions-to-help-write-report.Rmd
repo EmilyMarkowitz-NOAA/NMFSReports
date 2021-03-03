@@ -1,5 +1,5 @@
 ---
-title: "Functions in Action to Help You Write Your Report"
+title: "Functions and Examples to Help You Write Your Report"
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: rmarkdown::html_vignette
 csl: "../inst/cite/bulletin-of-marine-science.csl"
@@ -85,7 +85,7 @@ $$X = Y + Z$$
 
 ## Citations
 
-There are a lot of ways to cite within your report, so here is an example of two: [@RN170] and @RN621. Checkout https://github.com/cboettig/knitcitations for more info!
+There are a lot of ways to cite within your report, so here is an example of two: [@RN686] and @RN621. Checkout https://github.com/cboettig/knitcitations for more info!
 
 Note that references will appear at the bottom of this document (and any document that you put references in) but when you combine this document with all of the other documents that you create, it will shift to the bottom of the report.
 

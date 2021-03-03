@@ -4,7 +4,6 @@
 #' Build your intitial architecture for your new NOAA Tech Memo or Report
 #'
 #' @param sections a string of the different sections of your report. Sections must be listed in order. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "endmatter"). Note that "frontmatter" and "endmatter" both have specific templates, and all others are from a blank template. "endmatter" will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list authors's ORCID and acknowlegelments.
-#' @param support_scripts To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")
 #' @param authors Default = "". Here, add all author's first and last name as it should appear in the report.You can change this later by editing this in the run.R file.
 #' @param title Default = "". Here, put the title of your report. You can change this later by editing this in the run.R file.
 #' @param styles_reference_pptx A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made templates ("refppt_nmfs"). Default = "refppt_nmfs". You can change this later by renaming the file in the code folder.
@@ -15,7 +14,6 @@
 #' @examples
 #' sections = c("frontmatter", "abstract", "introduction", "methods", "results",
 #'             "discussion", "endmatter")
-#' support_scripts = c("directories", "functions", "dataDL", "data")
 #' authors = "Me, Myself, and I"
 #' title = "Awesome Report!"
 #' styles_reference_pptx = "refppt_nmfs"
@@ -26,7 +24,6 @@
 #' # not run:
 #' # buildTM(
 #' #   sections = sections,
-#' #   support_scripts = support_scripts,
 #' #   authors = authors,
 #' #   title = title,
 #' #   styles_reference_pptx = styles_reference_pptx,
@@ -42,10 +39,6 @@ buildReport<-function(sections = c("frontmatter",
                                "discussion",
                                "endmatter",
                                "presentation"),
-                  support_scripts = c("directories",
-                                      "functions",
-                                      "dataDL",
-                                      "data"),
                   authors = "",
                   title = "",
                   styles_reference_pptx = "refppt_nmfs",
@@ -108,6 +101,10 @@ buildReport<-function(sections = c("frontmatter",
 
   ################## R scripts
   a <- list.files(path = system.file("rmd", package="NMFSReports"), pattern = "1_")
+  support_scripts = c("directories",
+                      "functions",
+                      "dataDL",
+                      "data")
   b <- support_scripts
   for (i in 1:length(b)){
 

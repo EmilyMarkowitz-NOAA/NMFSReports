@@ -7,7 +7,6 @@
 buildReport(
   sections = c("frontmatter", "abstract", "introduction", "methods", "results",
     "discussion", "endmatter", "presentation"),
-  support_scripts = c("directories", "functions", "dataDL", "data"),
   authors = "",
   title = "",
   styles_reference_pptx = "refppt_nmfs",
@@ -18,8 +17,6 @@ buildReport(
 }
 \arguments{
 \item{sections}{a string of the different sections of your report. Sections must be listed in order. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "endmatter"). Note that "frontmatter" and "endmatter" both have specific templates, and all others are from a blank template. "endmatter" will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list authors's ORCID and acknowlegelments.}
-
-\item{support_scripts}{To make sure we nice and neatly compartemantalize our work, create the below supporting .R files that you will source into your 'run' file. Default = c("functions", "dataDL", "data")}
 
 \item{authors}{Default = "". Here, add all author's first and last name as it should appear in the report.You can change this later by editing this in the run.R file.}
 
@@ -39,7 +36,6 @@ Build your intitial architecture for your new NOAA Tech Memo or Report
 \examples{
 sections = c("frontmatter", "abstract", "introduction", "methods", "results",
             "discussion", "endmatter")
-support_scripts = c("directories", "functions", "dataDL", "data")
 authors = "Me, Myself, and I"
 title = "Awesome Report!"
 styles_reference_pptx = "refppt_nmfs"
@@ -50,7 +46,6 @@ csl = "apa"
 # not run:
 # buildTM(
 #   sections = sections,
-#   support_scripts = support_scripts,
 #   authors = authors,
 #   title = title,
 #   styles_reference_pptx = styles_reference_pptx,
