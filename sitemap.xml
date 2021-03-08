@@ -4,9 +4,6 @@
     <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//index.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/CreateMetadata.html</loc>
-  </url>
-  <url>
     <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/TitleCase.html</loc>
   </url>
   <url>
@@ -17,6 +14,9 @@
   </url>
   <url>
     <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/buildReport.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/create_metadata.html</loc>
   </url>
   <url>
     <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/df2js.html</loc>
