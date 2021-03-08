@@ -11,7 +11,7 @@
 #' @param bibliography.bib Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example". You can change this later by renaming the file in the cite folder.
 #' @param csl Citation style. Either use a local document (insert full path to local document) or some of the pre-made templates ("bulletin-of-marine-science"). A NOAA TM citation style needs to be created, but until then, the default = "bulletin-of-marine-science". You can change this later by renaming the file in the cite folder. Find citation styles at: https://github.com/citation-style-language/styles
 #' @export
-#' @return TRUE or FALSE
+#' @return complete initial architecture for your R Markdown Report.
 buildReport<-function(sections = c("frontmatter",
                                "abstract",
                                "introduction",
