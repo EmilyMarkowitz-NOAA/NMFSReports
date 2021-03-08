@@ -21,8 +21,8 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 ```{r setup}
 library(NMFSReports)
 library(here)
+library(ggplot2)
 ```
-
 
 # Create initial structure of report
 

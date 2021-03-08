@@ -1,5 +1,5 @@
 ---
-title: "Use buildReport() to Begin Writing Your Report"
+title: "Use buildReport() to Begin Writing Your Report - TEST"
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: rmarkdown::html_vignette
 vignette: >
@@ -21,44 +21,6 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 ```{r setup}
 library(NMFSReports)
 library(here)
-```
-
-
-# Create initial structure of report
-
-Do everyone here a favor and create a new r project or at least set up a working directory (`setwd()`). There will be a lot of file management here...
-
-To build your intitial architecture for your new NOAA Tech Memo or Report, simply run the below script: 
-
-## title
-
-Default = "". Here, put the title of your report. You can change this later in the run file in needed.
-
-```{r}
-title = "My Awesome Report!"
-```
-
-## author
-
-Here, add your First Lastname of everyone who is producing the report. You can change this later in the run file in needed.
-
-```{r}
-authors = "Me, Myself, and I"
-```
-
-## sections
-
-Let's first think about what you want/need your Tech Memo to look like. For my purposes, I'll assume that you need the below sections:
-
-```{r}
-  # list the sections (that you will have different rmd scripts for) in order and with no spaces
-sections <- c("frontmatter", # This is a specific template that matches the NOAA Template
-               "abstract", # This, and all others unless otherwise mentioned, come from the same plain-slate document but are appropriately named and linked up in the 'run' file. 
-               "introduction", 
-               "methods", 
-               "results", 
-               "discussion", 
-               "endmatter" # This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. 
-              ) 
+library(ggplot2)
 ```
 
