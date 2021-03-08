@@ -192,6 +192,7 @@
 <div id="example-figure-plot" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-figure-plot" class="anchor"></a>Example Figure (Plot)</h2>
+<p>First, create your plot:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Edit This:</span>
 <span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a figure!"</span>
@@ -201,6 +202,7 @@
 <span class="va">plot0</span><span class="op">&lt;-</span> <span class="va">dat</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span>, colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">col</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># create plot</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
+<p>Then, save your plot to the figures folder and create a list object with all of the information you want to store about this plot.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Don't Edit This:</span>
 <span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt_content</span><span class="op">)</span>
@@ -217,6 +219,7 @@
                       <span class="co"># path = dir_out_figures, </span>
                       width <span class="op">=</span> <span class="fl">6</span>, <span class="co"># you can change this if you need to...</span>
                       height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span> <span class="co"># you can change this if you need to...</span></code></pre></div>
+<p>This next chuck will decide if the plot should be printed to the report or not. For InDesign purposes, you would likely not want it to be printed to the word document (hense <code>indesign_flowin %in% FALSE</code>).</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Print or Don't Print Plot in Text</span>
 <span class="co"># You don't want to print this in the document if this text will be flowed into InDesign. </span>
@@ -340,53 +343,53 @@ Figure 2. Here is a figure!<a href="#fn4" class="footnote-ref" id="fnref4"><sup>
 <tbody>
 <tr class="odd">
 <td align="left">A</td>
-<td align="left">-0.73</td>
-<td align="left">2.1</td>
+<td align="left">0.35</td>
+<td align="left">0.64</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
-<td align="left">0.33</td>
-<td align="left">-0.11</td>
+<td align="left">-0.71</td>
+<td align="left">0.24</td>
 </tr>
 <tr class="odd">
 <td align="left">C</td>
-<td align="left">0.27</td>
-<td align="left">0.095</td>
+<td align="left">0.13</td>
+<td align="left">2.5</td>
 </tr>
 <tr class="even">
 <td align="left">D</td>
-<td align="left">0.28</td>
-<td align="left">-0.64</td>
+<td align="left">0.47</td>
+<td align="left">-0.36</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
-<td align="left">-0.28</td>
 <td align="left">-0.25</td>
+<td align="left">1.4</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
-<td align="left">-0.18</td>
-<td align="left">-0.19</td>
+<td align="left">-0.28</td>
+<td align="left">1.3</td>
 </tr>
 <tr class="odd">
 <td align="left">G</td>
-<td align="left">-0.49</td>
-<td align="left">-0.33</td>
+<td align="left">-2</td>
+<td align="left">-2.8</td>
 </tr>
 <tr class="even">
 <td align="left">H</td>
-<td align="left">0.35</td>
-<td align="left">-0.44</td>
+<td align="left">-0.57</td>
+<td align="left">-0.72</td>
 </tr>
 <tr class="odd">
 <td align="left">I</td>
-<td align="left">0.74</td>
-<td align="left">-1.1</td>
+<td align="left">1.9</td>
+<td align="left">-2.5</td>
 </tr>
 <tr class="even">
 <td align="left">J</td>
-<td align="left">2</td>
-<td align="left">-1</td>
+<td align="left">-1.1</td>
+<td align="left">0.042</td>
 </tr>
 </tbody>
 </table>
@@ -469,57 +472,57 @@ Figure 2. Here is a figure!<a href="#fn4" class="footnote-ref" id="fnref4"><sup>
 <tbody>
 <tr class="odd">
 <td align="left">A</td>
-<td align="left">-1.3</td>
-<td align="left">0.5</td>
+<td align="left">0.95</td>
+<td align="left">-0.42</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
-<td align="left">0.13<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
+<td align="left">1.4<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
 </td>
-<td align="left">-0.027</td>
+<td align="left">2.2</td>
 </tr>
 <tr class="odd">
 <td align="left">C<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>
 </td>
-<td align="left">0.14</td>
-<td align="left">-0.65</td>
+<td align="left">-0.93</td>
+<td align="left">1</td>
 </tr>
 <tr class="even">
 <td align="left">D<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>
 </td>
-<td align="left">-0.24<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a><a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
+<td align="left">0.74<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a><a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
 </td>
-<td align="left">-0.054</td>
+<td align="left">0.5</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
-<td align="left">-0.13</td>
-<td align="left">1.5</td>
+<td align="left">0.97</td>
+<td align="left">1.6</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
-<td align="left">-0.55</td>
-<td align="left">-1.5</td>
+<td align="left">0.14</td>
+<td align="left">-1.3</td>
 </tr>
 <tr class="odd">
 <td align="left">G</td>
-<td align="left">-0.5</td>
-<td align="left">-0.13</td>
+<td align="left">3.5</td>
+<td align="left">-0.23</td>
 </tr>
 <tr class="even">
 <td align="left">H</td>
-<td align="left">-0.0014</td>
-<td align="left">-0.71</td>
+<td align="left">1.3</td>
+<td align="left">-0.17</td>
 </tr>
 <tr class="odd">
 <td align="left">I</td>
-<td align="left">0.4</td>
-<td align="left">0.093</td>
+<td align="left">0.49</td>
+<td align="left">-0.7</td>
 </tr>
 <tr class="even">
 <td align="left">J</td>
-<td align="left">0.38</td>
-<td align="left">-1.1</td>
+<td align="left">-0.94</td>
+<td align="left">-1.7</td>
 </tr>
 </tbody>
 </table>

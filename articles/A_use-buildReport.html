@@ -135,13 +135,13 @@
 <p>Do everyone here a favor and create a new R project or at least set up a working directory (<code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>). There will be a lot of file management here…</p>
 <p>To build your intitial architecture for your new NOAA Tech Memo or Report, simply run the below script:</p>
 <p>## title</p>
-<p>Default = "". Here, put the title of your report. You can change this later in the run file in needed.</p>
+<p>Default = "". Here, put the title of your report. You can change this later in the <code>run.R</code> file in needed.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">title</span> <span class="op">=</span> <span class="st">"My Awesome Report!"</span></code></pre></div>
 <div id="buildreportauthor" class="section level2">
 <h2 class="hasAnchor">
 <a href="#buildreportauthor" class="anchor"></a>buildReport(author = …)</h2>
-<p>Here, add your First Lastname of everyone who is producing the report. You can change this later in the run file in needed.</p>
+<p>Here, add the first and last name of everyone who is producing the report. You can change this later in the <code>run.R</code> file in needed.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">authors</span> <span class="op">=</span> <span class="st">"Me, Myself, and I"</span></code></pre></div>
 </div>
@@ -152,12 +152,12 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># list the sections (that you will have different rmd scripts for) in order and with no spaces</span>
 <span class="va">sections</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"frontmatter"</span>, <span class="co"># This is a specific template that matches the NOAA Template</span>
-            <span class="st">"abstract"</span>, <span class="co"># This, and all others unless otherwise mentioned, come from the same plain-slate document but are appropriately named and linked up in the 'run' file. </span>
-            <span class="st">"introduction"</span>, 
-            <span class="st">"methods"</span>, 
-            <span class="st">"results"</span>, 
-            <span class="st">"discussion"</span>, 
-            <span class="st">"endmatter"</span> <span class="co"># This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. </span>
+              <span class="st">"abstract"</span>, <span class="co"># This, and all others unless otherwise mentioned, come from the same plain-slate document but are appropriately named and linked up in the 'run' file. </span>
+              <span class="st">"introduction"</span>, 
+              <span class="st">"methods"</span>, 
+              <span class="st">"results"</span>, 
+              <span class="st">"discussion"</span>, 
+              <span class="st">"endmatter"</span> <span class="co"># This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. </span>
 <span class="op">)</span> </code></pre></div>
 </div>
 <div id="buildreportstyles_reference_docx" class="section level2">
@@ -186,9 +186,12 @@
 <a href="#buildreportstyles_reference_pptx" class="anchor"></a>buildReport(styles_reference_pptx = …)</h2>
 <p><code>styles_reference_pptx</code> is a document style reference guide is essentially a word document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made template (“refpptx_nmfs”). Default = “refpptx_nmfs”. You can change this later by renaming the file in the code folder.</p>
 <p>Here’s what they look like:</p>
-<p>### refpptx_nmfs</p>
+<div id="refpptx_nmfs" class="section level3">
+<h3 class="hasAnchor">
+<a href="#refpptx_nmfs" class="anchor"></a>refpptx_nmfs</h3>
 <div class="figure">
 <img src="../man/figures/refpptx_nmfs.JPG" alt=""><p class="caption">refpptx_nmfs</p>
+</div>
 </div>
 </div>
 <div id="buildreportcsl" class="section level2">
