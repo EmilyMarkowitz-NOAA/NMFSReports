@@ -1,5 +1,5 @@
 ---
-title: "Use buildReport() to Begin Writing Your Report - TEST"
+title: "A_buildReport-elements"
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: rmarkdown::html_vignette
 vignette: >
@@ -23,4 +23,5 @@ library(NMFSReports)
 library(here)
 library(ggplot2)
 ```
+
 

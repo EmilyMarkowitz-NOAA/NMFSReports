@@ -1,0 +1,19 @@
+---
+title: "A_buildReport-test"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{A_buildReport-test}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(NMFSReports)
+```
