@@ -257,8 +257,7 @@ This is useful because your progress is saved each day that you work on this pro
 
 ![Output folder post running the run.R script](../man/figures/folder_output_post_run.JPG)
 
-
-# Notes: 
+# Notes:
 
 ## Support Scripts
 
@@ -274,18 +273,19 @@ To make sure we nice and neatly compartmentalize our work, the below supporting 
 
 *data*: Where we will load that data kept locally that was either downloaded in "dataDL" or created locally. 
 
-# Things to change
+## Things to change
 
 Now that you have your initial run, you can start to modify and add to the structure with content specific to your project. Here are a few things to change: 
 
-## Metadata
+### Metadata
 
-Update the metadata to include your name, purpose, etc. 
+Update the metadata at the top of the page to include your name, purpose, etc. 
 
-# Knowns
+### Knowns
 
 Depending on the type of report, there may be things you want to define the report as a whole. If an annual report, a useful known to add there might be something like ` yr <- 2021 `
 
-# Sections
+### Sections
 
 Actually, what is written in this script is pretty customary and really shouldn't need to be changed unless you changed your mind about the organization of the report. Here, go into each of the .Rmd documents to edit them. 
+

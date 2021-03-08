@@ -31,7 +31,7 @@ To build your intitial architecture for your new NOAA Tech Memo or Report, simpl
   
   ## title
   
-  Default = "". Here, put the title of your report. You can change this later in the run file in needed.
+  Default = "". Here, put the title of your report. You can change this later in the `run.R` file in needed.
 
 ```{r}
 title = "My Awesome Report!"
@@ -39,7 +39,7 @@ title = "My Awesome Report!"
 
 ## buildReport(author = ...)
 
-Here, add your First Lastname of everyone who is producing the report. You can change this later in the run file in needed.
+Here, add the first and last name of everyone who is producing the report. You can change this later in the `run.R` file in needed.
 
 ```{r}
 authors = "Me, Myself, and I"
@@ -49,7 +49,7 @@ authors = "Me, Myself, and I"
 
 Let's first think about what you want/need your Tech Memo to look like. For my purposes, I'll assume that you need the below sections:
   
-  ```{r}
+```{r}
 # list the sections (that you will have different rmd scripts for) in order and with no spaces
 sections <- c("frontmatter", # This is a specific template that matches the NOAA Template
               "abstract", # This, and all others unless otherwise mentioned, come from the same plain-slate document but are appropriately named and linked up in the 'run' file. 
@@ -83,9 +83,9 @@ Here's what they look like:
 
 Here's what they look like: 
   
-  ### refpptx_nmfs
-  
-  ![refpptx_nmfs](../man/figures/refpptx_nmfs.JPG)
+### refpptx_nmfs
+
+![refpptx_nmfs](../man/figures/refpptx_nmfs.JPG)
 
 ## buildReport(csl = ...)
 

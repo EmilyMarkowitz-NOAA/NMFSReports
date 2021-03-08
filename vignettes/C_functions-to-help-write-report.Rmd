@@ -98,6 +98,8 @@ Note that references will appear at the bottom of this document (and any documen
 
 ## Example Figure (Plot)
 
+First, create your plot: 
+
 ```{r G1a}
 # Edit This:
 header <- "Here is a figure!"
@@ -109,6 +111,7 @@ plot0<- dat %>%
   geom_point() 
 ```
 
+Then, save your plot to the figures folder and create a list object with all of the information you want to store about this plot. 
 
 ```{r G1b}
 # Don't Edit This:
@@ -129,6 +132,7 @@ plot_list<-save_graphs(plot0 = plot0,
 
 ```
 
+This next chuck will decide if the plot should be printed to the report or not. For InDesign purposes, you would likely not want it to be printed to the word document (hense `indesign_flowin %in% FALSE`). 
 
 ```{r G1c, fig.cap=ifelse(indesign_flowin %in% TRUE, "", plot_list[[length(plot_list)]]$caption)}
 # Print or Don't Print Plot in Text

@@ -31,7 +31,9 @@ devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports")
 library(NMFSReports)
 ```
 
-## Use this package with `nmfspalette`: A package for NOAA Fisheries color schemes
+#### Use this package with `nmfspalette`
+
+A package for NOAA Fisheries color schemes
 
 ```r
 library(devtools)
