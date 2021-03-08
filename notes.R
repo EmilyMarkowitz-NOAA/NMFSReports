@@ -24,6 +24,8 @@ setwd(here())
 library(here)
 library(usethis)
 library(pkgdown)
+options(rmarkdown.html_vignette.check_title = FALSE)
+
 
 # pkgdown::build_favicons()
 usethis::use_pkgdown(config_file = "./pkgdown/_pkgdown.yml")
