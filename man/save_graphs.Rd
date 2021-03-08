@@ -17,7 +17,8 @@ save_graphs(
   height = 6,
   output_type = c("pdf", "png"),
   type = "Figure",
-  filename_desc = ""
+  filename_desc = "",
+  message = FALSE
 )
 }
 \arguments{
@@ -46,6 +47,8 @@ save_graphs(
 \item{type}{Default = "Figure", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Figure 1. This is my plot!"}
 
 \item{filename_desc}{Additional description text for the filename that will be added at the name of file before the filename extention. Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.}
+
+\item{message}{TRUE/FALSE. Default = FALSE. If TRUE, it will print information about where your plot has been saved to.}
 }
 \value{
 plot_list updated with the new plot and metadata.

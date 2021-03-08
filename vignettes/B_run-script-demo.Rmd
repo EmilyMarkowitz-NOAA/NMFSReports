@@ -10,7 +10,8 @@ vignette: >
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
+  message = FALSE, echo = TRUE, warning = FALSE, 
+  comment = FALSE, collapse = TRUE,
   comment = "#>"
 )
 options(rmarkdown.html_vignette.check_title = FALSE)
@@ -261,7 +262,7 @@ This is useful because your progress is saved each day that you work on this pro
 
 ## support_scripts
 
-To make sure we nice and neatly compartemantalize our work, I'm going to create the below supporting .R files that I will source into my 'run' file:
+To make sure we nice and neatly compartemantalize our work, the below supporting .R scripts are going to be created and will source into the 'run' file:
 
 *note a 'run' file is automatically created. Think of this as the spine of your document. 
 

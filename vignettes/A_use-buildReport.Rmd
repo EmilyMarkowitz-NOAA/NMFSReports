@@ -10,8 +10,8 @@ vignette: >
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  message = FALSE, echo = TRUE, warning = FALSE,
-  collapse = TRUE,
+  message = FALSE, echo = TRUE, warning = FALSE, 
+  comment = FALSE, collapse = TRUE,
   comment = "#>"
 )
 options(rmarkdown.html_vignette.check_title = FALSE)
@@ -90,13 +90,15 @@ Here's what they look like:
 
 ## csl
 
-`csl` is a citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa"). Default = "apa" because it was easy to find. 
+`csl` is a citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa" or "bulletin-of-marine-science"). Default = "apa" because it was easy to find. 
+
+A primer on creating and modifying CSL styles can be found at http://citationstyles.org/downloads/primer.html. A repository of CSL styles can be found at https://github.com/citation-style-language/styles. See also http://zotero.org/styles for easy browsing.
 
 ```{r}
-csl = "apa"
+csl = "bulletin-of-marine-science"
 
 # it looks something like this:
-apa <- base::readLines(system.file("cit","apa.csl", package="NMFSReports"))
+apa <- base::readLines(system.file("cit","bulletin-of-marine-science.csl", package="NMFSReports"))
 head(apa)
 ```
 
