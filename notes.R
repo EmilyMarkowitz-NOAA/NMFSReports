@@ -41,7 +41,7 @@ usethis::use_github_action("pkgdown")
 
 ##########build a vignette#########
 
-# usethis::use_vignette("A_use-buildReport")
+# usethis::use_vignette("A_buildReport-elements")
 # usethis::use_vignette("ScriptLayout")
 # usethis::use_vignette("ExampleRunFile")
 # usethis::use_vignette("InitialSetUp")

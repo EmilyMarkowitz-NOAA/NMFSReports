@@ -30,6 +30,9 @@ buildReport(
 
 \item{csl}{Citation style. Either use a local document (insert full path to local document) or some of the pre-made templates ("bulletin-of-marine-science"). A NOAA TM citation style needs to be created, but until then, the default = "bulletin-of-marine-science". You can change this later by renaming the file in the cite folder. Find citation styles at: https://github.com/citation-style-language/styles}
 }
+\value{
+TRUE or FALSE
+}
 \description{
 Build your intitial architecture for your new NOAA Tech Memo or Report
 }

@@ -3,7 +3,7 @@ title: "Use buildReport() to Begin Writing Your Report"
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{A_use-buildReport}
+  %\VignetteIndexEntry{A_buildReport-elements}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -6,7 +6,7 @@
 
 Easily write NOAA reports and Tech Memos in R Markdown
 
-> Code is still in development
+> Code is still in development, last updated `r format(Sys.Date(), format='%B %d %Y')`. 
 
 **Emily Markowitz** (Emily.Markowitz AT noaa.gov)
 

@@ -11,6 +11,7 @@
 #' @param bibliography.bib Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example". You can change this later by renaming the file in the cite folder.
 #' @param csl Citation style. Either use a local document (insert full path to local document) or some of the pre-made templates ("bulletin-of-marine-science"). A NOAA TM citation style needs to be created, but until then, the default = "bulletin-of-marine-science". You can change this later by renaming the file in the cite folder. Find citation styles at: https://github.com/citation-style-language/styles
 #' @export
+#' @return TRUE or FALSE
 #' @examples
 #' sections = c("frontmatter", "abstract", "introduction", "methods", "results",
 #'             "discussion", "endmatter")
@@ -44,7 +45,7 @@ buildReport<-function(sections = c("frontmatter",
                   styles_reference_pptx = "refppt_nmfs",
                   styles_reference_docx = "refdoc_noaa_tech_memo",
                   bibliography.bib = "bib_example",
-                  csl = "bulletin-of-marine-science"){
+                  csl = "bulletin-of-marine-science") {
 
   ##################  Create Architecture
   dirs <- c("code", "data", "documentation", "img", "cite", "output")
@@ -1219,7 +1220,7 @@ save_tables<-function(table_raw = NULL,
                      output_type = c("csv"),
                      type = "Table",
                      filename_desc = "",
-                     message = FALSE){
+                     message = FALSE) {
 
 
   # Title
