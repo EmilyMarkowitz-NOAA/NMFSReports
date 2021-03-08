@@ -36,24 +36,3 @@ TRUE or FALSE
 \description{
 Build your intitial architecture for your new NOAA Tech Memo or Report
 }
-\examples{
-sections = c("frontmatter", "abstract", "introduction", "methods", "results",
-            "discussion", "endmatter")
-authors = "Me, Myself, and I"
-title = "Awesome Report!"
-styles_reference_pptx = "refppt_nmfs"
-styles_reference_docx = "refdoc_noaa_tech_memo"
-bibliography.bib = "bib_example"
-csl = "apa"
-
-# not run:
-# buildTM(
-#   sections = sections,
-#   authors = authors,
-#   title = title,
-#   styles_reference_pptx = styles_reference_pptx,
-#   styles_reference_docx = styles_reference_docx,
-#   bibliography.bib = bibliography.bib,
-#   csl = csl
-# )
-}

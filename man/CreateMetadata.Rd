@@ -2,7 +2,7 @@
 % Please edit documentation in R/NMFSReports.R
 \name{CreateMetadata}
 \alias{CreateMetadata}
-\title{Create CreateMetadata}
+\title{Record Metadata}
 \usage{
 CreateMetadata(dir_out = ".", title = "My Project")
 }
@@ -12,6 +12,6 @@ CreateMetadata(dir_out = ".", title = "My Project")
 \item{title}{Title of file.}
 }
 \description{
-Create Metadata.
+Record Metadata
 }
 \keyword{metadata}
