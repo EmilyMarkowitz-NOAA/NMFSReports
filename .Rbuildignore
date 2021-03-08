@@ -4,7 +4,6 @@
 
 ^notes\.R
 ^\./pkgdown/_pkgdown\.yml$
-^docs$
 ^pkgdown$
 ^\.github$
 ^doc$
