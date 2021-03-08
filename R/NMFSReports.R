@@ -12,6 +12,26 @@
 #' @param csl Citation style. Either use a local document (insert full path to local document) or some of the pre-made templates ("bulletin-of-marine-science"). A NOAA TM citation style needs to be created, but until then, the default = "bulletin-of-marine-science". You can change this later by renaming the file in the cite folder. Find citation styles at: https://github.com/citation-style-language/styles
 #' @export
 #' @return complete initial architecture for your R Markdown Report.
+#' @examples
+#' sections = c("frontmatter", "abstract", "introduction", "methods", "results",
+#'             "discussion", "endmatter")
+#' authors = "Me, Myself, and I"
+#' title = "Awesome Report!"
+#' styles_reference_pptx = "refppt_nmfs"
+#' styles_reference_docx = "refdoc_noaa_tech_memo"
+#' bibliography.bib = "bib_example"
+#' csl = "apa"
+#'
+#' # not run:
+#' # buildTM(
+#' #   sections = sections,
+#' #   authors = authors,
+#' #   title = title,
+#' #   styles_reference_pptx = styles_reference_pptx,
+#' #   styles_reference_docx = styles_reference_docx,
+#' #   bibliography.bib = bibliography.bib,
+#' #   csl = csl
+#' # )
 buildReport<-function(sections = c("frontmatter",
                                "abstract",
                                "introduction",
