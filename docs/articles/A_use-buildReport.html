@@ -132,22 +132,22 @@
 <div id="create-initial-structure-of-report" class="section level1">
 <h1 class="hasAnchor">
 <a href="#create-initial-structure-of-report" class="anchor"></a>Create initial structure of report</h1>
-<p>Do everyone here a favor and create a new r project or at least set up a working directory (<code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>). There will be a lot of file management here…</p>
+<p>Do everyone here a favor and create a new R project or at least set up a working directory (<code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>). There will be a lot of file management here…</p>
 <p>To build your intitial architecture for your new NOAA Tech Memo or Report, simply run the below script:</p>
 <p>## title</p>
 <p>Default = "". Here, put the title of your report. You can change this later in the run file in needed.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">title</span> <span class="op">=</span> <span class="st">"My Awesome Report!"</span></code></pre></div>
-<div id="author" class="section level2">
+<div id="buildreportauthor" class="section level2">
 <h2 class="hasAnchor">
-<a href="#author" class="anchor"></a>author</h2>
+<a href="#buildreportauthor" class="anchor"></a>buildReport(author = …)</h2>
 <p>Here, add your First Lastname of everyone who is producing the report. You can change this later in the run file in needed.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">authors</span> <span class="op">=</span> <span class="st">"Me, Myself, and I"</span></code></pre></div>
 </div>
-<div id="sections" class="section level2">
+<div id="buildreportsections" class="section level2">
 <h2 class="hasAnchor">
-<a href="#sections" class="anchor"></a>sections</h2>
+<a href="#buildreportsections" class="anchor"></a>buildReport(sections = …)</h2>
 <p>Let’s first think about what you want/need your Tech Memo to look like. For my purposes, I’ll assume that you need the below sections:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># list the sections (that you will have different rmd scripts for) in order and with no spaces</span>
@@ -160,9 +160,9 @@
             <span class="st">"endmatter"</span> <span class="co"># This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. </span>
 <span class="op">)</span> </code></pre></div>
 </div>
-<div id="styles_reference_docx" class="section level2">
+<div id="buildreportstyles_reference_docx" class="section level2">
 <h2 class="hasAnchor">
-<a href="#styles_reference_docx" class="anchor"></a>styles_reference_docx</h2>
+<a href="#buildreportstyles_reference_docx" class="anchor"></a>buildReport(styles_reference_docx = …)</h2>
 <p><code>styles_reference_docx</code> is a document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert “path”) or some of the pre-made templates (“refdoc_noaa_tech_memo” or “refdoc_fisheries_economics_of_the_us”). Default = “refdoc_noaa_tech_memo”</p>
 <p>To edit the stlyes in your word document, check out this <a href="https://support.microsoft.com/en-us/office/customize-or-create-new-styles-d38d6e47-f6fc-48eb-a607-1eb120dec563">resource</a>.</p>
 <p>Here’s what they look like:</p>
@@ -181,19 +181,19 @@
 </div>
 </div>
 </div>
-<div id="styles_reference_pptx" class="section level2">
+<div id="buildreportstyles_reference_pptx" class="section level2">
 <h2 class="hasAnchor">
-<a href="#styles_reference_pptx" class="anchor"></a>styles_reference_pptx</h2>
-<p><code>styles_reference_pptx</code> is a document style reference guide is essentially a word document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made templates (“refpptx_nmfs”). Default = “refpptx_nmfs”. You can change this later by renaming the file in the code folder.</p>
+<a href="#buildreportstyles_reference_pptx" class="anchor"></a>buildReport(styles_reference_pptx = …)</h2>
+<p><code>styles_reference_pptx</code> is a document style reference guide is essentially a word document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made template (“refpptx_nmfs”). Default = “refpptx_nmfs”. You can change this later by renaming the file in the code folder.</p>
 <p>Here’s what they look like:</p>
 <p>### refpptx_nmfs</p>
 <div class="figure">
 <img src="../man/figures/refpptx_nmfs.JPG" alt="refpptx_nmfs"><p class="caption">refpptx_nmfs</p>
 </div>
 </div>
-<div id="csl" class="section level2">
+<div id="buildreportcsl" class="section level2">
 <h2 class="hasAnchor">
-<a href="#csl" class="anchor"></a>csl</h2>
+<a href="#buildreportcsl" class="anchor"></a>buildReport(csl = …)</h2>
 <p><code>csl</code> is a citation style. Either use a local document (insert “path”) or some of the pre-made templates (“apa” or “bulletin-of-marine-science”). Default = “apa” because it was easy to find.</p>
 <p>A primer on creating and modifying CSL styles can be found at <a href="http://citationstyles.org/downloads/primer.html" class="uri">http://citationstyles.org/downloads/primer.html</a>. A repository of CSL styles can be found at <a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a>. See also <a href="http://zotero.org/styles" class="uri">http://zotero.org/styles</a> for easy browsing.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -208,9 +208,9 @@
 <span class="co">#&gt; [5] "    &lt;id&gt;http://www.zotero.org/styles/bulletin-of-marine-science&lt;/id&gt;"                                                                                   </span>
 <span class="co">#&gt; [6] "    &lt;link href=\"http://www.zotero.org/styles/bulletin-of-marine-science\" rel=\"self\"/&gt;"</span></code></pre></div>
 </div>
-<div id="bibliography-bib" class="section level2">
+<div id="buildreportbibliography-bib" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bibliography-bib" class="anchor"></a>bibliography.bib</h2>
+<a href="#buildreportbibliography-bib" class="anchor"></a>buildReport(bibliography.bib = …)</h2>
 <p><code>bibliography.bib</code>: Either use a local document (.bib format; insert full “path”) or the example file from the package (“bib_example”). Default = “bib_example”.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">csl</span> <span class="op">=</span> <span class="st">"bib_example"</span>

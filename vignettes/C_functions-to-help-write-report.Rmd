@@ -29,9 +29,9 @@ library(png)
 library(cowplot)
 ```
 
-This file is essentially the example file included in the `buidTM()` function. 
+This file is essentially the example file included in the `buildReport()` function. 
 
-## From run file: 
+## From run file:
 ```{r a}
 cnt_chapt <- "000" # Keep everything in a proper order
 plot_list <- c() # This will help us by saving R-ready plots so we can easily go back and edit them if necessary. 
@@ -57,7 +57,7 @@ dat <- data.frame(x = rnorm(n = 100),
 
 Footnotes.list<-list("ExOfStandardFt" = "Wow, this project is so cool!")
 
-types_of_vessels <- c("NOAAS Vessel", "F/V Fishing Boat", "R/V University Vessel", "Private Charter")
+types_of_vessels <- c("NOAA Vessel", "F/V Fishing Boat", "R/V University Vessel", "Private Charter")
 ```
 
 Here is the report content:
@@ -66,22 +66,29 @@ Here is the report content:
 
 My example dataset has `r xunits(nrow(dat))` rows in it and `r xunits(ncol(dat))` columns in it.`r paste0("^[", Footnotes.list$ExOfStandardFt,"]") ` 
 
-This sentance examplifies how to systematically calculate a percent change: `r pchange(start = nrow(dat), end = ncol(dat))`^[Here's another, free-written footnote!]. 
+This sentence exemplifies how to systematically calculate a percent change: `r pchange(start = nrow(dat), end = ncol(dat))`^[Here's another, free-written footnote!]. 
 
 Here are several types of vessels: `r NMFSReports::text_list(types_of_vessels)`. 
 
 ## Equations
 
-Here is some equation you'll need to have in this report, of which produces the variable $X$. 
+Here is some equations you'll need to have in this report: 
 
 ```{r Eq1}
 cnt_equ<-auto_counter(cnt_equ)
 ```
 
+Eq. `r cnt_equ`: Newton's Universal Law of Gravitation
+
+$$F = G \frac{m_1 m_2}{d^2}$$
+
+```{r Eq2}
+cnt_equ<-auto_counter(cnt_equ)
+```
+
 Eq. `r cnt_equ`
 
-$$X = Y + Z$$
-
+$$c^2 = b^2 + a^2$$
 
 ## Citations
 
@@ -139,7 +146,7 @@ if (indesign_flowin %in% FALSE) {
 }
 ```
 
-## Example Figure (Refernce Image)
+## Example Figure (Reference Image)
 
 ```{r G2a}
 # Edit This:

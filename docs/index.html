@@ -131,31 +131,25 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Learn more about this package at this pkgdown webpage! <a href="https://emilymarkowitz-noaa.github.io/NMFSReports/" class="uri">https://emilymarkowitz-noaa.github.io/NMFSReports/</a></p>
-<p>The NMFSReports Package has all of the basic files you need to create reproducible and repeatable NOAA Tech Memos in R Markdown! This approach is perfect for efficiently rolling out annual (or other regular time-stepped) reports but can easily also be used for one-time reports. Scripts integrate table, figure, and data management, bibliography management, and design automation.</p>
+<p>The NMFSReports Package has all of the basic architecture you need to create reproducible and repeatable NOAA Tech Memos in R Markdown! This approach is perfect for efficiently rolling out annual (or other regular) reports or reports with formulaic sections (the same chapter structure but for a different area or species). Scripts integrate table, figure, data, and bibliography management and design automation.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span>
-
-<span class="co"># Functions for Writing R Markdown Reports </span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"EmilyMarkowitz-NOAA/NMFSReports"</span><span class="op">)</span></code></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"EmilyMarkowitz-NOAA/NMFSReports"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span></code></pre></div>
 </div>
-<div id="use-this-package-with-nmfspalette" class="section level2">
+<div id="use-this-package-with-nmfspalette-a-package-for-noaa-fisheries-color-schemes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#use-this-package-with-nmfspalette" class="anchor"></a>Use this package with <code>nmfspalette</code>:</h2>
+<a href="#use-this-package-with-nmfspalette-a-package-for-noaa-fisheries-color-schemes" class="anchor"></a>Use this package with <code>nmfspalette</code>: A package for NOAA Fisheries color schemes</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># nfmspalette                    </span>
-
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span>
-
-<span class="co"># NMFS color pallette</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"nmfs-general-modeling-tools/nmfspalette"</span><span class="op">)</span>                    
-                    </code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"nmfs-general-modeling-tools/nmfspalette"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">nmfspalette</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="inspiration" class="section level2">
 <h2 class="hasAnchor">
 <a href="#inspiration" class="anchor"></a>Inspiration</h2>
-<p>As the previous editor of the fisheries economics of the US report (FEUS, published by the office of science and technology in Silver Spring Maryland) I’ve been thinking about how to create reproducible documents and rmarkdown for some time now. Using what I learned from producing FEUS, I started building a personal package for me to use in future report writing. It’s clear to me that reproducible reports is a massive need across NOAA, and this pet project snowballed into an opportunity to help others and I decided to make that package available to others who might also find it helpful. It’s very much in the development stage, but I think it has many of the nuts and bolts to be something that can be tested and worked on collaboratively. Anyone who’s interested in putting this to use and seeing what improvements can be made or even collaborating on making this package that more useful I welcome their interest and their insight!</p>
-<p>This package takes you through most of the steps of writing a report. The buildTM() create the initial skeleton and architecture for the report, And the rest of the functions help you systematically and reproducibly write your report. I created a detailed package down page I’ll make it up that explains the function of each of these functions and vignettes of what to expect at each step of the process.</p>
+<p>I’ve been thinking about how to efficently create reproducible documents and rmarkdown scripts for some time. As the former editor of the Fisheries Economics of the US Report (FEUS, published by the NMFS Office of Science and Technology in Silver Spring, Maryland), I completely altered the workflow from a report that was edited line by line to a report that was created reproducibly by a click of a button (Check out this DC satRdays 2020 presentation (March 28 2020): <a href="https://www.youtube.com/watch?v=-mycRwaC60A" class="uri">https://www.youtube.com/watch?v=-mycRwaC60A</a> for more info). Using what I learned from re-coding the FEUS and other reports since then, I started building a personal package that I could use in future report writing. It is clear to me that reproducible reports are a massive need across NOAA, and this pet project became an opportunity to help others. Though it is very much in the development stage, but I think it is ready to be tested and worked on collaboratively. I welcome any potential collaboration or comments on how to improve this package.</p>
+<p>This package takes you through most of the steps of writing a report. The buildReport() funciton creates the initial skeleton and architecture for the report, and the rest of the functions help you systematically and reproducibly write your report.</p>
 </div>
 <div id="noaa-readme" class="section level2">
 <h2 class="hasAnchor">
