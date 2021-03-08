@@ -108,7 +108,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Use buildReport() to Begin Writing Your Report</h1>
             
-            <h4 class="date">March 03 2021</h4>
+            <h4 class="date">March 08 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/vignettes/A_use-buildReport.Rmd"><code>vignettes/A_use-buildReport.Rmd</code></a></small>
       <div class="hidden name"><code>A_use-buildReport.Rmd</code></div>
@@ -191,12 +191,13 @@
 <div id="csl" class="section level2">
 <h2 class="hasAnchor">
 <a href="#csl" class="anchor"></a>csl</h2>
-<p><code>csl</code> is a citation style. Either use a local document (insert “path”) or some of the pre-made templates (“apa”). Default = “apa” because it was easy to find.</p>
+<p><code>csl</code> is a citation style. Either use a local document (insert “path”) or some of the pre-made templates (“apa” or “bulletin-of-marine-science”). Default = “apa” because it was easy to find.</p>
+<p>A primer on creating and modifying CSL styles can be found at <a href="http://citationstyles.org/downloads/primer.html" class="uri">http://citationstyles.org/downloads/primer.html</a>. A repository of CSL styles can be found at <a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a>. See also <a href="http://zotero.org/styles" class="uri">http://zotero.org/styles</a> for easy browsing.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">csl</span> <span class="op">=</span> <span class="st">"apa"</span>
+<code class="sourceCode R"><span class="va">csl</span> <span class="op">=</span> <span class="st">"bulletin-of-marine-science"</span>
 
 <span class="co"># it looks something like this:</span>
-<span class="va">apa</span> <span class="op">&lt;-</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"cit"</span>,<span class="st">"apa.csl"</span>, package<span class="op">=</span><span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">apa</span> <span class="op">&lt;-</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"cit"</span>,<span class="st">"bulletin-of-marine-science.csl"</span>, package<span class="op">=</span><span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">apa</span><span class="op">)</span>
 <span class="co">#&gt; character(0)</span></code></pre></div>
 </div>

@@ -108,7 +108,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>How to use the run.R file to be the skeleton of your report</h1>
             
-            <h4 class="date">March 03 2021</h4>
+            <h4 class="date">March 08 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/vignettes/B_run-script-demo.Rmd"><code>vignettes/B_run-script-demo.Rmd</code></a></small>
       <div class="hidden name"><code>B_run-script-demo.Rmd</code></div>
@@ -120,7 +120,6 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span>
-<span class="co">#&gt; here() starts at /Users/runner/work/NMFSReports/NMFSReports</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
 <p>First, <a href="https://emilymarkowitz-noaa.github.io/NMFSReports/articles/A_use-buildReport.html">run <code>NMFSReports::buildReport()</code></a> to produce our basic report outline. It should produce something like this:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -352,7 +351,7 @@ Paul Doremus, Acting Assistant Administrator for Fisheries"</span>
 <div id="support_scripts" class="section level2">
 <h2 class="hasAnchor">
 <a href="#support_scripts" class="anchor"></a>support_scripts</h2>
-<p>To make sure we nice and neatly compartemantalize our work, I’m going to create the below supporting .R files that I will source into my ‘run’ file:</p>
+<p>To make sure we nice and neatly compartemantalize our work, the below supporting .R scripts are going to be created and will source into the ‘run’ file:</p>
 <p>*note a ‘run’ file is automatically created. Think of this as the spine of your document.</p>
 <p><em>functions</em>: Where we will save all report-specific functions.</p>
 <p><em>directories</em>: Where we will systematically create and save objects describing all of our directories. I’ve found that it can be helpful to have these as objects to cut down on verboseness.</p>
