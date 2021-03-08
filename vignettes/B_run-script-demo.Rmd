@@ -240,7 +240,7 @@ save(table_list,
 #    2. Cite the apropriate versions of the packages you used in your report
 # More info here: https://rstudio.github.io/packrat/walkthrough.html
 
-CreateMetadata(dir_out = paste0(dir_out_todaysrun, "/documentation"),
+create_metadata(dir_out = paste0(dir_out_todaysrun, "/documentation"),
                title = paste0(report_title, " Metadata ", Sys.Date()))
 
 # setwd(paste0(dir_out_todaysrun))

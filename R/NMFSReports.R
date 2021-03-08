@@ -1277,7 +1277,7 @@ save_tables<-function(table_raw = NULL,
 #' @importFrom magrittr %>%
 #' @keywords metadata
 #' @export
-CreateMetadata<-function(
+create_metadata<-function(
   dir_out = ".",
   title = "My Project") {
 

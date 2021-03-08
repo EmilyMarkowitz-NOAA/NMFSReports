@@ -1,5 +1,5 @@
 ---
-title: "Functions and Examples to Help You Write Your Report"
+title: "Functions and examples to help you write your report"
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
 output: rmarkdown::html_vignette
 csl: "../inst/cite/bulletin-of-marine-science.csl"

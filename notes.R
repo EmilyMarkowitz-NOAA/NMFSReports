@@ -28,6 +28,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 
 
 # pkgdown::build_favicons()
+devtools::build_vignettes()
 usethis::use_pkgdown(config_file = "./pkgdown/_pkgdown.yml")
 pkgdown::build_site(pkg = here())
 usethis::use_github_action("pkgdown")

@@ -1,6 +1,28 @@
 url: https://emilymarkowitz-noaa.github.io/NMFSReports/
 
+news:
+  one_page: true
+
 navbar:
+  left:
+    - text: "Vignettes"
+      icon: fas fa-book fa-lg
+      menu:
+      -  text: "Overview"
+         href: articles/index.html
+      -  text: "Use buildReport() to begin writing Your report"
+         href: articles/A_use-buildReport.html
+      -  text: "How to use the run.R file to be the skeleton of your report"
+         href: articles/B_run-script-demo.html
+      -  text: "Functions and examples to help you write your report"
+         href: articles/C_functions-to-help-write-report.html
+
+    - text: "Functions"
+      icon: far fa-file-code fa-lg
+      href: reference/index.html
+    - text: "News"
+      icon: fas fa-bullhorn fa-lg
+      href: news/index.html
   right:
     - icon: fas fa-paper-plane fa-lg
       href: mailto:emily.markowitz@noaa.gov
@@ -10,6 +32,55 @@ navbar:
       href: https://github.com/EmilyMarkowitz-NOAA/NMFSReports
     - icon: fa-fish
       href: https://nmfs-general-modeling-tools.github.io/
+
+articles:
+  - title: "NMFS Reports Vignettes"
+    desc: >
+      These vignettes provide an introduction to how to rewite reports using the
+      **NMFSReports** package. <br/>
+      <br/>
+    contents:
+      - A_use-buildReport
+      - B_run-script-demo
+      - C_functions-to-help-write-report
+
+reference:
+  - title: Build the Report Architecture
+    contents:
+      - '`buildReport`'
+  - title: Search within Report Content
+    contents:
+      - '`is_something_in_this_matrix`'
+  - title: Work with Text
+    contents:
+      - '`TitleCase`'
+      - '`tolower2`'
+      - '`text_list`'
+      - '`add_table_footnotes`'
+  - title: Work with Numbers in Text
+    contents:
+      - '`numbers2words`'
+      - '`numbers2words_th`'
+      - '`pchange`'
+      - '`mod_number`'
+      - '`xunits`'
+      - '`xunitspct`'
+      - '`format_cells`'
+  - title: File and Content Organization
+    contents:
+      - '`numbers0`'
+      - '`auto_counter`'
+  - title: Tables and Graphs
+    contents:
+      - '`save_graphs`'
+      - '`save_tables`'
+  - title: Record Metadata
+    contents:
+      - '`create_metadata`'
+  - title: Others
+    contents:
+      - '`df2js`'
+
 template:
   params:
     bootswatch: sandstone
