@@ -1,8 +1,8 @@
 ---
-title: "A_buildReport-test"
+title: "A_buildTM"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{A_buildReport-test}
+  %\VignetteIndexEntry{A_buildTM}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,3 +17,7 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(NMFSReports)
 ```
+
+hello world!
+
+
