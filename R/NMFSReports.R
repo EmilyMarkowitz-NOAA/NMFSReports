@@ -1135,7 +1135,7 @@ save_graphs<-function(plot0,
 
   # Title
   header<-trimws(header)
-  header<-stringr::str_to_sentence(header)
+  # header<-stringr::str_to_sentence(header)
   header<-paste0(type, " ",cnt,". ",
                  ifelse(substr(x = header,
                                start = nchar(header),
@@ -1225,7 +1225,7 @@ save_tables<-function(table_raw = NULL,
 
   # Title
   header<-trimws(header)
-  header<-stringr::str_to_sentence(header)
+  # header<-stringr::str_to_sentence(header)
   header<-paste0(type, " ",cnt,". ",
                  ifelse(substr(x = header,
                                start = nchar(header),

@@ -100,7 +100,7 @@ Note that references will appear at the bottom of this document (and any documen
 
 First, create your plot: 
 
-```{r G1a}
+```{r G1a, include = FALSE, comment = FALSE, message = FALSE}
 # Edit This:
 header <- "Here is a figure!"
 footnote<-c("A footnote for this figure!", "A second footnote for this figure!")
@@ -152,7 +152,7 @@ if (indesign_flowin %in% FALSE) {
 
 ## Example Figure (Reference Image)
 
-```{r G2a}
+```{r G2a, include = FALSE, comment = FALSE, message = FALSE}
 # Edit This:
 header <- "Here is a figure!"
 footnote<-c("A footnote for this figure!")

@@ -111,7 +111,7 @@ if (indesign_flowin %in% FALSE) {
 
 ## Example Figure (Refernce Image)
 
-```{r G2a}
+```{r G2a, include = FALSE, comment = FALSE, message = FALSE}
 # Edit This:
 header <- "Here is a figure!"
 footnote<-c("A footnote for this figure!")
@@ -162,7 +162,7 @@ if (indesign_flowin %in% FALSE) {
 
 ## Example Table (Basic)
 
-```{r T1a}
+```{r T1a, include = FALSE, comment = FALSE, message = FALSE}
 # Edit This:
 header <- "Here is a table!"
 footnote<-"A footnote for this table!"
