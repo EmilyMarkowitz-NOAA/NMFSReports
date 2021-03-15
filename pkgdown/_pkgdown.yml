@@ -45,6 +45,7 @@ articles:
       - A_use-buildReport
       - B_run-script-demo
       - C_functions-to-help-write-report
+      - D_googledrive
 
 reference:
   - title: Build the Report Architecture
@@ -55,23 +56,23 @@ reference:
       - '`is_something_in_this_matrix`'
   - title: Work with Text
     contents:
+      - '`add_table_footnotes`'
+      - '`text_list`'
       - '`TitleCase`'
       - '`tolower2`'
-      - '`text_list`'
-      - '`add_table_footnotes`'
   - title: Work with Numbers in Text
     contents:
+      - '`format_cells`'
       - '`numbers2words`'
       - '`numbers2words_th`'
-      - '`pchange`'
       - '`mod_number`'
+      - '`pchange`'
       - '`xunits`'
       - '`xunitspct`'
-      - '`format_cells`'
   - title: File and Content Organization
     contents:
-      - '`numbers0`'
       - '`auto_counter`'
+      - '`numbers0`'
   - title: Tables and Graphs
     contents:
       - '`save_graphs`'
