@@ -20,10 +20,10 @@
 #' styles_reference_pptx = "refppt_nmfs"
 #' styles_reference_docx = "refdoc_noaa_tech_memo"
 #' bibliography.bib = "bib_example"
-#' csl = "apa"
+#' csl = "bulletin-of-marine-science"
 #'
 #' # not run:
-#' # buildTM(
+#' # buildReport(
 #' #   sections = sections,
 #' #   authors = authors,
 #' #   title = title,
@@ -1036,26 +1036,39 @@ format_cells <- function(dat, rows, cols, fonttype) {
 
 ######## FILE ORGANIZATION #########
 
-
-#' Name nth item in order (001)
+#' Make numbers the same length preceeded by 0s
 #'
-#' Convert a value.
-#' @param x a numeric or integer value or vector of numeric or integer values.
+#' Name nth item in order (001)
+#' @param x a single or vector of integer values that need to be converted from something like 1 to "001"
+#' @param number_places default = NA. If equal to NA, the function will take use the longest length of a value provided in x (example 1). If equal to a number, it will make sure that every number is the same length of number_places (example 2) or larger (if a value of x has more places than number_places(example 3)).
+#'
 #' @keywords Data Management
+#' @return A string of the values in x preceeded by "0"s
 #' @export
-#' @return the values in the "0..X" format. All values will take on the number of 0s of the longest charcter value.
+#'
 #' @examples
-#' numbers0(x = c(1, 3, 6, 101))
-numbers0<-function(x) {
-  xx<-rep_len(x = NA, length.out = length(x))
-  for (i in 1:length(x)){
-    xx[i]<-paste0(paste(rep_len(x = 0,
-                                length.out = nchar(max(x))-nchar(x[i])),
-                        collapse = ""),
-                  as.character(x[i]))
+#' # example 1
+#' numbers0(x = c(1,11,111))
+#' # example 2
+#' numbers0(x = c(1,11,111), number_places = 4)
+#' # example 3
+#' numbers0(x = c(1,11,111), number_places = 2)
+numbers0 <- function (x, number_places = NA) {
+  x<-as.numeric(x)
+  xx <- rep_len(x = NA, length.out = length(x))
+  if (is.na(number_places)){
+    number_places <- max(nchar(x))
+  }
+  for (i in 1:length(x)) {
+    xx[i] <- paste0(ifelse(number_places<nchar(x[i]),
+                           "",
+                           paste(rep_len(x = 0,
+                                         length.out = number_places-nchar(x[i])),
+                                 collapse = "")), as.character(x[i]))
   }
   return(xx)
 }
+
 
 #' Add a counter number.
 #'
@@ -1131,6 +1144,7 @@ save_graphs<-function(plot0,
                      output_type = c("pdf", "png"),
                      type = "Figure",
                      filename_desc = "",
+                     nickname = "",
                      message = FALSE){
 
   # Title
@@ -1164,6 +1178,8 @@ save_graphs<-function(plot0,
   plot_list$temp <- list("plot" = plot0,
                               "caption" = caption,
                                "header" = header,
+                         "nickname" = nickname,
+                         "number" = cnt_chapt_content,
                                "footnote" = footnote)
 
   names(plot_list)[names(plot_list) %in% "temp"] <- header
@@ -1220,6 +1236,7 @@ save_tables<-function(table_raw = NULL,
                      output_type = c("csv"),
                      type = "Table",
                      filename_desc = "",
+                     nickname = "",
                      message = FALSE) {
 
 
@@ -1274,6 +1291,8 @@ save_tables<-function(table_raw = NULL,
                           "print" = table_print,
                           "caption" = caption,
                           "header" = header,
+                          "nickname" = nickname,
+                          "number" = cnt_chapt_content,
                           "footnote" = footnote)
 
   names(table_list)[names(table_list) %in% "temp"] <- header

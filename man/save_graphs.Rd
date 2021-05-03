@@ -18,6 +18,7 @@ save_graphs(
   output_type = c("pdf", "png"),
   type = "Figure",
   filename_desc = "",
+  nickname = "",
   message = FALSE
 )
 }

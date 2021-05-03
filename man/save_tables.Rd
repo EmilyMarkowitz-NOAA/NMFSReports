@@ -17,6 +17,7 @@ save_tables(
   output_type = c("csv"),
   type = "Table",
   filename_desc = "",
+  nickname = "",
   message = FALSE
 )
 }

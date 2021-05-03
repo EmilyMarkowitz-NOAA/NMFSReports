@@ -44,10 +44,10 @@ title = "Awesome Report!"
 styles_reference_pptx = "refppt_nmfs"
 styles_reference_docx = "refdoc_noaa_tech_memo"
 bibliography.bib = "bib_example"
-csl = "apa"
+csl = "bulletin-of-marine-science"
 
 # not run:
-# buildTM(
+# buildReport(
 #   sections = sections,
 #   authors = authors,
 #   title = title,

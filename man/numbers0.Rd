@@ -2,21 +2,28 @@
 % Please edit documentation in R/NMFSReports.R
 \name{numbers0}
 \alias{numbers0}
-\title{Name nth item in order (001)}
+\title{Make numbers the same length preceeded by 0s}
 \usage{
-numbers0(x)
+numbers0(x, number_places = NA)
 }
 \arguments{
-\item{x}{a numeric or integer value or vector of numeric or integer values.}
+\item{x}{a single or vector of integer values that need to be converted from something like 1 to "001"}
+
+\item{number_places}{default = NA. If equal to NA, the function will take use the longest length of a value provided in x (example 1). If equal to a number, it will make sure that every number is the same length of number_places (example 2) or larger (if a value of x has more places than number_places(example 3)).}
 }
 \value{
-the values in the "0..X" format. All values will take on the number of 0s of the longest charcter value.
+A string of the values in x preceeded by "0"s
 }
 \description{
-Convert a value.
+Name nth item in order (001)
 }
 \examples{
-numbers0(x = c(1, 3, 6, 101))
+# example 1
+numbers0(x = c(1,11,111))
+# example 2
+numbers0(x = c(1,11,111), number_places = 4)
+# example 3
+numbers0(x = c(1,11,111), number_places = 2)
 }
 \keyword{Data}
 \keyword{Management}
