@@ -166,6 +166,7 @@ if (indesign_flowin %in% FALSE) {
 # Edit This:
 header <- "Here is a table!"
 footnote<-"A footnote for this table!"
+nickname <- "example" # this is so you can refer to it later systematically
 
 # Select data and make plot
 table_raw<-data.frame(col = LETTERS[1:10], 
@@ -194,6 +195,7 @@ table_list<-save_tables(table_raw = table_raw,
                         filename0 = filename0, 
                         cnt_chapt_content = cnt_chapt_content, 
                         cnt = cnt_tables, 
+                        nickname = nickname,
                         path = dir_out_tables)
 ```
 
@@ -212,12 +214,15 @@ if (indesign_flowin %in% FALSE) {
 }
 ```
 
+Here in figure `r as.numeric(list.filter(plot_list, "example" %in% nickname)[[1]]$number)`, we see that...
+
 ## Example Table (With Footnotes)
 
 ```{r T2a}
 # Edit This:
 header <- "Here is a table!"
 footnote<-"A footnote for this table!"
+nickname <- "example" # this is so you can refer to it later systematically
 
 # Select data
 table_raw<-data.frame(col = LETTERS[1:10], 
@@ -270,6 +275,7 @@ table_list<-save_tables(table_raw = table_raw,
                         filename0 = filename0, 
                         cnt_chapt_content = cnt_chapt_content, 
                         cnt = cnt_tables, 
+                        nickname = nickname,
                         path = dir_out_tables)
 ```
 
@@ -288,4 +294,4 @@ if (indesign_flowin %in% FALSE) {
 }
 ```
 
-
+Here in table `r as.numeric(list.filter(table_list, "example" %in% nickname)[[1]]$number)`, we see that...

@@ -1108,6 +1108,7 @@ auto_counter<-function(counter0) {
 #' @param output_type Default = c("pdf", "png"). Can be anything supported by ggsave()
 #' @param type Default = "Figure", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Figure 1. This is my plot!"
 #' @param filename_desc Additional description text for the filename that will be added at the name of file before the filename extention. Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.
+#' @param nickname A unique name that can be used to identify the figure so it can be referenced later in the report.
 #' @param message TRUE/FALSE. Default = FALSE. If TRUE, it will print information about where your plot has been saved to.
 #' @importFrom magrittr %>%
 #' @export
@@ -1179,7 +1180,7 @@ save_graphs<-function(plot0,
                               "caption" = caption,
                                "header" = header,
                          "nickname" = nickname,
-                         "number" = cnt_chapt_content,
+                         "number" = cnt,
                                "footnote" = footnote)
 
   names(plot_list)[names(plot_list) %in% "temp"] <- header
@@ -1207,6 +1208,7 @@ save_graphs<-function(plot0,
 #' @param output_type Default = c("csv"). Can be anything supported by utils::write.table.
 #' @param type Default = "Table", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Table 1. This is my spreadsheet!". Always save in pdf so you can make last minute edits in adobe acrobat!
 #' @param filename_desc Additional description text for the filename that will be added at the name of file before the filename extention, before the "_raw" or "_print". Default = "". Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.
+#' @param nickname A unique name that can be used to identify the figure so it can be referenced later in the report.
 #' @param message TRUE/FALSE. Default = FALSE. If TRUE, it will print information about where your plot has been saved to.
 #' @importFrom magrittr %>%
 #' @export
@@ -1292,7 +1294,7 @@ save_tables<-function(table_raw = NULL,
                           "caption" = caption,
                           "header" = header,
                           "nickname" = nickname,
-                          "number" = cnt_chapt_content,
+                          "number" = cnt,
                           "footnote" = footnote)
 
   names(table_list)[names(table_list) %in% "temp"] <- header

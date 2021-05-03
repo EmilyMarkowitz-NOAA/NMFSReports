@@ -207,6 +207,7 @@ if (indesign_flowin %in% FALSE) {
 # Edit This:
 header <- "Here is a table!"
 footnote<-"A footnote for this table!"
+nickname <- "example" # this is so you can refer to it later systematically
 
 # Select data and make plot
 table_raw<-data.frame(col = LETTERS[1:10], 
@@ -232,7 +233,8 @@ table_list<-save_tables(table_raw = table_raw,
                         table_list = table_list, 
                         header = header,
                         footnote = footnote,
-                        filename0 = filename0, 
+                        filename0 = filename0,
+                        nickname = nickname,
                         cnt_chapt_content = cnt_chapt_content, 
                         cnt = cnt_tables#, 
                         # path = dir_out_tables
@@ -253,6 +255,8 @@ if (indesign_flowin %in% FALSE) {
           knitr::kable(row.names = FALSE, booktabs = TRUE) #print table in text
 }
 ```
+
+Here in figure `r as.numeric(list.filter(plot_list, "example" %in% nickname)[[1]]$number)`, we see that...
 
 ## Example Table (With Footnotes)
 
@@ -302,6 +306,7 @@ table_print$footnotes<-NULL # remove column from final table
 # Don't Edit This:
 cnt_chapt_content<-auto_counter(cnt_chapt_content)
 cnt_tables<-cnt_tables+1
+nickname <- "example" # this is so you can refer to it later systematically
 
 # Systematically save your plot with this simple function
 table_list<-save_tables(table_raw = table_raw, 
@@ -310,6 +315,7 @@ table_list<-save_tables(table_raw = table_raw,
                         header = header,
                         footnote = footnote,
                         filename0 = filename0, 
+                        nickname = nickname,
                         cnt_chapt_content = cnt_chapt_content, 
                         cnt = cnt_tables#, 
                         # path = dir_out_tables
@@ -330,6 +336,9 @@ if (indesign_flowin %in% FALSE) {
           knitr::kable(row.names = FALSE, booktabs = TRUE) #print table in text
 }
 ```
+
+
+Here in table `r as.numeric(list.filter(table_list, "example" %in% nickname)[[1]]$number)`, we see that...
 
 ## References
 
