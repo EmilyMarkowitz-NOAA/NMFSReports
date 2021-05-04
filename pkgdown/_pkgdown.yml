@@ -60,6 +60,7 @@ reference:
       - '`text_list`'
       - '`TitleCase`'
       - '`tolower2`'
+      - '`googledrive_txt_dl`'
   - title: Work with Numbers in Text
     contents:
       - '`format_cells`'
@@ -75,8 +76,9 @@ reference:
       - '`numbers0`'
   - title: Tables and Graphs
     contents:
-      - '`save_graphs`'
+      - '`save_figures`'
       - '`save_tables`'
+      - '`ref_figtab`'
   - title: Record Metadata
     contents:
       - '`create_metadata`'

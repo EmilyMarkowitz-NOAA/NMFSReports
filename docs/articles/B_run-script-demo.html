@@ -119,7 +119,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>How to use the run.R file to be the skeleton of your report</h1>
             
-            <h4 class="date">March 15 2021</h4>
+            <h4 class="date">May 04 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/vignettes/B_run-script-demo.Rmd"><code>vignettes/B_run-script-demo.Rmd</code></a></small>
       <div class="hidden name"><code>B_run-script-demo.Rmd</code></div>
@@ -225,7 +225,7 @@ Paul Doremus, Acting Assistant Administrator for Fisheries"</span>
 
 <span class="co">######MAKE REPORT########</span>
 <span class="va">cnt_chapt</span> <span class="op">&lt;-</span> <span class="st">"000"</span> <span class="co"># Keep everything in a proper order</span>
-<span class="va">plot_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># This will help us by saving R-ready plots so we can easily go back and edit them if necessary.</span>
+<span class="va">figure_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># This will help us by saving R-ready plots so we can easily go back and edit them if necessary.</span>
 <span class="va">table_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># This will help us by saving R-ready tables  so we can easily go back and edit them if necessary.</span>
 <span class="va">cnt_figures</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># This will autoname your figures with consecutive numbers (e.g., Figure 1.)</span>
 <span class="va">cnt_tables</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># This will autoname your tables with consecutive numbers (e.g., Table 1.)</span>
@@ -324,7 +324,7 @@ Paul Doremus, Acting Assistant Administrator for Fisheries"</span>
 
 <span class="co">##### SAVE OTHER OUTPUTS#############</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">plot_list</span>,
+<span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">figure_list</span>,
      file<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_figures</span>, <span class="st">"/report_plots.rdata"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">table_list</span>,

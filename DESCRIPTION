@@ -25,7 +25,9 @@ Imports:
     stringr,
     here,
     jsonlite, 
-    knitcitations
+    knitcitations, 
+    XML, 
+    googledrive
 Suggests: 
     testthat (>= 3.0.0),
     rmarkdown,

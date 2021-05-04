@@ -1,4 +1,9 @@
 
+# UTILITY ----------------------------------------------------------------------
+
+#function generator
+# defunct = function(msg = "This function is depreciated") function(...) return(stop(msg))
+
 ############ BUILD THE TM #################
 
 #' Build your intitial architecture for your new NOAA Tech Memo or Report
@@ -635,6 +640,60 @@ add_table_footnotes<-function(tab,
 
 }
 
+
+#' Download text from google drive as plain text
+#'
+#' @param filename_gd The file path or filename of the google doc from google drive.
+#' @param filename_dl The filename you want to download the google doc as. Default = "googledrive_dl_text".
+#' @param path The path you want to save this file to. Default = "./"
+#' @param verbose Logical, indicating whether to print informative messages (default TRUE).
+#' @return The plain text from the google doc.
+#' @export
+#' @examples
+#' googledrive::drive_auth() # Using the first token you have.
+#' 1
+#'
+#' txt <- googledrive_txt_dl(filename_gd = "test123123_doc",
+#'                           filename_dl = "test123123_doc_downloaded",
+#'                           verbose = FALSE)
+#' txt
+googledrive_txt_dl <- function (filename_gd,
+                                filename_dl = "googledrive_dl_text",
+                                path = "./",
+                                verbose = TRUE) {
+
+  out_new<-paste0(path, filename_dl, ".zip")
+
+  # Make a temporary file to content save to
+  temp <- base::tempfile(fileext = ".zip")
+
+  dl <- googledrive::drive_download(file = filename_gd,
+                                    path = temp,
+                                    verbose = verbose,
+                                    overwrite = TRUE)
+  1
+
+  out <- utils::unzip(temp, exdir = tempdir())
+
+  base::file.rename(from = out,
+              to = out_new)
+
+  txt<-XML::htmlTreeParse(out_new, useInternal = TRUE)
+
+  txt <- XML::xpathApply(txt,
+                    "//body//text()[not(ancestor::script)][not(ancestor::style)][not(ancestor::noscript)]",
+                    XML::xmlValue)
+
+  txt <- as.character(paste(paste(unlist(txt))))
+
+  utils::write.table(x = txt,
+              file = paste0(path, filename_dl, ".txt"),
+              row.names = FALSE, col.names = FALSE)
+
+  return(txt)
+}
+
+
 ############ MODIFY NUMBERS IN TEXT ################
 
 
@@ -1093,47 +1152,47 @@ auto_counter<-function(counter0) {
 ####### TABLE AND GRAPHS #######
 
 
-#' Systematically save your ggplot figure for your report
+#' Systematically save your figures for your report
 #'
-#' @param plot0 The ggplot you would like to be saved
-#' @param plot_list The list where all plots will be saved.
+#' @param figure The figure you would like to be saved.
+#' @param figure_list The list where all figures will be saved.
 #' @param header The name and title of the figure. Default = "".
 #' @param footnote Any footnote you want attached to this figure.
-#' @param filename0 The filename set at the begining of the chapter
-#' @param cnt_chapt_content The order number that this exists in the chapter
-#' @param cnt The figure number
+#' @param filename0 The filename set at the begining of the chapter.
+#' @param cnt_chapt_content The order number that this exists in the chapter.
+#' @param cnt The figure number.
 #' @param path The path the file needs to be saved to. Default = "NULL", meaning it wont save anything and will override all other saving elements.
-#' @param width Default = 6 inches
-#' @param height Default = 6 inches
-#' @param output_type Default = c("pdf", "png"). Can be anything supported by ggsave()
-#' @param type Default = "Figure", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Figure 1. This is my plot!"
+#' @param width Default = 6 inches.
+#' @param height Default = 6 inches.
+#' @param output_type Default = c("pdf", "png"). Can be anything supported by ggsave().
+#' @param type Default = "Figure", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Figure 1. This is my plot!".
 #' @param filename_desc Additional description text for the filename that will be added at the name of file before the filename extention. Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.
 #' @param nickname A unique name that can be used to identify the figure so it can be referenced later in the report.
 #' @param message TRUE/FALSE. Default = FALSE. If TRUE, it will print information about where your plot has been saved to.
 #' @importFrom magrittr %>%
 #' @export
-#' @return plot_list updated with the new plot and metadata.
+#' @return figure_list updated with the new plot and metadata.
 #' @examples
 #' library(magrittr)
 #' library(ggplot2)
-#' plot_list <- c()
+#' figure_list <- c()
 #' dat <- data.frame(x = rnorm(n = 10),
 #'                   y = rnorm(n = 10),
 #'                   col = rep_len(x = c("a", "b"),
 #'                                 length.out = 5))
 #' # Select data and make plot
-#' plot0<- dat %>%
+#' figure<- dat %>%
 #'   ggplot(aes(x = x, y = y,
 #'   colour = as.factor(col))) + # create plot
 #'   geom_point()
-#' plot_list<-save_graphs(plot0 = plot0,
-#'                       plot_list = plot_list,
+#' figure_list<-save_figures(figure = figure,
+#'                       figure_list = figure_list,
 #'                       header = "example",
 #'                       footnote = "footnote example")
-#' names(plot_list)
-#' plot_list
-save_graphs<-function(plot0,
-                     plot_list,
+#' names(figure_list)
+#' figure_list
+save_figures<-function(figure,
+                     figure_list,
                      header = "",
                      footnote = "",
                      filename0 = "x",
@@ -1172,26 +1231,30 @@ save_graphs<-function(plot0,
       ggplot2::ggsave( # save your plot
         path = path,
         filename = paste0(filename00, ".", output_type[i]), # Always save in pdf so you can make last minute edits in adobe acrobat!
-      plot = plot0, # call the plot you are saving
+      plot = figure, # call the plot you are saving
       width = width, height = height, units = "in") #recall, A4 pages are 8.5 x 11 in - 1 in margins
     }
   }
-  plot_list$temp <- list("plot" = plot0,
-                              "caption" = caption,
-                               "header" = header,
-                         "nickname" = nickname,
-                         "number" = cnt,
-                               "footnote" = footnote)
 
-  names(plot_list)[names(plot_list) %in% "temp"] <- header
+  figure_list$temp <- list("plot" = figure,
+                           "caption" = caption,
+                           "header" = header,
+                           "nickname" = nickname,
+                           "number" = cnt,
+                           "footnote" = footnote)
+
+  names(figure_list)[names(figure_list) %in% "temp"] <- header
 
   if (message == TRUE) {
     print(paste0("This figure was saved to ", path, filename00, ".*"))
   }
 
 
-  return(plot_list)
+  return(figure_list)
 }
+
+
+save_graph <- save_figures
 
 
 #' Systematically save your report tables for your report
@@ -1306,6 +1369,49 @@ save_tables<-function(table_raw = NULL,
 
 }
 
+
+
+#' Reference a figure or table
+#'
+#' @param list_obj A list object created by figure_list or table_list.
+#' @param nickname A unique string that is used to identify the plot or table in figure_list or table_list, respectively.
+#' @param sublist A string of the sublist in figure_list or table_list you want the contents returned from.
+#' @return The item in the list.
+#' @export
+#' @examples
+#' figure_list <- c()
+#' pp <- plot(x = 1, y = 1)
+#' figure_list <- save_figures(
+#'    figure = pp,
+#'    figure_list = figure_list,
+#'    header = "blah blah blah",
+#'    nickname = "example_figure", # a unique name you can refer back to
+#'    cnt_chapt_content = "003",
+#'    cnt = "012")
+#' figure_list <- save_figures(
+#'    figure = pp,
+#'    figure_list = figure_list,
+#'    header = "blah blah blah",
+#'    nickname = "example_figure_other", # a unique name you can refer back to
+#'    cnt_chapt_content = "003",
+#'    cnt = "013")
+#' figure_list
+#' refnum <- ref_figtab(
+#'    list_obj = figure_list,
+#'    nickname = "example_figure",
+#'    sublist = "number")
+#' refnum
+#' print(paste0("Please refer to figure ", refnum,
+#'              " to see this figure, not the other figure."))
+ref_figtab <- function(list_obj,
+                       nickname,
+                       sublist = "number"){
+  ref <- list_obj[which(lapply(list_obj, `[[`, "nickname") %in% nickname)][[1]][sublist]
+  if (sublist == "number") {
+    ref<-as.numeric(ref)
+  }
+  return(ref)
+}
 
 ######## METADATA ########
 

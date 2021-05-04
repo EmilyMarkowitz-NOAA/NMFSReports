@@ -50,7 +50,7 @@ library(here) # Other functions load in the 0_functions.R
 
 ######MAKE REPORT########
 cnt_chapt <- "000" # Keep everything in a proper order
-plot_list <- c() # This will help us by saving R-ready plots so we can easily go back and edit them if necessary.
+figure_list <- c() # This will help us by saving R-ready plots and figures so we can easily go back and edit them if necessary.
 table_list <- c() # This will help us by saving R-ready tables  so we can easily go back and edit them if necessary.
 cnt_figures <- 0 # This will autoname your figures with consecutive numbers (e.g., Figure 1.)
 cnt_tables <- 0 # This will autoname your tables with consecutive numbers (e.g., Table 1.)
@@ -68,8 +68,8 @@ cnt_equ <- 0
 
 ##### SAVE OTHER OUTPUTS#############
 
-save(plot_list,
-     file=paste0(dir_out_figures, "/report_plots.rdata"))
+save(figure_list,
+     file=paste0(dir_out_figures, "/report_figures.rdata"))
 
 save(table_list,
      file=paste0(dir_out_tables, "/report_tables.rdata"))

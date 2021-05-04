@@ -21,8 +21,8 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 library(NMFSReports)
 library(here)
 library(ggplot2)
-# library(googledrive)
-# library(XML)
+library(googledrive)
+library(XML)
 ```
 
 
@@ -55,33 +55,12 @@ kable(a)
 [https://docs.google.com/document/d/1ebCqXHqPHYXfRN87qs8pTULA8_4W25yh4gTMSo5WB4E/edit?usp=sharing](Here is a test document to play with.) 
 
 ```{r, eval = FALSE}
-
-filename00 <- "test123123_doc"
-
-out_new<-paste0(dir_out_rawdata, filename00, ".zip")
-
-# Make a temporary file to content save to
-temp <- tempfile(fileext = ".zip")
-
-dl <- googledrive::drive_download(file = filename00,
-  path = temp, overwrite = TRUE)
-1
-
-out <- unzip(temp, exdir = tempdir())
-
-file.rename(from = out,
-            to = out_new)
-
-spp_content<-XML::htmlTreeParse(out_new, useInternal = TRUE)
-
-spp_content <- xpathApply(spp_content, "//body//text()[not(ancestor::script)][not(ancestor::style)][not(ancestor::noscript)]", xmlValue)
-
-x <- paste(cat(unlist(spp_content)))
-
-write.table(x = x, 
-            file = paste0("./", filename00, ".txt"))
+txt <- googledrive_txt_dl(filename_gd = "test123123_doc", 
+                          filename_dl = "test123123_doc_downloaded", 
+                          path = "./",
+                          verbose = FALSE)
+txt
 ```
 
 
-` cat(unlist(spp_content)) `
 

@@ -7,3 +7,11 @@
 ^pkgdown$
 ^\.github$
 ^Meta$
+
+^\.txt$
+^\.zip$
+^\./vignettes/*\.txt$
+^\./vignettes/*\.zip$
+
+^doc$
+^docs$

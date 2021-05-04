@@ -61,8 +61,9 @@ Note that references will appear at the bottom of this document (and any documen
 ```{r G1a}
 # Edit This:
 header <- "Here is a figure!"
-footnote<-c("A footnote for this figure!", "A second footnote for this figure!")
-
+footnote <- c("A footnote for this figure!", "A second footnote for this figure!")
+nickname <- "example_plot"
+  
 # Select data and make plot
 plot0<- dat %>%
   ggplot(aes(x = x, y = y, colour = as.factor(col))) + # create plot
@@ -79,11 +80,12 @@ cnt_chapt_content<-auto_counter(cnt_chapt_content)
 cnt_figures<-cnt_figures+1
 
 # Systematically save your plot with this simple function
-plot_list<-save_graphs(plot0 = plot0, 
-                      plot_list = plot_list, 
+figure_list<-save_figures(plot0 = plot0, 
+                      figure_list = figure_list, 
                       header = header,
                       footnote = footnote,
                       filename0 = filename0, 
+                      nickname = nickname,
                       cnt_chapt_content = cnt_chapt_content, 
                       cnt = cnt_figures, 
                       path = dir_out_figures, 
@@ -93,7 +95,7 @@ plot_list<-save_graphs(plot0 = plot0,
 ```
 
 
-```{r G1c, fig.cap=ifelse(indesign_flowin %in% TRUE, "", plot_list[[length(plot_list)]]$caption)}
+```{r G1c, fig.cap=ifelse(indesign_flowin %in% TRUE, "", figure_list[[length(figure_list)]]$caption)}
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
 # However, sometimes its nice to see everything all together, so this variable is 
@@ -108,6 +110,8 @@ if (indesign_flowin %in% FALSE) {
                   output_file = paste0(filename00,cnt_chapt_content,"_Title.docx"))
 }
 ```
+
+Here in plot `r ref_figtab(list_obj = figure_list, nickname = "example_plot", sublist = "number")`, we see that...
 
 ## Example Figure (Refernce Image)
 
@@ -129,8 +133,8 @@ cnt_chapt_content<-auto_counter(cnt_chapt_content)
 cnt_figures<-cnt_figures+1
 
 # Systematically save your plot with this simple function
-plot_list<-save_graphs(plot0 = plot0, 
-                      plot_list = plot_list, 
+figure_list<-save_figures(plot0 = plot0, 
+                      figure_list = figure_list, 
                       header = header,
                       footnote = footnote,
                       filename0 = filename0, 
@@ -144,7 +148,7 @@ plot_list<-save_graphs(plot0 = plot0,
 ```
 
 
-```{r G2c, fig.cap=ifelse(indesign_flowin %in% TRUE, "", plot_list[[length(plot_list)]]$caption)}
+```{r G2c, fig.cap=ifelse(indesign_flowin %in% TRUE, "", figure_list[[length(figure_list)]]$caption)}
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
 # However, sometimes its nice to see everything all together, so this variable is 
@@ -166,7 +170,7 @@ if (indesign_flowin %in% FALSE) {
 # Edit This:
 header <- "Here is a table!"
 footnote<-"A footnote for this table!"
-nickname <- "example" # this is so you can refer to it later systematically
+nickname <- "example1" # this is so you can refer to it later systematically
 
 # Select data and make plot
 table_raw<-data.frame(col = LETTERS[1:10], 
@@ -214,7 +218,7 @@ if (indesign_flowin %in% FALSE) {
 }
 ```
 
-Here in figure `r as.numeric(list.filter(plot_list, "example" %in% nickname)[[1]]$number)`, we see that...
+Here in plot `r ref_figtab(list_obj = figure_list, nickname = "example1", sublist = "number")`, we see that...
 
 ## Example Table (With Footnotes)
 
@@ -222,7 +226,7 @@ Here in figure `r as.numeric(list.filter(plot_list, "example" %in% nickname)[[1]
 # Edit This:
 header <- "Here is a table!"
 footnote<-"A footnote for this table!"
-nickname <- "example" # this is so you can refer to it later systematically
+nickname <- "example_foot" # this is so you can refer to it later systematically
 
 # Select data
 table_raw<-data.frame(col = LETTERS[1:10], 
@@ -294,4 +298,4 @@ if (indesign_flowin %in% FALSE) {
 }
 ```
 
-Here in table `r as.numeric(list.filter(table_list, "example" %in% nickname)[[1]]$number)`, we see that...
+Here in table `r ref_figtab(list_obj = table_list, nickname = "example_foot", sublist = "number")`, we see that...

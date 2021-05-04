@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Name nth item in order (001) — numbers0 • NMFSReports</title>
+<title>Make numbers the same length preceeded by 0s — numbers0 • NMFSReports</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Name nth item in order (001) — numbers0" />
-<meta property="og:description" content="Convert a value." />
+<meta property="og:title" content="Make numbers the same length preceeded by 0s — numbers0" />
+<meta property="og:description" content="Name nth item in order (001)" />
 
 
 
@@ -159,33 +159,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Name nth item in order (001)</h1>
+    <h1>Make numbers the same length preceeded by 0s</h1>
     <small class="dont-index">Source: <a href='https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/R/NMFSReports.R'><code>R/NMFSReports.R</code></a></small>
     <div class="hidden name"><code>numbers0.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Convert a value.</p>
+    <p>Name nth item in order (001)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>numbers0</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>numbers0</span><span class='op'>(</span><span class='va'>x</span>, number_places <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>a numeric or integer value or vector of numeric or integer values.</p></td>
+      <td><p>a single or vector of integer values that need to be converted from something like 1 to "001"</p></td>
+    </tr>
+    <tr>
+      <th>number_places</th>
+      <td><p>default = NA. If equal to NA, the function will take use the longest length of a value provided in x (example 1). If equal to a number, it will make sure that every number is the same length of number_places (example 2) or larger (if a value of x has more places than number_places(example 3)).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>the values in the "0..X" format. All values will take on the number of 0s of the longest charcter value.</p>
+    <p>A string of the values in x preceeded by "0"s</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>numbers0</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>6</span>, <span class='fl'>101</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "001" "003" "006" "101"</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># example 1</span>
+<span class='fu'>numbers0</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>11</span>,<span class='fl'>111</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "001" "011" "111"</div><div class='input'><span class='co'># example 2</span>
+<span class='fu'>numbers0</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>11</span>,<span class='fl'>111</span><span class='op'>)</span>, number_places <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "0001" "0011" "0111"</div><div class='input'><span class='co'># example 3</span>
+<span class='fu'>numbers0</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>11</span>,<span class='fl'>111</span><span class='op'>)</span>, number_places <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "01"  "11"  "111"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

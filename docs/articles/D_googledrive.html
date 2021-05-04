@@ -119,7 +119,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Use {googledrive} to access documents from Google Drive made collaboratively with coworkers</h1>
             
-            <h4 class="date">March 15 2021</h4>
+            <h4 class="date">May 04 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/vignettes/D_googledrive.Rmd"><code>vignettes/D_googledrive.Rmd</code></a></small>
       <div class="hidden name"><code>D_googledrive.Rmd</code></div>
@@ -132,8 +132,8 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="co"># library(googledrive)</span>
-<span class="co"># library(XML)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://googledrive.tidyverse.org">googledrive</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.omegahat.net/RSXML">XML</a></span><span class="op">)</span></code></pre></div>
 <p>A great resource for this is from <a href="tidyverse">https://googledrive.tidyverse.org/</a>. As long as you have access to a given spreadsheet or google doc file, you can easily and quickly download it using the the code below. You’ll need to set up an API token, but it is just a few steps.</p>
 <p>Once accessed, the file will be saved to your directory and can be accessed for future use.</p>
 <div id="google-spreadsheets" class="section level1">
@@ -160,32 +160,11 @@
 <a href="#google-docs" class="anchor"></a>Google Docs</h1>
 <p><a href="Here%20is%20a%20test%20document%20to%20play%20with.">https://docs.google.com/document/d/1ebCqXHqPHYXfRN87qs8pTULA8_4W25yh4gTMSo5WB4E/edit?usp=sharing</a></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">filename00</span> <span class="op">&lt;-</span> <span class="st">"test123123_doc"</span>
-
-<span class="va">out_new</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_rawdata</span>, <span class="va">filename00</span>, <span class="st">".zip"</span><span class="op">)</span>
-
-<span class="co"># Make a temporary file to content save to</span>
-<span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".zip"</span><span class="op">)</span>
-
-<span class="va">dl</span> <span class="op">&lt;-</span> <span class="fu">googledrive</span><span class="fu">::</span><span class="fu"><a href="https://googledrive.tidyverse.org/reference/drive_download.html">drive_download</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">filename00</span>,
-  path <span class="op">=</span> <span class="va">temp</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fl">1</span>
-
-<span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html">unzip</a></span><span class="op">(</span><span class="va">temp</span>, exdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.rename</a></span><span class="op">(</span>from <span class="op">=</span> <span class="va">out</span>,
-            to <span class="op">=</span> <span class="va">out_new</span><span class="op">)</span>
-
-<span class="va">spp_content</span><span class="op">&lt;-</span><span class="fu">XML</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/XML/man/xmlTreeParse.html">htmlTreeParse</a></span><span class="op">(</span><span class="va">out_new</span>, useInternal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="va">spp_content</span> <span class="op">&lt;-</span> <span class="fu">xpathApply</span><span class="op">(</span><span class="va">spp_content</span>, <span class="st">"//body//text()[not(ancestor::script)][not(ancestor::style)][not(ancestor::noscript)]"</span>, <span class="va">xmlValue</span><span class="op">)</span>
-
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">spp_content</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, 
-            file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"./"</span>, <span class="va">filename00</span>, <span class="st">".txt"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><code><a href="https://rdrr.io/r/base/cat.html">cat(unlist(spp_content))</a></code></p>
+<code class="sourceCode R"><span class="va">txt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/googledrive_txt_dl.html">googledrive_txt_dl</a></span><span class="op">(</span>filename_gd <span class="op">=</span> <span class="st">"test123123_doc"</span>, 
+                          filename_dl <span class="op">=</span> <span class="st">"test123123_doc_downloaded"</span>, 
+                          path <span class="op">=</span> <span class="st">"./"</span>,
+                          verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="va">txt</span></code></pre></div>
 </div>
   </div>
 

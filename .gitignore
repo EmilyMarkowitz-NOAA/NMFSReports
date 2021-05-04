@@ -7,3 +7,9 @@
 inst/doc
 doc
 Meta
+
+.txt
+.zip
+vignettes/*.txt
+vignettes/*.zip
+docs
