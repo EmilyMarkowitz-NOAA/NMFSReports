@@ -2,7 +2,7 @@
 % Please edit documentation in R/NMFSReports.R
 \name{save_figures}
 \alias{save_figures}
-\title{Systematically save your ggplot figure for your report}
+\title{Systematically save your figures for your report}
 \usage{
 save_figures(
   figure,
@@ -23,7 +23,7 @@ save_figures(
 )
 }
 \arguments{
-\item{figure}{The figure you would like to be saved}
+\item{figure}{The figure you would like to be saved.}
 
 \item{figure_list}{The list where all figures will be saved.}
 
@@ -31,21 +31,21 @@ save_figures(
 
 \item{footnote}{Any footnote you want attached to this figure.}
 
-\item{filename0}{The filename set at the begining of the chapter}
+\item{filename0}{The filename set at the begining of the chapter.}
 
-\item{cnt_chapt_content}{The order number that this exists in the chapter}
+\item{cnt_chapt_content}{The order number that this exists in the chapter.}
 
-\item{cnt}{The figure number}
+\item{cnt}{The figure number.}
 
 \item{path}{The path the file needs to be saved to. Default = "NULL", meaning it wont save anything and will override all other saving elements.}
 
-\item{width}{Default = 6 inches}
+\item{width}{Default = 6 inches.}
 
-\item{height}{Default = 6 inches}
+\item{height}{Default = 6 inches.}
 
-\item{output_type}{Default = c("pdf", "png"). Can be anything supported by ggsave()}
+\item{output_type}{Default = c("pdf", "png"). Can be anything supported by ggsave().}
 
-\item{type}{Default = "Figure", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Figure 1. This is my plot!"}
+\item{type}{Default = "Figure", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Figure 1. This is my plot!".}
 
 \item{filename_desc}{Additional description text for the filename that will be added at the name of file before the filename extention. Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.}
 
@@ -57,7 +57,7 @@ save_figures(
 figure_list updated with the new plot and metadata.
 }
 \description{
-Systematically save your ggplot figure for your report
+Systematically save your figures for your report
 }
 \examples{
 library(magrittr)

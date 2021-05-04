@@ -5,7 +5,6 @@
 .DS_Store
 
 inst/doc
-doc
 Meta
 
 .txt
@@ -13,3 +12,4 @@ Meta
 vignettes/*.txt
 vignettes/*.zip
 docs
+doc

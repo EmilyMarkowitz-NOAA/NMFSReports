@@ -22,13 +22,15 @@ Reference a figure or table
 \examples{
 figure_list <- c()
 pp <- plot(x = 1, y = 1)
-figure_list <- save_figures(figure = pp,
+figure_list <- save_figures(
+   figure = pp,
    figure_list = figure_list,
    header = "blah blah blah",
    nickname = "example_figure", # a unique name you can refer back to
    cnt_chapt_content = "003",
    cnt = "012")
-figure_list <- save_figures(figure = pp,
+figure_list <- save_figures(
+   figure = pp,
    figure_list = figure_list,
    header = "blah blah blah",
    nickname = "example_figure_other", # a unique name you can refer back to

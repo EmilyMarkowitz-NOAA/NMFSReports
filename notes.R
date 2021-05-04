@@ -1,6 +1,8 @@
 
 # https://pkgdown.r-lib.org/reference/build_site.html
 
+
+
 ########### Document Package ############
 .rs.restartR()
 
@@ -26,6 +28,7 @@ library(usethis)
 library(pkgdown)
 options(rmarkdown.html_vignette.check_title = FALSE)
 
+# git rm -r --cached .
 
 # pkgdown::build_favicons()
 devtools::build_vignettes()
