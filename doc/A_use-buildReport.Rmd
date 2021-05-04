@@ -1,0 +1,177 @@
+---
+title: "Use buildReport() to begin writing your report"
+date: "`r format(Sys.Date(), format='%B %d %Y') `"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{A_use-buildReport}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+  
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, echo = TRUE, warning = FALSE, 
+  comment = FALSE, collapse = TRUE,
+  comment = "#>"
+)
+options(rmarkdown.html_vignette.check_title = FALSE)
+```
+
+```{r setup}
+library(NMFSReports)
+library(here)
+library(ggplot2)
+```
+
+# Create initial structure of report
+
+Do everyone here a favor and create a new R project or at least set up a working directory (`setwd()`). There will be a lot of file management here...
+
+To build your intitial architecture for your new NOAA Tech Memo or Report, simply run the below script: 
+  
+  ## title
+  
+  Default = "". Here, put the title of your report. You can change this later in the `run.R` file in needed.
+
+```{r}
+title = "My Awesome Report!"
+```
+
+## buildReport(author = ...)
+
+Here, add the first and last name of everyone who is producing the report. You can change this later in the `run.R` file in needed.
+
+```{r}
+authors = "Me, Myself, and I"
+```
+
+## buildReport(sections = ...)
+
+Let's first think about what you want/need your Tech Memo to look like. For my purposes, I'll assume that you need the below sections:
+  
+```{r}
+# list the sections (that you will have different rmd scripts for) in order and with no spaces
+sections <- c("frontmatter", # This is a specific template that matches the NOAA Template
+              "abstract", # This, and all others unless otherwise mentioned, come from the same plain-slate document but are appropriately named and linked up in the 'run' file. 
+              "introduction", 
+              "methods", 
+              "results", 
+              "discussion", 
+              "endmatter" # This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. 
+) 
+```
+
+## buildReport(styles_reference_docx = ...)
+
+`styles_reference_docx` is a document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert "path") or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo"
+
+To edit the stlyes in your word document, check out this [resource](https://support.microsoft.com/en-us/office/customize-or-create-new-styles-d38d6e47-f6fc-48eb-a607-1eb120dec563). 
+
+Here's what they look like: 
+
+### refdoc_noaa_tech_memo
+
+![refdoc_noaa_tech_memo](../man/figures/refdoc_noaa_tech_memo.JPG)
+
+### refdoc_fisheries_economics_of_the_us
+
+![refdoc_fisheries_economics_of_the_us](../man/figures/refdoc_fisheries_economics_of_the_us.JPG)
+
+## buildReport(styles_reference_pptx = ...)
+
+`styles_reference_pptx` is a document style reference guide is essentially a word document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made template ("refpptx_nmfs"). Default = "refpptx_nmfs". You can change this later by renaming the file in the code folder. 
+
+Here's what they look like: 
+  
+### refpptx_nmfs
+
+![refpptx_nmfs](../man/figures/refpptx_nmfs.JPG)
+
+## buildReport(csl = ...)
+
+`csl` is a citation style. Either use a local document (insert "path") or some of the pre-made templates ("apa" or "bulletin-of-marine-science"). Default = "apa" because it was easy to find. 
+
+A primer on creating and modifying CSL styles can be found at http://citationstyles.org/downloads/primer.html. A repository of CSL styles can be found at https://github.com/citation-style-language/styles. See also http://zotero.org/styles for easy browsing.
+
+```{r}
+csl = "bulletin-of-marine-science"
+# it looks something like this:
+csl0 <- base::readLines(system.file("cite","bulletin-of-marine-science.csl", package="NMFSReports"))
+head(csl0)
+```
+
+## buildReport(bibliography.bib = ...)
+
+`bibliography.bib`: Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example".
+
+```{r}
+csl = "bib_example"
+# it looks something like this:
+bib <- base::readLines(system.file("rmd","bib_example.bib", package="NMFSReports"))
+bib
+```
+
+
+# Create Report Outline
+
+Now, magic! Now for the sake of the vignette, I can't actually run it here, but below is a picture of what this looks like:
+
+```{r, eval = FALSE}
+buildReport(
+        sections = sections,
+        authors = authors,
+        title = title,
+        styles_reference_pptx = styles_reference_pptx,
+        styles_reference_docx = styles_reference_docx,
+        bibliography.bib = bibliography.bib,
+        csl = csl
+)
+```
+
+
+![buildReport() output](../man/figures/buildReport.JPG)
+
+
+![Folder architecture post-buildReport()](../man/figures/folder_architecture_post_buildReport.JPG)
+
+
+# Alternative report structures: 
+
+```{r}
+library(NMFSReports)
+# Input variables for buildReport()
+sections = c("coverpage", # This is a specific template for a 1 page coverpage
+             "history", 
+             "studyimportance", 
+             "actions", 
+             "endmatter") # This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. 
+authors = "Very important people"
+title = "Shorter Report!"
+styles_reference_pptx = "refpptx_nmfs"
+styles_reference_docx = "refdoc_fisheries_economics_of_the_us"
+bibliography.bib = "bib_example"
+# Find citation styles at: https://github.com/citation-style-language/styles
+csl0 <- read.delim(file = "https://raw.githubusercontent.com/citation-style-language/styles/master/american-fisheries-society.csl", header = FALSE, )
+colnames(csl0)<-NULL
+rownames(csl0)<-NULL
+write.table(x = csl0, file = "csl.csl", 
+            quote = FALSE, row.names = FALSE, col.names = FALSE)
+library(here)
+csl = here("csl.csl")
+head(csl0)
+```
+
+
+
+```{r, eval = FALSE}
+# Run buildReport() function
+buildReport(
+        sections = sections,
+        authors = authors,
+        title = title,
+        styles_reference_pptx = styles_reference_pptx,
+        styles_reference_docx = styles_reference_docx,
+        bibliography.bib = bibliography.bib,
+        csl = csl
+)
+```
