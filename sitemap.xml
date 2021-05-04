@@ -25,6 +25,9 @@
     <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/format_cells.html</loc>
   </url>
   <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/googledrive_txt_dl.html</loc>
+  </url>
+  <url>
     <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/is_something_in_this_matrix.html</loc>
   </url>
   <url>
@@ -43,7 +46,10 @@
     <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/pchange.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/save_graphs.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/ref_figtab.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/save_figures.html</loc>
   </url>
   <url>
     <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/save_tables.html</loc>

@@ -119,7 +119,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Functions and examples to help you write your report</h1>
             
-            <h4 class="date">May 03 2021</h4>
+            <h4 class="date">May 04 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/vignettes/C_functions-to-help-write-report.Rmd"><code>vignettes/C_functions-to-help-write-report.Rmd</code></a></small>
       <div class="hidden name"><code>C_functions-to-help-write-report.Rmd</code></div>
@@ -141,7 +141,7 @@
 <a href="#from-run-file" class="anchor"></a>From run file:</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cnt_chapt</span> <span class="op">&lt;-</span> <span class="st">"000"</span> <span class="co"># Keep everything in a proper order</span>
-<span class="va">plot_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># This will help us by saving R-ready plots so we can easily go back and edit them if necessary. </span>
+<span class="va">figure_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># This will help us by saving R-ready plots so we can easily go back and edit them if necessary. </span>
 <span class="va">table_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># This will help us by saving R-ready tables  so we can easily go back and edit them if necessary. </span>
 <span class="va">cnt_figures</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># This will autoname your figures with consecutive numbers (e.g., Figure 1.)</span>
 <span class="va">cnt_tables</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># This will autoname your tables with consecutive numbers (e.g., Table 1.)</span>
@@ -203,13 +203,14 @@
 <span class="va">cnt_figures</span><span class="op">&lt;-</span><span class="va">cnt_figures</span> <span class="op">+</span> <span class="fl">1</span>
 
 <span class="co"># Systematically save your plot with this simple function</span>
-<span class="va">plot_list</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/save_graphs.html">save_graphs</a></span><span class="op">(</span>plot0 <span class="op">=</span> <span class="va">plot0</span>, 
-                      plot_list <span class="op">=</span> <span class="va">plot_list</span>, 
+<span class="va">figure_list</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/save_figures.html">save_figures</a></span><span class="op">(</span>figure <span class="op">=</span> <span class="va">plot0</span>, 
+                      figure_list <span class="op">=</span> <span class="va">figure_list</span>, 
                       header <span class="op">=</span> <span class="va">header</span>,
                       footnote <span class="op">=</span> <span class="va">footnote</span>,
                       filename0 <span class="op">=</span> <span class="va">filename0</span>, 
                       cnt_chapt_content <span class="op">=</span> <span class="va">cnt_chapt_content</span>, 
                       cnt <span class="op">=</span> <span class="va">cnt_figures</span>, 
+                      nickname <span class="op">=</span> <span class="va">nickname</span>,
                       <span class="co"># path = dir_out_figures, </span>
                       width <span class="op">=</span> <span class="fl">6</span>, <span class="co"># you can change this if you need to...</span>
                       height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span> <span class="co"># you can change this if you need to...</span></code></pre></div>
@@ -233,6 +234,7 @@
 Figure 1. Here is a figure!<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
 </p>
 </div>
+<p>Here in plot 1, we see that…</p>
 </div>
 <div id="example-figure-reference-image" class="section level2">
 <h2 class="hasAnchor">
@@ -243,13 +245,14 @@ Figure 1. Here is a figure!<a href="#fn3" class="footnote-ref" id="fnref3"><sup>
 <span class="va">cnt_figures</span><span class="op">&lt;-</span><span class="va">cnt_figures</span><span class="op">+</span><span class="fl">1</span>
 
 <span class="co"># Systematically save your plot with this simple function</span>
-<span class="va">plot_list</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/save_graphs.html">save_graphs</a></span><span class="op">(</span>plot0 <span class="op">=</span> <span class="va">plot0</span>, 
-                      plot_list <span class="op">=</span> <span class="va">plot_list</span>, 
+<span class="va">figure_list</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/save_figures.html">save_figures</a></span><span class="op">(</span>figure <span class="op">=</span> <span class="va">plot0</span>, 
+                      figure_list <span class="op">=</span> <span class="va">figure_list</span>, 
                       header <span class="op">=</span> <span class="va">header</span>,
                       footnote <span class="op">=</span> <span class="va">footnote</span>,
                       filename0 <span class="op">=</span> <span class="va">filename0</span>, 
                       cnt_chapt_content <span class="op">=</span> <span class="va">cnt_chapt_content</span>, 
                       cnt <span class="op">=</span> <span class="va">cnt_figures</span>, 
+                      nickname <span class="op">=</span> <span class="va">nickname</span>,
                       <span class="co"># path = dir_out_figures, </span>
                       width <span class="op">=</span> <span class="fl">1</span>, <span class="co"># you can change this if you need to...</span>
                       height <span class="op">=</span> <span class="fl">1</span>,  <span class="co"># you can change this if you need to...</span>
@@ -273,6 +276,7 @@ Figure 1. Here is a figure!<a href="#fn3" class="footnote-ref" id="fnref3"><sup>
 Figure 2. Here is a figure!<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
 </p>
 </div>
+<p>Here in figure 2, we see the NOAA logo.</p>
 </div>
 <div id="example-table-basic" class="section level2">
 <h2 class="hasAnchor">
@@ -281,6 +285,7 @@ Figure 2. Here is a figure!<a href="#fn4" class="footnote-ref" id="fnref4"><sup>
 <code class="sourceCode R"><span class="co"># Edit This:</span>
 <span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a table!"</span>
 <span class="va">footnote</span><span class="op">&lt;-</span><span class="st">"A footnote for this table!"</span>
+<span class="va">nickname</span> <span class="op">&lt;-</span> <span class="st">"example1"</span> <span class="co"># this is so you can refer to it later systematically</span>
 
 <span class="co"># Select data and make plot</span>
 <span class="va">table_raw</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, 
@@ -302,7 +307,8 @@ Figure 2. Here is a figure!<a href="#fn4" class="footnote-ref" id="fnref4"><sup>
                         table_list <span class="op">=</span> <span class="va">table_list</span>, 
                         header <span class="op">=</span> <span class="va">header</span>,
                         footnote <span class="op">=</span> <span class="va">footnote</span>,
-                        filename0 <span class="op">=</span> <span class="va">filename0</span>, 
+                        filename0 <span class="op">=</span> <span class="va">filename0</span>,
+                        nickname <span class="op">=</span> <span class="va">nickname</span>,
                         cnt_chapt_content <span class="op">=</span> <span class="va">cnt_chapt_content</span>, 
                         cnt <span class="op">=</span> <span class="va">cnt_tables</span><span class="co">#, </span>
                         <span class="co"># path = dir_out_tables</span>
@@ -328,56 +334,57 @@ Figure 2. Here is a figure!<a href="#fn4" class="footnote-ref" id="fnref4"><sup>
 <tbody>
 <tr class="odd">
 <td align="left">A</td>
-<td align="left">0.22</td>
-<td align="left">-1.1</td>
+<td align="left">0.72</td>
+<td align="left">-0.8</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
-<td align="left">-1.4</td>
-<td align="left">-0.53</td>
+<td align="left">0.43</td>
+<td align="left">-0.097</td>
 </tr>
 <tr class="odd">
 <td align="left">C</td>
-<td align="left">-0.9</td>
-<td align="left">0.29</td>
+<td align="left">0.43</td>
+<td align="left">0.25</td>
 </tr>
 <tr class="even">
 <td align="left">D</td>
-<td align="left">-1.1</td>
-<td align="left">0.35</td>
+<td align="left">0.6</td>
+<td align="left">0.23</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
-<td align="left">1.2</td>
-<td align="left">-0.13</td>
+<td align="left">1.4</td>
+<td align="left">-0.7</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
-<td align="left">-2.8</td>
-<td align="left">-1.2</td>
+<td align="left">-2.1</td>
+<td align="left">0.00061</td>
 </tr>
 <tr class="odd">
 <td align="left">G</td>
-<td align="left">-0.013</td>
-<td align="left">-1</td>
+<td align="left">-1.2</td>
+<td align="left">-0.44</td>
 </tr>
 <tr class="even">
 <td align="left">H</td>
-<td align="left">0.11</td>
-<td align="left">-0.39</td>
+<td align="left">-0.15</td>
+<td align="left">-0.27</td>
 </tr>
 <tr class="odd">
 <td align="left">I</td>
-<td align="left">-0.91</td>
-<td align="left">-0.21</td>
+<td align="left">-2.3</td>
+<td align="left">-0.57</td>
 </tr>
 <tr class="even">
 <td align="left">J</td>
-<td align="left">0.48</td>
-<td align="left">-2.3</td>
+<td align="left">1.5</td>
+<td align="left">-0.73</td>
 </tr>
 </tbody>
 </table>
+<p>Here in table 1, we see that…</p>
 </div>
 <div id="example-table-with-footnotes" class="section level2">
 <h2 class="hasAnchor">
@@ -386,6 +393,7 @@ Figure 2. Here is a figure!<a href="#fn4" class="footnote-ref" id="fnref4"><sup>
 <code class="sourceCode R"><span class="co"># Edit This:</span>
 <span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a table!"</span>
 <span class="va">footnote</span><span class="op">&lt;-</span><span class="st">"A footnote for this table!"</span>
+<span class="va">nickname</span> <span class="op">&lt;-</span> <span class="st">"example_foot"</span>
 
 <span class="co"># Select data</span>
 <span class="va">table_raw</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, 
@@ -424,6 +432,7 @@ Figure 2. Here is a figure!<a href="#fn4" class="footnote-ref" id="fnref4"><sup>
 <code class="sourceCode R"><span class="co"># Don't Edit This:</span>
 <span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt_content</span><span class="op">)</span>
 <span class="va">cnt_tables</span><span class="op">&lt;-</span><span class="va">cnt_tables</span><span class="op">+</span><span class="fl">1</span>
+<span class="va">nickname</span> <span class="op">&lt;-</span> <span class="st">"example_foot"</span> <span class="co"># this is so you can refer to it later systematically</span>
 
 <span class="co"># Systematically save your plot with this simple function</span>
 <span class="va">table_list</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/save_tables.html">save_tables</a></span><span class="op">(</span>table_raw <span class="op">=</span> <span class="va">table_raw</span>, 
@@ -432,6 +441,7 @@ Figure 2. Here is a figure!<a href="#fn4" class="footnote-ref" id="fnref4"><sup>
                         header <span class="op">=</span> <span class="va">header</span>,
                         footnote <span class="op">=</span> <span class="va">footnote</span>,
                         filename0 <span class="op">=</span> <span class="va">filename0</span>, 
+                        nickname <span class="op">=</span> <span class="va">nickname</span>,
                         cnt_chapt_content <span class="op">=</span> <span class="va">cnt_chapt_content</span>, 
                         cnt <span class="op">=</span> <span class="va">cnt_tables</span><span class="co">#, </span>
                         <span class="co"># path = dir_out_tables</span>
@@ -457,60 +467,61 @@ Figure 2. Here is a figure!<a href="#fn4" class="footnote-ref" id="fnref4"><sup>
 <tbody>
 <tr class="odd">
 <td align="left">A</td>
-<td align="left">-1.1</td>
-<td align="left">-0.93</td>
+<td align="left">0.24</td>
+<td align="left">1.1</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
-<td align="left">1.7<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
+<td align="left">0.68<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
 </td>
-<td align="left">0.6</td>
+<td align="left">-0.84</td>
 </tr>
 <tr class="odd">
 <td align="left">C<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>
 </td>
-<td align="left">-0.52</td>
-<td align="left">2.3</td>
+<td align="left">-1.6</td>
+<td align="left">-0.67</td>
 </tr>
 <tr class="even">
 <td align="left">D<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>
 </td>
-<td align="left">-0.37<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a><a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
+<td align="left">-0.63<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a><a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
 </td>
-<td align="left">-1.1</td>
+<td align="left">0.28</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
-<td align="left">0.47</td>
-<td align="left">-1.6</td>
+<td align="left">0.43</td>
+<td align="left">-1.7</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
-<td align="left">-1.4</td>
-<td align="left">-0.65</td>
+<td align="left">1</td>
+<td align="left">-0.61</td>
 </tr>
 <tr class="odd">
 <td align="left">G</td>
-<td align="left">1.7</td>
-<td align="left">0.27</td>
+<td align="left">0.17</td>
+<td align="left">0.87</td>
 </tr>
 <tr class="even">
 <td align="left">H</td>
-<td align="left">0.13</td>
-<td align="left">0.31</td>
+<td align="left">-1.4</td>
+<td align="left">0.36</td>
 </tr>
 <tr class="odd">
 <td align="left">I</td>
-<td align="left">2.5</td>
-<td align="left">-0.92</td>
+<td align="left">0.88</td>
+<td align="left">-0.58</td>
 </tr>
 <tr class="even">
 <td align="left">J</td>
-<td align="left">-0.87</td>
-<td align="left">-0.73</td>
+<td align="left">0.19</td>
+<td align="left">0.94</td>
 </tr>
 </tbody>
 </table>
+<p>Here in table 2, we see that…</p>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2 class="hasAnchor">
