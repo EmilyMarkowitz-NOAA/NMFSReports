@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Determine the appropriate unit for a value. — xunits • NMFSReports</title>
+<title>Find the 'st, 'nd, or 'th of a value — stndth • NMFSReports</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Determine the appropriate unit for a value. — xunits" />
-<meta property="og:description" content="Determine the appropriate unit for a value (e.g., 1000000 = '1 Million'." />
+<meta property="og:title" content="Find the 'st, 'nd, or 'th of a value — stndth" />
+<meta property="og:description" content="Find the 'st, 'nd, or 'th of a value" />
 
 
 
@@ -159,36 +159,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Determine the appropriate unit for a value.</h1>
+    <h1>Find the 'st, 'nd, or 'th of a value</h1>
     <small class="dont-index">Source: <a href='https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/R/NMFSReports.R'><code>R/NMFSReports.R</code></a></small>
-    <div class="hidden name"><code>xunits.Rd</code></div>
+    <div class="hidden name"><code>stndth.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Determine the appropriate unit for a value (e.g., 1000000 = '1 Million'.</p>
+    <p>Find the 'st, 'nd, or 'th of a value</p>
     </div>
 
-    <pre class="usage"><span class='fu'>xunits</span><span class='op'>(</span><span class='va'>value</span>, val_under_x_words <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>stndth</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>value</th>
-      <td><p>A numeric value.</p></td>
-    </tr>
-    <tr>
-      <th>val_under_x_words</th>
-      <td><p>a numeric that defines what values should be words as opposed to characters in a text. For example, many styles prefer that all values from 0 to 10 are spelled out in words, so you would set this parameter to 10 (which is the default). Set this parameter to NULL for nothing to to be spelled out.</p></td>
+      <th>x</th>
+      <td><p>a value you want the 'st, 'nd, or 'th of</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a character string of the appropriate 'st, 'nd, or 'th</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>xunits</span><span class='op'>(</span>value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>12</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "12"</div><div class='input'><span class='fu'>xunits</span><span class='op'>(</span>value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>123456</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "123,456"</div><div class='input'><span class='fu'>xunits</span><span class='op'>(</span>value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>123456789</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "123.5 million"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>stndth</span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "rd"</div><div class='input'><span class='fu'>stndth</span><span class='op'>(</span><span class='fl'>11</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "st"</div><div class='input'><span class='fu'>stndth</span><span class='op'>(</span><span class='fl'>112</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "nd"</div><div class='input'><span class='fu'>stndth</span><span class='op'>(</span><span class='fl'>1120</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "th"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
