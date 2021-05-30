@@ -61,15 +61,12 @@ loadfonts(device = "win")
 
 
 #######CITE R PACKAGES###########
-tmp <- tempfile(fileext=".bib")
+knitr::write_bib(x = PKG,
+                 file = paste0(dir_out_rawdata, "bibliography_RPack.bib"))
 
-a<-write.bibtex(entry = eval(parse(text=paste0("c(", paste(paste0("citation('",PKG,"')"), collapse = ", "), ")"))),
-                file = tmp)
-
-write.bibtex(entry = a,
-             file = paste0(dir_out_rawdata, "bibliography_RPack.bib"))
-write.bibtex(entry = a,
-             file = paste0(dir_cite,"/bibliography_RPack.bib"))
+file.copy(from = paste0(dir_out_rawdata, "bibliography_RPack.bib"),
+          to = paste0(dir_cite,"/bibliography_RPack.bib"),
+          overwrite = TRUE)
 
 ################Functions#############
 

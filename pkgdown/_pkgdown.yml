@@ -70,6 +70,7 @@ reference:
       - '`pchange`'
       - '`xunits`'
       - '`xunitspct`'
+      - '`stndth`'
   - title: File and Content Organization
     contents:
       - '`auto_counter`'

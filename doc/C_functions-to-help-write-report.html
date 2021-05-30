@@ -14,6 +14,7 @@
 
 <title>Functions and examples to help you write your report</title>
 
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -34,26 +35,28 @@
   }
 </style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -62,9 +65,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -121,188 +124,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-
-<style type="text/css">body {
-background-color: #fff;
-margin: 1em auto;
-max-width: 700px;
-overflow: visible;
-padding-left: 2em;
-padding-right: 2em;
-font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-size: 14px;
-line-height: 1.35;
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
 }
-#TOC {
-clear: both;
-margin: 0 0 10px 10px;
-padding: 4px;
-width: 400px;
-border: 1px solid #CCCCCC;
-border-radius: 5px;
-background-color: #f6f6f6;
-font-size: 13px;
-line-height: 1.3;
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-#TOC .toctitle {
-font-weight: bold;
-font-size: 15px;
-margin-left: 5px;
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-#TOC ul {
-padding-left: 40px;
-margin-left: -1.5em;
-margin-top: 5px;
-margin-bottom: 5px;
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
 }
-#TOC ul ul {
-margin-left: -2em;
+div.csl-indent {
+  margin-left: 2em;
 }
-#TOC li {
-line-height: 16px;
-}
-table {
-margin: 1em auto;
-border-width: 1px;
-border-color: #DDDDDD;
-border-style: outset;
-border-collapse: collapse;
-}
-table th {
-border-width: 2px;
-padding: 5px;
-border-style: inset;
-}
-table td {
-border-width: 1px;
-border-style: inset;
-line-height: 18px;
-padding: 5px 5px;
-}
-table, table th, table td {
-border-left-style: none;
-border-right-style: none;
-}
-table thead, table tr.even {
-background-color: #f7f7f7;
-}
-p {
-margin: 0.5em 0;
-}
-blockquote {
-background-color: #f6f6f6;
-padding: 0.25em 0.75em;
-}
-hr {
-border-style: solid;
-border: none;
-border-top: 1px solid #777;
-margin: 28px 0;
-}
-dl {
-margin-left: 0;
-}
-dl dd {
-margin-bottom: 13px;
-margin-left: 13px;
-}
-dl dt {
-font-weight: bold;
-}
-ul {
-margin-top: 0;
-}
-ul li {
-list-style: circle outside;
-}
-ul ul {
-margin-bottom: 0;
-}
-pre, code {
-background-color: #f7f7f7;
-border-radius: 3px;
-color: #333;
-white-space: pre-wrap; 
-}
-pre {
-border-radius: 3px;
-margin: 5px 0px 10px 0px;
-padding: 10px;
-}
-pre:not([class]) {
-background-color: #f7f7f7;
-}
-code {
-font-family: Consolas, Monaco, 'Courier New', monospace;
-font-size: 85%;
-}
-p > code, li > code {
-padding: 2px 0px;
-}
-div.figure {
-text-align: center;
-}
-img {
-background-color: #FFFFFF;
-padding: 2px;
-border: 1px solid #DDDDDD;
-border-radius: 3px;
-border: 1px solid #CCCCCC;
-margin: 0 5px;
-}
-h1 {
-margin-top: 0;
-font-size: 35px;
-line-height: 40px;
-}
-h2 {
-border-bottom: 4px solid #f7f7f7;
-padding-top: 10px;
-padding-bottom: 2px;
-font-size: 145%;
-}
-h3 {
-border-bottom: 2px solid #f7f7f7;
-padding-top: 10px;
-font-size: 120%;
-}
-h4 {
-border-bottom: 1px solid #f7f7f7;
-margin-left: 8px;
-font-size: 105%;
-}
-h5, h6 {
-border-bottom: 1px solid #ccc;
-font-size: 105%;
-}
-a {
-color: #0033dd;
-text-decoration: none;
-}
-a:hover {
-color: #6666ff; }
-a:visited {
-color: #800080; }
-a:visited:hover {
-color: #BB00BB; }
-a[href^="http:"] {
-text-decoration: underline; }
-a[href^="https:"] {
-text-decoration: underline; }
-
-code > span.kw { color: #555; font-weight: bold; } 
-code > span.dt { color: #902000; } 
-code > span.dv { color: #40a070; } 
-code > span.bn { color: #d14; } 
-code > span.fl { color: #d14; } 
-code > span.ch { color: #d14; } 
-code > span.st { color: #d14; } 
-code > span.co { color: #888888; font-style: italic; } 
-code > span.ot { color: #007020; } 
-code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; } 
-code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
 
 
 
@@ -315,56 +160,54 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 <h1 class="title toc-ignore">Functions and examples to help you write your report</h1>
-<h4 class="date">May 04 2021</h4>
+<h4 class="date">May 30 2021</h4>
 
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(NMFSReports)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(here)</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(magrittr)</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">library</span>(png)</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="kw">library</span>(cowplot)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NMFSReports)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(png)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code></pre></div>
 <p>This file is essentially the example file included in the <code>buildReport()</code> function.</p>
 <div id="from-run-file" class="section level2">
 <h2>From run file:</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">cnt_chapt &lt;-<span class="st"> &quot;000&quot;</span> <span class="co"># Keep everything in a proper order</span></a>
-<a class="sourceLine" id="cb2-2" title="2">figure_list &lt;-<span class="st"> </span><span class="kw">c</span>() <span class="co"># This will help us by saving R-ready plots so we can easily go back and edit them if necessary. </span></a>
-<a class="sourceLine" id="cb2-3" title="3">table_list &lt;-<span class="st"> </span><span class="kw">c</span>() <span class="co"># This will help us by saving R-ready tables  so we can easily go back and edit them if necessary. </span></a>
-<a class="sourceLine" id="cb2-4" title="4">cnt_figures &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># This will autoname your figures with consecutive numbers (e.g., Figure 1.)</span></a>
-<a class="sourceLine" id="cb2-5" title="5">cnt_tables &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># This will autoname your tables with consecutive numbers (e.g., Table 1.)</span></a>
-<a class="sourceLine" id="cb2-6" title="6">cnt_equ &lt;-<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb2-7" title="7"></a>
-<a class="sourceLine" id="cb2-8" title="8">cnt_chapt_content&lt;-<span class="dv">0</span></a>
-<a class="sourceLine" id="cb2-9" title="9">filename0&lt;-<span class="st">&quot;example&quot;</span></a>
-<a class="sourceLine" id="cb2-10" title="10">indesign_flowin&lt;-<span class="ot">FALSE</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cnt_chapt <span class="ot">&lt;-</span> <span class="st">&quot;000&quot;</span> <span class="co"># Keep everything in a proper order</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>figure_list <span class="ot">&lt;-</span> <span class="fu">c</span>() <span class="co"># This will help us by saving R-ready plots so we can easily go back and edit them if necessary. </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>table_list <span class="ot">&lt;-</span> <span class="fu">c</span>() <span class="co"># This will help us by saving R-ready tables  so we can easily go back and edit them if necessary. </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>cnt_figures <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># This will autoname your figures with consecutive numbers (e.g., Figure 1.)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>cnt_tables <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># This will autoname your tables with consecutive numbers (e.g., Table 1.)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>cnt_equ <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="dv">0</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="st">&quot;example&quot;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>indesign_flowin<span class="ot">&lt;-</span><span class="cn">FALSE</span></span></code></pre></div>
 </div>
 <div id="example-of-how-to-use-this-r-markdown-document" class="section level1">
 <h1>Example of how to use this R Markdown document</h1>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># Chunks are were we can write code for something later in the code. </span></a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co"># example data</span></a>
-<a class="sourceLine" id="cb3-4" title="4">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>), </a>
-<a class="sourceLine" id="cb3-5" title="5">                <span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>), </a>
-<a class="sourceLine" id="cb3-6" title="6">                <span class="dt">col =</span> <span class="kw">rep_len</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">length.out =</span> <span class="dv">5</span>))</a>
-<a class="sourceLine" id="cb3-7" title="7"></a>
-<a class="sourceLine" id="cb3-8" title="8">Footnotes.list&lt;-<span class="kw">list</span>(<span class="st">&quot;ExOfStandardFt&quot;</span> =<span class="st"> &quot;Wow, this project is so cool!&quot;</span>)</a>
-<a class="sourceLine" id="cb3-9" title="9"></a>
-<a class="sourceLine" id="cb3-10" title="10">types_of_vessels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;NOAA Vessel&quot;</span>, <span class="st">&quot;F/V Fishing Boat&quot;</span>, <span class="st">&quot;R/V University Vessel&quot;</span>, <span class="st">&quot;Private Charter&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chunks are were we can write code for something later in the code. </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># example data</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100</span>), </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100</span>), </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">col =</span> <span class="fu">rep_len</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">length.out =</span> <span class="dv">5</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>Footnotes.list<span class="ot">&lt;-</span><span class="fu">list</span>(<span class="st">&quot;ExOfStandardFt&quot;</span> <span class="ot">=</span> <span class="st">&quot;Wow, this project is so cool!&quot;</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>types_of_vessels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;NOAA Vessel&quot;</span>, <span class="st">&quot;F/V Fishing Boat&quot;</span>, <span class="st">&quot;R/V University Vessel&quot;</span>, <span class="st">&quot;Private Charter&quot;</span>)</span></code></pre></div>
 <p>Here is the report content:</p>
-<div id="systematic-writing-of-content" class="section level2">
-<h2>Systematic writing of content</h2>
-<p>My example dataset has 100 rows in it and 3 columns in it.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>## Systematic writing of content</p>
+<p>My example dataset has 100 rows in it and three columns in it.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>This sentence exemplifies how to systematically calculate a percent change: a 97% decrease<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
 <p>Here are several types of vessels: NOAA Vessel, F/V Fishing Boat, R/V University Vessel, and Private Charter.</p>
-</div>
 <div id="equations" class="section level2">
 <h2>Equations</h2>
 <p>Here is some equations you’ll need to have in this report:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">cnt_equ&lt;-<span class="kw">auto_counter</span>(cnt_equ)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cnt_equ<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_equ)</span></code></pre></div>
 <p>Eq. 1: Newton’s Universal Law of Gravitation</p>
 <p><span class="math display">\[F = G \frac{m_1 m_2}{d^2}\]</span></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">cnt_equ&lt;-<span class="kw">auto_counter</span>(cnt_equ)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cnt_equ<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_equ)</span></code></pre></div>
 <p>Eq. 2</p>
 <p><span class="math display">\[c^2 = b^2 + a^2\]</span></p>
 </div>
@@ -376,326 +219,110 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="example-figure-plot" class="section level2">
 <h2>Example Figure (Plot)</h2>
 <p>First, create your plot:</p>
-<p>Then, save your plot to the figures folder and create a list object with all of the information you want to store about this plot.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># Don&#39;t Edit This:</span></a>
-<a class="sourceLine" id="cb6-2" title="2">cnt_chapt_content&lt;-NMFSReports<span class="op">::</span><span class="kw">auto_counter</span>(cnt_chapt_content)</a>
-<a class="sourceLine" id="cb6-3" title="3">cnt_figures&lt;-cnt_figures <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-4" title="4"></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="co"># Systematically save your plot with this simple function</span></a>
-<a class="sourceLine" id="cb6-6" title="6">figure_list&lt;-<span class="kw">save_figures</span>(<span class="dt">figure =</span> plot0, </a>
-<a class="sourceLine" id="cb6-7" title="7">                      <span class="dt">figure_list =</span> figure_list, </a>
-<a class="sourceLine" id="cb6-8" title="8">                      <span class="dt">header =</span> header,</a>
-<a class="sourceLine" id="cb6-9" title="9">                      <span class="dt">footnote =</span> footnote,</a>
-<a class="sourceLine" id="cb6-10" title="10">                      <span class="dt">filename0 =</span> filename0, </a>
-<a class="sourceLine" id="cb6-11" title="11">                      <span class="dt">cnt_chapt_content =</span> cnt_chapt_content, </a>
-<a class="sourceLine" id="cb6-12" title="12">                      <span class="dt">cnt =</span> cnt_figures, </a>
-<a class="sourceLine" id="cb6-13" title="13">                      <span class="dt">nickname =</span> nickname,</a>
-<a class="sourceLine" id="cb6-14" title="14">                      <span class="co"># path = dir_out_figures, </span></a>
-<a class="sourceLine" id="cb6-15" title="15">                      <span class="dt">width =</span> <span class="dv">6</span>, <span class="co"># you can change this if you need to...</span></a>
-<a class="sourceLine" id="cb6-16" title="16">                      <span class="dt">height =</span> <span class="dv">6</span>) <span class="co"># you can change this if you need to...</span></a></code></pre></div>
-<p>This next chuck will decide if the plot should be printed to the report or not. For InDesign purposes, you would likely not want it to be printed to the word document (hense <code>indesign_flowin %in% FALSE</code>).</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># Print or Don&#39;t Print Plot in Text</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="co"># You don&#39;t want to print this in the document if this text will be flowed into InDesign. </span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="co"># However, sometimes its nice to see everything all together, so this variable is </span></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="co"># something you might like to toggle on and off. </span></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="co"># Hense, FALSE = print here, TRUE = don&#39;t print here, just make the .pdf (coded above)</span></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="cf">if</span> (indesign_flowin <span class="op">%in%</span><span class="st"> </span><span class="ot">FALSE</span>) { </a>
-<a class="sourceLine" id="cb7-7" title="7">  plot0 <span class="co"># print plot in text</span></a>
-<a class="sourceLine" id="cb7-8" title="8">} <span class="cf">else</span> <span class="cf">if</span> (indesign_flowin <span class="op">%in%</span><span class="st"> </span><span class="ot">TRUE</span>){ <span class="co"># for reports that need to be flowed into InDesign </span></a>
-<a class="sourceLine" id="cb7-9" title="9">  rmarkdown<span class="op">::</span><span class="kw">render</span>(TableFigureHeader, </a>
-<a class="sourceLine" id="cb7-10" title="10">                    <span class="dt">quiet =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb7-11" title="11">                  <span class="dt">output_dir =</span> dir_chapters, </a>
-<a class="sourceLine" id="cb7-12" title="12">                  <span class="dt">output_file =</span> <span class="kw">paste0</span>(filename00,cnt_chapt_content,<span class="st">&quot;_Title.docx&quot;</span>))</a>
-<a class="sourceLine" id="cb7-13" title="13">}</a></code></pre></div>
-<div class="figure">
-<img src="data:image/png;base64,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" alt="Figure 1. Here is a figure!" />
-<p class="caption">Figure 1. Here is a figure!<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
-</div>
-<p>Here in plot 1, we see that…</p>
+<p>Here in plot , we see that…</p>
 </div>
 <div id="example-figure-reference-image" class="section level2">
 <h2>Example Figure (Reference Image)</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># Don&#39;t Edit This:</span></a>
-<a class="sourceLine" id="cb8-2" title="2">cnt_chapt_content&lt;-<span class="kw">auto_counter</span>(cnt_chapt_content)</a>
-<a class="sourceLine" id="cb8-3" title="3">cnt_figures&lt;-cnt_figures<span class="op">+</span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb8-4" title="4"></a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="co"># Systematically save your plot with this simple function</span></a>
-<a class="sourceLine" id="cb8-6" title="6">figure_list&lt;-<span class="kw">save_figures</span>(<span class="dt">figure =</span> plot0, </a>
-<a class="sourceLine" id="cb8-7" title="7">                      <span class="dt">figure_list =</span> figure_list, </a>
-<a class="sourceLine" id="cb8-8" title="8">                      <span class="dt">header =</span> header,</a>
-<a class="sourceLine" id="cb8-9" title="9">                      <span class="dt">footnote =</span> footnote,</a>
-<a class="sourceLine" id="cb8-10" title="10">                      <span class="dt">filename0 =</span> filename0, </a>
-<a class="sourceLine" id="cb8-11" title="11">                      <span class="dt">cnt_chapt_content =</span> cnt_chapt_content, </a>
-<a class="sourceLine" id="cb8-12" title="12">                      <span class="dt">cnt =</span> cnt_figures, </a>
-<a class="sourceLine" id="cb8-13" title="13">                      <span class="dt">nickname =</span> nickname,</a>
-<a class="sourceLine" id="cb8-14" title="14">                      <span class="co"># path = dir_out_figures, </span></a>
-<a class="sourceLine" id="cb8-15" title="15">                      <span class="dt">width =</span> <span class="dv">1</span>, <span class="co"># you can change this if you need to...</span></a>
-<a class="sourceLine" id="cb8-16" title="16">                      <span class="dt">height =</span> <span class="dv">1</span>,  <span class="co"># you can change this if you need to...</span></a>
-<a class="sourceLine" id="cb8-17" title="17">                      <span class="dt">filename_desc =</span> <span class="st">&quot;noaalogo&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># Print or Don&#39;t Print Plot in Text</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="co"># You don&#39;t want to print this in the document if this text will be flowed into InDesign. </span></a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="co"># However, sometimes its nice to see everything all together, so this variable is </span></a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="co"># something you might like to toggle on and off. </span></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="co"># Hense, FALSE = print here, TRUE = don&#39;t print here, just make the .pdf (coded above)</span></a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="cf">if</span> (indesign_flowin <span class="op">%in%</span><span class="st"> </span><span class="ot">FALSE</span>) { </a>
-<a class="sourceLine" id="cb9-7" title="7">  plot0 <span class="co"># print plot in text</span></a>
-<a class="sourceLine" id="cb9-8" title="8">} <span class="cf">else</span> <span class="cf">if</span> (indesign_flowin <span class="op">%in%</span><span class="st"> </span><span class="ot">TRUE</span>){ <span class="co"># for reports that need to be flowed into InDesign </span></a>
-<a class="sourceLine" id="cb9-9" title="9">  rmarkdown<span class="op">::</span><span class="kw">render</span>(TableFigureHeader, </a>
-<a class="sourceLine" id="cb9-10" title="10">                    <span class="dt">quiet =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb9-11" title="11">                  <span class="dt">output_dir =</span> dir_chapters, </a>
-<a class="sourceLine" id="cb9-12" title="12">                  <span class="dt">output_file =</span> <span class="kw">paste0</span>(filename00,cnt_chapt_content,<span class="st">&quot;_Title.docx&quot;</span>))</a>
-<a class="sourceLine" id="cb9-13" title="13">}</a></code></pre></div>
-<div class="figure">
-<img src="data:image/png;base64,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" alt="Figure 2. Here is a figure!" />
-<p class="caption">Figure 2. Here is a figure!<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
-</div>
-<p>Here in figure 2, we see the NOAA logo.</p>
+<p>Here in figure , we see the NOAA logo.</p>
 </div>
 <div id="example-table-basic" class="section level2">
 <h2>Example Table (Basic)</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># Edit This:</span></a>
-<a class="sourceLine" id="cb10-2" title="2">header &lt;-<span class="st"> &quot;Here is a table!&quot;</span></a>
-<a class="sourceLine" id="cb10-3" title="3">footnote&lt;-<span class="st">&quot;A footnote for this table!&quot;</span></a>
-<a class="sourceLine" id="cb10-4" title="4">nickname &lt;-<span class="st"> &quot;example1&quot;</span> <span class="co"># this is so you can refer to it later systematically</span></a>
-<a class="sourceLine" id="cb10-5" title="5"></a>
-<a class="sourceLine" id="cb10-6" title="6"><span class="co"># Select data and make plot</span></a>
-<a class="sourceLine" id="cb10-7" title="7">table_raw&lt;-<span class="kw">data.frame</span>(<span class="dt">col =</span> LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>], </a>
-<a class="sourceLine" id="cb10-8" title="8">                      <span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>), </a>
-<a class="sourceLine" id="cb10-9" title="9">                <span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>)) </a>
-<a class="sourceLine" id="cb10-10" title="10">table_print &lt;-<span class="st"> </span>table_raw</a>
-<a class="sourceLine" id="cb10-11" title="11">table_print[,<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)] &lt;-<span class="st"> </span>NMFSReports<span class="op">::</span><span class="kw">mod_number</span>(table_print[,<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)], </a>
-<a class="sourceLine" id="cb10-12" title="12">                                                     <span class="dt">divideby =</span> <span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb10-13" title="13">                                                     <span class="dt">comma_seperator =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb10-14" title="14">                                                     <span class="dt">digits =</span> <span class="dv">2</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># Don&#39;t Edit This:</span></a>
-<a class="sourceLine" id="cb11-2" title="2">cnt_chapt_content&lt;-<span class="kw">auto_counter</span>(cnt_chapt_content)</a>
-<a class="sourceLine" id="cb11-3" title="3">cnt_tables&lt;-cnt_tables<span class="op">+</span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb11-4" title="4"></a>
-<a class="sourceLine" id="cb11-5" title="5"><span class="co"># Systematically save your plot with this simple function</span></a>
-<a class="sourceLine" id="cb11-6" title="6">table_list&lt;-<span class="kw">save_tables</span>(<span class="dt">table_raw =</span> table_raw, </a>
-<a class="sourceLine" id="cb11-7" title="7">                        <span class="dt">table_print =</span> table_print, </a>
-<a class="sourceLine" id="cb11-8" title="8">                        <span class="dt">table_list =</span> table_list, </a>
-<a class="sourceLine" id="cb11-9" title="9">                        <span class="dt">header =</span> header,</a>
-<a class="sourceLine" id="cb11-10" title="10">                        <span class="dt">footnote =</span> footnote,</a>
-<a class="sourceLine" id="cb11-11" title="11">                        <span class="dt">filename0 =</span> filename0,</a>
-<a class="sourceLine" id="cb11-12" title="12">                        <span class="dt">nickname =</span> nickname,</a>
-<a class="sourceLine" id="cb11-13" title="13">                        <span class="dt">cnt_chapt_content =</span> cnt_chapt_content, </a>
-<a class="sourceLine" id="cb11-14" title="14">                        <span class="dt">cnt =</span> cnt_tables<span class="co">#, </span></a>
-<a class="sourceLine" id="cb11-15" title="15">                        <span class="co"># path = dir_out_tables</span></a>
-<a class="sourceLine" id="cb11-16" title="16">                        )</a></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"></a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="co"># Print or Don&#39;t Print Table in Text</span></a>
-<a class="sourceLine" id="cb12-3" title="3"><span class="co"># You don&#39;t want to print this in the document if this text will be flowed into InDesign. </span></a>
-<a class="sourceLine" id="cb12-4" title="4"><span class="co"># However, sometimes its nice to see everything all together, so this variable is something you might like to toggle on and off. Hense, FALSE = print here, TRUE = don&#39;t print here, just make the .pdf (coded above)</span></a>
-<a class="sourceLine" id="cb12-5" title="5"><span class="cf">if</span> (indesign_flowin <span class="op">%in%</span><span class="st"> </span><span class="ot">FALSE</span>) {</a>
-<a class="sourceLine" id="cb12-6" title="6">  table_print <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb12-7" title="7"><span class="st">          </span><span class="kw">format_cells</span>(<span class="dt">rows =</span> <span class="dv">0</span>, <span class="co"># make column names</span></a>
-<a class="sourceLine" id="cb12-8" title="8">                       <span class="dt">cols =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(table_print), <span class="co"># for all columns</span></a>
-<a class="sourceLine" id="cb12-9" title="9">                       <span class="dt">fonttype =</span> <span class="st">&quot;bold&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># bold</span></a>
-<a class="sourceLine" id="cb12-10" title="10"><span class="st">          </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">row.names =</span> <span class="ot">FALSE</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>) <span class="co">#print table in text</span></a>
-<a class="sourceLine" id="cb12-11" title="11">}</a></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">col</th>
-<th align="left">x</th>
-<th align="left">y</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">A</td>
-<td align="left">-0.89</td>
-<td align="left">2.9</td>
-</tr>
-<tr class="even">
-<td align="left">B</td>
-<td align="left">-0.37</td>
-<td align="left">1.5</td>
-</tr>
-<tr class="odd">
-<td align="left">C</td>
-<td align="left">-0.28</td>
-<td align="left">0.97</td>
-</tr>
-<tr class="even">
-<td align="left">D</td>
-<td align="left">-0.29</td>
-<td align="left">-0.054</td>
-</tr>
-<tr class="odd">
-<td align="left">E</td>
-<td align="left">0.97</td>
-<td align="left">1.4</td>
-</tr>
-<tr class="even">
-<td align="left">F</td>
-<td align="left">0.4</td>
-<td align="left">-0.042</td>
-</tr>
-<tr class="odd">
-<td align="left">G</td>
-<td align="left">0.23</td>
-<td align="left">-0.43</td>
-</tr>
-<tr class="even">
-<td align="left">H</td>
-<td align="left">0.56</td>
-<td align="left">-0.84</td>
-</tr>
-<tr class="odd">
-<td align="left">I</td>
-<td align="left">-0.9</td>
-<td align="left">-0.06</td>
-</tr>
-<tr class="even">
-<td align="left">J</td>
-<td align="left">-1.1</td>
-<td align="left">-0.51</td>
-</tr>
-</tbody>
-</table>
-<p>Here in table 1, we see that…</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>header <span class="ot">&lt;-</span> <span class="st">&quot;Here is a table!&quot;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>footnote<span class="ot">&lt;-</span><span class="st">&quot;A footnote for this table!&quot;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>nickname <span class="ot">&lt;-</span> <span class="st">&quot;example1&quot;</span> <span class="co"># this is so you can refer to it later systematically</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select data and make plot</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data-saver version of table that will be used to reference things later saved as backup</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>table_raw<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">col =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>), </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>)) </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create pretty version of table that will go into report</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>table_print <span class="ot">&lt;-</span> table_raw</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>table_print[,<span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)] <span class="ot">&lt;-</span> </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  NMFSReports<span class="sc">::</span><span class="fu">mod_number</span>(table_print[,<span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)], </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                          <span class="at">divideby =</span> <span class="dv">1</span>, </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                          <span class="at">comma_seperator =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                          <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Format table </span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>table_print <span class="ot">&lt;-</span> table_print <span class="sc">%&gt;%</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format_cells</span>(<span class="at">rows =</span> <span class="dv">0</span>, <span class="co"># make column names</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(table_print), <span class="co"># for all columns</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>               <span class="at">fonttype =</span> <span class="st">&quot;bold&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># bold</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="co">#print table in text</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co"># save yo&#39; stuff and do a lot of behind the scenes work</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co"># cat(knitr::asis_output(</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co">#   knitr::knit_child(input  = system.file(&quot;rmd/_child_save_tab.Rmd&quot;, package = &quot;NMFSReports&quot;), </span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co">#                     quiet=TRUE)))</span></span></code></pre></div>
+<p>Here in table , we see that…</p>
 </div>
 <div id="example-table-with-footnotes" class="section level2">
 <h2>Example Table (With Footnotes)</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co"># Edit This:</span></a>
-<a class="sourceLine" id="cb13-2" title="2">header &lt;-<span class="st"> &quot;Here is a table!&quot;</span></a>
-<a class="sourceLine" id="cb13-3" title="3">footnote&lt;-<span class="st">&quot;A footnote for this table!&quot;</span></a>
-<a class="sourceLine" id="cb13-4" title="4">nickname &lt;-<span class="st"> &quot;example_foot&quot;</span></a>
-<a class="sourceLine" id="cb13-5" title="5"></a>
-<a class="sourceLine" id="cb13-6" title="6"><span class="co"># Select data</span></a>
-<a class="sourceLine" id="cb13-7" title="7">table_raw&lt;-<span class="kw">data.frame</span>(<span class="dt">col =</span> LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>], </a>
-<a class="sourceLine" id="cb13-8" title="8">                      <span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>), </a>
-<a class="sourceLine" id="cb13-9" title="9">                <span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>), </a>
-<a class="sourceLine" id="cb13-10" title="10">                <span class="dt">footnotes =</span> <span class="ot">NA</span>) </a>
-<a class="sourceLine" id="cb13-11" title="11"></a>
-<a class="sourceLine" id="cb13-12" title="12">table_raw<span class="op">$</span>footnotes[<span class="dv">3</span>]&lt;-<span class="st">&quot;Example footnote in a table 1.&quot;</span></a>
-<a class="sourceLine" id="cb13-13" title="13">table_raw<span class="op">$</span>footnotes[<span class="dv">4</span>]&lt;-<span class="st">&quot;Example footnote in a table 2.&amp;&amp;&amp;Example footnote in a table 3.&quot;</span></a>
-<a class="sourceLine" id="cb13-14" title="14">table_print &lt;-<span class="st"> </span>table_raw</a>
-<a class="sourceLine" id="cb13-15" title="15">table_print[,<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)] &lt;-<span class="st"> </span>NMFSReports<span class="op">::</span><span class="kw">mod_number</span>(table_print[,<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)], </a>
-<a class="sourceLine" id="cb13-16" title="16">                                                     <span class="dt">divideby =</span> <span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb13-17" title="17">                                                     <span class="dt">comma_seperator =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb13-18" title="18">                                                     <span class="dt">digits =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb13-19" title="19"></a>
-<a class="sourceLine" id="cb13-20" title="20"><span class="co"># example of how to add footnotes from a column of footnotes</span></a>
-<a class="sourceLine" id="cb13-21" title="21"><span class="co"># here, we&#39;ll add footnotes from the &quot;footnotes&quot; column to the content in the first column, where necessary</span></a>
-<a class="sourceLine" id="cb13-22" title="22">table_print &lt;-<span class="st"> </span><span class="kw">add_table_footnotes</span>(<span class="dt">tab =</span> table_print, </a>
-<a class="sourceLine" id="cb13-23" title="23">                             <span class="dt">from_col =</span> <span class="st">&quot;footnotes&quot;</span>, <span class="co"># either use the name of the column</span></a>
-<a class="sourceLine" id="cb13-24" title="24">                             <span class="dt">to_col =</span> <span class="dv">1</span>) <span class="co"># or the number of that column in that table</span></a>
-<a class="sourceLine" id="cb13-25" title="25"></a>
-<a class="sourceLine" id="cb13-26" title="26"><span class="co"># here, I&#39;ll add a specific footnote to a specific place in the table</span></a>
-<a class="sourceLine" id="cb13-27" title="27">table_print &lt;-<span class="st"> </span><span class="kw">add_table_footnotes</span>(<span class="dt">tab =</span> table_print, </a>
-<a class="sourceLine" id="cb13-28" title="28">                                   <span class="dt">footnote =</span> <span class="st">&quot;Example footnote in a table 4.&quot;</span>, </a>
-<a class="sourceLine" id="cb13-29" title="29">                             <span class="dt">to_row =</span> <span class="dv">2</span>, </a>
-<a class="sourceLine" id="cb13-30" title="30">                             <span class="dt">to_col =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb13-31" title="31"></a>
-<a class="sourceLine" id="cb13-32" title="32">table_print &lt;-<span class="st"> </span><span class="kw">add_table_footnotes</span>(<span class="dt">tab =</span> table_print, </a>
-<a class="sourceLine" id="cb13-33" title="33">                                   <span class="dt">footnote =</span> <span class="kw">c</span>(<span class="st">&quot;Example footnote in a table 5.&quot;</span>, </a>
-<a class="sourceLine" id="cb13-34" title="34">                                                <span class="st">&quot;Example footnote in a table 6.&quot;</span>), </a>
-<a class="sourceLine" id="cb13-35" title="35">                             <span class="dt">to_row =</span> <span class="dv">4</span>, </a>
-<a class="sourceLine" id="cb13-36" title="36">                             <span class="dt">to_col =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb13-37" title="37"></a>
-<a class="sourceLine" id="cb13-38" title="38">table_print<span class="op">$</span>footnotes&lt;-<span class="ot">NULL</span> <span class="co"># remove column from final table</span></a></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co"># Don&#39;t Edit This:</span></a>
-<a class="sourceLine" id="cb14-2" title="2">cnt_chapt_content&lt;-<span class="kw">auto_counter</span>(cnt_chapt_content)</a>
-<a class="sourceLine" id="cb14-3" title="3">cnt_tables&lt;-cnt_tables<span class="op">+</span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb14-4" title="4">nickname &lt;-<span class="st"> &quot;example_foot&quot;</span> <span class="co"># this is so you can refer to it later systematically</span></a>
-<a class="sourceLine" id="cb14-5" title="5"></a>
-<a class="sourceLine" id="cb14-6" title="6"><span class="co"># Systematically save your plot with this simple function</span></a>
-<a class="sourceLine" id="cb14-7" title="7">table_list&lt;-<span class="kw">save_tables</span>(<span class="dt">table_raw =</span> table_raw, </a>
-<a class="sourceLine" id="cb14-8" title="8">                        <span class="dt">table_print =</span> table_print, </a>
-<a class="sourceLine" id="cb14-9" title="9">                        <span class="dt">table_list =</span> table_list, </a>
-<a class="sourceLine" id="cb14-10" title="10">                        <span class="dt">header =</span> header,</a>
-<a class="sourceLine" id="cb14-11" title="11">                        <span class="dt">footnote =</span> footnote,</a>
-<a class="sourceLine" id="cb14-12" title="12">                        <span class="dt">filename0 =</span> filename0, </a>
-<a class="sourceLine" id="cb14-13" title="13">                        <span class="dt">nickname =</span> nickname,</a>
-<a class="sourceLine" id="cb14-14" title="14">                        <span class="dt">cnt_chapt_content =</span> cnt_chapt_content, </a>
-<a class="sourceLine" id="cb14-15" title="15">                        <span class="dt">cnt =</span> cnt_tables<span class="co">#, </span></a>
-<a class="sourceLine" id="cb14-16" title="16">                        <span class="co"># path = dir_out_tables</span></a>
-<a class="sourceLine" id="cb14-17" title="17">                        )</a></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"></a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="co"># Print or Don&#39;t Print Table in Text</span></a>
-<a class="sourceLine" id="cb15-3" title="3"><span class="co"># You don&#39;t want to print this in the document if this text will be flowed into InDesign. </span></a>
-<a class="sourceLine" id="cb15-4" title="4"><span class="co"># However, sometimes its nice to see everything all together, so this variable is something you might like to toggle on and off. Hense, FALSE = print here, TRUE = don&#39;t print here, just make the .pdf (coded above)</span></a>
-<a class="sourceLine" id="cb15-5" title="5"><span class="cf">if</span> (indesign_flowin <span class="op">%in%</span><span class="st"> </span><span class="ot">FALSE</span>) {</a>
-<a class="sourceLine" id="cb15-6" title="6">  table_print <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-7" title="7"><span class="st">          </span><span class="kw">format_cells</span>(<span class="dt">rows =</span> <span class="dv">0</span>, <span class="co"># make column names</span></a>
-<a class="sourceLine" id="cb15-8" title="8">                       <span class="dt">cols =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(table_print), <span class="co"># for all columns</span></a>
-<a class="sourceLine" id="cb15-9" title="9">                       <span class="dt">fonttype =</span> <span class="st">&quot;bold&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># bold</span></a>
-<a class="sourceLine" id="cb15-10" title="10"><span class="st">          </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">row.names =</span> <span class="ot">FALSE</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>) <span class="co">#print table in text</span></a>
-<a class="sourceLine" id="cb15-11" title="11">}</a></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">col</th>
-<th align="left">x</th>
-<th align="left">y</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">A</td>
-<td align="left">0.77</td>
-<td align="left">0.5</td>
-</tr>
-<tr class="even">
-<td align="left">B</td>
-<td align="left">-1.1<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></td>
-<td align="left">1.8</td>
-</tr>
-<tr class="odd">
-<td align="left">C<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></td>
-<td align="left">0.83</td>
-<td align="left">0.93</td>
-</tr>
-<tr class="even">
-<td align="left">D<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></td>
-<td align="left">1.5<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a><a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a></td>
-<td align="left">-0.55</td>
-</tr>
-<tr class="odd">
-<td align="left">E</td>
-<td align="left">1.3</td>
-<td align="left">0.69</td>
-</tr>
-<tr class="even">
-<td align="left">F</td>
-<td align="left">0.076</td>
-<td align="left">0.14</td>
-</tr>
-<tr class="odd">
-<td align="left">G</td>
-<td align="left">0.98</td>
-<td align="left">-1.1</td>
-</tr>
-<tr class="even">
-<td align="left">H</td>
-<td align="left">1.1</td>
-<td align="left">-0.23</td>
-</tr>
-<tr class="odd">
-<td align="left">I</td>
-<td align="left">-0.16</td>
-<td align="left">1.1</td>
-</tr>
-<tr class="even">
-<td align="left">J</td>
-<td align="left">0.86</td>
-<td align="left">-0.41</td>
-</tr>
-</tbody>
-</table>
-<p>Here in table 2, we see that…</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>header <span class="ot">&lt;-</span> <span class="st">&quot;Here is a table!&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>footnote<span class="ot">&lt;-</span><span class="st">&quot;A footnote for this table!&quot;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>nickname <span class="ot">&lt;-</span> <span class="st">&quot;example_foot&quot;</span> <span class="co"># this is so you can refer to it later systematically</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select data and make plot</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data-saver version of table that will be used to reference things later saved as backup</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>table_raw<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">col =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>), </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>), </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">footnotes =</span> <span class="cn">NA</span>) </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>table_raw<span class="sc">$</span>footnotes[<span class="dv">3</span>]<span class="ot">&lt;-</span><span class="st">&quot;Example footnote in a table 1.&quot;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>table_raw<span class="sc">$</span>footnotes[<span class="dv">4</span>]<span class="ot">&lt;-</span><span class="st">&quot;Example footnote in a table 2.&amp;&amp;&amp;Example footnote in a table 3.&quot;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create pretty version of table that will go into report</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>table_print <span class="ot">&lt;-</span> table_raw</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>table_print[,<span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)] <span class="ot">&lt;-</span> NMFSReports<span class="sc">::</span><span class="fu">mod_number</span>(table_print[,<span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)], </span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>                                                     <span class="at">divideby =</span> <span class="dv">1</span>, </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>                                                     <span class="at">comma_seperator =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>                                                     <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># example of how to add footnotes from a column of footnotes</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># here, we&#39;ll add footnotes from the &quot;footnotes&quot; column to the content in the first column, where necessary</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>table_print <span class="ot">&lt;-</span> <span class="fu">add_table_footnotes</span>(<span class="at">tab =</span> table_print, </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">from_col =</span> <span class="st">&quot;footnotes&quot;</span>, <span class="co"># either use the name of the column</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">to_col =</span> <span class="dv">1</span>) <span class="co"># or the number of that column in that table</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co"># here, I&#39;ll add a specific footnote to a specific place in the table</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>table_print <span class="ot">&lt;-</span> <span class="fu">add_table_footnotes</span>(<span class="at">tab =</span> table_print, </span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">footnote =</span> <span class="st">&quot;Example footnote in a table 4.&quot;</span>, </span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">to_row =</span> <span class="dv">2</span>, </span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">to_col =</span> <span class="dv">2</span>)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>table_print <span class="ot">&lt;-</span> <span class="fu">add_table_footnotes</span>(<span class="at">tab =</span> table_print, </span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">footnote =</span> <span class="fu">c</span>(<span class="st">&quot;Example footnote in a table 5.&quot;</span>, </span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">&quot;Example footnote in a table 6.&quot;</span>), </span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">to_row =</span> <span class="dv">4</span>, </span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">to_col =</span> <span class="dv">2</span>)</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>table_print<span class="sc">$</span>footnotes<span class="ot">&lt;-</span><span class="cn">NULL</span> <span class="co"># remove column from final table</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Format table</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>table_print <span class="ot">&lt;-</span> table_print <span class="sc">%&gt;%</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format_cells</span>(<span class="at">rows =</span> <span class="dv">0</span>, <span class="co"># make column names</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(table_print), <span class="co"># for all columns</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>               <span class="at">fonttype =</span> <span class="st">&quot;bold&quot;</span>) <span class="co"># bold</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="co"># save yo&#39; stuff and do a lot of behind the scenes work</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="co"># cat(knitr::asis_output(</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="co">#   knitr::knit_child(input  = system.file(&quot;rmd/_child_save_tab.Rmd&quot;, package = &quot;NMFSReports&quot;), </span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="co">#                     quiet=TRUE)))</span></span></code></pre></div>
+<p>Here in table , we see that…</p>
 </div>
 <div id="references" class="section level2 unnumbered">
-<h2>References</h2>
-<div id="refs" class="references">
-<div id="ref-RN621">
-<p>Arrhenius S. 1889. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für physikalische Chemie 4: 226–248. </p>
+<h2 class="unnumbered">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-RN621" class="csl-entry">
+Arrhenius S. 1889. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für physikalische Chemie 4: 226–248.
 </div>
-<div id="ref-RN686">
-<p>Fry FEJ. 1957. The physiology of fishes. London: Academic Press.</p>
+<div id="ref-RN686" class="csl-entry">
+Fry FEJ. 1957. The physiology of fishes. London: Academic Press.
 </div>
 </div>
 </div>
@@ -703,16 +330,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Wow, this project is so cool!<a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>Here’s another, free-written footnote!<a href="#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>A footnote for this figure!<a href="#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p>A footnote for this figure!<a href="#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p>Example footnote in a table 4.<a href="#fnref5" class="footnote-back">↩</a></p></li>
-<li id="fn6"><p>Example footnote in a table 1.<a href="#fnref6" class="footnote-back">↩</a></p></li>
-<li id="fn7"><p>Example footnote in a table 2.<a href="#fnref7" class="footnote-back">↩</a></p></li>
-<li id="fn8"><p>Example footnote in a table 3.<a href="#fnref8" class="footnote-back">↩</a></p></li>
-<li id="fn9"><p>Example footnote in a table 5.<a href="#fnref9" class="footnote-back">↩</a></p></li>
-<li id="fn10"><p>Example footnote in a table 6.<a href="#fnref10" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>Wow, this project is so cool!<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Here’s another, free-written footnote!<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 

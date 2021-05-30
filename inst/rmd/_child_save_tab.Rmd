@@ -1,0 +1,55 @@
+
+
+```{r}
+# Don't Edit This:
+cnt_chapt_content<-auto_counter(cnt_chapt_content)
+cnt_tables<-cnt_tables+1
+
+# Systematically save your table with this function
+table_list<-save_tables(table_raw = ifelse(exists("table_raw"), table_raw, NULL), 
+                        table_print = ifelse(exists("table_print"), table_print, NULL),
+                        table_list = table_list, 
+                        header = ifelse(exists("header"), header, ""),
+                        footnote = ifelse(exists("footnote"), footnote, ""), 
+                        filename0 = ifelse(exists("filename0"), filename0, nickname), 
+                        nickname = ifelse(exists("nickname"), nickname, filename0),
+                        filename_desc = ifelse(exists("filename_desc"), filename_desc, ""),  
+                        cnt_chapt_content = cnt_chapt_content, 
+                        cnt = cnt_tables, 
+                        path = dir_out_tables)
+
+```
+
+
+```{r, fig.cap=ifelse(indesign_flowin %in% TRUE, "", figure_list[[length(figure_list)]]$caption)}
+# Print or Don't Print Plot in Text
+# You don't want to print this in the document if this text will be flowed into InDesign. 
+# However, sometimes its nice to see everything all together, so this variable is 
+# something you might like to toggle on and off. 
+# Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
+if (indesign_flowin %in% FALSE) { 
+  if (exist("table_print")) {
+    table_print # print table in text
+  } else {
+    table_raw
+  }
+} else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign 
+  rmarkdown::render(system.file("rmd/_TableFigureHeader.Rmd", package = "NMFSReports"),#TableFigureHeader, 
+                    quiet = TRUE,
+                  output_dir = dir_chapters, 
+                  output_file = paste0(filename00,cnt_chapt_content,"_Title.docx"))
+}
+
+# make sure you dont mistakenly name other files with these names
+remove_who <- c()
+remove_who0 <- c("header", "footnote", "filename0", "nickname", "filename_desc", 
+                 "table_raw", "table_print")
+for (i in 1:length(remove_who0)){
+  if(exists(remove_who0[i])){
+    remove_who <- c(remove_who, remove_who0[i])
+  }
+}
+remove(list = remove_who)
+
+```
+

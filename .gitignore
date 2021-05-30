@@ -11,3 +11,5 @@ Meta
 .zip
 vignettes/*.txt
 vignettes/*.zip
+/Meta/
+docs

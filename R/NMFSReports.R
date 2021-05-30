@@ -470,7 +470,8 @@ tolower2<-function(str0,
         "Southern kingfish", "Southern flounder",
         # Other
         "Atlantic", "American",
-        "Atka", "Chinook", "Great Lakes")
+        # "Atka",
+        "Chinook", "Great Lakes")
 
       # keywords<-c(keywords, paste0("(", keywords), paste0(keywords, ")"))
 
@@ -693,6 +694,42 @@ googledrive_txt_dl <- function (filename_gd,
   return(txt)
 }
 
+
+#' Find the 'st, 'nd, or 'th of a value
+#'
+#' @param x a value you want the 'st, 'nd, or 'th of
+#'
+#' @return a character string of the appropriate 'st, 'nd, or 'th
+#' @export
+#'
+#' @examples
+#' stndth(3)
+#' stndth(11)
+#' stndth(112)
+#' stndth(1120)
+stndth <- function(x) {
+  for (i in 1:length(x)){
+    if (grepl(pattern = 1,
+              x = substr(x = x[i],
+                         start = nchar(x[i]),
+                         stop = nchar(x[i])))) {
+      stndth0 <- "st"
+    } else if (grepl(pattern = 2,
+                     x = substr(x = x[i],
+                                start = nchar(x[i]),
+                                stop = nchar(x[i])))) {
+      stndth0 <- "nd"
+    } else if (grepl(pattern = 3,
+                     x = substr(x = x[i],
+                                start = nchar(x[i]),
+                                stop = nchar(x[i])))) {
+      stndth0 <- "rd"
+    } else {
+      stndth0 <- "th"
+    }
+  }
+  return(stndth0)
+}
 
 ############ MODIFY NUMBERS IN TEXT ################
 
@@ -961,13 +998,15 @@ mod_number<-function(x,
 #'
 #' Determine the appropriate unit for a value (e.g., 1000000 = '1 Million'.
 #' @param value A numeric value.
+#' @param val_under_x_words a numeric that defines what values should be words as opposed to characters in a text. For example, many styles prefer that all values from 0 to 10 are spelled out in words, so you would set this parameter to 10 (which is the default). Set this parameter to NULL for nothing to to be spelled out.
 #' @keywords Modify number, units
 #' @export
 #' @examples
 #' xunits(value = c(12))
 #' xunits(value = c(123456))
 #' xunits(value = c(123456789))
-xunits<-function(value
+xunits<-function(value,
+                 val_under_x_words = 10
                  #, combine=TRUE # #' @param combine Should this be combined in a single string (T) or as two seperate strings in a list (F). Default = T.
 
                  ) {
@@ -976,33 +1015,41 @@ xunits<-function(value
 
   out<-c()
   for (iii in 1:length(value)){
-  value<-sum(as.numeric(value))
-  if (is.na(value)) {
+  value0<-sum(as.numeric(value[iii]))
+  if (is.na(value0)) {
     out0<-NA
   } else {
 
-    sigfig<-format(value, digits = 3, scientific = TRUE)
+    sigfig<-format(value0, digits = 3, scientific = TRUE)
     sigfig0<-as.numeric(substr(x = sigfig, start = (nchar(sigfig)-1), stop = nchar(sigfig)))
 
-    if (sigfig0<=5) {
+    if (sigfig0==0) {
+      unit<-""
+      x<-format(x = value0, big.mark = ",", digits = 0, scientific = F)
+      if (!is.null(val_under_x_words)) {
+        if (as.numeric(x) <= val_under_x_words & as.numeric(x) >= 0) {
+          x <- NMFSReports::numbers2words(x = as.numeric(x))
+        }
+      }
+    } else if (sigfig0<=5) {
       # if (sigfig0<4) {
       unit<-""
-      x<-format(x = value, big.mark = ",", digits = 0, scientific = F)
+      x<-format(x = value0, big.mark = ",", digits = 0, scientific = F)
       # } else if (sigfig0>=4 & sigfig0<6) {
       #   unit<-" thousand"
-      # x<-round(value/1e3, digits = 1)
+      # x<-round(value0/1e3, digits = 1)
       # } else if (sigfig0==5) {
       #   unit<-" thousand"
-      #   x<-round(value/1e3, digits = 0)
+      #   x<-round(value0/1e3, digits = 0)
     } else if (sigfig0>=6 & sigfig0<9) {
       unit<-" million"
-      x<-round(value/1e6, digits = 1)
+      x<-round(value0/1e6, digits = 1)
     } else if (sigfig0>=9 & sigfig0<12) {
       unit<-" billion"
-      x<-round(value/1e9, digits = 1)
+      x<-round(value0/1e9, digits = 1)
     } else if (sigfig0>=12) {
       unit<-" trillion"
-      x<-round(value/1e12, digits = 1)
+      x<-round(value0/1e12, digits = 1)
     }
     out0<-ifelse(combine==T, paste0(x, unit), list(x, unit))
   }
