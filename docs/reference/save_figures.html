@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.1</span>
       </span>
     </div>
 
@@ -181,6 +181,7 @@
   height <span class='op'>=</span> <span class='fl'>6</span>,
   output_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"pdf"</span>, <span class='st'>"png"</span><span class='op'>)</span>,
   type <span class='op'>=</span> <span class='st'>"Figure"</span>,
+  alttext <span class='op'>=</span> <span class='st'>""</span>,
   filename_desc <span class='op'>=</span> <span class='st'>""</span>,
   nickname <span class='op'>=</span> <span class='st'>""</span>,
   message <span class='op'>=</span> <span class='cn'>FALSE</span>
@@ -238,6 +239,10 @@
       <td><p>Default = "Figure", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Figure 1. This is my plot!".</p></td>
     </tr>
     <tr>
+      <th>alttext</th>
+      <td><p>String with what the alternative text is.</p></td>
+    </tr>
+    <tr>
       <th>filename_desc</th>
       <td><p>Additional description text for the filename that will be added at the name of file before the filename extention. Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.</p></td>
     </tr>
@@ -283,6 +288,9 @@
 #&gt; [1] "Figure 1. example."
 #&gt; 
 #&gt; $`Figure 1. example.`$nickname
+#&gt; [1] ""
+#&gt; 
+#&gt; $`Figure 1. example.`$alttext
 #&gt; [1] ""
 #&gt; 
 #&gt; $`Figure 1. example.`$number

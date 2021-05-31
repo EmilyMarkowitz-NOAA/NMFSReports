@@ -20,8 +20,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 
 ```{r setup}
 library(NMFSReports)
-library(here)
-library(ggplot2)
+# library(ggplot2)
 ```
 
 First, [run `NMFSReports::buildReport()`](https://emilymarkowitz-noaa.github.io/NMFSReports/articles/A_use-buildReport.html) to produce our basic report outline. It should produce something like this: 
@@ -103,17 +102,15 @@ Paul Doremus, Acting Assistant Administrator for Fisheries"
 indesign_flowin <- FALSE
 
 #######SOURCE SUPPORT SCRIPTS#############
-library(here) # Other functions load in the 0_functions.R
+dir_in <- getwd()
 
-source(here::here('code', 'directories.R' ))
+source('./code/directories.R' )
 
-source(here::here('code', 'functions.R' ))
+source('./code/functions.R' )
 
-source(here::here('code', 'dataDL.R' ))
+source('./code/dataDL.R' )
 
-source(here::here('code', 'data.R' ))
-
-
+source('./code/data.R' )
 
 #######SAVE PACKAGES USED TO CREATE THIS REPORT#############
 # renv::init()

@@ -15,7 +15,7 @@ devtools::document()
 setwd("..")
 install("NMFSReports")
 3
-setwd(here())
+setwd(here::here())
 # devtools::check()
 
 ########### Create Documentation GitHub-Pages ############
@@ -33,7 +33,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 # pkgdown::build_favicons()
 devtools::build_vignettes()
 usethis::use_pkgdown(config_file = "./pkgdown/_pkgdown.yml")
-pkgdown::build_site(pkg = here())
+pkgdown::build_site(pkg = here::here())
 usethis::use_github_action("pkgdown")
 
 ########### Submit to CRAN ############

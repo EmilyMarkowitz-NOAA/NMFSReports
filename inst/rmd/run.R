@@ -39,7 +39,6 @@ Paul Doremus, Acting Assistant Administrator for Fisheries"
 indesign_flowin <- FALSE
 
 #######SOURCE SUPPORT SCRIPTS#############
-library(here) # Other functions load in the 0_functions.R
 
 # INSERT_SUPPORT_SCRIPTS
 
@@ -81,12 +80,15 @@ save(table_list,
 
 
 ###############***METADATA##################
-# So we can
-#    1. Go back and recreate this exactly with the libraries you used to create this script and
-#    2. Cite the apropriate versions of the packages you used in your report
-# More info here: https://rstudio.github.io/packrat/walkthrough.html
 
-create_metadata(dir_out = paste0(dir_out_todaysrun, "/documentation"),
-               title = paste0(report_title, " Metadata ", Sys.Date()))
+con <- file("notes.log")
+sink(con, append=TRUE)
 
-# setwd(paste0(dir_out_todaysrun))
+sessionInfo()
+
+# Restore output to console
+sink()
+
+# And look at the log...
+# cat(readLines("notes.log"), sep="\n")
+

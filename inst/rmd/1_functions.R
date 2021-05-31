@@ -16,7 +16,7 @@ PKG <- c(
   "rmarkdown", # R Markdown Document Conversion
 
   # File Management
-  "here", # For finding the root directory of your scripts and thus, find your files
+  # "here", # For finding the root directory of your scripts and thus, find your files
   "officer",
 
   # Keeping Organized
@@ -26,7 +26,7 @@ PKG <- c(
 
   # Graphics
   "ggplot2", # Create Elegant Data Visualisations Using the Grammar of Graphics
-  "nmfspalette",  # devtools::install_github("nmfs-general-modeling-tools/nmfspalette"
+  # "nmfspalette",  # devtools::install_github("nmfs-general-modeling-tools/nmfspalette"
   "cowplot",
   "png",
   "extrafont",

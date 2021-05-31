@@ -17,6 +17,7 @@ save_figures(
   height = 6,
   output_type = c("pdf", "png"),
   type = "Figure",
+  alttext = "",
   filename_desc = "",
   nickname = "",
   message = FALSE
@@ -46,6 +47,8 @@ save_figures(
 \item{output_type}{Default = c("pdf", "png"). Can be anything supported by ggsave().}
 
 \item{type}{Default = "Figure", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Figure 1. This is my plot!".}
+
+\item{alttext}{String with what the alternative text is.}
 
 \item{filename_desc}{Additional description text for the filename that will be added at the name of file before the filename extention. Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.}
 

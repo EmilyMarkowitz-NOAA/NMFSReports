@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.1</span>
       </span>
     </div>
 
@@ -119,7 +119,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>How to use the run.R file to be the skeleton of your report</h1>
             
-            <h4 class="date">May 30 2021</h4>
+            <h4 class="date">May 31 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/vignettes/B_run-script-demo.Rmd"><code>vignettes/B_run-script-demo.Rmd</code></a></small>
       <div class="hidden name"><code>B_run-script-demo.Rmd</code></div>
@@ -130,8 +130,7 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
+<span class="co"># library(ggplot2)</span></code></pre></div>
 <p>First, <a href="https://emilymarkowitz-noaa.github.io/NMFSReports/articles/A_use-buildReport.html">run <code>NMFSReports::buildReport()</code></a> to produce our basic report outline. It should produce something like this:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -206,17 +205,15 @@ Paul Doremus, Acting Assistant Administrator for Fisheries"</span>
 <span class="va">indesign_flowin</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span>
 
 <span class="co">#######SOURCE SUPPORT SCRIPTS#############</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span> <span class="co"># Other functions load in the 0_functions.R</span>
+<span class="va">dir_in</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span>
 
-<span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">'code'</span>, <span class="st">'directories.R'</span> <span class="op">)</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">'./code/directories.R'</span> <span class="op">)</span>
 
-<span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">'code'</span>, <span class="st">'functions.R'</span> <span class="op">)</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">'./code/functions.R'</span> <span class="op">)</span>
 
-<span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">'code'</span>, <span class="st">'dataDL.R'</span> <span class="op">)</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">'./code/dataDL.R'</span> <span class="op">)</span>
 
-<span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">'code'</span>, <span class="st">'data.R'</span> <span class="op">)</span><span class="op">)</span>
-
-
+<span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">'./code/data.R'</span> <span class="op">)</span>
 
 <span class="co">#######SAVE PACKAGES USED TO CREATE THIS REPORT#############</span>
 <span class="co"># renv::init()</span>

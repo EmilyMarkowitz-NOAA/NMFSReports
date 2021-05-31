@@ -9,8 +9,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 
 ## ----setup--------------------------------------------------------------------
 library(NMFSReports)
-library(here)
-library(ggplot2)
+# library(ggplot2)
 
 ## ---- eval=FALSE--------------------------------------------------------------
 #  
@@ -83,17 +82,15 @@ library(ggplot2)
 #  indesign_flowin <- FALSE
 #  
 #  #######SOURCE SUPPORT SCRIPTS#############
-#  library(here) # Other functions load in the 0_functions.R
+#  dir_in <- getwd()
 #  
-#  source(here::here('code', 'directories.R' ))
+#  source('./code/directories.R' )
 #  
-#  source(here::here('code', 'functions.R' ))
+#  source('./code/functions.R' )
 #  
-#  source(here::here('code', 'dataDL.R' ))
+#  source('./code/dataDL.R' )
 #  
-#  source(here::here('code', 'data.R' ))
-#  
-#  
+#  source('./code/data.R' )
 #  
 #  #######SAVE PACKAGES USED TO CREATE THIS REPORT#############
 #  # renv::init()

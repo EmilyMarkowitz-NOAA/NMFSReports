@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.1</span>
       </span>
     </div>
 
@@ -169,20 +169,20 @@
     </div>
 
     <pre class="usage"><span class='fu'>add_table_footnotes</span><span class='op'>(</span>
-  <span class='va'>tab</span>,
-  footnote <span class='op'>=</span> <span class='st'>""</span>,
+  <span class='va'>table</span>,
+  footnote <span class='op'>=</span> <span class='cn'>NULL</span>,
   from_col <span class='op'>=</span> <span class='st'>""</span>,
   to_col <span class='op'>=</span> <span class='st'>""</span>,
   from_row <span class='op'>=</span> <span class='st'>""</span>,
   to_row <span class='op'>=</span> <span class='st'>""</span>,
-  delim <span class='op'>=</span> <span class='st'>"&amp;&amp;&amp;"</span>
+  delim <span class='op'>=</span> <span class='st'>",,,"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>tab</th>
+      <th>table</th>
       <td><p>The data.frame you are adding footnotes to (and possibly from).</p></td>
     </tr>
     <tr>
@@ -243,18 +243,18 @@
 <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>table</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 
 #&gt; 
-#&gt; |col                                                                  |x                                                                          |y      |footnotes                                                       |
-#&gt; |:--------------------------------------------------------------------|:--------------------------------------------------------------------------|:------|:---------------------------------------------------------------|
-#&gt; |A                                                                    |-1.4                                                                       |-0.55  |NA                                                              |
-#&gt; |B                                                                    |0.26^[Example footnote in a table 4.]                                      |0.63   |NA                                                              |
-#&gt; |C^[Example footnote in a table 1.]                                   |-2.4                                                                       |2.1    |Example footnote in a table 1.                                  |
-#&gt; |D^[Example footnote in a table 2.] ^[Example footnote in a table 3.] |-0.0056^[Example footnote in a table 5.] ^[Example footnote in a table 6.] |-1.6   |Example footnote in a table 2.&amp;&amp;&amp;Example footnote in a table 3. |
-#&gt; |E                                                                    |0.62                                                                       |0.51   |NA                                                              |
-#&gt; |F                                                                    |1.1                                                                        |-1.9   |NA                                                              |
-#&gt; |G                                                                    |-1.8                                                                       |-0.52  |NA                                                              |
-#&gt; |H                                                                    |-0.25                                                                      |-0.053 |NA                                                              |
-#&gt; |I                                                                    |-0.24                                                                      |0.54   |NA                                                              |
-#&gt; |J                                                                    |-0.28                                                                      |-0.91  |NA                                                              |</div></pre>
+#&gt; |col                                                                 |x                                        |y      |footnotes                                                       |
+#&gt; |:-------------------------------------------------------------------|:----------------------------------------|:------|:---------------------------------------------------------------|
+#&gt; |A                                                                   |-1.4                                     |-0.55  |NA                                                              |
+#&gt; |B                                                                   |0.26^[Example footnote in a table 4.]    |0.63   |NA                                                              |
+#&gt; |C^[Example footnote in a table 1.]                                  |-2.4                                     |2.1    |Example footnote in a table 1.                                  |
+#&gt; |D^[Example footnote in a table 2.&amp;&amp;&amp;Example footnote in a table 3.] |-0.0056^[Example footnote in a table 5.] |-1.6   |Example footnote in a table 2.&amp;&amp;&amp;Example footnote in a table 3. |
+#&gt; |E                                                                   |0.62                                     |0.51   |NA                                                              |
+#&gt; |F                                                                   |1.1                                      |-1.9   |NA                                                              |
+#&gt; |G                                                                   |-1.8                                     |-0.52  |NA                                                              |
+#&gt; |H                                                                   |-0.25                                    |-0.053 |NA                                                              |
+#&gt; |I                                                                   |-0.24                                    |0.54   |NA                                                              |
+#&gt; |J                                                                   |-0.28                                    |-0.91  |NA                                                              |</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

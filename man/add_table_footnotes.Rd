@@ -5,17 +5,17 @@
 \title{Add footnotes within your tables in a smart way}
 \usage{
 add_table_footnotes(
-  tab,
-  footnote = "",
+  table,
+  footnote = NULL,
   from_col = "",
   to_col = "",
   from_row = "",
   to_row = "",
-  delim = "&&&"
+  delim = ",,,"
 )
 }
 \arguments{
-\item{tab}{The data.frame you are adding footnotes to (and possibly from).}
+\item{table}{The data.frame you are adding footnotes to (and possibly from).}
 
 \item{footnote}{A string that you want to add as a footnote to the table. Optional.}
 

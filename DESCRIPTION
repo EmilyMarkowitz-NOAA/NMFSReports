@@ -1,6 +1,6 @@
 Package: NMFSReports
 Title: Easily write NOAA reports and Tech Memos in R Markdown!
-Version: 0.0.1.0
+Version: 0.0.1.1
 Authors@R: 
   person(given = "Emily",
            family = "Markowitz", 
@@ -23,7 +23,6 @@ Imports:
     magrittr,
     extrafont,
     stringr,
-    here,
     jsonlite, 
     knitcitations, 
     XML, 
@@ -33,6 +32,7 @@ Suggests:
     rmarkdown,
     cowplot,
     png,
+    magick,
     kableExtra,
     knitr
 Config/testthat/edition: 3

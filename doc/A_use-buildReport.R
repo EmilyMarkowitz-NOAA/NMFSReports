@@ -8,7 +8,6 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 
 ## ----setup--------------------------------------------------------------------
 library(NMFSReports)
-library(here)
 library(ggplot2)
 
 ## -----------------------------------------------------------------------------
@@ -70,8 +69,7 @@ colnames(csl0)<-NULL
 rownames(csl0)<-NULL
 write.table(x = csl0, file = "csl.csl", 
             quote = FALSE, row.names = FALSE, col.names = FALSE)
-library(here)
-csl = here("csl.csl")
+csl = ("./csl.csl")
 head(csl0)
 
 ## ---- eval = FALSE------------------------------------------------------------

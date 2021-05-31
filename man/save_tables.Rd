@@ -16,6 +16,7 @@ save_tables(
   path = NULL,
   output_type = c("csv"),
   type = "Table",
+  alttext = "",
   filename_desc = "",
   nickname = "",
   message = FALSE
@@ -43,6 +44,8 @@ save_tables(
 \item{output_type}{Default = c("csv"). Can be anything supported by utils::write.table.}
 
 \item{type}{Default = "Table", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Table 1. This is my spreadsheet!". Always save in pdf so you can make last minute edits in adobe acrobat!}
+
+\item{alttext}{String with what the alternative text is.}
 
 \item{filename_desc}{Additional description text for the filename that will be added at the name of file before the filename extention, before the "_raw" or "_print". Default = "". Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.}
 

@@ -9,20 +9,20 @@
 
 #############SAVE FILE LOCATIONS###############
 # Just in case you change the base name for any reason, it will change for anytime you load the files inside the folder, too! (e.g., if you have something against "scripts" being the name of the folder, just let the script know in one place aka right here).
-library(here)
 
 # Directories to all of your current folders
-dirs<-list.dirs(path = here(), full.names = FALSE)
+dir_in<-paste0(getwd(), "/")
+dirs<-list.dirs(path = getwd(), full.names = FALSE)
 dirs<-dirs[!grepl(pattern = "\\/", x = dirs)]
 dirs<-dirs[!grepl(pattern = "\\..", x = dirs)]
 dirs<-dirs[dirs != ""]
 for (i in 1:length(dirs)) {
   assign(x = paste0("dir_", dirs[i]),
-         value = paste0(here(dirs[i]), "/"))
+         value = paste0(dir_in, (dirs[i]), "/"))
 }
 
 # Where we save everything
-dir.output<-paste0(here::here(), "/output/")
+dir.output<-paste0(dir_in, "/output/")
 dir_out_todaysrun<-paste0(dir.output, "/",Sys.Date(),"/")
 dir.create(dir_out_todaysrun)
 

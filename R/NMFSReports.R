@@ -208,10 +208,10 @@ buildReport<-function(sections = c("frontmatter",
   # directories
 
   # support_scripts
-  a<-paste("source(here::here('code',",
-           paste0("'", support_scripts, ".R'"),"))
+  a<-paste("source('./code/",
+           paste0(support_scripts, ".R')
 
-", collapse = "")
+                  "), collapse = "")
 
   run0<-gsub(pattern = "# INSERT_SUPPORT_SCRIPTS",
              replacement = a,
@@ -560,7 +560,7 @@ text_list<-function(x, oxford = TRUE) {
 
 #' Add footnotes within your tables in a smart way
 #'
-#' @param tab The data.frame you are adding footnotes to (and possibly from).
+#' @param table The data.frame you are adding footnotes to (and possibly from).
 #' @param footnote A string that you want to add as a footnote to the table. Optional.
 #' @param from_col What column number or name you want to pull footnotes from.
 #' @param to_col What column number or name you want add footnotes to.
@@ -596,21 +596,26 @@ text_list<-function(x, oxford = TRUE) {
 #'                                    to_row = 4,
 #'                                    to_col = 2)
 #' knitr::kable(table)
-add_table_footnotes<-function(tab,
-                              footnote = "",
+add_table_footnotes<-function(table,
+                              footnote = NULL,
                               from_col = "",
                               to_col = "",
                               from_row = "",
                               to_row = "",
-                              delim = "&&&") {
+                              delim = ",,,") {
 
-  tab<-data.frame(tab)
-  footnote <-trimws(footnote)
+  tab<-data.frame(table)
 
   idx <- function(tab, area, dimension) {
-    idx0<-ifelse(area %in% "", list(1:(dim(tab)[dimension])), # all rows or columns
-                 ifelse(is.numeric(area), area,
-                        ifelse(is.character(area), which(names(tab) %in% area), "")))
+    if (sum(area %in% "")!=0) {
+      idx0 <- list(1:(dim(tab)[dimension]))
+    } else if (is.numeric(area)) {
+      idx0 <- area
+    } else if (is.character(area)) {
+      idx0 <- which(names(tab) %in% area)
+    } else {
+      idx0 <- ""
+    }
     return(unlist(idx0))
   }
 
@@ -619,23 +624,42 @@ add_table_footnotes<-function(tab,
   from_row_idx <- idx(tab, area = from_row, dimension = 1)
   to_row_idx <- idx(tab, area = to_row, dimension = 1)
 
-  if (sum(footnote %in% "") > 0) { # if pulling from somewhere in the table
-    tab[from_row_idx, from_col_idx]<-trimws(tab[from_row_idx, from_col_idx])
 
-    for (rr in 1:length(from_row_idx)) {
-      for (cc in 1:length(from_col_idx)) {
-        if (!(is.na(tab[from_row_idx[rr], from_col_idx[cc]]))) { # if there is a footnote
-          tab[to_row_idx[rr], to_col_idx[cc]] <- paste0(tab[to_row_idx[rr], to_col_idx[cc]],
-                                                        paste0(paste0("^[", strsplit(x = tab[from_row_idx[rr], from_col_idx[cc]],
-                                                                                     split = delim)[[1]], "] "), collapse = "")) # otherwise, apend it
+  if (is.null(footnote)) {
+    footnote <- tab[from_row_idx,from_col_idx]
+  }
+
+  if (length(to_col_idx) != length(footnote) |
+      length(to_row_idx) != length(footnote) ) {
+    footnote<-rep_len(x = footnote,
+                      length.out = length(to_col_idx)*length(to_row_idx))
+  }
+
+  footnote[is.na(footnote)]<-""
+  footnote<-data.frame(footnote)
+
+    for (rr in 1:length(to_row_idx)) {
+      for (cc in 1:length(to_col_idx)) {
+        if (!(is.na(footnote[rr,cc]) | footnote[rr,cc] == "")) {
+          content <- trimws(tab[to_row_idx[rr], to_col_idx[cc]])
+
+          # if there are already footnotes there
+          if (substr(x = content,
+                     start = nchar(content),
+                     stop = nchar(content)) == "]") {
+            content <- paste0(content, " ^,^ ")
+          }
+
+          tab[to_row_idx[rr], to_col_idx[cc]] <-
+            paste0(content,
+                   paste(paste0("^[",
+                                trimws(paste(strsplit(x = footnote[rr,cc],
+                                          split = delim)[[1]])),
+                                 "]"),
+                         collapse = " ^,^ ")) # otherwise, apend it
         }
       }
     }
-
-  } else { # if adding footnote text directly to the table
-    tab[to_row_idx, to_col_idx] <- paste0(tab[to_row_idx, to_col_idx],
-                                          paste(paste0("^[", footnote, "] "), collapse = ""))
-  }
 
   return(tab)
 
@@ -655,9 +679,11 @@ add_table_footnotes<-function(tab,
 #' 1
 #'
 #' txt <- googledrive_txt_dl(filename_gd = "test123123_doc",
-#'                           filename_dl = "test123123_doc_downloaded",
+#'                           filename_dl = "test123123_dl",
 #'                           verbose = FALSE)
 #' txt
+#' # for good file keeping, I'll delete these
+#' file.remove('test123123_dl.txt', 'test123123_dl.zip')
 googledrive_txt_dl <- function (filename_gd,
                                 filename_dl = "googledrive_dl_text",
                                 path = "./",
@@ -1213,6 +1239,7 @@ auto_counter<-function(counter0) {
 #' @param height Default = 6 inches.
 #' @param output_type Default = c("pdf", "png"). Can be anything supported by ggsave().
 #' @param type Default = "Figure", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Figure 1. This is my plot!".
+#' @param alttext String with what the alternative text is.
 #' @param filename_desc Additional description text for the filename that will be added at the name of file before the filename extention. Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.
 #' @param nickname A unique name that can be used to identify the figure so it can be referenced later in the report.
 #' @param message TRUE/FALSE. Default = FALSE. If TRUE, it will print information about where your plot has been saved to.
@@ -1250,6 +1277,7 @@ save_figures<-function(figure,
                      height = 6,
                      output_type = c("pdf", "png"),
                      type = "Figure",
+                     alttext = "",
                      filename_desc = "",
                      nickname = "",
                      message = FALSE){
@@ -1264,9 +1292,10 @@ save_figures<-function(figure,
                           c(".", "!", "?", "...", "...."),
                         header, paste0(header, ".")))
   footnote<-trimws(footnote)
-  caption<-ifelse(footnote %in% "",
-                 header,
-                 paste0(header, "^[", footnote, "]"))
+  caption<-ifelse(sum(footnote %in% "") != 0,
+                  header,
+                  paste0(header, paste(paste0("^[", footnote, "]"),
+                                       collapse = " ^,^ ")))
   filename00<-paste0(filename0, cnt_chapt_content, "_fig_",cnt,
                      ifelse(filename_desc!="", paste0("_", filename_desc), ""))
 
@@ -1287,6 +1316,7 @@ save_figures<-function(figure,
                            "caption" = caption,
                            "header" = header,
                            "nickname" = nickname,
+                           "alttext" = alttext,
                            "number" = cnt,
                            "footnote" = footnote)
 
@@ -1317,6 +1347,7 @@ save_graph <- save_figures
 #' @param path The path the file needs to be saved to. Default = "NULL", meaning it wont save anything and will override all other saving elements.
 #' @param output_type Default = c("csv"). Can be anything supported by utils::write.table.
 #' @param type Default = "Table", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Table 1. This is my spreadsheet!". Always save in pdf so you can make last minute edits in adobe acrobat!
+#' @param alttext String with what the alternative text is.
 #' @param filename_desc Additional description text for the filename that will be added at the name of file before the filename extention, before the "_raw" or "_print". Default = "". Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.
 #' @param nickname A unique name that can be used to identify the figure so it can be referenced later in the report.
 #' @param message TRUE/FALSE. Default = FALSE. If TRUE, it will print information about where your plot has been saved to.
@@ -1347,6 +1378,7 @@ save_tables<-function(table_raw = NULL,
                      path = NULL,
                      output_type = c("csv"),
                      type = "Table",
+                     alttext = "",
                      filename_desc = "",
                      nickname = "",
                      message = FALSE) {
@@ -1362,9 +1394,10 @@ save_tables<-function(table_raw = NULL,
                           c(".", "!", "?", "...", "...."),
                         header, paste0(header, ".")))
   footnote<-trimws(footnote)
-  caption<-ifelse(footnote %in% "",
+  caption<-ifelse(sum(footnote %in% "") != 0,
                   header,
-                  paste0(header, "^[", footnote, "]"))
+                  paste0(header, paste(paste0("^[", footnote, "]"),
+                                       collapse = " ^,^ ")))
   filename00<-paste0(filename0, cnt_chapt_content, "_tab_",cnt,
                      ifelse(filename_desc!="", paste0("_", filename_desc), ""))
   # Save
@@ -1404,6 +1437,7 @@ save_tables<-function(table_raw = NULL,
                           "caption" = caption,
                           "header" = header,
                           "nickname" = nickname,
+                          "alttext" = alttext,
                           "number" = cnt,
                           "footnote" = footnote)
 

@@ -8,7 +8,6 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 
 ## ----setup--------------------------------------------------------------------
 library(NMFSReports)
-library(here)
 library(ggplot2)
 library(googledrive)
 library(XML)
