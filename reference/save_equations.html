@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Systematically save your report tables for your report — save_tables • NMFSReports</title>
+<title>Systematically save your figures for your report — save_equations • NMFSReports</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Systematically save your report tables for your report — save_tables" />
-<meta property="og:description" content="Systematically save your report tables for your report" />
+<meta property="og:title" content="Systematically save your figures for your report — save_equations" />
+<meta property="og:description" content="Systematically save your figures for your report" />
 
 
 
@@ -159,29 +159,24 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Systematically save your report tables for your report</h1>
+    <h1>Systematically save your figures for your report</h1>
     <small class="dont-index">Source: <a href='https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/R/NMFSReports.R'><code>R/NMFSReports.R</code></a></small>
-    <div class="hidden name"><code>save_tables.Rd</code></div>
+    <div class="hidden name"><code>save_equations.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Systematically save your report tables for your report</p>
+    <p>Systematically save your figures for your report</p>
     </div>
 
-    <pre class="usage"><span class='fu'>save_tables</span><span class='op'>(</span>
-  table_raw <span class='op'>=</span> <span class='cn'>NULL</span>,
-  table_print <span class='op'>=</span> <span class='cn'>NULL</span>,
-  list_tables <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>,
+    <pre class="usage"><span class='fu'>save_equations</span><span class='op'>(</span>
+  <span class='va'>equation</span>,
+  <span class='va'>list_equations</span>,
   header <span class='op'>=</span> <span class='st'>""</span>,
   footnote <span class='op'>=</span> <span class='st'>""</span>,
-  filename0 <span class='op'>=</span> <span class='st'>"x"</span>,
   cnt_chapt_content <span class='op'>=</span> <span class='st'>"001"</span>,
   cnt <span class='op'>=</span> <span class='fl'>1</span>,
-  path <span class='op'>=</span> <span class='cn'>NULL</span>,
-  output_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"csv"</span><span class='op'>)</span>,
-  type <span class='op'>=</span> <span class='st'>"Table"</span>,
+  type <span class='op'>=</span> <span class='st'>"Equation"</span>,
   alttext <span class='op'>=</span> <span class='st'>""</span>,
-  filename_desc <span class='op'>=</span> <span class='st'>""</span>,
   nickname <span class='op'>=</span> <span class='st'>""</span>,
   message <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
@@ -190,16 +185,12 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>table_raw</th>
-      <td><p>Optional. The data.frame that has no rounding and no dividing of numbers (good to save this for record keeping). Default = NA.</p></td>
+      <th>equation</th>
+      <td><p>The latex equation you would like to be saved.</p></td>
     </tr>
     <tr>
-      <th>table_print</th>
-      <td><p>The data.frame as table will be seen in the report.</p></td>
-    </tr>
-    <tr>
-      <th>list_tables</th>
-      <td><p>Save tables in a list</p></td>
+      <th>list_equations</th>
+      <td><p>The list where all equations will be saved.</p></td>
     </tr>
     <tr>
       <th>header</th>
@@ -210,36 +201,20 @@
       <td><p>Any footnote you want attached to this figure.</p></td>
     </tr>
     <tr>
-      <th>filename0</th>
-      <td><p>The filename set at the begining of the chapter</p></td>
-    </tr>
-    <tr>
       <th>cnt_chapt_content</th>
       <td><p>The order number that this exists in the chapter.</p></td>
     </tr>
     <tr>
       <th>cnt</th>
-      <td><p>The figure number</p></td>
-    </tr>
-    <tr>
-      <th>path</th>
-      <td><p>The path the file needs to be saved to. Default = "NULL", meaning it wont save anything and will override all other saving elements.</p></td>
-    </tr>
-    <tr>
-      <th>output_type</th>
-      <td><p>Default = c("csv"). Can be anything supported by utils::write.table.</p></td>
+      <td><p>The figure number.</p></td>
     </tr>
     <tr>
       <th>type</th>
-      <td><p>Default = "Table", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Table 1. This is my spreadsheet!".</p></td>
+      <td><p>Default = "Equation", but can be anything that the element needs to be called (e.g., "Eq.", "Equ.") to fit in the phrase "Equation 1. This is my equation!".</p></td>
     </tr>
     <tr>
       <th>alttext</th>
       <td><p>String with what the alternative text is.</p></td>
-    </tr>
-    <tr>
-      <th>filename_desc</th>
-      <td><p>Additional description text for the filename that will be added at the name of file before the filename extention, before the "_raw" or "_print". Default = "". Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.</p></td>
     </tr>
     <tr>
       <th>nickname</th>
@@ -251,68 +226,79 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>list_equations  updated with the new equation and metadata.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Select data and make plot</span>
-<span class='va'>table_raw</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
-                      y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
-                      col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep_len</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span><span class='op'>)</span>, length.out <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>table_print</span> <span class='op'>&lt;-</span> <span class='va'>table_raw</span>
-<span class='va'>table_print</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"y"</span><span class='op'>)</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'>NMFSReports</span><span class='fu'>::</span><span class='fu'><a href='mod_number.html'>mod_number</a></span><span class='op'>(</span><span class='va'>table_print</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"y"</span><span class='op'>)</span><span class='op'>]</span>,
-                                                     divideby <span class='op'>=</span> <span class='fl'>1</span>,
-                                                     comma_seperator <span class='op'>=</span> <span class='cn'>TRUE</span>,
-                                                     digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-<span class='fu'>save_tables</span><span class='op'>(</span>table_raw <span class='op'>=</span> <span class='va'>table_raw</span>,
-           table_print<span class='op'>=</span><span class='va'>table_print</span>,
-           header <span class='op'>=</span> <span class='st'>"Here is a table!"</span>,
-           footnote <span class='op'>=</span> <span class='st'>"A footnote for this table!"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $`Table 1. Here is a table!`
-#&gt; $`Table 1. Here is a table!`$raw
-#&gt;              x           y col
-#&gt; 1   0.07003485  0.86208648   a
-#&gt; 2  -0.63912332 -0.24323674   b
-#&gt; 3  -0.04996490 -0.20608719   a
-#&gt; 4  -0.25148344  0.01917759   b
-#&gt; 5   0.44479712  0.02956075   a
-#&gt; 6   2.75541758  0.54982754   a
-#&gt; 7   0.04653138 -2.27411486   b
-#&gt; 8   0.57770907  2.68255718   a
-#&gt; 9   0.11819487 -0.36122126   b
-#&gt; 10 -1.91172049  0.21335575   a
+    <pre class="examples"><div class='input'><span class='va'>list_equations</span>  <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>cnt_eq</span> <span class='op'>&lt;-</span> <span class='fl'>0</span>
+
+<span class='va'>cnt_eq</span><span class='op'>&lt;-</span><span class='fu'>NMFSReports</span><span class='fu'>::</span><span class='fu'><a href='auto_counter.html'>auto_counter</a></span><span class='op'>(</span><span class='va'>cnt_eq</span><span class='op'>)</span>
+<span class='va'>list_equations</span> <span class='op'>&lt;-</span><span class='fu'>NMFSReports</span><span class='fu'>::</span><span class='fu'>save_equations</span><span class='op'>(</span>
+   equation <span class='op'>=</span> <span class='st'>"$$c^2 = b^2 + a^2$$"</span>,
+   cnt <span class='op'>=</span> <span class='va'>cnt_eq</span>,
+   list_equations  <span class='op'>=</span> <span class='va'>list_equations</span> ,
+   nickname <span class='op'>=</span> <span class='st'>"pythagorean"</span>,
+   header <span class='op'>=</span> <span class='st'>"Pythagorean theorem"</span>,
+   footnote <span class='op'>=</span> <span class='st'>"footnote about how cool the pythagorean theorem is."</span>,
+   alttext <span class='op'>=</span> <span class='st'>"The Pythagoras theorem is a mathematical law that states that the sum of squares of the lengths of the two short sides of the right triangle is equal to the square of the length of the hypotenuse."</span><span class='op'>)</span>
+
+<span class='va'>cnt_eq</span><span class='op'>&lt;-</span><span class='fu'>NMFSReports</span><span class='fu'>::</span><span class='fu'><a href='auto_counter.html'>auto_counter</a></span><span class='op'>(</span><span class='va'>cnt_eq</span><span class='op'>)</span>
+<span class='va'>list_equations</span> <span class='op'>&lt;-</span><span class='fu'>NMFSReports</span><span class='fu'>::</span><span class='fu'>save_equations</span><span class='op'>(</span>
+   equation <span class='op'>=</span> <span class='st'>"$$F = G \frac{m_1 m_2}{d^2}$$"</span>,
+   cnt <span class='op'>=</span> <span class='va'>cnt_eq</span>,
+   list_equations  <span class='op'>=</span> <span class='va'>list_equations</span> ,
+   nickname <span class='op'>=</span> <span class='st'>"Newton"</span>,
+   header <span class='op'>=</span> <span class='st'>"Newton's Universal Law of Gravitation"</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>list_equations</span> <span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "Equation 1. Pythagorean theorem."                  
+#&gt; [2] "Equation 2. Newton's Universal Law of Gravitation."</div><div class='input'><span class='va'>list_equations</span>
+</div><div class='output co'>#&gt; $`Equation 1. Pythagorean theorem.`
+#&gt; $`Equation 1. Pythagorean theorem.`$equation
+#&gt; [1] "$$c^2 = b^2 + a^2$$"
 #&gt; 
-#&gt; $`Table 1. Here is a table!`$print
-#&gt;        x     y col
-#&gt; 1   0.07  0.86   a
-#&gt; 2  -0.64 -0.24   b
-#&gt; 3  -0.05 -0.21   a
-#&gt; 4  -0.25 0.019   b
-#&gt; 5   0.44  0.03   a
-#&gt; 6    2.8  0.55   a
-#&gt; 7  0.047  -2.3   b
-#&gt; 8   0.58   2.7   a
-#&gt; 9   0.12 -0.36   b
-#&gt; 10  -1.9  0.21   a
+#&gt; $`Equation 1. Pythagorean theorem.`$caption
+#&gt; [1] "Equation 1. Pythagorean theorem.^[footnote about how cool the pythagorean theorem is.]"
 #&gt; 
-#&gt; $`Table 1. Here is a table!`$caption
-#&gt; [1] "Table 1. Here is a table!^[A footnote for this table!]"
+#&gt; $`Equation 1. Pythagorean theorem.`$header
+#&gt; [1] "Equation 1. Pythagorean theorem."
 #&gt; 
-#&gt; $`Table 1. Here is a table!`$header
-#&gt; [1] "Table 1. Here is a table!"
+#&gt; $`Equation 1. Pythagorean theorem.`$nickname
+#&gt; [1] "pythagorean"
 #&gt; 
-#&gt; $`Table 1. Here is a table!`$nickname
+#&gt; $`Equation 1. Pythagorean theorem.`$alttext
+#&gt; [1] "The Pythagoras theorem is a mathematical law that states that the sum of squares of the lengths of the two short sides of the right triangle is equal to the square of the length of the hypotenuse."
+#&gt; 
+#&gt; $`Equation 1. Pythagorean theorem.`$number
+#&gt; [1] "1"
+#&gt; 
+#&gt; $`Equation 1. Pythagorean theorem.`$footnote
+#&gt; [1] "footnote about how cool the pythagorean theorem is."
+#&gt; 
+#&gt; 
+#&gt; $`Equation 2. Newton's Universal Law of Gravitation.`
+#&gt; $`Equation 2. Newton's Universal Law of Gravitation.`$equation
+#&gt; [1] "$$F = G \frac{m_1 m_2}{d^2}$$"
+#&gt; 
+#&gt; $`Equation 2. Newton's Universal Law of Gravitation.`$caption
+#&gt; [1] "Equation 2. Newton's Universal Law of Gravitation."
+#&gt; 
+#&gt; $`Equation 2. Newton's Universal Law of Gravitation.`$header
+#&gt; [1] "Equation 2. Newton's Universal Law of Gravitation."
+#&gt; 
+#&gt; $`Equation 2. Newton's Universal Law of Gravitation.`$nickname
+#&gt; [1] "Newton"
+#&gt; 
+#&gt; $`Equation 2. Newton's Universal Law of Gravitation.`$alttext
 #&gt; [1] ""
 #&gt; 
-#&gt; $`Table 1. Here is a table!`$alttext
+#&gt; $`Equation 2. Newton's Universal Law of Gravitation.`$number
+#&gt; [1] "2"
+#&gt; 
+#&gt; $`Equation 2. Newton's Universal Law of Gravitation.`$footnote
 #&gt; [1] ""
-#&gt; 
-#&gt; $`Table 1. Here is a table!`$number
-#&gt; [1] 1
-#&gt; 
-#&gt; $`Table 1. Here is a table!`$footnote
-#&gt; [1] "A footnote for this table!"
-#&gt; 
-#&gt; $`Table 1. Here is a table!`$filename
-#&gt; [1] "x001_tab_1"
 #&gt; 
 #&gt; </div></pre>
   </div>

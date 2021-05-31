@@ -138,20 +138,21 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.rforge.net/png/">png</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/cowplot/">cowplot</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/magick/">magick</a></span><span class="op">)</span></code></pre></div>
-<p>This file is essentially the example file included in the <code><a href="../reference/buildReport.html">buildReport()</a></code> function.</p>
+<p>This file is essentially the example file included in the <code><a href="../reference/buildReport.html">buildReport()</a></code> function. The <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/vignettes/C_functions-to-help-write-report.Rmd">raw vignette script for this can be found here</a> and the <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/inst/rmd/0_example.Rmd">example script can be found here</a>.</p>
 </div>
 <div id="from-run-file" class="section level2">
 <h2 class="hasAnchor">
 <a href="#from-run-file" class="anchor"></a>From run file:</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cnt_chapt</span> <span class="op">&lt;-</span> <span class="st">"000"</span> <span class="co"># Keep everything in a proper order</span>
-<span class="va">figure_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># This will help us by saving R-ready plots so we can easily go back and edit them if necessary. </span>
-<span class="va">table_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># This will help us by saving R-ready tables  so we can easily go back and edit them if necessary. </span>
-<span class="va">dir_out_figures</span> <span class="op">&lt;-</span> <span class="va">dir_out_tables</span> <span class="op">&lt;-</span> <span class="cn">NULL</span> <span class="co"># I dont really want to save them in this example</span>
-<span class="va">cnt_figures</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># This will autoname your figures with consecutive numbers (e.g., Figure 1.)</span>
-<span class="va">cnt_tables</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># This will autoname your tables with consecutive numbers (e.g., Table 1.)</span>
-<span class="va">cnt_equ</span> <span class="op">&lt;-</span> <span class="fl">0</span>
-<span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="fl">0</span>
+<span class="va">cnt_chapt_content</span> <span class="op">&lt;-</span> <span class="fl">0</span>
+<span class="va">cnt_equations</span> <span class="op">&lt;-</span> <span class="fl">0</span>
+<span class="va">cnt_tables</span> <span class="op">&lt;-</span> <span class="fl">0</span>
+<span class="va">cnt_figures</span> <span class="op">&lt;-</span> <span class="fl">0</span>
+<span class="va">list_equations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">list_tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">list_figures</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">dir_out_figures</span> <span class="op">&lt;-</span> <span class="va">dir_out_tables</span> <span class="op">&lt;-</span> <span class="cn">NULL</span> <span class="co"># I dont actually want to save them in this example</span>
 <span class="va">filename0</span><span class="op">&lt;-</span><span class="st">"example"</span>
 <span class="va">indesign_flowin</span><span class="op">&lt;-</span><span class="cn">FALSE</span> <span class="co"># not going into a final publication that requires indesign for final touches</span></code></pre></div>
 </div>
@@ -182,13 +183,37 @@
 <a href="#equations" class="anchor"></a>Equations</h2>
 <p>Here is some equations you’ll need to have in this report:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cnt_equ</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_equ</span><span class="op">)</span></code></pre></div>
-<p>Eq. 1: Newton’s Universal Law of Gravitation</p>
-<p><span class="math display">\[F = G \frac{m_1 m_2}{d^2}\]</span></p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cnt_equ</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_equ</span><span class="op">)</span></code></pre></div>
-<p>Eq. 2</p>
+<code class="sourceCode R"><span class="va">equation</span> <span class="op">=</span> <span class="st">"c^2 = b^2 + a^2"</span>
+<span class="va">nickname</span> <span class="op">=</span> <span class="st">"pythagorean"</span>
+<span class="va">header</span> <span class="op">=</span> <span class="st">"Pythagorean theorem"</span>
+<span class="va">footnote</span> <span class="op">=</span> <span class="st">"footnote about how cool the pythagorean theorem is."</span>
+<span class="va">alttext</span> <span class="op">=</span> <span class="st">"The Pythagoras theorem is a mathematical law that states that the sum of squares of the lengths of the two short sides of the right triangle is equal to the square of the length of the hypotenuse."</span>
+  
+<span class="co"># save yo' stuff and do a lot of behind the scenes work</span>
+<span class="co"># alt: check out the "child = " in this next chunk header (which must stay empty)</span>
+<span class="co"># ```{r, child = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports")}</span>
+<span class="co"># ```</span></code></pre></div>
+<p>Equation 1. Pythagorean theorem.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <p><span class="math display">\[c^2 = b^2 + a^2\]</span></p>
+<p><em>Alternative text: The Pythagoras theorem is a mathematical law that states that the sum of squares of the lengths of the two short sides of the right triangle is equal to the square of the length of the hypotenuse.</em></p>
+<p>[Text blah blah]</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">equation</span> <span class="op">=</span> <span class="st">"F = G \\frac {m_1 m_2}{d^2}"</span>
+<span class="va">nickname</span> <span class="op">=</span> <span class="st">"Newton"</span>
+<span class="va">header</span> <span class="op">=</span> <span class="st">"Newton's Universal Law of Gravitation"</span>
+
+<span class="co"># save yo' stuff and do a lot of behind the scenes work</span>
+<span class="co"># alt: this does the same thing as calling "child = " in the chunk header</span>
+<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_child.html">knit_child</a></span><span class="op">(</span>
+  text <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_expand.html">knit_expand</a></span><span class="op">(</span>
+    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_eq.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>,
+  quiet <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
+<span class="co"># `r res `</span></code></pre></div>
+<p>Equation 2. Newton’s Universal Law of Gravitation.</p>
+<p><span class="math display">\[F = G \frac {m_1 m_2}{d^2}\]</span></p>
+<p><em>Alternative text: The Pythagoras theorem is a mathematical law that states that the sum of squares of the lengths of the two short sides of the right triangle is equal to the square of the length of the hypotenuse.</em></p>
+<p>Remember the pythagorean theorem from before? That was Equation #1 and it had a footnote that said “footnote about how cool the pythagorean theorem is.”.</p>
 </div>
 <div id="citations" class="section level2">
 <h2 class="hasAnchor">
@@ -200,8 +225,7 @@
 <h2 class="hasAnchor">
 <a href="#example-figure-plot" class="anchor"></a>Example Figure (Plot)</h2>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a figure!"</span>
+<code class="sourceCode R"><span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a figure!"</span>
 <span class="va">footnote</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A footnote for this figure!"</span>, <span class="st">"A second footnote for this figure!"</span><span class="op">)</span>
 <span class="va">nickname</span> <span class="op">&lt;-</span> <span class="st">"example_plot"</span>
 <span class="va">alttext</span> <span class="op">&lt;-</span> <span class="st">"This is a scatter plot of random data"</span>
@@ -212,12 +236,15 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> 
 
 <span class="co"># save yo' stuff and do a lot of behind the scenes work</span>
-<span class="co"># alt: check out the "child = " in this next chunk header (which must stay empty)</span></code></pre></div>
+<span class="co"># alt: check out the "child = " in this next chunk header (which must stay empty)</span>
+<span class="co"># ```{r, child = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")}</span>
+<span class="co"># ```</span></code></pre></div>
 <div class="figure">
-<img src="C_functions-to-help-write-report_files/figure-html/unnamed-chunk-3-1.png" alt="" width="700"><p class="caption">
-Figure 1. Here is a figure!<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> <sup>,</sup><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
+<img src="C_functions-to-help-write-report_files/figure-html/unnamed-chunk-18-1.png" alt="Figure 1. Here is a figure!^[A footnote for this figure!] ^,^ ^[A second footnote for this figure!]" width="700"><p class="caption">
+Figure 1. Here is a figure!<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> <sup>,</sup><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
 </p>
 </div>
+<p><em>Alternative text: This is a scatter plot of random data</em></p>
 <p>Here in plot 1, we see that…</p>
 </div>
 <div id="example-figure-reference-image" class="section level2">
@@ -241,15 +268,15 @@ Figure 1. Here is a figure!<a href="#fn3" class="footnote-ref" id="fnref3"><sup>
 <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_child.html">knit_child</a></span><span class="op">(</span>
   text <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_expand.html">knit_expand</a></span><span class="op">(</span>
     file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_fig.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>,
-    <span class="co"># file = ("../inst/rmd/_child_save_fig.Rmd")),</span>
   quiet <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span>
-  </code></pre></div>
+<span class="co"># `r res `</span></code></pre></div>
 <div class="figure">
-<img src="C_functions-to-help-write-report_files/figure-html/unnamed-chunk-5-1.png" alt="" width="700"><p class="caption">
-Figure 2. Here is a figure!<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
+<img src="C_functions-to-help-write-report_files/figure-html/unnamed-chunk-20-1.png" alt="Figure 2. Here is a figure!^[A footnote for this figure!]" width="700"><p class="caption">
+Figure 2. Here is a figure!<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>
 </p>
 </div>
+<p><em>Alternative text: The NOAA Meatball and text</em></p>
 <p>Here in figure 2, we see the NOAA logo.</p>
 </div>
 <div id="example-table-basic" class="section level2">
@@ -281,10 +308,12 @@ Figure 2. Here is a figure!<a href="#fn5" class="footnote-ref" id="fnref5"><sup>
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#print table in text</span>
 
 <span class="co"># save yo' stuff and do a lot of behind the scenes work</span>
-<span class="co"># alt: check out the "child = " in this chunk header (which must stay empty)</span></code></pre></div>
+<span class="co"># alt: check out the "child = " in this chunk header (which must stay empty)</span>
+<span class="co"># ```{r, child = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")}</span>
+<span class="co"># ```</span></code></pre></div>
 <div id="table-1--here-is-a-table" class="section level4">
 <h4 class="hasAnchor">
-<a href="#table-1--here-is-a-table" class="anchor"></a>Table 1. Here is a table!<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>
+<a href="#table-1--here-is-a-table" class="anchor"></a>Table 1. Here is a table!<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>
 </h4>
 <table class="table">
 <thead><tr class="header">
@@ -295,56 +324,57 @@ Figure 2. Here is a figure!<a href="#fn5" class="footnote-ref" id="fnref5"><sup>
 <tbody>
 <tr class="odd">
 <td align="left">A</td>
-<td align="left">-0.11</td>
-<td align="left">-0.091</td>
+<td align="left">1</td>
+<td align="left">-1.5</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
-<td align="left">-1.7</td>
-<td align="left">-0.37</td>
+<td align="left">1.2</td>
+<td align="left">-1.1</td>
 </tr>
 <tr class="odd">
 <td align="left">C</td>
-<td align="left">0.35</td>
-<td align="left">0.021</td>
+<td align="left">-0.073</td>
+<td align="left">-0.14</td>
 </tr>
 <tr class="even">
 <td align="left">D</td>
-<td align="left">-0.95</td>
-<td align="left">-2.7</td>
+<td align="left">-0.19</td>
+<td align="left">-1.1</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
-<td align="left">1.6</td>
-<td align="left">1.3</td>
+<td align="left">-1.3</td>
+<td align="left">0.39</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
-<td align="left">0.99</td>
-<td align="left">-1</td>
+<td align="left">0.11</td>
+<td align="left">0.46</td>
 </tr>
 <tr class="odd">
 <td align="left">G</td>
-<td align="left">0.093</td>
-<td align="left">-0.96</td>
+<td align="left">0.47</td>
+<td align="left">0.0057</td>
 </tr>
 <tr class="even">
 <td align="left">H</td>
-<td align="left">-0.31</td>
-<td align="left">-0.24</td>
+<td align="left">-0.56</td>
+<td align="left">-0.35</td>
 </tr>
 <tr class="odd">
 <td align="left">I</td>
-<td align="left">-0.63</td>
-<td align="left">0.98</td>
+<td align="left">-0.15</td>
+<td align="left">0.8</td>
 </tr>
 <tr class="even">
 <td align="left">J</td>
-<td align="left">-0.5</td>
-<td align="left">-1.1</td>
+<td align="left">-0.81</td>
+<td align="left">-1.8</td>
 </tr>
 </tbody>
 </table>
+<p><em>Alternative text: The NOAA Meatball and text</em></p>
 <p>Here in table 1, we see that…</p>
 </div>
 </div>
@@ -417,10 +447,11 @@ Figure 2. Here is a figure!<a href="#fn5" class="footnote-ref" id="fnref5"><sup>
   text <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_expand.html">knit_expand</a></span><span class="op">(</span>
     file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_tab.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>,
   quiet <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+<span class="op">)</span>
+<span class="co"># `r res `</span></code></pre></div>
 <div id="table-2--here-is-a-table" class="section level4">
 <h4 class="hasAnchor">
-<a href="#table-2--here-is-a-table" class="anchor"></a>Table 2. Here is a table!<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> <sup>,</sup><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>
+<a href="#table-2--here-is-a-table" class="anchor"></a>Table 2. Here is a table!<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> <sup>,</sup><a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>
 </h4>
 <table class="table">
 <thead><tr class="header">
@@ -431,60 +462,61 @@ Figure 2. Here is a figure!<a href="#fn5" class="footnote-ref" id="fnref5"><sup>
 <tbody>
 <tr class="odd">
 <td align="left">A</td>
-<td align="left">-1.2</td>
-<td align="left">0.13</td>
+<td align="left">-0.13</td>
+<td align="left">0.21</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
-<td align="left">2<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> <sup>,</sup><a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
+<td align="left">0.44<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a> <sup>,</sup><a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>
 </td>
-<td align="left">-1.4</td>
+<td align="left">-1</td>
 </tr>
 <tr class="odd">
-<td align="left">C<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>
+<td align="left">C<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>
 </td>
-<td align="left">-0.82<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>
+<td align="left">2.1<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>
 </td>
-<td align="left">-0.53</td>
+<td align="left">-0.029</td>
 </tr>
 <tr class="even">
-<td align="left">D<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a> <sup>,</sup><a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>
+<td align="left">D<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a> <sup>,</sup><a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>
 </td>
-<td align="left">-0.32</td>
-<td align="left">-0.48</td>
+<td align="left">-0.28</td>
+<td align="left">0.56</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
-<td align="left">-1.7</td>
-<td align="left">0.14</td>
+<td align="left">1.4</td>
+<td align="left">0.51</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
-<td align="left">2.7</td>
-<td align="left">0.029</td>
+<td align="left">1.2</td>
+<td align="left">-1.7</td>
 </tr>
 <tr class="odd">
 <td align="left">G</td>
-<td align="left">-1.8</td>
-<td align="left">1.1</td>
+<td align="left">0.46</td>
+<td align="left">-0.8</td>
 </tr>
 <tr class="even">
 <td align="left">H</td>
-<td align="left">1</td>
-<td align="left">-0.29</td>
+<td align="left">1.1</td>
+<td align="left">0.64</td>
 </tr>
 <tr class="odd">
 <td align="left">I</td>
-<td align="left">0.047</td>
-<td align="left">0.22</td>
+<td align="left">-0.26</td>
+<td align="left">1.4</td>
 </tr>
 <tr class="even">
 <td align="left">J</td>
-<td align="left">0.89</td>
-<td align="left">0.51</td>
+<td align="left">0.92</td>
+<td align="left">-0.5</td>
 </tr>
 </tbody>
 </table>
+<p><em>Alternative text: The NOAA Meatball and text</em></p>
 <p>Here in table 2, we see that…</p>
 </div>
 </div>
@@ -506,18 +538,19 @@ Figure 2. Here is a figure!<a href="#fn5" class="footnote-ref" id="fnref5"><sup>
 <ol>
 <li id="fn1"><p>Wow, this project is so cool!<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p>Here’s another, free-written footnote!<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>A footnote for this figure!<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>A second footnote for this figure!<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p>A footnote for this figure!<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
-<li id="fn6"><p>A footnote for this table!<a href="#fnref6" class="footnote-back">↩︎</a></p></li>
-<li id="fn7"><p>A table with footnotes!<a href="#fnref7" class="footnote-back">↩︎</a></p></li>
-<li id="fn8"><p>There is a ‘J’ in this matrix!<a href="#fnref8" class="footnote-back">↩︎</a></p></li>
-<li id="fn9"><p>Example footnote in a table 4.<a href="#fnref9" class="footnote-back">↩︎</a></p></li>
-<li id="fn10"><p>Example footnote in a table 5.<a href="#fnref10" class="footnote-back">↩︎</a></p></li>
-<li id="fn11"><p>Example footnote in a table 1.<a href="#fnref11" class="footnote-back">↩︎</a></p></li>
-<li id="fn12"><p>Example footnote in a table 6.<a href="#fnref12" class="footnote-back">↩︎</a></p></li>
-<li id="fn13"><p>Example footnote in a table 2.<a href="#fnref13" class="footnote-back">↩︎</a></p></li>
-<li id="fn14"><p>Example footnote in a table 3.<a href="#fnref14" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>footnote about how cool the pythagorean theorem is.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>A footnote for this figure!<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>A second footnote for this figure!<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>A footnote for this figure!<a href="#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>A footnote for this table!<a href="#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>A table with footnotes!<a href="#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>There is a ‘J’ in this matrix!<a href="#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p>Example footnote in a table 4.<a href="#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>Example footnote in a table 5.<a href="#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p>Example footnote in a table 1.<a href="#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p>Example footnote in a table 6.<a href="#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p>Example footnote in a table 2.<a href="#fnref14" class="footnote-back">↩︎</a></p></li>
+<li id="fn15"><p>Example footnote in a table 3.<a href="#fnref15" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>

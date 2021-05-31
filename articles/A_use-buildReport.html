@@ -129,8 +129,7 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span></code></pre></div>
 <div id="create-initial-structure-of-report" class="section level1">
 <h1 class="hasAnchor">
 <a href="#create-initial-structure-of-report" class="anchor"></a>Create initial structure of report</h1>
@@ -271,7 +270,7 @@
 <a href="#create-report-outline" class="anchor"></a>Create Report Outline</h1>
 <p>Now, magic! Now for the sake of the vignette, I can’t actually run it here, but below is a picture of what this looks like:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
         sections <span class="op">=</span> <span class="va">sections</span>,
         authors <span class="op">=</span> <span class="va">authors</span>,
         title <span class="op">=</span> <span class="va">title</span>,
@@ -320,7 +319,7 @@
 <span class="co">#&gt; 6                                                       &lt;link href=http://www.zotero.org/styles/american-fisheries-society rel=self/&gt;</span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Run buildReport() function</span>
-<span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
+<span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
         sections <span class="op">=</span> <span class="va">sections</span>,
         authors <span class="op">=</span> <span class="va">authors</span>,
         title <span class="op">=</span> <span class="va">title</span>,
