@@ -1,7 +1,9 @@
 ---
 title: "Functions and examples to help you write your report"
 date: "`r format(Sys.Date(), format='%B %d %Y') `"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette: 
+      df_print: kable
 csl: "../inst/cite/bulletin-of-marine-science.csl"
 bibliography: "../inst/rmd/bib_example.bib"
 vignette: >
@@ -13,7 +15,7 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   message = FALSE, echo = TRUE, warning = FALSE, 
-  comment = FALSE, collapse = TRUE,
+  comment = FALSE, collapse = TRUE, include = TRUE, 
   comment = "#>"
 )
 options(rmarkdown.html_vignette.check_title = FALSE)
@@ -36,13 +38,13 @@ This file is essentially the example file included in the `buildReport()` functi
 cnt_chapt <- "000" # Keep everything in a proper order
 figure_list <- c() # This will help us by saving R-ready plots so we can easily go back and edit them if necessary. 
 table_list <- c() # This will help us by saving R-ready tables  so we can easily go back and edit them if necessary. 
+dir_out_figures <- dir_out_tables <- NULL # I dont really want to save them in this example
 cnt_figures <- 0 # This will autoname your figures with consecutive numbers (e.g., Figure 1.)
 cnt_tables <- 0 # This will autoname your tables with consecutive numbers (e.g., Table 1.)
 cnt_equ <- 0
-
 cnt_chapt_content<-0
 filename0<-"example"
-indesign_flowin<-FALSE
+indesign_flowin<-FALSE # not going into a final publication that requires indesign for final touches
 ```
 
 # Example of how to use this R Markdown document
@@ -62,9 +64,9 @@ types_of_vessels <- c("NOAA Vessel", "F/V Fishing Boat", "R/V University Vessel"
 
 Here is the report content:
   
-  ## Systematic writing of content
+## Systematic writing of content
   
-  My example dataset has `r xunits(nrow(dat))` rows in it and `r xunits(ncol(dat))` columns in it.`r paste0("^[", Footnotes.list$ExOfStandardFt,"]") ` 
+My example dataset has `r xunits(nrow(dat))` rows in it and `r xunits(ncol(dat))` columns in it.`r paste0("^[", Footnotes.list$ExOfStandardFt,"]") ` 
 
 This sentence exemplifies how to systematically calculate a percent change: `r pchange(start = nrow(dat), end = ncol(dat))`^[Here's another, free-written footnote!]. 
 
@@ -98,10 +100,8 @@ Note that references will appear at the bottom of this document (and any documen
 
 ## Example Figure (Plot)
 
-First, create your plot: 
+```{r G1a}
 
-```{r G1a, include = FALSE, comment = FALSE, message = FALSE}
-# Edit This:
 header <- "Here is a figure!"
 footnote<-c("A footnote for this figure!", "A second footnote for this figure!")
 nickname <- "example_plot"
@@ -111,10 +111,11 @@ figure <- dat %>%
   ggplot(aes(x = x, y = y, colour = as.factor(col))) + # create plot
   geom_point() 
 
-# cat(knitr::asis_output(
-#   knitr::knit_child(input  = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports"), 
-#                     quiet=TRUE)))
+```
 
+```{r G1b, child = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")}
+# save yo' stuff and do a lot of behind the scenes work
+# alt: check out the "child = " in this chunk header (which must stay empty)
 ```
 
 Here in plot `r ref_figtab(list_obj = figure_list, nickname = "example_plot", sublist = "number")`, we see that...
@@ -122,21 +123,29 @@ Here in plot `r ref_figtab(list_obj = figure_list, nickname = "example_plot", su
 
 ## Example Figure (Reference Image)
 
-```{r G2a, include = FALSE, comment = FALSE, message = FALSE}
+```{r G2a}
+
 header <- "Here is a figure!"
 footnote<-c("A footnote for this figure!")
+nickname <- "noaalogo"
 filename_desc <- "noaalogo"
 
 # Select data and make plot
 figure <- 
   cowplot::ggdraw() +
   cowplot::draw_image(readPNG(here::here("inst", "img", "noaa-gray.png"))) 
+#   cowplot::draw_image(readPNG(here::here("img", "noaa-gray.png"))) 
 
 # save yo' stuff and do a lot of behind the scenes work
-# cat(knitr::asis_output(
-#   knitr::knit_child(input  = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports"), 
-#                     quiet=TRUE)))
+# alt: this does the same thing as calling "child = " in the chunk header
+res <- knitr::knit_child(
+  text = knitr::knit_expand(
+    file = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")),
+  quiet = TRUE
+)
 ```
+
+`r res `
 
 Here in figure `r ref_figtab(list_obj = figure_list, nickname = "noaalogo", sublist = "number")`, we see the NOAA logo. 
 
@@ -144,6 +153,7 @@ Here in figure `r ref_figtab(list_obj = figure_list, nickname = "noaalogo", subl
 ## Example Table (Basic)
 
 ```{r T1a}
+
 header <- "Here is a table!"
 footnote<-"A footnote for this table!"
 nickname <- "example1" # this is so you can refer to it later systematically
@@ -170,20 +180,19 @@ table_print <- table_print %>%
                fonttype = "bold") %>% # bold
   knitr::kable(row.names = FALSE, booktabs = TRUE) #print table in text
 
-# save yo' stuff and do a lot of behind the scenes work
-# cat(knitr::asis_output(
-#   knitr::knit_child(input  = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports"), 
-#                     quiet=TRUE)))
-
-
 ```
 
+```{r T1b, child = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")}
+# save yo' stuff and do a lot of behind the scenes work
+# alt: check out the "child = " in this chunk header (which must stay empty)
+```
 
 Here in table `r ref_figtab(list_obj = table_list, nickname = "example1", sublist = "number")`, we see that...
 
 ## Example Table (With Footnotes)
 
 ```{r T2a}
+
 header <- "Here is a table!"
 footnote<-"A footnote for this table!"
 nickname <- "example_foot" # this is so you can refer to it later systematically
@@ -226,19 +235,25 @@ table_print <- add_table_footnotes(tab = table_print,
 
 table_print$footnotes<-NULL # remove column from final table
 
-# Format table
+# Format table 
 table_print <- table_print %>%
   format_cells(rows = 0, # make column names
                cols = 1:ncol(table_print), # for all columns
-               fonttype = "bold") # bold
+               fonttype = "bold") %>% # bold
+  knitr::kable(row.names = FALSE, booktabs = TRUE) #print table in text
 
 # save yo' stuff and do a lot of behind the scenes work
-# cat(knitr::asis_output(
-#   knitr::knit_child(input  = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports"), 
-#                     quiet=TRUE)))
+# alt: this does the same thing as calling "child = " in the chunk header
+res <- knitr::knit_child(
+  text = knitr::knit_expand(
+    file = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")
+  ),
+  quiet = TRUE
+)
 
 ```
 
+`r res `
 
 Here in table `r ref_figtab(list_obj = table_list, nickname = "example_foot", sublist = "number")`, we see that...
 

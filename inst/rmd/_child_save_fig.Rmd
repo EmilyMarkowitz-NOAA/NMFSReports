@@ -1,6 +1,6 @@
 
 
-```{r}
+```{r, echo = FALSE}
 # Don't Edit This:
 cnt_chapt_content<-auto_counter(cnt_chapt_content)
 cnt_figures<-cnt_figures+1
@@ -20,7 +20,7 @@ figure_list<-save_figures(figure = figure,
 ```
 
 
-```{r, fig.cap=ifelse(indesign_flowin %in% TRUE, "", figure_list[[length(figure_list)]]$caption)}
+```{r, echo = FALSE, fig.cap=ifelse(indesign_flowin %in% TRUE, "", figure_list[[length(figure_list)]]$caption)}
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
 # However, sometimes its nice to see everything all together, so this variable is 

@@ -9,7 +9,12 @@ bibliography: "../cite/bibliography.bib"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, error = FALSE, message = FALSE)
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  include = TRUE,
+  warning = FALSE, 
+  error = FALSE, 
+  message = FALSE)
 
 # # In case you want to run this outside of the run.R structure
 # library(NMFSReports)
@@ -74,7 +79,7 @@ Note that references will appear at the bottom of this document (and any documen
 
 ## Example Figure (Plot)
 
-```{r G1a, results='asis'}
+```{r G1a}
 header <- "Here is a figure!"
 footnote <- c("A footnote for this figure!", "A second footnote for this figure!")
 nickname <- "example_plot"
@@ -87,11 +92,11 @@ figure <- dat %>%
   # theme(text=element_text(family="Times New Roman")) + 
   nmfspalette::scale_color_nmfs(palette = "coral") # Use NMFS Color Pallet
 
-# save yo' stuff and do a lot of behind the scenes work
-cat(knitr::asis_output(
-  knitr::knit_child(input  = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports"), 
-                    quiet=TRUE)))
+```
 
+```{r G1b, child = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")}
+# save yo' stuff and do a lot of behind the scenes work
+# alt: check out the "child = " in this chunk header (which must stay empty)
 ```
 
 Here in plot `r ref_figtab(list_obj = figure_list, nickname = "example_plot", sublist = "number")`, we see that...
@@ -102,6 +107,7 @@ Here in plot `r ref_figtab(list_obj = figure_list, nickname = "example_plot", su
 header <- "Here is a figure!"
 footnote<-c("A footnote for this figure!")
 filename_desc <- "noaalogo"
+nickname <- "example_logo"
 
 # Select data and make plot
 figure <- 
@@ -109,10 +115,16 @@ figure <-
   cowplot::draw_image(readPNG(here::here("img", "noaa-gray.png"))) 
 
 # save yo' stuff and do a lot of behind the scenes work
-cat(knitr::asis_output(
-  knitr::knit_child(input  = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports"), 
-                    quiet=TRUE)))
+# alt: this does the same thing as calling "child = " in the chunk header
+res <- knitr::knit_child(
+  text = knitr::knit_expand(
+    file = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")
+  ),
+  quiet = TRUE
+)
 ```
+
+`r res `
 
 ## Example Table (Basic)
 
@@ -143,12 +155,11 @@ table_print <- table_print %>%
                        fonttype = "bold") %>% # bold
           knitr::kable(row.names = FALSE, booktabs = TRUE) #print table in text
 
+```
+
+```{r T1b, child = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")}
 # save yo' stuff and do a lot of behind the scenes work
-cat(knitr::asis_output(
-  knitr::knit_child(input  = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports"), 
-                    quiet=TRUE)))
-
-
+# alt: check out the "child = " in this chunk header (which must stay empty)
 ```
 
 Here in plot `r ref_figtab(list_obj = table_list, nickname = "example1", sublist = "number")`, we see that...
@@ -205,9 +216,15 @@ table_print <- table_print %>%
                        fonttype = "bold") # bold
 
 # save yo' stuff and do a lot of behind the scenes work
-cat(knitr::asis_output(
-  knitr::knit_child(input  = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports"), 
-                    quiet=TRUE)))
+# alt: this does the same thing as calling "child = " in the chunk header
+res <- knitr::knit_child(
+  text = knitr::knit_expand(
+    file = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")
+  ),
+  quiet = TRUE
+)
 ```
+
+`r res `
 
 Here in table `r ref_figtab(list_obj = table_list, nickname = "example_foot", sublist = "number")`, we see that...
