@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.1</span>
       </span>
     </div>
 
@@ -180,6 +180,7 @@
   path <span class='op'>=</span> <span class='cn'>NULL</span>,
   output_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"csv"</span><span class='op'>)</span>,
   type <span class='op'>=</span> <span class='st'>"Table"</span>,
+  alttext <span class='op'>=</span> <span class='st'>""</span>,
   filename_desc <span class='op'>=</span> <span class='st'>""</span>,
   nickname <span class='op'>=</span> <span class='st'>""</span>,
   message <span class='op'>=</span> <span class='cn'>FALSE</span>
@@ -231,6 +232,10 @@
     <tr>
       <th>type</th>
       <td><p>Default = "Table", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Table 1. This is my spreadsheet!". Always save in pdf so you can make last minute edits in adobe acrobat!</p></td>
+    </tr>
+    <tr>
+      <th>alttext</th>
+      <td><p>String with what the alternative text is.</p></td>
     </tr>
     <tr>
       <th>filename_desc</th>
@@ -295,6 +300,9 @@
 #&gt; [1] "Table 1. Here is a table!"
 #&gt; 
 #&gt; $`Table 1. Here is a table!`$nickname
+#&gt; [1] ""
+#&gt; 
+#&gt; $`Table 1. Here is a table!`$alttext
 #&gt; [1] ""
 #&gt; 
 #&gt; $`Table 1. Here is a table!`$number
