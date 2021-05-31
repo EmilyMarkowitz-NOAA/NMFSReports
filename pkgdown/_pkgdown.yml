@@ -79,7 +79,8 @@ reference:
     contents:
       - '`save_figures`'
       - '`save_tables`'
-      - '`ref_figtab`'
+      - '`save_equations`'
+      - '`ref_listobject`'
   - title: Record Metadata
     contents:
       - '`create_metadata`'

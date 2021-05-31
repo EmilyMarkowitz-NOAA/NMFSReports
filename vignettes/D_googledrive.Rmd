@@ -19,7 +19,6 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 
 ```{r setup}
 library(NMFSReports)
-library(ggplot2)
 library(googledrive)
 library(XML)
 ```

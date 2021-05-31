@@ -9,6 +9,29 @@ output:
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, error = FALSE)
 ```
 
+```{r}
+report_office_location <- " > [Office Location]"                          # CHANGE
+# For example:
+# "National Oceanic and Atmospheric Administration\n
+# 1315 East-West Highway [bldg./room]\n
+# Silver Spring, MD 20910"\n
+report_office <- "" # For example: AFSC, NEFSC                          # CHANGE
+report_num <- "###"                                                     # CHANGE
+report_NOAA_leaders <- "U.S. Department of Commerce
+
+Wynn Coggins, Acting Secretary
+
+
+National Oceanic and Atmospheric Administration
+
+Benjamin Friedman, Acting NOAA Administrator
+
+
+National Marine Fisheries Service
+
+Paul Doremus, Acting Assistant Administrator for Fisheries"
+```
+
 </br>
 
 # `r report_title `

@@ -6,21 +6,22 @@ cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_tables<-cnt_tables+1
 
 # Systematically save your table with this function
-table_list<-NMFSReports::save_tables(table_raw = ifelse(exists("table_raw"), table_raw, NULL), 
-                                     table_print = ifelse(exists("table_print"), table_print, NULL),
-                                     table_list = table_list, 
-                                     header = ifelse(exists("header"), header, ""),
-                                     footnote = unlist(ifelse(exists("footnote"), list(footnote), "")), 
-                                     alttext = ifelse(exists("alttext"), alttext, ""),
-                                     filename0 = ifelse(exists("filename0"), filename0, nickname), 
-                                     nickname = ifelse(exists("nickname"), nickname, filename0),
-                                     filename_desc = ifelse(exists("filename_desc"), filename_desc, ""),  
-                                     cnt_chapt_content = cnt_chapt_content, 
-                                     cnt = cnt_tables, 
-                                     path = dir_out_tables)
+list_tables<-NMFSReports::save_tables(
+  table_raw = ifelse(exists("table_raw"), table_raw, NULL), 
+  table_print = ifelse(exists("table_print"), table_print, NULL),
+  list_tables = list_tables, 
+  header = ifelse(exists("header"), header, ""),
+  footnote = unlist(ifelse(exists("footnote"), list(footnote), "")), 
+  alttext = ifelse(exists("alttext"), alttext, ""),
+  filename0 = ifelse(exists("filename0"), filename0, nickname), 
+  nickname = ifelse(exists("nickname"), nickname, filename0),
+  filename_desc = ifelse(exists("filename_desc"), filename_desc, ""),  
+  cnt_chapt_content = cnt_chapt_content, 
+  cnt = cnt_tables, 
+  path = dir_out_tables)
 
 ```
-#### `r ifelse(indesign_flowin %in% TRUE, "", table_list[[length(table_list)]]$caption) `
+#### `r ifelse(indesign_flowin %in% TRUE, "", list_tables[[length(list_tables)]]$caption) `
 
 ```{r, echo = FALSE}
 
@@ -37,7 +38,7 @@ if (indesign_flowin %in% FALSE) {
   }
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign 
   
-  Title0 <- ifelse(indesign_flowin %in% TRUE, "", table_list[[length(table_list)]]$caption)
+  Title0 <- ifelse(indesign_flowin %in% TRUE, "", list_tables[[length(list_tables)]]$caption)
   
   rmarkdown::render(system.file("rmd/_TableFigureHeader.Rmd", package = "NMFSReports"), 
                     quiet = TRUE,
@@ -57,4 +58,4 @@ for (i in 1:length(remove_who0)){
 remove(list = remove_who)
 
 ```
-
+`r if(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="") { paste0("*Alternative text: ", list_tables[[length(list_tables)]]$alttext, "*") } `

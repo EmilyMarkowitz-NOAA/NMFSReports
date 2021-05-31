@@ -6,7 +6,7 @@
 \usage{
 save_figures(
   figure,
-  figure_list,
+  list_figures,
   header = "",
   footnote = "",
   filename0 = "x",
@@ -26,7 +26,7 @@ save_figures(
 \arguments{
 \item{figure}{The figure you would like to be saved.}
 
-\item{figure_list}{The list where all figures will be saved.}
+\item{list_figures}{The list where all figures will be saved.}
 
 \item{header}{The name and title of the figure. Default = "".}
 
@@ -57,7 +57,7 @@ save_figures(
 \item{message}{TRUE/FALSE. Default = FALSE. If TRUE, it will print information about where your plot has been saved to.}
 }
 \value{
-figure_list updated with the new plot and metadata.
+list_figures updated with the new plot and metadata.
 }
 \description{
 Systematically save your figures for your report
@@ -65,7 +65,7 @@ Systematically save your figures for your report
 \examples{
 library(magrittr)
 library(ggplot2)
-figure_list <- c()
+list_figures <- c()
 dat <- data.frame(x = rnorm(n = 10),
                   y = rnorm(n = 10),
                   col = rep_len(x = c("a", "b"),
@@ -75,10 +75,10 @@ figure<- dat \%>\%
   ggplot(aes(x = x, y = y,
   colour = as.factor(col))) + # create plot
   geom_point()
-figure_list<-save_figures(figure = figure,
-                      figure_list = figure_list,
+list_figures<-save_figures(figure = figure,
+                      list_figures = list_figures,
                       header = "example",
                       footnote = "footnote example")
-names(figure_list)
-figure_list
+names(list_figures)
+list_figures
 }

@@ -7,7 +7,7 @@
 save_tables(
   table_raw = NULL,
   table_print = NULL,
-  table_list = c(),
+  list_tables = c(),
   header = "",
   footnote = "",
   filename0 = "x",
@@ -27,7 +27,7 @@ save_tables(
 
 \item{table_print}{The data.frame as table will be seen in the report.}
 
-\item{table_list}{Save tables in a list}
+\item{list_tables}{Save tables in a list}
 
 \item{header}{The name and title of the figure. Default = "".}
 
@@ -43,7 +43,7 @@ save_tables(
 
 \item{output_type}{Default = c("csv"). Can be anything supported by utils::write.table.}
 
-\item{type}{Default = "Table", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Table 1. This is my spreadsheet!". Always save in pdf so you can make last minute edits in adobe acrobat!}
+\item{type}{Default = "Table", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Table 1. This is my spreadsheet!".}
 
 \item{alttext}{String with what the alternative text is.}
 

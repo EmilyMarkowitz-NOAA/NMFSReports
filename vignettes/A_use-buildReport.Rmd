@@ -19,7 +19,6 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 
 ```{r setup}
 library(NMFSReports)
-library(ggplot2)
 ```
 
 # Create initial structure of report
@@ -116,7 +115,7 @@ bib
 Now, magic! Now for the sake of the vignette, I can't actually run it here, but below is a picture of what this looks like:
 
 ```{r, eval = FALSE}
-buildReport(
+NMFSReports::buildReport(
         sections = sections,
         authors = authors,
         title = title,
@@ -163,7 +162,7 @@ head(csl0)
 
 ```{r, eval = FALSE}
 # Run buildReport() function
-buildReport(
+NMFSReports::buildReport(
         sections = sections,
         authors = authors,
         title = title,

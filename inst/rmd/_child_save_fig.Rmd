@@ -6,20 +6,26 @@
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_figures<-cnt_figures+1
 # Systematically save your plot with this function
-figure_list<-NMFSReports::save_figures(figure = figure, 
-                                       figure_list = figure_list, 
-                                       header = ifelse(exists("header"), header, ""),
-                                       footnote = unlist(ifelse(exists("footnote"), list(footnote), "")), 
-                                       filename0 = ifelse(exists("filename0"), filename0, nickname), 
-                                       nickname = ifelse(exists("nickname"), nickname, filename0),
-                                       filename_desc = ifelse(exists("filename_desc"), filename_desc, ""),
-                                       cnt_chapt_content = cnt_chapt_content, 
-                                       cnt = cnt_figures, 
-                                       path = dir_out_figures)
+list_figures<-NMFSReports::save_figures(
+  figure = figure, 
+  list_figures = list_figures, 
+  header = ifelse(exists("header"), header, ""),
+  footnote = unlist(ifelse(exists("footnote"), list(footnote), "")), 
+  alttext = ifelse(exists("alttext"), alttext, ""),
+  filename0 = ifelse(exists("filename0"), filename0, nickname), 
+  nickname = ifelse(exists("nickname"), nickname, filename0),
+  filename_desc = ifelse(exists("filename_desc"), filename_desc, ""),
+  cnt_chapt_content = cnt_chapt_content, 
+  width = ifelse(exists("width"), width, 6), 
+  height = ifelse(exists("height"), height, 6),
+  cnt = cnt_figures, 
+  path = dir_out_figures)
 ```
 
 
-```{r, echo = FALSE, fig.cap=ifelse(indesign_flowin %in% TRUE, "", figure_list[[length(figure_list)]]$caption), fig.alt = ifelse(indesign_flowin %in% TRUE, "", figure_list[[length(figure_list)]]$alttext)}
+```{r, echo = FALSE, fig.cap=ifelse(indesign_flowin %in% TRUE, "", list_figures[[length(list_figures)]]$caption)}
+
+# , fig.alt = ifelse(indesign_flowin %in% TRUE, "", list_figures[[length(list_figures)]]$alttext)
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
@@ -29,7 +35,7 @@ figure_list<-NMFSReports::save_figures(figure = figure,
 if (indesign_flowin %in% FALSE) {
   figure # print plot in text
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign
-  Title0 <- ifelse(indesign_flowin %in% TRUE, "", figure_list[[length(figure_list)]]$caption)
+  Title0 <- ifelse(indesign_flowin %in% TRUE, "", list_figures[[length(list_figures)]]$caption)
   rmarkdown::render(system.file("rmd/_TableFigureHeader.Rmd", package = "NMFSReports"),
                     quiet = TRUE,
                     output_dir = dir_chapters,
@@ -47,3 +53,5 @@ for (i in 1:length(remove_who0)){
 remove(list = remove_who)
 
 ```
+
+`r if(indesign_flowin %in% FALSE & (list_figures[[length(list_figures)]]$alttext)!="") { paste0("*Alternative text: ", list_figures[[length(list_figures)]]$alttext, "*") } `

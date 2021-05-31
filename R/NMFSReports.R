@@ -208,10 +208,10 @@ buildReport<-function(sections = c("frontmatter",
   # directories
 
   # support_scripts
-  a<-paste("source('./code/",
+  a<-paste0("source('./code/",
            paste0(support_scripts, ".R')
 
-                  "), collapse = "")
+  "), collapse = "")
 
   run0<-gsub(pattern = "# INSERT_SUPPORT_SCRIPTS",
              replacement = a,
@@ -1228,7 +1228,7 @@ auto_counter<-function(counter0) {
 #' Systematically save your figures for your report
 #'
 #' @param figure The figure you would like to be saved.
-#' @param figure_list The list where all figures will be saved.
+#' @param list_figures The list where all figures will be saved.
 #' @param header The name and title of the figure. Default = "".
 #' @param footnote Any footnote you want attached to this figure.
 #' @param filename0 The filename set at the begining of the chapter.
@@ -1245,11 +1245,11 @@ auto_counter<-function(counter0) {
 #' @param message TRUE/FALSE. Default = FALSE. If TRUE, it will print information about where your plot has been saved to.
 #' @importFrom magrittr %>%
 #' @export
-#' @return figure_list updated with the new plot and metadata.
+#' @return list_figures updated with the new plot and metadata.
 #' @examples
 #' library(magrittr)
 #' library(ggplot2)
-#' figure_list <- c()
+#' list_figures <- c()
 #' dat <- data.frame(x = rnorm(n = 10),
 #'                   y = rnorm(n = 10),
 #'                   col = rep_len(x = c("a", "b"),
@@ -1259,14 +1259,14 @@ auto_counter<-function(counter0) {
 #'   ggplot(aes(x = x, y = y,
 #'   colour = as.factor(col))) + # create plot
 #'   geom_point()
-#' figure_list<-save_figures(figure = figure,
-#'                       figure_list = figure_list,
+#' list_figures<-save_figures(figure = figure,
+#'                       list_figures = list_figures,
 #'                       header = "example",
 #'                       footnote = "footnote example")
-#' names(figure_list)
-#' figure_list
+#' names(list_figures)
+#' list_figures
 save_figures<-function(figure,
-                     figure_list,
+                     list_figures,
                      header = "",
                      footnote = "",
                      filename0 = "x",
@@ -1312,22 +1312,23 @@ save_figures<-function(figure,
     }
   }
 
-  figure_list$temp <- list("plot" = figure,
+  list_figures$temp <- list("plot" = figure,
                            "caption" = caption,
                            "header" = header,
                            "nickname" = nickname,
                            "alttext" = alttext,
                            "number" = cnt,
-                           "footnote" = footnote)
+                           "footnote" = footnote,
+                           "filename" = filename00)
 
-  names(figure_list)[names(figure_list) %in% "temp"] <- header
+  names(list_figures)[names(list_figures) %in% "temp"] <- header
 
   if (message == TRUE) {
     print(paste0("This figure was saved to ", path, filename00, ".*"))
   }
 
 
-  return(figure_list)
+  return(list_figures)
 }
 
 
@@ -1338,7 +1339,7 @@ save_graph <- save_figures
 #'
 #' @param table_raw Optional. The data.frame that has no rounding and no dividing of numbers (good to save this for record keeping). Default = NA.
 #' @param table_print The data.frame as table will be seen in the report.
-#' @param table_list Save tables in a list
+#' @param list_tables Save tables in a list
 #' @param header The name and title of the figure. Default = "".
 #' @param footnote Any footnote you want attached to this figure.
 #' @param filename0 The filename set at the begining of the chapter
@@ -1346,7 +1347,7 @@ save_graph <- save_figures
 #' @param cnt The figure number
 #' @param path The path the file needs to be saved to. Default = "NULL", meaning it wont save anything and will override all other saving elements.
 #' @param output_type Default = c("csv"). Can be anything supported by utils::write.table.
-#' @param type Default = "Table", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Table 1. This is my spreadsheet!". Always save in pdf so you can make last minute edits in adobe acrobat!
+#' @param type Default = "Table", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Table 1. This is my spreadsheet!".
 #' @param alttext String with what the alternative text is.
 #' @param filename_desc Additional description text for the filename that will be added at the name of file before the filename extention, before the "_raw" or "_print". Default = "". Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.
 #' @param nickname A unique name that can be used to identify the figure so it can be referenced later in the report.
@@ -1369,7 +1370,7 @@ save_graph <- save_figures
 #'            footnote = "A footnote for this table!")
 save_tables<-function(table_raw = NULL,
                      table_print = NULL,
-                     table_list = c(),
+                     list_tables = c(),
                      header = "",
                      footnote = "",
                      filename0 = "x",
@@ -1432,59 +1433,137 @@ save_tables<-function(table_raw = NULL,
     }
   }
 
-  table_list$temp <- list("raw" = table_raw,
+  list_tables$temp <- list("raw" = table_raw,
                           "print" = table_print,
                           "caption" = caption,
                           "header" = header,
                           "nickname" = nickname,
                           "alttext" = alttext,
                           "number" = cnt,
-                          "footnote" = footnote)
+                          "footnote" = footnote,
+                          "filename" = filename00)
 
-  names(table_list)[names(table_list) %in% "temp"] <- header
+  names(list_tables)[names(list_tables) %in% "temp"] <- header
 
   if (message == TRUE) {
     print(paste0("This table was saved to ", path, filename00, ".*"))
   }
-  return(table_list)
+  return(list_tables)
 
 }
 
 
+#' Systematically save your figures for your report
+#'
+#' @param equation The latex equation you would like to be saved.
+#' @param list_equations  The list where all equations will be saved.
+#' @param header The name and title of the figure. Default = "".
+#' @param footnote Any footnote you want attached to this figure.
+#' @param cnt_chapt_content The order number that this exists in the chapter.
+#' @param cnt The figure number.
+#' @param type Default = "Equation", but can be anything that the element needs to be called (e.g., "Eq.", "Equ.") to fit in the phrase "Equation 1. This is my equation!".
+#' @param alttext String with what the alternative text is.
+#' @param nickname A unique name that can be used to identify the figure so it can be referenced later in the report.
+#' @param message TRUE/FALSE. Default = FALSE. If TRUE, it will print information about where your plot has been saved to.
+#' @importFrom magrittr %>%
+#' @export
+#' @return list_equations  updated with the new equation and metadata.
+#' @examples
+#' list_equations  <- c()
+#' cnt_eq <- 0
+#'
+#' cnt_eq<-NMFSReports::auto_counter(cnt_eq)
+#' list_equations <-NMFSReports::save_equations(
+#'    equation = "$$c^2 = b^2 + a^2$$",
+#'    cnt = cnt_eq,
+#'    list_equations  = list_equations ,
+#'    nickname = "pythagorean",
+#'    header = "Pythagorean theorem",
+#'    footnote = "footnote about how cool the pythagorean theorem is.",
+#'    alttext = "The Pythagoras theorem is a mathematical law that states that the sum of squares of the lengths of the two short sides of the right triangle is equal to the square of the length of the hypotenuse.")
+#'
+#' cnt_eq<-NMFSReports::auto_counter(cnt_eq)
+#' list_equations <-NMFSReports::save_equations(
+#'    equation = "$$F = G \frac{m_1 m_2}{d^2}$$",
+#'    cnt = cnt_eq,
+#'    list_equations  = list_equations ,
+#'    nickname = "Newton",
+#'    header = "Newton's Universal Law of Gravitation")
+#'
+#' names(list_equations )
+#' list_equations
+save_equations<-function(equation,
+                       list_equations ,
+                       header = "",
+                       footnote = "",
+                       cnt_chapt_content = "001",
+                       cnt = 1,
+                       type = "Equation",
+                       alttext = "",
+                       nickname = "",
+                       message = FALSE){
+
+  # Title
+  header<-trimws(header)
+  # header<-stringr::str_to_sentence(header)
+  header<-paste0(type, " ",cnt,". ",
+                 ifelse(substr(x = header,
+                               start = nchar(header),
+                               stop = nchar(header)) %in%
+                          c(".", "!", "?", "...", "...."),
+                        header, paste0(header, ".")))
+  footnote<-trimws(footnote)
+  caption<-ifelse(sum(footnote %in% "") != 0,
+                  header,
+                  paste0(header, paste(paste0("^[", footnote, "]"),
+                                       collapse = " ^,^ ")))
+
+  list_equations $temp <- list("equation" = equation,
+                           "caption" = caption,
+                           "header" = header,
+                           "nickname" = nickname,
+                           "alttext" = alttext,
+                           "number" = cnt,
+                           "footnote" = footnote)
+
+  names(list_equations )[names(list_equations ) %in% "temp"] <- header
+
+  return(list_equations )
+}
 
 #' Reference a figure or table
 #'
-#' @param list_obj A list object created by figure_list or table_list.
-#' @param nickname A unique string that is used to identify the plot or table in figure_list or table_list, respectively.
-#' @param sublist A string of the sublist in figure_list or table_list you want the contents returned from.
+#' @param list_obj A list object created by list_figures or list_tables.
+#' @param nickname A unique string that is used to identify the plot or table in list_figures or list_tables, respectively.
+#' @param sublist A string of the sublist in list_figures or list_tables you want the contents returned from.
 #' @return The item in the list.
 #' @export
 #' @examples
-#' figure_list <- c()
+#' list_figures <- c()
 #' pp <- plot(x = 1, y = 1)
-#' figure_list <- save_figures(
+#' list_figures <- NMFSReports::save_figures(
 #'    figure = pp,
-#'    figure_list = figure_list,
+#'    list_figures = list_figures,
 #'    header = "blah blah blah",
 #'    nickname = "example_figure", # a unique name you can refer back to
 #'    cnt_chapt_content = "003",
 #'    cnt = "012")
-#' figure_list <- save_figures(
+#' list_figures <- NMFSReports::save_figures(
 #'    figure = pp,
-#'    figure_list = figure_list,
+#'    list_figures = list_figures,
 #'    header = "blah blah blah",
 #'    nickname = "example_figure_other", # a unique name you can refer back to
 #'    cnt_chapt_content = "003",
 #'    cnt = "013")
-#' figure_list
-#' refnum <- ref_figtab(
-#'    list_obj = figure_list,
+#' list_figures
+#' refnum <- NMFSReports::ref_listobject(
+#'    list_obj = list_figures,
 #'    nickname = "example_figure",
 #'    sublist = "number")
 #' refnum
 #' print(paste0("Please refer to figure ", refnum,
 #'              " to see this figure, not the other figure."))
-ref_figtab <- function(list_obj,
+ref_listobject <- function(list_obj,
                        nickname,
                        sublist = "number"){
   ref <- list_obj[which(lapply(list_obj, `[[`, "nickname") %in% nickname)][[1]][sublist]

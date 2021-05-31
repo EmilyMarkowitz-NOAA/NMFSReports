@@ -13,26 +13,6 @@
 report_title <- # INSERT_REPORT_TITLE
 report_authors <- # INSERT_AUTHOR
 report_yr <- substr(x = Sys.Date(), start = 1, stop = 4)                # CHANGE
-report_office_location <- " > [Office Location]"                          # CHANGE
-# For example:
-# "National Oceanic and Atmospheric Administration\n
-# 1315 East-West Highway [bldg./room]\n
-# Silver Spring, MD 20910"\n
-report_office <- "" # For example: AFSC, NEFSC                          # CHANGE
-report_num <- "###"                                                     # CHANGE
-report_NOAA_leaders <- "U.S. Department of Commerce
-
-Wynn Coggins, Acting Secretary
-
-
-National Oceanic and Atmospheric Administration
-
-Benjamin Friedman, Acting NOAA Administrator
-
-
-National Marine Fisheries Service
-
-Paul Doremus, Acting Assistant Administrator for Fisheries"
 
 #######***WHAT KIND OF OUTPUT#######
 #Is this for InDesign?
@@ -49,11 +29,12 @@ indesign_flowin <- FALSE
 
 ######MAKE REPORT########
 cnt_chapt <- "000" # Keep everything in a proper order
-figure_list <- c() # This will help us by saving R-ready plots and figures so we can easily go back and edit them if necessary.
-table_list <- c() # This will help us by saving R-ready tables  so we can easily go back and edit them if necessary.
+list_equations <- list()
+list_tables <- list()
+list_figures <- list()
 cnt_figures <- 0 # This will autoname your figures with consecutive numbers (e.g., Figure 1.)
 cnt_tables <- 0 # This will autoname your tables with consecutive numbers (e.g., Table 1.)
-cnt_equ <- 0
+cnt_equations <- 0 # This will autoname your equations with consecutive numbers (e.g., Equation 1.)
 
 ####### RUN EACH SECTION#############
 

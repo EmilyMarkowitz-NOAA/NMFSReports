@@ -20,7 +20,6 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 
 ```{r setup}
 library(NMFSReports)
-# library(ggplot2)
 ```
 
 First, [run `NMFSReports::buildReport()`](https://emilymarkowitz-noaa.github.io/NMFSReports/articles/A_use-buildReport.html) to produce our basic report outline. It should produce something like this: 
