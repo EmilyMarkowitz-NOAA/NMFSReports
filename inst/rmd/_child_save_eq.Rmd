@@ -24,7 +24,7 @@ list_equations<-NMFSReports::save_equations(
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("equation", "header", "footnote", "nickname")
+remove_who0 <- c("equation", "header", "footnote", "nickname", "alttext")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
     remove_who <- c(remove_who, remove_who0[i])

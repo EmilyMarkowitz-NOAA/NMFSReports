@@ -32,9 +32,9 @@ list_tables<-NMFSReports::save_tables(
 # Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
 if (indesign_flowin %in% FALSE) { 
   if (exists("table_print")) {
-    table_print # print table in text
+    list_tables[[length(list_tables)]]$table_print # print table in text
   } else {
-    table_raw
+    list_tables[[length(list_tables)]]$table_raw
   }
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign 
   
@@ -48,7 +48,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("header", "footnote", "filename0", "nickname", "filename_desc", 
+remove_who0 <- c("header", "footnote", "filename0", "nickname", "filename_desc", "alttext", 
                  "table_raw", "table_print")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
@@ -58,4 +58,5 @@ for (i in 1:length(remove_who0)){
 remove(list = remove_who)
 
 ```
+
 `r if(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="") { paste0("*Alternative text: ", list_tables[[length(list_tables)]]$alttext, "*") } `

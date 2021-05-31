@@ -73,7 +73,7 @@ list_equations<-NMFSReports::save_equations(
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("equation", "header", "footnote", "nickname")
+remove_who0 <- c("equation", "header", "footnote", "nickname", "alttext")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
     remove_who <- c(remove_who, remove_who0[i])
@@ -103,7 +103,7 @@ list_equations<-NMFSReports::save_equations(
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("equation", "header", "footnote", "nickname")
+remove_who0 <- c("equation", "header", "footnote", "nickname", "alttext")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
     remove_who <- c(remove_who, remove_who0[i])
@@ -130,7 +130,7 @@ res <- knitr::knit_child(
 header <- "Here is a figure!"
 footnote<-c("A footnote for this figure!", "A second footnote for this figure!")
 nickname <- "example_plot"
-alttext <- "This is a scatter plot of random data"
+alttext <- "This is a scatter plot of random data."
   
 # Select data and make plot
 figure <- dat %>%
@@ -172,7 +172,7 @@ list_figures<-NMFSReports::save_figures(
 # something you might like to toggle on and off. 
 # Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
 if (indesign_flowin %in% FALSE) {
-  figure # print plot in text
+  list_figures[[length(list_figures)]]$figure # print plot in text
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign
   Title0 <- ifelse(indesign_flowin %in% TRUE, "", list_figures[[length(list_figures)]]$caption)
   rmarkdown::render(system.file("rmd/_TableFigureHeader.Rmd", package = "NMFSReports"),
@@ -183,7 +183,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("figure", "header", "footnote", "filename0", "nickname", "filename_desc")
+remove_who0 <- c("figure", "header", "footnote", "filename0", "nickname", "filename_desc", "alttext")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
     remove_who <- c(remove_who, remove_who0[i])
@@ -222,7 +222,7 @@ list_figures<-NMFSReports::save_figures(
 # something you might like to toggle on and off. 
 # Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
 if (indesign_flowin %in% FALSE) {
-  figure # print plot in text
+  list_figures[[length(list_figures)]]$figure # print plot in text
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign
   Title0 <- ifelse(indesign_flowin %in% TRUE, "", list_figures[[length(list_figures)]]$caption)
   rmarkdown::render(system.file("rmd/_TableFigureHeader.Rmd", package = "NMFSReports"),
@@ -233,7 +233,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("figure", "header", "footnote", "filename0", "nickname", "filename_desc")
+remove_who0 <- c("figure", "header", "footnote", "filename0", "nickname", "filename_desc", "alttext")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
     remove_who <- c(remove_who, remove_who0[i])
@@ -248,7 +248,7 @@ header <- "Here is a figure!"
 footnote<-c("A footnote for this figure!")
 nickname <- "noaalogo"
 filename_desc <- "noaalogo"
-alttext <- "The NOAA Meatball and text"
+alttext <- "The NOAA Meatball and text. "
 
 # Select data and make plot
 figure <- 
@@ -325,9 +325,9 @@ list_tables<-NMFSReports::save_tables(
 # Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
 if (indesign_flowin %in% FALSE) { 
   if (exists("table_print")) {
-    table_print # print table in text
+    list_tables[[length(list_tables)]]$table_print # print table in text
   } else {
-    table_raw
+    list_tables[[length(list_tables)]]$table_raw
   }
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign 
   
@@ -341,7 +341,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("header", "footnote", "filename0", "nickname", "filename_desc", 
+remove_who0 <- c("header", "footnote", "filename0", "nickname", "filename_desc", "alttext", 
                  "table_raw", "table_print")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
@@ -381,9 +381,9 @@ list_tables<-NMFSReports::save_tables(
 # Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
 if (indesign_flowin %in% FALSE) { 
   if (exists("table_print")) {
-    table_print # print table in text
+    list_tables[[length(list_tables)]]$table_print # print table in text
   } else {
-    table_raw
+    list_tables[[length(list_tables)]]$table_raw
   }
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign 
   
@@ -397,7 +397,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("header", "footnote", "filename0", "nickname", "filename_desc", 
+remove_who0 <- c("header", "footnote", "filename0", "nickname", "filename_desc", "alttext", 
                  "table_raw", "table_print")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
