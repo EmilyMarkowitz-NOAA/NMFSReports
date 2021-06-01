@@ -132,7 +132,7 @@ figure <- dat %>%
 ```{r, child = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")}
 ```
 
-Here in plot `r ref_listobject(list_obj = list_figure, nickname = "example_plot", sublist = "number")`, we see that...
+Here in plot `r ref_listobject(list_obj = list_figures, nickname = "example_plot", sublist = "number")`, we see that...
 
 
 ## Example Figure (Reference Image)
@@ -164,7 +164,7 @@ res <- knitr::knit_child(
 
 `r res `
 
-Here in figure `r ref_listobject(list_obj = list_figure, nickname = "noaalogo", sublist = "number")`, we see the NOAA logo. 
+Here in figure `r ref_listobject(list_obj = list_figures, nickname = "noaalogo", sublist = "number")`, we see the NOAA logo. 
 
 
 ## Example Table (Basic)
