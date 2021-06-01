@@ -224,6 +224,8 @@ buildReport<-function(
   b <- list.files(path = "./code/", pattern = ".Rmd") # find the files that are already there
   bb <- strsplit(x = b, split = "_")
   sections_no <- unlist(lapply(bb, `[[`, 1))
+  bb <- strsplit(x = b, split = "[0-9]+_")
+  b<-unlist(lapply(bb, function(x) x[-1]))
   b <- gsub(pattern = ".Rmd", replacement = "",
             x = unlist(lapply(bb, `[[`, 2)))
   b_type <- rep_len(x = '".docx"', length.out = length(b))
