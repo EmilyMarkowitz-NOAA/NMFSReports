@@ -64,7 +64,7 @@ save(list_equations,
 
 # SAVE METADATA ----------------------------------------------------------------
 
-con <- file(paste0(dir_out, "metadata.log"))
+con <- file(paste0(dir_out_todaysrun, "metadata.log"))
 sink(con, append=TRUE)
 sessionInfo()
 sink() # Restore output to console
