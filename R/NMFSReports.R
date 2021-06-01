@@ -9,8 +9,8 @@
 #' Build your intitial architecture for your new NOAA Tech Memo or Report
 #'
 #' @param sections a string of the different sections of your report. Sections must be listed in order. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "endmatter"). Note that "frontmatter" and "endmatter" both have specific templates, and all others are from a blank template. "endmatter" will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list authors's ORCID and acknowlegelments.
-#' @param authors Default = "". Here, add all author's first and last name as it should appear in the report.You can change this later by editing this in the run.R file.
-#' @param title Default = "". Here, put the title of your report. You can change this later by editing this in the run.R file.
+#' @param report_authors Default = "". Here, add all author's first and last name as it should appear in the report.You can change this later by editing this in the run.R file.
+#' @param report_title Default = "". Here, put the title of your report. You can change this later by editing this in the run.R file.
 #' @param styles_reference_pptx A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made templates ("refppt_nmfs"). Default = "refppt_nmfs". You can change this later by renaming the file in the code folder.
 #' @param styles_reference_docx A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full path to local document) or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo". You can change this later by renaming the file in the code folder.
 #' @param bibliography.bib Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example". You can change this later by renaming the file in the cite folder.
@@ -45,8 +45,8 @@ buildReport<-function(
                "discussion",
                "endmatter",
                "presentation"),
-  authors = "",
-  title = "",
+  report_authors = "",
+  report_title = "",
   styles_reference_pptx = "refppt_nmfs",
   styles_reference_docx = "refdoc_noaa_tech_memo",
   bibliography.bib = "bib_example",
@@ -135,13 +135,13 @@ buildReport<-function(
     rfile <- base::readLines(copyto)
 
     rfile <- gsub(pattern = "# INSERT_REPORT_TITLE",
-                  replacement = ifelse(title %in% "", "''",
-                                       paste0("'", title, "'")),
+                  replacement = ifelse(report_title %in% "", "''",
+                                       paste0("'", report_title, "'")),
                   x = rfile)
 
     rfile <- gsub(pattern = "# INSERT_AUTHOR",
-                  replacement = ifelse(authors %in% "", "''",
-                                       paste0("'", authors, "'")),
+                  replacement = ifelse(report_authors %in% "", "''",
+                                       paste0("'", report_authors, "'")),
                   x = rfile)
 
     rfile<-gsub(pattern = "# YYYY-MM-DD",
@@ -160,7 +160,6 @@ buildReport<-function(
        styles_reference_docx,
        styles_reference_pptx,
        csl,
-       # "TableFigureHeader.Rmd",
        bibliography.bib) # bib_example
 
   for (i in 1:length(b)){
@@ -212,7 +211,7 @@ buildReport<-function(
 
   # support_scripts
   a<-paste0("source('./code/",
-           paste0(support_scripts, ".R')
+            paste0(support_scripts, ".R')
 
 "), collapse = "")
 
@@ -251,13 +250,13 @@ rmarkdown::render(paste0(dir_code, "/',sections_no,'_',b,'.Rmd"),
 
   # OTHER CONTENT
   run0<-gsub(pattern = "# INSERT_REPORT_TITLE",
-             replacement = ifelse(title %in% "", "''",
-                                  paste0("'", title, "'")),
+             replacement = ifelse(report_title %in% "", "''",
+                                  paste0("'", report_title, "'")),
              x = run0)
 
   run0<-gsub(pattern = "# INSERT_AUTHOR",
-             replacement = ifelse(authors %in% "", "''",
-                                  paste0("'", authors, "'")),
+             replacement = ifelse(report_authors %in% "", "''",
+                                  paste0("'", report_authors, "'")),
              x = run0)
 
   run0<-gsub(pattern = "# YYYY-MM-DD",
