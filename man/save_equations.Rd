@@ -56,7 +56,7 @@ list_equations <-NMFSReports::save_equations(
    nickname = "pythagorean",
    header = "Pythagorean theorem",
    footnote = "footnote about how cool the pythagorean theorem is.",
-   alttext = "The Pythagoras theorem is a mathematical law that states that the sum of squares of the lengths of the two short sides of the right triangle is equal to the square of the length of the hypotenuse.")
+   alttext = "The Pythagoras theorem is a mathematical law.")
 
 cnt_eq<-NMFSReports::auto_counter(cnt_eq)
 list_equations <-NMFSReports::save_equations(

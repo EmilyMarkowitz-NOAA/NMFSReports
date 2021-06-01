@@ -223,13 +223,13 @@ buildReport<-function(
   # INSERT_SECTIONS
   b <- list.files(path = "./code/", pattern = ".Rmd") # find the files that are already there
   bb <- strsplit(x = b, split = "_")
-  b<-c("example", sections)
+  # b<-c("example", sections)
   # counter<-NMFSReports::numbers0(x = c(0, length(b)))[1]
   # sections_no<-NMFSReports::numbers0(c(0:length(sections), length(b)))
-  sections_no <- unlist(lapply(cc, `[[`, 1))
+  sections_no <- unlist(lapply(bb, `[[`, 1))
   sections_no<-sections_no[-length(sections_no)]
   b <- gsub(pattern = ".Rmd", replacement = "",
-            x = unlist(lapply(cc, `[[`, 2)))
+            x = unlist(lapply(bb, `[[`, 2)))
 
 
 
@@ -1491,7 +1491,7 @@ save_tables<-function(table_raw = NULL,
 #'    nickname = "pythagorean",
 #'    header = "Pythagorean theorem",
 #'    footnote = "footnote about how cool the pythagorean theorem is.",
-#'    alttext = "The Pythagoras theorem is a mathematical law that states that the sum of squares of the lengths of the two short sides of the right triangle is equal to the square of the length of the hypotenuse.")
+#'    alttext = "The Pythagoras theorem is a mathematical law.")
 #'
 #' cnt_eq<-NMFSReports::auto_counter(cnt_eq)
 #' list_equations <-NMFSReports::save_equations(
