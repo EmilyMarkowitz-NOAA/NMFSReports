@@ -147,13 +147,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Create initial structure of report</h1>
 <p>Do everyone here a favor and create a new R project or at least set up a working directory (<code>setwd()</code>). There will be a lot of file management here…</p>
 <p>To build your intitial architecture for your new NOAA Tech Memo or Report, simply run the below script:</p>
-<p>## title</p>
+<div id="report_title" class="section level2">
+<h2>report_title</h2>
 <p>Default = ““. Here, put the title of your report. You can change this later in the <code>run.R</code> file in needed.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;My Awesome Report!&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>report_title <span class="ot">=</span> <span class="st">&quot;My Awesome Report!&quot;</span></span></code></pre></div>
+</div>
 <div id="buildreportauthor" class="section level2">
 <h2>buildReport(author = …)</h2>
 <p>Here, add the first and last name of everyone who is producing the report. You can change this later in the <code>run.R</code> file in needed.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>authors <span class="ot">=</span> <span class="st">&quot;Me, Myself, and I&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>report_authors <span class="ot">=</span> <span class="st">&quot;Me, Myself, and I&quot;</span></span></code></pre></div>
 </div>
 <div id="buildreportsections" class="section level2">
 <h2>buildReport(sections = …)</h2>
@@ -271,8 +273,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now, magic! Now for the sake of the vignette, I can’t actually run it here, but below is a picture of what this looks like:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>NMFSReports<span class="sc">::</span><span class="fu">buildReport</span>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">sections =</span> sections,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">authors =</span> authors,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> title,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">report_authors =</span> report_authors,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">report_title =</span> report_title,</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">styles_reference_pptx =</span> styles_reference_pptx,</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">styles_reference_docx =</span> styles_reference_docx,</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">bibliography.bib =</span> bibliography.bib,</span>
@@ -296,8 +298,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;studyimportance&quot;</span>, </span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;actions&quot;</span>, </span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;endmatter&quot;</span>) <span class="co"># This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I&#39;m biased, but please give credit where credit is due! There are also spots here to list people&#39;s ORCID numbers and acknowlegements. </span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>authors <span class="ot">=</span> <span class="st">&quot;Very important people&quot;</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Shorter Report!&quot;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>report_authors <span class="ot">=</span> <span class="st">&quot;Very important people&quot;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>report_title <span class="ot">=</span> <span class="st">&quot;Shorter Report!&quot;</span></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>styles_reference_pptx <span class="ot">=</span> <span class="st">&quot;refpptx_nmfs&quot;</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>styles_reference_docx <span class="ot">=</span> <span class="st">&quot;refdoc_fisheries_economics_of_the_us&quot;</span></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>bibliography.bib <span class="ot">=</span> <span class="st">&quot;bib_example&quot;</span></span>
@@ -319,8 +321,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run buildReport() function</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>NMFSReports<span class="sc">::</span><span class="fu">buildReport</span>(</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">sections =</span> sections,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">authors =</span> authors,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> title,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">report_authors =</span> report_authors,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">report_title =</span> report_title,</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">styles_reference_pptx =</span> styles_reference_pptx,</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">styles_reference_docx =</span> styles_reference_docx,</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">bibliography.bib =</span> bibliography.bib,</span>

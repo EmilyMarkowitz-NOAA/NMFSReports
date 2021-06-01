@@ -49,8 +49,8 @@ csl = "bulletin-of-marine-science"
 # not run:
 # buildReport(
 #   sections = sections,
-#   authors = authors,
-#   title = title,
+#   report_authors = authors,
+#   report_title = title,
 #   styles_reference_pptx = styles_reference_pptx,
 #   styles_reference_docx = styles_reference_docx,
 #   bibliography.bib = bibliography.bib,

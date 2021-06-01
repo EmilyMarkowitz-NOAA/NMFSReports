@@ -26,6 +26,11 @@ indesign_flowin <- FALSE
 # renv::init()
 # renv::snapshot()
 
+# *** SIGN INTO GOOGLE DRIVE----------------------------------------------------
+
+# googledrive::drive_deauth()
+# googledrive::drive_auth()
+# 1
 
 # MAKE REPORT ------------------------------------------------------------------
 

@@ -30,8 +30,8 @@
 #' # not run:
 #' # buildReport(
 #' #   sections = sections,
-#' #   authors = authors,
-#' #   title = title,
+#' #   report_authors = authors,
+#' #   report_title = title,
 #' #   styles_reference_pptx = styles_reference_pptx,
 #' #   styles_reference_docx = styles_reference_docx,
 #' #   bibliography.bib = bibliography.bib,
@@ -248,34 +248,6 @@ rmarkdown::render(paste0(dir_code, "/',sections_no,'_',b,'.Rmd"),
   run0<-gsub(pattern = "# INSERT_SECTIONS",
              replacement = a,
              x = run0)
-
-
-  # # INSERT_POWERPOINT
-  # # only if there is a reference type specified
-  # if (!(is.null(styles_reference_pptx))) {
-  #   sections_no_pres <- auto_counter(sections_no[length(sections_no)])
-  #   a<-dplyr::if_else(is.na(styles_reference_pptx),
-  #                     "",
-  #                     paste(paste0('
-  #   ############# ', sections_no_pres,' - Presentation ####################
-  #   cnt_chapt<-auto_counter(cnt_chapt)
-  #   cnt_chapt_content<-"001"
-  #   filename0<-paste0(cnt_chapt, "_presentation_")
-  #   rmarkdown::render(paste0(dir_code, "/',sections_no_pres,'_presentation.Rmd"),
-  #                     output_dir = dir_out_chapters,
-  #                     output_file = paste0(filename0, cnt_chapt_content, ".pptx"))
-  #
-  #
-  #   '), collapse = ""))
-  #
-  #   run0<-gsub(pattern = "# INSERT_POWERPOINT",
-  #              replacement = a,
-  #              x = run0)
-  # } else {
-  #   run0<-gsub(pattern = "# INSERT_POWERPOINT",
-  #              replacement = "",
-  #              x = run0)
-  # }
 
   # OTHER CONTENT
   run0<-gsub(pattern = "# INSERT_REPORT_TITLE",

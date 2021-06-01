@@ -149,8 +149,8 @@
 <span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
         sections <span class="op">=</span> <span class="va">sections</span>,
         support_scripts <span class="op">=</span> <span class="va">support_scripts</span>,
-        authors <span class="op">=</span> <span class="va">authors</span>,
-        title <span class="op">=</span> <span class="va">title</span>,
+        report_authors <span class="op">=</span> <span class="va">authors</span>,
+        report_title <span class="op">=</span> <span class="va">title</span>,
         styles_reference_pptx <span class="op">=</span> <span class="va">styles_reference_pptx</span>,
         styles_reference_docx <span class="op">=</span> <span class="va">styles_reference_docx</span>,
         bibliography.bib <span class="op">=</span> <span class="va">bibliography.bib</span>,
@@ -172,39 +172,18 @@
 <span class="co">#' Notes:                                                               # CHANGE</span>
 <span class="co">#' ---</span>
 
-<span class="co">######START#######</span>
+<span class="co"># START ------------------------------------------------------------------------</span>
 
-<span class="co">######***KNOWNS#########</span>
-<span class="va">report_title</span> <span class="op">&lt;-</span> <span class="st">'Awesome Report!'</span>
-<span class="va">report_authors</span> <span class="op">&lt;-</span> <span class="st">'Me, Myself, and I'</span>
-<span class="va">report_yr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html">substr</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>, start <span class="op">=</span> <span class="fl">1</span>, stop <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>                <span class="co"># CHANGE</span>
-<span class="va">report_office_location</span> <span class="op">&lt;-</span> <span class="st">" &gt; [Office Location]"</span>                        <span class="co"># CHANGE</span>
-<span class="co"># For example:</span>
-<span class="co"># "National Oceanic and Atmospheric Administration\n</span>
-<span class="co"># 1315 East-West Highway [bldg./room]\n</span>
-<span class="co"># Silver Spring, MD 20910"\n</span>
-<span class="va">report_office</span> <span class="op">&lt;-</span> <span class="st">""</span> <span class="co"># For example: AFSC, NEFSC                          # CHANGE</span>
-<span class="va">report_num</span> <span class="op">&lt;-</span> <span class="st">"###"</span>                                                     <span class="co"># CHANGE</span>
-<span class="va">report_NOAA_leaders</span> <span class="op">&lt;-</span> <span class="st">"U.S. Department of Commerce
+<span class="co"># *** REPORT KNOWNS ------------------------------------------------------------</span>
+<span class="va">report_title</span> <span class="op">&lt;-</span> <span class="co"># INSERT_REPORT_TITLE</span>
+<span class="va">report_authors</span> <span class="op">&lt;-</span> <span class="co"># INSERT_AUTHOR</span>
+<span class="va">report_yr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html">substr</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>, start <span class="op">=</span> <span class="fl">1</span>, stop <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>            <span class="co"># SUGGESTION</span>
 
-Wynn Coggins, Acting Secretary
-
-
-National Oceanic and Atmospheric Administration
-
-Benjamin Friedman, Acting NOAA Administrator
-
-
-National Marine Fisheries Service
-
-Paul Doremus, Acting Assistant Administrator for Fisheries"</span>
-
-<span class="co">#######***WHAT KIND OF OUTPUT#######</span>
+<span class="co"># *** OUTPUT TYPE --------------------------------------------------------------</span>
 <span class="co">#Is this for InDesign?</span>
 <span class="va">indesign_flowin</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span>
 
-<span class="co">#######SOURCE SUPPORT SCRIPTS#############</span>
-<span class="va">dir_in</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co"># *** SOURCE SUPPORT SCRIPTS ---------------------------------------------------</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">'./code/directories.R'</span> <span class="op">)</span>
 
@@ -214,134 +193,128 @@ Paul Doremus, Acting Assistant Administrator for Fisheries"</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">'./code/data.R'</span> <span class="op">)</span>
 
-<span class="co">#######SAVE PACKAGES USED TO CREATE THIS REPORT#############</span>
+<span class="co"># *** RENV: SAVE PACKAGES USED TO CREATE THIS REPORT ---------------------------</span>
 <span class="co"># renv::init()</span>
 <span class="co"># renv::snapshot()</span>
 
+<span class="co"># *** SIGN INTO GOOGLE DRIVE----------------------------------------------------</span>
 
-<span class="co">######MAKE REPORT########</span>
-<span class="va">cnt_chapt</span> <span class="op">&lt;-</span> <span class="st">"000"</span> <span class="co"># Keep everything in a proper order</span>
-<span class="va">figure_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># This will help us by saving R-ready plots so we can easily go back and edit them if necessary.</span>
-<span class="va">table_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># This will help us by saving R-ready tables  so we can easily go back and edit them if necessary.</span>
-<span class="va">cnt_figures</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># This will autoname your figures with consecutive numbers (e.g., Figure 1.)</span>
-<span class="va">cnt_tables</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># This will autoname your tables with consecutive numbers (e.g., Table 1.)</span>
-<span class="va">cnt_equ</span> <span class="op">&lt;-</span> <span class="fl">0</span>
+<span class="co"># googledrive::drive_deauth()</span>
+<span class="co"># googledrive::drive_auth()</span>
+<span class="co"># 1</span>
 
-<span class="co">####### RUN EACH SECTION#############</span>
+<span class="co"># MAKE REPORT ------------------------------------------------------------------</span>
 
+<span class="co"># *** HOUSEKEEPING -------------------------------------------------------------</span>
 
+<span class="co"># Keep chapter content in a proper order</span>
+<span class="va">cnt_chapt</span> <span class="op">&lt;-</span> <span class="st">"000"</span>
+<span class="co"># Automatically name objects with consecutive numbers</span>
+<span class="va">cnt_figures</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co">#  e.g., Figure 1</span>
+<span class="va">cnt_tables</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># e.g., Table 1</span>
+<span class="va">cnt_equations</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># e.g., Equation 1</span>
+<span class="co"># Save object content</span>
+<span class="va">list_equations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">list_tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">list_figures</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>
 
-  <span class="co">############# 0 - Example ####################</span>
-  <span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
-  <span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
-  <span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_example_"</span><span class="op">)</span>
-  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/0_example.Rmd"</span><span class="op">)</span>,
+<span class="co"># *** RUN EACH REPORT SECTION --------------------------------------------------</span>
+
+<span class="co"># *** *** 0 - Example ----------------------------</span>
+<span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
+<span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
+<span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_example_"</span><span class="op">)</span>
+<span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/0_example.Rmd"</span><span class="op">)</span>,
                     output_dir <span class="op">=</span> <span class="va">dir_out_chapters</span>,
                     output_file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">filename0</span>, <span class="va">cnt_chapt_content</span>, <span class="st">".docx"</span><span class="op">)</span><span class="op">)</span>
 
-
-  
-  <span class="co">############# 1 - Frontmatter ####################</span>
-  <span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
-  <span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
-  <span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_frontmatter_"</span><span class="op">)</span>
-  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/1_frontmatter.Rmd"</span><span class="op">)</span>,
+<span class="co"># *** *** 1 - Frontmatter ----------------------------</span>
+<span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
+<span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
+<span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_frontmatter_"</span><span class="op">)</span>
+<span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/1_frontmatter.Rmd"</span><span class="op">)</span>,
                     output_dir <span class="op">=</span> <span class="va">dir_out_chapters</span>,
                     output_file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">filename0</span>, <span class="va">cnt_chapt_content</span>, <span class="st">".docx"</span><span class="op">)</span><span class="op">)</span>
 
-
-  
-  <span class="co">############# 2 - Abstract ####################</span>
-  <span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
-  <span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
-  <span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_abstract_"</span><span class="op">)</span>
-  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/2_abstract.Rmd"</span><span class="op">)</span>,
+<span class="co"># *** *** 2 - Abstract ----------------------------</span>
+<span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
+<span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
+<span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_abstract_"</span><span class="op">)</span>
+<span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/2_abstract.Rmd"</span><span class="op">)</span>,
                     output_dir <span class="op">=</span> <span class="va">dir_out_chapters</span>,
                     output_file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">filename0</span>, <span class="va">cnt_chapt_content</span>, <span class="st">".docx"</span><span class="op">)</span><span class="op">)</span>
 
-
-  
-  <span class="co">############# 3 - Introduction ####################</span>
-  <span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
-  <span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
-  <span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_introduction_"</span><span class="op">)</span>
-  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/3_introduction.Rmd"</span><span class="op">)</span>,
+<span class="co"># *** *** 3 - Introduction ----------------------------</span>
+<span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
+<span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
+<span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_introduction_"</span><span class="op">)</span>
+<span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/3_introduction.Rmd"</span><span class="op">)</span>,
                     output_dir <span class="op">=</span> <span class="va">dir_out_chapters</span>,
                     output_file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">filename0</span>, <span class="va">cnt_chapt_content</span>, <span class="st">".docx"</span><span class="op">)</span><span class="op">)</span>
 
-
-  
-  <span class="co">############# 4 - Methods ####################</span>
-  <span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
-  <span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
-  <span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_methods_"</span><span class="op">)</span>
-  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/4_methods.Rmd"</span><span class="op">)</span>,
+<span class="co"># *** *** 4 - Methods ----------------------------</span>
+<span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
+<span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
+<span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_methods_"</span><span class="op">)</span>
+<span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/4_methods.Rmd"</span><span class="op">)</span>,
                     output_dir <span class="op">=</span> <span class="va">dir_out_chapters</span>,
                     output_file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">filename0</span>, <span class="va">cnt_chapt_content</span>, <span class="st">".docx"</span><span class="op">)</span><span class="op">)</span>
 
-
-  
-  <span class="co">############# 5 - Results ####################</span>
-  <span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
-  <span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
-  <span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_results_"</span><span class="op">)</span>
-  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/5_results.Rmd"</span><span class="op">)</span>,
+<span class="co"># *** *** 5 - Results ----------------------------</span>
+<span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
+<span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
+<span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_results_"</span><span class="op">)</span>
+<span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/5_results.Rmd"</span><span class="op">)</span>,
                     output_dir <span class="op">=</span> <span class="va">dir_out_chapters</span>,
                     output_file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">filename0</span>, <span class="va">cnt_chapt_content</span>, <span class="st">".docx"</span><span class="op">)</span><span class="op">)</span>
 
-
-  
-  <span class="co">############# 6 - Discussion ####################</span>
-  <span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
-  <span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
-  <span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_discussion_"</span><span class="op">)</span>
-  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/6_discussion.Rmd"</span><span class="op">)</span>,
+<span class="co"># *** *** 6 - Discussion ----------------------------</span>
+<span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
+<span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
+<span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_discussion_"</span><span class="op">)</span>
+<span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/6_discussion.Rmd"</span><span class="op">)</span>,
                     output_dir <span class="op">=</span> <span class="va">dir_out_chapters</span>,
                     output_file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">filename0</span>, <span class="va">cnt_chapt_content</span>, <span class="st">".docx"</span><span class="op">)</span><span class="op">)</span>
 
-
-  
-  <span class="co">############# 7 - Endmatter ####################</span>
-  <span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
-  <span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
-  <span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_endmatter_"</span><span class="op">)</span>
-  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/7_endmatter.Rmd"</span><span class="op">)</span>,
+<span class="co"># *** *** 7 - Endmatter ----------------------------</span>
+<span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
+<span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
+<span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_endmatter_"</span><span class="op">)</span>
+<span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/7_endmatter.Rmd"</span><span class="op">)</span>,
                     output_dir <span class="op">=</span> <span class="va">dir_out_chapters</span>,
                     output_file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">filename0</span>, <span class="va">cnt_chapt_content</span>, <span class="st">".docx"</span><span class="op">)</span><span class="op">)</span>
 
-    <span class="co">############# 8 - Presentation ####################</span>
-    <span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
-    <span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
-    <span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_presentation_"</span><span class="op">)</span>
-    <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/8_presentation.Rmd"</span><span class="op">)</span>,
+<span class="co"># *** *** 8 - Presentation ----------------------------</span>
+<span class="va">cnt_chapt</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/auto_counter.html">auto_counter</a></span><span class="op">(</span><span class="va">cnt_chapt</span><span class="op">)</span>
+<span class="va">cnt_chapt_content</span><span class="op">&lt;-</span><span class="st">"001"</span>
+<span class="va">filename0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">cnt_chapt</span>, <span class="st">"_presentation_"</span><span class="op">)</span>
+<span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_code</span>, <span class="st">"/8_presentation.Rmd"</span><span class="op">)</span>,
                       output_dir <span class="op">=</span> <span class="va">dir_out_chapters</span>,
                       output_file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">filename0</span>, <span class="va">cnt_chapt_content</span>, <span class="st">".pptx"</span><span class="op">)</span><span class="op">)</span>
 
+<span class="co"># SAVE OTHER OUTPUTS -----------------------------------------------------------</span>
 
-<span class="co">##### SAVE OTHER OUTPUTS#############</span>
+<span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">list_figures</span>,
+     file<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_figures</span>, <span class="st">"/report_figures.rdata"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">figure_list</span>,
-     file<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_figures</span>, <span class="st">"/report_plots.rdata"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">table_list</span>,
+<span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">list_tables</span>,
      file<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_tables</span>, <span class="st">"/report_tables.rdata"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="co">########***MAKE MASTER DOCX################</span>
+<span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">list_equations</span>,
+     file<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_tables</span>, <span class="st">"/report_equations.rdata"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># MAKE MASTER DOCX -------------------------------------------------------------</span>
 
 <span class="co">#USE GUIDENCE FROM THIS LINK</span>
 <span class="co">#https://support.microsoft.com/en-us/help/2665750/how-to-merge-multiple-word-documents-into-one</span>
 
+<span class="co"># SAVE METADATA ----------------------------------------------------------------</span>
 
-<span class="co">###############***METADATA##################</span>
-<span class="co"># So we can</span>
-<span class="co">#    1. Go back and recreate this exactly with the libraries you used to create this script and</span>
-<span class="co">#    2. Cite the apropriate versions of the packages you used in your report</span>
-<span class="co"># More info here: https://rstudio.github.io/packrat/walkthrough.html</span>
-
-<span class="fu"><a href="../reference/create_metadata.html">create_metadata</a></span><span class="op">(</span>dir_out <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_todaysrun</span>, <span class="st">"/documentation"</span><span class="op">)</span>,
-               title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">report_title</span>, <span class="st">" Metadata "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># setwd(paste0(dir_out_todaysrun))</span></code></pre></div>
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html">file</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_out_todaysrun</span>, <span class="st">"metadata.log"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sink.html">sink</a></span><span class="op">(</span><span class="va">con</span>, append<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sink.html">sink</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Restore output to console</span>
+<span class="co"># cat(readLines("notes.log"), sep="\n") # Look at the log</span></code></pre></div>
 </div>
 <div id="what-this-file-produces" class="section level1">
 <h1 class="hasAnchor">

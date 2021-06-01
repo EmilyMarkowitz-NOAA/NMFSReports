@@ -10,10 +10,10 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 library(NMFSReports)
 
 ## -----------------------------------------------------------------------------
-title = "My Awesome Report!"
+report_title = "My Awesome Report!"
 
 ## -----------------------------------------------------------------------------
-authors = "Me, Myself, and I"
+report_authors = "Me, Myself, and I"
 
 ## -----------------------------------------------------------------------------
 # list the sections (that you will have different rmd scripts for) in order and with no spaces
@@ -41,8 +41,8 @@ bib
 ## ---- eval = FALSE------------------------------------------------------------
 #  NMFSReports::buildReport(
 #          sections = sections,
-#          authors = authors,
-#          title = title,
+#          report_authors = report_authors,
+#          report_title = report_title,
 #          styles_reference_pptx = styles_reference_pptx,
 #          styles_reference_docx = styles_reference_docx,
 #          bibliography.bib = bibliography.bib,
@@ -57,8 +57,8 @@ sections = c("coverpage", # This is a specific template for a 1 page coverpage
              "studyimportance", 
              "actions", 
              "endmatter") # This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. 
-authors = "Very important people"
-title = "Shorter Report!"
+report_authors = "Very important people"
+report_title = "Shorter Report!"
 styles_reference_pptx = "refpptx_nmfs"
 styles_reference_docx = "refdoc_fisheries_economics_of_the_us"
 bibliography.bib = "bib_example"
@@ -75,8 +75,8 @@ head(csl0)
 #  # Run buildReport() function
 #  NMFSReports::buildReport(
 #          sections = sections,
-#          authors = authors,
-#          title = title,
+#          report_authors = report_authors,
+#          report_title = report_title,
 #          styles_reference_pptx = styles_reference_pptx,
 #          styles_reference_docx = styles_reference_docx,
 #          bibliography.bib = bibliography.bib,
