@@ -288,8 +288,8 @@ table_print[,c("x", "y")] <-
                           digits = 2)
 
 # Format table 
-table_print <- table_print %>%
-  knitr::kable() #print table in text
+# table_print <- table_print %>%
+#   knitr::kable() #print table in text
 
 # save yo' stuff and do a lot of behind the scenes work
 # alt: check out the "child = " in this chunk header (which must stay empty)
@@ -310,7 +310,7 @@ if (!(exists("table_raw"))) {
 # Systematically save your table with this function
 list_tables<-NMFSReports::save_tables(
   table_raw = table_raw, 
-  table_print = list(table_print),
+  table_print = table_print,
   list_tables = list_tables, 
   header = ifelse(exists("header"), header, ""),
   footnote = unlist(ifelse(exists("footnote"), list(footnote), "")), 
@@ -333,11 +333,11 @@ list_tables<-NMFSReports::save_tables(
 if (indesign_flowin %in% FALSE) { 
   # print table in text
   if (exists("table_print")) {
-    list_tables[[length(list_tables)]]$print[[1]] #%>% 
-        # knitr::kable(row.names = FALSE, booktabs = TRUE) 
+    list_tables[[length(list_tables)]]$print %>% 
+        knitr::kable(row.names = FALSE, booktabs = TRUE)
   } else {
-    list_tables[[length(list_tables)]]$raw #%>% 
-        # knitr::kable(row.names = FALSE, booktabs = TRUE) 
+    list_tables[[length(list_tables)]]$raw %>% 
+        knitr::kable(row.names = FALSE, booktabs = TRUE)
   }
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign 
   
@@ -375,7 +375,7 @@ if (!(exists("table_raw"))) {
 # Systematically save your table with this function
 list_tables<-NMFSReports::save_tables(
   table_raw = table_raw, 
-  table_print = list(table_print),
+  table_print = table_print,
   list_tables = list_tables, 
   header = ifelse(exists("header"), header, ""),
   footnote = unlist(ifelse(exists("footnote"), list(footnote), "")), 
@@ -398,11 +398,11 @@ list_tables<-NMFSReports::save_tables(
 if (indesign_flowin %in% FALSE) { 
   # print table in text
   if (exists("table_print")) {
-    list_tables[[length(list_tables)]]$print[[1]] #%>% 
-        # knitr::kable(row.names = FALSE, booktabs = TRUE) 
+    list_tables[[length(list_tables)]]$print %>% 
+        knitr::kable(row.names = FALSE, booktabs = TRUE)
   } else {
-    list_tables[[length(list_tables)]]$raw #%>% 
-        # knitr::kable(row.names = FALSE, booktabs = TRUE) 
+    list_tables[[length(list_tables)]]$raw %>% 
+        knitr::kable(row.names = FALSE, booktabs = TRUE)
   }
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign 
   
@@ -483,8 +483,8 @@ table_print <- NMFSReports::add_table_footnotes(table = table_print,
 table_print <- table_print %>%
   NMFSReports::format_cells(rows = 0, # make column names
                cols = 1:ncol(table_print), # for all columns
-               fonttype = "bold") %>% # bold
-  knitr::kable(row.names = FALSE, booktabs = TRUE) #print table in text
+               fonttype = "bold") #%>% # bold
+  # knitr::kable(row.names = FALSE, booktabs = TRUE) #print table in text
 
 # save yo' stuff and do a lot of behind the scenes work
 # alt: this does the same thing as calling "child = " in the chunk header

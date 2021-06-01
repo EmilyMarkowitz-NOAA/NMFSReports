@@ -241,7 +241,6 @@ rmarkdown::render(paste0(dir_code, "/',sections_no,'_',b,'.Rmd"),
                   output_dir = dir_out_chapters,
                   output_file = paste0(filename0, cnt_chapt_content, ',b_type,'))
 
-
 '), collapse = "")
 
   run0<-gsub(pattern = "# INSERT_SECTIONS",
