@@ -7,42 +7,46 @@
 #' Notes:                                                               # CHANGE
 #' ---
 
-######START#######
+# START ------------------------------------------------------------------------
 
-######***KNOWNS#########
+# *** REPORT KNOWNS ------------------------------------------------------------
 report_title <- # INSERT_REPORT_TITLE
 report_authors <- # INSERT_AUTHOR
-report_yr <- substr(x = Sys.Date(), start = 1, stop = 4)                # CHANGE
+report_yr <- substr(x = Sys.Date(), start = 1, stop = 4)            # SUGGESTION
 
-#######***WHAT KIND OF OUTPUT#######
+# *** OUTPUT TYPE --------------------------------------------------------------
 #Is this for InDesign?
 indesign_flowin <- FALSE
 
-#######SOURCE SUPPORT SCRIPTS#############
+# *** SOURCE SUPPORT SCRIPTS ---------------------------------------------------
 
 # INSERT_SUPPORT_SCRIPTS
 
-#######SAVE PACKAGES USED TO CREATE THIS REPORT#############
+# *** RENV: SAVE PACKAGES USED TO CREATE THIS REPORT ---------------------------
 # renv::init()
 # renv::snapshot()
 
 
-######MAKE REPORT########
-cnt_chapt <- "000" # Keep everything in a proper order
+# MAKE REPORT ------------------------------------------------------------------
+
+# *** HOUSEKEEPING -------------------------------------------------------------
+
+# Keep chapter content in a proper order
+cnt_chapt <- "000"
+# Automatically name objects with consecutive numbers
+cnt_figures <- 0 #  e.g., Figure 1
+cnt_tables <- 0 # e.g., Table 1
+cnt_equations <- 0 # e.g., Equation 1
+# Save object content
 list_equations <- list()
 list_tables <- list()
 list_figures <- list()
-cnt_figures <- 0 # This will autoname your figures with consecutive numbers (e.g., Figure 1.)
-cnt_tables <- 0 # This will autoname your tables with consecutive numbers (e.g., Table 1.)
-cnt_equations <- 0 # This will autoname your equations with consecutive numbers (e.g., Equation 1.)
 
-####### RUN EACH SECTION#############
-
+# *** RUN EACH REPORT SECTION --------------------------------------------------
 
 # INSERT_SECTIONS
 
-
-##### SAVE OTHER OUTPUTS#############
+# SAVE OTHER OUTPUTS -----------------------------------------------------------
 
 save(list_figures,
      file=paste0(dir_out_figures, "/report_figures.rdata"))
@@ -53,22 +57,16 @@ save(list_tables,
 save(list_equations,
      file=paste0(dir_out_tables, "/report_equations.rdata"))
 
-########***MAKE MASTER DOCX################
+# MAKE MASTER DOCX -------------------------------------------------------------
 
 #USE GUIDENCE FROM THIS LINK
 #https://support.microsoft.com/en-us/help/2665750/how-to-merge-multiple-word-documents-into-one
 
+# SAVE METADATA ----------------------------------------------------------------
 
-###############***METADATA##################
-
-con <- file("notes.log")
+con <- file(paste0(dir_out, "metadata.log"))
 sink(con, append=TRUE)
-
 sessionInfo()
-
-# Restore output to console
-sink()
-
-# And look at the log...
-# cat(readLines("notes.log"), sep="\n")
+sink() # Restore output to console
+# cat(readLines("notes.log"), sep="\n") # Look at the log
 
