@@ -171,8 +171,8 @@
     <pre class="usage"><span class='fu'>buildReport</span><span class='op'>(</span>
   sections <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"abstract"</span>, <span class='st'>"introduction"</span>, <span class='st'>"methods"</span>, <span class='st'>"results"</span>, <span class='st'>"discussion"</span>,
     <span class='st'>"endmatter"</span>, <span class='st'>"presentation"</span><span class='op'>)</span>,
-  authors <span class='op'>=</span> <span class='st'>""</span>,
-  title <span class='op'>=</span> <span class='st'>""</span>,
+  report_authors <span class='op'>=</span> <span class='st'>""</span>,
+  report_title <span class='op'>=</span> <span class='st'>""</span>,
   styles_reference_pptx <span class='op'>=</span> <span class='st'>"refppt_nmfs"</span>,
   styles_reference_docx <span class='op'>=</span> <span class='st'>"refdoc_noaa_tech_memo"</span>,
   bibliography.bib <span class='op'>=</span> <span class='st'>"bib_example"</span>,
@@ -187,11 +187,11 @@
       <td><p>a string of the different sections of your report. Sections must be listed in order. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "endmatter"). Note that "frontmatter" and "endmatter" both have specific templates, and all others are from a blank template. "endmatter" will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list authors's ORCID and acknowlegelments.</p></td>
     </tr>
     <tr>
-      <th>authors</th>
+      <th>report_authors</th>
       <td><p>Default = "". Here, add all author's first and last name as it should appear in the report.You can change this later by editing this in the run.R file.</p></td>
     </tr>
     <tr>
-      <th>title</th>
+      <th>report_title</th>
       <td><p>Default = "". Here, put the title of your report. You can change this later by editing this in the run.R file.</p></td>
     </tr>
     <tr>
