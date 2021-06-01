@@ -33,15 +33,15 @@ knitr::opts_chunk$set(
 
 
 
-# `r plot_list[[1]]$header `
+# `r list_figures[[1]]$header `
 
 ```{r}
-print(plot_list[[1]]$plot)
+print(list_figures[[1]]$figure)
 ```
 
-# `r table_list[[1]]$header `
+# `r list_tables[[1]]$header `
 
-`r table_list[[1]]$print `
+`r list_tables[[1]]$print `
 
 
 # Slide 3

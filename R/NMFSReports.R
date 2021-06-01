@@ -223,60 +223,58 @@ buildReport<-function(
   # INSERT_SECTIONS
   b <- list.files(path = "./code/", pattern = ".Rmd") # find the files that are already there
   bb <- strsplit(x = b, split = "_")
-  # b<-c("example", sections)
-  # counter<-NMFSReports::numbers0(x = c(0, length(b)))[1]
-  # sections_no<-NMFSReports::numbers0(c(0:length(sections), length(b)))
   sections_no <- unlist(lapply(bb, `[[`, 1))
-  sections_no<-sections_no[-length(sections_no)]
   b <- gsub(pattern = ".Rmd", replacement = "",
             x = unlist(lapply(bb, `[[`, 2)))
-
-
+  b_type <- rep_len(x = '".docx"', length.out = length(b))
+  if (sum(b %in% "presentation")>0) {
+    b_type[which(b %in% "presentation")]<-'".pptx"'
+  }
 
 
   a<-paste(paste0('
-  ############# ', sections_no,' - ', stringr::str_to_title(b),' ####################
-  cnt_chapt<-auto_counter(cnt_chapt)
-  cnt_chapt_content<-"001"
-  filename0<-paste0(cnt_chapt, "_', b,'_")
-  rmarkdown::render(paste0(dir_code, "/',sections_no,'_',b,'.Rmd"),
-                    output_dir = dir_out_chapters,
-                    output_file = paste0(filename0, cnt_chapt_content, ".docx"))
+############# ', sections_no,' - ', stringr::str_to_title(b),' ####################
+cnt_chapt<-auto_counter(cnt_chapt)
+cnt_chapt_content<-"001"
+filename0<-paste0(cnt_chapt, "_', b,'_")
+rmarkdown::render(paste0(dir_code, "/',sections_no,'_',b,'.Rmd"),
+                  output_dir = dir_out_chapters,
+                  output_file = paste0(filename0, cnt_chapt_content, ',b_type,'))
 
 
-  '), collapse = "")
+'), collapse = "")
 
   run0<-gsub(pattern = "# INSERT_SECTIONS",
              replacement = a,
              x = run0)
 
 
-  # INSERT_POWERPOINT
-  # only if there is a reference type specified
-  if (!(is.null(styles_reference_pptx))) {
-    sections_no_pres <- auto_counter(sections_no[length(sections_no)])
-    a<-dplyr::if_else(is.na(styles_reference_pptx),
-                      "",
-                      paste(paste0('
-    ############# ', sections_no_pres,' - Presentation ####################
-    cnt_chapt<-auto_counter(cnt_chapt)
-    cnt_chapt_content<-"001"
-    filename0<-paste0(cnt_chapt, "_presentation_")
-    rmarkdown::render(paste0(dir_code, "/',sections_no_pres,'_presentation.Rmd"),
-                      output_dir = dir_out_chapters,
-                      output_file = paste0(filename0, cnt_chapt_content, ".pptx"))
-
-
-    '), collapse = ""))
-
-    run0<-gsub(pattern = "# INSERT_POWERPOINT",
-               replacement = a,
-               x = run0)
-  } else {
-    run0<-gsub(pattern = "# INSERT_POWERPOINT",
-               replacement = "",
-               x = run0)
-  }
+  # # INSERT_POWERPOINT
+  # # only if there is a reference type specified
+  # if (!(is.null(styles_reference_pptx))) {
+  #   sections_no_pres <- auto_counter(sections_no[length(sections_no)])
+  #   a<-dplyr::if_else(is.na(styles_reference_pptx),
+  #                     "",
+  #                     paste(paste0('
+  #   ############# ', sections_no_pres,' - Presentation ####################
+  #   cnt_chapt<-auto_counter(cnt_chapt)
+  #   cnt_chapt_content<-"001"
+  #   filename0<-paste0(cnt_chapt, "_presentation_")
+  #   rmarkdown::render(paste0(dir_code, "/',sections_no_pres,'_presentation.Rmd"),
+  #                     output_dir = dir_out_chapters,
+  #                     output_file = paste0(filename0, cnt_chapt_content, ".pptx"))
+  #
+  #
+  #   '), collapse = ""))
+  #
+  #   run0<-gsub(pattern = "# INSERT_POWERPOINT",
+  #              replacement = a,
+  #              x = run0)
+  # } else {
+  #   run0<-gsub(pattern = "# INSERT_POWERPOINT",
+  #              replacement = "",
+  #              x = run0)
+  # }
 
   # OTHER CONTENT
   run0<-gsub(pattern = "# INSERT_REPORT_TITLE",
@@ -1323,7 +1321,7 @@ save_figures<-function(figure,
     }
   }
 
-  list_figures$temp <- list("plot" = figure,
+  list_figures$temp <- list("figure" = figure,
                            "caption" = caption,
                            "header" = header,
                            "nickname" = nickname,
@@ -1332,7 +1330,7 @@ save_figures<-function(figure,
                            "footnote" = footnote,
                            "filename" = filename00)
 
-  names(list_figures)[names(list_figures) %in% "temp"] <- header
+  names(list_figures)[names(list_figures) %in% "temp"] <- nickname
 
   if (message == TRUE) {
     print(paste0("This figure was saved to ", path, filename00, ".*"))
@@ -1454,7 +1452,7 @@ save_tables<-function(table_raw = NULL,
                           "footnote" = footnote,
                           "filename" = filename00)
 
-  names(list_tables)[names(list_tables) %in% "temp"] <- header
+  names(list_tables)[names(list_tables) %in% "temp"] <- nickname
 
   if (message == TRUE) {
     print(paste0("This table was saved to ", path, filename00, ".*"))
@@ -1537,7 +1535,7 @@ save_equations<-function(equation,
                            "number" = cnt,
                            "footnote" = footnote)
 
-  names(list_equations )[names(list_equations ) %in% "temp"] <- header
+  names(list_equations )[names(list_equations ) %in% "temp"] <- nickname
 
   return(list_equations )
 }

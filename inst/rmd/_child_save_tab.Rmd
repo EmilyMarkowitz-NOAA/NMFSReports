@@ -5,10 +5,16 @@
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_tables<-cnt_tables+1
 
+if (!(exists("table_raw"))) {
+  table_raw <- NULL
+} else if (!(exists("table_print"))) {
+  table_print <- NULL
+}
+
 # Systematically save your table with this function
 list_tables<-NMFSReports::save_tables(
-  table_raw = ifelse(exists("table_raw"), table_raw, NULL), 
-  table_print = ifelse(exists("table_print"), table_print, NULL),
+  table_raw = table_raw, 
+  table_print = table_print,
   list_tables = list_tables, 
   header = ifelse(exists("header"), header, ""),
   footnote = unlist(ifelse(exists("footnote"), list(footnote), "")), 
@@ -32,11 +38,9 @@ list_tables<-NMFSReports::save_tables(
 # Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
 if (indesign_flowin %in% FALSE) { 
   if (exists("table_print")) {
-    # list_tables[[length(list_tables)]]$
-      table_print # print table in text
+    list_tables[[length(list_tables)]]$print # print table in text
   } else {
-    # list_tables[[length(list_tables)]]$
-      table_raw
+    list_tables[[length(list_tables)]]$raw
   }
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign 
   

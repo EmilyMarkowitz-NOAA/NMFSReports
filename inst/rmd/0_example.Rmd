@@ -174,7 +174,7 @@ Here in figure `r ref_listobject(list_obj = list_figures, nickname = "noaalogo",
 header <- "Here is a table!"
 footnote<-"A footnote for this table!"
 nickname <- "example1" # this is so you can refer to it later systematically
-
+alttext <- "This is a 3-column table of random letters (in the first column) and numbers (in the second and third columns). "
 # Select data and make plot
 
 # Create data-saver version of table that will be used to reference things later saved as backup

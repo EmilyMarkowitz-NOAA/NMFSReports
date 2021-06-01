@@ -172,8 +172,7 @@ list_figures<-NMFSReports::save_figures(
 # something you might like to toggle on and off. 
 # Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
 if (indesign_flowin %in% FALSE) {
-  # list_figures[[length(list_figures)]]$
-    figure # print plot in text
+  list_figures[[length(list_figures)]]$figure # print plot in text
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign
   Title0 <- ifelse(indesign_flowin %in% TRUE, "", list_figures[[length(list_figures)]]$caption)
   rmarkdown::render(system.file("rmd/_TableFigureHeader.Rmd", package = "NMFSReports"),
@@ -223,8 +222,7 @@ list_figures<-NMFSReports::save_figures(
 # something you might like to toggle on and off. 
 # Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
 if (indesign_flowin %in% FALSE) {
-  # list_figures[[length(list_figures)]]$
-    figure # print plot in text
+  list_figures[[length(list_figures)]]$figure # print plot in text
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign
   Title0 <- ifelse(indesign_flowin %in% TRUE, "", list_figures[[length(list_figures)]]$caption)
   rmarkdown::render(system.file("rmd/_TableFigureHeader.Rmd", package = "NMFSReports"),
@@ -272,6 +270,7 @@ res <- knitr::knit_child(
 header <- "Here is a table!"
 footnote<-"A footnote for this table!"
 nickname <- "example1" # this is so you can refer to it later systematically
+alttext <- "This is a 3-column table of random letters (in the first column) and numbers (in the second and third columns). "
 
 # Select data and make plot
 
@@ -302,10 +301,16 @@ table_print <- table_print %>%
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_tables<-cnt_tables+1
 
+if (!(exists("table_raw"))) {
+  table_raw <- NULL
+} else if (!(exists("table_print"))) {
+  table_print <- NULL
+}
+
 # Systematically save your table with this function
 list_tables<-NMFSReports::save_tables(
-  table_raw = ifelse(exists("table_raw"), table_raw, NULL), 
-  table_print = ifelse(exists("table_print"), table_print, NULL),
+  table_raw = table_raw, 
+  table_print = table_print,
   list_tables = list_tables, 
   header = ifelse(exists("header"), header, ""),
   footnote = unlist(ifelse(exists("footnote"), list(footnote), "")), 
@@ -327,11 +332,9 @@ list_tables<-NMFSReports::save_tables(
 # Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
 if (indesign_flowin %in% FALSE) { 
   if (exists("table_print")) {
-    # list_tables[[length(list_tables)]]$
-      table_print # print table in text
+    list_tables[[length(list_tables)]]$print # print table in text
   } else {
-    # list_tables[[length(list_tables)]]$
-      table_raw
+    list_tables[[length(list_tables)]]$raw
   }
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign 
   
@@ -360,10 +363,16 @@ remove(list = remove_who)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_tables<-cnt_tables+1
 
+if (!(exists("table_raw"))) {
+  table_raw <- NULL
+} else if (!(exists("table_print"))) {
+  table_print <- NULL
+}
+
 # Systematically save your table with this function
 list_tables<-NMFSReports::save_tables(
-  table_raw = ifelse(exists("table_raw"), table_raw, NULL), 
-  table_print = ifelse(exists("table_print"), table_print, NULL),
+  table_raw = table_raw, 
+  table_print = table_print,
   list_tables = list_tables, 
   header = ifelse(exists("header"), header, ""),
   footnote = unlist(ifelse(exists("footnote"), list(footnote), "")), 
@@ -385,11 +394,9 @@ list_tables<-NMFSReports::save_tables(
 # Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
 if (indesign_flowin %in% FALSE) { 
   if (exists("table_print")) {
-    # list_tables[[length(list_tables)]]$
-      table_print # print table in text
+    list_tables[[length(list_tables)]]$print # print table in text
   } else {
-    # list_tables[[length(list_tables)]]$
-      table_raw
+    list_tables[[length(list_tables)]]$raw
   }
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign 
   

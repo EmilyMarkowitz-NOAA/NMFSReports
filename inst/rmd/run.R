@@ -42,17 +42,16 @@ cnt_equations <- 0 # This will autoname your equations with consecutive numbers 
 # INSERT_SECTIONS
 
 
-# INSERT_POWERPOINT
-
-
-
 ##### SAVE OTHER OUTPUTS#############
 
-save(figure_list,
+save(list_figures,
      file=paste0(dir_out_figures, "/report_figures.rdata"))
 
-save(table_list,
+save(list_tables,
      file=paste0(dir_out_tables, "/report_tables.rdata"))
+
+save(list_equations,
+     file=paste0(dir_out_tables, "/report_equations.rdata"))
 
 ########***MAKE MASTER DOCX################
 
