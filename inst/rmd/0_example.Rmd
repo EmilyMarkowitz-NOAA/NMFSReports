@@ -202,7 +202,7 @@ table_print <- table_print %>%
 ```{r T1b, child = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")}
 ```
 
-Here in table `r ref_listobject(list_obj = list_table, nickname = "example1", sublist = "number")`, we see that...
+Here in table `r ref_listobject(list_obj = list_tables, nickname = "example1", sublist = "number")`, we see that...
 
 ## Example Table (With Footnotes)
 
@@ -278,6 +278,6 @@ res <- knitr::knit_child(
 
 `r res `
 
-Here in table `r ref_listobject(list_obj = list_table, nickname = "example_foot", sublist = "number")`, we see that...
+Here in table `r ref_listobject(list_obj = list_tables, nickname = "example_foot", sublist = "number")`, we see that...
 
 

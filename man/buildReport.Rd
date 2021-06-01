@@ -5,8 +5,8 @@
 \title{Build your intitial architecture for your new NOAA Tech Memo or Report}
 \usage{
 buildReport(
-  sections = c("frontmatter", "abstract", "introduction", "methods", "results",
-    "discussion", "endmatter", "presentation"),
+  sections = c("abstract", "introduction", "methods", "results", "discussion",
+    "endmatter", "presentation"),
   authors = "",
   title = "",
   styles_reference_pptx = "refppt_nmfs",

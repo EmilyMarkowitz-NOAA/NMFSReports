@@ -37,20 +37,20 @@
 #' #   bibliography.bib = bibliography.bib,
 #' #   csl = csl
 #' # )
-buildReport<-function(sections = c("frontmatter",
-                               "abstract",
-                               "introduction",
-                               "methods",
-                               "results",
-                               "discussion",
-                               "endmatter",
-                               "presentation"),
-                  authors = "",
-                  title = "",
-                  styles_reference_pptx = "refppt_nmfs",
-                  styles_reference_docx = "refdoc_noaa_tech_memo",
-                  bibliography.bib = "bib_example",
-                  csl = "bulletin-of-marine-science") {
+buildReport<-function(
+  sections = c("abstract",
+               "introduction",
+               "methods",
+               "results",
+               "discussion",
+               "endmatter",
+               "presentation"),
+  authors = "",
+  title = "",
+  styles_reference_pptx = "refppt_nmfs",
+  styles_reference_docx = "refdoc_noaa_tech_memo",
+  bibliography.bib = "bib_example",
+  csl = "bulletin-of-marine-science") {
 
   ##################  Create Architecture
   dirs <- c("code", "data", "documentation", "img", "cite", "output")
@@ -69,6 +69,9 @@ buildReport<-function(sections = c("frontmatter",
   if (!(is.null(styles_reference_pptx))) {
     b <- c(b, "presentation")
   }
+
+  b<-unique(b)
+
   counter<-NMFSReports::numbers0(x = c(0, length(b)))[1]
   temp<-gsub(pattern = "\\.Rmd", replacement = "",
              x = gsub(pattern = "0_", replacement = "",
@@ -157,7 +160,7 @@ buildReport<-function(sections = c("frontmatter",
        styles_reference_docx,
        styles_reference_pptx,
        csl,
-       "TableFigureHeader.Rmd",
+       # "TableFigureHeader.Rmd",
        bibliography.bib) # bib_example
 
   for (i in 1:length(b)){
@@ -211,17 +214,25 @@ buildReport<-function(sections = c("frontmatter",
   a<-paste0("source('./code/",
            paste0(support_scripts, ".R')
 
-  "), collapse = "")
+"), collapse = "")
 
   run0<-gsub(pattern = "# INSERT_SUPPORT_SCRIPTS",
              replacement = a,
              x = run0)
 
   # INSERT_SECTIONS
+  b <- list.files(path = "./code/", pattern = ".Rmd") # find the files that are already there
+  bb <- strsplit(x = b, split = "_")
   b<-c("example", sections)
-  counter<-NMFSReports::numbers0(x = c(0, length(b)))[1]
-  sections_no<-NMFSReports::numbers0(c(0:length(sections), length(b)))
+  # counter<-NMFSReports::numbers0(x = c(0, length(b)))[1]
+  # sections_no<-NMFSReports::numbers0(c(0:length(sections), length(b)))
+  sections_no <- unlist(lapply(cc, `[[`, 1))
   sections_no<-sections_no[-length(sections_no)]
+  b <- gsub(pattern = ".Rmd", replacement = "",
+            x = unlist(lapply(cc, `[[`, 2)))
+
+
+
 
   a<-paste(paste0('
   ############# ', sections_no,' - ', stringr::str_to_title(b),' ####################
