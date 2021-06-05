@@ -53,7 +53,7 @@ This package takes you through most of the steps of writing a report. The buildR
 
 See my slides from 2021 R Cascadia Conference below!
 
-![NMFSReports Presentation at 2021 R Cascadia Conference](./presentations/2021-06-05NMFSReports-RCascadiaConf.pdf){width=500px}
+![NMFSReports Presentation at 2021 R Cascadia Conference](https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/presentations/2021-06-05NMFSReports-RCascadiaConf.pdf)
 
 ## NOAA README
 
