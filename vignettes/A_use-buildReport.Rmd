@@ -57,7 +57,7 @@ Do everyone here a favor and create a new R project or at least set up a working
 
 To build your intitial architecture for your new NOAA Tech Memo or Report, simply run the below script: 
   
-## report_title
+## buildReport(report_title = ...)
   
 Default = "". Here, put the title of your report. You can change this later in the `run.R` file in needed.
 
@@ -65,7 +65,7 @@ Default = "". Here, put the title of your report. You can change this later in t
 report_title = "My Awesome Report!"
 ```
 
-## buildReport(author = ...)
+## buildReport(report_authors = ...)
 
 Here, add the first and last name of everyone who is producing the report. You can change this later in the `run.R` file in needed.
 

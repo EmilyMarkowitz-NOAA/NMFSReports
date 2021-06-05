@@ -1512,7 +1512,7 @@ save_equations<-function(equation,
   return(list_equations )
 }
 
-#' Reference a figure or table
+#' Reference a figure, table, or equation (or other list elements!)
 #'
 #' @param list_obj A list object created by list_figures or list_tables.
 #' @param nickname A unique string that is used to identify the plot or table in list_figures or list_tables, respectively.
