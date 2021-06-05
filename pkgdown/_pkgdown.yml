@@ -80,7 +80,7 @@ reference:
       - '`save_figures`'
       - '`save_tables`'
       - '`save_equations`'
-      - '`ref_listobject`'
+      - '`crossref`'
   - title: Record Metadata
     contents:
       - '`create_metadata`'

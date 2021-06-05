@@ -1,6 +1,8 @@
 
 
 ```{r, echo = FALSE}
+# , {{label}}-table
+
 # Don't Edit This:
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_tables<-cnt_tables+1
@@ -27,9 +29,11 @@ list_tables<-NMFSReports::save_tables(
   path = dir_out_tables)
 
 ```
+
 #### `r ifelse(indesign_flowin %in% TRUE, "", list_tables[[length(list_tables)]]$caption) `
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.cap=ifelse(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="", list_tables[[length(list_tables)]]$alttext, "")}
+# , {{label}}-cleanup
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 

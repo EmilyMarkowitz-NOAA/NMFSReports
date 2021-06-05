@@ -29,6 +29,9 @@ The NMFSReports Package has all of the basic architecture you need to create rep
 library(devtools)
 devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports")
 library(NMFSReports)
+
+# Or, alternatively, 
+remotes::install_github("EmilyMarkowitz-NOAA/NMFSReports@main")
 ```
 
 #### Use this package with `nmfspalette`

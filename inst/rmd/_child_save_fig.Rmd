@@ -2,6 +2,7 @@
 
 
 ```{r, echo = FALSE}
+# , {{label}}-fig
 # Don't Edit This:
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_figures<-cnt_figures+1
@@ -23,8 +24,8 @@ list_figures<-NMFSReports::save_figures(
 ```
 
 
-```{r, echo = FALSE, fig.cap=ifelse(indesign_flowin %in% TRUE, "", list_figures[[length(list_figures)]]$caption)}
-
+```{r, echo = FALSE, fig.cap=ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext, list_figures[[length(list_figures)]]$header)}
+# , {{label}}-cleanup
 # , fig.alt = ifelse(indesign_flowin %in% TRUE, "", list_figures[[length(list_figures)]]$alttext)
 
 # Print or Don't Print Plot in Text

@@ -1537,14 +1537,14 @@ save_equations<-function(equation,
 #'    cnt_chapt_content = "003",
 #'    cnt = "013")
 #' list_figures
-#' refnum <- NMFSReports::ref_listobject(
+#' refnum <- NMFSReports::crossref(
 #'    list_obj = list_figures,
 #'    nickname = "example_figure",
 #'    sublist = "number")
 #' refnum
 #' print(paste0("Please refer to figure ", refnum,
 #'              " to see this figure, not the other figure."))
-ref_listobject <- function(list_obj,
+crossref <- function(list_obj,
                        nickname,
                        sublist = "number"){
   ref <- list_obj[which(lapply(list_obj, `[[`, "nickname") %in% nickname)][[1]][sublist]
@@ -1553,6 +1553,8 @@ ref_listobject <- function(list_obj,
   }
   return(ref)
 }
+
+ref_listobject<-crossref
 
 ######## METADATA ########
 

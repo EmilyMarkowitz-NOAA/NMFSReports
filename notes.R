@@ -6,7 +6,7 @@
 ########### Document Package ############
 .rs.restartR()
 
-options(rmarkdown.html_vignette.check_title = FALSE)
+# options(rmarkdown.html_vignette.check_title = FALSE)
 Sys.setenv('PATH' = paste0('C:/Program Files/qpdf-10.0.1/bin;', Sys.getenv('PATH')))
 library(here)
 library(devtools)
@@ -26,7 +26,7 @@ setwd(here::here())
 library(here)
 library(usethis)
 library(pkgdown)
-options(rmarkdown.html_vignette.check_title = FALSE)
+# options(rmarkdown.html_vignette.check_title = FALSE)
 
 # git rm -r --cached .
 

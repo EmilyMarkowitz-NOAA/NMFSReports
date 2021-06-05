@@ -1,7 +1,7 @@
 
 
 
-```{r, echo = FALSE}
+```{r, {{label}}-eq, echo = FALSE}
 # Don't Edit This:
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_equations<-cnt_equations+1
@@ -18,7 +18,7 @@ list_equations<-NMFSReports::save_equations(
 ```
 
 
-```{r, echo = FALSE}
+```{r, {{label}}-cleanup, echo = FALSE}
 
 # , fig.alt = ifelse(indesign_flowin %in% TRUE, "", figure_list[[length(figure_list)]]$alttext)
 

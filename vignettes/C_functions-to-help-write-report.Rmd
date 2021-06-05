@@ -24,7 +24,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 
 ## Load Libraries
 
-```{r}
+```{r libraries}
 library(NMFSReports)
 library(magrittr)
 library(ggplot2)
@@ -36,7 +36,8 @@ library(magick)
 This file is essentially the example file included in the `buildReport()` function. The [raw vignette script for this can be found here](https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/vignettes/C_functions-to-help-write-report.Rmd) and the [example script can be found here](https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/inst/rmd/0_example.Rmd). 
 
 ## From run file:
-```{r}
+
+```{r housekeeping}
 cnt_chapt <- "000" # Keep everything in a proper order
 cnt_chapt_content <- 0
 cnt_equations <- 0
@@ -52,9 +53,7 @@ indesign_flowin<-FALSE # not going into a final publication that requires indesi
 
 # Example of how to use this R Markdown document
 
-```{r ChunkName_NameMeAnythingAsLongAsItIsUnique}
-# Chunks are were we can write code for something later in the code. 
-
+```{r ex_data}
 # example data
 dat <- data.frame(x = rnorm(n = 100), 
                   y = rnorm(n = 100), 
@@ -79,7 +78,7 @@ Here are several types of vessels: `r NMFSReports::text_list(types_of_vessels)`.
 
 Here is some equations you'll need to have in this report: 
 
-```{r}
+```{r eq_pythag0}
 equation = "c^2 = b^2 + a^2"
 nickname = "pythagorean"
 header = "Pythagorean theorem"
@@ -89,15 +88,16 @@ alttext = "The Pythagoras theorem is a mathematical law that states that the sum
 # save yo' stuff and do a lot of behind the scenes work
 # alt: check out the "child = " in this next chunk header (which must stay empty)
 # ```{r, child = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports")}
+
 # ```
 ```
 
-```{r, child = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports")}
+```{r eq_pythag, child = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports")}
 ```
   
 [Text blah blah]
   
-```{r}
+```{r eq_newton}
 equation = "F = G \\frac {m_1 m_2}{d^2}"
 nickname = "Newton"
 header = "Newton's Universal Law of Gravitation"
@@ -106,7 +106,8 @@ header = "Newton's Universal Law of Gravitation"
 # alt: this does the same thing as calling "child = " in the chunk header
 res <- knitr::knit_child(
   text = knitr::knit_expand(
-    file = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports")),
+    file = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports"), 
+    label = "eq_newton"), #print(opts_current$get()$label)
   quiet = TRUE
 )
 # `r res `
@@ -114,7 +115,7 @@ res <- knitr::knit_child(
 
 `r res `
 
-Remember the pythagorean theorem from before? That was Equation #`r ref_listobject(list_obj = list_equations, nickname = "pythagorean", sublist = "number")` and it had a footnote that said "`r ref_listobject(list_obj = list_equations, nickname = "pythagorean", sublist = "footnote")`".
+Remember the pythagorean theorem from before? That was Equation #`r crossref(list_obj = list_equations, nickname = "pythagorean", sublist = "number")` and it had a footnote that said "`r crossref(list_obj = list_equations, nickname = "pythagorean", sublist = "footnote")`".
 
 
 ## Citations
@@ -125,10 +126,10 @@ Note that references will appear at the bottom of this document (and any documen
 
 ## Example Figure (Plot)
 
-```{r}
+```{r ex_plot0}
 header <- "Here is a figure!"
 footnote<-c("A footnote for this figure!", "A second footnote for this figure!")
-nickname <- "example_plot"
+nickname <- "ex_plot"
 alttext <- "This is a scatter plot of random data."
   
 # Select data and make plot
@@ -142,15 +143,15 @@ figure <- dat %>%
 # ```
 ```
 
-```{r, child = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")}
+```{r ex_plot, child = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")}
 ```
 
-Here in plot `r ref_listobject(list_obj = list_figures, nickname = "example_plot", sublist = "number")`, we see that...
+Here in plot `r crossref(list_obj = list_figures, nickname = "ex_plot", sublist = "number")`, we see that...
 
 
 ## Example Figure (Reference Image)
 
-```{r}
+```{r noaalogo}
 
 header <- "Here is a figure!"
 footnote<-c("A footnote for this figure!")
@@ -167,7 +168,8 @@ figure <-
 # alt: this does the same thing as calling "child = " in the chunk header
 res <- knitr::knit_child(
   text = knitr::knit_expand(
-    file = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")),
+    file = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports"), 
+    label = "noaalogo"), #print(opts_current$get()$label)),
   quiet = TRUE
 )
 # `r res `
@@ -176,16 +178,16 @@ res <- knitr::knit_child(
 
 `r res `
 
-Here in figure `r ref_listobject(list_obj = list_figures, nickname = "noaalogo", sublist = "number")`, we see the NOAA logo. 
+Here in figure `r crossref(list_obj = list_figures, nickname = "noaalogo", sublist = "number")`, we see the NOAA logo. 
 
 
 ## Example Table (Basic)
 
-```{r}
+```{r ex_table0}
 
 header <- "Here is a table!"
 footnote<-"A footnote for this table!"
-nickname <- "example1" # this is so you can refer to it later systematically
+nickname <- "ex_table" # this is so you can refer to it later systematically
 alttext <- "This is a 3-column table of random letters (in the first column) and numbers (in the second and third columns). "
 
 # Select data and make plot
@@ -203,27 +205,24 @@ table_print[,c("x", "y")] <-
                           comma_seperator = TRUE, 
                           digits = 2)
 
-# Format table 
-# table_print <- table_print %>%
-#   knitr::kable() #print table in text
-
 # save yo' stuff and do a lot of behind the scenes work
 # alt: check out the "child = " in this chunk header (which must stay empty)
 # ```{r, child = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")}
 # ```
 ```
 
-```{r, child = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")}
+
+```{r ex_table, child = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")}
 ```
 
-Here in table `r ref_listobject(list_obj = list_tables, nickname = "example1", sublist = "number")`, we see that...
+Here in table `r crossref(list_obj = list_tables, nickname = "ex_table", sublist = "number")`, we see that...
 
 ## Example Table (With Footnotes)
 
-```{r}
+```{r ex_table_foot}
 
 header <- "Here is a table!"
-nickname <- "example_foot" # this is so you can refer to it later systematically
+nickname <- "ex_table_foot" # this is so you can refer to it later systematically
 
 # Select data and make plot
 
@@ -284,7 +283,8 @@ table_print <- table_print %>%
 # alt: this does the same thing as calling "child = " in the chunk header
 res <- knitr::knit_child(
   text = knitr::knit_expand(
-    file = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")),
+    file = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports"), 
+    label = "ex_table_foot"), #print(opts_current$get()$label)),
   quiet = TRUE
 )
 # `r res `
@@ -293,7 +293,7 @@ res <- knitr::knit_child(
 
 `r res `
 
-Here in table `r ref_listobject(list_obj = list_tables, nickname = "example_foot", sublist = "number")`, we see that...
+Here in table `r crossref(list_obj = list_tables, nickname = "ex_table_foot", sublist = "number")`, we see that...
 
 ## References
 
