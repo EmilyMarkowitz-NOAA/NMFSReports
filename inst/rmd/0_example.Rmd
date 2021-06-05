@@ -102,7 +102,7 @@ header = "Newton's Universal Law of Gravitation"
 res <- knitr::knit_child(
   text = knitr::knit_expand(
     file = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports"), 
-    label = "eq_newton"), #print(opts_current$get()$label)
+    ), # label = "eq_newton" #print(opts_current$get()$label)
   quiet = TRUE
 )
 # `r res `
@@ -163,8 +163,8 @@ figure <-
 # alt: this does the same thing as calling "child = " in the chunk header
 res <- knitr::knit_child(
   text = knitr::knit_expand(
-    file = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports"), 
-    label = "noaalogo"), #print(opts_current$get()$label)),
+    file = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")), 
+    # label = "noaalogo"), #print(opts_current$get()$label)),
   quiet = TRUE
 )
 # `r res `
@@ -278,161 +278,8 @@ table_print <- table_print %>%
 # alt: this does the same thing as calling "child = " in the chunk header
 res <- knitr::knit_child(
   text = knitr::knit_expand(
-    file = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports"), 
-    label = "ex_table_foot"), #print(opts_current$get()$label)),
-  quiet = TRUE
-)
-# `r res `
-
-```
-
-`r res `
-
-Here in table `r crossref(list_obj = list_tables, nickname = "ex_table_foot", sublist = "number")`, we see that...
-
-
-
-```{r ex_plot, child = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")}
-```
-
-Here in plot `r crossref(list_obj = list_figures, nickname = "ex_plot", sublist = "number")`, we see that...
-
-
-## Example Figure (Reference Image)
-
-```{r noaalogo}
-
-header <- "Here is a figure!"
-footnote<-c("A footnote for this figure!")
-nickname <- "noaalogo"
-filename_desc <- "noaalogo"
-alttext <- "The NOAA Meatball and text. "
-
-# Select data and make plot
-figure <- 
-  cowplot::ggdraw() +
-  cowplot::draw_image(readPNG(system.file("img/NOAA_Fisheries_logo_vertical.png", package = "NMFSReports")) )
-
-# save yo' stuff and do a lot of behind the scenes work
-# alt: this does the same thing as calling "child = " in the chunk header
-res <- knitr::knit_child(
-  text = knitr::knit_expand(
-    file = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports"), 
-    label = "noaalogo"), #print(opts_current$get()$label)),
-  quiet = TRUE
-)
-# `r res `
-
-```
-
-`r res `
-
-Here in figure `r crossref(list_obj = list_figures, nickname = "noaalogo", sublist = "number")`, we see the NOAA logo. You can also use \@ref(noaalogo) to reference images. 
-
-
-## Example Table (Basic)
-
-```{r ex_table0}
-
-header <- "Here is a table!"
-footnote<-"A footnote for this table!"
-nickname <- "ex_table" # this is so you can refer to it later systematically
-alttext <- "This is a 3-column table of random letters (in the first column) and numbers (in the second and third columns). "
-
-# Select data and make plot
-
-# Create data-saver version of table that will be used to reference things later saved as backup
-table_raw<-data.frame(col = LETTERS[1:10], 
-                      x = rnorm(n = 10), 
-                      y = rnorm(n = 10)) 
-
-# Create pretty version of table that will go into report
-table_print <- table_raw
-table_print[,c("x", "y")] <- 
-  NMFSReports::mod_number(table_print[,c("x", "y")], 
-                          divideby = 1, 
-                          comma_seperator = TRUE, 
-                          digits = 2)
-
-# save yo' stuff and do a lot of behind the scenes work
-# alt: check out the "child = " in this chunk header (which must stay empty)
-# ```{r, child = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")}
-# ```
-```
-
-```{r ex_table, child = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")}
-```
-
-Here in table `r crossref(list_obj = list_tables, nickname = "ex_table", sublist = "number")`, we see that...
-
-## Example Table (With Footnotes)
-
-```{r ex_table_foot}
-
-header <- "Here is a table!"
-nickname <- "ex_table_foot" # this is so you can refer to it later systematically
-
-# Select data and make plot
-
-# Create data-saver version of table that will be used to reference things later saved as backup
-table_raw<-data.frame(col = LETTERS[1:10], 
-                      x = rnorm(n = 10), 
-                      y = rnorm(n = 10), 
-                      footnotes = NA) 
-
-table_raw$footnotes[3]<-"Example footnote in a table 1."
-table_raw$footnotes[4]<-"Example footnote in a table 2.,,,Example footnote in a table 3."
-
-footnote<-"A table with footnotes!"
-footnote<-c(footnote, 
-            ifelse(NMFSReports::is_something_in_this_matrix(
-  x = table_raw, 
-  search_for = "J"), 
-  "There is a 'J' in this matrix!", 
-  ""))
-
-# Create pretty version of table that will go into report
-table_print <- table_raw
-table_print[,c("x", "y")] <- NMFSReports::mod_number(table_print[,c("x", "y")], 
-                                                     divideby = 1, 
-                                                     comma_seperator = TRUE, 
-                                                     digits = 2)
-
-# example of how to add footnotes from a column of footnotes
-# here, we'll add footnotes from the "footnotes" column to the content in the first column, where necessary
-table_print <- NMFSReports::add_table_footnotes(table = table_print, 
-                                   from_col = "footnotes", # either use the name of the column or number
-                                   to_col = 1, # or the number of that column in that table
-                                   delim = ",,,") 
-table_print$footnotes<-NULL # remove column from final table
-
-# here, I'll add a specific footnote to a specific place in the table
-table_print <- NMFSReports::add_table_footnotes(table = table_print, 
-                                   footnote = "Example footnote in a table 4.", 
-                                   to_row = 2, 
-                                   to_col = 2)
-
-# apply multiple footnotes to multiple (same number) spots
-table_print <- NMFSReports::add_table_footnotes(table = table_print, 
-                                   footnote = c("Example footnote in a table 5.", 
-                                                "Example footnote in a table 6."), 
-                                   to_row = 2:3,
-                                   to_col = 2)
-
-
-# Format table 
-table_print <- table_print %>%
-  NMFSReports::format_cells(rows = 0, # make column names
-               cols = 1:ncol(table_print), # for all columns
-               fonttype = "bold") #%>% # bold
-  # knitr::kable(row.names = FALSE, booktabs = TRUE) #print table in text
-
-# save yo' stuff and do a lot of behind the scenes work
-# alt: this does the same thing as calling "child = " in the chunk header
-res <- knitr::knit_child(
-  text = knitr::knit_expand(
-    file = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports"), 
-    label = "ex_table_foot"), #print(opts_current$get()$label)),
+    file = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")), 
+    # label = "ex_table_foot"), #print(opts_current$get()$label)),
   quiet = TRUE
 )
 # `r res `
