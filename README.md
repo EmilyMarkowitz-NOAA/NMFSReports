@@ -50,10 +50,15 @@ I’ve been thinking about how to efficiently create reproducible documents and 
 
 This package takes you through most of the steps of writing a report. The buildReport() functiton creates the initial skeleton and architecture for the report, and the rest of the functions help you systematically and reproducibly write your report. 
 
+## Presentations
 
-See my slides from 2021 R Cascadia Conference below!
+Markowitz, EH. Reproducible Reports in R Markdown - Perspectives and {NMFSReports}. R Cascadia Conf., June 2021. Remote. ([Slides](https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/presentations/2021-06-05NMFSReports-RCascadiaConf.pdf))
 
-![NMFSReports Presentation at 2021 R Cascadia Conference](https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/presentations/2021-06-05NMFSReports-RCascadiaConf.pdf)
+Markowitz, EH. Reproducible National-level Reports: Using RMarkdown to Recode the Fisheries Economics of the US Report.([Recording](https://youtu.be/-mycRwaC60A))
+•	Women in Statistics and Data Science Conf.; American Statistical Association, September 2020. Remote. 
+•	American Fisheries Society, September 2020. Remote.
+•	SatRDay Conference, March 2020. Washington, D.C./Remote.   
+
 
 ## NOAA README
 
