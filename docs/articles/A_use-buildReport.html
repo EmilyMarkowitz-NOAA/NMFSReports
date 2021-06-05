@@ -130,30 +130,58 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span></code></pre></div>
-<div id="create-initial-structure-of-report" class="section level1">
+<div id="quick-get-started" class="section level1">
 <h1 class="hasAnchor">
-<a href="#create-initial-structure-of-report" class="anchor"></a>Create initial structure of report</h1>
+<a href="#quick-get-started" class="anchor"></a>Quick! Get started!</h1>
+<p>Here, I’ll show a basic script that you can quickly run to get started.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># 1. Load the NMFSReports Library</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"EmilyMarkowitz-NOAA/NMFSReports"</span>, force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span>
+
+<span class="co"># 2. Build your report</span>
+
+<span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
+  sections <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"abstract"</span>, <span class="st">"introduction"</span>, <span class="st">"history"</span>, 
+               <span class="st">"methods"</span>, <span class="st">"results"</span>, 
+               <span class="st">"results_discussion"</span>, <span class="st">"endmatter"</span>, <span class="st">"presentation"</span><span class="op">)</span>,
+  report_authors <span class="op">=</span> <span class="st">"Me, Myself, and I"</span>,
+  report_title <span class="op">=</span> <span class="st">"The best report ever"</span>,
+  styles_reference_pptx <span class="op">=</span> <span class="st">"refppt_nmfs"</span>,
+  styles_reference_docx <span class="op">=</span> <span class="st">"refdoc_noaa_tech_memo"</span>,
+  bibliography.bib <span class="op">=</span> <span class="st">"bib_example"</span>,
+  csl <span class="op">=</span> <span class="st">"bulletin-of-marine-science"</span>
+<span class="op">)</span>
+
+<span class="co"># 3. Run your run.R file </span>
+<span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"./code/run.R"</span><span class="op">)</span></code></pre></div>
+<p>More details about each option and step of the process is below!</p>
+</div>
+<div id="step-by-step-create-initial-structure-of-report" class="section level1">
+<h1 class="hasAnchor">
+<a href="#step-by-step-create-initial-structure-of-report" class="anchor"></a>Step by Step: Create initial structure of report</h1>
 <p>Do everyone here a favor and create a new R project or at least set up a working directory (<code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>). There will be a lot of file management here…</p>
 <p>To build your intitial architecture for your new NOAA Tech Memo or Report, simply run the below script:</p>
 <div id="report_title" class="section level2">
 <h2 class="hasAnchor">
 <a href="#report_title" class="anchor"></a>report_title</h2>
 <p>Default = ““. Here, put the title of your report. You can change this later in the <code>run.R</code> file in needed.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">report_title</span> <span class="op">=</span> <span class="st">"My Awesome Report!"</span></code></pre></div>
 </div>
 <div id="buildreportauthor" class="section level2">
 <h2 class="hasAnchor">
 <a href="#buildreportauthor" class="anchor"></a>buildReport(author = …)</h2>
 <p>Here, add the first and last name of everyone who is producing the report. You can change this later in the <code>run.R</code> file in needed.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">report_authors</span> <span class="op">=</span> <span class="st">"Me, Myself, and I"</span></code></pre></div>
 </div>
 <div id="buildreportsections" class="section level2">
 <h2 class="hasAnchor">
 <a href="#buildreportsections" class="anchor"></a>buildReport(sections = …)</h2>
 <p>Let’s first think about what you want/need your Tech Memo to look like. For my purposes, I’ll assume that you need the below sections:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># list the sections (that you will have different rmd scripts for) in order and with no spaces</span>
 <span class="va">sections</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"frontmatter"</span>, <span class="co"># This is a specific template that matches the NOAA Template</span>
               <span class="st">"abstract"</span>, <span class="co"># This, and all others unless otherwise mentioned, come from the same plain-slate document but are appropriately named and linked up in the 'run' file. </span>
@@ -203,7 +231,7 @@
 <a href="#buildreportcsl" class="anchor"></a>buildReport(csl = …)</h2>
 <p><code>csl</code> is a citation style. Either use a local document (insert “path”) or some of the pre-made templates (“apa” or “bulletin-of-marine-science”). Default = “apa” because it was easy to find.</p>
 <p>A primer on creating and modifying CSL styles can be found at <a href="http://citationstyles.org/downloads/primer.html" class="uri">http://citationstyles.org/downloads/primer.html</a>. A repository of CSL styles can be found at <a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a>. See also <a href="http://zotero.org/styles" class="uri">http://zotero.org/styles</a> for easy browsing.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">csl</span> <span class="op">=</span> <span class="st">"bulletin-of-marine-science"</span>
 <span class="co"># it looks something like this:</span>
 <span class="va">csl0</span> <span class="op">&lt;-</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"cite"</span>,<span class="st">"bulletin-of-marine-science.csl"</span>, package<span class="op">=</span><span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>
@@ -219,7 +247,7 @@
 <h2 class="hasAnchor">
 <a href="#buildreportbibliography-bib" class="anchor"></a>buildReport(bibliography.bib = …)</h2>
 <p><code>bibliography.bib</code>: Either use a local document (.bib format; insert full “path”) or the example file from the package (“bib_example”). Default = “bib_example”.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">csl</span> <span class="op">=</span> <span class="st">"bib_example"</span>
 <span class="co"># it looks something like this:</span>
 <span class="va">bib</span> <span class="op">&lt;-</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"rmd"</span>,<span class="st">"bib_example.bib"</span>, package<span class="op">=</span><span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>
@@ -272,7 +300,7 @@
 <h1 class="hasAnchor">
 <a href="#create-report-outline" class="anchor"></a>Create Report Outline</h1>
 <p>Now, magic! Now for the sake of the vignette, I can’t actually run it here, but below is a picture of what this looks like:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
         sections <span class="op">=</span> <span class="va">sections</span>,
         report_authors <span class="op">=</span> <span class="va">report_authors</span>,
@@ -292,7 +320,7 @@
 <div id="alternative-report-structures" class="section level1">
 <h1 class="hasAnchor">
 <a href="#alternative-report-structures" class="anchor"></a>Alternative report structures:</h1>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span>
 <span class="co"># Input variables for buildReport()</span>
 <span class="va">sections</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"coverpage"</span>, <span class="co"># This is a specific template for a 1 page coverpage</span>
@@ -320,7 +348,7 @@
 <span class="co">#&gt; 4                                                                                           &lt;title&gt;American Fisheries Society&lt;/title&gt;</span>
 <span class="co">#&gt; 5                                                                    &lt;id&gt;http://www.zotero.org/styles/american-fisheries-society&lt;/id&gt;</span>
 <span class="co">#&gt; 6                                                       &lt;link href=http://www.zotero.org/styles/american-fisheries-society rel=self/&gt;</span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Run buildReport() function</span>
 <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
         sections <span class="op">=</span> <span class="va">sections</span>,

@@ -9,6 +9,29 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 ## ----setup--------------------------------------------------------------------
 library(NMFSReports)
 
+## ---- eval = FALSE------------------------------------------------------------
+#  # 1. Load the NMFSReports Library
+#  library(devtools)
+#  devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports", force = TRUE)
+#  library(NMFSReports)
+#  
+#  # 2. Build your report
+#  
+#  NMFSReports::buildReport(
+#    sections = c("abstract", "introduction", "history",
+#                 "methods", "results",
+#                 "results_discussion", "endmatter", "presentation"),
+#    report_authors = "Me, Myself, and I",
+#    report_title = "The best report ever",
+#    styles_reference_pptx = "refppt_nmfs",
+#    styles_reference_docx = "refdoc_noaa_tech_memo",
+#    bibliography.bib = "bib_example",
+#    csl = "bulletin-of-marine-science"
+#  )
+#  
+#  # 3. Run your run.R file
+#  source("./code/run.R")
+
 ## -----------------------------------------------------------------------------
 report_title = "My Awesome Report!"
 
