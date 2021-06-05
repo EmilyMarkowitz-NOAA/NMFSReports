@@ -51,10 +51,12 @@ alttext = "The Pythagoras theorem is a mathematical law that states that the sum
 
 # ```
 
-## ---- {{label}}-eq, echo = FALSE----------------------------------------------
+## ---- echo = FALSE------------------------------------------------------------
+
 # Don't Edit This:
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_equations<-cnt_equations+1
+
 # Systematically save your plot with this function
 list_equations<-NMFSReports::save_equations(
   equation = equation, 
@@ -66,9 +68,7 @@ list_equations<-NMFSReports::save_equations(
   cnt_chapt_content = cnt_chapt_content, 
   cnt = cnt_equations)
 
-## ---- {{label}}-cleanup, echo = FALSE-----------------------------------------
-
-# , fig.alt = ifelse(indesign_flowin %in% TRUE, "", figure_list[[length(figure_list)]]$alttext)
+## ---- echo = FALSE------------------------------------------------------------
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
@@ -81,10 +81,12 @@ for (i in 1:length(remove_who0)){
 remove(list = remove_who)
 
 
-## ---- eq_newton-eq, echo = FALSE----------------------------------------------
+## ---- echo = FALSE------------------------------------------------------------
+
 # Don't Edit This:
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_equations<-cnt_equations+1
+
 # Systematically save your plot with this function
 list_equations<-NMFSReports::save_equations(
   equation = equation, 
@@ -96,9 +98,7 @@ list_equations<-NMFSReports::save_equations(
   cnt_chapt_content = cnt_chapt_content, 
   cnt = cnt_equations)
 
-## ---- eq_newton-cleanup, echo = FALSE-----------------------------------------
-
-# , fig.alt = ifelse(indesign_flowin %in% TRUE, "", figure_list[[length(figure_list)]]$alttext)
+## ---- echo = FALSE------------------------------------------------------------
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
@@ -120,8 +120,7 @@ header = "Newton's Universal Law of Gravitation"
 # alt: this does the same thing as calling "child = " in the chunk header
 res <- knitr::knit_child(
   text = knitr::knit_expand(
-    file = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports"), 
-    label = "eq_newton"), #print(opts_current$get()$label)
+    file = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports") ), 
   quiet = TRUE
 )
 # `r res `
@@ -143,10 +142,11 @@ figure <- dat %>%
 # ```
 
 ## ---- echo = FALSE------------------------------------------------------------
-# , {{label}}-fig
+
 # Don't Edit This:
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_figures<-cnt_figures+1
+
 # Systematically save your plot with this function
 list_figures<-NMFSReports::save_figures(
   figure = figure, 
@@ -164,8 +164,6 @@ list_figures<-NMFSReports::save_figures(
   path = dir_out_figures)
 
 ## ---- echo = FALSE, fig.cap=ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext, list_figures[[length(list_figures)]]$header)----
-# , {{label}}-cleanup
-# , fig.alt = ifelse(indesign_flowin %in% TRUE, "", list_figures[[length(list_figures)]]$alttext)
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
@@ -194,10 +192,11 @@ remove(list = remove_who)
 
 
 ## ---- echo = FALSE------------------------------------------------------------
-# , noaalogo-fig
+
 # Don't Edit This:
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_figures<-cnt_figures+1
+
 # Systematically save your plot with this function
 list_figures<-NMFSReports::save_figures(
   figure = figure, 
@@ -215,8 +214,6 @@ list_figures<-NMFSReports::save_figures(
   path = dir_out_figures)
 
 ## ---- echo = FALSE, fig.cap=ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext, list_figures[[length(list_figures)]]$header)----
-# , noaalogo-cleanup
-# , fig.alt = ifelse(indesign_flowin %in% TRUE, "", list_figures[[length(list_figures)]]$alttext)
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
@@ -261,8 +258,7 @@ figure <-
 # alt: this does the same thing as calling "child = " in the chunk header
 res <- knitr::knit_child(
   text = knitr::knit_expand(
-    file = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports"), 
-    label = "noaalogo"), #print(opts_current$get()$label)),
+    file = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")), 
   quiet = TRUE
 )
 # `r res `
@@ -296,7 +292,6 @@ table_print[,c("x", "y")] <-
 # ```
 
 ## ---- echo = FALSE------------------------------------------------------------
-# , {{label}}-table
 
 # Don't Edit This:
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
@@ -325,7 +320,6 @@ list_tables<-NMFSReports::save_tables(
 
 
 ## ---- echo = FALSE, fig.cap=ifelse(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="", list_tables[[length(list_tables)]]$alttext, "")----
-# , {{label}}-cleanup
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
@@ -364,7 +358,6 @@ remove(list = remove_who)
 
 
 ## ---- echo = FALSE------------------------------------------------------------
-# , ex_table_foot-table
 
 # Don't Edit This:
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
@@ -393,7 +386,6 @@ list_tables<-NMFSReports::save_tables(
 
 
 ## ---- echo = FALSE, fig.cap=ifelse(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="", list_tables[[length(list_tables)]]$alttext, "")----
-# , ex_table_foot-cleanup
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
@@ -495,8 +487,7 @@ table_print <- table_print %>%
 # alt: this does the same thing as calling "child = " in the chunk header
 res <- knitr::knit_child(
   text = knitr::knit_expand(
-    file = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports"), 
-    label = "ex_table_foot"), #print(opts_current$get()$label)),
+    file = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")), 
   quiet = TRUE
 )
 # `r res `

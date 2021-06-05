@@ -1,10 +1,12 @@
 
 
 
-```{r, {{label}}-eq, echo = FALSE}
+```{r, echo = FALSE}
+
 # Don't Edit This:
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_equations<-cnt_equations+1
+
 # Systematically save your plot with this function
 list_equations<-NMFSReports::save_equations(
   equation = equation, 
@@ -18,9 +20,7 @@ list_equations<-NMFSReports::save_equations(
 ```
 
 
-```{r, {{label}}-cleanup, echo = FALSE}
-
-# , fig.alt = ifelse(indesign_flowin %in% TRUE, "", figure_list[[length(figure_list)]]$alttext)
+```{r, echo = FALSE}
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
@@ -33,6 +33,7 @@ for (i in 1:length(remove_who0)){
 remove(list = remove_who)
 
 ```
+
 `r ifelse(indesign_flowin %in% TRUE, "", list_equations[[length(list_equations)]]$caption)`
 
 $$`r paste0(list_equations[[length(list_equations)]]$equation)`$$

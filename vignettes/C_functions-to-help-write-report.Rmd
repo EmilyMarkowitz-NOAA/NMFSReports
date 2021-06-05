@@ -106,8 +106,7 @@ header = "Newton's Universal Law of Gravitation"
 # alt: this does the same thing as calling "child = " in the chunk header
 res <- knitr::knit_child(
   text = knitr::knit_expand(
-    file = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports"), 
-    ), # label = "eq_newton" #print(opts_current$get()$label)
+    file = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports") ), 
   quiet = TRUE
 )
 # `r res `
@@ -169,7 +168,6 @@ figure <-
 res <- knitr::knit_child(
   text = knitr::knit_expand(
     file = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")), 
-    # label = "noaalogo"), #print(opts_current$get()$label)),
   quiet = TRUE
 )
 # `r res `
@@ -284,7 +282,6 @@ table_print <- table_print %>%
 res <- knitr::knit_child(
   text = knitr::knit_expand(
     file = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")), 
-    # label = "ex_table_foot"), #print(opts_current$get()$label)),
   quiet = TRUE
 )
 # `r res `

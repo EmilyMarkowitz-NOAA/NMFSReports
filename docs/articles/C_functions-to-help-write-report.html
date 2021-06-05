@@ -205,8 +205,7 @@
 <span class="co"># alt: this does the same thing as calling "child = " in the chunk header</span>
 <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_child.html">knit_child</a></span><span class="op">(</span>
   text <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_expand.html">knit_expand</a></span><span class="op">(</span>
-    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_eq.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span>, 
-    label <span class="op">=</span> <span class="st">"eq_newton"</span><span class="op">)</span>, <span class="co">#print(opts_current$get()$label)</span>
+    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_eq.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span> <span class="op">)</span>, 
   quiet <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span>
 <span class="co"># `r res `</span></code></pre></div>
@@ -239,7 +238,7 @@
 <span class="co"># ```{r, child = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")}</span>
 <span class="co"># ```</span></code></pre></div>
 <div class="figure">
-<img src="C_functions-to-help-write-report_files/figure-html/unnamed-chunk-3-1.png" alt="Figure 1. Here is a figure!" width="700"><p class="caption">
+<img src="C_functions-to-help-write-report_files/figure-html/unnamed-chunk-7-1.png" alt="Figure 1. Here is a figure!" width="700"><p class="caption">
 Figure 1. Here is a figure!
 </p>
 </div>
@@ -266,13 +265,12 @@ Figure 1. Here is a figure!
 <span class="co"># alt: this does the same thing as calling "child = " in the chunk header</span>
 <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_child.html">knit_child</a></span><span class="op">(</span>
   text <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_expand.html">knit_expand</a></span><span class="op">(</span>
-    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_fig.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span>, 
-    label <span class="op">=</span> <span class="st">"noaalogo"</span><span class="op">)</span>, <span class="co">#print(opts_current$get()$label)),</span>
+    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_fig.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>, 
   quiet <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span>
 <span class="co"># `r res `</span></code></pre></div>
 <div class="figure">
-<img src="C_functions-to-help-write-report_files/figure-html/unnamed-chunk-5-1.png" alt="Figure 2. Here is a figure!" width="700"><p class="caption">
+<img src="C_functions-to-help-write-report_files/figure-html/unnamed-chunk-9-1.png" alt="Figure 2. Here is a figure!" width="700"><p class="caption">
 Figure 2. Here is a figure!
 </p>
 </div>
@@ -321,53 +319,53 @@ Figure 2. Here is a figure!
 <tbody>
 <tr class="odd">
 <td align="left">A</td>
-<td align="left">1.4</td>
-<td align="left">1.2</td>
+<td align="left">0.53</td>
+<td align="left">-0.95</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
-<td align="left">1.7</td>
-<td align="left">-0.48</td>
+<td align="left">-0.69</td>
+<td align="left">-0.81</td>
 </tr>
 <tr class="odd">
 <td align="left">C</td>
-<td align="left">0.38</td>
-<td align="left">0.54</td>
+<td align="left">-0.59</td>
+<td align="left">0.42</td>
 </tr>
 <tr class="even">
 <td align="left">D</td>
-<td align="left">0.34</td>
-<td align="left">-0.44</td>
+<td align="left">-0.67</td>
+<td align="left">0.53</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
-<td align="left">0.15</td>
-<td align="left">0.54</td>
+<td align="left">-0.52</td>
+<td align="left">0.99</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
-<td align="left">0.81</td>
-<td align="left">0.36</td>
+<td align="left">-0.049</td>
+<td align="left">-0.13</td>
 </tr>
 <tr class="odd">
 <td align="left">G</td>
-<td align="left">0.032</td>
-<td align="left">-0.99</td>
+<td align="left">0.18</td>
+<td align="left">-0.094</td>
 </tr>
 <tr class="even">
 <td align="left">H</td>
-<td align="left">-0.2</td>
-<td align="left">-1.5</td>
+<td align="left">-0.79</td>
+<td align="left">-1.2</td>
 </tr>
 <tr class="odd">
 <td align="left">I</td>
-<td align="left">1.2</td>
-<td align="left">0.34</td>
+<td align="left">-0.37</td>
+<td align="left">1.1</td>
 </tr>
 <tr class="even">
 <td align="left">J</td>
-<td align="left">-0.73</td>
-<td align="left">-0.6</td>
+<td align="left">-0.01</td>
+<td align="left">-1.2</td>
 </tr>
 </tbody>
 </table>
@@ -442,8 +440,7 @@ Figure 2. Here is a figure!
 <span class="co"># alt: this does the same thing as calling "child = " in the chunk header</span>
 <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_child.html">knit_child</a></span><span class="op">(</span>
   text <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_expand.html">knit_expand</a></span><span class="op">(</span>
-    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_tab.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span>, 
-    label <span class="op">=</span> <span class="st">"ex_table_foot"</span><span class="op">)</span>, <span class="co">#print(opts_current$get()$label)),</span>
+    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_tab.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>, 
   quiet <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span>
 <span class="co"># `r res `</span></code></pre></div>
@@ -460,57 +457,57 @@ Figure 2. Here is a figure!
 <tbody>
 <tr class="odd">
 <td align="left">A</td>
-<td align="left">0.38</td>
-<td align="left">0.76</td>
+<td align="left">0.94</td>
+<td align="left">-0.69</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
-<td align="left">1.4<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> <sup>,</sup><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>
+<td align="left">-0.049<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> <sup>,</sup><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>
 </td>
-<td align="left">0.09</td>
+<td align="left">0.14</td>
 </tr>
 <tr class="odd">
 <td align="left">C<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>
 </td>
-<td align="left">-1.3<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
+<td align="left">1.3<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
 </td>
-<td align="left">-0.074</td>
+<td align="left">-0.87</td>
 </tr>
 <tr class="even">
 <td align="left">D<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a> <sup>,</sup><a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>
 </td>
-<td align="left">-0.63</td>
-<td align="left">0.96</td>
+<td align="left">0.28</td>
+<td align="left">-1.2</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
-<td align="left">0.5</td>
-<td align="left">-0.18</td>
+<td align="left">0.99</td>
+<td align="left">0.14</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
-<td align="left">0.063</td>
-<td align="left">-1.1</td>
+<td align="left">0.73</td>
+<td align="left">0.41</td>
 </tr>
 <tr class="odd">
 <td align="left">G</td>
-<td align="left">0.47</td>
-<td align="left">0.092</td>
+<td align="left">0.086</td>
+<td align="left">0.12</td>
 </tr>
 <tr class="even">
 <td align="left">H</td>
-<td align="left">0.35</td>
-<td align="left">0.12</td>
+<td align="left">1.1</td>
+<td align="left">1.5</td>
 </tr>
 <tr class="odd">
 <td align="left">I</td>
-<td align="left">-0.21</td>
-<td align="left">2.7</td>
+<td align="left">-0.79</td>
+<td align="left">0.89</td>
 </tr>
 <tr class="even">
 <td align="left">J</td>
-<td align="left">-0.88</td>
-<td align="left">-0.042</td>
+<td align="left">0.52</td>
+<td align="left">-0.1</td>
 </tr>
 </tbody>
 </table>
