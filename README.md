@@ -1,18 +1,20 @@
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # NMFSReports
 
-<!-- badges: start -->
-<!-- badges: end -->
+### *Easily write NOAA reports and Tech Memos in R Markdown*
 
-Easily write NOAA reports and Tech Memos in R Markdown
+[![](https://img.shields.io/badge/devel%20version-0.0.1.1-blue.svg)](https://github.com/EmilyMarkowitz-NOAA/NMFSReports)
+[![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
+[![](https://img.shields.io/github/last-commit/EmilyMarkowitz-NOAA/NMFSReports.svg)](https://github.com/EmilyMarkowitz-NOAA/NMFSReports/commits/main)
 
-> Code is still in development. 
+## Author
 
 **Emily Markowitz** (Emily.Markowitz AT noaa.gov)
 
-Alaska Fisheries Science Center, 
+Alaska Fisheries Science Center,
 
-National Marine Fisheries Service, 
+National Marine Fisheries Service,
 
 National Oceanic and Atmospheric Administration,
 
@@ -20,54 +22,105 @@ Seattle, WA 98195
 
 ## Installation
 
-Learn more about this package at this pkgdown webpage! https://emilymarkowitz-noaa.github.io/NMFSReports/
+#### `NMFSReports`
 
-The NMFSReports Package has all of the basic architecture you need to create reproducible and repeatable NOAA Tech Memos in R Markdown! This approach is perfect for efficiently rolling out annual (or other regular) reports or reports with formulaic sections (the same chapter structure but for a different area or species). Scripts integrate table, figure, data, and bibliography management and design automation.
+Learn more about this package at this [pkgdown
+webpage!](https://emilymarkowitz-noaa.github.io/NMFSReports/)
 
+The NMFSReports Package has all of the basic architecture you need to
+create reproducible and repeatable NOAA Tech Memos in R Markdown! This
+approach is perfect for efficiently rolling out annual (or other
+regular) reports or reports with formulaic sections (the same chapter
+structure but for a different area or species). Scripts integrate table,
+figure, data, and bibliography management and design automation.
 
-```r
-library(devtools)
-devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports")
-library(NMFSReports)
+    library(devtools)
+    devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports")
+    library(NMFSReports)
 
-# Or, alternatively, 
-remotes::install_github("EmilyMarkowitz-NOAA/NMFSReports@main")
-```
+    # Or, alternatively, 
+    remotes::install_github("EmilyMarkowitz-NOAA/NMFSReports@main")
 
-#### Use this package with `nmfspalette`
+#### You may also consider useing this package with `nmfspalette`
 
-A package for NOAA Fisheries color schemes
+A package for NOAA Fisheries color schemes. More info
+[here](https://github.com/nmfs-general-modeling-tools/nmfspalette).
 
-```r
-library(devtools)
-devtools::install_github("nmfs-general-modeling-tools/nmfspalette")
-library(nmfspalette)
-```
-
-## Inspiration
-
-I’ve been thinking about how to efficiently create reproducible documents and rmarkdown scripts for some time. As the former editor of the Fisheries Economics of the US Report (FEUS, published by the NMFS Office of Science and Technology in Silver Spring, Maryland), I completely altered the workflow from a report that was edited line by line to a report that was created reproducibly by a click of a button (Check out this DC satRdays 2020 presentation (March 28 2020): https://www.youtube.com/watch?v=-mycRwaC60A for more info). Using what I learned from re-coding the FEUS and other reports since then, I started building a personal package that I could use in future report writing. It is clear to me that reproducible reports are a massive need across NOAA, and this pet project became an opportunity to help others. Though it is very much in the development stage, but I think it is ready to be tested and worked on collaboratively. I welcome any potential collaboration or comments on how to improve this package.
-
-This package takes you through most of the steps of writing a report. The buildReport() functiton creates the initial skeleton and architecture for the report, and the rest of the functions help you systematically and reproducibly write your report. 
+    library(devtools)
+    devtools::install_github("nmfs-general-modeling-tools/nmfspalette")
+    library(nmfspalette)
 
 ## Conference Presentations
 
-Markowitz, EH. Reproducible Reports in R Markdown - Perspectives and {NMFSReports}. R Cascadia Conf., June 2021. Remote. ([Slides](https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/presentations/2021-06-05NMFSReports-RCascadiaConf.pdf))
+Markowitz, EH. Reproducible Reports in R Markdown - Perspectives and
+{NMFSReports}. R Cascadia Conf., June 2021. Remote.
+([Slides](https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/presentations/2021-06-05NMFSReports-RCascadiaConf.pdf))
 
-Markowitz, EH. Reproducible National-level Reports: Using RMarkdown to Recode the Fisheries Economics of the US Report. ([Recording](https://youtu.be/-mycRwaC60A))
+Markowitz, EH. Reproducible National-level Reports: Using RMarkdown to
+Recode the Fisheries Economics of the US Report.
 
- - Women in Statistics and Data Science Conf.; American Statistical Association, September 2020. Remote. 
- - American Fisheries Society, September 2020. Remote.
- - SatRDay Conference, March 2020. Washington, D.C./Remote.   
+-   Women in Statistics and Data Science Conf.; American Statistical
+    Association, September 2020. Remote.
+-   American Fisheries Society, September 2020. Remote.
+-   SatRDay Conference, March 2020. Washington, D.C./Remote.
+    ([Recording](https://youtu.be/-mycRwaC60A))
 
+## Abstract
+
+Scientists in government and beyond are often tasked with preparing
+analysis-driven reports that inform policy and are crucial for
+documenting the state of their programs at regular intervals (e.g.,
+annually, quarterly, monthly). Although these reports typically follow
+the same format for each iteration, updating content with new data from
+previous document line by line can lead to inefficient writing and
+introduce errors.
+
+Alternatively, R and R Markdown can be used to systematically modernize
+report creation. To address this need within our agency I have developed
+a new R package, `{NMFSReports}`, which uses R and R Markdown to provide
+an analysis-to-product approach to report writing by centralizing
+back-end data analyses and efficiently streamlining copy-edit and design
+sub-processes. The `{NMFSReports}` R package first creates the basic
+report outline and folder architecture to create reproducible reports,
+and then provides users with grammar and organization helper functions
+that assist in report writing. To aid in the final publication process,
+this workflow can also be used to produce intermediate output files for
+subject matter experts and collaborators to review and use.
+`{NMFSReports}` can produce copy-edit ready and accessibility-compliant
+documents for editors, style guide-formatted and flow-in ready text
+(including bibliography, footnote, figure, and table management) for
+authors, tables and figures for graphic designers, and web-ready data
+files for web tool developers. Though this package is in early stages of
+development, it is already clear it has the potential to save colleagues
+across our agency countless hours and improve efficiency and consistency
+among our teams and offices. Though developed for reports produced by
+scientists at NOAA Fisheries, the concepts and structures behind
+`{NMFSReports}` have utility for anyone seeking to streamline reports,
+graphics, and web tools.
 
 ## NOAA README
 
-This repository is a scientific product and is not official communication of the National Oceanic and Atmospheric Administration, or the United States Department of Commerce. All NOAA GitHub project code is provided on an ‘as is’ basis and the user assumes responsibility for its use. Any claims against the Department of Commerce or Department of Commerce bureaus stemming from the use of this GitHub project will be governed by all applicable Federal law. Any reference to specific commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply their endorsement, recommendation or favoring by the Department of Commerce. The Department of Commerce seal and logo, or the seal and logo of a DOC bureau, shall not be used in any manner to imply endorsement of any commercial product or activity by DOC or the United States Government.
+This repository is a scientific product and is not official
+communication of the National Oceanic and Atmospheric Administration, or
+the United States Department of Commerce. All NOAA GitHub project code
+is provided on an ‘as is’ basis and the user assumes responsibility for
+its use. Any claims against the Department of Commerce or Department of
+Commerce bureaus stemming from the use of this GitHub project will be
+governed by all applicable Federal law. Any reference to specific
+commercial products, processes, or services by service mark, trademark,
+manufacturer, or otherwise, does not constitute or imply their
+endorsement, recommendation or favoring by the Department of Commerce.
+The Department of Commerce seal and logo, or the seal and logo of a DOC
+bureau, shall not be used in any manner to imply endorsement of any
+commercial product or activity by DOC or the United States Government.
 
 ## NOAA License
 
-Software code created by U.S. Government employees is not subject to copyright in the United States (17 U.S.C. §105). The United States/Department of Commerce reserve all rights to seek and obtain copyright protection in countries other than the United States for Software authored in its entirety by the Department of Commerce. To this end, the Department of Commerce hereby grants to Recipient a royalty-free, nonexclusive license to use, copy, and create derivative works of the Software outside of the United States.
-
-
-
+Software code created by U.S. Government employees is not subject to
+copyright in the United States (17 U.S.C. §105). The United
+States/Department of Commerce reserve all rights to seek and obtain
+copyright protection in countries other than the United States for
+Software authored in its entirety by the Department of Commerce. To this
+end, the Department of Commerce hereby grants to Recipient a
+royalty-free, nonexclusive license to use, copy, and create derivative
+works of the Software outside of the United States.

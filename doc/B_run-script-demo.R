@@ -41,8 +41,8 @@ library(NMFSReports)
 
 ## ---- eval=FALSE--------------------------------------------------------------
 #  #' ---
-#  #' title: ''
-#  #' author: ''
+#  #' title: Awesome Report!
+#  #' author: Me, Myself, and I
 #  #' purpose: Run Scripts and R Markdown Files
 #  #' start date: 2021-03-03
 #  #' date modified: 2021-03-03                                            # CHANGE
@@ -52,8 +52,8 @@ library(NMFSReports)
 #  # START ------------------------------------------------------------------------
 #  
 #  # *** REPORT KNOWNS ------------------------------------------------------------
-#  report_title <- # INSERT_REPORT_TITLE
-#  report_authors <- # INSERT_AUTHOR
+#  report_title <- "Awesome Report!"
+#  report_authors <- "Me, Myself, and I"
 #  report_yr <- substr(x = Sys.Date(), start = 1, stop = 4)            # SUGGESTION
 #  
 #  # *** OUTPUT TYPE --------------------------------------------------------------
