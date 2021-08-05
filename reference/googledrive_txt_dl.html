@@ -142,7 +142,7 @@
 </li>
 <li>
   <a href="https://nmfs-general-modeling-tools.github.io/">
-    <span class="fas fa-fish"></span>
+    <span class="fa fa-fish"></span>
      
   </a>
 </li>
@@ -202,20 +202,25 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>googledrive</span><span class='fu'>::</span><span class='fu'><a href='https://googledrive.tidyverse.org/reference/drive_auth.html'>drive_auth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># Using the first token you have.</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: Can't get Google credentials.</span>
-#&gt; <span class='error'>Are you running googledrive in a non-interactive session? Consider:</span>
-#&gt; <span class='error'>  * `drive_deauth()` to prevent the attempt to get credentials.</span>
-#&gt; <span class='error'>  * Call `drive_auth()` directly with all necessary specifics.</span>
-#&gt; <span class='error'>  * Read more in: https://gargle.r-lib.org/articles/non-interactive-auth.html</span></div><div class='input'><span class='fl'>1</span>
+</div><div class='output co'>#&gt; <span class='error'>Error: <span style='font-weight: bold;'>Can't get Google credentials</span></span>
+#&gt; <span class='error'><span style='color: #00BBBB;'>ℹ</span> Are you running googledrive in a non-interactive session? Consider:</span>
+#&gt; <span class='error'>• <span style='color: #262626; background-color: #DADADA;'>`drive_deauth()`</span> to prevent the attempt to get credentials</span>
+#&gt; <span class='error'>• Call <span style='color: #262626; background-color: #DADADA;'>`drive_auth()`</span> directly with all necessary specifics</span>
+#&gt; <span class='error'><span style='color: #00BBBB;'>ℹ</span> See gargle's "Non-interactive auth" vignette for more details:</span>
+#&gt; <span class='error'><span style='color: #00BBBB;'>ℹ</span> <span style='color: #0000BB; font-style: italic;'>&lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</span></span></div><div class='input'><span class='fl'>1</span>
 </div><div class='output co'>#&gt; [1] 1</div><div class='input'>
 <span class='va'>txt</span> <span class='op'>&lt;-</span> <span class='fu'>googledrive_txt_dl</span><span class='op'>(</span>filename_gd <span class='op'>=</span> <span class='st'>"test123123_doc"</span>,
                           filename_dl <span class='op'>=</span> <span class='st'>"test123123_dl"</span>,
                           verbose <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: Can't get Google credentials.</span>
-#&gt; <span class='error'>Are you running googledrive in a non-interactive session? Consider:</span>
-#&gt; <span class='error'>  * `drive_deauth()` to prevent the attempt to get credentials.</span>
-#&gt; <span class='error'>  * Call `drive_auth()` directly with all necessary specifics.</span>
-#&gt; <span class='error'>  * Read more in: https://gargle.r-lib.org/articles/non-interactive-auth.html</span></div><div class='input'><span class='va'>txt</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: The `verbose` argument of `some_googledrive_function()` is deprecated as of googledrive 2.0.0.</span>
+#&gt; <span class='warning'>Set `options(googledrive_quiet = TRUE)` to suppress all googledrive messages.</span>
+#&gt; <span class='warning'>For finer control, use `local_drive_quiet()` or `with_drive_quiet()`.</span>
+#&gt; <span class='warning'>googledrive's `verbose` argument will be removed in the future.</span></div><div class='output co'>#&gt; <span class='error'>Error: <span style='font-weight: bold;'>Can't get Google credentials</span></span>
+#&gt; <span class='error'><span style='color: #00BBBB;'>ℹ</span> Are you running googledrive in a non-interactive session? Consider:</span>
+#&gt; <span class='error'>• <span style='color: #262626; background-color: #DADADA;'>`drive_deauth()`</span> to prevent the attempt to get credentials</span>
+#&gt; <span class='error'>• Call <span style='color: #262626; background-color: #DADADA;'>`drive_auth()`</span> directly with all necessary specifics</span>
+#&gt; <span class='error'><span style='color: #00BBBB;'>ℹ</span> See gargle's "Non-interactive auth" vignette for more details:</span>
+#&gt; <span class='error'><span style='color: #00BBBB;'>ℹ</span> <span style='color: #0000BB; font-style: italic;'>&lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</span></span></div><div class='input'><span class='va'>txt</span>
 </div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'txt' not found</span></div><div class='input'><span class='co'># for good file keeping, I'll delete these</span>
 <span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.remove</a></span><span class='op'>(</span><span class='st'>'test123123_dl.txt'</span>, <span class='st'>'test123123_dl.zip'</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='warning'>Warning: cannot remove file 'test123123_dl.txt', reason 'No such file or directory'</span></div><div class='output co'>#&gt; <span class='warning'>Warning: cannot remove file 'test123123_dl.zip', reason 'No such file or directory'</span></div><div class='output co'>#&gt; [1] FALSE FALSE</div></pre>
