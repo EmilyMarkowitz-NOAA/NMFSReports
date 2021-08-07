@@ -123,19 +123,15 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-
-<hr>
-<p>output: md_document: variant: gfm —</p>
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 <div id="nmfsreports-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#nmfsreports-" class="anchor"></a>NMFSReports <a href="%7Bhttps:://nmfs-general-modeling-tools.github.io/nmfspalette%7D"><img src="reference/figures/logo.png" align="right" width="139" height="139" alt="logo with an image of a fish in multiple palette colors"></a>
+<a href="#nmfsreports-" class="anchor"></a>NMFSReports <a href="%7Bhttps://emilymarkowitz-noaa.github.io/NMFSReports/%7D"><img src="reference/figures/logo.png" align="right" width="139" height="139" alt="logo with an image of a NOAA Fisheries Report"></a>
 </h1></div>
 <div id="easily-write-noaa-reports-and-tech-memos-in-r-markdown" class="section level3">
 <h3 class="hasAnchor">
 <a href="#easily-write-noaa-reports-and-tech-memos-in-r-markdown" class="anchor"></a><em>Easily write NOAA reports and Tech Memos in R Markdown</em>
 </h3>
-<p><a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports"><img src="https://img.shields.io/badge/devel%20version-0.0.1.1-blue.svg"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg"></a> <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/commits/main"><img src="https://img.shields.io/github/last-commit/EmilyMarkowitz-NOAA/NMFSReports.svg"></a></p>
+
 </div>
 <div id="author" class="section level2">
 <h2 class="hasAnchor">
@@ -155,23 +151,21 @@
 </h4>
 <p>Learn more about this package at this <a href="https://emilymarkowitz-noaa.github.io/NMFSReports/">pkgdown webpage!</a></p>
 <p>The NMFSReports Package has all of the basic architecture you need to create reproducible and repeatable NOAA Tech Memos in R Markdown! This approach is perfect for efficiently rolling out annual (or other regular) reports or reports with formulaic sections (the same chapter structure but for a different area or species). Scripts integrate table, figure, data, and bibliography management and design automation.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"EmilyMarkowitz-NOAA/NMFSReports"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span>
-
-<span class="co"># Or, alternatively, </span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"EmilyMarkowitz-NOAA/NMFSReports@main"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"EmilyMarkowitz-NOAA/NMFSReports"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NMFSReports)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Or, alternatively, </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"EmilyMarkowitz-NOAA/NMFSReports@main"</span>)</span></code></pre></div>
 </div>
 <div id="you-may-also-consider-useing-this-package-with-nmfspalette" class="section level4">
 <h4 class="hasAnchor">
 <a href="#you-may-also-consider-useing-this-package-with-nmfspalette" class="anchor"></a>You may also consider useing this package with <code>nmfspalette</code>
 </h4>
 <p>A package for NOAA Fisheries color schemes. More info <a href="https://github.com/nmfs-general-modeling-tools/nmfspalette">here</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"nmfs-general-modeling-tools/nmfspalette"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">nmfspalette</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"nmfs-general-modeling-tools/nmfspalette"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nmfspalette)</span></code></pre></div>
 </div>
 </div>
 <div id="conference-presentations" class="section level2">
@@ -204,7 +198,6 @@
 <p><a href="https://www.commerce.gov/">U.S. Department of Commerce</a> | <a href="https://www.noaa.gov">National Oceanographic and Atmospheric Administration</a> | <a href="https://www.fisheries.noaa.gov/">NOAA Fisheries</a></p>
 </div>
 </div>
-
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -231,7 +224,15 @@
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports"><img src="https://img.shields.io/badge/devel%20version-0.0.1.1-blue.svg"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg"></a></li>
+<li><a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/commits/main"><img src="https://img.shields.io/github/last-commit/EmilyMarkowitz-NOAA/NMFSReports.svg"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 

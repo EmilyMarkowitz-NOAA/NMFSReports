@@ -1,12 +1,6 @@
----
-output:
-  md_document:
-    variant: gfm
----
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# NMFSReports <a href={https:://nmfs-general-modeling-tools.github.io/nmfspalette}><img src="man/figures/logo.png" align="right" width=139 height=139 alt="logo with an image of a fish in multiple palette colors" />
+# NMFSReports <a href={https://emilymarkowitz-noaa.github.io/NMFSReports/}><img src="man/figures/logo.png" align="right" width=139 height=139 alt="logo with an image of a NOAA Fisheries Report" />
 
 ### *Easily write NOAA reports and Tech Memos in R Markdown*
 
@@ -40,25 +34,21 @@ regular) reports or reports with formulaic sections (the same chapter
 structure but for a different area or species). Scripts integrate table,
 figure, data, and bibliography management and design automation.
 
-``` r
-library(devtools)
-devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports")
-library(NMFSReports)
+    library(devtools)
+    devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports")
+    library(NMFSReports)
 
-# Or, alternatively, 
-remotes::install_github("EmilyMarkowitz-NOAA/NMFSReports@main")
-```
+    # Or, alternatively, 
+    remotes::install_github("EmilyMarkowitz-NOAA/NMFSReports@main")
 
 #### You may also consider useing this package with `nmfspalette`
 
 A package for NOAA Fisheries color schemes. More info
 [here](https://github.com/nmfs-general-modeling-tools/nmfspalette).
 
-``` r
-library(devtools)
-devtools::install_github("nmfs-general-modeling-tools/nmfspalette")
-library(nmfspalette)
-```
+    library(devtools)
+    devtools::install_github("nmfs-general-modeling-tools/nmfspalette")
+    library(nmfspalette)
 
 ## Conference Presentations
 
@@ -139,6 +129,6 @@ works of the Software outside of the United States.
 
 <img src="https://raw.githubusercontent.com/nmfs-general-modeling-tools/nmfspalette/main/man/figures/noaa-fisheries-rgb-2line-horizontal-small.png" height="75" alt="NOAA Fisheries">
 
-[U.S. Department of Commerce](https://www.commerce.gov/) \| [National
-Oceanographic and Atmospheric Administration](https://www.noaa.gov) \|
+[U.S. Department of Commerce](https://www.commerce.gov/) | [National
+Oceanographic and Atmospheric Administration](https://www.noaa.gov) |
 [NOAA Fisheries](https://www.fisheries.noaa.gov/)
