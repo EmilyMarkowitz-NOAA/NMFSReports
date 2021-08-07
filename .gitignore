@@ -13,5 +13,6 @@ vignettes/*.txt
 vignettes/*.zip
 /Meta/
 
-docs
+
 /doc/
+docs
