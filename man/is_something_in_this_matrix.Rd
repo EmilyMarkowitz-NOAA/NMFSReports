@@ -19,6 +19,7 @@ This function searches to see if item 'search_for' is within the matrix 'x' and 
 }
 \examples{
 x = data.frame(matrix(1:9, nrow = 3, ncol = 3))
+x
 is_something_in_this_matrix(x,
                        search_for = 9)
 x = data.frame(matrix(LETTERS[1:9], nrow = 3, ncol = 3))

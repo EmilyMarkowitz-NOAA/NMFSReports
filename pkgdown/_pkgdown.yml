@@ -88,6 +88,3 @@ reference:
     contents:
       - '`df2js`'
 
-template:
-  params:
-    bootswatch: sandstone

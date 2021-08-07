@@ -1,6 +1,12 @@
+---
+output:
+  md_document:
+    variant: gfm
+---
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# NMFSReports
+# NMFSReports <a href={https:://nmfs-general-modeling-tools.github.io/nmfspalette}><img src="man/figures/logo.png" align="right" width=139 height=139 alt="logo with an image of a fish in multiple palette colors" />
 
 ### *Easily write NOAA reports and Tech Memos in R Markdown*
 
@@ -34,27 +40,33 @@ regular) reports or reports with formulaic sections (the same chapter
 structure but for a different area or species). Scripts integrate table,
 figure, data, and bibliography management and design automation.
 
-    library(devtools)
-    devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports")
-    library(NMFSReports)
+``` r
+library(devtools)
+devtools::install_github("EmilyMarkowitz-NOAA/NMFSReports")
+library(NMFSReports)
 
-    # Or, alternatively, 
-    remotes::install_github("EmilyMarkowitz-NOAA/NMFSReports@main")
+# Or, alternatively, 
+remotes::install_github("EmilyMarkowitz-NOAA/NMFSReports@main")
+```
 
 #### You may also consider useing this package with `nmfspalette`
 
 A package for NOAA Fisheries color schemes. More info
 [here](https://github.com/nmfs-general-modeling-tools/nmfspalette).
 
-    library(devtools)
-    devtools::install_github("nmfs-general-modeling-tools/nmfspalette")
-    library(nmfspalette)
+``` r
+library(devtools)
+devtools::install_github("nmfs-general-modeling-tools/nmfspalette")
+library(nmfspalette)
+```
 
 ## Conference Presentations
 
 Markowitz, EH. Reproducible Reports in R Markdown - Perspectives and
 {NMFSReports}. R Cascadia Conf., June 2021. Remote.
-([Slides](https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/presentations/2021-06-05NMFSReports-RCascadiaConf.pdf))
+([Slides](https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/presentations/2021-06-05NMFSReports-RCascadiaConf.pdf),
+[Recording of
+Presentation](https://www.youtube.com/watch?v=zNKdQ6jvr-M&list=PLzwtsyfF_Z4pPszfwklTD66AWUuMwS7qw&index=11))
 
 Markowitz, EH. Reproducible National-level Reports: Using RMarkdown to
 Recode the Fisheries Economics of the US Report.
@@ -124,3 +136,9 @@ Software authored in its entirety by the Department of Commerce. To this
 end, the Department of Commerce hereby grants to Recipient a
 royalty-free, nonexclusive license to use, copy, and create derivative
 works of the Software outside of the United States.
+
+<img src="https://raw.githubusercontent.com/nmfs-general-modeling-tools/nmfspalette/main/man/figures/noaa-fisheries-rgb-2line-horizontal-small.png" height="75" alt="NOAA Fisheries">
+
+[U.S. Department of Commerce](https://www.commerce.gov/) \| [National
+Oceanographic and Atmospheric Administration](https://www.noaa.gov) \|
+[NOAA Fisheries](https://www.fisheries.noaa.gov/)

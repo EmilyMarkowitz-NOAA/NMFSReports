@@ -36,6 +36,11 @@ usethis::use_pkgdown(config_file = "./pkgdown/_pkgdown.yml")
 pkgdown::build_site(pkg = here::here())
 usethis::use_github_action("pkgdown")
 
+
+# template:
+#   params:
+#   bootswatch: sandstone
+
 ########### Submit to CRAN ############
 
 # devtools::check() # add the console output to cran-commentes.md

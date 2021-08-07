@@ -292,6 +292,7 @@ rmarkdown::render(paste0(dir_code, "/',sections_no,'_',b,'.Rmd"),
 #' @return TRUE or FALSE
 #' @examples
 #' x = data.frame(matrix(1:9, nrow = 3, ncol = 3))
+#' x
 #' is_something_in_this_matrix(x,
 #'                        search_for = 9)
 #' x = data.frame(matrix(LETTERS[1:9], nrow = 3, ncol = 3))
