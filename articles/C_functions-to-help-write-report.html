@@ -6,7 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Functions and examples to help you write your report • NMFSReports</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -14,6 +20,7 @@
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Functions and examples to help you write your report">
 <meta property="og:description" content="NMFSReports">
+<meta property="og:image" content="https://emilymarkowitz-noaa.github.io/NMFSReports/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -119,7 +126,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Functions and examples to help you write your report</h1>
             
-            <h4 class="date">August 05 2021</h4>
+            <h4 class="date">August 07 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/vignettes/C_functions-to-help-write-report.Rmd"><code>vignettes/C_functions-to-help-write-report.Rmd</code></a></small>
       <div class="hidden name"><code>C_functions-to-help-write-report.Rmd</code></div>
@@ -319,53 +326,53 @@ Figure 2. Here is a figure!
 <tbody>
 <tr class="odd">
 <td align="left">A</td>
-<td align="left">0.51</td>
-<td align="left">-2.8</td>
+<td align="left">-0.18</td>
+<td align="left">-0.33</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
-<td align="left">0.081</td>
-<td align="left">-0.57</td>
+<td align="left">0.81</td>
+<td align="left">-0.99</td>
 </tr>
 <tr class="odd">
 <td align="left">C</td>
-<td align="left">-0.17</td>
-<td align="left">-1.6</td>
+<td align="left">-0.4</td>
+<td align="left">1.4</td>
 </tr>
 <tr class="even">
 <td align="left">D</td>
-<td align="left">-0.63</td>
-<td align="left">0.6</td>
+<td align="left">-1.2</td>
+<td align="left">-1.3</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
-<td align="left">-0.046</td>
-<td align="left">0.043</td>
+<td align="left">-0.78</td>
+<td align="left">-0.4</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
-<td align="left">-0.11</td>
-<td align="left">-0.98</td>
+<td align="left">-0.23</td>
+<td align="left">-0.72</td>
 </tr>
 <tr class="odd">
 <td align="left">G</td>
-<td align="left">0.78</td>
-<td align="left">0.096</td>
+<td align="left">-0.28</td>
+<td align="left">-2.1</td>
 </tr>
 <tr class="even">
 <td align="left">H</td>
-<td align="left">-0.39</td>
-<td align="left">1</td>
+<td align="left">-0.67</td>
+<td align="left">0.63</td>
 </tr>
 <tr class="odd">
 <td align="left">I</td>
-<td align="left">-0.06</td>
-<td align="left">-1.7</td>
+<td align="left">-2</td>
+<td align="left">0.65</td>
 </tr>
 <tr class="even">
 <td align="left">J</td>
-<td align="left">0.62</td>
-<td align="left">-0.25</td>
+<td align="left">1.4</td>
+<td align="left">-0.13</td>
 </tr>
 </tbody>
 </table>
@@ -457,57 +464,57 @@ Figure 2. Here is a figure!
 <tbody>
 <tr class="odd">
 <td align="left">A</td>
-<td align="left">-0.36</td>
-<td align="left">0.81</td>
+<td align="left">-1</td>
+<td align="left">1.9</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
-<td align="left">0.098<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> <sup>,</sup><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>
+<td align="left">0.32<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> <sup>,</sup><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>
 </td>
-<td align="left">0.65</td>
+<td align="left">-1.3</td>
 </tr>
 <tr class="odd">
 <td align="left">C<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>
 </td>
-<td align="left">0.66<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
+<td align="left">-0.23<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
 </td>
-<td align="left">1.2</td>
+<td align="left">-1.2</td>
 </tr>
 <tr class="even">
 <td align="left">D<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a> <sup>,</sup><a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>
 </td>
-<td align="left">0.86</td>
-<td align="left">-0.64</td>
+<td align="left">-0.7</td>
+<td align="left">-0.59</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
-<td align="left">0.26</td>
-<td align="left">0.17</td>
+<td align="left">0.3</td>
+<td align="left">0.42</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
-<td align="left">-0.45</td>
-<td align="left">-1.1</td>
+<td align="left">-0.66</td>
+<td align="left">0.89</td>
 </tr>
 <tr class="odd">
 <td align="left">G</td>
-<td align="left">1.3</td>
-<td align="left">2.2</td>
+<td align="left">2</td>
+<td align="left">0.49</td>
 </tr>
 <tr class="even">
 <td align="left">H</td>
-<td align="left">0.51</td>
-<td align="left">0.35</td>
+<td align="left">0.77</td>
+<td align="left">0.18</td>
 </tr>
 <tr class="odd">
 <td align="left">I</td>
-<td align="left">0.18</td>
-<td align="left">0.5</td>
+<td align="left">-2.7</td>
+<td align="left">1</td>
 </tr>
 <tr class="even">
 <td align="left">J</td>
-<td align="left">-1.2</td>
-<td align="left">-1.9</td>
+<td align="left">1.2</td>
+<td align="left">-0.71</td>
 </tr>
 </tbody>
 </table>
