@@ -1,0 +1,64 @@
+---
+title: "Use {googledrive} to access documents from Google Drive made collaboratively with coworkers"
+date: "`r format(Sys.Date(), format='%B %d %Y') `"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{D_googledrive}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+  
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, echo = TRUE, warning = FALSE, 
+  comment = FALSE, collapse = TRUE,
+  comment = "#>"
+)
+options(rmarkdown.html_vignette.check_title = FALSE)
+```
+
+```{r setup}
+library(NMFSReports)
+library(googledrive)
+library(XML)
+```
+
+
+A great resource for this is from [https://googledrive.tidyverse.org/](tidyverse). As long as you have access to a given spreadsheet or google doc file, you can easily and quickly download it using the the code below. You'll need to set up an API token, but it is just a few steps. 
+
+Once accessed, the file will be saved to your directory and can be accessed for future use. 
+
+# Google Spreadsheets
+
+[https://docs.google.com/spreadsheets/d/1U3LvtKOwSlZ_-6KFJDYLWUPGkASWxovETk7lihxHnUA/edit?usp=sharing](Here is a test document to play with.) 
+
+```{r, eval = FALSE}
+library("googledrive")
+
+drive_deauth()
+drive_auth()
+1 # Using the first token you have.
+
+googledrive::drive_download("test123123_spreadsheet", # Must be a unique name
+               type = "csv", 
+               overwrite = TRUE, 
+               path = "./test123123_spreadsheet")
+
+a<-readr::read_csv("test123123_spreadsheet.csv")
+kable(a)
+```
+
+# Google Docs
+
+[https://docs.google.com/document/d/1ebCqXHqPHYXfRN87qs8pTULA8_4W25yh4gTMSo5WB4E/edit?usp=sharing](Here is a test document to play with.) 
+
+```{r, eval = FALSE}
+txt <- googledrive_txt_dl(filename_gd = "test123123_doc", 
+                          filename_dl = "test123123_doc_downloaded", 
+                          path = "./",
+                          verbose = FALSE)
+txt
+```
+
+
+
