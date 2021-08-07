@@ -55,6 +55,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -66,9 +68,15 @@
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -150,7 +158,7 @@
 </li>
 <li>
   <a href="https://nmfs-general-modeling-tools.github.io/">
-    <span class="fas fa-fish"></span>
+    <span class="fa fa-fish"></span>
      
   </a>
 </li>
@@ -176,7 +184,7 @@
     <p>This function searches to see if item 'search_for' is within the matrix 'x' and returns a respective TRUE (T) and FALSE (F). This can be useful for adding footnotes, adding conditional text to your document, and much more!</p>
     </div>
 
-    <pre class="usage"><span class='fu'>is_something_in_this_matrix</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>search_for</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>is_something_in_this_matrix</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>search_for</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -196,17 +204,20 @@
     <p>TRUE or FALSE</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>9</span>, nrow <span class='op'>=</span> <span class='fl'>3</span>, ncol <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>x</span>
-</div><div class='output co'>#&gt;   X1 X2 X3
-#&gt; 1  1  4  7
-#&gt; 2  2  5  8
-#&gt; 3  3  6  9</div><div class='input'><span class='fu'>is_something_in_this_matrix</span><span class='op'>(</span><span class='va'>x</span>,
-                       search_for <span class='op'>=</span> <span class='fl'>9</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='va'>LETTERS</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>9</span><span class='op'>]</span>, nrow <span class='op'>=</span> <span class='fl'>3</span>, ncol <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>is_something_in_this_matrix</span><span class='op'>(</span><span class='va'>x</span>,
-                       search_for <span class='op'>=</span> <span class='st'>"J"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] FALSE</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>9</span>, nrow <span class='op'>=</span> <span class='fl'>3</span>, ncol <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>x</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   X1 X2 X3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1  1  4  7</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2  2  5  8</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3  3  6  9</span>
+<span class='r-in'><span class='fu'>is_something_in_this_matrix</span><span class='op'>(</span><span class='va'>x</span>,</span>
+<span class='r-in'>                       search_for <span class='op'>=</span> <span class='fl'>9</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='va'>LETTERS</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>9</span><span class='op'>]</span>, nrow <span class='op'>=</span> <span class='fl'>3</span>, ncol <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>is_something_in_this_matrix</span><span class='op'>(</span><span class='va'>x</span>,</span>
+<span class='r-in'>                       search_for <span class='op'>=</span> <span class='st'>"J"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] FALSE</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -218,11 +229,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Emily Markowitz.</p>
+  <p><p>Developed by Emily Markowitz.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -230,6 +241,8 @@
 
   
 
+
+  
 
   </body>
 </html>
