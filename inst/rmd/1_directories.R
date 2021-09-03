@@ -1,13 +1,13 @@
 #'  ---
-#' title: # INSERT_REPORT_TITLE
-#' author: # INSERT_AUTHOR
+#' title: 'Data Report: MAXYR Eastern Bering Sea continental shelf Bottom Trawl Survey of Groundfish and Invertebrate Fauna'
+#' author: 'L. Britt, E. H. Markowitz, E. J. Dawson, and R. Haehn'
 #' purpose: Create directories and short hands for those directories
-#' start date: # YYYY-MM-DD
-#' date modified: # YYYY-MM-DD        # CHANGE
+#' start date: 2021-09-01
+#' date modified: 2021-09-01        # CHANGE
 #' Notes:                             # CHANGE
 #' ---
 
-#############SAVE FILE LOCATIONS###############
+# SAVE FILE LOCATIONS ----------------------------------------------------------
 # Just in case you change the base name for any reason, it will change for anytime you load the files inside the folder, too! (e.g., if you have something against "scripts" being the name of the folder, just let the script know in one place aka right here).
 
 # Directories to all of your current folders
@@ -41,7 +41,7 @@ TableFigureHeader<-paste0(dir_code, "TableFigureHeader.Rmd")
 
 options("citation_format" = "pandoc")
 
-#######SAVE ALL R FILES USED FOR EACH RUN###########
+# SAVE ALL R FILES USED FOR EACH RUN -------------------------------------------
 listfiles<-list.files(path = dir_code)
 listfiles0<-c(listfiles[grepl(pattern = "\\.r",
                               x = listfiles, ignore.case = T)],
@@ -57,7 +57,7 @@ for (i in 1:length(listfiles0)){
             overwrite = T)
 }
 
-#######SAVE ALL CITE FILES USED FOR EACH RUN###########
+# SAVE ALL CITE FILES USED FOR EACH RUN ----------------------------------------
 listfiles0<-list.files(path = dir_cite)
 listfiles0<-listfiles0[!(grepl(pattern = "~",ignore.case = T, x = listfiles0))]
 
@@ -67,7 +67,5 @@ for (i in 1:length(listfiles0)){
             overwrite = T)
 }
 
-
-
-#######CITATION STYLE###########
+# CITATION STYLE ---------------------------------------------------------------
 options("citation_format" = "pandoc")

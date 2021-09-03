@@ -907,26 +907,38 @@ numbers2words_th<-function(x, type = "word"){
 #' @param start The value it started with.
 #' @param end The value it ended with.
 #' @param ending A text string. Default "".
-#' @param percent_first Options: T/F.
+#' @param percent_first Options: T/F. Puts the percent first in the sentance.
+#' @param value_only Options: T/F. Will only provide the value, and no text. percent_first is over-ridden.
 #' @keywords Modify number
 #' @export
 #' @examples
 #' pchange(start = 8, end = 1)
 #' pchange(start = 3, end = 6, ending = " in fish landings", percent_first = TRUE)
 #' pchange(start = 3, end = 4, ending = " in fish landings", percent_first = FALSE)
-pchange<-function(start, end, ending="", percent_first=TRUE){
+#' pchange(start = 3, end = 4, ending = " in fish landings", value_only = TRUE)
+pchange<-function(start, end,
+                  ending="",
+                  percent_first = TRUE,
+                  value_only = FALSE){
   #calculate percent change:
 
   if (is.na(start) | is.na(end)) {
 
     final<-paste0(NA, "%")
 
-  } else {
+  } else if (value_only == TRUE) {
+    start<-sum(as.numeric(start))
+    end<-sum(as.numeric(end))
+
+    final <- (100*(end-start)/start)
+
+  } else if (value_only == FALSE) {
 
     start<-sum(as.numeric(start))
     end<-sum(as.numeric(end))
 
     p<-round(100*(end-start)/start)
+
     p<-ifelse(is.nan(p), 0, p)
 
     # decide direction, Omit if percent = 0:

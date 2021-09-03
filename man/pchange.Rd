@@ -4,7 +4,7 @@
 \alias{pchange}
 \title{Calculate the percent change.}
 \usage{
-pchange(start, end, ending = "", percent_first = TRUE)
+pchange(start, end, ending = "", percent_first = TRUE, value_only = FALSE)
 }
 \arguments{
 \item{start}{The value it started with.}
@@ -13,7 +13,9 @@ pchange(start, end, ending = "", percent_first = TRUE)
 
 \item{ending}{A text string. Default "".}
 
-\item{percent_first}{Options: T/F.}
+\item{percent_first}{Options: T/F. Puts the percent first in the sentance.}
+
+\item{value_only}{Options: T/F. Will only provide the value, and no text. percent_first is over-ridden.}
 }
 \description{
 Calculate the percent change.
@@ -22,6 +24,7 @@ Calculate the percent change.
 pchange(start = 8, end = 1)
 pchange(start = 3, end = 6, ending = " in fish landings", percent_first = TRUE)
 pchange(start = 3, end = 4, ending = " in fish landings", percent_first = FALSE)
+pchange(start = 3, end = 4, ending = " in fish landings", value_only = TRUE)
 }
 \keyword{Modify}
 \keyword{number}
