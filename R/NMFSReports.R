@@ -920,11 +920,25 @@ pchange<-function(start, end,
                   ending="",
                   percent_first = TRUE,
                   value_only = FALSE){
+
+  if(length(start) != length(end)) stop("start and end need to be the same length")
+
+  start0<-start
+  end0<-end
+  final1 <- c()
+
   #calculate percent change:
+for (i in 1:length(start0)) {
+  start <- start0[i]
+  end <- end0[i]
 
   if (is.na(start) | is.na(end)) {
 
     final<-paste0(NA, "%")
+
+  } else if ((start == 0) & (end == 0)) {
+
+    final<-"0%"
 
   } else if (value_only == TRUE) {
     start<-sum(as.numeric(start))
@@ -969,7 +983,9 @@ pchange<-function(start, end,
       }
     }
   }
-  return(final)
+  final1 <- c(final1, final)
+  }
+  return(final1)
 }
 
 #' Modify numbers.
