@@ -33,7 +33,17 @@ list_figures<-NMFSReports::save_figures(
 # something you might like to toggle on and off. 
 # Hense, FALSE = print here, TRUE = don't print here, just make the .pdf (coded above)
 if (indesign_flowin %in% FALSE) {
-  list_figures[[length(list_figures)]]$figure # print plot in text
+
+  if (!(exists("usePNGPDF"))) {
+   list_figures[[length(list_figures)]]$figure # print plot in text
+  } else if (usePNGPDF == "png") {
+    cowplot::ggdraw() +
+      cowplot::draw_image(paste0(dir_out_figures, 
+                                 list_figures[nickname][[1]]$filename,".png"))
+  } else if (usePNGPDF == "pdf") {
+    knitr::include_graphics(paste0(dir_out_figures, 
+                                 list_figures[nickname][[1]]$filename,".pdf"))
+  }
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign
   Title0 <- ifelse(indesign_flowin %in% TRUE, "", list_figures[[length(list_figures)]]$caption)
   rmarkdown::render(system.file("rmd/_TableFigureHeader.Rmd", package = "NMFSReports"),
@@ -44,7 +54,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("figure", "header", "footnote", "nickname", "filename_desc", "alttext")
+remove_who0 <- c("figure", "header", "footnote", "nickname", "filename_desc", "alttext"," width", "height", "usePNGPDF")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
     remove_who <- c(remove_who, remove_who0[i])
