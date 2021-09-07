@@ -188,7 +188,7 @@ text columns are left aligned, other columns are
 right aligned.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>theme_flextable_nmfstm</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>theme_flextable_nmfstm</span><span class='op'>(</span><span class='va'>x</span>, pgwidth <span class='op'>=</span> <span class='fl'>6</span>, row_lines <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -196,6 +196,14 @@ right aligned.</p>
     <tr>
       <th>x</th>
       <td><p>a flextable object</p></td>
+    </tr>
+    <tr>
+      <th>pgwidth</th>
+      <td><p>a numeric. The width in inches the table should be. Default = 6, which is ideal for A4 (8.5x11 in) portrait paper.</p></td>
+    </tr>
+    <tr>
+      <th>row_lines</th>
+      <td><p>T/F. If True, draws a line between each row.</p></td>
     </tr>
     </table>
 
