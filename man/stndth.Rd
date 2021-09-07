@@ -19,5 +19,5 @@ Find the 'st, 'nd, or 'th of a value
 stndth(3)
 stndth(11)
 stndth(112)
-stndth(1120)
+stndth(x = c(1120, 12))
 }

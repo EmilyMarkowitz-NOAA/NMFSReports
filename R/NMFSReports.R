@@ -714,8 +714,9 @@ googledrive_txt_dl <- function (filename_gd,
 #' stndth(3)
 #' stndth(11)
 #' stndth(112)
-#' stndth(1120)
+#' stndth(x = c(1120, 12))
 stndth <- function(x) {
+  out <- c()
   for (i in 1:length(x)){
     if (grepl(pattern = 1,
               x = substr(x = x[i],
@@ -735,8 +736,9 @@ stndth <- function(x) {
     } else {
       stndth0 <- "th"
     }
+    out <- c(out, stndth0)
   }
-  return(stndth0)
+  return(out)
 }
 
 ############ MODIFY NUMBERS IN TEXT ################
@@ -1292,6 +1294,9 @@ save_figures<-function(figure,
                      nickname = "",
                      message = FALSE){
 
+
+  if( sum(names(list_figures) %in% nickname)>0 ) warning('This nickname has already been used for a object in this list. Nicknames should not be reused. Please change the nickname.')
+
   # Title
   header<-trimws(header)
   # header<-stringr::str_to_sentence(header)
@@ -1316,6 +1321,7 @@ save_figures<-function(figure,
     for (i in 1:length(output_type)){
       ggplot2::ggsave( # save your plot
         path = path,
+        dpi = 1200,
         filename = paste0(filename00, ".", output_type[i]), # Always save in pdf so you can make last minute edits in adobe acrobat!
       plot = figure, # call the plot you are saving
       width = width, height = height, units = "in") #recall, A4 pages are 8.5 x 11 in - 1 in margins
@@ -1394,6 +1400,8 @@ save_tables<-function(table_raw = NULL,
                      nickname = "",
                      message = FALSE) {
 
+  if( sum(names(list_tables) %in% nickname)>0 ) warning('This nickname has already been used for a object in this list. Nicknames should not be reused. Please change the nickname.')
+
 
   # Title
   header<-trimws(header)
@@ -1429,15 +1437,20 @@ save_tables<-function(table_raw = NULL,
       table_raw <- ""
     }
 
+    # write.table can only save files that are 1) extant or 2) in a data.frame or matrix
     if (!(is.null(table_print))) {
-      for (i in 1:length(output_type)){
-        utils::write.table(x = table_print,
-                           file = paste0(path, filename00,
-                                         "_print.", output_type[i]),
-                       sep = ",",
-                       row.names=FALSE, col.names = F, append = F)
+      if ((class(table_print) %in% c("data.frame", "matrix"))) {
+        for (i in 1:length(output_type)){
+          utils::write.table(x = table_print,
+                             file = paste0(path, filename00,
+                                           "_print.", output_type[i]),
+                         sep = ",",
+                         row.names=FALSE, col.names = F, append = F)
+        }
+      } else { # save non-matrix or data.frames
+        save(table_print,
+             file = paste0(path, filename00, "_print.Rdata"))
       }
-
     } else {
       table_print <- ""
     }
@@ -1513,6 +1526,8 @@ save_equations<-function(equation,
                        nickname = "",
                        message = FALSE){
 
+  if( sum(names(list_equations) %in% nickname)>0 ) warning('This nickname has already been used for a object in this list. Nicknames should not be reused. Please change the nickname.')
+
   # Title
   header<-trimws(header)
   # header<-stringr::str_to_sentence(header)
@@ -1584,6 +1599,54 @@ crossref <- function(list_obj,
 }
 
 ref_listobject<-crossref
+
+
+# flextable::theme_vanilla()
+theme_flextable_noaa <- #' @importFrom officer fp_border fp_par
+  #' @export
+  #' @title Apply vanilla theme
+  #' @description Apply theme vanilla to a flextable:
+  #' The external horizontal lines of the different parts of
+  #' the table (body, header, footer) are black 2 points thick,
+  #' the external horizontal lines of the different parts
+  #' are black 0.5 point thick. Header text is bold,
+  #' text columns are left aligned, other columns are
+  #' right aligned.
+  #' @param x a flextable object
+  #' @family functions related to themes
+#' @examples
+#' ft <- flextable(head(airquality))
+#' ft <- theme_vanilla(ft)
+#' ft
+#' @section Illustrations:
+#'
+#' \if{html}{\figure{fig_theme_vanilla_1.png}{options: width=60\%}}
+theme_flextable_nmfstm <- function(x) {
+  if (!inherits(x, "flextable")) {
+    stop("theme_vanilla supports only flextable objects.")
+  }
+
+  font <- "Times New Roman"
+
+  std_b <- fp_border(width = 2, color = "grey10")
+  thin_b <- fp_border(width = 0.5, color = "grey10")
+
+  x <- border_remove(x)
+
+  x <- hline(x, border = thin_b, part = "body")
+  x <- hline_top(x, border = std_b, part = "header")
+  x <- hline_bottom(x, border = std_b, part = "header")
+  x <- hline_bottom(x, border = std_b, part = "body")
+  x <- bold(x = x, bold = TRUE, part = "header")
+  x <- align_text_col(x, align = "left", header = TRUE)
+  x <- align_nottext_col(x, align = "right", header = TRUE)
+  x <- flextable::font(x, fontname = font, part = "all")
+  # x <- flextable::autofit(x, part = "all")
+
+  x <- fix_border_issues(x)
+
+  return(x)
+}
 
 ######## METADATA ########
 

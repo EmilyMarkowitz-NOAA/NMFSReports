@@ -11,10 +11,10 @@ cnt_equations<-cnt_equations+1
 list_equations<-NMFSReports::save_equations(
   equation = equation, 
   list_equations = list_equations, 
-  header = ifelse(exists("header"), header, ""),
-  footnote = unlist(ifelse(exists("footnote"), list(footnote), "")), 
-  alttext = ifelse(exists("alttext"), alttext, ""),
-  nickname = ifelse(exists("nickname"), nickname, filename0),
+  header = ifelse(exists("header", mode = "character"), header, ""),
+  footnote = unlist(ifelse(exists(x = "footnote", mode = "character"), list(footnote), "")), 
+  alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
+  nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   cnt_chapt_content = cnt_chapt_content, 
   cnt = cnt_equations)
 ```
@@ -24,7 +24,8 @@ list_equations<-NMFSReports::save_equations(
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("equation", "header", "footnote", "nickname", "alttext")
+remove_who0 <- c("equation", "header", "footnote", #"nickname", 
+                 "alttext")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
     remove_who <- c(remove_who, remove_who0[i])

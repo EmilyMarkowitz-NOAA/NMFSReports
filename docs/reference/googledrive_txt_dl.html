@@ -218,18 +218,24 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>googledrive</span><span class='fu'>::</span><span class='fu'><a href='https://googledrive.tidyverse.org/reference/drive_auth.html'>drive_auth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># Using the first token you have.</span></span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> &gt; Using an auto-discovered, cached token</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #BBBB00;'>!</span> Using an auto-discovered, cached token.</span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span>   To suppress this message, modify your code or options to clearly consent to</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>   the use of a cached token</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>   the use of a cached token.</span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span>   See gargle's "Non-interactive auth" vignette for more details:</span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span>   <span style='color: #0000BB; font-style: italic;'>&lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</span></span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> &gt; The <span style='color: #0000BB;'>googledrive</span> package is using a cached token for <span style='color: #0000BB;'>emilyhmarkowitz@gmail.com</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BBBB;'>i</span> The <span style='color: #0000BB;'>googledrive</span> package is using a cached token for <span style='color: #0000BB;'>emilyhmarkowitz@gmail.com</span>.</span>
 <span class='r-in'><span class='fl'>1</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='va'>txt</span> <span class='op'>&lt;-</span> <span class='fu'>googledrive_txt_dl</span><span class='op'>(</span>filename_gd <span class='op'>=</span> <span class='st'>"test123123_doc"</span>,</span>
 <span class='r-in'>                          filename_dl <span class='op'>=</span> <span class='st'>"test123123_dl"</span>,</span>
 <span class='r-in'>                          verbose <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>The `verbose` argument of `some_googledrive_function()` is deprecated as of googledrive 2.0.0.</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> Set `options(googledrive_quiet = TRUE)` to suppress all googledrive messages.</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> For finer control, use `local_drive_quiet()` or `with_drive_quiet()`.</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> googledrive's `verbose` argument will be removed in the future.</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span style='color: #555555;'>This warning is displayed once every 8 hours.</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span></span>
 <span class='r-in'><span class='va'>txt</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "This is a test"</span>
 <span class='r-in'><span class='co'># for good file keeping, I'll delete these</span></span>

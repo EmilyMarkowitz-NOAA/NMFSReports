@@ -17,12 +17,12 @@ list_tables<-NMFSReports::save_tables(
   table_raw = table_raw, 
   table_print = table_print,
   list_tables = list_tables, 
-  header = ifelse(exists("header"), header, ""),
-  footnote = unlist(ifelse(exists("footnote"), list(footnote), "")), 
-  alttext = ifelse(exists("alttext"), alttext, ""),
-  filename0 = ifelse(exists("filename0"), filename0, nickname), 
-  nickname = ifelse(exists("nickname"), nickname, filename0),
-  filename_desc = ifelse(exists("filename_desc"), filename_desc, ""),  
+  header = ifelse(exists("header", mode = "character"), header, ""),
+  footnote = unlist(ifelse(exists("footnote", mode = "character"), list(footnote), "")), 
+  alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
+  filename0 = ifelse(exists("filename0", mode = "character"), filename0, nickname), 
+  nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
+  filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, ""),  
   cnt_chapt_content = cnt_chapt_content, 
   cnt = cnt_tables, 
   path = dir_out_tables)
@@ -41,13 +41,21 @@ list_tables<-NMFSReports::save_tables(
 if (indesign_flowin %in% FALSE) { 
   # print table in text
   if (exists("table_print")) {
-    list_tables[[length(list_tables)]]$print %>% 
+    if ((class(table_print) %in% c("data.frame", "matrix"))){
+      list_tables[[length(list_tables)]]$print %>% 
         knitr::kable(row.names = FALSE, booktabs = TRUE)
+    } else {
+      list_tables[[length(list_tables)]]$print
+    }
   } else {
-    list_tables[[length(list_tables)]]$raw %>% 
+    if ((class(table_print) %in% c("data.frame", "matrix"))) {
+      list_tables[[length(list_tables)]]$raw %>% 
         knitr::kable(row.names = FALSE, booktabs = TRUE)
-  }
-} else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign 
+    } else {
+      list_tables[[length(list_tables)]]$raw
+    }
+  } 
+} else if (indesign_flowin %in% TRUE) { # for reports that need to be flowed into InDesign 
   
   Title0 <- ifelse(indesign_flowin %in% TRUE, "", list_tables[[length(list_tables)]]$caption)
   
@@ -59,7 +67,8 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("header", "footnote", "nickname", "filename_desc", "alttext", 
+remove_who0 <- c("header", "footnote", #"nickname", 
+                 "filename_desc", "alttext", 
                  "table_raw", "table_print")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){

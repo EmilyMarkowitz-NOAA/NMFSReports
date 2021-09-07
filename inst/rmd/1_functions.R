@@ -7,7 +7,8 @@
 #' Notes:                             # CHANGE
 #' ---
 
-#############INSTALL PACKAGES##############
+# Install libraries -------------------------------------------------------------
+
 # Here we list all the packages we will need for this whole process
 # We'll also use this in our works cited page!!!
 PKG <- c(
@@ -32,7 +33,7 @@ PKG <- c(
   "extrafont",
 
   # Text
-  "NMFSReports", # devtools::install_github("emilyhmarkowitz/NMFSReports") # Package of my favorite grammar and file managment functions for writing reproducible reports
+  "NMFSReports", # devtools::install_github("emilymarkowitz-noaa/NMFSReports") # Package of my favorite grammar and file managment functions for writing reproducible reports
 
   # Citations
   "knitcitations", # devtools::install_github("cboettig/knitcitations")
@@ -57,16 +58,21 @@ for (p in PKG) {
 
 loadfonts(device = "win")
 
+# renv ------------------------------------------------------------------
+
 # renv::snapshot()
 
 
-#######CITE R PACKAGES###########
+# Cite R Packages --------------------------------------------------------
+
 knitr::write_bib(x = PKG,
                  file = paste0(dir_out_rawdata, "bibliography_RPack.bib"))
 
 file.copy(from = paste0(dir_out_rawdata, "bibliography_RPack.bib"),
           to = paste0(dir_cite,"/bibliography_RPack.bib"),
           overwrite = TRUE)
+
+# Functions -------------------------------------------------------------
 
 ################Functions#############
 

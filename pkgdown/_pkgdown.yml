@@ -81,6 +81,7 @@ reference:
       - '`save_tables`'
       - '`save_equations`'
       - '`crossref`'
+      - '`theme_flextable_nmfstm`'
   - title: Record Metadata
     contents:
       - '`create_metadata`'

@@ -11,21 +11,21 @@ cnt_figures<-cnt_figures+1
 list_figures<-NMFSReports::save_figures(
   figure = figure, 
   list_figures = list_figures, 
-  header = ifelse(exists("header"), header, ""),
-  footnote = unlist(ifelse(exists("footnote"), list(footnote), "")), 
-  alttext = ifelse(exists("alttext"), alttext, ""),
-  filename0 = ifelse(exists("filename0"), filename0, nickname), 
-  nickname = ifelse(exists("nickname"), nickname, filename0),
-  filename_desc = ifelse(exists("filename_desc"), filename_desc, ""),
+  header = ifelse(exists("header", mode = "character"), header, ""),
+  footnote = unlist(ifelse(exists("footnote", mode = "character"), list(footnote), "")), 
+  alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
+  filename0 = ifelse(exists("filename0", mode = "character"), filename0, nickname), 
+  nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
+  filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, ""),
   cnt_chapt_content = cnt_chapt_content, 
-  width = ifelse(exists("width"), width, 6), 
-  height = ifelse(exists("height"), height, 6),
+  width = ifelse(exists("width", mode = "character"), width, 6), 
+  height = ifelse(exists("height", mode = "character"), height, 6),
   cnt = cnt_figures, 
   path = dir_out_figures)
 ```
 
 
-```{r, echo = FALSE, fig.cap=ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext, list_figures[[length(list_figures)]]$header)}
+```{r, echo = FALSE, fig.cap=ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext,  list_figures[[length(list_figures)]]$header)}
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
@@ -37,12 +37,19 @@ if (indesign_flowin %in% FALSE) {
   if (!(exists("usePNGPDF"))) {
    list_figures[[length(list_figures)]]$figure # print plot in text
   } else if (usePNGPDF == "png") {
-    cowplot::ggdraw() +
-      cowplot::draw_image(paste0(dir_out_figures, 
+    knitr::include_graphics(path = paste0(dir_out_figures,
                                  list_figures[nickname][[1]]$filename,".png"))
-  } else if (usePNGPDF == "pdf") {
-    knitr::include_graphics(paste0(dir_out_figures, 
-                                 list_figures[nickname][[1]]$filename,".pdf"))
+    # cowplot::ggdraw() +
+    #       cowplot::draw_image(image = paste0(dir_out_figures, list_figures[nickname][[1]]$filename,".png"))
+  # } else if (usePNGPDF == "pdf") {
+    # cowplot::ggdraw() +
+    #   draw_image(magick::image_read_pdf(path = paste0(dir_out_figures, 
+    #                              list_figures[nickname][[1]]$filename,".pdf"),
+    #                              density = 600))
+    # cowplot::ggdraw() +
+    #       cowplot::draw_image(image = paste0(dir_out_figures, list_figures[nickname][[1]]$filename,".pdf"))
+    # knitr::include_graphics(path = paste0(dir_out_figures,
+    #                              list_figures[nickname][[1]]$filename,".pdf"))
   }
 } else if (indesign_flowin %in% TRUE){ # for reports that need to be flowed into InDesign
   Title0 <- ifelse(indesign_flowin %in% TRUE, "", list_figures[[length(list_figures)]]$caption)
@@ -54,7 +61,8 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("figure", "header", "footnote", "nickname", "filename_desc", "alttext"," width", "height", "usePNGPDF")
+remove_who0 <- c("figure", "header", "footnote", #"nickname", 
+                 "filename_desc", "alttext"," width", "height", "usePNGPDF")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
     remove_who <- c(remove_who, remove_who0[i])

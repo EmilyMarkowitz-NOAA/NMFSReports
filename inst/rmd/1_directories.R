@@ -1,11 +1,14 @@
-#'  ---
-#' title: 'Data Report: MAXYR Eastern Bering Sea continental shelf Bottom Trawl Survey of Groundfish and Invertebrate Fauna'
-#' author: 'L. Britt, E. H. Markowitz, E. J. Dawson, and R. Haehn'
-#' purpose: Create directories and short hands for those directories
-#' start date: 2021-09-01
-#' date modified: 2021-09-01        # CHANGE
+#' ---
+#' title: # INSERT_REPORT_TITLE
+#' author: # INSERT_AUTHOR
+#' purpose: Store functions
+#' start date: # YYYY-MM-DD
+#' date modified: # YYYY-MM-DD        # CHANGE
 #' Notes:                             # CHANGE
 #' ---
+
+
+
 
 # SAVE FILE LOCATIONS ----------------------------------------------------------
 # Just in case you change the base name for any reason, it will change for anytime you load the files inside the folder, too! (e.g., if you have something against "scripts" being the name of the folder, just let the script know in one place aka right here).
