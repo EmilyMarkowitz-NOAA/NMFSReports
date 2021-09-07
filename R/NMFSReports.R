@@ -1601,22 +1601,23 @@ crossref <- function(list_obj,
 ref_listobject<-crossref
 
 
-# flextable::theme_vanilla()
-theme_flextable_noaa <- #' @importFrom officer fp_border fp_par
-  #' @export
-  #' @title Apply vanilla theme
-  #' @description Apply theme vanilla to a flextable:
-  #' The external horizontal lines of the different parts of
-  #' the table (body, header, footer) are black 2 points thick,
-  #' the external horizontal lines of the different parts
-  #' are black 0.5 point thick. Header text is bold,
-  #' text columns are left aligned, other columns are
-  #' right aligned.
-  #' @param x a flextable object
-  #' @family functions related to themes
+# Adapted from flextable::theme_vanilla()
+
+#' @importFrom officer fp_border fp_par
+#' @export
+#' @title Apply vanilla theme
+#' @description Apply theme vanilla to a flextable:
+#' The external horizontal lines of the different parts of
+#' the table (body, header, footer) are black 2 points thick,
+#' the external horizontal lines of the different parts
+#' are black 0.5 point thick. Header text is bold,
+#' text columns are left aligned, other columns are
+#' right aligned.
+#' @param x a flextable object
+#' @family functions related to themes
 #' @examples
-#' ft <- flextable(head(airquality))
-#' ft <- theme_vanilla(ft)
+#' ft <- flextable::flextable(head(airquality))
+#' ft <- NMFSReports::theme_flextable_nmfstm(ft)
 #' ft
 #' @section Illustrations:
 #'
@@ -1628,22 +1629,22 @@ theme_flextable_nmfstm <- function(x) {
 
   font <- "Times New Roman"
 
-  std_b <- fp_border(width = 2, color = "grey10")
-  thin_b <- fp_border(width = 0.5, color = "grey10")
+  std_b <- officer::fp_border(width = 2, color = "grey10")
+  thin_b <- officer::fp_border(width = 0.5, color = "grey10")
 
-  x <- border_remove(x)
+  x <- flextable::border_remove(x)
 
-  x <- hline(x, border = thin_b, part = "body")
-  x <- hline_top(x, border = std_b, part = "header")
-  x <- hline_bottom(x, border = std_b, part = "header")
-  x <- hline_bottom(x, border = std_b, part = "body")
-  x <- bold(x = x, bold = TRUE, part = "header")
-  x <- align_text_col(x, align = "left", header = TRUE)
-  x <- align_nottext_col(x, align = "right", header = TRUE)
+  x <- flextable::hline(x, border = thin_b, part = "body")
+  x <- flextable::hline_top(x, border = std_b, part = "header")
+  x <- flextable::hline_bottom(x, border = std_b, part = "header")
+  x <- flextable::hline_bottom(x, border = std_b, part = "body")
+  x <- flextable::bold(x = x, bold = TRUE, part = "header")
+  x <- flextable::align_text_col(x, align = "left", header = TRUE)
+  x <- flextable::align_nottext_col(x, align = "right", header = TRUE)
   x <- flextable::font(x, fontname = font, part = "all")
   # x <- flextable::autofit(x, part = "all")
 
-  x <- fix_border_issues(x)
+  x <- flextable::fix_border_issues(x)
 
   return(x)
 }
