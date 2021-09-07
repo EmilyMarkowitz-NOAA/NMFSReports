@@ -203,6 +203,9 @@ table_print[,c("x", "y")] <-
                           comma_seperator = TRUE, 
                           digits = 2)
 
+table_print <- flextable::flextable(table_print) %>% 
+    NMFSReports::theme_flextable_nmfstm(x = .)
+
 # save yo' stuff and do a lot of behind the scenes work
 # alt: check out the "child = " in this chunk header (which must stay empty)
 # ```{r, child = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")}

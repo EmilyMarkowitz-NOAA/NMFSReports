@@ -1614,6 +1614,8 @@ ref_listobject<-crossref
 #' text columns are left aligned, other columns are
 #' right aligned.
 #' @param x a flextable object
+#' @param pgwidth a numeric. The width in inches the table should be. Default = 6, which is ideal for A4 (8.5x11 in) portrait paper.
+#' @param row_lines T/F. If True, draws a line between each row.
 #' @family functions related to themes
 #' @examples
 #' ft <- flextable::flextable(head(airquality))
@@ -1622,9 +1624,18 @@ ref_listobject<-crossref
 #' @section Illustrations:
 #'
 #' \if{html}{\figure{fig_theme_vanilla_1.png}{options: width=60\%}}
-theme_flextable_nmfstm <- function(x) {
+theme_flextable_nmfstm <- function(x, pgwidth = 6, row_lines = TRUE) {
+
   if (!inherits(x, "flextable")) {
-    stop("theme_vanilla supports only flextable objects.")
+    stop("theme_flextable_nmfstm supports only flextable objects.")
+  }
+
+  FitFlextableToPage <- function(x, pgwidth = 6){
+    # https://stackoverflow.com/questions/57175351/flextable-autofit-in-a-rmarkdown-to-word-doc-causes-table-to-go-outside-page-mar
+    ft_out <- x %>% flextable::autofit()
+
+    ft_out <- flextable::width(ft_out, width = dim(ft_out)$widths*pgwidth /(flextable::flextable_dim(ft_out)$widths))
+    return(ft_out)
   }
 
   font <- "Times New Roman"
@@ -1634,7 +1645,9 @@ theme_flextable_nmfstm <- function(x) {
 
   x <- flextable::border_remove(x)
 
-  x <- flextable::hline(x, border = thin_b, part = "body")
+  if (row_lines == TRUE) {
+    x <- flextable::hline(x, border = thin_b, part = "body")
+  }
   x <- flextable::hline_top(x, border = std_b, part = "header")
   x <- flextable::hline_bottom(x, border = std_b, part = "header")
   x <- flextable::hline_bottom(x, border = std_b, part = "body")
@@ -1642,7 +1655,7 @@ theme_flextable_nmfstm <- function(x) {
   x <- flextable::align_text_col(x, align = "left", header = TRUE)
   x <- flextable::align_nottext_col(x, align = "right", header = TRUE)
   x <- flextable::font(x, fontname = font, part = "all")
-  # x <- flextable::autofit(x, part = "all")
+  x <- FitFlextableToPage(x, pgwidth = pgwidth)
 
   x <- flextable::fix_border_issues(x)
 

@@ -15,6 +15,7 @@
 <title>Functions and examples to help you write your report</title>
 
 <script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+<link href="data:text/css,%2Etabwid%20table%7B%0Aborder%2Dcollapse%3Acollapse%3B%0Aline%2Dheight%3A1%3B%0Amargin%2Dleft%3Aauto%3B%0Amargin%2Dright%3Aauto%3B%0Aborder%2Dwidth%3A%200%3B%0Adisplay%3A%20table%3B%0Amargin%2Dtop%3A%201%2E275em%3B%0Amargin%2Dbottom%3A%201%2E275em%3B%0Aborder%2Dspacing%3A%200%3B%0Aborder%2Dcolor%3A%20transparent%3B%0A%7D%0A%2Etabwid%5Fleft%20table%7B%0Amargin%2Dleft%3A0%3B%0A%7D%0A%2Etabwid%5Fright%20table%7B%0Amargin%2Dright%3A0%3B%0A%7D%0A%2Etabwid%20td%20%7B%0Apadding%3A%200%3B%0A%7D%0A%2Etabwid%20a%20%7B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0A%2Etabwid%20thead%20%7B%0Abackground%2Dcolor%3A%20transparent%3B%0A%7D%0A%2Etabwid%20tfoot%20%7B%0Abackground%2Dcolor%3A%20transparent%3B%0A%7D%0A%2Etabwid%20table%20tr%20%7B%0Abackground%2Dcolor%3A%20transparent%3B%0A%7D%0A" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -261,7 +262,7 @@ div.csl-indent {
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ```{r, child = system.file(&quot;rmd/_child_save_fig.Rmd&quot;, package = &quot;NMFSReports&quot;)}</span></span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ```</span></span></code></pre></div>
 <div class="figure">
-<img src="data:image/png;base64,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" alt />
+<img src="data:image/png;base64,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" alt />
 <p class="caption">Figure 1. Here is a figure!</p>
 </div>
 <p><em>Alternative text: This is a scatter plot of random data.</em></p>
@@ -319,73 +320,66 @@ div.csl-indent {
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>                          <span class="at">comma_seperator =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>                          <span class="at">digits =</span> <span class="dv">2</span>)</span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># save yo&#39; stuff and do a lot of behind the scenes work</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># alt: check out the &quot;child = &quot; in this chunk header (which must stay empty)</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co"># ```{r, child = system.file(&quot;rmd/_child_save_tab.Rmd&quot;, package = &quot;NMFSReports&quot;)}</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co"># ```</span></span></code></pre></div>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>table_print <span class="ot">&lt;-</span> flextable<span class="sc">::</span><span class="fu">flextable</span>(table_print) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    NMFSReports<span class="sc">::</span><span class="fu">theme_flextable_nmfstm</span>(<span class="at">x =</span> .)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co"># save yo&#39; stuff and do a lot of behind the scenes work</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co"># alt: check out the &quot;child = &quot; in this chunk header (which must stay empty)</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co"># ```{r, child = system.file(&quot;rmd/_child_save_tab.Rmd&quot;, package = &quot;NMFSReports&quot;)}</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co"># ```</span></span></code></pre></div>
 <div id="table-1.-here-is-a-table" class="section level4">
 <h4>Table 1. Here is a table!<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></h4>
-<table>
-<thead>
-<tr class="header">
-<th align="left">col</th>
-<th align="left">x</th>
-<th align="left">y</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">A</td>
-<td align="left">0.28</td>
-<td align="left">0.47</td>
-</tr>
-<tr class="even">
-<td align="left">B</td>
-<td align="left">-1.5</td>
-<td align="left">1.8</td>
-</tr>
-<tr class="odd">
-<td align="left">C</td>
-<td align="left">0.14</td>
-<td align="left">0.32</td>
-</tr>
-<tr class="even">
-<td align="left">D</td>
-<td align="left">-0.62</td>
-<td align="left">-0.42</td>
-</tr>
-<tr class="odd">
-<td align="left">E</td>
-<td align="left">1</td>
-<td align="left">0.38</td>
-</tr>
-<tr class="even">
-<td align="left">F</td>
-<td align="left">0.96</td>
-<td align="left">-0.63</td>
-</tr>
-<tr class="odd">
-<td align="left">G</td>
-<td align="left">0.16</td>
-<td align="left">0.099</td>
-</tr>
-<tr class="even">
-<td align="left">H</td>
-<td align="left">-1.4</td>
-<td align="left">-3.3</td>
-</tr>
-<tr class="odd">
-<td align="left">I</td>
-<td align="left">0.12</td>
-<td align="left">-0.64</td>
-</tr>
-<tr class="even">
-<td align="left">J</td>
-<td align="left">0.55</td>
-<td align="left">-1.3</td>
-</tr>
-</tbody>
-</table>
+<template id="d3f4c16f-5aa6-45cf-a456-5f08bac54ca6"><style>
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-1960ae88{border-collapse:collapse;}.cl-1943dc04{font-family:'Times New Roman';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-1943dc05{font-family:'Times New Roman';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-19442a24{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-1944c646{width:167.3pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944c647{width:148.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944c648{width:116.1pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944c649{width:116.1pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944c64a{width:167.3pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944c64b{width:148.5pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944c64c{width:148.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944c64d{width:116.1pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944c64e{width:167.3pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944c64f{width:116.1pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944c650{width:167.3pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944ed42{width:148.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944ed43{width:116.1pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 2pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944ed44{width:167.3pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 2pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1944ed45{width:148.5pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 2pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class="cl-1960ae88"><thead><tr style="overflow-wrap:break-word;"><td class="cl-1944ed43"><p class="cl-19442a24"><span class="cl-1943dc04">col</span></p></td><td class="cl-1944ed44"><p class="cl-19442a24"><span class="cl-1943dc04">x</span></p></td><td class="cl-1944ed45"><p class="cl-19442a24"><span class="cl-1943dc04">y</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-1944c648"><p class="cl-19442a24"><span class="cl-1943dc05">A</span></p></td><td class="cl-1944c646"><p class="cl-19442a24"><span class="cl-1943dc05">-0.65</span></p></td><td class="cl-1944c647"><p class="cl-19442a24"><span class="cl-1943dc05">0.46</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1944c64d"><p class="cl-19442a24"><span class="cl-1943dc05">B</span></p></td><td class="cl-1944c64e"><p class="cl-19442a24"><span class="cl-1943dc05">1.1</span></p></td><td class="cl-1944c64c"><p class="cl-19442a24"><span class="cl-1943dc05">2.7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1944c64f"><p class="cl-19442a24"><span class="cl-1943dc05">C</span></p></td><td class="cl-1944c650"><p class="cl-19442a24"><span class="cl-1943dc05">0.13</span></p></td><td class="cl-1944ed42"><p class="cl-19442a24"><span class="cl-1943dc05">0.6</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1944c64d"><p class="cl-19442a24"><span class="cl-1943dc05">D</span></p></td><td class="cl-1944c64e"><p class="cl-19442a24"><span class="cl-1943dc05">-1.2</span></p></td><td class="cl-1944c64c"><p class="cl-19442a24"><span class="cl-1943dc05">-0.59</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1944c64d"><p class="cl-19442a24"><span class="cl-1943dc05">E</span></p></td><td class="cl-1944c64e"><p class="cl-19442a24"><span class="cl-1943dc05">1.6</span></p></td><td class="cl-1944c64c"><p class="cl-19442a24"><span class="cl-1943dc05">1.1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1944c64d"><p class="cl-19442a24"><span class="cl-1943dc05">F</span></p></td><td class="cl-1944c64e"><p class="cl-19442a24"><span class="cl-1943dc05">-1.6</span></p></td><td class="cl-1944c64c"><p class="cl-19442a24"><span class="cl-1943dc05">-0.39</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1944c64f"><p class="cl-19442a24"><span class="cl-1943dc05">G</span></p></td><td class="cl-1944c650"><p class="cl-19442a24"><span class="cl-1943dc05">-0.56</span></p></td><td class="cl-1944ed42"><p class="cl-19442a24"><span class="cl-1943dc05">-0.76</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1944c64d"><p class="cl-19442a24"><span class="cl-1943dc05">H</span></p></td><td class="cl-1944c64e"><p class="cl-19442a24"><span class="cl-1943dc05">-0.076</span></p></td><td class="cl-1944c64c"><p class="cl-19442a24"><span class="cl-1943dc05">-0.93</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1944c64d"><p class="cl-19442a24"><span class="cl-1943dc05">I</span></p></td><td class="cl-1944c64e"><p class="cl-19442a24"><span class="cl-1943dc05">-1.2</span></p></td><td class="cl-1944c64c"><p class="cl-19442a24"><span class="cl-1943dc05">-1.1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1944c649"><p class="cl-19442a24"><span class="cl-1943dc05">J</span></p></td><td class="cl-1944c64a"><p class="cl-19442a24"><span class="cl-1943dc05">0.65</span></p></td><td class="cl-1944c64b"><p class="cl-19442a24"><span class="cl-1943dc05">0.54</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="26c5e0a2-f268-441c-9231-2dc1f1dcebdb"></div>
+<script>
+var dest = document.getElementById("26c5e0a2-f268-441c-9231-2dc1f1dcebdb");
+var template = document.getElementById("d3f4c16f-5aa6-45cf-a456-5f08bac54ca6");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
 <p><em>Alternative text: This is a 3-column table of random letters (in the first column) and numbers (in the second and third columns). </em></p>
 <p>Here in table 1, we see that…</p>
 </div>
@@ -472,53 +466,53 @@ div.csl-indent {
 <tbody>
 <tr class="odd">
 <td align="left">A</td>
-<td align="left">-1.6</td>
-<td align="left">-0.046</td>
+<td align="left">-0.74</td>
+<td align="left">-0.23</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
-<td align="left">1.3<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> <sup>,</sup><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></td>
-<td align="left">0.12</td>
+<td align="left">-0.48<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> <sup>,</sup><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></td>
+<td align="left">-1.1</td>
 </tr>
 <tr class="odd">
 <td align="left">C<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></td>
-<td align="left">0.68<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a></td>
-<td align="left">0.016</td>
+<td align="left">-0.36<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a></td>
+<td align="left">-0.17</td>
 </tr>
 <tr class="even">
 <td align="left">D<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a> <sup>,</sup><a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a></td>
-<td align="left">0.88</td>
-<td align="left">0.59</td>
+<td align="left">0.66</td>
+<td align="left">-0.49</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
-<td align="left">0.23</td>
-<td align="left">-0.95</td>
+<td align="left">0.84</td>
+<td align="left">-1.5</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
-<td align="left">1.4</td>
-<td align="left">0.073</td>
+<td align="left">0.019</td>
+<td align="left">0.45</td>
 </tr>
 <tr class="odd">
 <td align="left">G</td>
-<td align="left">0.13</td>
-<td align="left">1.2</td>
+<td align="left">0.46</td>
+<td align="left">1.7</td>
 </tr>
 <tr class="even">
 <td align="left">H</td>
-<td align="left">-1.2</td>
-<td align="left">-1.4</td>
+<td align="left">0.22</td>
+<td align="left">-0.35</td>
 </tr>
 <tr class="odd">
 <td align="left">I</td>
-<td align="left">-1.1</td>
-<td align="left">-0.86</td>
+<td align="left">0.012</td>
+<td align="left">-0.64</td>
 </tr>
 <tr class="even">
 <td align="left">J</td>
-<td align="left">-1.3</td>
-<td align="left">-0.014</td>
+<td align="left">0.082</td>
+<td align="left">-0.69</td>
 </tr>
 </tbody>
 </table>
