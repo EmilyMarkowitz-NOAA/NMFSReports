@@ -4,20 +4,26 @@
 \alias{xunits}
 \title{Determine the appropriate unit for a value.}
 \usage{
-xunits(value, val_under_x_words = 10)
+xunits(value, val_under_x_words = 10, words = TRUE)
 }
 \arguments{
 \item{value}{A numeric value.}
 
 \item{val_under_x_words}{a numeric that defines what values should be words as opposed to characters in a text. For example, many styles prefer that all values from 0 to 10 are spelled out in words, so you would set this parameter to 10 (which is the default). Set this parameter to NULL for nothing to to be spelled out.}
+
+\item{words}{T/F. Default = TRUE. If TRUE, "1000000" would become "1 Million" and if FALSE would become "1,000,000".}
 }
 \description{
 Determine the appropriate unit for a value (e.g., 1000000 = '1 Million'.
 }
 \examples{
-xunits(value = c(12))
-xunits(value = c(123456))
-xunits(value = c(123456789))
+xunits(value = NA)
+xunits(value = c(0, 1))
+xunits(value = c(0, 1), val_under_x_words = 0)
+xunits(value = 12)
+xunits(value = c(12345, 123456, 1234567))
+xunits(value = 123456789)
+xunits(value = 123456789, words = FALSE)
 }
 \keyword{Modify}
 \keyword{number,}

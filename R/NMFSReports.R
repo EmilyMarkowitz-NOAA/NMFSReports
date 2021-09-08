@@ -381,10 +381,10 @@ TitleCase <- function(str = "", add_dont_cap = "") {
              sep="", collapse=" ")
 
   dontcap<-c( add_dont_cap, #user added
-    # Which words should not be capitalized in a title?
-    "a", "an", "the", # articles
-    "for", "and", "nor", "but", "or", "yet", "so", # Coordinate conjunctions (FANBOYS).
-    "at", "around", "by", "after", "along", "for", "from", "of", "on", "to", "with", "without") # Prepositions
+              # Which words should not be capitalized in a title?
+              "a", "an", "the", # articles
+              "for", "and", "nor", "but", "or", "yet", "so", # Coordinate conjunctions (FANBOYS).
+              "at", "around", "by", "after", "along", "for", "from", "of", "on", "to", "with", "without") # Prepositions
   dontcap<-unique(dontcap)
 
   for (i in 1:length(dontcap)){
@@ -434,26 +434,26 @@ tolower2<-function(str0,
       # str1<-gsub(pattern = "fw", replacement = "freshwater", x = str1, ignore.case = T)
 
       keywords <- c( add_cap, #user added
-        #State
-        "Alabama", "Alaska", "California", "Connecticut",
-        "Delaware", #"East Florida", "West Florida",
-        "Florida", "Georgia",
-        "Louisiana", "Maine", "Maryland", "Massachusetts",
-        "Mississippi", "New Hampshire", "New Jersey", "New York",
-        "North Carolina", "Oregon", "Rhode Island", "South Carolina",
-        "Texas",  "Virginia", "Washington",
-        #Region
-        "North Pacific", "Pacific", "Western Pacific (Hawai`i)", "Western Pacific",
-        "New England",
-        "Mid-Atlantic","Gulf of Mexico",
-        "South Atlantic",
-        #For specific Species
-        "Spanish", "Gulf", "Bringham's", "Von Siebold's", "Pfluger's", "African", "Eurpoean",
-        "Southern kingfish", "Southern flounder",
-        # Other
-        "Atlantic", "American",
-        # "Atka",
-        "Chinook", "Great Lakes")
+                     #State
+                     "Alabama", "Alaska", "California", "Connecticut",
+                     "Delaware", #"East Florida", "West Florida",
+                     "Florida", "Georgia",
+                     "Louisiana", "Maine", "Maryland", "Massachusetts",
+                     "Mississippi", "New Hampshire", "New Jersey", "New York",
+                     "North Carolina", "Oregon", "Rhode Island", "South Carolina",
+                     "Texas",  "Virginia", "Washington",
+                     #Region
+                     "North Pacific", "Pacific", "Western Pacific (Hawai`i)", "Western Pacific",
+                     "New England",
+                     "Mid-Atlantic","Gulf of Mexico",
+                     "South Atlantic",
+                     #For specific Species
+                     "Spanish", "Gulf", "Bringham's", "Von Siebold's", "Pfluger's", "African", "Eurpoean",
+                     "Southern kingfish", "Southern flounder",
+                     # Other
+                     "Atlantic", "American",
+                     # "Atka",
+                     "Chinook", "Great Lakes")
 
       # keywords<-c(keywords, paste0("(", keywords), paste0(keywords, ")"))
 
@@ -620,28 +620,28 @@ add_table_footnotes<-function(table,
   footnote[is.na(footnote)]<-""
   footnote<-data.frame(footnote)
 
-    for (rr in 1:length(to_row_idx)) {
-      for (cc in 1:length(to_col_idx)) {
-        if (!(is.na(footnote[rr,cc]) | footnote[rr,cc] == "")) {
-          content <- trimws(tab[to_row_idx[rr], to_col_idx[cc]])
+  for (rr in 1:length(to_row_idx)) {
+    for (cc in 1:length(to_col_idx)) {
+      if (!(is.na(footnote[rr,cc]) | footnote[rr,cc] == "")) {
+        content <- trimws(tab[to_row_idx[rr], to_col_idx[cc]])
 
-          # if there are already footnotes there
-          if (substr(x = content,
-                     start = nchar(content),
-                     stop = nchar(content)) == "]") {
-            content <- paste0(content, " ^,^ ")
-          }
-
-          tab[to_row_idx[rr], to_col_idx[cc]] <-
-            paste0(content,
-                   paste(paste0("^[",
-                                trimws(paste(strsplit(x = footnote[rr,cc],
-                                          split = delim)[[1]])),
-                                 "]"),
-                         collapse = " ^,^ ")) # otherwise, apend it
+        # if there are already footnotes there
+        if (substr(x = content,
+                   start = nchar(content),
+                   stop = nchar(content)) == "]") {
+          content <- paste0(content, " ^,^ ")
         }
+
+        tab[to_row_idx[rr], to_col_idx[cc]] <-
+          paste0(content,
+                 paste(paste0("^[",
+                              trimws(paste(strsplit(x = footnote[rr,cc],
+                                                    split = delim)[[1]])),
+                              "]"),
+                       collapse = " ^,^ ")) # otherwise, apend it
       }
     }
+  }
 
   return(tab)
 
@@ -685,19 +685,19 @@ googledrive_txt_dl <- function (filename_gd,
   out <- utils::unzip(temp, exdir = tempdir())
 
   base::file.rename(from = out,
-              to = out_new)
+                    to = out_new)
 
   txt<-XML::htmlTreeParse(out_new, useInternal = TRUE)
 
   txt <- XML::xpathApply(txt,
-                    "//body//text()[not(ancestor::script)][not(ancestor::style)][not(ancestor::noscript)]",
-                    XML::xmlValue)
+                         "//body//text()[not(ancestor::script)][not(ancestor::style)][not(ancestor::noscript)]",
+                         XML::xmlValue)
 
   txt <- as.character(paste(paste(unlist(txt))))
 
   utils::write.table(x = txt,
-              file = paste0(path, filename_dl, ".txt"),
-              row.names = FALSE, col.names = FALSE)
+                     file = paste0(path, filename_dl, ".txt"),
+                     row.names = FALSE, col.names = FALSE)
 
   return(txt)
 }
@@ -930,62 +930,62 @@ pchange<-function(start, end,
   final1 <- c()
 
   #calculate percent change:
-for (i in 1:length(start0)) {
-  start <- start0[i]
-  end <- end0[i]
+  for (i in 1:length(start0)) {
+    start <- start0[i]
+    end <- end0[i]
 
-  if (is.na(start) | is.na(end)) {
+    if (is.na(start) | is.na(end)) {
 
-    final<-paste0(NA, "%")
+      final<-paste0(NA, "%")
 
-  } else if ((start == 0) & (end == 0)) {
+    } else if ((start == 0) & (end == 0)) {
 
-    final<-"0%"
+      final<-"0%"
 
-  } else if (value_only == TRUE) {
-    start<-sum(as.numeric(start))
-    end<-sum(as.numeric(end))
+    } else if (value_only == TRUE) {
+      start<-sum(as.numeric(start))
+      end<-sum(as.numeric(end))
 
-    final <- (100*(end-start)/start)
+      final <- (100*(end-start)/start)
 
-  } else if (value_only == FALSE) {
+    } else if (value_only == FALSE) {
 
-    start<-sum(as.numeric(start))
-    end<-sum(as.numeric(end))
+      start<-sum(as.numeric(start))
+      end<-sum(as.numeric(end))
 
-    p<-round(100*(end-start)/start)
+      p<-round(100*(end-start)/start)
 
-    p<-ifelse(is.nan(p), 0, p)
+      p<-ifelse(is.nan(p), 0, p)
 
-    # decide direction, Omit if percent = 0:
-    x<-p
+      # decide direction, Omit if percent = 0:
+      x<-p
 
-    if (x<0) {
-      txt<-paste0(" decrease",ending)
-      p<-paste0("a ", abs(p),"%")
-    } else if (x>0) {
-      txt<-paste0(" increase",ending)
-      p<-paste0("a ", abs(p),"%")
-    } else if (round(x)==0){
-      txt<-paste0("remains",ending," unchanged")
-      p<-"" #ending must be "s" or "ed" here
-    }
+      if (x<0) {
+        txt<-paste0(" decrease",ending)
+        p<-paste0("a ", abs(p),"%")
+      } else if (x>0) {
+        txt<-paste0(" increase",ending)
+        p<-paste0("a ", abs(p),"%")
+      } else if (round(x)==0){
+        txt<-paste0("remains",ending," unchanged")
+        p<-"" #ending must be "s" or "ed" here
+      }
 
-    # decide print order:
-    if(percent_first) {
-      final<-paste0(p,txt)
-    } else {
-      final<-paste0(txt," of ",p)
-    }
+      # decide print order:
+      if(percent_first) {
+        final<-paste0(p,txt)
+      } else {
+        final<-paste0(txt," of ",p)
+      }
 
-    if (round(x)!=0) {
-      if (sum(substr(x = numbers2words(abs(x)), start = 0, stop = 1) ==
-              c("a", "e", "i", "o", "u"))==T & !(x %in% c(1, 100:199))) {
-        final<-sub(pattern = "a ", replacement = "an ", x = final)
+      if (round(x)!=0) {
+        if (sum(substr(x = numbers2words(abs(x)), start = 0, stop = 1) ==
+                c("a", "e", "i", "o", "u"))==T & !(x %in% c(1, 100:199))) {
+          final<-sub(pattern = "a ", replacement = "an ", x = final)
+        }
       }
     }
-  }
-  final1 <- c(final1, final)
+    final1 <- c(final1, final)
   }
   return(final1)
 }
@@ -1010,9 +1010,9 @@ for (i in 1:length(start0)) {
 #'        divideby = 1,
 #'        digits = 2)
 mod_number<-function(x,
-                 divideby = 1000,
-                 comma_seperator = TRUE,
-                 digits = 0) {
+                     divideby = 1000,
+                     comma_seperator = TRUE,
+                     digits = 0) {
   xxx<-matrix(data = NA, nrow = nrow(x), ncol = ncol(x))
 
   for (c in 1:ncol(x)){
@@ -1023,9 +1023,9 @@ mod_number<-function(x,
                                  replacement = "")))
       # print(paste0(r,", ",c, ", ", xx))
       if (!is.na(xx)) {
-          xx<-format(xx/divideby, digits = digits, trim = F,
-                     big.mark = ifelse(comma_seperator == T, ",", ""),
-                     scientific = F)
+        xx<-format(xx/divideby, digits = digits, trim = F,
+                   big.mark = ifelse(comma_seperator == T, ",", ""),
+                   scientific = F)
       }
       xxx[r,c]<-xx
     }}
@@ -1037,62 +1037,83 @@ mod_number<-function(x,
 #' Determine the appropriate unit for a value (e.g., 1000000 = '1 Million'.
 #' @param value A numeric value.
 #' @param val_under_x_words a numeric that defines what values should be words as opposed to characters in a text. For example, many styles prefer that all values from 0 to 10 are spelled out in words, so you would set this parameter to 10 (which is the default). Set this parameter to NULL for nothing to to be spelled out.
+#' @param words T/F. Default = TRUE. If TRUE, "1000000" would become "1 Million" and if FALSE would become "1,000,000".
 #' @keywords Modify number, units
 #' @export
 #' @examples
-#' xunits(value = c(12))
-#' xunits(value = c(123456))
-#' xunits(value = c(123456789))
+#' xunits(value = NA)
+#' xunits(value = c(0, 1))
+#' xunits(value = c(0, 1), val_under_x_words = 0)
+#' xunits(value = 12)
+#' xunits(value = c(12345, 123456, 1234567))
+#' xunits(value = 123456789)
+#' xunits(value = 123456789, words = FALSE)
 xunits<-function(value,
-                 val_under_x_words = 10
+                 val_under_x_words = 10,
+                 words = TRUE
                  #, combine=TRUE # #' @param combine Should this be combined in a single string (T) or as two seperate strings in a list (F). Default = T.
 
-                 ) {
+) {
 
-  combine=TRUE
+  f = file()
+  sink(file=f)
+
+  combine <- TRUE
 
   out<-c()
+
   for (iii in 1:length(value)){
-  value0<-sum(as.numeric(value[iii]))
-  if (is.na(value0)) {
-    out0<-NA
-  } else {
 
-    sigfig<-format(value0, digits = 3, scientific = TRUE)
-    sigfig0<-as.numeric(substr(x = sigfig, start = (nchar(sigfig)-1), stop = nchar(sigfig)))
+    value0<-sum(as.numeric(value[iii]))
 
-    if (sigfig0==0) {
-      unit<-""
-      x<-format(x = value0, big.mark = ",", digits = 0, scientific = F)
-      if (!is.null(val_under_x_words)) {
-        if (as.numeric(x) <= val_under_x_words & as.numeric(x) >= 0) {
-          x <- NMFSReports::numbers2words(x = as.numeric(x))
+    if (is.na(value0)) {
+      out0 <- NA
+    } else {
+
+      if (words == FALSE) {
+        unit<-""
+        x<-format(x = value0, big.mark = ",", digits = 0, scientific = F)
+      } else {
+        sigfig<-format(value0, digits = 3, scientific = TRUE)
+        sigfig0<-as.numeric(substr(x = sigfig, start = (nchar(sigfig)-1), stop = nchar(sigfig)))
+
+        if (sigfig0==0) {
+          unit<-""
+          x<-format(x = value0, big.mark = ",", digits = 0, scientific = F)
+          if (!is.null(val_under_x_words)) {
+            if (as.numeric(x) <= val_under_x_words & as.numeric(x) >= 0) {
+              x <- NMFSReports::numbers2words(x = as.numeric(x))
+            }
+          }
+        } else if (sigfig0<=5) {
+          # if (sigfig0<4) {
+          unit<-""
+          x<-format(x = value0, big.mark = ",", digits = 0, scientific = F)
+          # } else if (sigfig0>=4 & sigfig0<6) {
+          #   unit<-" thousand"
+          # x<-round(value0/1e3, digits = 1)
+          # } else if (sigfig0==5) {
+          #   unit<-" thousand"
+          #   x<-round(value0/1e3, digits = 0)
+        } else if (sigfig0>=6 & sigfig0<9) {
+          unit<-" million"
+          x<-round(value0/1e6, digits = 1)
+        } else if (sigfig0>=9 & sigfig0<12) {
+          unit<-" billion"
+          x<-round(value0/1e9, digits = 1)
+        } else if (sigfig0>=12) {
+          unit<-" trillion"
+          x<-round(value0/1e12, digits = 1)
         }
       }
-    } else if (sigfig0<=5) {
-      # if (sigfig0<4) {
-      unit<-""
-      x<-format(x = value0, big.mark = ",", digits = 0, scientific = F)
-      # } else if (sigfig0>=4 & sigfig0<6) {
-      #   unit<-" thousand"
-      # x<-round(value0/1e3, digits = 1)
-      # } else if (sigfig0==5) {
-      #   unit<-" thousand"
-      #   x<-round(value0/1e3, digits = 0)
-    } else if (sigfig0>=6 & sigfig0<9) {
-      unit<-" million"
-      x<-round(value0/1e6, digits = 1)
-    } else if (sigfig0>=9 & sigfig0<12) {
-      unit<-" billion"
-      x<-round(value0/1e9, digits = 1)
-    } else if (sigfig0>=12) {
-      unit<-" trillion"
-      x<-round(value0/1e12, digits = 1)
+      out0<-ifelse(combine==TRUE, paste0(x, unit), list(x, unit))
     }
-    out0<-ifelse(combine==T, paste0(x, unit), list(x, unit))
+
+    out<-c(out, out0)
   }
-  out<-c(out, out0)
-  }
+
+  sink()
+  close(f)
 
   return(out)
 }
@@ -1112,20 +1133,20 @@ xunitspct<-function(value, sign = TRUE) {
   out0<-c()
   for (iii in 1:length(value)){
 
-  if (is.na(value)) {
-    temp<-NA
-  } else if (value > -1 & value <= 0 | #negative values between 0 and -1
-             value < 1 & value >= 0) { #positive values between 1 and 0
-    temp<-as.numeric(format(value, digits = 0, nsmall = 1, big.mark = ",", trim =T, scientific = F))
-  } else {
-    temp<-as.numeric(round(value, digits = 0))
-  }
+    if (is.na(value)) {
+      temp<-NA
+    } else if (value > -1 & value <= 0 | #negative values between 0 and -1
+               value < 1 & value >= 0) { #positive values between 1 and 0
+      temp<-as.numeric(format(value, digits = 0, nsmall = 1, big.mark = ",", trim =T, scientific = F))
+    } else {
+      temp<-as.numeric(round(value, digits = 0))
+    }
 
-  if (sign == F | is.na(value)) {
-    out<-temp
-  } else {
-    out<-paste0(temp, "%")
-  }
+    if (sign == F | is.na(value)) {
+      out<-temp
+    } else {
+      out<-paste0(temp, "%")
+    }
     out0<-c(out0, out)
   }
 
@@ -1278,21 +1299,21 @@ auto_counter<-function(counter0) {
 #' names(list_figures)
 #' list_figures
 save_figures<-function(figure,
-                     list_figures,
-                     header = "",
-                     footnote = "",
-                     filename0 = "x",
-                     cnt_chapt_content = "001",
-                     cnt = 1,
-                     path = NULL,
-                     width = 6,
-                     height = 6,
-                     output_type = c("pdf", "png"),
-                     type = "Figure",
-                     alttext = "",
-                     filename_desc = "",
-                     nickname = "",
-                     message = FALSE){
+                       list_figures,
+                       header = "",
+                       footnote = "",
+                       filename0 = "x",
+                       cnt_chapt_content = "001",
+                       cnt = 1,
+                       path = NULL,
+                       width = 6,
+                       height = 6,
+                       output_type = c("pdf", "png"),
+                       type = "Figure",
+                       alttext = "",
+                       filename_desc = "",
+                       nickname = "",
+                       message = FALSE){
 
 
   if( sum(names(list_figures) %in% nickname)>0 ) warning('This nickname has already been used for a object in this list. Nicknames should not be reused. Please change the nickname.')
@@ -1323,19 +1344,19 @@ save_figures<-function(figure,
         path = path,
         dpi = 1200,
         filename = paste0(filename00, ".", output_type[i]), # Always save in pdf so you can make last minute edits in adobe acrobat!
-      plot = figure, # call the plot you are saving
-      width = width, height = height, units = "in") #recall, A4 pages are 8.5 x 11 in - 1 in margins
+        plot = figure, # call the plot you are saving
+        width = width, height = height, units = "in") #recall, A4 pages are 8.5 x 11 in - 1 in margins
     }
   }
 
   list_figures$temp <- list("figure" = figure,
-                           "caption" = caption,
-                           "header" = header,
-                           "nickname" = nickname,
-                           "alttext" = alttext,
-                           "number" = cnt,
-                           "footnote" = footnote,
-                           "filename" = filename00)
+                            "caption" = caption,
+                            "header" = header,
+                            "nickname" = nickname,
+                            "alttext" = alttext,
+                            "number" = cnt,
+                            "footnote" = footnote,
+                            "filename" = filename00)
 
   names(list_figures)[names(list_figures) %in% "temp"] <- nickname
 
@@ -1385,20 +1406,20 @@ save_graph <- save_figures
 #'            header = "Here is a table!",
 #'            footnote = "A footnote for this table!")
 save_tables<-function(table_raw = NULL,
-                     table_print = NULL,
-                     list_tables = c(),
-                     header = "",
-                     footnote = "",
-                     filename0 = "x",
-                     cnt_chapt_content = "001",
-                     cnt = 1,
-                     path = NULL,
-                     output_type = c("csv"),
-                     type = "Table",
-                     alttext = "",
-                     filename_desc = "",
-                     nickname = "",
-                     message = FALSE) {
+                      table_print = NULL,
+                      list_tables = c(),
+                      header = "",
+                      footnote = "",
+                      filename0 = "x",
+                      cnt_chapt_content = "001",
+                      cnt = 1,
+                      path = NULL,
+                      output_type = c("csv"),
+                      type = "Table",
+                      alttext = "",
+                      filename_desc = "",
+                      nickname = "",
+                      message = FALSE) {
 
   if( sum(names(list_tables) %in% nickname)>0 ) warning('This nickname has already been used for a object in this list. Nicknames should not be reused. Please change the nickname.')
 
@@ -1432,7 +1453,7 @@ save_tables<-function(table_raw = NULL,
                                          "_raw.", output_type[i]),
                            sep = ",",
                            row.names=FALSE, col.names = F, append = F)
-        }
+      }
     } else {
       table_raw <- ""
     }
@@ -1444,8 +1465,8 @@ save_tables<-function(table_raw = NULL,
           utils::write.table(x = table_print,
                              file = paste0(path, filename00,
                                            "_print.", output_type[i]),
-                         sep = ",",
-                         row.names=FALSE, col.names = F, append = F)
+                             sep = ",",
+                             row.names=FALSE, col.names = F, append = F)
         }
       } else { # save non-matrix or data.frames
         save(table_print,
@@ -1457,14 +1478,14 @@ save_tables<-function(table_raw = NULL,
   }
 
   list_tables$temp <- list("raw" = table_raw,
-                          "print" = table_print,
-                          "caption" = caption,
-                          "header" = header,
-                          "nickname" = nickname,
-                          "alttext" = alttext,
-                          "number" = cnt,
-                          "footnote" = footnote,
-                          "filename" = filename00)
+                           "print" = table_print,
+                           "caption" = caption,
+                           "header" = header,
+                           "nickname" = nickname,
+                           "alttext" = alttext,
+                           "number" = cnt,
+                           "footnote" = footnote,
+                           "filename" = filename00)
 
   names(list_tables)[names(list_tables) %in% "temp"] <- nickname
 
@@ -1516,15 +1537,15 @@ save_tables<-function(table_raw = NULL,
 #' names(list_equations )
 #' list_equations
 save_equations<-function(equation,
-                       list_equations ,
-                       header = "",
-                       footnote = "",
-                       cnt_chapt_content = "001",
-                       cnt = 1,
-                       type = "Equation",
-                       alttext = "",
-                       nickname = "",
-                       message = FALSE){
+                         list_equations ,
+                         header = "",
+                         footnote = "",
+                         cnt_chapt_content = "001",
+                         cnt = 1,
+                         type = "Equation",
+                         alttext = "",
+                         nickname = "",
+                         message = FALSE){
 
   if( sum(names(list_equations) %in% nickname)>0 ) warning('This nickname has already been used for a object in this list. Nicknames should not be reused. Please change the nickname.')
 
@@ -1544,12 +1565,12 @@ save_equations<-function(equation,
                                        collapse = " ^,^ ")))
 
   list_equations $temp <- list("equation" = equation,
-                           "caption" = caption,
-                           "header" = header,
-                           "nickname" = nickname,
-                           "alttext" = alttext,
-                           "number" = cnt,
-                           "footnote" = footnote)
+                               "caption" = caption,
+                               "header" = header,
+                               "nickname" = nickname,
+                               "alttext" = alttext,
+                               "number" = cnt,
+                               "footnote" = footnote)
 
   names(list_equations )[names(list_equations ) %in% "temp"] <- nickname
 
@@ -1589,8 +1610,8 @@ save_equations<-function(equation,
 #' print(paste0("Please refer to figure ", refnum,
 #'              " to see this figure, not the other figure."))
 crossref <- function(list_obj,
-                       nickname,
-                       sublist = "number"){
+                     nickname,
+                     sublist = "number"){
   ref <- list_obj[which(lapply(list_obj, `[[`, "nickname") %in% nickname)][[1]][sublist]
   if (sublist == "number") {
     ref<-as.numeric(ref)
@@ -1646,18 +1667,19 @@ theme_flextable_nmfstm <- function(x, pgwidth = 6, row_lines = TRUE) {
   x <- flextable::border_remove(x)
 
   if (row_lines == TRUE) {
-    x <- flextable::hline(x, border = thin_b, part = "body")
+    x <- flextable::hline(x = x, border = thin_b, part = "body")
   }
-  x <- flextable::hline_top(x, border = std_b, part = "header")
-  x <- flextable::hline_bottom(x, border = std_b, part = "header")
-  x <- flextable::hline_bottom(x, border = std_b, part = "body")
+  x <- flextable::hline_top(x = x, border = std_b, part = "header")
+  x <- flextable::hline_bottom(x = x, border = std_b, part = "header")
+  x <- flextable::hline_bottom(x = x, border = std_b, part = "body")
   x <- flextable::bold(x = x, bold = TRUE, part = "header")
-  x <- flextable::align_text_col(x, align = "left", header = TRUE)
-  x <- flextable::align_nottext_col(x, align = "right", header = TRUE)
-  x <- flextable::font(x, fontname = font, part = "all")
-  x <- FitFlextableToPage(x, pgwidth = pgwidth)
+  x <- flextable::align_text_col(x = x, align = "left", header = TRUE)
+  x <- flextable::align_nottext_col(x = x, align = "right", header = TRUE)
+  x <- flextable::font(x = x, fontname = font, part = "all")
+  x <- FitFlextableToPage(x = x, pgwidth = pgwidth)
+  x <- flextable::line_spacing(x = x, space = 1, part = "all")
 
-  x <- flextable::fix_border_issues(x)
+  x <- flextable::fix_border_issues(x = x)
 
   return(x)
 }
@@ -1682,8 +1704,8 @@ create_metadata<-function(
 
   my_doc <- my_doc %>%
     officer::body_add_par(title,
-                 # officer::body_add_par(paste0("Population Narrative of ", commorg, " (", fp_text(sciname, italic = T, color = "black", font.size=10), ")"," in ", region),
-                 style = "heading 1") %>%
+                          # officer::body_add_par(paste0("Population Narrative of ", commorg, " (", fp_text(sciname, italic = T, color = "black", font.size=10), ")"," in ", region),
+                          style = "heading 1") %>%
     officer::body_add_par("Date Code Ran:", style = "heading 2") %>%
     officer::body_add_par(Sys.time(), style = "Normal") %>%
     officer::body_add_par("System Info:", style = "heading 2") %>%
@@ -1708,7 +1730,7 @@ create_metadata<-function(
     temp<-a$otherPkgs[[i]]
     my_doc <- my_doc %>%
       officer::body_add_par(temp$Package,
-                   style = "heading 3") %>%
+                            style = "heading 3") %>%
       officer::body_add_par(temp$Version, style = "Normal") %>%
       officer::body_add_par(temp$Title, style = "Normal") %>%
       officer::body_add_par(temp$Description, style = "Normal") %>%
