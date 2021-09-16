@@ -12,7 +12,7 @@ save_tables(
   footnote = "",
   filename0 = "x",
   cnt_chapt_content = "001",
-  cnt = 1,
+  cnt = "1",
   path = NULL,
   output_type = c("csv"),
   type = "Table",

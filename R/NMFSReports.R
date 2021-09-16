@@ -1413,7 +1413,7 @@ save_tables<-function(table_raw = NULL,
                       footnote = "",
                       filename0 = "x",
                       cnt_chapt_content = "001",
-                      cnt = 1,
+                      cnt = "1",
                       path = NULL,
                       output_type = c("csv"),
                       type = "Table",
@@ -1615,7 +1615,7 @@ crossref <- function(list_obj,
                      sublist = "number"){
   ref <- list_obj[which(lapply(list_obj, `[[`, "nickname") %in% nickname)][[1]][sublist]
   if (sublist == "number") {
-    ref<-as.numeric(ref)
+    ref<-as.character(ref)
   }
   return(ref)
 }

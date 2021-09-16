@@ -54,9 +54,10 @@ alttext = "The Pythagoras theorem is a mathematical law that states that the sum
 ## ---- echo = FALSE------------------------------------------------------------
 
 # Don't Edit This:
-subobj <- ifelse(exists("subobj"), subobj, FALSE)
+subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
+newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_equations<-ifelse(subobj, cnt_equations, cnt_equations+1)
+cnt_equations<-ifelse((subobj | !(newobj)), cnt_equations, cnt_equations+1)
 
 if (subobj) {
   # if it contains letters
@@ -64,8 +65,10 @@ if (subobj) {
     cnt_equations_sub <- letters[which(letters == 
                                       gsub("[^a-zA-Z]", "", list_equations[length(list_equations)][[1]]$number))+1]
   } else {
-    cnt_equations_sub <- "a"
+    cnt_equations_sub <- letters[1]
   }
+} else {
+  cnt_equations_sub <- ""
 }
 
 # Systematically save your plot with this function
@@ -77,14 +80,14 @@ list_equations<-NMFSReports::save_equations(
   alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   cnt_chapt_content = cnt_chapt_content, 
-  cnt = ifelse(exists("cnt_equations_sub", mode = "character"), paste0(cnt_equations, cnt_equations_sub), cnt_equations), 
+  cnt = paste0(cnt_equations, cnt_equations_sub), 
 )
 
 ## ---- echo = FALSE------------------------------------------------------------
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("equation", "header", "footnote", "subobj",#"nickname", 
+remove_who0 <- c("equation", "header", "footnote", "subobj", "newobj", #"nickname", 
                  "alttext")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
@@ -97,9 +100,10 @@ remove(list = remove_who)
 ## ---- echo = FALSE------------------------------------------------------------
 
 # Don't Edit This:
-subobj <- ifelse(exists("subobj"), subobj, FALSE)
+subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
+newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_equations<-ifelse(subobj, cnt_equations, cnt_equations+1)
+cnt_equations<-ifelse((subobj | !(newobj)), cnt_equations, cnt_equations+1)
 
 if (subobj) {
   # if it contains letters
@@ -107,8 +111,10 @@ if (subobj) {
     cnt_equations_sub <- letters[which(letters == 
                                       gsub("[^a-zA-Z]", "", list_equations[length(list_equations)][[1]]$number))+1]
   } else {
-    cnt_equations_sub <- "a"
+    cnt_equations_sub <- letters[1]
   }
+} else {
+  cnt_equations_sub <- ""
 }
 
 # Systematically save your plot with this function
@@ -120,14 +126,14 @@ list_equations<-NMFSReports::save_equations(
   alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   cnt_chapt_content = cnt_chapt_content, 
-  cnt = ifelse(exists("cnt_equations_sub", mode = "character"), paste0(cnt_equations, cnt_equations_sub), cnt_equations), 
+  cnt = paste0(cnt_equations, cnt_equations_sub), 
 )
 
 ## ---- echo = FALSE------------------------------------------------------------
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("equation", "header", "footnote", "subobj",#"nickname", 
+remove_who0 <- c("equation", "header", "footnote", "subobj", "newobj", #"nickname", 
                  "alttext")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
@@ -170,9 +176,10 @@ figure <- dat %>%
 ## ---- echo = FALSE------------------------------------------------------------
 
 # Don't Edit This:
-subobj <- ifelse(exists("subobj"), subobj, FALSE)
+subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
+newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_figures<-ifelse(subobj, cnt_figures, cnt_figures+1)
+cnt_figures<-ifelse((subobj | !(newobj)), cnt_figures, cnt_figures+1)
 
 if (subobj) {
   # if it contains letters
@@ -180,8 +187,10 @@ if (subobj) {
     cnt_figures_sub <- letters[which(letters == 
                                       gsub("[^a-zA-Z]", "", list_figures[length(list_figures)][[1]]$number))+1]
   } else {
-    cnt_figures_sub <- "a"
+    cnt_figures_sub <- letters[1]
   }
+} else {
+  cnt_figures_sub <- ""
 }
 
 # Systematically save your plot with this function
@@ -197,7 +206,7 @@ list_figures<-NMFSReports::save_figures(
   cnt_chapt_content = cnt_chapt_content, 
   width = ifelse(exists("width", mode = "character"), width, 6), 
   height = ifelse(exists("height", mode = "character"), height, 6),
-  cnt = ifelse(exists("cnt_figures_sub", mode = "character"), paste0(cnt_figures, cnt_figures_sub), cnt_figures), 
+  cnt = paste0(cnt_figures, cnt_figures_sub), 
   path = dir_out_figures)
 
 
@@ -237,7 +246,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("figure", "header", "footnote", "subobj", #"nickname", 
+remove_who0 <- c("figure", "header", "footnote", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext"," width", "height", "usePNGPDF")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
@@ -250,9 +259,10 @@ remove(list = remove_who)
 ## ---- echo = FALSE------------------------------------------------------------
 
 # Don't Edit This:
-subobj <- ifelse(exists("subobj"), subobj, FALSE)
+subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
+newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_figures<-ifelse(subobj, cnt_figures, cnt_figures+1)
+cnt_figures<-ifelse((subobj | !(newobj)), cnt_figures, cnt_figures+1)
 
 if (subobj) {
   # if it contains letters
@@ -260,8 +270,10 @@ if (subobj) {
     cnt_figures_sub <- letters[which(letters == 
                                       gsub("[^a-zA-Z]", "", list_figures[length(list_figures)][[1]]$number))+1]
   } else {
-    cnt_figures_sub <- "a"
+    cnt_figures_sub <- letters[1]
   }
+} else {
+  cnt_figures_sub <- ""
 }
 
 # Systematically save your plot with this function
@@ -277,7 +289,7 @@ list_figures<-NMFSReports::save_figures(
   cnt_chapt_content = cnt_chapt_content, 
   width = ifelse(exists("width", mode = "character"), width, 6), 
   height = ifelse(exists("height", mode = "character"), height, 6),
-  cnt = ifelse(exists("cnt_figures_sub", mode = "character"), paste0(cnt_figures, cnt_figures_sub), cnt_figures), 
+  cnt = paste0(cnt_figures, cnt_figures_sub), 
   path = dir_out_figures)
 
 
@@ -317,7 +329,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("figure", "header", "footnote", "subobj", #"nickname", 
+remove_who0 <- c("figure", "header", "footnote", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext"," width", "height", "usePNGPDF")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
@@ -383,9 +395,10 @@ table_print <- flextable::flextable(table_print) %>%
 ## ---- echo = FALSE------------------------------------------------------------
 
 # Don't Edit This:
-subobj <- ifelse(exists("subobj"), subobj, FALSE)
+subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
+newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_tables<-ifelse(subobj, cnt_tables, cnt_tables+1)
+cnt_tables <- ifelse((subobj | !(newobj)), cnt_tables, cnt_tables+1)
 
 if (subobj) {
   # if it contains letters
@@ -393,8 +406,10 @@ if (subobj) {
     cnt_tables_sub <- letters[which(letters == 
                                       gsub("[^a-zA-Z]", "", list_tables[length(list_tables)][[1]]$number))+1]
   } else {
-    cnt_tables_sub <- "a"
+    cnt_tables_sub <- letters[1]
   }
+} else {
+  cnt_tables_sub <- ""
 }
 
 if (!(exists("table_raw"))) {
@@ -415,7 +430,7 @@ list_tables<-NMFSReports::save_tables(
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, ""),  
   cnt_chapt_content = cnt_chapt_content, 
-  cnt = ifelse(exists("cnt_tables_sub", mode = "character"), paste0(cnt_tables, cnt_tables_sub), cnt_tables), 
+  cnt = paste0(cnt_tables, cnt_tables_sub), 
   path = dir_out_tables)
 
 
@@ -455,7 +470,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("header", "footnote", "subobj", #"nickname", 
+remove_who0 <- c("header", "footnote", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext", 
                  "table_raw", "table_print")
 for (i in 1:length(remove_who0)){
@@ -469,9 +484,10 @@ remove(list = remove_who)
 ## ---- echo = FALSE------------------------------------------------------------
 
 # Don't Edit This:
-subobj <- ifelse(exists("subobj"), subobj, FALSE)
+subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
+newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_tables<-ifelse(subobj, cnt_tables, cnt_tables+1)
+cnt_tables <- ifelse((subobj | !(newobj)), cnt_tables, cnt_tables+1)
 
 if (subobj) {
   # if it contains letters
@@ -479,8 +495,10 @@ if (subobj) {
     cnt_tables_sub <- letters[which(letters == 
                                       gsub("[^a-zA-Z]", "", list_tables[length(list_tables)][[1]]$number))+1]
   } else {
-    cnt_tables_sub <- "a"
+    cnt_tables_sub <- letters[1]
   }
+} else {
+  cnt_tables_sub <- ""
 }
 
 if (!(exists("table_raw"))) {
@@ -501,7 +519,7 @@ list_tables<-NMFSReports::save_tables(
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, ""),  
   cnt_chapt_content = cnt_chapt_content, 
-  cnt = ifelse(exists("cnt_tables_sub", mode = "character"), paste0(cnt_tables, cnt_tables_sub), cnt_tables), 
+  cnt = paste0(cnt_tables, cnt_tables_sub), 
   path = dir_out_tables)
 
 
@@ -541,7 +559,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("header", "footnote", "subobj", #"nickname", 
+remove_who0 <- c("header", "footnote", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext", 
                  "table_raw", "table_print")
 for (i in 1:length(remove_who0)){
