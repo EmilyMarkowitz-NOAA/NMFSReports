@@ -5,7 +5,7 @@
 \title{Download text from google drive as plain text}
 \usage{
 googledrive_txt_dl(
-  filename_gd,
+  filename_gd = NULL,
   filename_dl = "googledrive_dl_text",
   path = "./",
   verbose = TRUE

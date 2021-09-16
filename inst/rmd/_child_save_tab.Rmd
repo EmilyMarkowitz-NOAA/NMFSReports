@@ -3,8 +3,19 @@
 ```{r, echo = FALSE}
 
 # Don't Edit This:
+subobj <- ifelse(exists("subobj"), subobj, FALSE)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_tables<-cnt_tables+1
+cnt_tables<-ifelse(subobj, cnt_tables, cnt_tables+1)
+
+if (subobj) {
+  # if it contains letters
+  if (grepl(pattern = "[A-Za-z]", x = list_tables[length(list_tables)][[1]]$number)) {
+    cnt_tables_sub <- letters[which(letters == 
+                                      gsub("[^a-zA-Z]", "", list_tables[length(list_tables)][[1]]$number))+1]
+  } else {
+    cnt_tables_sub <- "a"
+  }
+}
 
 if (!(exists("table_raw"))) {
   table_raw <- NULL
@@ -24,7 +35,7 @@ list_tables<-NMFSReports::save_tables(
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, ""),  
   cnt_chapt_content = cnt_chapt_content, 
-  cnt = cnt_tables, 
+  cnt = ifelse(exists("cnt_tables_sub", mode = "character"), paste0(cnt_tables, cnt_tables_sub), cnt_tables), 
   path = dir_out_tables)
 
 ```
@@ -67,7 +78,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("header", "footnote", #"nickname", 
+remove_who0 <- c("header", "footnote", "subobj", #"nickname", 
                  "filename_desc", "alttext", 
                  "table_raw", "table_print")
 for (i in 1:length(remove_who0)){

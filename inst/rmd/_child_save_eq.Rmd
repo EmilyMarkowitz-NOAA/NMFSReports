@@ -4,8 +4,19 @@
 ```{r, echo = FALSE}
 
 # Don't Edit This:
+subobj <- ifelse(exists("subobj"), subobj, FALSE)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_equations<-cnt_equations+1
+cnt_equations<-ifelse(subobj, cnt_equations, cnt_equations+1)
+
+if (subobj) {
+  # if it contains letters
+  if (grepl(pattern = "[A-Za-z]", x = list_equations[length(list_equations)][[1]]$number)) {
+    cnt_equations_sub <- letters[which(letters == 
+                                      gsub("[^a-zA-Z]", "", list_equations[length(list_equations)][[1]]$number))+1]
+  } else {
+    cnt_equations_sub <- "a"
+  }
+}
 
 # Systematically save your plot with this function
 list_equations<-NMFSReports::save_equations(
@@ -16,7 +27,8 @@ list_equations<-NMFSReports::save_equations(
   alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   cnt_chapt_content = cnt_chapt_content, 
-  cnt = cnt_equations)
+  cnt = ifelse(exists("cnt_equations_sub", mode = "character"), paste0(cnt_equations, cnt_equations_sub), cnt_equations), 
+)
 ```
 
 
@@ -24,7 +36,7 @@ list_equations<-NMFSReports::save_equations(
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("equation", "header", "footnote", #"nickname", 
+remove_who0 <- c("equation", "header", "footnote", "subobj",#"nickname", 
                  "alttext")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){

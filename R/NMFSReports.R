@@ -666,7 +666,7 @@ add_table_footnotes<-function(table,
 #' txt
 #' # for good file keeping, I'll delete these
 #' file.remove('test123123_dl.txt', 'test123123_dl.zip')
-googledrive_txt_dl <- function (filename_gd,
+googledrive_txt_dl <- function (filename_gd = NULL,
                                 filename_dl = "googledrive_dl_text",
                                 path = "./",
                                 verbose = TRUE) {
@@ -676,6 +676,7 @@ googledrive_txt_dl <- function (filename_gd,
   # Make a temporary file to content save to
   temp <- base::tempfile(fileext = ".zip")
 
+  # if (is.null(filename_gd))
   dl <- googledrive::drive_download(file = filename_gd,
                                     path = temp,
                                     verbose = verbose,
