@@ -21,9 +21,14 @@ if (subobj) {
   cnt_figures_sub <- ""
 }
 
+if (!(exists("raw"))) {
+  raw <- NULL
+}
+
 # Systematically save your plot with this function
 list_figures<-NMFSReports::save_figures(
   figure = figure, 
+  raw = raw, 
   list_figures = list_figures, 
   header = ifelse(exists("header", mode = "character"), header, ""),
   footnote = unlist(ifelse(exists("footnote", mode = "character"), list(footnote), "")), 
@@ -76,7 +81,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("figure", "header", "footnote", "subobj", "newobj", #"nickname", 
+remove_who0 <- c("figure", "raw", "header", "footnote", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext"," width", "height", "usePNGPDF")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){

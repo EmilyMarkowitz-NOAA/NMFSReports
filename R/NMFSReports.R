@@ -1275,6 +1275,7 @@ auto_counter<-function(counter0) {
 #' @param type Default = "Figure", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Figure 1. This is my plot!".
 #' @param alttext String with what the alternative text is.
 #' @param filename_desc Additional description text for the filename that will be added at the name of file before the filename extention. Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.
+#' @param raw Optional. The data.frame or other data that has no rounding and no dividing of numbers (good to save this for record keeping) and was used to create the figure. Default = NA.
 #' @param nickname A unique name that can be used to identify the figure so it can be referenced later in the report.
 #' @param message TRUE/FALSE. Default = FALSE. If TRUE, it will print information about where your plot has been saved to.
 #' @importFrom magrittr %>%
@@ -1314,6 +1315,7 @@ save_figures<-function(figure,
                        alttext = "",
                        filename_desc = "",
                        nickname = "",
+                       raw = NULL,
                        message = FALSE){
 
 
@@ -1348,9 +1350,27 @@ save_figures<-function(figure,
         plot = figure, # call the plot you are saving
         width = width, height = height, units = "in") #recall, A4 pages are 8.5 x 11 in - 1 in margins
     }
+
+      # raw
+
+      # Save raw file (no rounding, no dividing)
+      if (!(is.null(raw)) &
+          (is.data.frame(raw) | is.matrix(raw))) {
+        for (i in 1:length(output_type)){
+          utils::write.table(x = raw,
+                             file = paste0(path, filename00,
+                                           "_raw.", output_type[i]),
+                             sep = ",",
+                             row.names=FALSE, col.names = F, append = F)
+        }
+      } else {
+        raw <- ""
+      }
+
   }
 
   list_figures$temp <- list("figure" = figure,
+                            "raw" = raw,
                             "caption" = caption,
                             "header" = header,
                             "nickname" = nickname,

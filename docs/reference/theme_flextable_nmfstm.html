@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Modify numbers. — mod_number • NMFSReports</title>
+<title>Apply vanilla theme — theme_flextable_nmfstm • NMFSReports</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,14 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Modify numbers. — mod_number" />
-<meta property="og:description" content="Modify numbers." />
+<meta property="og:title" content="Apply vanilla theme — theme_flextable_nmfstm" />
+<meta property="og:description" content="Apply theme vanilla to a flextable:
+The external horizontal lines of the different parts of
+the table (body, header, footer) are black 2 points thick,
+the external horizontal lines of the different parts
+are black 0.5 point thick. Header text is bold,
+text columns are left aligned, other columns are
+right aligned." />
 <meta property="og:image" content="https://emilymarkowitz-noaa.github.io/NMFSReports/logo.png" />
 
 
@@ -178,64 +184,62 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Modify numbers.</h1>
+    <h1>Apply vanilla theme</h1>
     <small class="dont-index">Source: <a href='https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/R/NMFSReports.R'><code>R/NMFSReports.R</code></a></small>
-    <div class="hidden name"><code>mod_number.Rd</code></div>
+    <div class="hidden name"><code>theme_flextable_nmfstm.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Modify numbers.</p>
+    <p>Apply theme vanilla to a flextable:
+The external horizontal lines of the different parts of
+the table (body, header, footer) are black 2 points thick,
+the external horizontal lines of the different parts
+are black 0.5 point thick. Header text is bold,
+text columns are left aligned, other columns are
+right aligned.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>mod_number</span><span class='op'>(</span><span class='va'>x</span>, divideby <span class='op'>=</span> <span class='fl'>1000</span>, comma_seperator <span class='op'>=</span> <span class='cn'>TRUE</span>, digits <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></code></pre></div>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>theme_flextable_nmfstm</span><span class='op'>(</span><span class='va'>x</span>, pgwidth <span class='op'>=</span> <span class='fl'>6</span>, row_lines <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A numeric.</p></td>
+      <td><p>a flextable object</p></td>
     </tr>
     <tr>
-      <th>divideby</th>
-      <td><p>The value you want all of your values divided by. Default = 1000.</p></td>
+      <th>pgwidth</th>
+      <td><p>a numeric. The width in inches the table should be. Default = 6, which is ideal for A4 (8.5x11 in) portrait paper.</p></td>
     </tr>
     <tr>
-      <th>comma_seperator</th>
-      <td><p>Do you want numbers to have commas in it ("1,000" (T) vs. "1000" (F). Default = TRUE.</p></td>
-    </tr>
-    <tr>
-      <th>digits</th>
-      <td><p>How many digits you would like your number to have. Default = 0.</p></td>
+      <th>row_lines</th>
+      <td><p>T/F. If True, draws a line between each row.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="illustrations"><a class="anchor" href="#illustrations"></a>Illustrations</h2>
+
+    
+
+
+<p><img src='figures/fig_theme_vanilla_1.png' width=60% /></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>20000678660</span>, <span class='fl'>234567</span>, <span class='fl'>1</span>, <span class='cn'>NA</span>, <span class='fl'>2345</span>, <span class='fl'>23</span><span class='op'>)</span>,</span>
-<span class='r-in'>       ncol <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>mod_number</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1]         [,2]</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,] "20,000,679" NA  </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,] "235"        "2" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,] "0"          "0" </span>
-<span class='r-in'><span class='fu'>mod_number</span><span class='op'>(</span><span class='va'>x</span>,</span>
-<span class='r-in'>       comma_seperator <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1]       [,2]</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,] "20000679" NA  </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,] "235"      "2" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,] "0"        "0" </span>
-<span class='r-in'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>200000</span>, <span class='fl'>234567</span>, <span class='fl'>1</span>, <span class='cn'>NA</span>, <span class='fl'>2345</span>, <span class='fl'>23</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>mod_number</span><span class='op'>(</span><span class='va'>x</span>,</span>
-<span class='r-in'>       divideby <span class='op'>=</span> <span class='fl'>1</span>,</span>
-<span class='r-in'>       digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1]     </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,] "200,000"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,] "234,567"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,] "1"      </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,] NA       </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [5,] "2,345"  </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [6,] "23"     </span>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>ft</span> <span class='op'>&lt;-</span> <span class='fu'>flextable</span><span class='fu'>::</span><span class='fu'><a href='https://davidgohel.github.io/flextable/reference/flextable.html'>flextable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>airquality</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>ft</span> <span class='op'>&lt;-</span> <span class='fu'>NMFSReports</span><span class='fu'>::</span><span class='fu'>theme_flextable_nmfstm</span><span class='op'>(</span><span class='va'>ft</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>ft</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> a flextable object.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> col_keys: `Ozone`, `Solar.R`, `Wind`, `Temp`, `Month`, `Day` </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> header has 1 row(s) </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> body has 6 row(s) </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> original dataset sample: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Ozone Solar.R Wind Temp Month Day</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1    41     190  7.4   67     5   1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2    36     118  8.0   72     5   2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3    12     149 12.6   74     5   3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4    18     313 11.5   62     5   4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5    NA      NA 14.3   56     5   5</span>
 </code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

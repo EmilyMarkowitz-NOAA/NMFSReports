@@ -57,15 +57,15 @@ alttext = "The Pythagoras theorem is a mathematical law that states that the sum
 subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
 newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_equations<-ifelse((subobj | !(newobj)), cnt_equations, cnt_equations+1)
+cnt_equations<-ifelse(newobj, cnt_equations+1, cnt_equations)
 
 if (subobj) {
   # if it contains letters
-  if (grepl(pattern = "[A-Za-z]", x = list_equations[length(list_equations)][[1]]$number)) {
+  if (newobj) {
+    cnt_equations_sub <- letters[1]
+  } else {
     cnt_equations_sub <- letters[which(letters == 
                                       gsub("[^a-zA-Z]", "", list_equations[length(list_equations)][[1]]$number))+1]
-  } else {
-    cnt_equations_sub <- letters[1]
   }
 } else {
   cnt_equations_sub <- ""
@@ -103,15 +103,15 @@ remove(list = remove_who)
 subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
 newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_equations<-ifelse((subobj | !(newobj)), cnt_equations, cnt_equations+1)
+cnt_equations<-ifelse(newobj, cnt_equations+1, cnt_equations)
 
 if (subobj) {
   # if it contains letters
-  if (grepl(pattern = "[A-Za-z]", x = list_equations[length(list_equations)][[1]]$number)) {
+  if (newobj) {
+    cnt_equations_sub <- letters[1]
+  } else {
     cnt_equations_sub <- letters[which(letters == 
                                       gsub("[^a-zA-Z]", "", list_equations[length(list_equations)][[1]]$number))+1]
-  } else {
-    cnt_equations_sub <- letters[1]
   }
 } else {
   cnt_equations_sub <- ""
@@ -179,23 +179,28 @@ figure <- dat %>%
 subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
 newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_figures<-ifelse((subobj | !(newobj)), cnt_figures, cnt_figures+1)
+cnt_figures<-ifelse(newobj, cnt_figures+1, cnt_figures)
 
 if (subobj) {
   # if it contains letters
-  if (grepl(pattern = "[A-Za-z]", x = list_figures[length(list_figures)][[1]]$number)) {
+  if (newobj) {
+    cnt_figures_sub <- letters[1]
+  } else {
     cnt_figures_sub <- letters[which(letters == 
                                       gsub("[^a-zA-Z]", "", list_figures[length(list_figures)][[1]]$number))+1]
-  } else {
-    cnt_figures_sub <- letters[1]
   }
 } else {
   cnt_figures_sub <- ""
 }
 
+if (!(exists("raw"))) {
+  raw <- NULL
+}
+
 # Systematically save your plot with this function
 list_figures<-NMFSReports::save_figures(
   figure = figure, 
+  raw = raw, 
   list_figures = list_figures, 
   header = ifelse(exists("header", mode = "character"), header, ""),
   footnote = unlist(ifelse(exists("footnote", mode = "character"), list(footnote), "")), 
@@ -246,7 +251,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("figure", "header", "footnote", "subobj", "newobj", #"nickname", 
+remove_who0 <- c("figure", "raw", "header", "footnote", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext"," width", "height", "usePNGPDF")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
@@ -262,23 +267,28 @@ remove(list = remove_who)
 subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
 newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_figures<-ifelse((subobj | !(newobj)), cnt_figures, cnt_figures+1)
+cnt_figures<-ifelse(newobj, cnt_figures+1, cnt_figures)
 
 if (subobj) {
   # if it contains letters
-  if (grepl(pattern = "[A-Za-z]", x = list_figures[length(list_figures)][[1]]$number)) {
+  if (newobj) {
+    cnt_figures_sub <- letters[1]
+  } else {
     cnt_figures_sub <- letters[which(letters == 
                                       gsub("[^a-zA-Z]", "", list_figures[length(list_figures)][[1]]$number))+1]
-  } else {
-    cnt_figures_sub <- letters[1]
   }
 } else {
   cnt_figures_sub <- ""
 }
 
+if (!(exists("raw"))) {
+  raw <- NULL
+}
+
 # Systematically save your plot with this function
 list_figures<-NMFSReports::save_figures(
   figure = figure, 
+  raw = raw, 
   list_figures = list_figures, 
   header = ifelse(exists("header", mode = "character"), header, ""),
   footnote = unlist(ifelse(exists("footnote", mode = "character"), list(footnote), "")), 
@@ -329,7 +339,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("figure", "header", "footnote", "subobj", "newobj", #"nickname", 
+remove_who0 <- c("figure", "raw", "header", "footnote", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext"," width", "height", "usePNGPDF")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
@@ -395,18 +405,19 @@ table_print <- flextable::flextable(table_print) %>%
 ## ---- echo = FALSE------------------------------------------------------------
 
 # Don't Edit This:
+# appendix <- ifelse(exists("subobj"), subobj, FALSE) # is this being saved to the Appendix?
 subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
 newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_tables <- ifelse((subobj | !(newobj)), cnt_tables, cnt_tables+1)
+cnt_tables <- ifelse(newobj, cnt_tables+1, cnt_tables)
 
 if (subobj) {
   # if it contains letters
-  if (grepl(pattern = "[A-Za-z]", x = list_tables[length(list_tables)][[1]]$number)) {
+  if (newobj) {
+    cnt_tables_sub <- letters[1]
+  } else {
     cnt_tables_sub <- letters[which(letters == 
                                       gsub("[^a-zA-Z]", "", list_tables[length(list_tables)][[1]]$number))+1]
-  } else {
-    cnt_tables_sub <- letters[1]
   }
 } else {
   cnt_tables_sub <- ""
@@ -484,18 +495,19 @@ remove(list = remove_who)
 ## ---- echo = FALSE------------------------------------------------------------
 
 # Don't Edit This:
+# appendix <- ifelse(exists("subobj"), subobj, FALSE) # is this being saved to the Appendix?
 subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
 newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
-cnt_tables <- ifelse((subobj | !(newobj)), cnt_tables, cnt_tables+1)
+cnt_tables <- ifelse(newobj, cnt_tables+1, cnt_tables)
 
 if (subobj) {
   # if it contains letters
-  if (grepl(pattern = "[A-Za-z]", x = list_tables[length(list_tables)][[1]]$number)) {
+  if (newobj) {
+    cnt_tables_sub <- letters[1]
+  } else {
     cnt_tables_sub <- letters[which(letters == 
                                       gsub("[^a-zA-Z]", "", list_tables[length(list_tables)][[1]]$number))+1]
-  } else {
-    cnt_tables_sub <- letters[1]
   }
 } else {
   cnt_tables_sub <- ""

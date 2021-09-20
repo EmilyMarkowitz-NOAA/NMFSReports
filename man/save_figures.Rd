@@ -20,6 +20,7 @@ save_figures(
   alttext = "",
   filename_desc = "",
   nickname = "",
+  raw = NULL,
   message = FALSE
 )
 }
@@ -53,6 +54,8 @@ save_figures(
 \item{filename_desc}{Additional description text for the filename that will be added at the name of file before the filename extention. Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.}
 
 \item{nickname}{A unique name that can be used to identify the figure so it can be referenced later in the report.}
+
+\item{raw}{Optional. The data.frame or other data that has no rounding and no dividing of numbers (good to save this for record keeping) and was used to create the figure. Default = NA.}
 
 \item{message}{TRUE/FALSE. Default = FALSE. If TRUE, it will print information about where your plot has been saved to.}
 }

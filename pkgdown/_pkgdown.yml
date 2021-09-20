@@ -18,6 +18,8 @@ navbar:
          href: articles/C_functions-to-help-write-report.html
       -  text: "Use {googledrive} to access documents from Google Drive made collaboratively with coworkers"
          href: articles/D_googledrive.html
+      -  text: "Notes on the system and packges used to build this package"
+         href: articles/E_thispkgwasbuiltusing.html
 
     - text: "Functions"
       icon: far fa-file-code fa-lg

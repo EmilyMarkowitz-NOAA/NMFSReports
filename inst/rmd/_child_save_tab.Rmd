@@ -3,6 +3,7 @@
 ```{r, echo = FALSE}
 
 # Don't Edit This:
+# appendix <- ifelse(exists("subobj"), subobj, FALSE) # is this being saved to the Appendix?
 subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
 newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)

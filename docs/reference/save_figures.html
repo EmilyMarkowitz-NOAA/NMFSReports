@@ -120,6 +120,9 @@
     <li>
       <a href="../articles/D_googledrive.html">Use {googledrive} to access documents from Google Drive made collaboratively with coworkers</a>
     </li>
+    <li>
+      <a href="../articles/E_thispkgwasbuiltusing.html">Notes on the system and packges used to build this package</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -200,6 +203,7 @@
   alttext <span class='op'>=</span> <span class='st'>""</span>,
   filename_desc <span class='op'>=</span> <span class='st'>""</span>,
   nickname <span class='op'>=</span> <span class='st'>""</span>,
+  raw <span class='op'>=</span> <span class='cn'>NULL</span>,
   message <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></code></pre></div>
 
@@ -267,6 +271,10 @@
       <td><p>A unique name that can be used to identify the figure so it can be referenced later in the report.</p></td>
     </tr>
     <tr>
+      <th>raw</th>
+      <td><p>Optional. The data.frame or other data that has no rounding and no dividing of numbers (good to save this for record keeping) and was used to create the figure. Default = NA.</p></td>
+    </tr>
+    <tr>
       <th>message</th>
       <td><p>TRUE/FALSE. Default = FALSE. If TRUE, it will print information about where your plot has been saved to.</p></td>
     </tr>
@@ -299,6 +307,9 @@
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]$figure</span>
 <span class='r-plt'><img src='save_figures-1.png' alt='' width='700' height='433' /></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]$raw</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> NULL</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]$caption</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Figure 1. example.^[footnote example]"</span>
