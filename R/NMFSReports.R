@@ -1356,13 +1356,13 @@ save_figures<-function(figure,
       # Save raw file (no rounding, no dividing)
       if (!(is.null(raw)) &
           (is.data.frame(raw) | is.matrix(raw))) {
-        for (i in 1:length(output_type)){
+        # for (i in 1:length(output_type)){
           utils::write.table(x = raw,
                              file = paste0(path, filename00,
-                                           "_raw.", output_type[i]),
+                                           ".csv"),
                              sep = ",",
                              row.names=FALSE, col.names = F, append = F)
-        }
+        # }
       } else {
         raw <- ""
       }
