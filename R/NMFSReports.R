@@ -924,11 +924,20 @@ pchange<-function(start, end,
                   percent_first = TRUE,
                   value_only = FALSE){
 
-  if(length(start) != length(end)) stop("start and end need to be the same length")
+  # if(length(start) != length(end)) stop("start and end need to be the same length")
 
   start0<-start
   end0<-end
   final1 <- c()
+
+  if(length(start0) != length(end0) &
+     !(length(start0) == 1 | length(end0) == 1 )) stop('start and end must be the same length, one can be any length and the other length of 1, or both must be the length of 1')
+
+  if (length(start0)>1 & length(end0)==1) {
+    end0 <- rep_len(x = end0, length.out = length(start0))
+  } else if (length(end0)>1 & length(start0)==1) {
+    start0 <- rep_len(x = start0, length.out = length(end0))
+  }
 
   #calculate percent change:
   for (i in 1:length(start0)) {
@@ -936,31 +945,20 @@ pchange<-function(start, end,
     end <- end0[i]
 
     if (is.na(start) | is.na(end)) {
-
-      final<-paste0(NA, "%")
-
+      final<- ifelse(value_only, NA, paste0(NA, "%"))
     } else if ((start == 0) & (end == 0)) {
-
-      final<-"0%"
-
+      final <- ifelse(value_only, 0, "0%")
     } else if (value_only == TRUE) {
       start<-sum(as.numeric(start))
       end<-sum(as.numeric(end))
-
       final <- (100*(end-start)/start)
-
     } else if (value_only == FALSE) {
-
       start<-sum(as.numeric(start))
       end<-sum(as.numeric(end))
-
       p<-round(100*(end-start)/start)
-
       p<-ifelse(is.nan(p), 0, p)
-
       # decide direction, Omit if percent = 0:
       x<-p
-
       if (x<0) {
         txt<-paste0(" decrease",ending)
         p<-paste0("a ", abs(p),"%")
