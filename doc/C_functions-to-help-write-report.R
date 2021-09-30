@@ -193,21 +193,21 @@ if (subobj) {
   cnt_figures_sub <- ""
 }
 
-if (!(exists("raw"))) {
-  raw <- NULL
+if (!(exists("table_raw"))) {
+  table_raw <- NULL
 }
 
 # Systematically save your plot with this function
 list_figures<-NMFSReports::save_figures(
   figure = figure, 
-  raw = raw, 
+  raw = table_raw, 
   list_figures = list_figures, 
   header = ifelse(exists("header", mode = "character"), header, ""),
   footnote = unlist(ifelse(exists("footnote", mode = "character"), list(footnote), "")), 
   alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
   filename0 = ifelse(exists("filename0", mode = "character"), filename0, nickname), 
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
-  filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, ""),
+  filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, nickname),
   cnt_chapt_content = cnt_chapt_content, 
   width = ifelse(exists("width", mode = "character"), width, 6), 
   height = ifelse(exists("height", mode = "character"), height, 6),
@@ -251,7 +251,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("figure", "raw", "header", "footnote", "subobj", "newobj", #"nickname", 
+remove_who0 <- c("figure", "table_raw", "header", "footnote", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext"," width", "height", "usePNGPDF")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
@@ -281,21 +281,21 @@ if (subobj) {
   cnt_figures_sub <- ""
 }
 
-if (!(exists("raw"))) {
-  raw <- NULL
+if (!(exists("table_raw"))) {
+  table_raw <- NULL
 }
 
 # Systematically save your plot with this function
 list_figures<-NMFSReports::save_figures(
   figure = figure, 
-  raw = raw, 
+  raw = table_raw, 
   list_figures = list_figures, 
   header = ifelse(exists("header", mode = "character"), header, ""),
   footnote = unlist(ifelse(exists("footnote", mode = "character"), list(footnote), "")), 
   alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
   filename0 = ifelse(exists("filename0", mode = "character"), filename0, nickname), 
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
-  filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, ""),
+  filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, nickname),
   cnt_chapt_content = cnt_chapt_content, 
   width = ifelse(exists("width", mode = "character"), width, 6), 
   height = ifelse(exists("height", mode = "character"), height, 6),
@@ -339,7 +339,7 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("figure", "raw", "header", "footnote", "subobj", "newobj", #"nickname", 
+remove_who0 <- c("figure", "table_raw", "header", "footnote", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext"," width", "height", "usePNGPDF")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i])){
@@ -439,9 +439,9 @@ list_tables<-NMFSReports::save_tables(
   alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
   filename0 = ifelse(exists("filename0", mode = "character"), filename0, nickname), 
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
-  filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, ""),  
+  filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, nickname),  
   cnt_chapt_content = cnt_chapt_content, 
-  cnt = paste0(cnt_tables, cnt_tables_sub), 
+  cnt = paste0(cnt_tables, cnt_tables_sub, "_", nickname), 
   path = dir_out_tables)
 
 
@@ -529,9 +529,9 @@ list_tables<-NMFSReports::save_tables(
   alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
   filename0 = ifelse(exists("filename0", mode = "character"), filename0, nickname), 
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
-  filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, ""),  
+  filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, nickname),  
   cnt_chapt_content = cnt_chapt_content, 
-  cnt = paste0(cnt_tables, cnt_tables_sub), 
+  cnt = paste0(cnt_tables, cnt_tables_sub, "_", nickname), 
   path = dir_out_tables)
 
 
