@@ -72,6 +72,20 @@ file.copy(from = paste0(dir_out_rawdata, "bibliography_RPack.bib"),
           to = paste0(dir_cite,"/bibliography_RPack.bib"),
           overwrite = TRUE)
 
+
+# Housekeeping -----------------------------------------------------------------
+
+# Keep chapter content in a proper order
+cnt_chapt <- "000"
+# Automatically name objects with consecutive numbers
+cnt_figures <- 0 #  e.g., Figure 1
+cnt_tables <- 0 # e.g., Table 1
+cnt_equations <- 0 # e.g., Equation 1
+# Save object content
+list_equations <- list()
+list_tables <- list()
+list_figures <- list()
+
 # Functions -------------------------------------------------------------
 
 ################Functions#############

@@ -234,7 +234,7 @@ buildReport<-function(
 
 
   a<-paste(paste0('
-# *** *** ', sections_no,' - ', stringr::str_to_title(b),' ------------------------
+# *** ', sections_no,' - ', stringr::str_to_title(b),' ------------------------
 cnt_chapt<-auto_counter(cnt_chapt)
 cnt_chapt_content<-"001"
 filename0<-paste0(cnt_chapt, "_', b,'_")
