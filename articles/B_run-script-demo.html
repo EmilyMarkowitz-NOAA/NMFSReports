@@ -129,7 +129,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>How to use the run.R file to be the skeleton of your report</h1>
             
-            <h4 class="date">September 22 2021</h4>
+            <h4 class="date">October 04 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/vignettes/B_run-script-demo.Rmd"><code>vignettes/B_run-script-demo.Rmd</code></a></small>
       <div class="hidden name"><code>B_run-script-demo.Rmd</code></div>
@@ -142,7 +142,8 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span></code></pre></div>
 <p>First, <a href="https://emilymarkowitz-noaa.github.io/NMFSReports/articles/A_use-buildReport.html">run <code>NMFSReports::buildReport()</code></a> to produce our basic report outline. It should produce something like this:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span>
+<code class="sourceCode R">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/">NMFSReports</a></span><span class="op">)</span>
 
 <span class="co"># Input variables for buildReport()</span>
 <span class="va">sections</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"frontmatter"</span>, <span class="st">"abstract"</span>, <span class="st">"introduction"</span>, <span class="st">"methods"</span>, <span class="st">"results"</span>,
