@@ -8,7 +8,7 @@ save_figures(
   figure,
   list_figures,
   header = "",
-  footnote = "",
+  footnotes = "",
   filename0 = "x",
   cnt_chapt_content = "001",
   cnt = 1,
@@ -31,7 +31,7 @@ save_figures(
 
 \item{header}{The name and title of the figure. Default = "".}
 
-\item{footnote}{Any footnote you want attached to this figure.}
+\item{footnotes}{Any footnote you want attached to this figure.}
 
 \item{filename0}{The filename set at the begining of the chapter.}
 

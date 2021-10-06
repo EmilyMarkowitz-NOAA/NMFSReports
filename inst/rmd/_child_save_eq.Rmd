@@ -42,7 +42,7 @@ remove_who <- c()
 remove_who0 <- c("equation", "header", "footnote", "subobj", "newobj", #"nickname", 
                  "alttext")
 for (i in 1:length(remove_who0)){
-  if(exists(remove_who0[i])){
+  if(exists(remove_who0[i]) & !exists(remove_who0[i], mode = "function")){
     remove_who <- c(remove_who, remove_who0[i])
   }
 }

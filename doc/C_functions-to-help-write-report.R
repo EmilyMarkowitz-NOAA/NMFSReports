@@ -90,7 +90,7 @@ remove_who <- c()
 remove_who0 <- c("equation", "header", "footnote", "subobj", "newobj", #"nickname", 
                  "alttext")
 for (i in 1:length(remove_who0)){
-  if(exists(remove_who0[i])){
+  if(exists(remove_who0[i]) & !exists(remove_who0[i], mode = "function")){
     remove_who <- c(remove_who, remove_who0[i])
   }
 }
@@ -136,7 +136,7 @@ remove_who <- c()
 remove_who0 <- c("equation", "header", "footnote", "subobj", "newobj", #"nickname", 
                  "alttext")
 for (i in 1:length(remove_who0)){
-  if(exists(remove_who0[i])){
+  if(exists(remove_who0[i]) & !exists(remove_who0[i], mode = "function")){
     remove_who <- c(remove_who, remove_who0[i])
   }
 }
@@ -203,7 +203,7 @@ list_figures<-NMFSReports::save_figures(
   raw = table_raw, 
   list_figures = list_figures, 
   header = ifelse(exists("header", mode = "character"), header, ""),
-  footnote = unlist(ifelse(exists("footnote", mode = "character"), list(footnote), "")), 
+  footnotes = unlist(ifelse(exists("footnotes", mode = "character"), list(footnotes), "")), 
   alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
   filename0 = ifelse(exists("filename0", mode = "character"), filename0, nickname), 
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
@@ -251,10 +251,10 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("figure", "table_raw", "header", "footnote", "subobj", "newobj", #"nickname", 
-                 "filename_desc", "alttext"," width", "height", "usePNGPDF")
+remove_who0 <- c("figure", "table_raw", "header", "footnotes", "subobj", "newobj", #"nickname", 
+                 "filename_desc", "alttext", "width", "height")
 for (i in 1:length(remove_who0)){
-  if(exists(remove_who0[i])){
+  if(exists(remove_who0[i]) & !exists(remove_who0[i], mode = "function")){
     remove_who <- c(remove_who, remove_who0[i])
   }
 }
@@ -291,7 +291,7 @@ list_figures<-NMFSReports::save_figures(
   raw = table_raw, 
   list_figures = list_figures, 
   header = ifelse(exists("header", mode = "character"), header, ""),
-  footnote = unlist(ifelse(exists("footnote", mode = "character"), list(footnote), "")), 
+  footnotes = unlist(ifelse(exists("footnotes", mode = "character"), list(footnotes), "")), 
   alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
   filename0 = ifelse(exists("filename0", mode = "character"), filename0, nickname), 
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
@@ -339,10 +339,10 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("figure", "table_raw", "header", "footnote", "subobj", "newobj", #"nickname", 
-                 "filename_desc", "alttext"," width", "height", "usePNGPDF")
+remove_who0 <- c("figure", "table_raw", "header", "footnotes", "subobj", "newobj", #"nickname", 
+                 "filename_desc", "alttext", "width", "height")
 for (i in 1:length(remove_who0)){
-  if(exists(remove_who0[i])){
+  if(exists(remove_who0[i]) & !exists(remove_who0[i], mode = "function")){
     remove_who <- c(remove_who, remove_who0[i])
   }
 }
@@ -435,7 +435,7 @@ list_tables<-NMFSReports::save_tables(
   table_print = table_print,
   list_tables = list_tables, 
   header = ifelse(exists("header", mode = "character"), header, ""),
-  footnote = unlist(ifelse(exists("footnote", mode = "character"), list(footnote), "")), 
+  footnotes = unlist(ifelse(exists("footnotes", mode = "character"), list(footnotes), "")), 
   alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
   filename0 = ifelse(exists("filename0", mode = "character"), filename0, nickname), 
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
@@ -481,11 +481,11 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("header", "footnote", "subobj", "newobj", #"nickname", 
+remove_who0 <- c("header", "footnotes", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext", 
                  "table_raw", "table_print")
 for (i in 1:length(remove_who0)){
-  if(exists(remove_who0[i])){
+  if(exists(remove_who0[i]) & !exists(remove_who0[i], mode = "function")){
     remove_who <- c(remove_who, remove_who0[i])
   }
 }
@@ -525,7 +525,7 @@ list_tables<-NMFSReports::save_tables(
   table_print = table_print,
   list_tables = list_tables, 
   header = ifelse(exists("header", mode = "character"), header, ""),
-  footnote = unlist(ifelse(exists("footnote", mode = "character"), list(footnote), "")), 
+  footnotes = unlist(ifelse(exists("footnotes", mode = "character"), list(footnotes), "")), 
   alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
   filename0 = ifelse(exists("filename0", mode = "character"), filename0, nickname), 
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
@@ -571,11 +571,11 @@ if (indesign_flowin %in% FALSE) {
 
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
-remove_who0 <- c("header", "footnote", "subobj", "newobj", #"nickname", 
+remove_who0 <- c("header", "footnotes", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext", 
                  "table_raw", "table_print")
 for (i in 1:length(remove_who0)){
-  if(exists(remove_who0[i])){
+  if(exists(remove_who0[i]) & !exists(remove_who0[i], mode = "function")){
     remove_who <- c(remove_who, remove_who0[i])
   }
 }

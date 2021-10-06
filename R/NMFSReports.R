@@ -1262,7 +1262,7 @@ auto_counter<-function(counter0) {
 #' @param figure The figure you would like to be saved.
 #' @param list_figures The list where all figures will be saved.
 #' @param header The name and title of the figure. Default = "".
-#' @param footnote Any footnote you want attached to this figure.
+#' @param footnotes Any footnote you want attached to this figure.
 #' @param filename0 The filename set at the begining of the chapter.
 #' @param cnt_chapt_content The order number that this exists in the chapter.
 #' @param cnt The figure number.
@@ -1301,7 +1301,7 @@ auto_counter<-function(counter0) {
 save_figures<-function(figure,
                        list_figures,
                        header = "",
-                       footnote = "",
+                       footnotes = "",
                        filename0 = "x",
                        cnt_chapt_content = "001",
                        cnt = 1,
@@ -1328,10 +1328,10 @@ save_figures<-function(figure,
                                stop = nchar(header)) %in%
                           c(".", "!", "?", "...", "...."),
                         header, paste0(header, ".")))
-  footnote<-trimws(footnote)
-  caption<-ifelse(sum(footnote %in% "") != 0,
+  footnotes<-trimws(footnotes)
+  caption<-ifelse(sum(footnotes %in% "") != 0,
                   header,
-                  paste0(header, paste(paste0("^[", footnote, "]"),
+                  paste0(header, paste(paste0("^[", footnotes, "]"),
                                        collapse = " ^,^ ")))
   filename00<-paste0(filename0, cnt_chapt_content, "_fig_",cnt,
                      ifelse(filename_desc!="", paste0("_", filename_desc), ""))
@@ -1374,7 +1374,7 @@ save_figures<-function(figure,
                             "nickname" = nickname,
                             "alttext" = alttext,
                             "number" = cnt,
-                            "footnote" = footnote,
+                            "footnotes" = footnotes,
                             "filename" = filename00)
 
   names(list_figures)[names(list_figures) %in% "temp"] <- nickname
@@ -1397,7 +1397,7 @@ save_graph <- save_figures
 #' @param table_print The data.frame as table will be seen in the report.
 #' @param list_tables Save tables in a list
 #' @param header The name and title of the figure. Default = "".
-#' @param footnote Any footnote you want attached to this figure.
+#' @param footnotes Any footnote you want attached to this figure.
 #' @param filename0 The filename set at the begining of the chapter
 #' @param cnt_chapt_content The order number that this exists in the chapter.
 #' @param cnt The figure number
@@ -1428,7 +1428,7 @@ save_tables<-function(table_raw = NULL,
                       table_print = NULL,
                       list_tables = c(),
                       header = "",
-                      footnote = "",
+                      footnotes = "",
                       filename0 = "x",
                       cnt_chapt_content = "001",
                       cnt = "1",
@@ -1452,10 +1452,10 @@ save_tables<-function(table_raw = NULL,
                                stop = nchar(header)) %in%
                           c(".", "!", "?", "...", "...."),
                         header, paste0(header, ".")))
-  footnote<-trimws(footnote)
-  caption<-ifelse(sum(footnote %in% "") != 0,
+  footnotes<-trimws(footnotes)
+  caption<-ifelse(sum(footnotes %in% "") != 0,
                   header,
-                  paste0(header, paste(paste0("^[", footnote, "]"),
+                  paste0(header, paste(paste0("^[", footnotes, "]"),
                                        collapse = " ^,^ ")))
   filename00<-paste0(filename0, cnt_chapt_content, "_tab_",cnt,
                      ifelse(filename_desc!="", paste0("_", filename_desc), ""))
@@ -1503,7 +1503,7 @@ save_tables<-function(table_raw = NULL,
                            "nickname" = nickname,
                            "alttext" = alttext,
                            "number" = cnt,
-                           "footnote" = footnote,
+                           "footnotes" = footnotes,
                            "filename" = filename00)
 
   names(list_tables)[names(list_tables) %in% "temp"] <- nickname
