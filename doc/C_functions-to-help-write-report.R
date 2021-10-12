@@ -209,8 +209,8 @@ list_figures<-NMFSReports::save_figures(
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, nickname),
   cnt_chapt_content = cnt_chapt_content, 
-  width = ifelse(exists("width", mode = "character"), width, 6), 
-  height = ifelse(exists("height", mode = "character"), height, 6),
+  width = ifelse(exists("width", mode = "numeric"), width, 6), 
+  height = ifelse(exists("height", mode = "numeric"), height, 6),
   cnt = paste0(cnt_figures, cnt_figures_sub), 
   path = dir_out_figures)
 
@@ -297,8 +297,8 @@ list_figures<-NMFSReports::save_figures(
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, nickname),
   cnt_chapt_content = cnt_chapt_content, 
-  width = ifelse(exists("width", mode = "character"), width, 6), 
-  height = ifelse(exists("height", mode = "character"), height, 6),
+  width = ifelse(exists("width", mode = "numeric"), width, 6), 
+  height = ifelse(exists("height", mode = "numeric"), height, 6),
   cnt = paste0(cnt_figures, cnt_figures_sub), 
   path = dir_out_figures)
 
@@ -441,7 +441,7 @@ list_tables<-NMFSReports::save_tables(
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, nickname),  
   cnt_chapt_content = cnt_chapt_content, 
-  cnt = paste0(cnt_tables, cnt_tables_sub, "_", nickname), 
+  cnt = paste0(cnt_figures, cnt_figures_sub), 
   path = dir_out_tables)
 
 
@@ -531,7 +531,7 @@ list_tables<-NMFSReports::save_tables(
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, nickname),  
   cnt_chapt_content = cnt_chapt_content, 
-  cnt = paste0(cnt_tables, cnt_tables_sub, "_", nickname), 
+  cnt = paste0(cnt_figures, cnt_figures_sub), 
   path = dir_out_tables)
 
 
