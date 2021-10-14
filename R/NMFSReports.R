@@ -1513,8 +1513,8 @@ save_tables<-function(table_raw = NULL,
     }
   }
 
-  list_tables$temp <- list(#"raw" = table_raw,
-                           #"print" = table_print,
+  list_tables$temp <- list("raw" = table_raw,
+                           "print" = table_print,
                            "caption" = caption,
                            "header" = header,
                            "nickname" = nickname,

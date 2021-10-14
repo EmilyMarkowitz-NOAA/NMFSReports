@@ -61,8 +61,6 @@ right aligned." />
 
 
 
-
-
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -74,15 +72,9 @@ right aligned." />
 
 
 
-  
-
-  
-
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -167,7 +159,7 @@ right aligned." />
 </li>
 <li>
   <a href="https://nmfs-general-modeling-tools.github.io/">
-    <span class="fa fa-fish"></span>
+    <span class="fas fa-fish"></span>
      
   </a>
 </li>
@@ -199,7 +191,7 @@ text columns are left aligned, other columns are
 right aligned.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>theme_flextable_nmfstm</span><span class='op'>(</span><span class='va'>x</span>, pgwidth <span class='op'>=</span> <span class='fl'>6</span>, row_lines <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></code></pre></div>
+    <pre class="usage"><span class='fu'>theme_flextable_nmfstm</span>(<span class='no'>x</span>, <span class='kw'>pgwidth</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>row_lines</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -226,21 +218,19 @@ right aligned.</p>
 <p><img src='figures/fig_theme_vanilla_1.png' width=60% /></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>ft</span> <span class='op'>&lt;-</span> <span class='fu'>flextable</span><span class='fu'>::</span><span class='fu'><a href='https://davidgohel.github.io/flextable/reference/flextable.html'>flextable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>airquality</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>ft</span> <span class='op'>&lt;-</span> <span class='fu'>NMFSReports</span><span class='fu'>::</span><span class='fu'>theme_flextable_nmfstm</span><span class='op'>(</span><span class='va'>ft</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>ft</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> a flextable object.</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> col_keys: `Ozone`, `Solar.R`, `Wind`, `Temp`, `Month`, `Day` </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> header has 1 row(s) </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> body has 6 row(s) </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> original dataset sample: </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   Ozone Solar.R Wind Temp Month Day</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 1    41     190  7.4   67     5   1</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 2    36     118  8.0   72     5   2</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 3    12     149 12.6   74     5   3</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 4    18     313 11.5   62     5   4</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 5    NA      NA 14.3   56     5   5</span>
-</code></pre></div>
+    <pre class="examples"><div class='input'><span class='no'>ft</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>flextable</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/flextable/man/flextable.html'>flextable</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>airquality</span>))
+<span class='no'>ft</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>NMFSReports</span><span class='kw ns'>::</span><span class='fu'>theme_flextable_nmfstm</span>(<span class='no'>ft</span>)
+<span class='no'>ft</span></div><div class='output co'>#&gt; a flextable object.
+#&gt; col_keys: `Ozone`, `Solar.R`, `Wind`, `Temp`, `Month`, `Day` 
+#&gt; header has 1 row(s) 
+#&gt; body has 6 row(s) 
+#&gt; original dataset sample: 
+#&gt;   Ozone Solar.R Wind Temp Month Day
+#&gt; 1    41     190  7.4   67     5   1
+#&gt; 2    36     118  8.0   72     5   2
+#&gt; 3    12     149 12.6   74     5   3
+#&gt; 4    18     313 11.5   62     5   4
+#&gt; 5    NA      NA 14.3   56     5   5</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -252,11 +242,11 @@ right aligned.</p>
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by Emily Markowitz.</p></p>
+  <p>Developed by Emily Markowitz.</p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
@@ -264,8 +254,6 @@ right aligned.</p>
 
   
 
-
-  
 
   </body>
 </html>
