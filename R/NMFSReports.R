@@ -1347,6 +1347,7 @@ save_figures<-function(figure,
         filename = paste0(filename00, ".", output_type[i]), # Always save in pdf so you can make last minute edits in adobe acrobat!
         plot = figure, # call the plot you are saving
         width = width, height = height, units = "in") #recall, A4 pages are 8.5 x 11 in - 1 in margins
+
     }
 
       # raw
@@ -1367,17 +1368,33 @@ save_figures<-function(figure,
 
   }
 
-  list_figures$temp <- list("figure" = figure,
-                            "raw" = raw,
-                            "caption" = caption,
-                            "header" = header,
-                            "nickname" = nickname,
-                            "alttext" = alttext,
-                            "number" = cnt,
-                            "footnotes" = footnotes,
-                            "filename" = filename00)
+  # Save Graphic/Figure as .rdata
 
-  names(list_figures)[names(list_figures) %in% "temp"] <- nickname
+  obj <- list("figure" = figure,
+                           "raw" = raw,
+                           "caption" = caption,
+                           "header" = header,
+                           "nickname" = nickname,
+                           "alttext" = alttext,
+                           "number" = cnt,
+                           "footnotes" = footnotes,
+                           "filename" = filename00)
+
+  save(obj, file = paste0(path, filename00, ".rdata"))
+
+
+  list_figures$obj <- list(#"figure" = figure,
+                           #"raw" = raw,
+                           "caption" = caption,
+                           "header" = header,
+                           "nickname" = nickname,
+                           "alttext" = alttext,
+                           "number" = cnt,
+                           "footnotes" = footnotes,
+                           "filename" = filename00)
+
+
+  names(list_figures)[names(list_figures) %in% "obj"] <- nickname
 
   if (message == TRUE) {
     print(paste0("This figure was saved to ", path, filename00, ".*"))
@@ -1496,8 +1513,8 @@ save_tables<-function(table_raw = NULL,
     }
   }
 
-  list_tables$temp <- list("raw" = table_raw,
-                           "print" = table_print,
+  list_tables$temp <- list(#"raw" = table_raw,
+                           #"print" = table_print,
                            "caption" = caption,
                            "header" = header,
                            "nickname" = nickname,

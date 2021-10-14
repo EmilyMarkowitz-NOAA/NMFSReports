@@ -17,7 +17,7 @@ navbar:
       -  text: "Functions and examples to help you write your report"
          href: articles/C_functions-to-help-write-report.html
       -  text: "Use {googledrive} to access documents from Google Drive made collaboratively with coworkers"
-         href: articles/D_googledrive.html
+         href: https://github.com/RVerse-Tutorials/GoogleDrive1
       -  text: "Notes on the system and packges used to build this package"
          href: articles/E_thispkgwasbuiltusing.html
 
@@ -47,7 +47,7 @@ articles:
       - A_use-buildReport
       - B_run-script-demo
       - C_functions-to-help-write-report
-      - D_googledrive
+      - E_thispkgwasbuiltusing
 
 reference:
   - title: Build the Report Architecture

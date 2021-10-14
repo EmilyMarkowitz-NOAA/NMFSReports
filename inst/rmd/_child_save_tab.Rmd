@@ -34,11 +34,11 @@ list_tables<-NMFSReports::save_tables(
   list_tables = list_tables, 
   header = ifelse(exists("header", mode = "character"), header, ""),
   footnotes = unlist(ifelse(exists("footnotes", mode = "character"), list(footnotes), "")), 
-  alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
+  alttext = ifelse(exists("alttext", mode = "character"), alttext, header),
   filename0 = ifelse(exists("filename0", mode = "character"), filename0, nickname), 
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, nickname),  
-  cnt_chapt_content = cnt_chapt_content, 
+  cnt_chapt_content = ifelse(exists("cnt_chapt_content", mode = "character"), cnt_chapt_content, "001"), 
   cnt = paste0(cnt_figures, cnt_figures_sub), 
   path = dir_out_tables)
 

@@ -27,9 +27,9 @@ list_equations<-NMFSReports::save_equations(
   list_equations = list_equations, 
   header = ifelse(exists("header", mode = "character"), header, ""),
   footnote = unlist(ifelse(exists(x = "footnote", mode = "character"), list(footnote), "")), 
-  alttext = ifelse(exists("alttext", mode = "character"), alttext, ""),
+  alttext = ifelse(exists("alttext", mode = "character"), alttext, header),
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
-  cnt_chapt_content = cnt_chapt_content, 
+  cnt_chapt_content = ifelse(exists("cnt_chapt_content", mode = "character"), cnt_chapt_content, "001"), 
   cnt = paste0(cnt_equations, cnt_equations_sub), 
 )
 ```
