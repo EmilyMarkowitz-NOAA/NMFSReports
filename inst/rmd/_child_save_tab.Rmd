@@ -46,6 +46,8 @@ list_tables<-NMFSReports::save_tables(
 
 #### `r ifelse(indesign_flowin %in% TRUE, "", list_tables[[length(list_tables)]]$caption) `
 
+</br>
+
 ```{r, echo = FALSE, fig.cap=ifelse(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="", list_tables[[length(list_tables)]]$alttext, "")}
 
 # Print or Don't Print Plot in Text
@@ -94,4 +96,8 @@ remove(list = remove_who)
 
 ```
 
+</br>
+
 `r if(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="") { paste0("*Alternative text: ", list_tables[[length(list_tables)]]$alttext, "*") } `
+
+</br>
