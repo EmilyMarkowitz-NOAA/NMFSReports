@@ -1,7 +1,10 @@
 
 # https://pkgdown.r-lib.org/reference/build_site.html
 
+# Wish list
 
+# Links to figures and tables in text
+# https://holtzy.github.io/Pimp-my-rmd/#internal_link
 
 ########### Document Package ############
 .rs.restartR()
@@ -36,6 +39,7 @@ usethis::use_pkgdown(config_file = "./pkgdown/_pkgdown.yml")
 pkgdown::build_site(pkg = here::here())
 # usethis::use_github_action("pkgdown")
 
+# usethis::use_github_pages(branch = "main", path = "/docs", cname = NA)
 
 # template:
 #   params:
