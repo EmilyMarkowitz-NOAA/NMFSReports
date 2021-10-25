@@ -39,8 +39,8 @@ list_tables<-NMFSReports::save_tables(
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, nickname),  
   cnt_chapt_content = ifelse(exists("cnt_chapt_content", mode = "character"), cnt_chapt_content, "001"), 
-  cnt = paste0(cnt_figures, cnt_tables_sub), 
-  path = cnt_tables)
+  cnt = paste0(cnt_tables, cnt_tables_sub), 
+  path = dir_out_tables)
 
 ```
 
