@@ -4,7 +4,14 @@
 \alias{theme_flextable_nmfstm}
 \title{Apply vanilla theme}
 \usage{
-theme_flextable_nmfstm(x, pgwidth = 6, row_lines = TRUE)
+theme_flextable_nmfstm(
+  x,
+  pgwidth = 6,
+  row_lines = TRUE,
+  body_size = 11,
+  header_size = 11,
+  font = "Times New Roman"
+)
 }
 \arguments{
 \item{x}{a flextable object}
@@ -12,6 +19,12 @@ theme_flextable_nmfstm(x, pgwidth = 6, row_lines = TRUE)
 \item{pgwidth}{a numeric. The width in inches the table should be. Default = 6, which is ideal for A4 (8.5x11 in) portrait paper.}
 
 \item{row_lines}{T/F. If True, draws a line between each row.}
+
+\item{body_size}{Numeric. default = 11.}
+
+\item{header_size}{Numeric. default = 11.}
+
+\item{font}{String. Default = "Times New Roman". Instead, you may want "Arial".}
 }
 \description{
 Apply theme vanilla to a flextable:

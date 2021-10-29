@@ -519,10 +519,11 @@ tolower2<-function(str0,
 #' This function alows you to take a string of words and combine them into a sentance list. For example, 'apples', 'oranges', 'pears' would become 'apples, oranges, and pears'. This function uses oxford commas.
 #' @param x Character strings you want in your string.
 #' @param oxford T/F: would you like to use an oxford comma? Default = TRUE
+#' @param sep string. default = "," but ";" might be what you need!
 #' @keywords strings
 #' @export
 #' @examples text_list(c(1,2,"hello",4,"world",6))
-text_list<-function(x, oxford = TRUE) {
+text_list<-function(x, oxford = TRUE, sep = ",") {
   x<-x[which(x!="")]
   # x<-x[which(!is.null(x))]
   x<-x[which(!is.na(x))]
@@ -530,9 +531,9 @@ text_list<-function(x, oxford = TRUE) {
   if (length(x)==2) {
     str1<-paste(x, collapse = " and ")
   } else if (length(x)>2) {
-    str1<-paste(x[1:(length(x)-1)], collapse = ", ")
+    str1<-paste(x[1:(length(x)-1)], collapse = paste0(sep, " "))
     str1<-paste0(str1,
-                 ifelse(oxford == TRUE, ",", ""),
+                 ifelse(oxford == TRUE, sep, ""),
                  " and ", x[length(x)])
   } else {
     str1<-x
@@ -1673,6 +1674,9 @@ ref_listobject<-crossref
 #' @param x a flextable object
 #' @param pgwidth a numeric. The width in inches the table should be. Default = 6, which is ideal for A4 (8.5x11 in) portrait paper.
 #' @param row_lines T/F. If True, draws a line between each row.
+#' @param font String. Default = "Times New Roman". Instead, you may want "Arial".
+#' @param body_size Numeric. default = 11.
+#' @param header_size Numeric. default = 11.
 #' @family functions related to themes
 #' @examples
 #' ft <- flextable::flextable(head(airquality))
@@ -1681,7 +1685,12 @@ ref_listobject<-crossref
 #' @section Illustrations:
 #'
 #' \if{html}{\figure{fig_theme_vanilla_1.png}{options: width=60\%}}
-theme_flextable_nmfstm <- function(x, pgwidth = 6, row_lines = TRUE) {
+theme_flextable_nmfstm <- function(x,
+                                   pgwidth = 6,
+                                   row_lines = TRUE,
+                                   body_size = 11,
+                                   header_size = 11,
+                                   font = "Times New Roman") {
 
   if (!inherits(x, "flextable")) {
     stop("theme_flextable_nmfstm supports only flextable objects.")
@@ -1694,8 +1703,6 @@ theme_flextable_nmfstm <- function(x, pgwidth = 6, row_lines = TRUE) {
     ft_out <- flextable::width(ft_out, width = dim(ft_out)$widths*pgwidth /(flextable::flextable_dim(ft_out)$widths))
     return(ft_out)
   }
-
-  font <- "Times New Roman"
 
   std_b <- officer::fp_border(width = 2, color = "grey10")
   thin_b <- officer::fp_border(width = 0.5, color = "grey10")
@@ -1712,6 +1719,8 @@ theme_flextable_nmfstm <- function(x, pgwidth = 6, row_lines = TRUE) {
   x <- flextable::align_text_col(x = x, align = "left", header = TRUE)
   x <- flextable::align_nottext_col(x = x, align = "right", header = TRUE)
   x <- flextable::font(x = x, fontname = font, part = "all")
+  x <- flextable::fontsize(x = x, size = body_size, part = "body")
+  x <- flextable::fontsize(x = x, size = header_size, part = "header")
   x <- FitFlextableToPage(x = x, pgwidth = pgwidth)
   x <- flextable::line_spacing(x = x, space = 1, part = "all")
 

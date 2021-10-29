@@ -179,7 +179,7 @@
     <p>This function alows you to take a string of words and combine them into a sentance list. For example, 'apples', 'oranges', 'pears' would become 'apples, oranges, and pears'. This function uses oxford commas.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>text_list</span>(<span class='no'>x</span>, <span class='kw'>oxford</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>text_list</span>(<span class='no'>x</span>, <span class='kw'>oxford</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>","</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,6 +191,10 @@
     <tr>
       <th>oxford</th>
       <td><p>T/F: would you like to use an oxford comma? Default = TRUE</p></td>
+    </tr>
+    <tr>
+      <th>sep</th>
+      <td><p>string. default = "," but ";" might be what you need!</p></td>
     </tr>
     </table>
 
