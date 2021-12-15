@@ -1322,7 +1322,6 @@ save_figures<-function(figure,
 
   # Title
   header<-trimws(header)
-  # header<-stringr::str_to_sentence(header)
   header<-paste0(type, " ",cnt,". ",
                  ifelse(substr(x = header,
                                start = nchar(header),
@@ -1677,6 +1676,7 @@ ref_listobject<-crossref
 #' @param font String. Default = "Times New Roman". Instead, you may want "Arial".
 #' @param body_size Numeric. default = 11.
 #' @param header_size Numeric. default = 11.
+#' @param spacing table spacing. default = .5
 #' @family functions related to themes
 #' @examples
 #' ft <- flextable::flextable(head(airquality))
@@ -1690,7 +1690,8 @@ theme_flextable_nmfstm <- function(x,
                                    row_lines = TRUE,
                                    body_size = 11,
                                    header_size = 11,
-                                   font = "Times New Roman") {
+                                   font = "Times New Roman",
+                                   spacing = .5) {
 
   if (!inherits(x, "flextable")) {
     stop("theme_flextable_nmfstm supports only flextable objects.")
@@ -1722,7 +1723,7 @@ theme_flextable_nmfstm <- function(x,
   x <- flextable::fontsize(x = x, size = body_size, part = "body")
   x <- flextable::fontsize(x = x, size = header_size, part = "header")
   x <- FitFlextableToPage(x = x, pgwidth = pgwidth)
-  x <- flextable::line_spacing(x = x, space = 1, part = "all")
+  x <- flextable::line_spacing(x = x, space = spacing, part = "all")
 
   x <- flextable::fix_border_issues(x = x)
 

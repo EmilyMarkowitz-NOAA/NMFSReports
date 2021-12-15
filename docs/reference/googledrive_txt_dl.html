@@ -153,7 +153,7 @@
 </li>
 <li>
   <a href="https://nmfs-general-modeling-tools.github.io/">
-    <span class="fas fa-fish"></span>
+    <span class="fa fa-fish"></span>
      
   </a>
 </li>
@@ -216,8 +216,7 @@
 #&gt; <span class='message'>  the use of a cached token</span></div><div class='output co'>#&gt; <span class='message'>  See gargle's "Non-interactive auth" vignette for more details:</span></div><div class='output co'>#&gt; <span class='message'>  <span style='color: #0000BB;font-style: italic;'>&lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</span><span></span></div><div class='output co'>#&gt; <span class='message'>&gt; The </span><span style='color: #0000BB;'>googledrive</span><span> package is using a cached token for </span><span style='color: #0000BB;'>emilyhmarkowitz@gmail.com</span><span></span></div><div class='input'><span class='fl'>1</span></div><div class='output co'>#&gt; [1] 1</div><div class='input'>
 <span class='no'>txt</span> <span class='kw'>&lt;-</span> <span class='fu'>googledrive_txt_dl</span>(<span class='kw'>filename_gd</span> <span class='kw'>=</span> <span class='st'>"test123123_doc"</span>,
                           <span class='kw'>filename_dl</span> <span class='kw'>=</span> <span class='st'>"test123123_dl"</span>,
-                          <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='no'>txt</span></div><div class='output co'>#&gt; [1] "This is a test"</div><div class='input'><span class='co'># for good file keeping, I'll delete these</span>
+                          <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Auto-refreshing stale OAuth token.</span></div><div class='input'><span class='no'>txt</span></div><div class='output co'>#&gt; [1] "This is a test"</div><div class='input'><span class='co'># for good file keeping, I'll delete these</span>
 <span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.remove</a></span>(<span class='st'>'test123123_dl.txt'</span>, <span class='st'>'test123123_dl.zip'</span>)</div><div class='output co'>#&gt; [1] TRUE TRUE</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
