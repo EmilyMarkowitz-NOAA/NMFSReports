@@ -1691,7 +1691,7 @@ theme_flextable_nmfstm <- function(x,
                                    body_size = 11,
                                    header_size = 11,
                                    font = "Times New Roman",
-                                   spacing = .5) {
+                                   spacing = .9) {
 
   if (!inherits(x, "flextable")) {
     stop("theme_flextable_nmfstm supports only flextable objects.")

@@ -11,7 +11,7 @@ theme_flextable_nmfstm(
   body_size = 11,
   header_size = 11,
   font = "Times New Roman",
-  spacing = 0.5
+  spacing = 0.9
 )
 }
 \arguments{
