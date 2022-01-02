@@ -64,6 +64,13 @@ buildReport<-function(
   # Now... Load those folders with stuff you care about
 
   ################## RMD scripts
+
+  # Add figtab
+  file.copy(from = system.file("rmd", "0_figtab.Rmd", package="NMFSReports"),
+            to = "./code/0_figtab.Rmd",
+            overwrite = T)
+
+  # add other files
   a <- list.files(path = system.file("rmd", package="NMFSReports"), pattern = "0_")
   b <- c("example", sections)
   if (!(is.null(styles_reference_pptx))) {
@@ -221,6 +228,7 @@ buildReport<-function(
 
   # INSERT_SECTIONS
   b <- list.files(path = "./code/", pattern = ".Rmd") # find the files that are already there
+  b <- b[b != "0_figtab.Rmd"]
   bb <- strsplit(x = b, split = "_")
   sections_no <- unlist(lapply(bb, `[[`, 1))
   bb <- strsplit(x = b, split = "[0-9]+_")
@@ -1322,7 +1330,7 @@ save_figures<-function(figure,
 
   # Title
   header<-trimws(header)
-  header<-paste0(type, " ",cnt,". ",
+  header<-paste0(type, " [",cnt,"](){#",nickname,"}. ",
                  ifelse(substr(x = header,
                                start = nchar(header),
                                stop = nchar(header)) %in%
@@ -1333,7 +1341,8 @@ save_figures<-function(figure,
                   header,
                   paste0(header, paste(paste0("^[", footnotes, "]"),
                                        collapse = " ^,^ ")))
-  filename00<-paste0(filename0, cnt_chapt_content, "_fig_",cnt,
+  filename00<-paste0(#filename0,
+    cnt_chapt_content, "_fig_",cnt,
                      ifelse(filename_desc!="", paste0("_", filename_desc), ""))
 
   # Save
@@ -1463,7 +1472,7 @@ save_tables<-function(table_raw = NULL,
   # Title
   header<-trimws(header)
   # header<-stringr::str_to_sentence(header)
-  header<-paste0(type, " ",cnt,". ",
+  header<-paste0(type, " [",cnt,"](){#",nickname,"}. ",
                  ifelse(substr(x = header,
                                start = nchar(header),
                                stop = nchar(header)) %in%
@@ -1474,7 +1483,8 @@ save_tables<-function(table_raw = NULL,
                   header,
                   paste0(header, paste(paste0("^[", footnotes, "]"),
                                        collapse = " ^,^ ")))
-  filename00<-paste0(filename0, cnt_chapt_content, "_tab_",cnt,
+  filename00<-paste0(#filename0,
+                     cnt_chapt_content, "_tab_",cnt,
                      ifelse(filename_desc!="", paste0("_", filename_desc), ""))
   # Save
   if (!is.null(path)){
@@ -1588,7 +1598,7 @@ save_equations<-function(equation,
   # Title
   header<-trimws(header)
   # header<-stringr::str_to_sentence(header)
-  header<-paste0(type, " ",cnt,". ",
+  header<-paste0(type, " [",cnt,"](){#",nickname,"}. ",
                  ifelse(substr(x = header,
                                start = nchar(header),
                                stop = nchar(header)) %in%
@@ -1613,7 +1623,7 @@ save_equations<-function(equation,
   return(list_equations )
 }
 
-#' Reference a figure, table, or equation (or other list elements!)
+#' Reference a figure, table, or equation with an anchored tag
 #'
 #' @param list_obj A list object created by list_figures or list_tables.
 #' @param nickname A unique string that is used to identify the plot or table in list_figures or list_tables, respectively.
@@ -1651,6 +1661,7 @@ crossref <- function(list_obj,
   ref <- list_obj[which(lapply(list_obj, `[[`, "nickname") %in% nickname)][[1]][sublist]
   if (sublist == "number") {
     ref<-as.character(ref)
+    ref<-paste0("[", ref, "](#", nickname, ")")
   }
   return(ref)
 }

@@ -181,6 +181,8 @@ Here in figure `r crossref(list_obj = list_figures, nickname = "noaalogo", subli
 
 ## Example Table (Basic)
 
+Here, we use the function `theme_flextable_nmfstm` which mimics many of the NMFS report tech memo motifs. 
+
 ```{r ex_table0}
 
 header <- "Here is a table!"

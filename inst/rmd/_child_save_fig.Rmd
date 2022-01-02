@@ -95,5 +95,6 @@ remove(list = remove_who)
 
 `r if(indesign_flowin %in% FALSE & (list_figures[[length(list_figures)]]$alttext)!="") { paste0("*Alternative text: ", list_figures[[length(list_figures)]]$alttext, "*") } `
 
+
 </br>
 

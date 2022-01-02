@@ -32,7 +32,7 @@ library(pkgdown)
 # options(rmarkdown.html_vignette.check_title = FALSE)
 
 # git rm -r --cached .
-
+options(rmarkdown.html_vignette.check_title = FALSE)
 # pkgdown::build_favicons()
 devtools::build_vignettes()
 usethis::use_pkgdown(config_file = "./pkgdown/_pkgdown.yml")

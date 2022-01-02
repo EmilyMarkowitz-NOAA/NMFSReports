@@ -2,7 +2,7 @@
 % Please edit documentation in R/NMFSReports.R
 \name{crossref}
 \alias{crossref}
-\title{Reference a figure, table, or equation (or other list elements!)}
+\title{Reference a figure, table, or equation with an anchored tag}
 \usage{
 crossref(list_obj, nickname, sublist = "number")
 }
@@ -17,7 +17,7 @@ crossref(list_obj, nickname, sublist = "number")
 The item in the list.
 }
 \description{
-Reference a figure, table, or equation (or other list elements!)
+Reference a figure, table, or equation with an anchored tag
 }
 \examples{
 list_figures <- c()

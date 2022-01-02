@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reference a figure, table, or equation (or other list elements!) — crossref • NMFSReports</title>
+<title>Reference a figure, table, or equation with an anchored tag — crossref • NMFSReports</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Reference a figure, table, or equation (or other list elements!) — crossref" />
-<meta property="og:description" content="Reference a figure, table, or equation (or other list elements!)" />
+<meta property="og:title" content="Reference a figure, table, or equation with an anchored tag — crossref" />
+<meta property="og:description" content="Reference a figure, table, or equation with an anchored tag" />
 <meta property="og:image" content="https://emilymarkowitz-noaa.github.io/NMFSReports/logo.png" />
 
 
@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.2</span>
       </span>
     </div>
 
@@ -170,13 +170,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Reference a figure, table, or equation (or other list elements!)</h1>
+    <h1>Reference a figure, table, or equation with an anchored tag</h1>
     <small class="dont-index">Source: <a href='https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/master/R/NMFSReports.R'><code>R/NMFSReports.R</code></a></small>
     <div class="hidden name"><code>crossref.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Reference a figure, table, or equation (or other list elements!)</p>
+    <p>Reference a figure, table, or equation with an anchored tag</p>
     </div>
 
     <pre class="usage"><span class='fu'>crossref</span>(<span class='no'>list_obj</span>, <span class='no'>nickname</span>, <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>)</pre>
@@ -220,10 +220,10 @@
    <span class='kw'>cnt</span> <span class='kw'>=</span> <span class='st'>"013"</span>)
 <span class='no'>list_figures</span></div><div class='output co'>#&gt; $example_figure
 #&gt; $example_figure$caption
-#&gt; [1] "Figure 012. blah blah blah."
+#&gt; [1] "Figure [012](){#example_figure}. blah blah blah."
 #&gt; 
 #&gt; $example_figure$header
-#&gt; [1] "Figure 012. blah blah blah."
+#&gt; [1] "Figure [012](){#example_figure}. blah blah blah."
 #&gt; 
 #&gt; $example_figure$nickname
 #&gt; [1] "example_figure"
@@ -238,15 +238,15 @@
 #&gt; [1] ""
 #&gt; 
 #&gt; $example_figure$filename
-#&gt; [1] "x003_fig_012"
+#&gt; [1] "003_fig_012"
 #&gt; 
 #&gt; 
 #&gt; $example_figure_other
 #&gt; $example_figure_other$caption
-#&gt; [1] "Figure 013. blah blah blah."
+#&gt; [1] "Figure [013](){#example_figure_other}. blah blah blah."
 #&gt; 
 #&gt; $example_figure_other$header
-#&gt; [1] "Figure 013. blah blah blah."
+#&gt; [1] "Figure [013](){#example_figure_other}. blah blah blah."
 #&gt; 
 #&gt; $example_figure_other$nickname
 #&gt; [1] "example_figure_other"
@@ -261,14 +261,14 @@
 #&gt; [1] ""
 #&gt; 
 #&gt; $example_figure_other$filename
-#&gt; [1] "x003_fig_013"
+#&gt; [1] "003_fig_013"
 #&gt; 
 #&gt; </div><div class='input'><span class='no'>refnum</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>NMFSReports</span><span class='kw ns'>::</span><span class='fu'>crossref</span>(
    <span class='kw'>list_obj</span> <span class='kw'>=</span> <span class='no'>list_figures</span>,
    <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example_figure"</span>,
    <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>)
-<span class='no'>refnum</span></div><div class='output co'>#&gt; [1] "012"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"Please refer to figure "</span>, <span class='no'>refnum</span>,
-             <span class='st'>" to see this figure, not the other figure."</span>))</div><div class='output co'>#&gt; [1] "Please refer to figure 012 to see this figure, not the other figure."</div></pre>
+<span class='no'>refnum</span></div><div class='output co'>#&gt; [1] "[012](#example_figure)"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"Please refer to figure "</span>, <span class='no'>refnum</span>,
+             <span class='st'>" to see this figure, not the other figure."</span>))</div><div class='output co'>#&gt; [1] "Please refer to figure [012](#example_figure) to see this figure, not the other figure."</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
