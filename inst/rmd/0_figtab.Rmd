@@ -36,7 +36,6 @@ res <- knitr::knit_child(
 )
 
 list_figures[nickname][[1]]$res <- res <- paste0("
-###### 
 
 ",res,"
 
@@ -63,7 +62,6 @@ res <- knitr::knit_child(
 )
 
 list_tables[nickname][[1]]$res <- res <- paste0("
-###### 
 
 ",res,"
 

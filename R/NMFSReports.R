@@ -527,22 +527,29 @@ tolower2<-function(str0,
 #' This function alows you to take a string of words and combine them into a sentance list. For example, 'apples', 'oranges', 'pears' would become 'apples, oranges, and pears'. This function uses oxford commas.
 #' @param x Character strings you want in your string.
 #' @param oxford T/F: would you like to use an oxford comma? Default = TRUE
-#' @param sep string. default = "," but ";" might be what you need!
+#' @param sep string. default = ", " but "; " or " " might be what you need!
+#' @param sep_last string. default = " and " but " & " or " , " might be what you need!
 #' @keywords strings
 #' @export
-#' @examples text_list(c(1,2,"hello",4,"world",6))
-text_list<-function(x, oxford = TRUE, sep = ",") {
+#' @examples
+#' text_list(c(1,2,"hello",4,"world",6))
+#' paste0("here is a list of things: ",
+#'   text_list(paste0("list", 1:5), sep = " ", sep_last = " "))
+text_list<-function(x = "",
+                    oxford = TRUE,
+                    sep = ", ",
+                    sep_last = " and ") {
   x<-x[which(x!="")]
   # x<-x[which(!is.null(x))]
   x<-x[which(!is.na(x))]
   # x<-x[order(x)]
   if (length(x)==2) {
-    str1<-paste(x, collapse = " and ")
+    str1<-paste(x, collapse = sep_last)
   } else if (length(x)>2) {
-    str1<-paste(x[1:(length(x)-1)], collapse = paste0(sep, " "))
+    str1<-paste(x[1:(length(x)-1)], collapse = paste0(sep))
     str1<-paste0(str1,
                  ifelse(oxford == TRUE, sep, ""),
-                 " and ", x[length(x)])
+                 sep_last, x[length(x)])
   } else {
     str1<-x
   }
@@ -1498,7 +1505,7 @@ save_tables<-function(table_raw = NULL,
                            file = paste0(path, filename00,
                                          "_raw.", output_type[i]),
                            sep = ",",
-                           row.names=FALSE, col.names = F, append = F)
+                           row.names=FALSE, col.names = TRUE, append = F)
       }
     } else {
       table_raw <- ""

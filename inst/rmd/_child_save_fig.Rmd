@@ -43,8 +43,9 @@ list_figures<-NMFSReports::save_figures(
 
 ```
 
+```{r, echo = FALSE, fig.alt = list_figures[[length(list_figures)]]$alttext, fig.scap = list_figures[[length(list_figures)]]$alttext, fig.align = 'center'}
 
-```{r, echo = FALSE, fig.cap=ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext,  list_figures[[length(list_figures)]]$header), fig.align='center'}
+# fig.cap = ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext, paste0("\n#### *", list_figures[[length(list_figures)]]$header, "*")), 
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
@@ -93,8 +94,11 @@ remove(list = remove_who)
 
 </br>
 
-`r if(indesign_flowin %in% FALSE & (list_figures[[length(list_figures)]]$alttext)!="") { paste0("*Alternative text: ", list_figures[[length(list_figures)]]$alttext, "*") } `
+<!-- caption -->
+`r ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext, paste0("#### *", list_figures[[length(list_figures)]]$header, "*")) `
 
+<!-- alt text -->
+`r if(indesign_flowin %in% FALSE & (list_figures[[length(list_figures)]]$alttext)!="") { paste0("*Alternative text: ", list_figures[[length(list_figures)]]$alttext, "*") } `
 
 </br>
 
