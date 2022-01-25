@@ -1376,7 +1376,7 @@ save_figures<-function(figure,
                              file = paste0(path, filename00,
                                            ".csv"),
                              sep = ",",
-                             row.names=FALSE, col.names = F, append = F)
+                             row.names=FALSE, col.names = TRUE, append = F)
         # }
       } else {
         raw <- ""
