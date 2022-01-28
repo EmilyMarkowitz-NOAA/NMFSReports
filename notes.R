@@ -14,12 +14,16 @@ Sys.setenv('PATH' = paste0('C:/Program Files/qpdf-10.0.1/bin;', Sys.getenv('PATH
 library(here)
 library(devtools)
 library(roxygen2)
+# rmarkdown::render(paste0(dir_code, "/README.Rmd"),
+#                   output_dir = here::here(),
+#                   output_file = paste0("README.md"))
 devtools::document()
 setwd("..")
 install("NMFSReports")
 3
 setwd(here::here())
 # devtools::check()
+
 
 ########### Create Documentation GitHub-Pages ############
 

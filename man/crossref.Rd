@@ -4,7 +4,7 @@
 \alias{crossref}
 \title{Reference a figure, table, or equation with an anchored tag}
 \usage{
-crossref(list_obj, nickname, sublist = "number")
+crossref(list_obj, nickname, sublist = "number", exact = TRUE)
 }
 \arguments{
 \item{list_obj}{A list object created by list_figures or list_tables.}
@@ -12,6 +12,8 @@ crossref(list_obj, nickname, sublist = "number")
 \item{nickname}{A unique string that is used to identify the plot or table in list_figures or list_tables, respectively.}
 
 \item{sublist}{A string of the sublist in list_figures or list_tables you want the contents returned from.}
+
+\item{exact}{T/F. If TRUE, 'nickname' must match the name of the list item exactly. If FALSE, crossref will return all entries with that string fragment.}
 }
 \value{
 The item in the list.
@@ -44,4 +46,10 @@ refnum <- NMFSReports::crossref(
 refnum
 print(paste0("Please refer to figure ", refnum,
              " to see this figure, not the other figure."))
+refnum <- NMFSReports::crossref(
+   list_obj = list_figures,
+   nickname = "example_",
+   sublist = "number",
+   exact = FALSE)
+refnum
 }

@@ -4,7 +4,7 @@
 \alias{text_list}
 \title{Takes a string of words and combines them into a sentance that lists them.}
 \usage{
-text_list(x = "", oxford = TRUE, sep = ", ", sep_last = " and ")
+text_list(x = "", oxford = TRUE, sep = ", ", sep_last = "and ")
 }
 \arguments{
 \item{x}{Character strings you want in your string.}
@@ -20,6 +20,7 @@ This function alows you to take a string of words and combine them into a sentan
 }
 \examples{
 text_list(c(1,2,"hello",4,"world",6))
+text_list(c(1,2,"hello",4,"world",6), oxford = FALSE)
 paste0("here is a list of things: ",
   text_list(paste0("list", 1:5), sep = " ", sep_last = " "))
 }

@@ -533,12 +533,13 @@ tolower2<-function(str0,
 #' @export
 #' @examples
 #' text_list(c(1,2,"hello",4,"world",6))
+#' text_list(c(1,2,"hello",4,"world",6), oxford = FALSE)
 #' paste0("here is a list of things: ",
 #'   text_list(paste0("list", 1:5), sep = " ", sep_last = " "))
 text_list<-function(x = "",
                     oxford = TRUE,
                     sep = ", ",
-                    sep_last = " and ") {
+                    sep_last = "and ") {
   x<-x[which(x!="")]
   # x<-x[which(!is.null(x))]
   x<-x[which(!is.na(x))]
@@ -548,7 +549,7 @@ text_list<-function(x = "",
   } else if (length(x)>2) {
     str1<-paste(x[1:(length(x)-1)], collapse = paste0(sep))
     str1<-paste0(str1,
-                 ifelse(oxford == TRUE, sep, ""),
+                 ifelse(oxford == TRUE, sep, " "),
                  sep_last, x[length(x)])
   } else {
     str1<-x
@@ -1214,6 +1215,68 @@ format_cells <- function(dat, rows, cols, fonttype) {
   return(dat)
 }
 
+#' Find a range of numbers for text
+#'
+#' This function outputs the range of values (broken or continuous) as you would want to display it in text.
+#'
+#' @param x A numeric vector of any length. Any duplicates will be removed.
+#' @param dash A string that will go between consecutive values in the string output.
+#' @param oxford Default = TRUE. Will only be used if the vector x provided is not continuous. Inherited from NMFSReports::text_list().
+#' @param sep Default = ", ". Will only be used if the vector x provided is not continuous. Inherited from NMFSReports::text_list().
+#' @param sep_last Default = "and ". Will only be used if the vector x provided is not continuous. Inherited from NMFSReports::text_list().
+#'
+#' @return A string with the range of those values as might be included in a sentence ("1-3, 5, and 7-8").
+#' @export
+#'
+#' @examples
+#' # a typical example
+#' x <- c(2003:2005, 2007, 2010:2012)
+#' range_text(x)
+#' # example has duplicate values out of order and specifies for a different dash and no oxford comma
+#' x <- c(1,2,11,3,4,7,8,3)
+#' range_text(x, dash = "--", oxford = FALSE)
+range_text <- function(x,
+                       dash = "-",
+                       oxford = TRUE,
+                       sep = ", ",
+                       sep_last = "and ") {
+  x <- sort(x)
+  x <- x[!duplicated(x)]
+  y <- min(x):max(x)
+  z <- setdiff(y, x)
+  if (length(z)>0) { # if x is not continuous
+    # https://stat.ethz.ch/pipermail/r-help/2010-April/237031.html
+    vec <- y
+    vec[(vec %in% z)] <- NA
+
+    # remove consecutive NAs
+    foo <- function( x ){
+      idx <- 1 + cumsum( is.na( x ) )
+      not.na <- ! is.na( x )
+      split( x[not.na], idx[not.na] )
+    }
+    ls <- foo(vec)
+
+    str <- c()
+    for (i in 1:length(ls)) {
+      a <- ls[i][[1]]
+      if (length(a) == 1){
+        str <- c(str, paste0(a))
+      } else {
+        str <- c(str, paste0(min(a),dash,max(a)))
+      }
+    }
+    str <- NMFSReports::text_list(x = str,
+                                  oxford = oxford,
+                                  sep = sep,
+                                  sep_last = sep_last)
+  } else {
+    str <- paste0(min(x),dash,max(x))
+  }
+  return(str)
+}
+
+
 ######## FILE ORGANIZATION #########
 
 #' Make numbers the same length preceeded by 0s
@@ -1635,6 +1698,7 @@ save_equations<-function(equation,
 #' @param list_obj A list object created by list_figures or list_tables.
 #' @param nickname A unique string that is used to identify the plot or table in list_figures or list_tables, respectively.
 #' @param sublist A string of the sublist in list_figures or list_tables you want the contents returned from.
+#' @param exact T/F. If TRUE, 'nickname' must match the name of the list item exactly. If FALSE, crossref will return all entries with that string fragment.
 #' @return The item in the list.
 #' @export
 #' @examples
@@ -1662,9 +1726,19 @@ save_equations<-function(equation,
 #' refnum
 #' print(paste0("Please refer to figure ", refnum,
 #'              " to see this figure, not the other figure."))
+#' refnum <- NMFSReports::crossref(
+#'    list_obj = list_figures,
+#'    nickname = "example_",
+#'    sublist = "number",
+#'    exact = FALSE)
+#' refnum
 crossref <- function(list_obj,
                      nickname,
-                     sublist = "number"){
+                     sublist = "number",
+                     exact = TRUE){
+  if (!exact) {
+    nickname <- names(list_obj)[grepl(pattern = nickname, x = names(list_obj))]
+  }
   ref <- list_obj[which(lapply(list_obj, `[[`, "nickname") %in% nickname)][[1]][sublist]
   if (sublist == "number") {
     ref<-as.character(ref)
@@ -1673,7 +1747,7 @@ crossref <- function(list_obj,
   return(ref)
 }
 
-ref_listobject<-crossref
+# ref_listobject<-crossref
 
 
 # Adapted from flextable::theme_vanilla()

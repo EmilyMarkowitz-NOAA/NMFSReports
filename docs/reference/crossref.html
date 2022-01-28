@@ -179,7 +179,7 @@
     <p>Reference a figure, table, or equation with an anchored tag</p>
     </div>
 
-    <pre class="usage"><span class='fu'>crossref</span>(<span class='no'>list_obj</span>, <span class='no'>nickname</span>, <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>)</pre>
+    <pre class="usage"><span class='fu'>crossref</span>(<span class='no'>list_obj</span>, <span class='no'>nickname</span>, <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>, <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -195,6 +195,10 @@
     <tr>
       <th>sublist</th>
       <td><p>A string of the sublist in list_figures or list_tables you want the contents returned from.</p></td>
+    </tr>
+    <tr>
+      <th>exact</th>
+      <td><p>T/F. If TRUE, 'nickname' must match the name of the list item exactly. If FALSE, crossref will return all entries with that string fragment.</p></td>
     </tr>
     </table>
 
@@ -268,7 +272,12 @@
    <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example_figure"</span>,
    <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>)
 <span class='no'>refnum</span></div><div class='output co'>#&gt; [1] "[012](#example_figure)"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"Please refer to figure "</span>, <span class='no'>refnum</span>,
-             <span class='st'>" to see this figure, not the other figure."</span>))</div><div class='output co'>#&gt; [1] "Please refer to figure [012](#example_figure) to see this figure, not the other figure."</div></pre>
+             <span class='st'>" to see this figure, not the other figure."</span>))</div><div class='output co'>#&gt; [1] "Please refer to figure [012](#example_figure) to see this figure, not the other figure."</div><div class='input'><span class='no'>refnum</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>NMFSReports</span><span class='kw ns'>::</span><span class='fu'>crossref</span>(
+   <span class='kw'>list_obj</span> <span class='kw'>=</span> <span class='no'>list_figures</span>,
+   <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example_"</span>,
+   <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>,
+   <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='no'>refnum</span></div><div class='output co'>#&gt; [1] "[012](#example_figure)"       "[012](#example_figure_other)"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

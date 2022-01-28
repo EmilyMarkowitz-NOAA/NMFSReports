@@ -5,8 +5,8 @@
 ### *Easily write NOAA reports and Tech Memos in R Markdown*
 
 [![](https://img.shields.io/badge/devel%20version-0.0.1.1-blue.svg)](https://github.com/EmilyMarkowitz-NOAA/NMFSReports)
-[![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
-[![](https://img.shields.io/github/last-commit/EmilyMarkowitz-NOAA/NMFSReports.svg)](https://github.com/EmilyMarkowitz-NOAA/NMFSReports/commits/main)
+[![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![](https://img.shields.io/github/last-commit/EmilyMarkowitz-NOAA/NMFSReports.svg)](https://github.com/EmilyMarkowitz-NOAA/NMFSReports/commits/master)
 
 ## Author
 
@@ -49,6 +49,12 @@ A package for NOAA Fisheries color schemes. More info
     library(devtools)
     devtools::install_github("nmfs-general-modeling-tools/nmfspalette")
     library(nmfspalette)
+
+## Notes
+
+More details about how to use the
+[https://github.com/RVerse-Tutorials/GoogleDrive1](%7Bgoogledrive%7D%20R%20pakage)
+in RMarkdown Documents:
 
 ## Conference Presentations
 
