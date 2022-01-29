@@ -20,8 +20,9 @@ This function alows you to take a string of words and combine them into a sentan
 }
 \examples{
 text_list(c(1,2,"hello",4,"world",6))
+text_list(c(1,"world"))
 text_list(c(1,2,"hello",4,"world",6), oxford = FALSE)
 paste0("here is a list of things: ",
-  text_list(paste0("list", 1:5), sep = " ", sep_last = " "))
+  text_list(paste0("list", 1:5), sep = " ", sep_last = ""))
 }
 \keyword{strings}

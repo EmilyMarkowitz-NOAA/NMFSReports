@@ -24,7 +24,6 @@ install("NMFSReports")
 setwd(here::here())
 # devtools::check()
 
-
 ########### Create Documentation GitHub-Pages ############
 
 .rs.restartR()

@@ -28,6 +28,6 @@ This function outputs the range of values (broken or continuous) as you would wa
 x <- c(2003:2005, 2007, 2010:2012)
 range_text(x)
 # example has duplicate values out of order and specifies for a different dash and no oxford comma
-x <- c(1,2,11,3,4,7,8,3)
+x <- c(1,2,11,3,4,7,NA,8,3)
 range_text(x, dash = "--", oxford = FALSE)
 }

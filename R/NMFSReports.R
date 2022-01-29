@@ -533,9 +533,10 @@ tolower2<-function(str0,
 #' @export
 #' @examples
 #' text_list(c(1,2,"hello",4,"world",6))
+#' text_list(c(1,"world"))
 #' text_list(c(1,2,"hello",4,"world",6), oxford = FALSE)
 #' paste0("here is a list of things: ",
-#'   text_list(paste0("list", 1:5), sep = " ", sep_last = " "))
+#'   text_list(paste0("list", 1:5), sep = " ", sep_last = ""))
 text_list<-function(x = "",
                     oxford = TRUE,
                     sep = ", ",
@@ -545,7 +546,7 @@ text_list<-function(x = "",
   x<-x[which(!is.na(x))]
   # x<-x[order(x)]
   if (length(x)==2) {
-    str1<-paste(x, collapse = sep_last)
+    str1<-paste(x, collapse = paste0(" ", sep_last))
   } else if (length(x)>2) {
     str1<-paste(x[1:(length(x)-1)], collapse = paste0(sep))
     str1<-paste0(str1,
@@ -1233,15 +1234,16 @@ format_cells <- function(dat, rows, cols, fonttype) {
 #' x <- c(2003:2005, 2007, 2010:2012)
 #' range_text(x)
 #' # example has duplicate values out of order and specifies for a different dash and no oxford comma
-#' x <- c(1,2,11,3,4,7,8,3)
+#' x <- c(1,2,11,3,4,7,NA,8,3)
 #' range_text(x, dash = "--", oxford = FALSE)
 range_text <- function(x,
                        dash = "-",
                        oxford = TRUE,
                        sep = ", ",
                        sep_last = "and ") {
-  x <- sort(x)
+  x <- x[!(is.na(x))]
   x <- x[!duplicated(x)]
+  x <- sort(x)
   y <- min(x):max(x)
   z <- setdiff(y, x)
   if (length(z)>0) { # if x is not continuous
