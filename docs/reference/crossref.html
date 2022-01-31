@@ -212,72 +212,80 @@
    <span class='kw'>figure</span> <span class='kw'>=</span> <span class='no'>pp</span>,
    <span class='kw'>list_figures</span> <span class='kw'>=</span> <span class='no'>list_figures</span>,
    <span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"blah blah blah"</span>,
-   <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example_figure"</span>, <span class='co'># a unique name you can refer back to</span>
+   <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example_1"</span>, <span class='co'># a unique name you can refer back to</span>
    <span class='kw'>cnt_chapt_content</span> <span class='kw'>=</span> <span class='st'>"003"</span>,
    <span class='kw'>cnt</span> <span class='kw'>=</span> <span class='st'>"012"</span>)
 <span class='no'>list_figures</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>NMFSReports</span><span class='kw ns'>::</span><span class='fu'><a href='save_figures.html'>save_figures</a></span>(
    <span class='kw'>figure</span> <span class='kw'>=</span> <span class='no'>pp</span>,
    <span class='kw'>list_figures</span> <span class='kw'>=</span> <span class='no'>list_figures</span>,
    <span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"blah blah blah"</span>,
-   <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example_figure_other"</span>, <span class='co'># a unique name you can refer back to</span>
+   <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example2"</span>, <span class='co'># a unique name you can refer back to</span>
    <span class='kw'>cnt_chapt_content</span> <span class='kw'>=</span> <span class='st'>"003"</span>,
    <span class='kw'>cnt</span> <span class='kw'>=</span> <span class='st'>"013"</span>)
-<span class='no'>list_figures</span></div><div class='output co'>#&gt; $example_figure
-#&gt; $example_figure$caption
-#&gt; [1] "Figure [012](){#example_figure}. blah blah blah."
+<span class='no'>list_figures</span></div><div class='output co'>#&gt; $example_1
+#&gt; $example_1$caption
+#&gt; [1] "Figure [012](){#example_1}. blah blah blah."
 #&gt; 
-#&gt; $example_figure$header
-#&gt; [1] "Figure [012](){#example_figure}. blah blah blah."
+#&gt; $example_1$header
+#&gt; [1] "Figure [012](){#example_1}. blah blah blah."
 #&gt; 
-#&gt; $example_figure$nickname
-#&gt; [1] "example_figure"
+#&gt; $example_1$nickname
+#&gt; [1] "example_1"
 #&gt; 
-#&gt; $example_figure$alttext
+#&gt; $example_1$alttext
 #&gt; [1] ""
 #&gt; 
-#&gt; $example_figure$number
+#&gt; $example_1$number
 #&gt; [1] "012"
 #&gt; 
-#&gt; $example_figure$footnotes
+#&gt; $example_1$footnotes
 #&gt; [1] ""
 #&gt; 
-#&gt; $example_figure$filename
+#&gt; $example_1$filename
 #&gt; [1] "003_fig_012"
 #&gt; 
 #&gt; 
-#&gt; $example_figure_other
-#&gt; $example_figure_other$caption
-#&gt; [1] "Figure [013](){#example_figure_other}. blah blah blah."
+#&gt; $example2
+#&gt; $example2$caption
+#&gt; [1] "Figure [013](){#example2}. blah blah blah."
 #&gt; 
-#&gt; $example_figure_other$header
-#&gt; [1] "Figure [013](){#example_figure_other}. blah blah blah."
+#&gt; $example2$header
+#&gt; [1] "Figure [013](){#example2}. blah blah blah."
 #&gt; 
-#&gt; $example_figure_other$nickname
-#&gt; [1] "example_figure_other"
+#&gt; $example2$nickname
+#&gt; [1] "example2"
 #&gt; 
-#&gt; $example_figure_other$alttext
+#&gt; $example2$alttext
 #&gt; [1] ""
 #&gt; 
-#&gt; $example_figure_other$number
+#&gt; $example2$number
 #&gt; [1] "013"
 #&gt; 
-#&gt; $example_figure_other$footnotes
+#&gt; $example2$footnotes
 #&gt; [1] ""
 #&gt; 
-#&gt; $example_figure_other$filename
+#&gt; $example2$filename
 #&gt; [1] "003_fig_013"
 #&gt; 
-#&gt; </div><div class='input'><span class='no'>refnum</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>NMFSReports</span><span class='kw ns'>::</span><span class='fu'>crossref</span>(
+#&gt; </div><div class='input'><span class='no'>refnum</span> <span class='kw'>&lt;-</span> <span class='fu'>crossref</span>(
    <span class='kw'>list_obj</span> <span class='kw'>=</span> <span class='no'>list_figures</span>,
-   <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example_figure"</span>,
+   <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example_1"</span>,
    <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>)
-<span class='no'>refnum</span></div><div class='output co'>#&gt; [1] "[012](#example_figure)"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"Please refer to figure "</span>, <span class='no'>refnum</span>,
-             <span class='st'>" to see this figure, not the other figure."</span>))</div><div class='output co'>#&gt; [1] "Please refer to figure [012](#example_figure) to see this figure, not the other figure."</div><div class='input'><span class='no'>refnum</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>NMFSReports</span><span class='kw ns'>::</span><span class='fu'>crossref</span>(
+<span class='no'>refnum</span></div><div class='output co'>#&gt; [1] "[012](#example_1)"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"Please refer to figure "</span>, <span class='no'>refnum</span>,
+             <span class='st'>" to see this figure, not the other figure."</span>))</div><div class='output co'>#&gt; [1] "Please refer to figure [012](#example_1) to see this figure, not the other figure."</div><div class='input'><span class='co'># example using a partial phrase with `exact = FALSE`</span>
+<span class='no'>refnum</span> <span class='kw'>&lt;-</span> <span class='fu'>crossref</span>(
    <span class='kw'>list_obj</span> <span class='kw'>=</span> <span class='no'>list_figures</span>,
    <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example_"</span>,
    <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>,
    <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='no'>refnum</span></div><div class='output co'>#&gt; [1] "[012](#example_figure)"       "[012](#example_figure_other)"</div></pre>
+<span class='no'>refnum</span></div><div class='output co'>#&gt; [1] "[012](#example_1)"</div><div class='input'><span class='co'># using a wildard with `exact = FALSE`</span>
+<span class='no'>refnum</span> <span class='kw'>&lt;-</span> <span class='fu'>crossref</span>(
+ <span class='kw'>list_obj</span> <span class='kw'>=</span> <span class='no'>list_figures</span>,
+ <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example*"</span>,
+ <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>,
+ <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='no'>refnum</span></div><div class='output co'>#&gt; [1] "[012](#example_1)" "[012](#example2)" </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"Please refer to figure "</span>, <span class='fu'><a href='text_list.html'>text_list</a></span>(<span class='no'>refnum</span>),
+             <span class='st'>" to see this figure, not the other figure."</span>))</div><div class='output co'>#&gt; [1] "Please refer to figure [012](#example_1) and [012](#example2) to see this figure, not the other figure."</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

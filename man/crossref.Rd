@@ -28,28 +28,38 @@ list_figures <- NMFSReports::save_figures(
    figure = pp,
    list_figures = list_figures,
    header = "blah blah blah",
-   nickname = "example_figure", # a unique name you can refer back to
+   nickname = "example_1", # a unique name you can refer back to
    cnt_chapt_content = "003",
    cnt = "012")
 list_figures <- NMFSReports::save_figures(
    figure = pp,
    list_figures = list_figures,
    header = "blah blah blah",
-   nickname = "example_figure_other", # a unique name you can refer back to
+   nickname = "example2", # a unique name you can refer back to
    cnt_chapt_content = "003",
    cnt = "013")
 list_figures
-refnum <- NMFSReports::crossref(
+refnum <- crossref(
    list_obj = list_figures,
-   nickname = "example_figure",
+   nickname = "example_1",
    sublist = "number")
 refnum
 print(paste0("Please refer to figure ", refnum,
              " to see this figure, not the other figure."))
-refnum <- NMFSReports::crossref(
+# example using a partial phrase with `exact = FALSE`
+refnum <- crossref(
    list_obj = list_figures,
    nickname = "example_",
    sublist = "number",
    exact = FALSE)
 refnum
+# using a wildard with `exact = FALSE`
+refnum <- crossref(
+ list_obj = list_figures,
+ nickname = "example*",
+ sublist = "number",
+ exact = FALSE)
+refnum
+print(paste0("Please refer to figure ", text_list(refnum),
+             " to see this figure, not the other figure."))
 }

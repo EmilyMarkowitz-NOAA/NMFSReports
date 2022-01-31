@@ -27,7 +27,8 @@ Imports:
     knitcitations, 
     XML, 
     googledrive, 
-    flextable
+    flextable, 
+    utils
 Suggests: 
     testthat (>= 3.0.0),
     rmarkdown,
