@@ -179,7 +179,7 @@
     <p>Reference a figure, table, or equation with an anchored tag</p>
     </div>
 
-    <pre class="usage"><span class='fu'>crossref</span>(<span class='no'>list_obj</span>, <span class='no'>nickname</span>, <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>, <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>crossref</span>(<span class='no'>list_obj</span>, <span class='no'>nickname</span>, <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>, <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>text</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -198,7 +198,11 @@
     </tr>
     <tr>
       <th>exact</th>
-      <td><p>T/F. If TRUE, 'nickname' must match the name of the list item exactly. If FALSE, crossref will return all entries with that string fragment.</p></td>
+      <td><p>T/F. If TRUE, 'nickname' must match the name of the list item exactly. If FALSE, crossref will return all entries with that string fragment. Default = TRUE.</p></td>
+    </tr>
+    <tr>
+      <th>text</th>
+      <td><p>T/F. If TRUE, will output results prepared for a text output. If FALSE, will output each element. Default = TRUE.</p></td>
     </tr>
     </table>
 
@@ -273,19 +277,28 @@
    <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>)
 <span class='no'>refnum</span></div><div class='output co'>#&gt; [1] "[012](#example_1)"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"Please refer to figure "</span>, <span class='no'>refnum</span>,
              <span class='st'>" to see this figure, not the other figure."</span>))</div><div class='output co'>#&gt; [1] "Please refer to figure [012](#example_1) to see this figure, not the other figure."</div><div class='input'><span class='co'># example using a partial phrase with `exact = FALSE`</span>
-<span class='no'>refnum</span> <span class='kw'>&lt;-</span> <span class='fu'>crossref</span>(
+<span class='fu'>crossref</span>(
    <span class='kw'>list_obj</span> <span class='kw'>=</span> <span class='no'>list_figures</span>,
    <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example_"</span>,
    <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>,
-   <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='no'>refnum</span></div><div class='output co'>#&gt; [1] "[012](#example_1)"</div><div class='input'><span class='co'># using a wildard with `exact = FALSE`</span>
-<span class='no'>refnum</span> <span class='kw'>&lt;-</span> <span class='fu'>crossref</span>(
+   <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "[012](#example_1)"</div><div class='input'><span class='co'># using a wildard with `exact = FALSE`</span>
+<span class='fu'>crossref</span>(
+ <span class='kw'>list_obj</span> <span class='kw'>=</span> <span class='no'>list_figures</span>,
+ <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example*1"</span>,
+ <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>,
+ <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "[012](#example_1)"</div><div class='input'><span class='fu'>crossref</span>(
  <span class='kw'>list_obj</span> <span class='kw'>=</span> <span class='no'>list_figures</span>,
  <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example*"</span>,
  <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>,
- <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='no'>refnum</span></div><div class='output co'>#&gt; [1] "[012](#example_1)" "[012](#example2)" </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"Please refer to figure "</span>, <span class='fu'><a href='text_list.html'>text_list</a></span>(<span class='no'>refnum</span>),
-             <span class='st'>" to see this figure, not the other figure."</span>))</div><div class='output co'>#&gt; [1] "Please refer to figure [012](#example_1) and [012](#example2) to see this figure, not the other figure."</div></pre>
+ <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+ <span class='kw'>text</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "[012](#example_1)" "[013](#example2)" </div><div class='input'><span class='no'>refnum</span> <span class='kw'>&lt;-</span> <span class='fu'>crossref</span>(
+ <span class='kw'>list_obj</span> <span class='kw'>=</span> <span class='no'>list_figures</span>,
+ <span class='kw'>nickname</span> <span class='kw'>=</span> <span class='st'>"example*"</span>,
+ <span class='kw'>sublist</span> <span class='kw'>=</span> <span class='st'>"number"</span>,
+ <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+ <span class='kw'>text</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='no'>refnum</span></div><div class='output co'>#&gt; [1] "[012](#example_1) and [013](#example2)"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"Please refer to figure "</span>, <span class='no'>refnum</span>,
+             <span class='st'>" to see this figure, not the other figure."</span>))</div><div class='output co'>#&gt; [1] "Please refer to figure [012](#example_1) and [013](#example2) to see this figure, not the other figure."</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

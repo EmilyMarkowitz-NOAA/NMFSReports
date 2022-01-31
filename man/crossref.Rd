@@ -4,7 +4,7 @@
 \alias{crossref}
 \title{Reference a figure, table, or equation with an anchored tag}
 \usage{
-crossref(list_obj, nickname, sublist = "number", exact = TRUE)
+crossref(list_obj, nickname, sublist = "number", exact = TRUE, text = TRUE)
 }
 \arguments{
 \item{list_obj}{A list object created by list_figures or list_tables.}
@@ -13,7 +13,9 @@ crossref(list_obj, nickname, sublist = "number", exact = TRUE)
 
 \item{sublist}{A string of the sublist in list_figures or list_tables you want the contents returned from.}
 
-\item{exact}{T/F. If TRUE, 'nickname' must match the name of the list item exactly. If FALSE, crossref will return all entries with that string fragment.}
+\item{exact}{T/F. If TRUE, 'nickname' must match the name of the list item exactly. If FALSE, crossref will return all entries with that string fragment. Default = TRUE.}
+
+\item{text}{T/F. If TRUE, will output results prepared for a text output. If FALSE, will output each element. Default = TRUE.}
 }
 \value{
 The item in the list.
@@ -47,19 +49,30 @@ refnum
 print(paste0("Please refer to figure ", refnum,
              " to see this figure, not the other figure."))
 # example using a partial phrase with `exact = FALSE`
-refnum <- crossref(
+crossref(
    list_obj = list_figures,
    nickname = "example_",
    sublist = "number",
    exact = FALSE)
-refnum
 # using a wildard with `exact = FALSE`
+crossref(
+ list_obj = list_figures,
+ nickname = "example*1",
+ sublist = "number",
+ exact = FALSE)
+crossref(
+ list_obj = list_figures,
+ nickname = "example*",
+ sublist = "number",
+ exact = FALSE,
+ text = FALSE)
 refnum <- crossref(
  list_obj = list_figures,
  nickname = "example*",
  sublist = "number",
- exact = FALSE)
+ exact = FALSE,
+ text = TRUE)
 refnum
-print(paste0("Please refer to figure ", text_list(refnum),
+print(paste0("Please refer to figure ", refnum,
              " to see this figure, not the other figure."))
 }

@@ -1700,7 +1700,8 @@ save_equations<-function(equation,
 #' @param list_obj A list object created by list_figures or list_tables.
 #' @param nickname A unique string that is used to identify the plot or table in list_figures or list_tables, respectively.
 #' @param sublist A string of the sublist in list_figures or list_tables you want the contents returned from.
-#' @param exact T/F. If TRUE, 'nickname' must match the name of the list item exactly. If FALSE, crossref will return all entries with that string fragment.
+#' @param exact T/F. If TRUE, 'nickname' must match the name of the list item exactly. If FALSE, crossref will return all entries with that string fragment. Default = TRUE.
+#' @param text T/F. If TRUE, will output results prepared for a text output. If FALSE, will output each element. Default = TRUE.
 #' @return The item in the list.
 #' @export
 #' @examples
@@ -1729,36 +1730,76 @@ save_equations<-function(equation,
 #' print(paste0("Please refer to figure ", refnum,
 #'              " to see this figure, not the other figure."))
 #' # example using a partial phrase with `exact = FALSE`
-#' refnum <- crossref(
+#' crossref(
 #'    list_obj = list_figures,
 #'    nickname = "example_",
 #'    sublist = "number",
 #'    exact = FALSE)
-#' refnum
 #' # using a wildard with `exact = FALSE`
+#' crossref(
+#'  list_obj = list_figures,
+#'  nickname = "example*1",
+#'  sublist = "number",
+#'  exact = FALSE)
+#' crossref(
+#'  list_obj = list_figures,
+#'  nickname = "example*",
+#'  sublist = "number",
+#'  exact = FALSE,
+#'  text = FALSE)
 #' refnum <- crossref(
 #'  list_obj = list_figures,
 #'  nickname = "example*",
 #'  sublist = "number",
-#'  exact = FALSE)
+#'  exact = FALSE,
+#'  text = TRUE)
 #' refnum
-#' print(paste0("Please refer to figure ", text_list(refnum),
+#' print(paste0("Please refer to figure ", refnum,
 #'              " to see this figure, not the other figure."))
 crossref <- function(list_obj,
                      nickname,
                      sublist = "number",
-                     exact = TRUE){
+                     exact = TRUE,
+                     text = TRUE){
+  nickname0<-nickname
   if (!exact) {
-    if (grepl(nickname, pattern = "*", fixed = TRUE)) {
-      nickname <- names(list_obj)[grepl(pattern = utils::glob2rx(nickname), x = names(list_obj))]
-    } else {
-      nickname <- names(list_obj)[grepl(pattern = (nickname), x = names(list_obj))]
+    nickname <- c()
+    for (i in 1:length(nickname0)){
+      if (grepl(nickname0[i], pattern = "*", fixed = TRUE)) {  # if the name uses a wildcard
+        nickname <- c(nickname,
+                      names(list_obj)[grepl(pattern = utils::glob2rx(nickname0[i]),
+                                          x = names(list_obj))])
+      } else { # if there is no wildcard character
+        nickname <- c(nickname,
+                      names(list_obj)[grepl(pattern = (nickname0[i]),
+                                          x = names(list_obj))])
+      }
     }
   }
-  ref <- list_obj[which(lapply(list_obj, `[[`, "nickname") %in% nickname)][[1]][sublist]
+  # ref <- list_obj[which(lapply(list_obj, `[[`, "nickname") %in% nickname)][[1]][sublist]
+  ref <- lapply(list_obj[names(list_obj) %in% nickname], `[[`, sublist)
+
   if (sublist == "number") {
-    ref<-as.character(ref)
+    # ref<-as.character(ref)
     ref<-paste0("[", ref, "](#", nickname, ")")
+    if (text) {
+      if (length(ref)>5) {
+        ref <- paste0(ref[1], " to ", ref[length(ref)])
+      } else {
+        ref <- NMFSReports::text_list(ref)
+      }
+    }
+  } else if (sublist == "res") {
+    if(text) {
+      if (exact) {
+        sapply(list_obj[grepl(x = names(list_obj), pattern = nickname0)],"[[","res")
+      } else {
+        ref <- paste(ref, sep = "", collapse = "
+
+
+")
+      }
+    }
   }
   return(ref)
 }
@@ -1827,6 +1868,7 @@ theme_flextable_nmfstm <- function(x,
   x <- flextable::bold(x = x, bold = TRUE, part = "header")
   x <- flextable::align_text_col(x = x, align = "left", header = TRUE)
   x <- flextable::align_nottext_col(x = x, align = "right", header = TRUE)
+  x <- flextable::padding(x = x, padding = 0, part = "all") # Hremove all line spacing in a flextable
   x <- flextable::font(x = x, fontname = font, part = "all")
   x <- flextable::fontsize(x = x, size = body_size, part = "body")
   x <- flextable::fontsize(x = x, size = header_size, part = "header")
