@@ -25,7 +25,8 @@ Reference a figure, table, or equation with an anchored tag
 }
 \examples{
 list_figures <- c()
-pp <- plot(x = 1, y = 1)
+table_raw <- data.frame(x = 1, y = 1)
+pp <- plot(x = table_raw$x, y = table_raw$y)
 list_figures <- NMFSReports::save_figures(
    figure = pp,
    list_figures = list_figures,

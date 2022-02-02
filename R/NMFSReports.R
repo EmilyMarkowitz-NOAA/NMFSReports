@@ -1706,7 +1706,8 @@ save_equations<-function(equation,
 #' @export
 #' @examples
 #' list_figures <- c()
-#' pp <- plot(x = 1, y = 1)
+#' table_raw <- data.frame(x = 1, y = 1)
+#' pp <- plot(x = table_raw$x, y = table_raw$y)
 #' list_figures <- NMFSReports::save_figures(
 #'    figure = pp,
 #'    list_figures = list_figures,
@@ -1768,11 +1769,11 @@ crossref <- function(list_obj,
       if (grepl(nickname0[i], pattern = "*", fixed = TRUE)) {  # if the name uses a wildcard
         nickname <- c(nickname,
                       names(list_obj)[grepl(pattern = utils::glob2rx(nickname0[i]),
-                                          x = names(list_obj))])
+                                            x = names(list_obj))])
       } else { # if there is no wildcard character
         nickname <- c(nickname,
                       names(list_obj)[grepl(pattern = (nickname0[i]),
-                                          x = names(list_obj))])
+                                            x = names(list_obj))])
       }
     }
   }
@@ -1792,14 +1793,19 @@ crossref <- function(list_obj,
   } else if (sublist == "res") {
     if(text) {
       if (exact) {
-        sapply(list_obj[grepl(x = names(list_obj), pattern = nickname0)],"[[","res")
+        sapply(list_obj[grepl(x = names(list_obj), pattern = nickname0)],"[[", sublist)
       } else {
         ref <- paste(ref, sep = "", collapse = "
-
 
 ")
       }
     }
+  } else if (sublist == "raw") {
+    ref <- ref#sapply(list_obj[grepl(x = names(list_obj), pattern = nickname0)],"[[", sublist)
+    if (length(ref)==1) {
+      ref <- ref[[1]]
+    }
+
   }
   return(ref)
 }
@@ -1825,7 +1831,8 @@ crossref <- function(list_obj,
 #' @param font String. Default = "Times New Roman". Instead, you may want "Arial".
 #' @param body_size Numeric. default = 11.
 #' @param header_size Numeric. default = 11.
-#' @param spacing table spacing. default = .5
+#' @param spacing table spacing. default = 1
+#' @param pad padding around each element. default = 0.1
 #' @family functions related to themes
 #' @examples
 #' ft <- flextable::flextable(head(airquality))
@@ -1840,7 +1847,8 @@ theme_flextable_nmfstm <- function(x,
                                    body_size = 11,
                                    header_size = 11,
                                    font = "Times New Roman",
-                                   spacing = .9) {
+                                   spacing = 1,
+                                   pad = 0.1) {
 
   if (!inherits(x, "flextable")) {
     stop("theme_flextable_nmfstm supports only flextable objects.")
@@ -1868,7 +1876,7 @@ theme_flextable_nmfstm <- function(x,
   x <- flextable::bold(x = x, bold = TRUE, part = "header")
   x <- flextable::align_text_col(x = x, align = "left", header = TRUE)
   x <- flextable::align_nottext_col(x = x, align = "right", header = TRUE)
-  x <- flextable::padding(x = x, padding = 0, part = "all") # Hremove all line spacing in a flextable
+  x <- flextable::padding(x = x, padding = pad, part = "all") # remove all line spacing in a flextable
   x <- flextable::font(x = x, fontname = font, part = "all")
   x <- flextable::fontsize(x = x, size = body_size, part = "body")
   x <- flextable::fontsize(x = x, size = header_size, part = "header")
