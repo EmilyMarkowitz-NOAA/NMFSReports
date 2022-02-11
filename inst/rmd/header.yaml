@@ -2,4 +2,16 @@
 link-citations: true
 reference-section-title: References
 fig_caption: false
+# keywords:
+#   - one
+#   - two
+# knit: (
+#   function(inputFile, encoding) {
+#     markdown::render(
+#       input = inputFile,
+#       encoding = encoding,
+#       output_file = "rmd_output.docx"
+#     ); doconv::docx2pdf("rmd_output.docx")
+#   }
+# )
 ---

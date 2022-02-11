@@ -64,6 +64,13 @@ buildReport<-function(
   # Now... Load those folders with stuff you care about
 
   ################## RMD scripts
+
+  # Add figtab
+  file.copy(from = system.file("rmd", "0_figtab.Rmd", package="NMFSReports"),
+            to = "./code/0_figtab.Rmd",
+            overwrite = T)
+
+  # add other files
   a <- list.files(path = system.file("rmd", package="NMFSReports"), pattern = "0_")
   b <- c("example", sections)
   if (!(is.null(styles_reference_pptx))) {
@@ -221,6 +228,7 @@ buildReport<-function(
 
   # INSERT_SECTIONS
   b <- list.files(path = "./code/", pattern = ".Rmd") # find the files that are already there
+  b <- b[b != "0_figtab.Rmd"]
   bb <- strsplit(x = b, split = "_")
   sections_no <- unlist(lapply(bb, `[[`, 1))
   bb <- strsplit(x = b, split = "[0-9]+_")
@@ -519,22 +527,31 @@ tolower2<-function(str0,
 #' This function alows you to take a string of words and combine them into a sentance list. For example, 'apples', 'oranges', 'pears' would become 'apples, oranges, and pears'. This function uses oxford commas.
 #' @param x Character strings you want in your string.
 #' @param oxford T/F: would you like to use an oxford comma? Default = TRUE
-#' @param sep string. default = "," but ";" might be what you need!
+#' @param sep string. default = ", " but "; " or " " might be what you need!
+#' @param sep_last string. default = " and " but " & " or " , " might be what you need!
 #' @keywords strings
 #' @export
-#' @examples text_list(c(1,2,"hello",4,"world",6))
-text_list<-function(x, oxford = TRUE, sep = ",") {
+#' @examples
+#' text_list(c(1,2,"hello",4,"world",6))
+#' text_list(c(1,"world"))
+#' text_list(c(1,2,"hello",4,"world",6), oxford = FALSE)
+#' paste0("here is a list of things: ",
+#'   text_list(paste0("list", 1:5), sep = " ", sep_last = ""))
+text_list<-function(x = "",
+                    oxford = TRUE,
+                    sep = ", ",
+                    sep_last = "and ") {
   x<-x[which(x!="")]
   # x<-x[which(!is.null(x))]
   x<-x[which(!is.na(x))]
   # x<-x[order(x)]
   if (length(x)==2) {
-    str1<-paste(x, collapse = " and ")
+    str1<-paste(x, collapse = paste0(" ", sep_last))
   } else if (length(x)>2) {
-    str1<-paste(x[1:(length(x)-1)], collapse = paste0(sep, " "))
+    str1<-paste(x[1:(length(x)-1)], collapse = paste0(sep))
     str1<-paste0(str1,
-                 ifelse(oxford == TRUE, sep, ""),
-                 " and ", x[length(x)])
+                 ifelse(oxford == TRUE, sep, " "),
+                 sep_last, x[length(x)])
   } else {
     str1<-x
   }
@@ -1199,6 +1216,69 @@ format_cells <- function(dat, rows, cols, fonttype) {
   return(dat)
 }
 
+#' Find a range of numbers for text
+#'
+#' This function outputs the range of values (broken or continuous) as you would want to display it in text.
+#'
+#' @param x A numeric vector of any length. Any duplicates will be removed.
+#' @param dash A string that will go between consecutive values in the string output.
+#' @param oxford Default = TRUE. Will only be used if the vector x provided is not continuous. Inherited from NMFSReports::text_list().
+#' @param sep Default = ", ". Will only be used if the vector x provided is not continuous. Inherited from NMFSReports::text_list().
+#' @param sep_last Default = "and ". Will only be used if the vector x provided is not continuous. Inherited from NMFSReports::text_list().
+#'
+#' @return A string with the range of those values as might be included in a sentence ("1-3, 5, and 7-8").
+#' @export
+#'
+#' @examples
+#' # a typical example
+#' x <- c(2003:2005, 2007, 2010:2012)
+#' range_text(x)
+#' # example has duplicate values out of order and specifies for a different dash and no oxford comma
+#' x <- c(1,2,11,3,4,7,NA,8,3)
+#' range_text(x, dash = "--", oxford = FALSE)
+range_text <- function(x,
+                       dash = "-",
+                       oxford = TRUE,
+                       sep = ", ",
+                       sep_last = "and ") {
+  x <- x[!(is.na(x))]
+  x <- x[!duplicated(x)]
+  x <- sort(x)
+  y <- min(x):max(x)
+  z <- setdiff(y, x)
+  if (length(z)>0) { # if x is not continuous
+    # https://stat.ethz.ch/pipermail/r-help/2010-April/237031.html
+    vec <- y
+    vec[(vec %in% z)] <- NA
+
+    # remove consecutive NAs
+    foo <- function( x ){
+      idx <- 1 + cumsum( is.na( x ) )
+      not.na <- ! is.na( x )
+      split( x[not.na], idx[not.na] )
+    }
+    ls <- foo(vec)
+
+    str <- c()
+    for (i in 1:length(ls)) {
+      a <- ls[i][[1]]
+      if (length(a) == 1){
+        str <- c(str, paste0(a))
+      } else {
+        str <- c(str, paste0(min(a),dash,max(a)))
+      }
+    }
+    str <- NMFSReports::text_list(x = str,
+                                  oxford = oxford,
+                                  sep = sep,
+                                  sep_last = sep_last)
+  } else {
+    str <- paste0(min(x),dash,max(x))
+  }
+  return(str)
+}
+
+
 ######## FILE ORGANIZATION #########
 
 #' Make numbers the same length preceeded by 0s
@@ -1322,7 +1402,7 @@ save_figures<-function(figure,
 
   # Title
   header<-trimws(header)
-  header<-paste0(type, " ",cnt,". ",
+  header<-paste0(type, " [",cnt,"](){#",nickname,"}. ",
                  ifelse(substr(x = header,
                                start = nchar(header),
                                stop = nchar(header)) %in%
@@ -1333,7 +1413,8 @@ save_figures<-function(figure,
                   header,
                   paste0(header, paste(paste0("^[", footnotes, "]"),
                                        collapse = " ^,^ ")))
-  filename00<-paste0(filename0, cnt_chapt_content, "_fig_",cnt,
+  filename00<-paste0(#filename0,
+    cnt_chapt_content, "_fig_",cnt,
                      ifelse(filename_desc!="", paste0("_", filename_desc), ""))
 
   # Save
@@ -1360,7 +1441,7 @@ save_figures<-function(figure,
                              file = paste0(path, filename00,
                                            ".csv"),
                              sep = ",",
-                             row.names=FALSE, col.names = F, append = F)
+                             row.names=FALSE, col.names = TRUE, append = F)
         # }
       } else {
         raw <- ""
@@ -1463,7 +1544,7 @@ save_tables<-function(table_raw = NULL,
   # Title
   header<-trimws(header)
   # header<-stringr::str_to_sentence(header)
-  header<-paste0(type, " ",cnt,". ",
+  header<-paste0(type, " [",cnt,"](){#",nickname,"}. ",
                  ifelse(substr(x = header,
                                start = nchar(header),
                                stop = nchar(header)) %in%
@@ -1474,7 +1555,8 @@ save_tables<-function(table_raw = NULL,
                   header,
                   paste0(header, paste(paste0("^[", footnotes, "]"),
                                        collapse = " ^,^ ")))
-  filename00<-paste0(filename0, cnt_chapt_content, "_tab_",cnt,
+  filename00<-paste0(#filename0,
+                     cnt_chapt_content, "_tab_",cnt,
                      ifelse(filename_desc!="", paste0("_", filename_desc), ""))
   # Save
   if (!is.null(path)){
@@ -1488,7 +1570,7 @@ save_tables<-function(table_raw = NULL,
                            file = paste0(path, filename00,
                                          "_raw.", output_type[i]),
                            sep = ",",
-                           row.names=FALSE, col.names = F, append = F)
+                           row.names=FALSE, col.names = TRUE, append = F)
       }
     } else {
       table_raw <- ""
@@ -1588,7 +1670,7 @@ save_equations<-function(equation,
   # Title
   header<-trimws(header)
   # header<-stringr::str_to_sentence(header)
-  header<-paste0(type, " ",cnt,". ",
+  header<-paste0(type, " [",cnt,"](){#",nickname,"}. ",
                  ifelse(substr(x = header,
                                start = nchar(header),
                                stop = nchar(header)) %in%
@@ -1613,49 +1695,124 @@ save_equations<-function(equation,
   return(list_equations )
 }
 
-#' Reference a figure, table, or equation (or other list elements!)
+#' Reference a figure, table, or equation with an anchored tag
 #'
 #' @param list_obj A list object created by list_figures or list_tables.
 #' @param nickname A unique string that is used to identify the plot or table in list_figures or list_tables, respectively.
 #' @param sublist A string of the sublist in list_figures or list_tables you want the contents returned from.
+#' @param exact T/F. If TRUE, 'nickname' must match the name of the list item exactly. If FALSE, crossref will return all entries with that string fragment. Default = TRUE.
+#' @param text T/F. If TRUE, will output results prepared for a text output. If FALSE, will output each element. Default = TRUE.
 #' @return The item in the list.
 #' @export
 #' @examples
 #' list_figures <- c()
-#' pp <- plot(x = 1, y = 1)
+#' table_raw <- data.frame(x = 1, y = 1)
+#' pp <- plot(x = table_raw$x, y = table_raw$y)
 #' list_figures <- NMFSReports::save_figures(
 #'    figure = pp,
 #'    list_figures = list_figures,
 #'    header = "blah blah blah",
-#'    nickname = "example_figure", # a unique name you can refer back to
+#'    nickname = "example_1", # a unique name you can refer back to
 #'    cnt_chapt_content = "003",
 #'    cnt = "012")
 #' list_figures <- NMFSReports::save_figures(
 #'    figure = pp,
 #'    list_figures = list_figures,
 #'    header = "blah blah blah",
-#'    nickname = "example_figure_other", # a unique name you can refer back to
+#'    nickname = "example2", # a unique name you can refer back to
 #'    cnt_chapt_content = "003",
 #'    cnt = "013")
 #' list_figures
-#' refnum <- NMFSReports::crossref(
+#' refnum <- crossref(
 #'    list_obj = list_figures,
-#'    nickname = "example_figure",
+#'    nickname = "example_1",
 #'    sublist = "number")
+#' refnum
+#' print(paste0("Please refer to figure ", refnum,
+#'              " to see this figure, not the other figure."))
+#' # example using a partial phrase with `exact = FALSE`
+#' crossref(
+#'    list_obj = list_figures,
+#'    nickname = "example_",
+#'    sublist = "number",
+#'    exact = FALSE)
+#' # using a wildard with `exact = FALSE`
+#' crossref(
+#'  list_obj = list_figures,
+#'  nickname = "example*1",
+#'  sublist = "number",
+#'  exact = FALSE)
+#' crossref(
+#'  list_obj = list_figures,
+#'  nickname = "example*",
+#'  sublist = "number",
+#'  exact = FALSE,
+#'  text = FALSE)
+#' refnum <- crossref(
+#'  list_obj = list_figures,
+#'  nickname = "example*",
+#'  sublist = "number",
+#'  exact = FALSE,
+#'  text = TRUE)
 #' refnum
 #' print(paste0("Please refer to figure ", refnum,
 #'              " to see this figure, not the other figure."))
 crossref <- function(list_obj,
                      nickname,
-                     sublist = "number"){
-  ref <- list_obj[which(lapply(list_obj, `[[`, "nickname") %in% nickname)][[1]][sublist]
+                     sublist = "number",
+                     exact = TRUE,
+                     text = TRUE){
+  nickname0<-nickname
+  if (!exact) {
+    nickname <- c()
+    for (i in 1:length(nickname0)){
+      if (grepl(nickname0[i], pattern = "*", fixed = TRUE)) {  # if the name uses a wildcard
+        nickname <- c(nickname,
+                      names(list_obj)[grepl(pattern = utils::glob2rx(nickname0[i]),
+                                            x = names(list_obj))])
+      } else { # if there is no wildcard character
+        nickname <- c(nickname,
+                      names(list_obj)[grepl(pattern = (nickname0[i]),
+                                            x = names(list_obj))])
+      }
+    }
+  }
+  # ref <- list_obj[which(lapply(list_obj, `[[`, "nickname") %in% nickname)][[1]][sublist]
+  ref <- lapply(list_obj[names(list_obj) %in% nickname], `[[`, sublist)
+
   if (sublist == "number") {
-    ref<-as.character(ref)
+    # ref<-as.character(ref)
+    ref<-paste0("[", ref, "](#", nickname, ")")
+    if (text) {
+      # setdiff()
+      if (length(ref)>5) {
+        ref <- paste0(ref[1], " to ", ref[length(ref)])
+      } else {
+        ref <- NMFSReports::text_list(ref)
+      }
+    }
+  } else if (sublist == "res") {
+    if(text) {
+      if (exact) {
+        # TOLEDO ref was missing here?
+        ref <- sapply(list_obj[grepl(x = names(list_obj), pattern = nickname0)],"[[", sublist)
+      } else {
+        ref <- paste(ref, sep = "", collapse = "
+
+")
+      }
+    }
+  } else if (sublist == "raw") {
+    ref <- ref#sapply(list_obj[grepl(x = names(list_obj), pattern = nickname0)],"[[", sublist)
+    if (length(ref)==1) {
+      ref <- ref[[1]]
+    }
+
   }
   return(ref)
 }
 
-ref_listobject<-crossref
+# ref_listobject<-crossref
 
 
 # Adapted from flextable::theme_vanilla()
@@ -1676,7 +1833,8 @@ ref_listobject<-crossref
 #' @param font String. Default = "Times New Roman". Instead, you may want "Arial".
 #' @param body_size Numeric. default = 11.
 #' @param header_size Numeric. default = 11.
-#' @param spacing table spacing. default = .5
+#' @param spacing table spacing. default = 1
+#' @param pad padding around each element. default = 0.1
 #' @family functions related to themes
 #' @examples
 #' ft <- flextable::flextable(head(airquality))
@@ -1691,7 +1849,8 @@ theme_flextable_nmfstm <- function(x,
                                    body_size = 11,
                                    header_size = 11,
                                    font = "Times New Roman",
-                                   spacing = .9) {
+                                   spacing = 1,
+                                   pad = 0.1) {
 
   if (!inherits(x, "flextable")) {
     stop("theme_flextable_nmfstm supports only flextable objects.")
@@ -1719,6 +1878,7 @@ theme_flextable_nmfstm <- function(x,
   x <- flextable::bold(x = x, bold = TRUE, part = "header")
   x <- flextable::align_text_col(x = x, align = "left", header = TRUE)
   x <- flextable::align_nottext_col(x = x, align = "right", header = TRUE)
+  x <- flextable::padding(x = x, padding = pad, part = "all") # remove all line spacing in a flextable
   x <- flextable::font(x = x, fontname = font, part = "all")
   x <- flextable::fontsize(x = x, size = body_size, part = "body")
   x <- flextable::fontsize(x = x, size = header_size, part = "header")

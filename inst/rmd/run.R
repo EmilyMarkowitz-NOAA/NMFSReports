@@ -32,22 +32,29 @@ indesign_flowin <- FALSE
 # googledrive::drive_auth()
 # 1
 
+# RUN FIGURES, TABLES, & EQUATIONS FOR REPORT ----------------------------------
+
+if (FALSE) {
+  cnt_chapt_content<-"000"
+  filename0<-paste0(cnt_chapt, "_")
+  rmarkdown::render(paste0(dir_code, "/0_figtab.Rmd"),
+                    output_dir = dir_out_ref,
+                    output_file = paste0(filename0, cnt_chapt_content, ".docx"))
+
+  save(list_figures, file=paste0(dir_out_figures, "/report_figures.rdata"))
+  save(list_tables, file=paste0(dir_out_tables, "/report_tables.rdata"))
+  save(list_equations, file=paste0(dir_out_tables, "/report_equations.rdata"))
+}
+
+load(file = paste0(dir_out_figures, "/report_figures.rdata"))
+load(file = paste0(dir_out_tables, "/report_tables.rdata"))
+load(file = paste0(list_equations, "/report_equations.rdata"))
+
 # RUN EACH REPORT SECTION ------------------------------------------------------
 
 # *** RUN EACH REPORT SECTION --------------------------------------------------
 
 # INSERT_SECTIONS
-
-# SAVE OTHER OUTPUTS -----------------------------------------------------------
-
-save(list_figures,
-     file=paste0(dir_out_figures, "/report_figures.rdata"))
-
-save(list_tables,
-     file=paste0(dir_out_tables, "/report_tables.rdata"))
-
-save(list_equations,
-     file=paste0(dir_out_tables, "/report_equations.rdata"))
 
 # MAKE MASTER DOCX -------------------------------------------------------------
 

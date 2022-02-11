@@ -73,6 +73,7 @@ reference:
       - '`xunits`'
       - '`xunitspct`'
       - '`stndth`'
+      - '`range_text`'
   - title: File and Content Organization
     contents:
       - '`auto_counter`'

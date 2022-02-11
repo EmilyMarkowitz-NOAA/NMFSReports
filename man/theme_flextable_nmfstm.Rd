@@ -11,7 +11,8 @@ theme_flextable_nmfstm(
   body_size = 11,
   header_size = 11,
   font = "Times New Roman",
-  spacing = 0.9
+  spacing = 1,
+  pad = 0.1
 )
 }
 \arguments{
@@ -27,7 +28,9 @@ theme_flextable_nmfstm(
 
 \item{font}{String. Default = "Times New Roman". Instead, you may want "Arial".}
 
-\item{spacing}{table spacing. default = .5}
+\item{spacing}{table spacing. default = 1}
+
+\item{pad}{padding around each element. default = 0.1}
 }
 \description{
 Apply theme vanilla to a flextable:

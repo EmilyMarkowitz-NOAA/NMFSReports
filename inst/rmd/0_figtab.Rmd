@@ -1,0 +1,71 @@
+---
+output:
+  word_document:
+    pandoc_args: ["--metadata-file=header.yaml"]
+    reference_docx: styles_reference.docx
+    df_print: kable
+csl: "../cite/citestyle.csl"
+bibliography: "../cite/bibliography.bib"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, error = FALSE, message = FALSE)
+```
+
+# Example figures and tables
+
+## fig_example
+
+```{r fig_example}
+header <- "Example figure. "
+nickname <- "fig_example"
+width <- 6
+height <- 6
+
+figure <- ggplot2::ggplot(mapping = aes(x = x, y = y),
+                      data = data.frame(x = 1, y = 1)) + 
+  ggplot2::geom_point()
+
+# save figure
+res <- knitr::knit_child(
+  text = knitr::knit_expand(
+    file = system.file("rmd/_child_save_fig.Rmd", 
+                       package = "NMFSReports")), 
+  quiet = TRUE
+)
+
+list_figures[nickname][[1]]$res <- res <- paste0("
+
+",res,"
+
+")
+
+```
+
+## tab_example
+
+```{r tab_stratum_areas}
+header <- "Example table. "
+nickname <- "tab_example" 
+
+table_raw <- data.frame(x = 1, y = 1)
+
+table_print <- flextable::flextable(table_raw)
+table_print <- NMFSReports::theme_flextable_nmfstm(table_print)
+
+# save table
+res <- knitr::knit_child(
+  text = knitr::knit_expand(
+    file = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")), 
+  quiet = TRUE
+)
+
+list_tables[nickname][[1]]$res <- res <- paste0("
+
+",res,"
+
+")
+
+```
+

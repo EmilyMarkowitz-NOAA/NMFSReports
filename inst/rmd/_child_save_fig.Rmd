@@ -24,6 +24,13 @@ if (!(exists("table_raw"))) {
   table_raw <- NULL
 }
 
+if (!exists("cnt_pre")) {
+  cnt_pre <- ""
+# } else {
+#   cnt_pre <- paste0(cnt_pre, " ")
+}
+
+
 # Systematically save your plot with this function
 list_figures<-NMFSReports::save_figures(
   figure = figure, 
@@ -38,13 +45,14 @@ list_figures<-NMFSReports::save_figures(
   cnt_chapt_content = ifelse(exists("cnt_chapt_content", mode = "character"), cnt_chapt_content, "001"), 
   width = ifelse(exists("width", mode = "numeric"), width, 6), 
   height = ifelse(exists("height", mode = "numeric"), height, 6),
-  cnt = paste0(cnt_figures, cnt_figures_sub), 
+  cnt = paste0(cnt_pre, cnt_figures, cnt_figures_sub), 
   path = dir_out_figures)
 
 ```
 
+```{r, echo = FALSE, fig.alt = list_figures[[length(list_figures)]]$alttext, fig.scap = list_figures[[length(list_figures)]]$alttext, fig.align = 'center'}
 
-```{r, echo = FALSE, fig.cap=ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext,  list_figures[[length(list_figures)]]$header), fig.align='center'}
+# fig.cap = ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext, paste0("\n#### *", list_figures[[length(list_figures)]]$header, "*")), 
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
@@ -81,7 +89,7 @@ if (indesign_flowin %in% FALSE) {
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
 remove_who0 <- c("figure", "table_raw", "header", "footnotes", "subobj", "newobj", #"nickname", 
-                 "filename_desc", "alttext", "width", "height")
+                 "filename_desc", "alttext", "width", "height", "cnt_pre")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i]) & !exists(remove_who0[i], mode = "function")){
     remove_who <- c(remove_who, remove_who0[i])
@@ -93,6 +101,10 @@ remove(list = remove_who)
 
 </br>
 
+<!-- caption -->
+`r ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext, paste0("#### *", list_figures[[length(list_figures)]]$header, "*")) `
+
+<!-- alt text -->
 `r if(indesign_flowin %in% FALSE & (list_figures[[length(list_figures)]]$alttext)!="") { paste0("*Alternative text: ", list_figures[[length(list_figures)]]$alttext, "*") } `
 
 </br>

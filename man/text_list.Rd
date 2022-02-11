@@ -4,19 +4,25 @@
 \alias{text_list}
 \title{Takes a string of words and combines them into a sentance that lists them.}
 \usage{
-text_list(x, oxford = TRUE, sep = ",")
+text_list(x = "", oxford = TRUE, sep = ", ", sep_last = "and ")
 }
 \arguments{
 \item{x}{Character strings you want in your string.}
 
 \item{oxford}{T/F: would you like to use an oxford comma? Default = TRUE}
 
-\item{sep}{string. default = "," but ";" might be what you need!}
+\item{sep}{string. default = ", " but "; " or " " might be what you need!}
+
+\item{sep_last}{string. default = " and " but " & " or " , " might be what you need!}
 }
 \description{
 This function alows you to take a string of words and combine them into a sentance list. For example, 'apples', 'oranges', 'pears' would become 'apples, oranges, and pears'. This function uses oxford commas.
 }
 \examples{
 text_list(c(1,2,"hello",4,"world",6))
+text_list(c(1,"world"))
+text_list(c(1,2,"hello",4,"world",6), oxford = FALSE)
+paste0("here is a list of things: ",
+  text_list(paste0("list", 1:5), sep = " ", sep_last = ""))
 }
 \keyword{strings}

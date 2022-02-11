@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.2</span>
       </span>
     </div>
 
@@ -179,7 +179,7 @@
     <p>This function alows you to take a string of words and combine them into a sentance list. For example, 'apples', 'oranges', 'pears' would become 'apples, oranges, and pears'. This function uses oxford commas.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>text_list</span>(<span class='no'>x</span>, <span class='kw'>oxford</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>","</span>)</pre>
+    <pre class="usage"><span class='fu'>text_list</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>oxford</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>sep_last</span> <span class='kw'>=</span> <span class='st'>"and "</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,13 +194,18 @@
     </tr>
     <tr>
       <th>sep</th>
-      <td><p>string. default = "," but ";" might be what you need!</p></td>
+      <td><p>string. default = ", " but "; " or " " might be what you need!</p></td>
+    </tr>
+    <tr>
+      <th>sep_last</th>
+      <td><p>string. default = " and " but " &amp; " or " , " might be what you need!</p></td>
     </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>text_list</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='st'>"hello"</span>,<span class='fl'>4</span>,<span class='st'>"world"</span>,<span class='fl'>6</span>))</div><div class='output co'>#&gt; [1] "1, 2, hello, 4, world, and 6"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>text_list</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='st'>"hello"</span>,<span class='fl'>4</span>,<span class='st'>"world"</span>,<span class='fl'>6</span>))</div><div class='output co'>#&gt; [1] "1, 2, hello, 4, world, and 6"</div><div class='input'><span class='fu'>text_list</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='st'>"world"</span>))</div><div class='output co'>#&gt; [1] "1 and world"</div><div class='input'><span class='fu'>text_list</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='st'>"hello"</span>,<span class='fl'>4</span>,<span class='st'>"world"</span>,<span class='fl'>6</span>), <span class='kw'>oxford</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "1, 2, hello, 4, world and 6"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"here is a list of things: "</span>,
+  <span class='fu'>text_list</span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"list"</span>, <span class='fl'>1</span>:<span class='fl'>5</span>), <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>" "</span>, <span class='kw'>sep_last</span> <span class='kw'>=</span> <span class='st'>""</span>))</div><div class='output co'>#&gt; [1] "here is a list of things: list1 list2 list3 list4 list5"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

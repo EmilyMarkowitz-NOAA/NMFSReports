@@ -27,6 +27,12 @@ if (!(exists("table_raw"))) {
   table_print <- NULL
 }
 
+if (!exists("cnt_pre")) {
+  cnt_pre <- ""
+# } else {
+#   cnt_pre <- paste0(cnt_pre, " ")
+}
+
 # Systematically save your table with this function
 list_tables<-NMFSReports::save_tables(
   table_raw = table_raw, 
@@ -39,7 +45,7 @@ list_tables<-NMFSReports::save_tables(
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, nickname),  
   cnt_chapt_content = ifelse(exists("cnt_chapt_content", mode = "character"), cnt_chapt_content, "001"), 
-  cnt = paste0(cnt_tables, cnt_tables_sub), 
+  cnt = paste0(cnt_pre, cnt_tables, cnt_tables_sub), 
   path = dir_out_tables)
 
 ```
@@ -62,7 +68,15 @@ if (indesign_flowin %in% FALSE) {
       list_tables[[length(list_tables)]]$print %>% 
         knitr::kable(row.names = FALSE, booktabs = TRUE)
     } else {
-      list_tables[[length(list_tables)]]$print
+      # list_tables[[length(list_tables)]]$print
+      aaa <- list_tables[[length(list_tables)]]$print
+      if (names(list_tables[[length(list_tables)]]$print)[1]=="header") {
+        list_tables[[length(list_tables)]]$print
+      } else {
+        for (iii in 1:length(aaa)) { 
+          print(list_tables[[length(list_tables)]]$print[[iii]])
+        }
+      }
     }
   } else {
     if ((class(table_print) %in% c("data.frame", "matrix"))) {
@@ -86,7 +100,7 @@ if (indesign_flowin %in% FALSE) {
 remove_who <- c()
 remove_who0 <- c("header", "footnotes", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext", 
-                 "table_raw", "table_print")
+                 "table_raw", "table_print", "cnt_pre")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i]) & !exists(remove_who0[i], mode = "function")){
     remove_who <- c(remove_who, remove_who0[i])
