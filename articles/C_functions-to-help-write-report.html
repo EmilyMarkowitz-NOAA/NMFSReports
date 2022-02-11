@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.2</span>
       </span>
     </div>
 
@@ -132,7 +132,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Functions and examples to help you write your report</h1>
             
-            <h4 data-toc-skip class="date">December 16 2021</h4>
+            <h4 data-toc-skip class="date">February 11 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/HEAD/vignettes/C_functions-to-help-write-report.Rmd" class="external-link"><code>vignettes/C_functions-to-help-write-report.Rmd</code></a></small>
       <div class="hidden name"><code>C_functions-to-help-write-report.Rmd</code></div>
@@ -141,9 +141,9 @@
 
     
     
-<div class="section level2">
-<h2 id="load-libraries">Load Libraries<a class="anchor" aria-label="anchor" href="#load-libraries"></a>
-</h2>
+<div class="section level3">
+<h3 id="load-libraries">Load Libraries<a class="anchor" aria-label="anchor" href="#load-libraries"></a>
+</h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/" class="external-link">NMFSReports</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span>
@@ -153,9 +153,9 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/magick/" class="external-link">magick</a></span><span class="op">)</span></code></pre></div>
 <p>This file is essentially the example file included in the <code><a href="../reference/buildReport.html">buildReport()</a></code> function. The <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/vignettes/C_functions-to-help-write-report.Rmd" class="external-link">raw vignette script for this can be found here</a> and the <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/inst/rmd/0_example.Rmd" class="external-link">example script can be found here</a>.</p>
 </div>
-<div class="section level2">
-<h2 id="from-run-file">From run file:<a class="anchor" aria-label="anchor" href="#from-run-file"></a>
-</h2>
+<div class="section level3">
+<h3 id="from-run-file">From run file:<a class="anchor" aria-label="anchor" href="#from-run-file"></a>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cnt_chapt</span> <span class="op">&lt;-</span> <span class="st">"000"</span> <span class="co"># Keep everything in a proper order</span>
 <span class="va">cnt_chapt_content</span> <span class="op">&lt;-</span> <span class="fl">0</span>
@@ -169,9 +169,9 @@
 <span class="va">filename0</span><span class="op">&lt;-</span><span class="st">"example"</span>
 <span class="va">indesign_flowin</span><span class="op">&lt;-</span><span class="cn">FALSE</span> <span class="co"># not going into a final publication that requires indesign for final touches</span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="example-of-how-to-use-this-r-markdown-document">Example of how to use this R Markdown document<a class="anchor" aria-label="anchor" href="#example-of-how-to-use-this-r-markdown-document"></a>
-</h1>
+<div class="section level2">
+<h2 id="example-of-how-to-use-this-r-markdown-document">Example of how to use this R Markdown document<a class="anchor" aria-label="anchor" href="#example-of-how-to-use-this-r-markdown-document"></a>
+</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># example data</span>
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>, 
@@ -182,16 +182,16 @@
 
 <span class="va">types_of_vessels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"NOAA Vessel"</span>, <span class="st">"F/V Fishing Boat"</span>, <span class="st">"R/V University Vessel"</span>, <span class="st">"Private Charter"</span><span class="op">)</span></code></pre></div>
 <p>Here is the report content:</p>
-<div class="section level2">
-<h2 id="systematic-writing-of-content">Systematic writing of content<a class="anchor" aria-label="anchor" href="#systematic-writing-of-content"></a>
-</h2>
+<div class="section level3">
+<h3 id="systematic-writing-of-content">Systematic writing of content<a class="anchor" aria-label="anchor" href="#systematic-writing-of-content"></a>
+</h3>
 <p>My example dataset has 100 rows in it and three columns in it.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>This sentence exemplifies how to systematically calculate a percent change: a 97% decrease<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
 <p>Here are several types of vessels: NOAA Vessel, F/V Fishing Boat, R/V University Vessel, and Private Charter.</p>
 </div>
-<div class="section level2">
-<h2 id="equations">Equations<a class="anchor" aria-label="anchor" href="#equations"></a>
-</h2>
+<div class="section level3">
+<h3 id="equations">Equations<a class="anchor" aria-label="anchor" href="#equations"></a>
+</h3>
 <p>Here is some equations you’ll need to have in this report:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">equation</span> <span class="op">=</span> <span class="st">"c^2 = b^2 + a^2"</span>
@@ -205,7 +205,7 @@
 <span class="co"># ```{r, child = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports")}</span>
 
 <span class="co"># ```</span></code></pre></div>
-<p>Equation 1. Pythagorean theorem.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>Equation <a href="" id="pythagorean">1</a>. Pythagorean theorem.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <p><span class="math display">\[c^2 = b^2 + a^2\]</span></p>
 <p><em>Alternative text: The Pythagoras theorem is a mathematical law that states that the sum of squares of the lengths of the two short sides of the right triangle is equal to the square of the length of the hypotenuse.</em></p>
 <p>[Text blah blah]</p>
@@ -222,20 +222,20 @@
   quiet <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span>
 <span class="co"># `r res `</span></code></pre></div>
-<p>Equation 2. Newton’s Universal Law of Gravitation.</p>
+<p>Equation <a href="" id="Newton">2</a>. Newton’s Universal Law of Gravitation.</p>
 <p><span class="math display">\[F = G \frac {m_1 m_2}{d^2}\]</span></p>
 <p><em>Alternative text: Newton’s Universal Law of Gravitation</em></p>
-<p>Remember the pythagorean theorem from before? That was Equation #1 and it had a footnote that said “footnote about how cool the pythagorean theorem is.”.</p>
+<p>Remember the pythagorean theorem from before? That was Equation #<a href="#pythagorean">1</a> and it had a footnote that said “footnote about how cool the pythagorean theorem is.”.</p>
 </div>
-<div class="section level2">
-<h2 id="citations">Citations<a class="anchor" aria-label="anchor" href="#citations"></a>
-</h2>
+<div class="section level3">
+<h3 id="citations">Citations<a class="anchor" aria-label="anchor" href="#citations"></a>
+</h3>
 <p>There are a lot of ways to cite within your report and here is an example of two: <span class="citation">(Fry 1957)</span> and <span class="citation">Arrhenius (1889)</span>. Checkout <a href="https://github.com/cboettig/knitcitations" class="external-link uri">https://github.com/cboettig/knitcitations</a> for more info! For this method, you’ll need a .bib file that will be used in the YAML of the RMarkdown document. If you are an EndNote, as I am, you can export .bib files using <a href="https://libguides.usask.ca/c.php?g=218034&amp;p=1458583" class="external-link">these guides</a>.</p>
 <p>Note that references will appear at the bottom of this document (and any document that you put references in) but when you combine this document with all of the other documents that you create, it will shift to the bottom of the report.</p>
 </div>
-<div class="section level2">
-<h2 id="example-figure-plot">Example Figure (Plot)<a class="anchor" aria-label="anchor" href="#example-figure-plot"></a>
-</h2>
+<div class="section level3">
+<h3 id="example-figure-plot">Example Figure (Plot)<a class="anchor" aria-label="anchor" href="#example-figure-plot"></a>
+</h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a figure!"</span>
 <span class="va">footnote</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A footnote for this figure!"</span>, <span class="st">"A second footnote for this figure!"</span><span class="op">)</span>
@@ -253,13 +253,20 @@
 <span class="co"># ```</span></code></pre></div>
 <pre><code><span class="co">#&gt; NULL</span></code></pre>
 <p></p>
+<!-- caption -->
+<div class="section level5">
+<h5 id="figure-1--here-is-a-figure">
+<em>Figure <a href="" id="ex_plot">1</a>. Here is a figure!</em><a class="anchor" aria-label="anchor" href="#figure-1--here-is-a-figure"></a>
+</h5>
+<!-- alt text -->
 <p><em>Alternative text: This is a scatter plot of random data.</em></p>
 <p></p>
-<p>Here in plot 1, we see that…</p>
+<p>Here in plot <a href="#ex_plot">1</a>, we see that…</p>
 </div>
-<div class="section level2">
-<h2 id="example-figure-reference-image">Example Figure (Reference Image)<a class="anchor" aria-label="anchor" href="#example-figure-reference-image"></a>
-</h2>
+</div>
+<div class="section level3">
+<h3 id="example-figure-reference-image">Example Figure (Reference Image)<a class="anchor" aria-label="anchor" href="#example-figure-reference-image"></a>
+</h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a figure!"</span>
@@ -283,13 +290,21 @@
 <span class="co"># `r res `</span></code></pre></div>
 <pre><code><span class="co">#&gt; NULL</span></code></pre>
 <p></p>
+<!-- caption -->
+<div class="section level5">
+<h5 id="figure-2--here-is-a-figure">
+<em>Figure <a href="" id="noaalogo">2</a>. Here is a figure!</em><a class="anchor" aria-label="anchor" href="#figure-2--here-is-a-figure"></a>
+</h5>
+<!-- alt text -->
 <p><em>Alternative text: The NOAA Meatball and text. </em></p>
 <p></p>
-<p>Here in figure 2, we see the NOAA logo.</p>
+<p>Here in figure <a href="#noaalogo">2</a>, we see the NOAA logo.</p>
 </div>
-<div class="section level2">
-<h2 id="example-table-basic">Example Table (Basic)<a class="anchor" aria-label="anchor" href="#example-table-basic"></a>
-</h2>
+</div>
+<div class="section level3">
+<h3 id="example-table-basic">Example Table (Basic)<a class="anchor" aria-label="anchor" href="#example-table-basic"></a>
+</h3>
+<p>Here, we use the function <code>theme_flextable_nmfstm</code> which mimics many of the NMFS report tech memo motifs.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a table!"</span>
@@ -319,11 +334,11 @@
 <span class="co"># alt: check out the "child = " in this chunk header (which must stay empty)</span>
 <span class="co"># ```{r, child = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")}</span>
 <span class="co"># ```</span></code></pre></div>
-<div class="section level4">
-<h4 id="table-1--here-is-a-table">Table 1. Here is a table!<a class="anchor" aria-label="anchor" href="#table-1--here-is-a-table"></a>
-</h4>
+<div class="section level5">
+<h5 id="table-1--here-is-a-table">Table <a href="" id="ex_table">1</a>. Here is a table!<a class="anchor" aria-label="anchor" href="#table-1--here-is-a-table"></a>
+</h5>
 <p></p>
-<template id="f5993c3c-4358-41e9-9c92-fa3b5985990d"><style>
+<template id="caf08ef9-2618-4413-8ff2-cd760adb175e"><style>
 .tabwid table{
   border-spacing:0px !important;
   border-collapse:collapse;
@@ -359,70 +374,70 @@ background-color: transparent;
 }
 </style>
 <div class="tabwid">
-<style>.cl-cec5c0d6{}.cl-cebc954c{font-family:'Times New Roman';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-cebc9592{font-family:'Times New Roman';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-cebcb1f8{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 0.9;background-color:transparent;}.cl-cebcfcd0{width:157.1pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cebcfcda{width:117.8pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cebcfcdb{width:117.8pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cebcfce4{width:157.1pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cebcfce5{width:157.1pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cebcfce6{width:117.8pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cebcfcee{width:117.8pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cebcfcef{width:157.1pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cebcfcf0{width:117.8pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 2pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cebcfcf1{width:157.1pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 2pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table class="table cl-cec5c0d6">
+<style>.cl-ec1343c6{}.cl-ec0a0bb2{font-family:'Times New Roman';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ec0a0bee{font-family:'Times New Roman';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ec0a28e0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:0.1pt;padding-top:0.1pt;padding-left:0.1pt;padding-right:0.1pt;line-height: 1;background-color:transparent;}.cl-ec0a7282{width:150.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a728c{width:177.8pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a7296{width:103.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a7297{width:103.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a7298{width:150.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a72a0{width:177.8pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a72a1{width:177.8pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a72a2{width:103.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a72aa{width:150.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a72ab{width:103.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a72ac{width:150.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a72b4{width:177.8pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a72b5{width:103.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 2pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a72b6{width:150.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 2pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ec0a72be{width:177.8pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 2pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table class="table cl-ec1343c6">
 <thead><tr style="overflow-wrap:break-word;">
-<td class="cl-cebcfcf0"><p class="cl-cebcb1f8"><span class="cl-cebc954c">col</span></p></td>
-<td class="cl-cebcfcf1"><p class="cl-cebcb1f8"><span class="cl-cebc954c">x</span></p></td>
-<td class="cl-cebcfcf1"><p class="cl-cebcb1f8"><span class="cl-cebc954c">y</span></p></td>
+<td class="cl-ec0a72b5"><p class="cl-ec0a28e0"><span class="cl-ec0a0bb2">col</span></p></td>
+<td class="cl-ec0a72b6"><p class="cl-ec0a28e0"><span class="cl-ec0a0bb2">x</span></p></td>
+<td class="cl-ec0a72be"><p class="cl-ec0a28e0"><span class="cl-ec0a0bb2">y</span></p></td>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-cebcfcda"><p class="cl-cebcb1f8"><span class="cl-cebc9592">A</span></p></td>
-<td class="cl-cebcfcd0"><p class="cl-cebcb1f8"><span class="cl-cebc9592">0.015</span></p></td>
-<td class="cl-cebcfcd0"><p class="cl-cebcb1f8"><span class="cl-cebc9592">-0.13</span></p></td>
+<td class="cl-ec0a7296"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">A</span></p></td>
+<td class="cl-ec0a7282"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">1.7</span></p></td>
+<td class="cl-ec0a728c"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">-0.53</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-cebcfce6"><p class="cl-cebcb1f8"><span class="cl-cebc9592">B</span></p></td>
-<td class="cl-cebcfce5"><p class="cl-cebcb1f8"><span class="cl-cebc9592">1.4</span></p></td>
-<td class="cl-cebcfce5"><p class="cl-cebcb1f8"><span class="cl-cebc9592">0.065</span></p></td>
+<td class="cl-ec0a72a2"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">B</span></p></td>
+<td class="cl-ec0a72aa"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">-0.7</span></p></td>
+<td class="cl-ec0a72a1"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">-0.19</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-cebcfcee"><p class="cl-cebcb1f8"><span class="cl-cebc9592">C</span></p></td>
-<td class="cl-cebcfcef"><p class="cl-cebcb1f8"><span class="cl-cebc9592">-1.9</span></p></td>
-<td class="cl-cebcfcef"><p class="cl-cebcb1f8"><span class="cl-cebc9592">1.8</span></p></td>
+<td class="cl-ec0a72ab"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">C</span></p></td>
+<td class="cl-ec0a72ac"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">-1.1</span></p></td>
+<td class="cl-ec0a72b4"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">-0.14</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-cebcfce6"><p class="cl-cebcb1f8"><span class="cl-cebc9592">D</span></p></td>
-<td class="cl-cebcfce5"><p class="cl-cebcb1f8"><span class="cl-cebc9592">-0.34</span></p></td>
-<td class="cl-cebcfce5"><p class="cl-cebcb1f8"><span class="cl-cebc9592">-0.27</span></p></td>
+<td class="cl-ec0a72a2"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">D</span></p></td>
+<td class="cl-ec0a72aa"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">-0.74</span></p></td>
+<td class="cl-ec0a72a1"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">0.46</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-cebcfce6"><p class="cl-cebcb1f8"><span class="cl-cebc9592">E</span></p></td>
-<td class="cl-cebcfce5"><p class="cl-cebcb1f8"><span class="cl-cebc9592">0.94</span></p></td>
-<td class="cl-cebcfce5"><p class="cl-cebcb1f8"><span class="cl-cebc9592">-0.48</span></p></td>
+<td class="cl-ec0a72a2"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">E</span></p></td>
+<td class="cl-ec0a72aa"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">-0.37</span></p></td>
+<td class="cl-ec0a72a1"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">-1.4</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-cebcfce6"><p class="cl-cebcb1f8"><span class="cl-cebc9592">F</span></p></td>
-<td class="cl-cebcfce5"><p class="cl-cebcb1f8"><span class="cl-cebc9592">0.038</span></p></td>
-<td class="cl-cebcfce5"><p class="cl-cebcb1f8"><span class="cl-cebc9592">-1.6</span></p></td>
+<td class="cl-ec0a72a2"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">F</span></p></td>
+<td class="cl-ec0a72aa"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">-1.1</span></p></td>
+<td class="cl-ec0a72a1"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">-0.014</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-cebcfcee"><p class="cl-cebcb1f8"><span class="cl-cebc9592">G</span></p></td>
-<td class="cl-cebcfcef"><p class="cl-cebcb1f8"><span class="cl-cebc9592">-0.47</span></p></td>
-<td class="cl-cebcfcef"><p class="cl-cebcb1f8"><span class="cl-cebc9592">0.53</span></p></td>
+<td class="cl-ec0a72ab"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">G</span></p></td>
+<td class="cl-ec0a72ac"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">2.4</span></p></td>
+<td class="cl-ec0a72b4"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">0.01</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-cebcfce6"><p class="cl-cebcb1f8"><span class="cl-cebc9592">H</span></p></td>
-<td class="cl-cebcfce5"><p class="cl-cebcb1f8"><span class="cl-cebc9592">2.3</span></p></td>
-<td class="cl-cebcfce5"><p class="cl-cebcb1f8"><span class="cl-cebc9592">-1.9</span></p></td>
+<td class="cl-ec0a72a2"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">H</span></p></td>
+<td class="cl-ec0a72aa"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">0.81</span></p></td>
+<td class="cl-ec0a72a1"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">0.55</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-cebcfce6"><p class="cl-cebcb1f8"><span class="cl-cebc9592">I</span></p></td>
-<td class="cl-cebcfce5"><p class="cl-cebcb1f8"><span class="cl-cebc9592">-1.1</span></p></td>
-<td class="cl-cebcfce5"><p class="cl-cebcb1f8"><span class="cl-cebc9592">1.4</span></p></td>
+<td class="cl-ec0a72a2"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">I</span></p></td>
+<td class="cl-ec0a72aa"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">1.1</span></p></td>
+<td class="cl-ec0a72a1"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">1.4</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-cebcfcdb"><p class="cl-cebcb1f8"><span class="cl-cebc9592">J</span></p></td>
-<td class="cl-cebcfce4"><p class="cl-cebcb1f8"><span class="cl-cebc9592">-0.24</span></p></td>
-<td class="cl-cebcfce4"><p class="cl-cebcb1f8"><span class="cl-cebc9592">-0.42</span></p></td>
+<td class="cl-ec0a7297"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">J</span></p></td>
+<td class="cl-ec0a7298"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">0.62</span></p></td>
+<td class="cl-ec0a72a0"><p class="cl-ec0a28e0"><span class="cl-ec0a0bee">-0.12</span></p></td>
 </tr>
 </tbody>
 </table>
-</div></template><div class="flextable-shadow-host" id="6ed2a938-e996-45fd-b180-c7e6b63184d4"></div>
+</div></template><div class="flextable-shadow-host" id="92c291fc-d1ed-4766-a011-8673c9a7f729"></div>
 <script>
-var dest = document.getElementById("6ed2a938-e996-45fd-b180-c7e6b63184d4");
-var template = document.getElementById("f5993c3c-4358-41e9-9c92-fa3b5985990d");
+var dest = document.getElementById("92c291fc-d1ed-4766-a011-8673c9a7f729");
+var template = document.getElementById("caf08ef9-2618-4413-8ff2-cd760adb175e");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -436,12 +451,12 @@ fantome.appendChild(templateContent);
 </script><p></p>
 <p><em>Alternative text: This is a 3-column table of random letters (in the first column) and numbers (in the second and third columns). </em></p>
 <p></p>
-<p>Here in table 1, we see that…</p>
+<p>Here in table <a href="#ex_table">1</a>, we see that…</p>
 </div>
 </div>
-<div class="section level2">
-<h2 id="example-table-with-footnotes">Example Table (With Footnotes)<a class="anchor" aria-label="anchor" href="#example-table-with-footnotes"></a>
-</h2>
+<div class="section level3">
+<h3 id="example-table-with-footnotes">Example Table (With Footnotes)<a class="anchor" aria-label="anchor" href="#example-table-with-footnotes"></a>
+</h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a table!"</span>
@@ -510,9 +525,9 @@ fantome.appendChild(templateContent);
   quiet <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span>
 <span class="co"># `r res `</span></code></pre></div>
-<div class="section level4">
-<h4 id="table-2--here-is-a-table">Table 2. Here is a table!<a class="anchor" aria-label="anchor" href="#table-2--here-is-a-table"></a>
-</h4>
+<div class="section level5">
+<h5 id="table-2--here-is-a-table">Table <a href="" id="ex_table_foot">2</a>. Here is a table!<a class="anchor" aria-label="anchor" href="#table-2--here-is-a-table"></a>
+</h5>
 <p></p>
 <table class="table">
 <thead><tr class="header">
@@ -523,69 +538,69 @@ fantome.appendChild(templateContent);
 <tbody>
 <tr class="odd">
 <td align="left">A</td>
-<td align="left">1.6</td>
-<td align="left">-1</td>
+<td align="left">-0.12</td>
+<td align="left">0.43</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
-<td align="left">-1.3<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> <sup>,</sup><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
+<td align="left">2.5<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> <sup>,</sup><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
 </td>
-<td align="left">0.33</td>
+<td align="left">0.17</td>
 </tr>
 <tr class="odd">
 <td align="left">C<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>
 </td>
-<td align="left">0.51<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>
+<td align="left">0.29<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>
 </td>
-<td align="left">0.16</td>
+<td align="left">-0.31</td>
 </tr>
 <tr class="even">
 <td align="left">D<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> <sup>,</sup><a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>
 </td>
-<td align="left">0.84</td>
-<td align="left">-0.48</td>
+<td align="left">-0.018</td>
+<td align="left">0.55</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
-<td align="left">1.5</td>
-<td align="left">-0.99</td>
+<td align="left">0.49</td>
+<td align="left">-1.2</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
-<td align="left">-0.17</td>
-<td align="left">-0.21</td>
+<td align="left">0.0048</td>
+<td align="left">0.49</td>
 </tr>
 <tr class="odd">
 <td align="left">G</td>
-<td align="left">2.2</td>
-<td align="left">-0.78</td>
+<td align="left">1</td>
+<td align="left">-0.45</td>
 </tr>
 <tr class="even">
 <td align="left">H</td>
+<td align="left">0.83</td>
 <td align="left">0.99</td>
-<td align="left">0.48</td>
 </tr>
 <tr class="odd">
 <td align="left">I</td>
-<td align="left">-1.1</td>
-<td align="left">0.73</td>
+<td align="left">-0.022</td>
+<td align="left">-0.28</td>
 </tr>
 <tr class="even">
 <td align="left">J</td>
-<td align="left">-0.5</td>
-<td align="left">-0.86</td>
+<td align="left">0.74</td>
+<td align="left">-0.47</td>
 </tr>
 </tbody>
 </table>
 <p></p>
 <p><em>Alternative text: Here is a table!</em></p>
 <p></p>
-<p>Here in table 2, we see that…</p>
+<p>Here in table <a href="#ex_table_foot">2</a>, we see that…</p>
 </div>
 </div>
-<div class="section level2 unnumbered">
-<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
-</h2>
+<div class="section level3">
+<h3 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h3>
 <div id="refs" class="references">
 <div id="ref-RN621">
 <p>Arrhenius S. 1889. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für physikalische Chemie 4: 226–248. </p>
@@ -629,7 +644,7 @@ fantome.appendChild(templateContent);
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

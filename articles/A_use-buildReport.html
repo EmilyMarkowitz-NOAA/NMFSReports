@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.2</span>
       </span>
     </div>
 
@@ -131,7 +131,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Use buildReport() to begin writing your report</h1>
             
-            <h4 data-toc-skip class="date">December 16 2021</h4>
+            <h4 data-toc-skip class="date">February 11 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/HEAD/vignettes/A_use-buildReport.Rmd" class="external-link"><code>vignettes/A_use-buildReport.Rmd</code></a></small>
       <div class="hidden name"><code>A_use-buildReport.Rmd</code></div>
@@ -142,9 +142,9 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/" class="external-link">NMFSReports</a></span><span class="op">)</span></code></pre></div>
-<div class="section level1">
-<h1 id="quick-get-started">Quick! Get started!<a class="anchor" aria-label="anchor" href="#quick-get-started"></a>
-</h1>
+<div class="section level2">
+<h2 id="quick-get-started">Quick! Get started!<a class="anchor" aria-label="anchor" href="#quick-get-started"></a>
+</h2>
 <p>Here, I’ll show a basic script that you can quickly run to get started.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># 1. Load the NMFSReports Library</span>
@@ -170,28 +170,28 @@
 <span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"./code/run.R"</span><span class="op">)</span></code></pre></div>
 <p>More details about each option and step of the process is below!</p>
 </div>
-<div class="section level1">
-<h1 id="step-by-step-create-initial-structure-of-report">Step by Step: Create initial structure of report<a class="anchor" aria-label="anchor" href="#step-by-step-create-initial-structure-of-report"></a>
-</h1>
+<div class="section level2">
+<h2 id="step-by-step-create-initial-structure-of-report">Step by Step: Create initial structure of report<a class="anchor" aria-label="anchor" href="#step-by-step-create-initial-structure-of-report"></a>
+</h2>
 <p>Do everyone here a favor and create a new R project or at least set up a working directory (<code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd()</a></code>). There will be a lot of file management here…</p>
 <p>To build your intitial architecture for your new NOAA Tech Memo or Report, simply run the below script:</p>
-<div class="section level2">
-<h2 id="buildreportreport_title">buildReport(report_title = …)<a class="anchor" aria-label="anchor" href="#buildreportreport_title"></a>
-</h2>
+<div class="section level3">
+<h3 id="buildreportreport_title">buildReport(report_title = …)<a class="anchor" aria-label="anchor" href="#buildreportreport_title"></a>
+</h3>
 <p>Default = "". Here, put the title of your report. You can change this later in the <code>run.R</code> file in needed.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">report_title</span> <span class="op">=</span> <span class="st">"My Awesome Report!"</span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="buildreportreport_authors">buildReport(report_authors = …)<a class="anchor" aria-label="anchor" href="#buildreportreport_authors"></a>
-</h2>
+<div class="section level3">
+<h3 id="buildreportreport_authors">buildReport(report_authors = …)<a class="anchor" aria-label="anchor" href="#buildreportreport_authors"></a>
+</h3>
 <p>Here, add the first and last name of everyone who is producing the report. You can change this later in the <code>run.R</code> file in needed.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">report_authors</span> <span class="op">=</span> <span class="st">"Me, Myself, and I"</span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="buildreportsections">buildReport(sections = …)<a class="anchor" aria-label="anchor" href="#buildreportsections"></a>
-</h2>
+<div class="section level3">
+<h3 id="buildreportsections">buildReport(sections = …)<a class="anchor" aria-label="anchor" href="#buildreportsections"></a>
+</h3>
 <p>Let’s first think about what you want/need your Tech Memo to look like. For my purposes, I’ll assume that you need the below sections:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># list the sections (that you will have different rmd scripts for) in order and with no spaces</span>
@@ -204,43 +204,43 @@
               <span class="st">"endmatter"</span> <span class="co"># This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. </span>
 <span class="op">)</span> </code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="buildreportstyles_reference_docx">buildReport(styles_reference_docx = …)<a class="anchor" aria-label="anchor" href="#buildreportstyles_reference_docx"></a>
-</h2>
+<div class="section level3">
+<h3 id="buildreportstyles_reference_docx">buildReport(styles_reference_docx = …)<a class="anchor" aria-label="anchor" href="#buildreportstyles_reference_docx"></a>
+</h3>
 <p><code>styles_reference_docx</code> is a document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert “path”) or some of the pre-made templates (“refdoc_noaa_tech_memo” or “refdoc_fisheries_economics_of_the_us”). Default = “refdoc_noaa_tech_memo”</p>
 <p>To edit the stlyes in your word document, check out this <a href="https://support.microsoft.com/en-us/office/customize-or-create-new-styles-d38d6e47-f6fc-48eb-a607-1eb120dec563" class="external-link">resource</a>.</p>
 <p>Here’s what they look like:</p>
-<div class="section level3">
-<h3 id="refdoc_noaa_tech_memo">refdoc_noaa_tech_memo<a class="anchor" aria-label="anchor" href="#refdoc_noaa_tech_memo"></a>
-</h3>
+<div class="section level4">
+<h4 id="refdoc_noaa_tech_memo">refdoc_noaa_tech_memo<a class="anchor" aria-label="anchor" href="#refdoc_noaa_tech_memo"></a>
+</h4>
 <div class="figure">
 <img src="../reference/figures/refdoc_noaa_tech_memo.JPG" alt=""><p class="caption">refdoc_noaa_tech_memo</p>
 </div>
 </div>
-<div class="section level3">
-<h3 id="refdoc_fisheries_economics_of_the_us">refdoc_fisheries_economics_of_the_us<a class="anchor" aria-label="anchor" href="#refdoc_fisheries_economics_of_the_us"></a>
-</h3>
+<div class="section level4">
+<h4 id="refdoc_fisheries_economics_of_the_us">refdoc_fisheries_economics_of_the_us<a class="anchor" aria-label="anchor" href="#refdoc_fisheries_economics_of_the_us"></a>
+</h4>
 <div class="figure">
 <img src="../reference/figures/refdoc_fisheries_economics_of_the_us.JPG" alt=""><p class="caption">refdoc_fisheries_economics_of_the_us</p>
 </div>
 </div>
 </div>
-<div class="section level2">
-<h2 id="buildreportstyles_reference_pptx">buildReport(styles_reference_pptx = …)<a class="anchor" aria-label="anchor" href="#buildreportstyles_reference_pptx"></a>
-</h2>
+<div class="section level3">
+<h3 id="buildreportstyles_reference_pptx">buildReport(styles_reference_pptx = …)<a class="anchor" aria-label="anchor" href="#buildreportstyles_reference_pptx"></a>
+</h3>
 <p><code>styles_reference_pptx</code> is a document style reference guide is essentially a word document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made template (“refpptx_nmfs”). Default = “refpptx_nmfs”. You can change this later by renaming the file in the code folder.</p>
 <p>Here’s what they look like:</p>
-<div class="section level3">
-<h3 id="refpptx_nmfs">refpptx_nmfs<a class="anchor" aria-label="anchor" href="#refpptx_nmfs"></a>
-</h3>
+<div class="section level4">
+<h4 id="refpptx_nmfs">refpptx_nmfs<a class="anchor" aria-label="anchor" href="#refpptx_nmfs"></a>
+</h4>
 <div class="figure">
 <img src="../reference/figures/refpptx_nmfs.JPG" alt=""><p class="caption">refpptx_nmfs</p>
 </div>
 </div>
 </div>
-<div class="section level2">
-<h2 id="buildreportcsl">buildReport(csl = …)<a class="anchor" aria-label="anchor" href="#buildreportcsl"></a>
-</h2>
+<div class="section level3">
+<h3 id="buildreportcsl">buildReport(csl = …)<a class="anchor" aria-label="anchor" href="#buildreportcsl"></a>
+</h3>
 <p><code>csl</code> is a citation style. Either use a local document (insert “path”) or some of the pre-made templates (“apa” or “bulletin-of-marine-science”). Default = “apa” because it was easy to find.</p>
 <p>A primer on creating and modifying CSL styles can be found at <a href="http://citationstyles.org/downloads/primer.html" class="external-link uri">http://citationstyles.org/downloads/primer.html</a>. A repository of CSL styles can be found at <a href="https://github.com/citation-style-language/styles" class="external-link uri">https://github.com/citation-style-language/styles</a>. See also <a href="http://zotero.org/styles" class="external-link uri">http://zotero.org/styles</a> for easy browsing.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -255,9 +255,9 @@
 <span class="co">#&gt; [5] "    &lt;id&gt;http://www.zotero.org/styles/bulletin-of-marine-science&lt;/id&gt;"                                                                                   </span>
 <span class="co">#&gt; [6] "    &lt;link href=\"http://www.zotero.org/styles/bulletin-of-marine-science\" rel=\"self\"/&gt;"</span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="buildreportbibliography-bib">buildReport(bibliography.bib = …)<a class="anchor" aria-label="anchor" href="#buildreportbibliography-bib"></a>
-</h2>
+<div class="section level3">
+<h3 id="buildreportbibliography-bib">buildReport(bibliography.bib = …)<a class="anchor" aria-label="anchor" href="#buildreportbibliography-bib"></a>
+</h3>
 <p><code>bibliography.bib</code>: Either use a local document (.bib format; insert full “path”) or the example file from the package (“bib_example”). Default = “bib_example”.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">csl</span> <span class="op">=</span> <span class="st">"bib_example"</span>
@@ -308,9 +308,9 @@
 <span class="co">#&gt; [42] ""</span></code></pre></div>
 </div>
 </div>
-<div class="section level1">
-<h1 id="create-report-outline">Create Report Outline<a class="anchor" aria-label="anchor" href="#create-report-outline"></a>
-</h1>
+<div class="section level2">
+<h2 id="create-report-outline">Create Report Outline<a class="anchor" aria-label="anchor" href="#create-report-outline"></a>
+</h2>
 <p>Now, magic! Now for the sake of the vignette, I can’t actually run it here, but below is a picture of what this looks like:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
@@ -329,9 +329,9 @@
 <img src="../reference/figures/folder_architecture_post_buildReport.JPG" alt=""><p class="caption">Folder architecture post-buildReport()</p>
 </div>
 </div>
-<div class="section level1">
-<h1 id="alternative-report-structures">Alternative report structures:<a class="anchor" aria-label="anchor" href="#alternative-report-structures"></a>
-</h1>
+<div class="section level2">
+<h2 id="alternative-report-structures">Alternative report structures:<a class="anchor" aria-label="anchor" href="#alternative-report-structures"></a>
+</h2>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/" class="external-link">NMFSReports</a></span><span class="op">)</span>
 <span class="co"># Input variables for buildReport()</span>
@@ -355,7 +355,7 @@
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">csl0</span><span class="op">)</span>
 <span class="co">#&gt;                                                                                                                                      </span>
 <span class="co">#&gt; 1                                                                                                  &lt;?xml version=1.0 encoding=utf-8?&gt;</span>
-<span class="co">#&gt; 2 &lt;style xmlns=http://purl.org/net/xbiblio/csl class=in-text default-locale=en-US version=1.0 demote-non-dropping-particle=sort-only&gt;</span>
+<span class="co">#&gt; 2 &lt;style xmlns=http://purl.org/net/xbiblio/csl class=in-text version=1.0 demote-non-dropping-particle=sort-only default-locale=en-US&gt;</span>
 <span class="co">#&gt; 3                                                                                                                              &lt;info&gt;</span>
 <span class="co">#&gt; 4                                                                                           &lt;title&gt;American Fisheries Society&lt;/title&gt;</span>
 <span class="co">#&gt; 5                                                                    &lt;id&gt;http://www.zotero.org/styles/american-fisheries-society&lt;/id&gt;</span>
@@ -391,7 +391,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
