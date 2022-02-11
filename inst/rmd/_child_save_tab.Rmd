@@ -68,7 +68,15 @@ if (indesign_flowin %in% FALSE) {
       list_tables[[length(list_tables)]]$print %>% 
         knitr::kable(row.names = FALSE, booktabs = TRUE)
     } else {
-      list_tables[[length(list_tables)]]$print
+      # list_tables[[length(list_tables)]]$print
+      aaa <- list_tables[[length(list_tables)]]$print
+      if (names(list_tables[[length(list_tables)]]$print)[1]=="header") {
+        list_tables[[length(list_tables)]]$print
+      } else {
+        for (iii in 1:length(aaa)) { 
+          print(list_tables[[length(list_tables)]]$print[[iii]])
+        }
+      }
     }
   } else {
     if ((class(table_print) %in% c("data.frame", "matrix"))) {

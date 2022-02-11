@@ -1784,6 +1784,7 @@ crossref <- function(list_obj,
     # ref<-as.character(ref)
     ref<-paste0("[", ref, "](#", nickname, ")")
     if (text) {
+      # setdiff()
       if (length(ref)>5) {
         ref <- paste0(ref[1], " to ", ref[length(ref)])
       } else {
@@ -1793,7 +1794,8 @@ crossref <- function(list_obj,
   } else if (sublist == "res") {
     if(text) {
       if (exact) {
-        sapply(list_obj[grepl(x = names(list_obj), pattern = nickname0)],"[[", sublist)
+        # TOLEDO ref was missing here?
+        ref <- sapply(list_obj[grepl(x = names(list_obj), pattern = nickname0)],"[[", sublist)
       } else {
         ref <- paste(ref, sep = "", collapse = "
 
