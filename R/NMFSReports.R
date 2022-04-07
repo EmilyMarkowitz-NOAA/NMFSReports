@@ -290,6 +290,72 @@ rmarkdown::render(paste0(dir_code, "/',sections_no,'_',b,'.Rmd"),
 ########## SEARCH STUFF ############
 
 
+#' Test if a URL works/exists
+#'
+#' @param x a single URL
+#'
+#' @param non_2xx_return_value what to do if the site exists but the
+#'        HTTP status code is not in the `2xx` range. Default is to return `FALSE`.
+#' @param quiet if not `FALSE`, then every time the `non_2xx_return_value` condition
+#'        arises a warning message will be displayed. Default is `FALSE`.
+#' @param ... other params (`timeout()` would be a good one) passed directly
+#'        to `httr::HEAD()` and/or `httr::GET()`
+url_exists <- function(x, non_2xx_return_value = FALSE, quiet = FALSE,...) {
+  # https://stackoverflow.com/questions/52911812/check-if-url-exists-in-r
+  suppressPackageStartupMessages({
+    require("httr", quietly = FALSE, warn.conflicts = FALSE)
+  })
+
+  # you don't need thse two functions if you're alread using `purrr`
+  # but `purrr` is a heavyweight compiled pacakge that introduces
+  # many other "tidyverse" dependencies and this doesnt.
+
+  capture_error <- function(code, otherwise = NULL, quiet = TRUE) {
+    tryCatch(
+      list(result = code, error = NULL),
+      error = function(e) {
+        if (!quiet)
+          message("Error: ", e$message)
+
+        list(result = otherwise, error = e)
+      },
+      interrupt = function(e) {
+        stop("Terminated by user", call. = FALSE)
+      }
+    )
+  }
+
+  safely <- function(.f, otherwise = NULL, quiet = TRUE) {
+    function(...) capture_error(.f(...), otherwise, quiet)
+  }
+
+  sHEAD <- safely(httr::HEAD)
+  sGET <- safely(httr::GET)
+
+  # Try HEAD first since it's lightweight
+  res <- sHEAD(x, ...)
+
+  if (is.null(res$result) ||
+      ((httr::status_code(res$result) %/% 200) != 1)) {
+
+    res <- sGET(x, ...)
+
+    if (is.null(res$result)) return(NA) # or whatever you want to return on "hard" errors
+
+    if (((httr::status_code(res$result) %/% 200) != 1)) {
+      if (!quiet) warning(sprintf("Requests for [%s] responded but without an HTTP status code in the 200-299 range", x))
+      return(non_2xx_return_value)
+    }
+
+    return(TRUE)
+
+  } else {
+    return(TRUE)
+  }
+
+}
+
+
 #' Is something in a matrix? Let's check!
 #'
 #' This function searches to see if item 'search_for' is within the matrix 'x' and returns a respective TRUE (T) and FALSE (F). This can be useful for adding footnotes, adding conditional text to your document, and much more!
@@ -1880,6 +1946,7 @@ theme_flextable_nmfstm <- function(x,
   x <- flextable::align_nottext_col(x = x, align = "right", header = TRUE)
   x <- flextable::padding(x = x, padding = pad, part = "all") # remove all line spacing in a flextable
   x <- flextable::font(x = x, fontname = font, part = "all")
+  x <- flextable::fontsize(x = x, size = body_size-2, part = "footer")
   x <- flextable::fontsize(x = x, size = body_size, part = "body")
   x <- flextable::fontsize(x = x, size = header_size, part = "header")
   x <- FitFlextableToPage(x = x, pgwidth = pgwidth)

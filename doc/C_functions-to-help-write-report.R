@@ -184,10 +184,11 @@ cnt_figures<-ifelse(newobj, cnt_figures+1, cnt_figures)
 if (subobj) {
   # if it contains letters
   if (newobj) {
-    cnt_figures_sub <- letters[1]
+    cnt_figures_sub <- cnt_figures_sub0 <- letters[1]
   } else {
-    cnt_figures_sub <- letters[which(letters == 
-                                      gsub("[^a-zA-Z]", "", list_figures[length(list_figures)][[1]]$number))+1]
+    # cnt_figures_sub <- letters[which(letters == 
+    #                                   gsub("[^a-zA-Z]", "", list_figures[length(list_figures)][[1]]$number))+1]
+    cnt_figures_sub <- cnt_figures_sub0 <- letters[which(letters == cnt_figures_sub0)+1]
   }
 } else {
   cnt_figures_sub <- ""
@@ -196,6 +197,13 @@ if (subobj) {
 if (!(exists("table_raw"))) {
   table_raw <- NULL
 }
+
+if (!exists("cnt_pre")) {
+  cnt_pre <- ""
+# } else {
+#   cnt_pre <- paste0(cnt_pre, " ")
+}
+
 
 # Systematically save your plot with this function
 list_figures<-NMFSReports::save_figures(
@@ -211,11 +219,13 @@ list_figures<-NMFSReports::save_figures(
   cnt_chapt_content = ifelse(exists("cnt_chapt_content", mode = "character"), cnt_chapt_content, "001"), 
   width = ifelse(exists("width", mode = "numeric"), width, 6), 
   height = ifelse(exists("height", mode = "numeric"), height, 6),
-  cnt = paste0(cnt_figures, cnt_figures_sub), 
+  cnt = paste0(cnt_pre, cnt_figures, cnt_figures_sub), 
   path = dir_out_figures)
 
 
-## ---- echo = FALSE, fig.cap=ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext,  list_figures[[length(list_figures)]]$header)----
+## ---- echo = FALSE, fig.alt = list_figures[[length(list_figures)]]$alttext, fig.scap = list_figures[[length(list_figures)]]$alttext, fig.align = 'center'----
+
+# fig.cap = ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext, paste0("\n#### *", list_figures[[length(list_figures)]]$header, "*")), 
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
@@ -252,7 +262,7 @@ if (indesign_flowin %in% FALSE) {
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
 remove_who0 <- c("figure", "table_raw", "header", "footnotes", "subobj", "newobj", #"nickname", 
-                 "filename_desc", "alttext", "width", "height")
+                 "filename_desc", "alttext", "width", "height", "cnt_pre")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i]) & !exists(remove_who0[i], mode = "function")){
     remove_who <- c(remove_who, remove_who0[i])
@@ -272,10 +282,11 @@ cnt_figures<-ifelse(newobj, cnt_figures+1, cnt_figures)
 if (subobj) {
   # if it contains letters
   if (newobj) {
-    cnt_figures_sub <- letters[1]
+    cnt_figures_sub <- cnt_figures_sub0 <- letters[1]
   } else {
-    cnt_figures_sub <- letters[which(letters == 
-                                      gsub("[^a-zA-Z]", "", list_figures[length(list_figures)][[1]]$number))+1]
+    # cnt_figures_sub <- letters[which(letters == 
+    #                                   gsub("[^a-zA-Z]", "", list_figures[length(list_figures)][[1]]$number))+1]
+    cnt_figures_sub <- cnt_figures_sub0 <- letters[which(letters == cnt_figures_sub0)+1]
   }
 } else {
   cnt_figures_sub <- ""
@@ -284,6 +295,13 @@ if (subobj) {
 if (!(exists("table_raw"))) {
   table_raw <- NULL
 }
+
+if (!exists("cnt_pre")) {
+  cnt_pre <- ""
+# } else {
+#   cnt_pre <- paste0(cnt_pre, " ")
+}
+
 
 # Systematically save your plot with this function
 list_figures<-NMFSReports::save_figures(
@@ -299,11 +317,13 @@ list_figures<-NMFSReports::save_figures(
   cnt_chapt_content = ifelse(exists("cnt_chapt_content", mode = "character"), cnt_chapt_content, "001"), 
   width = ifelse(exists("width", mode = "numeric"), width, 6), 
   height = ifelse(exists("height", mode = "numeric"), height, 6),
-  cnt = paste0(cnt_figures, cnt_figures_sub), 
+  cnt = paste0(cnt_pre, cnt_figures, cnt_figures_sub), 
   path = dir_out_figures)
 
 
-## ---- echo = FALSE, fig.cap=ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext,  list_figures[[length(list_figures)]]$header)----
+## ---- echo = FALSE, fig.alt = list_figures[[length(list_figures)]]$alttext, fig.scap = list_figures[[length(list_figures)]]$alttext, fig.align = 'center'----
+
+# fig.cap = ifelse(indesign_flowin %in% TRUE, list_figures[[length(list_figures)]]$alttext, paste0("\n#### *", list_figures[[length(list_figures)]]$header, "*")), 
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
@@ -340,7 +360,7 @@ if (indesign_flowin %in% FALSE) {
 # make sure you dont mistakenly name other files with these names
 remove_who <- c()
 remove_who0 <- c("figure", "table_raw", "header", "footnotes", "subobj", "newobj", #"nickname", 
-                 "filename_desc", "alttext", "width", "height")
+                 "filename_desc", "alttext", "width", "height", "cnt_pre")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i]) & !exists(remove_who0[i], mode = "function")){
     remove_who <- c(remove_who, remove_who0[i])
@@ -403,9 +423,6 @@ table_print <- flextable::flextable(table_print) %>%
 # ```
 
 ## ---- echo = FALSE------------------------------------------------------------
-
-# Don't Edit This:
-# appendix <- ifelse(exists("subobj"), subobj, FALSE) # is this being saved to the Appendix?
 subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
 newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
@@ -414,10 +431,11 @@ cnt_tables <- ifelse(newobj, cnt_tables+1, cnt_tables)
 if (subobj) {
   # if it contains letters
   if (newobj) {
-    cnt_tables_sub <- letters[1]
+    cnt_tables_sub <- cnt_tables_sub0 <- letters[1]
   } else {
-    cnt_tables_sub <- letters[which(letters == 
-                                      gsub("[^a-zA-Z]", "", list_tables[length(list_tables)][[1]]$number))+1]
+    # cnt_tables_sub <- letters[which(letters == 
+    #                                   gsub("[^a-zA-Z]", "", list_tables[length(list_tables)][[1]]$number))+1]
+    cnt_tables_sub <- cnt_tables_sub0 <- letters[which(letters == cnt_tables_sub0)+1]
   }
 } else {
   cnt_tables_sub <- ""
@@ -427,6 +445,12 @@ if (!(exists("table_raw"))) {
   table_raw <- NULL
 } else if (!(exists("table_print"))) {
   table_print <- NULL
+}
+
+if (!exists("cnt_pre")) {
+  cnt_pre <- ""
+# } else {
+#   cnt_pre <- paste0(cnt_pre, " ")
 }
 
 # Systematically save your table with this function
@@ -441,11 +465,11 @@ list_tables<-NMFSReports::save_tables(
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, nickname),  
   cnt_chapt_content = ifelse(exists("cnt_chapt_content", mode = "character"), cnt_chapt_content, "001"), 
-  cnt = paste0(cnt_tables, cnt_tables_sub), 
+  cnt = paste0(cnt_pre, cnt_tables, cnt_tables_sub), 
   path = dir_out_tables)
 
 
-## ---- echo = FALSE, fig.cap=ifelse(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="", list_tables[[length(list_tables)]]$alttext, "")----
+## ---- echo = FALSE, fig.cap=ifelse(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="", list_tables[[length(list_tables)]]$alttext, ""), fig.align='center'----
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
@@ -459,7 +483,15 @@ if (indesign_flowin %in% FALSE) {
       list_tables[[length(list_tables)]]$print %>% 
         knitr::kable(row.names = FALSE, booktabs = TRUE)
     } else {
-      list_tables[[length(list_tables)]]$print
+      # list_tables[[length(list_tables)]]$print
+      aaa <- list_tables[[length(list_tables)]]$print
+      if (names(list_tables[[length(list_tables)]]$print)[1]=="header") {
+        list_tables[[length(list_tables)]]$print
+      } else {
+        for (iii in 1:length(aaa)) { 
+          print(list_tables[[length(list_tables)]]$print[[iii]])
+        }
+      }
     }
   } else {
     if ((class(table_print) %in% c("data.frame", "matrix"))) {
@@ -483,7 +515,7 @@ if (indesign_flowin %in% FALSE) {
 remove_who <- c()
 remove_who0 <- c("header", "footnotes", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext", 
-                 "table_raw", "table_print")
+                 "table_raw", "table_print", "cnt_pre")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i]) & !exists(remove_who0[i], mode = "function")){
     remove_who <- c(remove_who, remove_who0[i])
@@ -493,9 +525,6 @@ remove(list = remove_who)
 
 
 ## ---- echo = FALSE------------------------------------------------------------
-
-# Don't Edit This:
-# appendix <- ifelse(exists("subobj"), subobj, FALSE) # is this being saved to the Appendix?
 subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
 newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
@@ -504,10 +533,11 @@ cnt_tables <- ifelse(newobj, cnt_tables+1, cnt_tables)
 if (subobj) {
   # if it contains letters
   if (newobj) {
-    cnt_tables_sub <- letters[1]
+    cnt_tables_sub <- cnt_tables_sub0 <- letters[1]
   } else {
-    cnt_tables_sub <- letters[which(letters == 
-                                      gsub("[^a-zA-Z]", "", list_tables[length(list_tables)][[1]]$number))+1]
+    # cnt_tables_sub <- letters[which(letters == 
+    #                                   gsub("[^a-zA-Z]", "", list_tables[length(list_tables)][[1]]$number))+1]
+    cnt_tables_sub <- cnt_tables_sub0 <- letters[which(letters == cnt_tables_sub0)+1]
   }
 } else {
   cnt_tables_sub <- ""
@@ -517,6 +547,12 @@ if (!(exists("table_raw"))) {
   table_raw <- NULL
 } else if (!(exists("table_print"))) {
   table_print <- NULL
+}
+
+if (!exists("cnt_pre")) {
+  cnt_pre <- ""
+# } else {
+#   cnt_pre <- paste0(cnt_pre, " ")
 }
 
 # Systematically save your table with this function
@@ -531,11 +567,11 @@ list_tables<-NMFSReports::save_tables(
   nickname = ifelse(exists("nickname", mode = "character"), nickname, filename0),
   filename_desc = ifelse(exists("filename_desc", mode = "character"), filename_desc, nickname),  
   cnt_chapt_content = ifelse(exists("cnt_chapt_content", mode = "character"), cnt_chapt_content, "001"), 
-  cnt = paste0(cnt_tables, cnt_tables_sub), 
+  cnt = paste0(cnt_pre, cnt_tables, cnt_tables_sub), 
   path = dir_out_tables)
 
 
-## ---- echo = FALSE, fig.cap=ifelse(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="", list_tables[[length(list_tables)]]$alttext, "")----
+## ---- echo = FALSE, fig.cap=ifelse(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="", list_tables[[length(list_tables)]]$alttext, ""), fig.align='center'----
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
@@ -549,7 +585,15 @@ if (indesign_flowin %in% FALSE) {
       list_tables[[length(list_tables)]]$print %>% 
         knitr::kable(row.names = FALSE, booktabs = TRUE)
     } else {
-      list_tables[[length(list_tables)]]$print
+      # list_tables[[length(list_tables)]]$print
+      aaa <- list_tables[[length(list_tables)]]$print
+      if (names(list_tables[[length(list_tables)]]$print)[1]=="header") {
+        list_tables[[length(list_tables)]]$print
+      } else {
+        for (iii in 1:length(aaa)) { 
+          print(list_tables[[length(list_tables)]]$print[[iii]])
+        }
+      }
     }
   } else {
     if ((class(table_print) %in% c("data.frame", "matrix"))) {
@@ -573,7 +617,7 @@ if (indesign_flowin %in% FALSE) {
 remove_who <- c()
 remove_who0 <- c("header", "footnotes", "subobj", "newobj", #"nickname", 
                  "filename_desc", "alttext", 
-                 "table_raw", "table_print")
+                 "table_raw", "table_print", "cnt_pre")
 for (i in 1:length(remove_who0)){
   if(exists(remove_who0[i]) & !exists(remove_who0[i], mode = "function")){
     remove_who <- c(remove_who, remove_who0[i])
