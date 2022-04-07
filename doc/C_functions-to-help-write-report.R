@@ -237,7 +237,7 @@ if (indesign_flowin %in% FALSE) {
   if (!(exists("usePNGPDF"))) {
    list_figures[[length(list_figures)]]$figure # print plot in text
   } else if (usePNGPDF == "png") {
-    knitr::include_graphics(path = paste0(dir_out_figures,
+    knitr::include_graphics(path = paste0(".",gsub(pattern = dir_in, replacement = "", x = dir_out_figures),
                                  list_figures[nickname][[1]]$filename,".png"), 
                             error = FALSE)
     # cowplot::ggdraw() +
@@ -336,7 +336,7 @@ if (indesign_flowin %in% FALSE) {
   if (!(exists("usePNGPDF"))) {
    list_figures[[length(list_figures)]]$figure # print plot in text
   } else if (usePNGPDF == "png") {
-    knitr::include_graphics(path = paste0(dir_out_figures,
+    knitr::include_graphics(path = paste0(".",gsub(pattern = dir_in, replacement = "", x = dir_out_figures),
                                  list_figures[nickname][[1]]$filename,".png"), 
                             error = FALSE)
     # cowplot::ggdraw() +
