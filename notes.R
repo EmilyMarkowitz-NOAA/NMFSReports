@@ -24,7 +24,7 @@ install("NMFSReports")
 setwd(here::here())
 # devtools::check()
 
-########### Create Documentation GitHub-Pages ############
+## Create Documentation GitHub-Pages -------------------------------------------
 
 .rs.restartR()
 # devtools::install_github("rstudio/fontawesome", force = T)
