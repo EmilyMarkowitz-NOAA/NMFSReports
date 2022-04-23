@@ -11,10 +11,11 @@ cnt_figures<-ifelse(newobj, cnt_figures+1, cnt_figures)
 if (subobj) {
   # if it contains letters
   if (newobj) {
-    cnt_figures_sub <- letters[1]
+    cnt_figures_sub <- cnt_figures_sub0 <- letters[1]
   } else {
-    cnt_figures_sub <- letters[which(letters == 
-                                      gsub("[^a-zA-Z]", "", list_figures[length(list_figures)][[1]]$number))+1]
+    # cnt_figures_sub <- letters[which(letters == 
+    #                                   gsub("[^a-zA-Z]", "", list_figures[length(list_figures)][[1]]$number))+1]
+    cnt_figures_sub <- cnt_figures_sub0 <- letters[which(letters == cnt_figures_sub0)+1]
   }
 } else {
   cnt_figures_sub <- ""
@@ -64,8 +65,9 @@ if (indesign_flowin %in% FALSE) {
   if (!(exists("usePNGPDF"))) {
    list_figures[[length(list_figures)]]$figure # print plot in text
   } else if (usePNGPDF == "png") {
-    knitr::include_graphics(path = paste0(dir_out_figures,
-                                 list_figures[nickname][[1]]$filename,".png"))
+    knitr::include_graphics(path = paste0("..",gsub(pattern = dir_in, replacement = "", x = dir_out_figures),
+                                 list_figures[nickname][[1]]$filename,".png"), 
+                            error = FALSE)
     # cowplot::ggdraw() +
     #       cowplot::draw_image(image = paste0(dir_out_figures, list_figures[nickname][[1]]$filename,".png"))
   # } else if (usePNGPDF == "pdf") {

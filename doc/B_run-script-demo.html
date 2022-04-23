@@ -26,6 +26,7 @@
     </style>
 
 
+
 <style type="text/css">
   code {
     white-space: pre;
@@ -138,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <h1 class="title toc-ignore">How to use the run.R file to be the skeleton of your report</h1>
-<h4 class="date">October 28 2021</h4>
+<h4 class="date">April 23 2022</h4>
 
 
 
@@ -160,32 +161,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Run buildReport() function</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">buildReport</span>(</span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">sections =</span> sections,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">support_scripts =</span> support_scripts,</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">report_authors =</span> authors,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">report_title =</span> title,</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">styles_reference_pptx =</span> styles_reference_pptx,</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">styles_reference_docx =</span> styles_reference_docx,</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">bibliography.bib =</span> bibliography.bib,</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">csl =</span> csl</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">report_authors =</span> authors,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">report_title =</span> title,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">styles_reference_pptx =</span> styles_reference_pptx,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">styles_reference_docx =</span> styles_reference_docx,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">bibliography.bib =</span> bibliography.bib,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">csl =</span> csl</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>We’ll navigate to the spine of this report, the <code>run.R</code> file, in the code folder. This is where we run all of our files (.R, .Rmd, etc.) from.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;./code/run.R&quot;</span>)</span></code></pre></div>
 <div id="run.r" class="section level1">
 <h1>run.R</h1>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; ---</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; title: Awesome Report!</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; author: Me, Myself, and I</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; title: &#39;Awesome Report!&#39;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; author: &#39;Me, Myself, and I&#39;</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; purpose: Run Scripts and R Markdown Files</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; start date: 2021-03-03</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; date modified: 2021-03-03                                            # CHANGE</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; start date: 2022-01-02</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; date modified: 2022-01-02                                          # CHANGE</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Notes:                                                               # CHANGE</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; ---</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># START ------------------------------------------------------------------------</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># *** REPORT KNOWNS ------------------------------------------------------------</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>report_title <span class="ot">&lt;-</span> <span class="st">&quot;Awesome Report!&quot;</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>report_authors <span class="ot">&lt;-</span> <span class="st">&quot;Me, Myself, and I&quot;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>report_title <span class="ot">&lt;-</span> <span class="st">&#39;Awesome Report!&#39;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>report_authors <span class="ot">&lt;-</span> <span class="st">&#39;Me, Myself, and I&#39;</span></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>report_yr <span class="ot">&lt;-</span> <span class="fu">substr</span>(<span class="at">x =</span> <span class="fu">Sys.Date</span>(), <span class="at">start =</span> <span class="dv">1</span>, <span class="at">stop =</span> <span class="dv">4</span>)            <span class="co"># SUGGESTION</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># *** OUTPUT TYPE --------------------------------------------------------------</span></span>
@@ -194,136 +194,143 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># *** SOURCE SUPPORT SCRIPTS ---------------------------------------------------</span></span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;./code/directories.R&#39;</span> )</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;./code/directories.R&#39;</span>)</span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;./code/functions.R&#39;</span> )</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;./code/functions.R&#39;</span>)</span>
 <span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;./code/dataDL.R&#39;</span> )</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;./code/dataDL.R&#39;</span>)</span>
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;./code/data.R&#39;</span> )</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;./code/data.R&#39;</span>)</span>
 <span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co"># *** RENV: SAVE PACKAGES USED TO CREATE THIS REPORT ---------------------------</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co"># renv::init()</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co"># renv::snapshot()</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># *** SIGN INTO GOOGLE DRIVE----------------------------------------------------</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co"># *** RENV: SAVE PACKAGES USED TO CREATE THIS REPORT ---------------------------</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co"># renv::init()</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># renv::snapshot()</span></span>
 <span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co"># googledrive::drive_deauth()</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="co"># googledrive::drive_auth()</span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="co"># MAKE REPORT ------------------------------------------------------------------</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co"># *** SIGN INTO GOOGLE DRIVE----------------------------------------------------</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="co"># googledrive::drive_deauth()</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="co"># googledrive::drive_auth()</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span>
 <span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="co"># *** HOUSEKEEPING -------------------------------------------------------------</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="co"># RUN FIGURES, TABLES, &amp; EQUATIONS FOR REPORT ----------------------------------</span></span>
 <span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep chapter content in a proper order</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>cnt_chapt <span class="ot">&lt;-</span> <span class="st">&quot;000&quot;</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatically name objects with consecutive numbers</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>cnt_figures <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co">#  e.g., Figure 1</span></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>cnt_tables <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># e.g., Table 1</span></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>cnt_equations <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># e.g., Equation 1</span></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Save object content</span></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>list_equations <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>list_tables <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>list_figures <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="co"># *** RUN EACH REPORT SECTION --------------------------------------------------</span></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="co"># *** *** 0 - Example ----------------------------</span></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_example_&quot;</span>)</span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/0_example.Rmd&quot;</span>),</span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_dir =</span> dir_out_chapters,</span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="cn">FALSE</span>) {</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;000&quot;</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>  filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_&quot;</span>)</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/0_figtab.Rmd&quot;</span>),</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_dir =</span> dir_out_ref,</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save</span>(list_figures, <span class="at">file=</span><span class="fu">paste0</span>(dir_out_figures, <span class="st">&quot;/report_figures.rdata&quot;</span>))</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save</span>(list_tables, <span class="at">file=</span><span class="fu">paste0</span>(dir_out_tables, <span class="st">&quot;/report_tables.rdata&quot;</span>))</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save</span>(list_equations, <span class="at">file=</span><span class="fu">paste0</span>(dir_out_tables, <span class="st">&quot;/report_equations.rdata&quot;</span>))</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="at">file =</span> <span class="fu">paste0</span>(dir_out_figures, <span class="st">&quot;/report_figures.rdata&quot;</span>))</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="at">file =</span> <span class="fu">paste0</span>(dir_out_tables, <span class="st">&quot;/report_tables.rdata&quot;</span>))</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="at">file =</span> <span class="fu">paste0</span>(list_equations, <span class="st">&quot;/report_equations.rdata&quot;</span>))</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="co"># RUN EACH REPORT SECTION ------------------------------------------------------</span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="co"># *** RUN EACH REPORT SECTION --------------------------------------------------</span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="co"># *** *** 1 - Frontmatter ----------------------------</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="co"># *** 0 - Example ------------------------</span></span>
 <span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
 <span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_frontmatter_&quot;</span>)</span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/1_frontmatter.Rmd&quot;</span>),</span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_dir =</span> dir_out_chapters,</span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_example_&quot;</span>)</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/0_example.Rmd&quot;</span>),</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_dir =</span> dir_out_chapters,</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
 <span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="co"># *** *** 2 - Abstract ----------------------------</span></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_abstract_&quot;</span>)</span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/2_abstract.Rmd&quot;</span>),</span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_dir =</span> dir_out_chapters,</span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="co"># *** *** 3 - Introduction ----------------------------</span></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_introduction_&quot;</span>)</span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/3_introduction.Rmd&quot;</span>),</span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_dir =</span> dir_out_chapters,</span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="co"># *** *** 4 - Methods ----------------------------</span></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_methods_&quot;</span>)</span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/4_methods.Rmd&quot;</span>),</span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_dir =</span> dir_out_chapters,</span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a><span class="co"># *** *** 5 - Results ----------------------------</span></span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_results_&quot;</span>)</span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/5_results.Rmd&quot;</span>),</span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_dir =</span> dir_out_chapters,</span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="co"># *** *** 6 - Discussion ----------------------------</span></span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_discussion_&quot;</span>)</span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/6_discussion.Rmd&quot;</span>),</span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_dir =</span> dir_out_chapters,</span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="co"># *** *** 7 - Endmatter ----------------------------</span></span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_endmatter_&quot;</span>)</span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/7_endmatter.Rmd&quot;</span>),</span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_dir =</span> dir_out_chapters,</span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a>                    <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a><span class="co"># *** *** 8 - Presentation ----------------------------</span></span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_presentation_&quot;</span>)</span>
-<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/8_presentation.Rmd&quot;</span>),</span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>                      <span class="at">output_dir =</span> dir_out_chapters,</span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a>                      <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.pptx&quot;</span>))</span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="co"># SAVE OTHER OUTPUTS -----------------------------------------------------------</span></span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(list_figures,</span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>     <span class="at">file=</span><span class="fu">paste0</span>(dir_out_figures, <span class="st">&quot;/report_figures.rdata&quot;</span>))</span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(list_tables,</span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>     <span class="at">file=</span><span class="fu">paste0</span>(dir_out_tables, <span class="st">&quot;/report_tables.rdata&quot;</span>))</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="co"># *** 1 - Frontmatter ------------------------</span></span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_frontmatter_&quot;</span>)</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/1_frontmatter.Rmd&quot;</span>),</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_dir =</span> dir_out_chapters,</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="co"># *** 2 - Abstract ------------------------</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_abstract_&quot;</span>)</span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/2_abstract.Rmd&quot;</span>),</span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_dir =</span> dir_out_chapters,</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="co"># *** 3 - Introduction ------------------------</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_introduction_&quot;</span>)</span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/3_introduction.Rmd&quot;</span>),</span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_dir =</span> dir_out_chapters,</span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="co"># *** 4 - Methods ------------------------</span></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_methods_&quot;</span>)</span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/4_methods.Rmd&quot;</span>),</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_dir =</span> dir_out_chapters,</span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="co"># *** 5 - Results ------------------------</span></span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_results_&quot;</span>)</span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/5_results.Rmd&quot;</span>),</span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_dir =</span> dir_out_chapters,</span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="co"># *** 6 - Discussion ------------------------</span></span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_discussion_&quot;</span>)</span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/6_discussion.Rmd&quot;</span>),</span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_dir =</span> dir_out_chapters,</span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="co"># *** 7 - Endmatter ------------------------</span></span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_endmatter_&quot;</span>)</span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/7_endmatter.Rmd&quot;</span>),</span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_dir =</span> dir_out_chapters,</span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.docx&quot;</span>))</span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(list_equations,</span>
-<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>     <span class="at">file=</span><span class="fu">paste0</span>(dir_out_tables, <span class="st">&quot;/report_equations.rdata&quot;</span>))</span>
-<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a><span class="co"># MAKE MASTER DOCX -------------------------------------------------------------</span></span>
-<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a><span class="co">#USE GUIDENCE FROM THIS LINK</span></span>
-<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a><span class="co">#https://support.microsoft.com/en-us/help/2665750/how-to-merge-multiple-word-documents-into-one</span></span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a><span class="co"># *** 8 - Presentation ------------------------</span></span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>cnt_chapt<span class="ot">&lt;-</span><span class="fu">auto_counter</span>(cnt_chapt)</span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>cnt_chapt_content<span class="ot">&lt;-</span><span class="st">&quot;001&quot;</span></span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>filename0<span class="ot">&lt;-</span><span class="fu">paste0</span>(cnt_chapt, <span class="st">&quot;_presentation_&quot;</span>)</span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="fu">paste0</span>(dir_code, <span class="st">&quot;/8_presentation.Rmd&quot;</span>),</span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_dir =</span> dir_out_chapters,</span>
+<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a>                  <span class="at">output_file =</span> <span class="fu">paste0</span>(filename0, cnt_chapt_content, <span class="st">&quot;.pptx&quot;</span>))</span>
 <span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a><span class="co"># SAVE METADATA ----------------------------------------------------------------</span></span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">file</span>(<span class="fu">paste0</span>(dir_out_todaysrun, <span class="st">&quot;metadata.log&quot;</span>))</span>
-<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>(con, <span class="at">append=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>() <span class="co"># Restore output to console</span></span>
-<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a><span class="co"># cat(readLines(&quot;notes.log&quot;), sep=&quot;\n&quot;) # Look at the log</span></span></code></pre></div>
+<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a><span class="co"># MAKE MASTER DOCX -------------------------------------------------------------</span></span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a><span class="co">#USE GUIDENCE FROM THIS LINK</span></span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a><span class="co">#https://support.microsoft.com/en-us/help/2665750/how-to-merge-multiple-word-documents-into-one</span></span>
+<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a><span class="co"># SAVE METADATA ----------------------------------------------------------------</span></span>
+<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">file</span>(<span class="fu">paste0</span>(dir_out_todaysrun, <span class="st">&quot;metadata.log&quot;</span>))</span>
+<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>(con, <span class="at">append=</span><span class="cn">TRUE</span>)</span>
+<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>() <span class="co"># Restore output to console</span></span>
+<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a><span class="co"># cat(readLines(&quot;notes.log&quot;), sep=&quot;\n&quot;) # Look at the log</span></span></code></pre></div>
 </div>
 <div id="what-this-file-produces" class="section level1">
 <h1>What this file produces:</h1>
