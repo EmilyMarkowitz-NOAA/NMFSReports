@@ -1,93 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//index.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/404.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/add_table_footnotes.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/articles/A_use-buildReport.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/auto_counter.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/articles/B_run-script-demo.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/buildReport.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/articles/C_functions-to-help-write-report.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/create_metadata.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/articles/D_googledrive.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/crossref.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/articles/E_thispkgwasbuiltusing.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/df2js.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/format_cells.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/authors.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/googledrive_txt_dl.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/index.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/is_something_in_this_matrix.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/mod_number.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/numbers0.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/news/index.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/numbers2words.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/add_table_footnotes.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/numbers2words_th.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/auto_counter.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/pchange.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/buildReport.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/range_text.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/CreateMetadata.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/save_equations.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/create_metadata.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/save_figures.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/crossref.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/save_tables.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/df2js.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/stndth.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/format_cells.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/text_list.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/googledrive_txt_dl.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/theme_flextable_nmfstm.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/TitleCase.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/is_something_in_this_matrix.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/tolower2.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/mod_number.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/xunits.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/numbers0.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//reference/xunitspct.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/numbers2words.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//articles/A_use-buildReport.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/numbers2words_th.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//articles/B_run-script-demo.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/pchange.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//articles/C_functions-to-help-write-report.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/range_text.html</loc>
   </url>
   <url>
-    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports//articles/E_thispkgwasbuiltusing.html</loc>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/ref_figtab.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/ref_listobject.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/save_equations.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/save_figures.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/save_graphs.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/save_tables.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/stndth.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/text_list.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/theme_flextable_nmfstm.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/TitleCase.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/tolower2.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/url_exists.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/xunits.html</loc>
+  </url>
+  <url>
+    <loc>https://emilymarkowitz-noaa.github.io/NMFSReports/reference/xunitspct.html</loc>
   </url>
 </urlset>
