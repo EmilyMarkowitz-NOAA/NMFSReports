@@ -1896,7 +1896,7 @@ crossref <- function(list_obj,
 #' @param x a flextable object
 #' @param pgwidth a numeric. The width in inches the table should be. Default = 6, which is ideal for A4 (8.5x11 in) portrait paper.
 #' @param row_lines T/F. If True, draws a line between each row.
-#' @param font String. Default = "Times New Roman". Instead, you may want "Arial".
+#' @param font0 String. Default = "Times New Roman". Instead, you may want "Arial".
 #' @param body_size Numeric. default = 11.
 #' @param header_size Numeric. default = 11.
 #' @param spacing table spacing. default = 0.8.
