@@ -1899,7 +1899,7 @@ crossref <- function(list_obj,
 #' @param font String. Default = "Times New Roman". Instead, you may want "Arial".
 #' @param body_size Numeric. default = 11.
 #' @param header_size Numeric. default = 11.
-#' @param spacing table spacing. default = 1
+#' @param spacing table spacing. default = 0.8.
 #' @param pad padding around each element. default = 0.1
 #' @family functions related to themes
 #' @examples
@@ -1910,25 +1910,25 @@ crossref <- function(list_obj,
 #'
 #' \if{html}{\figure{fig_theme_vanilla_1.png}{options: width=60\%}}
 theme_flextable_nmfstm <- function(x,
-                                   pgwidth = 6,
+                                   pgwidth = 6.5,
                                    row_lines = TRUE,
                                    body_size = 11,
                                    header_size = 11,
-                                   font = "Times New Roman",
-                                   spacing = 1,
+                                   font0 = "Times New Roman",
+                                   spacing = 0.8,
                                    pad = 2) {
 
   if (!inherits(x, "flextable")) {
     stop("theme_flextable_nmfstm supports only flextable objects.")
   }
 
-  FitFlextableToPage <- function(x, pgwidth = 6){
-    # https://stackoverflow.com/questions/57175351/flextable-autofit-in-a-rmarkdown-to-word-doc-causes-table-to-go-outside-page-mar
-    ft_out <- x %>% flextable::autofit()
-
-    ft_out <- flextable::width(ft_out, width = dim(ft_out)$widths*pgwidth /(flextable::flextable_dim(ft_out)$widths))
-    return(ft_out)
-  }
+  # FitFlextableToPage <- function(x, pgwidth = 6){
+  #   # https://stackoverflow.com/questions/57175351/flextable-autofit-in-a-rmarkdown-to-word-doc-causes-table-to-go-outside-page-mar
+  #   ft_out <- x %>% flextable::autofit()
+  #
+  #   ft_out <- flextable::width(ft_out, width = dim(ft_out)$widths*pgwidth /(flextable::flextable_dim(ft_out)$widths))
+  #   return(ft_out)
+  # }
 
   std_b <- officer::fp_border(width = 2, color = "grey10")
   thin_b <- officer::fp_border(width = 0.5, color = "grey10")
@@ -1945,11 +1945,15 @@ theme_flextable_nmfstm <- function(x,
   x <- flextable::align_text_col(x = x, align = "left", header = TRUE)
   x <- flextable::align_nottext_col(x = x, align = "right", header = TRUE)
   x <- flextable::padding(x = x, padding = pad, part = "all") # remove all line spacing in a flextable
-  x <- flextable::font(x = x, fontname = font, part = "all")
+  x <- flextable::font(x = x, fontname = font0, part = "all")
   x <- flextable::fontsize(x = x, size = body_size-2, part = "footer")
   x <- flextable::fontsize(x = x, size = body_size, part = "body")
   x <- flextable::fontsize(x = x, size = header_size, part = "header")
-  x <- FitFlextableToPage(x = x, pgwidth = pgwidth)
+
+  x <- flextable::fit_to_width(x = x,
+                          max_width = pgwidth,
+                          unit = "in")
+  # x <- FitFlextableToPage(x = x, pgwidth = pgwidth)
   x <- flextable::line_spacing(x = x, space = spacing, part = "all")
 
   x <- flextable::fix_border_issues(x = x)

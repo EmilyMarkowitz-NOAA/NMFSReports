@@ -6,12 +6,12 @@
 \usage{
 theme_flextable_nmfstm(
   x,
-  pgwidth = 6,
+  pgwidth = 6.5,
   row_lines = TRUE,
   body_size = 11,
   header_size = 11,
   font = "Times New Roman",
-  spacing = 1,
+  spacing = 0.8,
   pad = 2
 )
 }
@@ -28,7 +28,7 @@ theme_flextable_nmfstm(
 
 \item{font}{String. Default = "Times New Roman". Instead, you may want "Arial".}
 
-\item{spacing}{table spacing. default = 1}
+\item{spacing}{table spacing. default = 0.8.}
 
 \item{pad}{padding around each element. default = 0.1}
 }
