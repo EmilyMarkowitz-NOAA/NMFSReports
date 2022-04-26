@@ -1912,10 +1912,10 @@ crossref <- function(list_obj,
 theme_flextable_nmfstm <- function(x,
                                    pgwidth = 6.5,
                                    row_lines = TRUE,
-                                   body_size = 11,
-                                   header_size = 11,
+                                   body_size = 10,
+                                   header_size = 10,
                                    font0 = "Times New Roman",
-                                   spacing = 0.8,
+                                   spacing = 0.7,
                                    pad = 2) {
 
   if (!inherits(x, "flextable")) {
