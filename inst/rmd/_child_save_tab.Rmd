@@ -110,6 +110,6 @@ remove(list = remove_who)
 
 </br>
 
-`r if(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="") { paste0("*Alternative text: ", list_tables[[length(list_tables)]]$alttext, "*") } `
+<!-- `r if(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="") { paste0("*Alternative text: ", list_tables[[length(list_tables)]]$alttext, "*") } ` -->
 
-</br>
+<!-- </br> -->

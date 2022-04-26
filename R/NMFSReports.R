@@ -1915,7 +1915,7 @@ theme_flextable_nmfstm <- function(x,
                                    body_size = 10,
                                    header_size = 10,
                                    font0 = "Times New Roman",
-                                   spacing = 0.7,
+                                   spacing = 0.6,
                                    pad = 2) {
 
   if (!inherits(x, "flextable")) {
