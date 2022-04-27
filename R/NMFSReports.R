@@ -1106,9 +1106,8 @@ mod_number<-function(x,
                                  replacement = "")))
       # print(paste0(r,", ",c, ", ", xx))
       if (!is.na(xx)) {
-        xx<-format(xx/divideby, digits = digits, trim = F,
-                   big.mark = ifelse(comma_seperator == T, ",", ""),
-                   scientific = F)
+        xx<-formatC(xx/divideby, digits = digits, trim = F,
+                   big.mark = ifelse(comma_seperator == T, ",", ""), format = "f")
       }
       xxx[r,c]<-xx
     }}
@@ -1155,14 +1154,14 @@ xunits<-function(value,
 
       if (words == FALSE) {
         unit<-""
-        x<-format(x = value0, big.mark = ",", digits = 0, scientific = F)
+        x<-formatC(x = value0, big.mark = ",", digits = 0, format = "f")
       } else {
-        sigfig<-format(value0, digits = 3, scientific = TRUE)
+        sigfig<-formatC(x = value0, digits = 3, format = "f")
         sigfig0<-as.numeric(substr(x = sigfig, start = (nchar(sigfig)-1), stop = nchar(sigfig)))
 
         if (sigfig0==0) {
           unit<-""
-          x<-format(x = value0, big.mark = ",", digits = 0, scientific = F)
+          x<-formatC(x = value0, big.mark = ",", digits = 0, format = "f")
           if (!is.null(val_under_x_words)) {
             if (as.numeric(x) <= val_under_x_words & as.numeric(x) >= 0) {
               x <- NMFSReports::numbers2words(x = as.numeric(x))
@@ -1171,7 +1170,7 @@ xunits<-function(value,
         } else if (sigfig0<=5) {
           # if (sigfig0<4) {
           unit<-""
-          x<-format(x = value0, big.mark = ",", digits = 0, scientific = F)
+          x<-formatC(x = value0, big.mark = ",", digits = 0, format = "f")
           # } else if (sigfig0>=4 & sigfig0<6) {
           #   unit<-" thousand"
           # x<-round(value0/1e3, digits = 1)
@@ -1220,7 +1219,7 @@ xunitspct<-function(value, sign = TRUE) {
       temp<-NA
     } else if (value > -1 & value <= 0 | #negative values between 0 and -1
                value < 1 & value >= 0) { #positive values between 1 and 0
-      temp<-as.numeric(format(value, digits = 0, nsmall = 1, big.mark = ",", trim =T, scientific = F))
+      temp<-as.numeric(formatC(x = value, digits = 0, nsmall = 1, big.mark = ",", trim =T, format = "f"))
     } else {
       temp<-as.numeric(round(value, digits = 0))
     }
@@ -1865,6 +1864,7 @@ crossref <- function(list_obj,
       } else {
         ref <- paste(ref, sep = "", collapse = "
 
+
 ")
       }
     }
@@ -1915,7 +1915,7 @@ theme_flextable_nmfstm <- function(x,
                                    body_size = 10,
                                    header_size = 10,
                                    font0 = "Times New Roman",
-                                   spacing = 0.7,
+                                   spacing = 0.6,
                                    pad = 2) {
 
   if (!inherits(x, "flextable")) {
