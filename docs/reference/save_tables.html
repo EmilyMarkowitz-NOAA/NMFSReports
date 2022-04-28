@@ -170,36 +170,37 @@
 <span class="r-in">                                                     divideby <span class="op">=</span> <span class="fl">1</span>,</span>
 <span class="r-in">                                                     comma_seperator <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span class="r-in">                                                     digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in formatC(xx/divideby, digits = digits, trim = F, big.mark = ifelse(comma_seperator ==     T, ",", ""), format = "f"):</span> unused argument (trim = F)</span>
 <span class="r-in"><span class="fu">save_tables</span><span class="op">(</span>table_raw <span class="op">=</span> <span class="va">table_raw</span>,</span>
 <span class="r-in">           table_print<span class="op">=</span><span class="va">table_print</span>,</span>
 <span class="r-in">           header <span class="op">=</span> <span class="st">"Here is a table!"</span>,</span>
 <span class="r-in">           footnote <span class="op">=</span> <span class="st">"A footnote for this table!"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$raw</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              x           y col</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0.91331834 -2.98019072   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2   0.49678132 -0.97153681   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   1.37836951 -0.51394710   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  -0.01944383  0.76966309   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5   0.10397846 -0.15369708   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  -0.88189415  0.59056218   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   0.43151842  0.08646002   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  -0.98468912 -0.75539831   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  -0.90305026  0.39125474   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10  0.39646925  2.61971670   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             x          y col</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  -0.9745294 -0.9328898   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  -0.1147284  1.8175736   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  -2.4844102  0.7140158   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.6031189 -1.6809738   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   0.8147801  1.6948789   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   0.3873711  0.6862240   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   0.3042178  1.4786329   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   0.9168355 -1.6723655   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   0.4899848  1.0246027   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10  0.7996313 -1.7859077   a</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$print</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         x     y col</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1    0.91    -3   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     0.5 -0.97   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     1.4 -0.51   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  -0.019  0.77   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     0.1 -0.15   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6   -0.88  0.59   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7    0.43 0.086   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8   -0.98 -0.76   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9    -0.9  0.39   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    0.4   2.6   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             x          y col</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  -0.9745294 -0.9328898   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  -0.1147284  1.8175736   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  -2.4844102  0.7140158   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.6031189 -1.6809738   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   0.8147801  1.6948789   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   0.3873711  0.6862240   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   0.3042178  1.4786329   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   0.9168355 -1.6723655   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   0.4899848  1.0246027   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10  0.7996313 -1.7859077   a</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$caption</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Table [1](){#}. Here is a table!^[A footnote for this table!]"</span>

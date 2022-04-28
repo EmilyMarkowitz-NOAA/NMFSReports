@@ -1156,15 +1156,15 @@ xunits<-function(value,
         unit<-""
         x<-formatC(x = value0, big.mark = ",", digits = 0, format = "f")
       } else {
-        sigfig<-formatC(x = value0, digits = 3, format = "f")
+        sigfig<-formatC(x = value0, digits = 3)
         sigfig0<-as.numeric(substr(x = sigfig, start = (nchar(sigfig)-1), stop = nchar(sigfig)))
 
         if (sigfig0==0) {
           unit<-""
           x<-formatC(x = value0, big.mark = ",", digits = 0, format = "f")
           if (!is.null(val_under_x_words)) {
-            if (as.numeric(x) <= val_under_x_words & as.numeric(x) >= 0) {
-              x <- NMFSReports::numbers2words(x = as.numeric(x))
+            if (as.numeric(value0) <= val_under_x_words & as.numeric(value0) >= 0) {
+              x <- NMFSReports::numbers2words(x = as.numeric(value0))
             }
           }
         } else if (sigfig0<=5) {
