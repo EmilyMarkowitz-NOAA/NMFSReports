@@ -126,27 +126,15 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20000678660</span>, <span class="fl">234567</span>, <span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">2345</span>, <span class="fl">23</span><span class="op">)</span>,</span>
 <span class="r-in">       ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">mod_number</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]         [,2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] "20,000,679" NA  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] "235"        "2" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] "0"          "0" </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in formatC(xx/divideby, digits = digits, trim = F, big.mark = ifelse(comma_seperator ==     T, ",", ""), format = "f"):</span> unused argument (trim = F)</span>
 <span class="r-in"><span class="fu">mod_number</span><span class="op">(</span><span class="va">x</span>,</span>
 <span class="r-in">       comma_seperator <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]       [,2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] "20000679" NA  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] "235"      "2" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] "0"        "0" </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in formatC(xx/divideby, digits = digits, trim = F, big.mark = ifelse(comma_seperator ==     T, ",", ""), format = "f"):</span> unused argument (trim = F)</span>
 <span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200000</span>, <span class="fl">234567</span>, <span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">2345</span>, <span class="fl">23</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">mod_number</span><span class="op">(</span><span class="va">x</span>,</span>
 <span class="r-in">       divideby <span class="op">=</span> <span class="fl">1</span>,</span>
 <span class="r-in">       digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] "200,000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] "234,567"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] "1"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,] NA       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5,] "2,345"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [6,] "23"     </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in formatC(xx/divideby, digits = digits, trim = F, big.mark = ifelse(comma_seperator ==     T, ",", ""), format = "f"):</span> unused argument (trim = F)</span>
 </code></pre></div>
     </div>
   </div>
