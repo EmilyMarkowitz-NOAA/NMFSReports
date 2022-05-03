@@ -1156,8 +1156,8 @@ xunits<-function(value,
         unit<-""
         x<-formatC(x = value0, big.mark = ",", digits = 0, format = "f")
       } else {
-        sigfig<-formatC(x = value0, digits = 3)
-        sigfig0<-as.numeric(substr(x = sigfig, start = (nchar(sigfig)-1), stop = nchar(sigfig)))
+        sigfig <- formatC(x = value0, digits = 3, format = "e")
+        sigfig0 <- as.numeric(strsplit(x = sigfig, split = "e", fixed = TRUE)[[1]][2])
 
         if (sigfig0==0) {
           unit<-""
