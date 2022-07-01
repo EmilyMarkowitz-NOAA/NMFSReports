@@ -1,12 +1,12 @@
-pandoc: 2.14.0.3
-pkgdown: 2.0.3
+pandoc: 2.17.1.1
+pkgdown: 2.0.4
 pkgdown_sha: ~
 articles:
   A_use-buildReport: A_use-buildReport.html
   B_run-script-demo: B_run-script-demo.html
   C_functions-to-help-write-report: C_functions-to-help-write-report.html
   E_thispkgwasbuiltusing: E_thispkgwasbuiltusing.html
-last_built: 2022-05-03T21:45Z
+last_built: 2022-07-01T18:08Z
 urls:
   reference: https://emilymarkowitz-noaa.github.io/NMFSReports/reference
   article: https://emilymarkowitz-noaa.github.io/NMFSReports/articles

@@ -27,8 +27,8 @@ if (!(exists("table_raw"))) {
 
 if (!exists("cnt_pre")) {
   cnt_pre <- ""
-# } else {
-#   cnt_pre <- paste0(cnt_pre, " ")
+  # } else {
+  #   cnt_pre <- paste0(cnt_pre, " ")
 }
 
 # Systematically save your table with this function
@@ -48,11 +48,10 @@ list_tables<-NMFSReports::save_tables(
 
 ```
 
-#### `r ifelse(indesign_flowin %in% TRUE, "", list_tables[[length(list_tables)]]$caption) `
+`r paste0("#### ", ifelse(((indesign_flowin %in% TRUE) | (class(table_print) %in% "flextable")), "", list_tables[[length(list_tables)]]$caption)) `
 
-</br>
-
-```{r, echo = FALSE, fig.cap=ifelse(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="", list_tables[[length(list_tables)]]$alttext, ""), fig.align='center'}
+```{r, echo = FALSE}
+#, fig.cap=ifelse(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="", list_tables[[length(list_tables)]]$alttext, ""), fig.align='center'
 
 # Print or Don't Print Plot in Text
 # You don't want to print this in the document if this text will be flowed into InDesign. 
@@ -62,9 +61,120 @@ list_tables<-NMFSReports::save_tables(
 if (indesign_flowin %in% FALSE) { 
   # print table in text
   if (exists("table_print")) {
-    if ((class(table_print) %in% c("data.frame", "matrix"))){
+    if ((class(table_print) %in% c("data.frame", "matrix"))) {
       list_tables[[length(list_tables)]]$print %>% 
         knitr::kable(row.names = FALSE, booktabs = TRUE)
+      
+    } else if (class(table_print) %in% c("flextable")) {
+      
+      
+      href <- gsub(pattern = "\\}", replacement = "", 
+                  gsub(pattern = "\\{", replacement = "", 
+                       x = unlist(regmatches(list_tables[[length(list_tables)]]$header, 
+                                             gregexpr("(\\{.*?\\})", 
+                                                      list_tables[[length(list_tables)]]$header)))))
+      
+      # list_tables[[length(list_tables)]]$print <- 
+      #   list_tables[[length(list_tables)]]$print %>%
+      # # I didn't like how the set_caption looked/operated, so I integrated the caption directly into the table with my table numbering system
+      # flextable::set_caption(
+      #   x = .,
+      #   caption = as_paragraph("Table ",
+      #                         flextable::hyperlink_text(
+      #                           x = list_tables[[length(list_tables)]]$number,
+      #                           url = href,
+      #                           props = officer::fp_text(color = "blue", font.family = font0) ),
+      #                        ". -- ",
+      #                        list_tables[[length(list_tables)]]$alttext
+      #                         ))
+      
+      header0 <-# paste0('c("', 
+        list_tables[[length(list_tables)]]$alttext
+      #, '")'  )
+      # header0 <- strsplit(x = header0, split = "**", fixed = TRUE)
+      # header0 <- strsplit(x = header0, split = "*", fixed = TRUE)
+      header00 <- header0
+      header00 <- unlist(strsplit(x = header00, split = "**", fixed = TRUE))
+      header00 <- unlist(strsplit(x = header00, split = "*", fixed = TRUE))
+      header00 <- header00[header00 != ""]
+      for (zz in 1:length(header00)) {
+        if (grepl(pattern = paste0("**", header00[zz], "**"), x = header0, fixed = TRUE)) {
+          header00[zz] <-
+            #eval(parse(text = paste0(
+            paste0("flextable::as_b('", header00[zz], "')")#) ) )
+        } else if (grepl(pattern = paste0("*", header00[zz], "*"), x = header0, fixed = TRUE)) {
+          header00[zz] <- #eval(parse(text = paste0(
+            paste0("flextable::as_i('", header00[zz], "')")#) ) )
+        } else {
+          header00[zz] <- paste0("'", header00[zz], "'")
+        }
+      }
+
+      
+      header00 <- paste0('list("Table ", flextable::hyperlink_text(x = list_tables[[length(list_tables)]]$number, url = href, props = officer::fp_text(color = "blue", font.family = font0) ),  ". -- ",', paste0(header00, collapse = ", "), ")")
+      
+      # eval(parse(text = header00))
+      
+      # # bold
+      # header00 <- gsub(pattern = '** ', replacement = ')", "', fixed = TRUE,
+      #                 x = gsub(pattern = " **", replacement = '", as_b(',
+      #                          x = header00, fixed = TRUE))
+      #
+      #         # italics
+      # header00 <- gsub(pattern = "*)", replacement = '")", "', fixed = TRUE,
+      #                 x = gsub(pattern = "(*", replacement = '", as_i("',
+      #                          x = header00, fixed = TRUE))
+      # exp0 <- header00
+      # exp00 <- list()
+      # for (zz in 1:length(header0)) {
+      #   if (grepl(pattern = "as_i(", x = exp0[zz], fixed = TRUE) | grepl(pattern = "as_b(", x = exp0[zz], fixed = TRUE)) {
+      #     exp0[zz] <- eval(parse(text = exp0[zz]))
+      #   }
+      # }
+      # 
+      # header00 <- unlist(list("Table ",
+      #                  flextable::hyperlink_text(
+      #                    x = list_tables[[length(list_tables)]]$number,
+      #                    url = href,
+      #                    props = officer::fp_text(color = "blue", font.family = font0) ),
+      #                  ". -- ",
+      #                  header0
+      #                  # unlist(exp0)
+      # ))
+      # # eval(parse(text = header0))
+      
+      
+      # list("Table ",
+      #                  flextable::hyperlink_text(
+      #                    x = list_tables[[length(list_tables)]]$number,
+      #                    url = href,
+      #                    props = officer::fp_text(color = "blue", font.family = font0) ),
+      #                  ". -- ",
+      #                  header0))
+      
+      list_tables[[length(list_tables)]]$print <- 
+        list_tables[[length(list_tables)]]$print %>%
+        flextable::add_header_lines(
+          x = .,
+          top = TRUE,
+          values = "") %>%
+        flextable::compose(
+          x = .,
+          # j = "dummy",
+          part = "header",
+          i = 1,
+          # top = TRUE,
+          value = as_paragraph(
+            list_values = eval(parse(text = header00))) ) %>%
+        flextable::hline_top(x = ., part = "header",
+                             border = fp_border(color="white", width = 3)) %>%
+        flextable::align(x = ., i = 1, part = "header", align = "left") %>%
+        flextable::bold(x = ., i = 1, part = "header", bold = FALSE) %>%
+        flextable::font(x = ., i = 1, part = "header", fontname = font0) #%>% 
+      # flextable::style(x = ., i = 1, part = "header", )
+      
+      list_tables[[length(list_tables)]]$print
+      
     } else {
       # list_tables[[length(list_tables)]]$print
       aaa <- list_tables[[length(list_tables)]]$print
@@ -83,7 +193,7 @@ if (indesign_flowin %in% FALSE) {
     } else {
       list_tables[[length(list_tables)]]$raw
     }
-  } 
+  }
 } else if (indesign_flowin %in% TRUE) { # for reports that need to be flowed into InDesign 
   
   Title0 <- ifelse(indesign_flowin %in% TRUE, "", list_tables[[length(list_tables)]]$caption)
@@ -108,7 +218,6 @@ remove(list = remove_who)
 
 ```
 
-</br>
 
 <!-- `r if(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="") { paste0("*Alternative text: ", list_tables[[length(list_tables)]]$alttext, "*") } ` -->
 

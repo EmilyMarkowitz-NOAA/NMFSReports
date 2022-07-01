@@ -1467,7 +1467,7 @@ save_figures<-function(figure,
 
   # Title
   header<-trimws(header)
-  header<-paste0(type, " [",cnt,"](){#",nickname,"}. ",
+  header<-paste0(type, " [",cnt,"](){#",nickname,"}. -- ",
                  ifelse(substr(x = header,
                                start = nchar(header),
                                stop = nchar(header)) %in%
@@ -1490,6 +1490,7 @@ save_figures<-function(figure,
       ggplot2::ggsave( # save your plot
         path = path,
         dpi = 1200,
+        bg = "white",
         filename = paste0(filename00, ".", output_type[i]), # Always save in pdf so you can make last minute edits in adobe acrobat!
         plot = figure, # call the plot you are saving
         width = width, height = height, units = "in") #recall, A4 pages are 8.5 x 11 in - 1 in margins
@@ -1609,7 +1610,7 @@ save_tables<-function(table_raw = NULL,
   # Title
   header<-trimws(header)
   # header<-stringr::str_to_sentence(header)
-  header<-paste0(type, " [",cnt,"](){#",nickname,"}. ",
+  header<-paste0(type, " [",cnt,"](){#",nickname,"}. -- ",
                  ifelse(substr(x = header,
                                start = nchar(header),
                                stop = nchar(header)) %in%
