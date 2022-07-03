@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.3</span>
       </span>
     </div>
 
@@ -127,12 +127,14 @@
       
 
       </header><link href="C_functions-to-help-write-report_files/tabwid-1.0.0/tabwid.css" rel="stylesheet">
+<link href="C_functions-to-help-write-report_files/tabwid-1.0.0/scrool.css" rel="stylesheet">
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Functions and examples to help you write your report</h1>
+      <h1 data-toc-skip>Functions and examples to help you write your
+report</h1>
             
-            <h4 data-toc-skip class="date">April 27 2022</h4>
+            <h4 data-toc-skip class="date">July 03 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/HEAD/vignettes/C_functions-to-help-write-report.Rmd" class="external-link"><code>vignettes/C_functions-to-help-write-report.Rmd</code></a></small>
       <div class="hidden name"><code>C_functions-to-help-write-report.Rmd</code></div>
@@ -145,122 +147,138 @@
 <h3 id="load-libraries">Load Libraries<a class="anchor" aria-label="anchor" href="#load-libraries"></a>
 </h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/" class="external-link">NMFSReports</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.rforge.net/png/" class="external-link">png</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/cowplot/" class="external-link">cowplot</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/magick/" class="external-link">magick</a></span><span class="op">)</span></code></pre></div>
-<p>This file is essentially the example file included in the <code><a href="../reference/buildReport.html">buildReport()</a></code> function. The <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/vignettes/C_functions-to-help-write-report.Rmd" class="external-link">raw vignette script for this can be found here</a> and the <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/inst/rmd/0_example.Rmd" class="external-link">example script can be found here</a>.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/" class="external-link">NMFSReports</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.rforge.net/png/" class="external-link">png</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/cowplot/" class="external-link">cowplot</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/magick/" class="external-link">magick</a></span><span class="op">)</span></span></code></pre></div>
+<p>This file is essentially the example file included in the
+<code><a href="../reference/buildReport.html">buildReport()</a></code> function. The <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/vignettes/C_functions-to-help-write-report.Rmd" class="external-link">raw
+vignette script for this can be found here</a> and the <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/main/inst/rmd/0_example.Rmd" class="external-link">example
+script can be found here</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="from-run-file">From run file:<a class="anchor" aria-label="anchor" href="#from-run-file"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cnt_chapt</span> <span class="op">&lt;-</span> <span class="st">"000"</span> <span class="co"># Keep everything in a proper order</span>
-<span class="va">cnt_chapt_content</span> <span class="op">&lt;-</span> <span class="fl">0</span>
-<span class="va">cnt_equations</span> <span class="op">&lt;-</span> <span class="fl">0</span>
-<span class="va">cnt_tables</span> <span class="op">&lt;-</span> <span class="fl">0</span>
-<span class="va">cnt_figures</span> <span class="op">&lt;-</span> <span class="fl">0</span>
-<span class="va">list_equations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">list_tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">list_figures</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">dir_out_figures</span> <span class="op">&lt;-</span> <span class="va">dir_out_tables</span> <span class="op">&lt;-</span> <span class="cn">NULL</span> <span class="co"># I dont actually want to save them in this example</span>
-<span class="va">filename0</span><span class="op">&lt;-</span><span class="st">"example"</span>
-<span class="va">indesign_flowin</span><span class="op">&lt;-</span><span class="cn">FALSE</span> <span class="co"># not going into a final publication that requires indesign for final touches</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cnt_chapt</span> <span class="op">&lt;-</span> <span class="st">"000"</span> <span class="co"># Keep everything in a proper order</span></span>
+<span><span class="va">cnt_chapt_content</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span><span class="va">cnt_equations</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span><span class="va">cnt_tables</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span><span class="va">cnt_figures</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span><span class="va">list_equations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">list_tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">list_figures</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">dir_out_figures</span> <span class="op">&lt;-</span> <span class="va">dir_out_tables</span> <span class="op">&lt;-</span> <span class="cn">NULL</span> <span class="co"># I dont actually want to save them in this example</span></span>
+<span><span class="va">filename0</span><span class="op">&lt;-</span><span class="st">"example"</span></span>
+<span><span class="va">indesign_flowin</span><span class="op">&lt;-</span><span class="cn">FALSE</span> <span class="co"># not going into a final publication that requires indesign for final touches</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example-of-how-to-use-this-r-markdown-document">Example of how to use this R Markdown document<a class="anchor" aria-label="anchor" href="#example-of-how-to-use-this-r-markdown-document"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># example data</span>
-<span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>, 
-                  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>, 
-                  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">Footnotes.list</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"ExOfStandardFt"</span> <span class="op">=</span> <span class="st">"Wow, this project is so cool!"</span><span class="op">)</span>
-
-<span class="va">types_of_vessels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"NOAA Vessel"</span>, <span class="st">"F/V Fishing Boat"</span>, <span class="st">"R/V University Vessel"</span>, <span class="st">"Private Charter"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># example data</span></span>
+<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>, </span>
+<span>                  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>, </span>
+<span>                  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">Footnotes.list</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"ExOfStandardFt"</span> <span class="op">=</span> <span class="st">"Wow, this project is so cool!"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">types_of_vessels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"NOAA Vessel"</span>, <span class="st">"F/V Fishing Boat"</span>, <span class="st">"R/V University Vessel"</span>, <span class="st">"Private Charter"</span><span class="op">)</span></span></code></pre></div>
 <p>Here is the report content:</p>
 <div class="section level3">
 <h3 id="systematic-writing-of-content">Systematic writing of content<a class="anchor" aria-label="anchor" href="#systematic-writing-of-content"></a>
 </h3>
 <p>My example dataset has 100 rows in it and three columns in it.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<p>This sentence exemplifies how to systematically calculate a percent change: a 97% decrease<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
-<p>Here are several types of vessels: NOAA Vessel, F/V Fishing Boat, R/V University Vessel, and Private Charter.</p>
+<p>This sentence exemplifies how to systematically calculate a percent
+change: a 97% decrease<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+<p>Here are several types of vessels: NOAA Vessel, F/V Fishing Boat, R/V
+University Vessel, and Private Charter.</p>
 </div>
 <div class="section level3">
 <h3 id="equations">Equations<a class="anchor" aria-label="anchor" href="#equations"></a>
 </h3>
 <p>Here is some equations you’ll need to have in this report:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">equation</span> <span class="op">=</span> <span class="st">"c^2 = b^2 + a^2"</span>
-<span class="va">nickname</span> <span class="op">=</span> <span class="st">"pythagorean"</span>
-<span class="va">header</span> <span class="op">=</span> <span class="st">"Pythagorean theorem"</span>
-<span class="va">footnote</span> <span class="op">=</span> <span class="st">"footnote about how cool the pythagorean theorem is."</span>
-<span class="va">alttext</span> <span class="op">=</span> <span class="st">"The Pythagoras theorem is a mathematical law that states that the sum of squares of the lengths of the two short sides of the right triangle is equal to the square of the length of the hypotenuse."</span>
-  
-<span class="co"># save yo' stuff and do a lot of behind the scenes work</span>
-<span class="co"># alt: check out the "child = " in this next chunk header (which must stay empty)</span>
-<span class="co"># ```{r, child = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports")}</span>
-
-<span class="co"># ```</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">equation</span> <span class="op">=</span> <span class="st">"c^2 = b^2 + a^2"</span></span>
+<span><span class="va">nickname</span> <span class="op">=</span> <span class="st">"pythagorean"</span></span>
+<span><span class="va">header</span> <span class="op">=</span> <span class="st">"Pythagorean theorem"</span></span>
+<span><span class="va">footnote</span> <span class="op">=</span> <span class="st">"footnote about how cool the pythagorean theorem is."</span></span>
+<span><span class="va">alttext</span> <span class="op">=</span> <span class="st">"The Pythagoras theorem is a mathematical law that states that the sum of squares of the lengths of the two short sides of the right triangle is equal to the square of the length of the hypotenuse."</span></span>
+<span>  </span>
+<span><span class="co"># save yo' stuff and do a lot of behind the scenes work</span></span>
+<span><span class="co"># alt: check out the "child = " in this next chunk header (which must stay empty)</span></span>
+<span><span class="co"># ```{r, child = system.file("rmd/_child_save_eq.Rmd", package = "NMFSReports")}</span></span>
+<span></span>
+<span><span class="co"># ```</span></span></code></pre></div>
 <p>Equation <a href="" id="pythagorean">1</a>. Pythagorean theorem.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <p><span class="math display">\[c^2 = b^2 + a^2\]</span></p>
-<p><em>Alternative text: The Pythagoras theorem is a mathematical law that states that the sum of squares of the lengths of the two short sides of the right triangle is equal to the square of the length of the hypotenuse.</em></p>
+<p><em>Alternative text: The Pythagoras theorem is a mathematical law
+that states that the sum of squares of the lengths of the two short
+sides of the right triangle is equal to the square of the length of the
+hypotenuse.</em></p>
 <p>[Text blah blah]</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">equation</span> <span class="op">=</span> <span class="st">"F = G \\frac {m_1 m_2}{d^2}"</span>
-<span class="va">nickname</span> <span class="op">=</span> <span class="st">"Newton"</span>
-<span class="va">header</span> <span class="op">=</span> <span class="st">"Newton's Universal Law of Gravitation"</span>
-
-<span class="co"># save yo' stuff and do a lot of behind the scenes work</span>
-<span class="co"># alt: this does the same thing as calling "child = " in the chunk header</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_child.html" class="external-link">knit_child</a></span><span class="op">(</span>
-  text <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_expand.html" class="external-link">knit_expand</a></span><span class="op">(</span>
-    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_eq.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span> <span class="op">)</span>, 
-  quiet <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-<span class="co"># `r res `</span></code></pre></div>
-<p>Equation <a href="" id="Newton">2</a>. Newton’s Universal Law of Gravitation.</p>
+<code class="sourceCode R"><span><span class="va">equation</span> <span class="op">=</span> <span class="st">"F = G \\frac {m_1 m_2}{d^2}"</span></span>
+<span><span class="va">nickname</span> <span class="op">=</span> <span class="st">"Newton"</span></span>
+<span><span class="va">header</span> <span class="op">=</span> <span class="st">"Newton's Universal Law of Gravitation"</span></span>
+<span></span>
+<span><span class="co"># save yo' stuff and do a lot of behind the scenes work</span></span>
+<span><span class="co"># alt: this does the same thing as calling "child = " in the chunk header</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_child.html" class="external-link">knit_child</a></span><span class="op">(</span></span>
+<span>  text <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_expand.html" class="external-link">knit_expand</a></span><span class="op">(</span></span>
+<span>    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_eq.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span> <span class="op">)</span>, </span>
+<span>  quiet <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co"># `r res `</span></span></code></pre></div>
+<p>Equation <a href="" id="Newton">2</a>. Newton’s Universal Law of
+Gravitation.</p>
 <p><span class="math display">\[F = G \frac {m_1 m_2}{d^2}\]</span></p>
 <p><em>Alternative text: Newton’s Universal Law of Gravitation</em></p>
-<p>Remember the pythagorean theorem from before? That was Equation #<a href="#pythagorean">1</a> and it had a footnote that said “footnote about how cool the pythagorean theorem is.”</p>
+<p>Remember the pythagorean theorem from before? That was Equation #<a href="#pythagorean">1</a> and it had a footnote that said “footnote
+about how cool the pythagorean theorem is.”.</p>
 </div>
 <div class="section level3">
 <h3 id="citations">Citations<a class="anchor" aria-label="anchor" href="#citations"></a>
 </h3>
-<p>There are a lot of ways to cite within your report and here is an example of two: <span class="citation">(Fry 1957)</span> and <span class="citation">Arrhenius (1889)</span>. Checkout <a href="https://github.com/cboettig/knitcitations" class="external-link uri">https://github.com/cboettig/knitcitations</a> for more info! For this method, you’ll need a .bib file that will be used in the YAML of the RMarkdown document. If you are an EndNote, as I am, you can export .bib files using <a href="https://libguides.usask.ca/c.php?g=218034&amp;p=1458583" class="external-link">these guides</a>.</p>
-<p>Note that references will appear at the bottom of this document (and any document that you put references in) but when you combine this document with all of the other documents that you create, it will shift to the bottom of the report.</p>
+<p>There are a lot of ways to cite within your report and here is an
+example of two: <span class="citation">(Fry 1957)</span> and <span class="citation">Arrhenius (1889)</span>. Checkout <a href="https://github.com/cboettig/knitcitations" class="external-link uri">https://github.com/cboettig/knitcitations</a> for more info!
+For this method, you’ll need a .bib file that will be used in the YAML
+of the RMarkdown document. If you are an EndNote, as I am, you can
+export .bib files using <a href="https://libguides.usask.ca/c.php?g=218034&amp;p=1458583" class="external-link">these
+guides</a>.</p>
+<p>Note that references will appear at the bottom of this document (and
+any document that you put references in) but when you combine this
+document with all of the other documents that you create, it will shift
+to the bottom of the report.</p>
 </div>
 <div class="section level3">
 <h3 id="example-figure-plot">Example Figure (Plot)<a class="anchor" aria-label="anchor" href="#example-figure-plot"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a figure!"</span>
-<span class="va">footnote</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A footnote for this figure!"</span>, <span class="st">"A second footnote for this figure!"</span><span class="op">)</span>
-<span class="va">nickname</span> <span class="op">&lt;-</span> <span class="st">"ex_plot"</span>
-<span class="va">alttext</span> <span class="op">&lt;-</span> <span class="st">"This is a scatter plot of random data."</span>
-  
-<span class="co"># Select data and make plot</span>
-<span class="va">figure</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span>, colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">col</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># create plot</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> 
-
-<span class="co"># save yo' stuff and do a lot of behind the scenes work</span>
-<span class="co"># alt: check out the "child = " in this next chunk header (which must stay empty)</span>
-<span class="co"># ```{r, child = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")}</span>
-<span class="co"># ```</span></code></pre></div>
-<pre><code><span class="co">#&gt; NULL</span></code></pre>
-<p></p>
+<code class="sourceCode R"><span><span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a figure!"</span></span>
+<span><span class="va">footnote</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A footnote for this figure!"</span>, <span class="st">"A second footnote for this figure!"</span><span class="op">)</span></span>
+<span><span class="va">nickname</span> <span class="op">&lt;-</span> <span class="st">"ex_plot"</span></span>
+<span><span class="va">alttext</span> <span class="op">&lt;-</span> <span class="st">"This is a scatter plot of random data."</span></span>
+<span>  </span>
+<span><span class="co"># Select data and make plot</span></span>
+<span><span class="va">figure</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span>, colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">col</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># create plot</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="co"># save yo' stuff and do a lot of behind the scenes work</span></span>
+<span><span class="co"># alt: check out the "child = " in this next chunk header (which must stay empty)</span></span>
+<span><span class="co"># ```{r, child = system.file("rmd/_child_save_fig.Rmd", package = "NMFSReports")}</span></span>
+<span><span class="co"># ```</span></span></code></pre></div>
+<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 <!-- caption -->
 <div class="section level5">
-<h5 id="figure-1--here-is-a-figure">
-<em>Figure <a href="" id="ex_plot">1</a>. Here is a figure!</em><a class="anchor" aria-label="anchor" href="#figure-1--here-is-a-figure"></a>
+<h5 id="figure-1--here-is-a-figure">Figure <a href="" id="ex_plot">1</a>. – Here is a figure!<a class="anchor" aria-label="anchor" href="#figure-1--here-is-a-figure"></a>
 </h5>
 <!-- alt text -->
 <!-- *Alternative text: This is a scatter plot of random data.* -->
-<!-- </br> -->
+<p></p>
 <p>Here in plot <a href="#ex_plot">1</a>, we see that…</p>
 </div>
 </div>
@@ -268,77 +286,72 @@
 <h3 id="example-figure-reference-image">Example Figure (Reference Image)<a class="anchor" aria-label="anchor" href="#example-figure-reference-image"></a>
 </h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a figure!"</span>
-<span class="va">footnote</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A footnote for this figure!"</span><span class="op">)</span>
-<span class="va">nickname</span> <span class="op">&lt;-</span> <span class="st">"noaalogo"</span>
-<span class="va">filename_desc</span> <span class="op">&lt;-</span> <span class="st">"noaalogo"</span>
-<span class="va">alttext</span> <span class="op">&lt;-</span> <span class="st">"The NOAA Meatball and text. "</span>
-
-<span class="co"># Select data and make plot</span>
-<span class="va">figure</span> <span class="op">&lt;-</span> 
-  <span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/ggdraw.html" class="external-link">ggdraw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/draw_image.html" class="external-link">draw_image</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/png/man/readPNG.html" class="external-link">readPNG</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"img/NOAA_Fisheries_logo_vertical.png"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span> <span class="op">)</span>
-
-<span class="co"># save yo' stuff and do a lot of behind the scenes work</span>
-<span class="co"># alt: this does the same thing as calling "child = " in the chunk header</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_child.html" class="external-link">knit_child</a></span><span class="op">(</span>
-  text <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_expand.html" class="external-link">knit_expand</a></span><span class="op">(</span>
-    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_fig.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>, 
-  quiet <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-<span class="co"># `r res `</span></code></pre></div>
-<pre><code><span class="co">#&gt; NULL</span></code></pre>
-<p></p>
+<code class="sourceCode R"><span></span>
+<span><span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a figure!"</span></span>
+<span><span class="va">footnote</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A footnote for this figure!"</span><span class="op">)</span></span>
+<span><span class="va">nickname</span> <span class="op">&lt;-</span> <span class="st">"noaalogo"</span></span>
+<span><span class="va">filename_desc</span> <span class="op">&lt;-</span> <span class="st">"noaalogo"</span></span>
+<span><span class="va">alttext</span> <span class="op">&lt;-</span> <span class="st">"The NOAA Meatball and text. "</span></span>
+<span></span>
+<span><span class="co"># Select data and make plot</span></span>
+<span><span class="va">figure</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/ggdraw.html" class="external-link">ggdraw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/draw_image.html" class="external-link">draw_image</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/png/man/readPNG.html" class="external-link">readPNG</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"img/NOAA_Fisheries_logo_vertical.png"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span> <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># save yo' stuff and do a lot of behind the scenes work</span></span>
+<span><span class="co"># alt: this does the same thing as calling "child = " in the chunk header</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_child.html" class="external-link">knit_child</a></span><span class="op">(</span></span>
+<span>  text <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_expand.html" class="external-link">knit_expand</a></span><span class="op">(</span></span>
+<span>    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_fig.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>  quiet <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co"># `r res `</span></span></code></pre></div>
+<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 <!-- caption -->
 <div class="section level5">
-<h5 id="figure-2--here-is-a-figure">
-<em>Figure <a href="" id="noaalogo">2</a>. Here is a figure!</em><a class="anchor" aria-label="anchor" href="#figure-2--here-is-a-figure"></a>
+<h5 id="figure-2--here-is-a-figure">Figure <a href="" id="noaalogo">2</a>. – Here is a figure!<a class="anchor" aria-label="anchor" href="#figure-2--here-is-a-figure"></a>
 </h5>
 <!-- alt text -->
 <!-- *Alternative text: The NOAA Meatball and text. * -->
-<!-- </br> -->
+<p></p>
 <p>Here in figure <a href="#noaalogo">2</a>, we see the NOAA logo.</p>
 </div>
 </div>
 <div class="section level3">
 <h3 id="example-table-basic">Example Table (Basic)<a class="anchor" aria-label="anchor" href="#example-table-basic"></a>
 </h3>
-<p>Here, we use the function <code>theme_flextable_nmfstm</code> which mimics many of the NMFS report tech memo motifs.</p>
+<p>Here, we use the function <code>theme_flextable_nmfstm</code> which
+mimics many of the NMFS report tech memo motifs.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a table!"</span>
-<span class="va">footnote</span><span class="op">&lt;-</span><span class="st">"A footnote for this table!"</span>
-<span class="va">nickname</span> <span class="op">&lt;-</span> <span class="st">"ex_table"</span> <span class="co"># this is so you can refer to it later systematically</span>
-<span class="va">alttext</span> <span class="op">&lt;-</span> <span class="st">"This is a 3-column table of random letters (in the first column) and numbers (in the second and third columns). "</span>
-
-<span class="co"># Select data and make plot</span>
-
-<span class="co"># Create data-saver version of table that will be used to reference things later saved as backup</span>
-<span class="va">table_raw</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, 
-                      x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, 
-                      y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span> 
-
-<span class="co"># Create pretty version of table that will go into report</span>
-<span class="va">table_print</span> <span class="op">&lt;-</span> <span class="va">table_raw</span>
-<span class="va">table_print</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> 
-  <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/mod_number.html">mod_number</a></span><span class="op">(</span><span class="va">table_print</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span>, 
-                          divideby <span class="op">=</span> <span class="fl">1</span>, 
-                          comma_seperator <span class="op">=</span> <span class="cn">TRUE</span>, 
-                          digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-
-<span class="va">table_print</span> <span class="op">&lt;-</span> <span class="fu">flextable</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/flextable/reference/flextable.html" class="external-link">flextable</a></span><span class="op">(</span><span class="va">table_print</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-    <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/theme_flextable_nmfstm.html">theme_flextable_nmfstm</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">.</span><span class="op">)</span>
-
-<span class="co"># save yo' stuff and do a lot of behind the scenes work</span>
-<span class="co"># alt: check out the "child = " in this chunk header (which must stay empty)</span>
-<span class="co"># ```{r, child = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")}</span>
-<span class="co"># ```</span></code></pre></div>
-<div class="section level5">
-<h5 id="table-1--here-is-a-table">Table <a href="" id="ex_table">1</a>. Here is a table!<a class="anchor" aria-label="anchor" href="#table-1--here-is-a-table"></a>
-</h5>
-<p></p>
-<template id="58c6317b-e9b5-4446-bdbe-a453143d86b0"><style>
+<code class="sourceCode R"><span></span>
+<span><span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a table!"</span></span>
+<span><span class="va">footnote</span><span class="op">&lt;-</span><span class="st">"A footnote for this table!"</span></span>
+<span><span class="va">nickname</span> <span class="op">&lt;-</span> <span class="st">"ex_table"</span> <span class="co"># this is so you can refer to it later systematically</span></span>
+<span><span class="va">alttext</span> <span class="op">&lt;-</span> <span class="st">"This is a 3-column table of random letters (in the first column) and numbers (in the second and third columns). "</span></span>
+<span></span>
+<span><span class="co"># Select data and make plot</span></span>
+<span></span>
+<span><span class="co"># Create data-saver version of table that will be used to reference things later saved as backup</span></span>
+<span><span class="va">table_raw</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, </span>
+<span>                      x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, </span>
+<span>                      y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="co"># Create pretty version of table that will go into report</span></span>
+<span><span class="va">table_print</span> <span class="op">&lt;-</span> <span class="va">table_raw</span></span>
+<span><span class="va">table_print</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/mod_number.html">mod_number</a></span><span class="op">(</span><span class="va">table_print</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span>, </span>
+<span>                          divideby <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>                          comma_seperator <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                          digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">table_print</span> <span class="op">&lt;-</span> <span class="fu">flextable</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/flextable/reference/flextable.html" class="external-link">flextable</a></span><span class="op">(</span><span class="va">table_print</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>    <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/theme_flextable_nmfstm.html">theme_flextable_nmfstm</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">.</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># save yo' stuff and do a lot of behind the scenes work</span></span>
+<span><span class="co"># alt: check out the "child = " in this chunk header (which must stay empty)</span></span>
+<span><span class="co"># ```{r, child = system.file("rmd/_child_save_tab.Rmd", package = "NMFSReports")}</span></span>
+<span><span class="co"># ```</span></span></code></pre></div>
+<template id="89c42ed7-444a-4d13-a753-e71c56c57e31"><style>
 .tabwid table{
   border-spacing:0px !important;
   border-collapse:collapse;
@@ -374,70 +387,73 @@ background-color: transparent;
 }
 </style>
 <div class="tabwid">
-<style>.cl-6fe2f9de{}.cl-6fd40ac8{font-family:'Times New Roman';font-size:10pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6fd40ac9{font-family:'Times New Roman';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6fd431d8{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2pt;padding-top:2pt;padding-left:2pt;padding-right:2pt;line-height: 1;background-color:transparent;}.cl-6fd48188{width:170.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6fd48189{width:126.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6fd4818a{width:126.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6fd4818b{width:170.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6fd4818c{width:170.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6fd4818d{width:126.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6fd4818e{width:126.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6fd4818f{width:170.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6fd48190{width:126.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 2pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6fd48191{width:170.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 2pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table class="table cl-6fe2f9de">
-<thead><tr style="overflow-wrap:break-word;">
-<td class="cl-6fd48190"><p class="cl-6fd431d8"><span class="cl-6fd40ac8">col</span></p></td>
-<td class="cl-6fd48191"><p class="cl-6fd431d8"><span class="cl-6fd40ac8">x</span></p></td>
-<td class="cl-6fd48191"><p class="cl-6fd431d8"><span class="cl-6fd40ac8">y</span></p></td>
-</tr></thead>
+<style>.cl-e1e699c6{}.cl-e1c8b762{font-family:'Arial Narrow';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e1c8b78a{font-family:'Arial Narrow';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 255, 1.00);background-color:transparent;}.cl-e1c8b794{font-family:'Times New Roman';font-size:10pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e1c8b79e{font-family:'Times New Roman';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e1c943e4{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2pt;padding-top:2pt;padding-left:2pt;padding-right:2pt;line-height: 1;background-color:transparent;}.cl-e1c9fae6{width:170.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1c9fafa{width:126.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1c9fb04{width:170.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1c9fb0e{width:126.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1c9fb18{width:126.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1c9fb19{width:170.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1c9fb22{width:126.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1c9fb2c{width:170.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(26, 26, 26, 1.00);border-top: 0.5pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1c9fb2d{width:126.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 3pt solid rgba(255, 255, 255, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1c9fb36{width:170.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 3pt solid rgba(255, 255, 255, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1c9fb40{width:170.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 2pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1c9fb4a{width:126.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(26, 26, 26, 1.00);border-top: 2pt solid rgba(26, 26, 26, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table class="table cl-e1e699c6">
+<thead>
+<tr style="overflow-wrap:break-word;"><td colspan="3" class="cl-e1c9fb2d"><p class="cl-e1c943e4"><span class="cl-e1c8b762">Table </span><a href="#ex_table"><span class="cl-e1c8b78a">1</span></a><span class="cl-e1c8b762">. -- </span><span class="cl-e1c8b762">This is a 3-column table of random letters (in the first column) and numbers (in the second and third columns). </span></p></td></tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-e1c9fb4a"><p class="cl-e1c943e4"><span class="cl-e1c8b794">col</span></p></td>
+<td class="cl-e1c9fb40"><p class="cl-e1c943e4"><span class="cl-e1c8b794">x</span></p></td>
+<td class="cl-e1c9fb40"><p class="cl-e1c943e4"><span class="cl-e1c8b794">y</span></p></td>
+</tr>
+</thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-6fd48189"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">A</span></p></td>
-<td class="cl-6fd48188"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">-1.1</span></p></td>
-<td class="cl-6fd48188"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">0.99</span></p></td>
+<td class="cl-e1c9fafa"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">A</span></p></td>
+<td class="cl-e1c9fae6"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">-0.39</span></p></td>
+<td class="cl-e1c9fae6"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">0.08</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-6fd4818d"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">B</span></p></td>
-<td class="cl-6fd4818c"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">0.97</span></p></td>
-<td class="cl-6fd4818c"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">1.1</span></p></td>
+<td class="cl-e1c9fb18"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">B</span></p></td>
+<td class="cl-e1c9fb19"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">1.71</span></p></td>
+<td class="cl-e1c9fb19"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">-1.66</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-6fd4818e"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">C</span></p></td>
-<td class="cl-6fd4818f"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">-0.79</span></p></td>
-<td class="cl-6fd4818f"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">-0.54</span></p></td>
+<td class="cl-e1c9fb22"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">C</span></p></td>
+<td class="cl-e1c9fb2c"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">0.42</span></p></td>
+<td class="cl-e1c9fb2c"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">1.31</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-6fd4818d"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">D</span></p></td>
-<td class="cl-6fd4818c"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">1.9</span></p></td>
-<td class="cl-6fd4818c"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">-1.1</span></p></td>
+<td class="cl-e1c9fb18"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">D</span></p></td>
+<td class="cl-e1c9fb19"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">0.52</span></p></td>
+<td class="cl-e1c9fb19"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">1.04</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-6fd4818d"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">E</span></p></td>
-<td class="cl-6fd4818c"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">1.2</span></p></td>
-<td class="cl-6fd4818c"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">0.19</span></p></td>
+<td class="cl-e1c9fb18"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">E</span></p></td>
+<td class="cl-e1c9fb19"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">-2.20</span></p></td>
+<td class="cl-e1c9fb19"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">1.59</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-6fd4818d"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">F</span></p></td>
-<td class="cl-6fd4818c"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">-2.9</span></p></td>
-<td class="cl-6fd4818c"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">-0.47</span></p></td>
+<td class="cl-e1c9fb18"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">F</span></p></td>
+<td class="cl-e1c9fb19"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">-3.00</span></p></td>
+<td class="cl-e1c9fb19"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">1.35</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-6fd4818e"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">G</span></p></td>
-<td class="cl-6fd4818f"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">1.1</span></p></td>
-<td class="cl-6fd4818f"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">-1.3</span></p></td>
+<td class="cl-e1c9fb22"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">G</span></p></td>
+<td class="cl-e1c9fb2c"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">-1.02</span></p></td>
+<td class="cl-e1c9fb2c"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">-0.39</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-6fd4818d"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">H</span></p></td>
-<td class="cl-6fd4818c"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">1.3</span></p></td>
-<td class="cl-6fd4818c"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">0.25</span></p></td>
+<td class="cl-e1c9fb18"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">H</span></p></td>
+<td class="cl-e1c9fb19"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">-1.12</span></p></td>
+<td class="cl-e1c9fb19"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">-0.28</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-6fd4818d"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">I</span></p></td>
-<td class="cl-6fd4818c"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">-0.44</span></p></td>
-<td class="cl-6fd4818c"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">2.5</span></p></td>
+<td class="cl-e1c9fb18"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">I</span></p></td>
+<td class="cl-e1c9fb19"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">1.61</span></p></td>
+<td class="cl-e1c9fb19"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">-0.66</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-6fd4818a"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">J</span></p></td>
-<td class="cl-6fd4818b"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">1.4</span></p></td>
-<td class="cl-6fd4818b"><p class="cl-6fd431d8"><span class="cl-6fd40ac9">1.3</span></p></td>
+<td class="cl-e1c9fb0e"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">J</span></p></td>
+<td class="cl-e1c9fb04"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">1.93</span></p></td>
+<td class="cl-e1c9fb04"><p class="cl-e1c943e4"><span class="cl-e1c8b79e">1.19</span></p></td>
 </tr>
 </tbody>
 </table>
-</div></template><div class="flextable-shadow-host" id="a3cc5317-e42f-49d3-8bfa-55cb34eb9f2c"></div>
+</div></template><div class="flextable-shadow-host" id="0bd25be2-7129-471d-9e60-7b0c7513844f"></div>
 <script>
-var dest = document.getElementById("a3cc5317-e42f-49d3-8bfa-55cb34eb9f2c");
-var template = document.getElementById("58c6317b-e9b5-4446-bdbe-a453143d86b0");
+var dest = document.getElementById("0bd25be2-7129-471d-9e60-7b0c7513844f");
+var template = document.getElementById("89c42ed7-444a-4d13-a753-e71c56c57e31");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -448,88 +464,89 @@ if(caption) {
 var fantome = dest.attachShadow({mode: 'open'});
 var templateContent = template.content;
 fantome.appendChild(templateContent);
-</script><p></p>
-<!-- *Alternative text: This is a 3-column table of random letters (in the first column) and numbers (in the second and third columns). * -->
-<!-- </br> -->
+</script><!-- *Alternative text: This is a 3-column table of random letters (in the first column) and numbers (in the second and third columns). * --><p></p>
 <p>Here in table <a href="#ex_table">1</a>, we see that…</p>
-</div>
 </div>
 <div class="section level3">
 <h3 id="example-table-with-footnotes">Example Table (With Footnotes)<a class="anchor" aria-label="anchor" href="#example-table-with-footnotes"></a>
 </h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a table!"</span>
-<span class="va">nickname</span> <span class="op">&lt;-</span> <span class="st">"ex_table_foot"</span> <span class="co"># this is so you can refer to it later systematically</span>
-
-<span class="co"># Select data and make plot</span>
-
-<span class="co"># Create data-saver version of table that will be used to reference things later saved as backup</span>
-<span class="va">table_raw</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, 
-                      x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, 
-                      y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, 
-                      footnotes <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> 
-
-<span class="va">table_raw</span><span class="op">$</span><span class="va">footnotes</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">&lt;-</span><span class="st">"Example footnote in a table 1."</span>
-<span class="va">table_raw</span><span class="op">$</span><span class="va">footnotes</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">&lt;-</span><span class="st">"Example footnote in a table 2.,,,Example footnote in a table 3."</span>
-
-<span class="va">footnote</span><span class="op">&lt;-</span><span class="st">"A table with footnotes!"</span>
-<span class="va">footnote</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">footnote</span>, 
-            <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/is_something_in_this_matrix.html">is_something_in_this_matrix</a></span><span class="op">(</span>
-  x <span class="op">=</span> <span class="va">table_raw</span>, 
-  search_for <span class="op">=</span> <span class="st">"J"</span><span class="op">)</span>, 
-  <span class="st">"There is a 'J' in this matrix!"</span>, 
-  <span class="st">""</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># Create pretty version of table that will go into report</span>
-<span class="va">table_print</span> <span class="op">&lt;-</span> <span class="va">table_raw</span>
-<span class="va">table_print</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/mod_number.html">mod_number</a></span><span class="op">(</span><span class="va">table_print</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span>, 
-                                                     divideby <span class="op">=</span> <span class="fl">1</span>, 
-                                                     comma_seperator <span class="op">=</span> <span class="cn">TRUE</span>, 
-                                                     digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-
-<span class="co"># example of how to add footnotes from a column of footnotes</span>
-<span class="co"># here, we'll add footnotes from the "footnotes" column to the content in the first column, where necessary</span>
-<span class="va">table_print</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/add_table_footnotes.html">add_table_footnotes</a></span><span class="op">(</span>table <span class="op">=</span> <span class="va">table_print</span>, 
-                                   from_col <span class="op">=</span> <span class="st">"footnotes"</span>, <span class="co"># either use the name of the column or number</span>
-                                   to_col <span class="op">=</span> <span class="fl">1</span>, <span class="co"># or the number of that column in that table</span>
-                                   delim <span class="op">=</span> <span class="st">",,,"</span><span class="op">)</span> 
-<span class="va">table_print</span><span class="op">$</span><span class="va">footnotes</span><span class="op">&lt;-</span><span class="cn">NULL</span> <span class="co"># remove column from final table</span>
-
-<span class="co"># here, I'll add a specific footnote to a specific place in the table</span>
-<span class="va">table_print</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/add_table_footnotes.html">add_table_footnotes</a></span><span class="op">(</span>table <span class="op">=</span> <span class="va">table_print</span>, 
-                                   footnote <span class="op">=</span> <span class="st">"Example footnote in a table 4."</span>, 
-                                   to_row <span class="op">=</span> <span class="fl">2</span>, 
-                                   to_col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-
-<span class="co"># apply multiple footnotes to multiple (same number) spots</span>
-<span class="va">table_print</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/add_table_footnotes.html">add_table_footnotes</a></span><span class="op">(</span>table <span class="op">=</span> <span class="va">table_print</span>, 
-                                   footnote <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Example footnote in a table 5."</span>, 
-                                                <span class="st">"Example footnote in a table 6."</span><span class="op">)</span>, 
-                                   to_row <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">3</span>,
-                                   to_col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-
-
-<span class="co"># Format table </span>
-<span class="va">table_print</span> <span class="op">&lt;-</span> <span class="va">table_print</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/format_cells.html">format_cells</a></span><span class="op">(</span>rows <span class="op">=</span> <span class="fl">0</span>, <span class="co"># make column names</span>
-               cols <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">table_print</span><span class="op">)</span>, <span class="co"># for all columns</span>
-               fonttype <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span> <span class="co">#%&gt;% # bold</span>
-  <span class="co"># knitr::kable(row.names = FALSE, booktabs = TRUE) #print table in text</span>
-
-<span class="co"># save yo' stuff and do a lot of behind the scenes work</span>
-<span class="co"># alt: this does the same thing as calling "child = " in the chunk header</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_child.html" class="external-link">knit_child</a></span><span class="op">(</span>
-  text <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_expand.html" class="external-link">knit_expand</a></span><span class="op">(</span>
-    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_tab.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>, 
-  quiet <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-<span class="co"># `r res `</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">header</span> <span class="op">&lt;-</span> <span class="st">"Here is a table!"</span></span>
+<span><span class="va">nickname</span> <span class="op">&lt;-</span> <span class="st">"ex_table_foot"</span> <span class="co"># this is so you can refer to it later systematically</span></span>
+<span></span>
+<span><span class="co"># Select data and make plot</span></span>
+<span></span>
+<span><span class="co"># Create data-saver version of table that will be used to reference things later saved as backup</span></span>
+<span><span class="va">table_raw</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, </span>
+<span>                      x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, </span>
+<span>                      y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, </span>
+<span>                      footnotes <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">table_raw</span><span class="op">$</span><span class="va">footnotes</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">&lt;-</span><span class="st">"Example footnote in a table 1."</span></span>
+<span><span class="va">table_raw</span><span class="op">$</span><span class="va">footnotes</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">&lt;-</span><span class="st">"Example footnote in a table 2.,,,Example footnote in a table 3."</span></span>
+<span></span>
+<span><span class="va">footnote</span><span class="op">&lt;-</span><span class="st">"A table with footnotes!"</span></span>
+<span><span class="va">footnote</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">footnote</span>, </span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/is_something_in_this_matrix.html">is_something_in_this_matrix</a></span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="va">table_raw</span>, </span>
+<span>  search_for <span class="op">=</span> <span class="st">"J"</span><span class="op">)</span>, </span>
+<span>  <span class="st">"There is a 'J' in this matrix!"</span>, </span>
+<span>  <span class="st">""</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create pretty version of table that will go into report</span></span>
+<span><span class="va">table_print</span> <span class="op">&lt;-</span> <span class="va">table_raw</span></span>
+<span><span class="va">table_print</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/mod_number.html">mod_number</a></span><span class="op">(</span><span class="va">table_print</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span>, </span>
+<span>                                                     divideby <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>                                                     comma_seperator <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                                                     digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># example of how to add footnotes from a column of footnotes</span></span>
+<span><span class="co"># here, we'll add footnotes from the "footnotes" column to the content in the first column, where necessary</span></span>
+<span><span class="va">table_print</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/add_table_footnotes.html">add_table_footnotes</a></span><span class="op">(</span>table <span class="op">=</span> <span class="va">table_print</span>, </span>
+<span>                                   from_col <span class="op">=</span> <span class="st">"footnotes"</span>, <span class="co"># either use the name of the column or number</span></span>
+<span>                                   to_col <span class="op">=</span> <span class="fl">1</span>, <span class="co"># or the number of that column in that table</span></span>
+<span>                                   delim <span class="op">=</span> <span class="st">",,,"</span><span class="op">)</span> </span>
+<span><span class="va">table_print</span><span class="op">$</span><span class="va">footnotes</span><span class="op">&lt;-</span><span class="cn">NULL</span> <span class="co"># remove column from final table</span></span>
+<span></span>
+<span><span class="co"># here, I'll add a specific footnote to a specific place in the table</span></span>
+<span><span class="va">table_print</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/add_table_footnotes.html">add_table_footnotes</a></span><span class="op">(</span>table <span class="op">=</span> <span class="va">table_print</span>, </span>
+<span>                                   footnote <span class="op">=</span> <span class="st">"Example footnote in a table 4."</span>, </span>
+<span>                                   to_row <span class="op">=</span> <span class="fl">2</span>, </span>
+<span>                                   to_col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># apply multiple footnotes to multiple (same number) spots</span></span>
+<span><span class="va">table_print</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/add_table_footnotes.html">add_table_footnotes</a></span><span class="op">(</span>table <span class="op">=</span> <span class="va">table_print</span>, </span>
+<span>                                   footnote <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Example footnote in a table 5."</span>, </span>
+<span>                                                <span class="st">"Example footnote in a table 6."</span><span class="op">)</span>, </span>
+<span>                                   to_row <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">3</span>,</span>
+<span>                                   to_col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># Format table </span></span>
+<span><span class="va">table_print</span> <span class="op">&lt;-</span> <span class="va">table_print</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/format_cells.html">format_cells</a></span><span class="op">(</span>rows <span class="op">=</span> <span class="fl">0</span>, <span class="co"># make column names</span></span>
+<span>               cols <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">table_print</span><span class="op">)</span>, <span class="co"># for all columns</span></span>
+<span>               fonttype <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span> <span class="co">#%&gt;% # bold</span></span>
+<span>  <span class="co"># knitr::kable(row.names = FALSE, booktabs = TRUE) #print table in text</span></span>
+<span></span>
+<span><span class="co"># save yo' stuff and do a lot of behind the scenes work</span></span>
+<span><span class="co"># alt: this does the same thing as calling "child = " in the chunk header</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_child.html" class="external-link">knit_child</a></span><span class="op">(</span></span>
+<span>  text <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_expand.html" class="external-link">knit_expand</a></span><span class="op">(</span></span>
+<span>    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmd/_child_save_tab.Rmd"</span>, package <span class="op">=</span> <span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>  quiet <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co"># `r res `</span></span></code></pre></div>
 <div class="section level5">
-<h5 id="table-2--here-is-a-table">Table <a href="" id="ex_table_foot">2</a>. Here is a table!<a class="anchor" aria-label="anchor" href="#table-2--here-is-a-table"></a>
+<h5 id="table-2--here-is-a-table">Table <a href="" id="ex_table_foot">2</a>. – Here is a table!<a class="anchor" aria-label="anchor" href="#table-2--here-is-a-table"></a>
 </h5>
-<p></p>
 <table class="table">
+<colgroup>
+<col width="46%">
+<col width="49%">
+<col width="3%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">col</th>
 <th align="left">x</th>
@@ -538,63 +555,61 @@ fantome.appendChild(templateContent);
 <tbody>
 <tr class="odd">
 <td align="left">A</td>
-<td align="left">-0.52</td>
-<td align="left">-0.99</td>
+<td align="left">-0.01</td>
+<td align="left">-0.13</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
-<td align="left">0.44<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> <sup>,</sup><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
+<td align="left">-0.94<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> <sup>,</sup><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
 </td>
-<td align="left">1.1</td>
+<td align="left">1.26</td>
 </tr>
 <tr class="odd">
 <td align="left">C<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>
 </td>
-<td align="left">-1.4<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>
+<td align="left">-0.90<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>
 </td>
-<td align="left">-0.32</td>
+<td align="left">0.66</td>
 </tr>
 <tr class="even">
 <td align="left">D<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> <sup>,</sup><a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>
 </td>
-<td align="left">0.82</td>
-<td align="left">0.98</td>
+<td align="left">-0.88</td>
+<td align="left">-0.36</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
-<td align="left">0.12</td>
-<td align="left">-0.12</td>
+<td align="left">0.24</td>
+<td align="left">0.89</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
-<td align="left">-0.13</td>
-<td align="left">0.4</td>
+<td align="left">-0.92</td>
+<td align="left">0.23</td>
 </tr>
 <tr class="odd">
 <td align="left">G</td>
-<td align="left">0.18</td>
-<td align="left">2.5</td>
+<td align="left">-0.19</td>
+<td align="left">-0.48</td>
 </tr>
 <tr class="even">
 <td align="left">H</td>
-<td align="left">-0.94</td>
-<td align="left">-0.1</td>
+<td align="left">-1.49</td>
+<td align="left">0.68</td>
 </tr>
 <tr class="odd">
 <td align="left">I</td>
-<td align="left">0.4</td>
-<td align="left">0.73</td>
+<td align="left">-0.10</td>
+<td align="left">-1.12</td>
 </tr>
 <tr class="even">
 <td align="left">J</td>
-<td align="left">1.3</td>
-<td align="left">1.4</td>
+<td align="left">0.13</td>
+<td align="left">2.08</td>
 </tr>
 </tbody>
 </table>
-<p></p>
-<!-- *Alternative text: Here is a table!* -->
-<!-- </br> -->
+<!-- *Alternative text: Here is a table!* --><p></p>
 <p>Here in table <a href="#ex_table_foot">2</a>, we see that…</p>
 </div>
 </div>
@@ -603,15 +618,18 @@ fantome.appendChild(templateContent);
 </h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-RN621" class="csl-entry">
-Arrhenius S. 1889. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für physikalische Chemie 4: 226–248.
+Arrhenius S. 1889. Über die reaktionsgeschwindigkeit bei der inversion
+von rohrzucker durch säuren. Zeitschrift für physikalische Chemie 4:
+226–248.
 </div>
 <div id="ref-RN686" class="csl-entry">
-Fry FEJ. 1957. The physiology of fishes. London: Academic Press.
+Fry FEJ. 1957. <a href="https://doi.org/10.1016/B978-1-4832-2817-4.50001-9" class="external-link">The physiology
+of fishes</a>. London: Academic Press.
 </div>
 </div>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr>
 <ol>
 <li id="fn1"><p>Wow, this project is so cool!<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
@@ -644,7 +662,7 @@ Fry FEJ. 1957. The physiology of fishes. London: Academic Press.
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

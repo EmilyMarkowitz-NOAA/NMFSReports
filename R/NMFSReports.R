@@ -741,13 +741,14 @@ add_table_footnotes<-function(table,
 #' @return The plain text from the google doc.
 #' @export
 #' @examples
-#' googledrive::drive_auth() # Using the first token you have.
-#' 1
-#'
-#' txt <- googledrive_txt_dl(filename_gd = "test123123_doc",
-#'                           filename_dl = "test123123_dl",
-#'                           verbose = FALSE)
-#' txt
+#' # not run:
+#' # googledrive::drive_auth() # Using the first token you have.
+#' # 1
+#' #
+#' # txt <- googledrive_txt_dl(filename_gd = "test123123_doc",
+#' #                           filename_dl = "test123123_dl",
+#' #                           verbose = FALSE)
+#' # txt
 #' # for good file keeping, I'll delete these
 #' file.remove('test123123_dl.txt', 'test123123_dl.zip')
 googledrive_txt_dl <- function (filename_gd = NULL,
@@ -1106,7 +1107,7 @@ mod_number<-function(x,
                                  replacement = "")))
       # print(paste0(r,", ",c, ", ", xx))
       if (!is.na(xx)) {
-        xx<-formatC(xx/divideby, digits = digits, trim = F,
+        xx<-formatC(xx/divideby, digits = digits, #trim = F,
                    big.mark = ifelse(comma_seperator == T, ",", ""), format = "f")
       }
       xxx[r,c]<-xx
@@ -1219,7 +1220,8 @@ xunitspct<-function(value, sign = TRUE) {
       temp<-NA
     } else if (value > -1 & value <= 0 | #negative values between 0 and -1
                value < 1 & value >= 0) { #positive values between 1 and 0
-      temp<-as.numeric(formatC(x = value, digits = 0, nsmall = 1, big.mark = ",", trim =T, format = "f"))
+      temp<-as.numeric(formatC(x = value, digits = 0, big.mark = ",", #trim =T, nsmall = 1,
+                               format = "f"))
     } else {
       temp<-as.numeric(round(value, digits = 0))
     }
@@ -1863,7 +1865,7 @@ crossref <- function(list_obj,
         # TOLEDO ref was missing here?
         ref <- sapply(list_obj[grepl(x = names(list_obj), pattern = nickname0)],"[[", sublist)
       } else {
-        ref <- paste(ref, sep = "", collapse = "
+        ref <- paste(ref, sep = "\n", collapse = "
 
 
 ")

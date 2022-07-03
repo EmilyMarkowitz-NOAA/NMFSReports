@@ -27,13 +27,14 @@ The plain text from the google doc.
 Download text from google drive as plain text
 }
 \examples{
-googledrive::drive_auth() # Using the first token you have.
-1
-
-txt <- googledrive_txt_dl(filename_gd = "test123123_doc",
-                          filename_dl = "test123123_dl",
-                          verbose = FALSE)
-txt
+# not run:
+# googledrive::drive_auth() # Using the first token you have.
+# 1
+#
+# txt <- googledrive_txt_dl(filename_gd = "test123123_doc",
+#                           filename_dl = "test123123_dl",
+#                           verbose = FALSE)
+# txt
 # for good file keeping, I'll delete these
 file.remove('test123123_dl.txt', 'test123123_dl.zip')
 }

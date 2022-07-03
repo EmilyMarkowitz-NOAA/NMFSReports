@@ -5,6 +5,7 @@ subobj <- ifelse(exists("subobj"), subobj, FALSE) # create a subobj letter (1a)
 newobj <- ifelse(exists("newobj"), newobj, TRUE) # force a new object number (1b-> 2a and 1 -> 2)
 cnt_chapt_content<-NMFSReports::auto_counter(cnt_chapt_content)
 cnt_tables <- ifelse(newobj, cnt_tables+1, cnt_tables)
+font0 <- ifelse(exists("font0"), font0, "Arial Narrow")
 
 if (subobj) {
   # if it contains letters
@@ -48,7 +49,7 @@ list_tables<-NMFSReports::save_tables(
 
 ```
 
-`r paste0("#### ", ifelse(((indesign_flowin %in% TRUE) | (class(table_print) %in% "flextable")), "", list_tables[[length(list_tables)]]$caption)) `
+`r ifelse(((indesign_flowin %in% TRUE) | (class(table_print) %in% "flextable")), "", paste0("#### ", list_tables[[length(list_tables)]]$caption)) `
 
 ```{r, echo = FALSE}
 #, fig.cap=ifelse(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="", list_tables[[length(list_tables)]]$alttext, ""), fig.align='center'
@@ -164,10 +165,10 @@ if (indesign_flowin %in% FALSE) {
           part = "header",
           i = 1,
           # top = TRUE,
-          value = as_paragraph(
+          value = flextable::as_paragraph(
             list_values = eval(parse(text = header00))) ) %>%
         flextable::hline_top(x = ., part = "header",
-                             border = fp_border(color="white", width = 3)) %>%
+                             border = officer::fp_border(color="white", width = 3)) %>%
         flextable::align(x = ., i = 1, part = "header", align = "left") %>%
         flextable::bold(x = ., i = 1, part = "header", bold = FALSE) %>%
         flextable::font(x = ., i = 1, part = "header", fontname = font0) #%>% 
@@ -221,4 +222,4 @@ remove(list = remove_who)
 
 <!-- `r if(indesign_flowin %in% FALSE & (list_tables[[length(list_tables)]]$alttext)!="") { paste0("*Alternative text: ", list_tables[[length(list_tables)]]$alttext, "*") } ` -->
 
-<!-- </br> -->
+</br>

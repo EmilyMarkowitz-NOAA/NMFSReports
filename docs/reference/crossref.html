@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.3</span>
       </span>
     </div>
 
@@ -106,54 +106,65 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">crossref</span><span class="op">(</span><span class="va">list_obj</span>, <span class="va">nickname</span>, sublist <span class="op">=</span> <span class="st">"number"</span>, exact <span class="op">=</span> <span class="cn">TRUE</span>, text <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">crossref</span><span class="op">(</span><span class="va">list_obj</span>, <span class="va">nickname</span>, sublist <span class="op">=</span> <span class="st">"number"</span>, exact <span class="op">=</span> <span class="cn">TRUE</span>, text <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>list_obj</dt>
 <dd><p>A list object created by list_figures or list_tables.</p></dd>
+
+
 <dt>nickname</dt>
 <dd><p>A unique string that is used to identify the plot or table in list_figures or list_tables, respectively.</p></dd>
+
+
 <dt>sublist</dt>
 <dd><p>A string of the sublist in list_figures or list_tables you want the contents returned from.</p></dd>
+
+
 <dt>exact</dt>
 <dd><p>T/F. If TRUE, 'nickname' must match the name of the list item exactly. If FALSE, crossref will return all entries with that string fragment. Default = TRUE.</p></dd>
+
+
 <dt>text</dt>
 <dd><p>T/F. If TRUE, will output results prepared for a text output. If FALSE, will output each element. Default = TRUE.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The item in the list.</p>
+    
+
+<p>The item in the list.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">list_figures</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">table_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span>, y <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">pp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">table_raw</span><span class="op">$</span><span class="va">x</span>, y <span class="op">=</span> <span class="va">table_raw</span><span class="op">$</span><span class="va">y</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">list_figures</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">table_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span>, y <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">pp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">table_raw</span><span class="op">$</span><span class="va">x</span>, y <span class="op">=</span> <span class="va">table_raw</span><span class="op">$</span><span class="va">y</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="crossref-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="va">list_figures</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="save_figures.html">save_figures</a></span><span class="op">(</span></span>
-<span class="r-in">   figure <span class="op">=</span> <span class="va">pp</span>,</span>
-<span class="r-in">   list_figures <span class="op">=</span> <span class="va">list_figures</span>,</span>
-<span class="r-in">   header <span class="op">=</span> <span class="st">"blah blah blah"</span>,</span>
-<span class="r-in">   nickname <span class="op">=</span> <span class="st">"example_1"</span>, <span class="co"># a unique name you can refer back to</span></span>
-<span class="r-in">   cnt_chapt_content <span class="op">=</span> <span class="st">"003"</span>,</span>
-<span class="r-in">   cnt <span class="op">=</span> <span class="st">"012"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">list_figures</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="save_figures.html">save_figures</a></span><span class="op">(</span></span>
-<span class="r-in">   figure <span class="op">=</span> <span class="va">pp</span>,</span>
-<span class="r-in">   list_figures <span class="op">=</span> <span class="va">list_figures</span>,</span>
-<span class="r-in">   header <span class="op">=</span> <span class="st">"blah blah blah"</span>,</span>
-<span class="r-in">   nickname <span class="op">=</span> <span class="st">"example2"</span>, <span class="co"># a unique name you can refer back to</span></span>
-<span class="r-in">   cnt_chapt_content <span class="op">=</span> <span class="st">"003"</span>,</span>
-<span class="r-in">   cnt <span class="op">=</span> <span class="st">"013"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">list_figures</span></span>
+<span class="r-in"><span><span class="va">list_figures</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="save_figures.html">save_figures</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>   figure <span class="op">=</span> <span class="va">pp</span>,</span></span>
+<span class="r-in"><span>   list_figures <span class="op">=</span> <span class="va">list_figures</span>,</span></span>
+<span class="r-in"><span>   header <span class="op">=</span> <span class="st">"blah blah blah"</span>,</span></span>
+<span class="r-in"><span>   nickname <span class="op">=</span> <span class="st">"example_1"</span>, <span class="co"># a unique name you can refer back to</span></span></span>
+<span class="r-in"><span>   cnt_chapt_content <span class="op">=</span> <span class="st">"003"</span>,</span></span>
+<span class="r-in"><span>   cnt <span class="op">=</span> <span class="st">"012"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">list_figures</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="save_figures.html">save_figures</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>   figure <span class="op">=</span> <span class="va">pp</span>,</span></span>
+<span class="r-in"><span>   list_figures <span class="op">=</span> <span class="va">list_figures</span>,</span></span>
+<span class="r-in"><span>   header <span class="op">=</span> <span class="st">"blah blah blah"</span>,</span></span>
+<span class="r-in"><span>   nickname <span class="op">=</span> <span class="st">"example2"</span>, <span class="co"># a unique name you can refer back to</span></span></span>
+<span class="r-in"><span>   cnt_chapt_content <span class="op">=</span> <span class="st">"003"</span>,</span></span>
+<span class="r-in"><span>   cnt <span class="op">=</span> <span class="st">"013"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">list_figures</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $example_1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $example_1$caption</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Figure [012](){#example_1}. blah blah blah."</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Figure [012](){#example_1}. -- blah blah blah."</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $example_1$header</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Figure [012](){#example_1}. blah blah blah."</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Figure [012](){#example_1}. -- blah blah blah."</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $example_1$nickname</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "example_1"</span>
@@ -173,10 +184,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $example2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $example2$caption</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Figure [013](){#example2}. blah blah blah."</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Figure [013](){#example2}. -- blah blah blah."</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $example2$header</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Figure [013](){#example2}. blah blah blah."</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Figure [013](){#example2}. -- blah blah blah."</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $example2$nickname</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "example2"</span>
@@ -194,46 +205,46 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "003_fig_013"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="va">refnum</span> <span class="op">&lt;-</span> <span class="fu">crossref</span><span class="op">(</span></span>
-<span class="r-in">   list_obj <span class="op">=</span> <span class="va">list_figures</span>,</span>
-<span class="r-in">   nickname <span class="op">=</span> <span class="st">"example_1"</span>,</span>
-<span class="r-in">   sublist <span class="op">=</span> <span class="st">"number"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">refnum</span></span>
+<span class="r-in"><span><span class="va">refnum</span> <span class="op">&lt;-</span> <span class="fu">crossref</span><span class="op">(</span></span></span>
+<span class="r-in"><span>   list_obj <span class="op">=</span> <span class="va">list_figures</span>,</span></span>
+<span class="r-in"><span>   nickname <span class="op">=</span> <span class="st">"example_1"</span>,</span></span>
+<span class="r-in"><span>   sublist <span class="op">=</span> <span class="st">"number"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">refnum</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "[012](#example_1)"</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Please refer to figure "</span>, <span class="va">refnum</span>,</span>
-<span class="r-in">             <span class="st">" to see this figure, not the other figure."</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Please refer to figure "</span>, <span class="va">refnum</span>,</span></span>
+<span class="r-in"><span>             <span class="st">" to see this figure, not the other figure."</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Please refer to figure [012](#example_1) to see this figure, not the other figure."</span>
-<span class="r-in"><span class="co"># example using a partial phrase with `exact = FALSE`</span></span>
-<span class="r-in"><span class="fu">crossref</span><span class="op">(</span></span>
-<span class="r-in">   list_obj <span class="op">=</span> <span class="va">list_figures</span>,</span>
-<span class="r-in">   nickname <span class="op">=</span> <span class="st">"example_"</span>,</span>
-<span class="r-in">   sublist <span class="op">=</span> <span class="st">"number"</span>,</span>
-<span class="r-in">   exact <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># example using a partial phrase with `exact = FALSE`</span></span></span>
+<span class="r-in"><span><span class="fu">crossref</span><span class="op">(</span></span></span>
+<span class="r-in"><span>   list_obj <span class="op">=</span> <span class="va">list_figures</span>,</span></span>
+<span class="r-in"><span>   nickname <span class="op">=</span> <span class="st">"example_"</span>,</span></span>
+<span class="r-in"><span>   sublist <span class="op">=</span> <span class="st">"number"</span>,</span></span>
+<span class="r-in"><span>   exact <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "[012](#example_1)"</span>
-<span class="r-in"><span class="co"># using a wildard with `exact = FALSE`</span></span>
-<span class="r-in"><span class="fu">crossref</span><span class="op">(</span></span>
-<span class="r-in"> list_obj <span class="op">=</span> <span class="va">list_figures</span>,</span>
-<span class="r-in"> nickname <span class="op">=</span> <span class="st">"example*1"</span>,</span>
-<span class="r-in"> sublist <span class="op">=</span> <span class="st">"number"</span>,</span>
-<span class="r-in"> exact <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># using a wildard with `exact = FALSE`</span></span></span>
+<span class="r-in"><span><span class="fu">crossref</span><span class="op">(</span></span></span>
+<span class="r-in"><span> list_obj <span class="op">=</span> <span class="va">list_figures</span>,</span></span>
+<span class="r-in"><span> nickname <span class="op">=</span> <span class="st">"example*1"</span>,</span></span>
+<span class="r-in"><span> sublist <span class="op">=</span> <span class="st">"number"</span>,</span></span>
+<span class="r-in"><span> exact <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "[012](#example_1)"</span>
-<span class="r-in"><span class="fu">crossref</span><span class="op">(</span></span>
-<span class="r-in"> list_obj <span class="op">=</span> <span class="va">list_figures</span>,</span>
-<span class="r-in"> nickname <span class="op">=</span> <span class="st">"example*"</span>,</span>
-<span class="r-in"> sublist <span class="op">=</span> <span class="st">"number"</span>,</span>
-<span class="r-in"> exact <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in"> text <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">crossref</span><span class="op">(</span></span></span>
+<span class="r-in"><span> list_obj <span class="op">=</span> <span class="va">list_figures</span>,</span></span>
+<span class="r-in"><span> nickname <span class="op">=</span> <span class="st">"example*"</span>,</span></span>
+<span class="r-in"><span> sublist <span class="op">=</span> <span class="st">"number"</span>,</span></span>
+<span class="r-in"><span> exact <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span> text <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "[012](#example_1)" "[013](#example2)" </span>
-<span class="r-in"><span class="va">refnum</span> <span class="op">&lt;-</span> <span class="fu">crossref</span><span class="op">(</span></span>
-<span class="r-in"> list_obj <span class="op">=</span> <span class="va">list_figures</span>,</span>
-<span class="r-in"> nickname <span class="op">=</span> <span class="st">"example*"</span>,</span>
-<span class="r-in"> sublist <span class="op">=</span> <span class="st">"number"</span>,</span>
-<span class="r-in"> exact <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in"> text <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">refnum</span></span>
+<span class="r-in"><span><span class="va">refnum</span> <span class="op">&lt;-</span> <span class="fu">crossref</span><span class="op">(</span></span></span>
+<span class="r-in"><span> list_obj <span class="op">=</span> <span class="va">list_figures</span>,</span></span>
+<span class="r-in"><span> nickname <span class="op">=</span> <span class="st">"example*"</span>,</span></span>
+<span class="r-in"><span> sublist <span class="op">=</span> <span class="st">"number"</span>,</span></span>
+<span class="r-in"><span> exact <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span> text <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">refnum</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "[012](#example_1) and [013](#example2)"</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Please refer to figure "</span>, <span class="va">refnum</span>,</span>
-<span class="r-in">             <span class="st">" to see this figure, not the other figure."</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Please refer to figure "</span>, <span class="va">refnum</span>,</span></span>
+<span class="r-in"><span>             <span class="st">" to see this figure, not the other figure."</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Please refer to figure [012](#example_1) and [013](#example2) to see this figure, not the other figure."</span>
 </code></pre></div>
     </div>
@@ -249,7 +260,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

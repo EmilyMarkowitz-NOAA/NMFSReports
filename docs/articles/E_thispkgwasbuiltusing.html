@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.3</span>
       </span>
     </div>
 
@@ -129,9 +129,10 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>System and packages used to build NMFSReports</h1>
+      <h1 data-toc-skip>System and packages used to build
+NMFSReports</h1>
             
-            <h4 data-toc-skip class="date">April 27 2022</h4>
+            <h4 data-toc-skip class="date">July 03 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/HEAD/vignettes/E_thispkgwasbuiltusing.Rmd" class="external-link"><code>vignettes/E_thispkgwasbuiltusing.Rmd</code></a></small>
       <div class="hidden name"><code>E_thispkgwasbuiltusing.Rmd</code></div>
@@ -141,95 +142,98 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/" class="external-link">NMFSReports</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/" class="external-link">NMFSReports</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
-<h2 id="this-vignette-does-not-contain-any-examples-of-using-nmf-reports-specifically-but-does-record-what-packges-and-system-is-ws-built-on--see-below">This vignette does not contain any examples of using NMF Reports, specifically, but does record what packges and system is ws built on. See below:<a class="anchor" aria-label="anchor" href="#this-vignette-does-not-contain-any-examples-of-using-nmf-reports-specifically-but-does-record-what-packges-and-system-is-ws-built-on--see-below"></a>
+<h2 id="this-vignette-does-not-contain-any-examples-of-using-nmf-reports-specifically-but-does-record-what-packges-and-system-is-ws-built-on--see-below">This vignette does not contain any examples of using NMF Reports,
+specifically, but does record what packges and system is ws built on.
+See below:<a class="anchor" aria-label="anchor" href="#this-vignette-does-not-contain-any-examples-of-using-nmf-reports-specifically-but-does-record-what-packges-and-system-is-ws-built-on--see-below"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">R.version</span>
-<span class="co">#&gt;                _                           </span>
-<span class="co">#&gt; platform       x86_64-w64-mingw32          </span>
-<span class="co">#&gt; arch           x86_64                      </span>
-<span class="co">#&gt; os             mingw32                     </span>
-<span class="co">#&gt; system         x86_64, mingw32             </span>
-<span class="co">#&gt; status                                     </span>
-<span class="co">#&gt; major          4                           </span>
-<span class="co">#&gt; minor          1.2                         </span>
-<span class="co">#&gt; year           2021                        </span>
-<span class="co">#&gt; month          11                          </span>
-<span class="co">#&gt; day            01                          </span>
-<span class="co">#&gt; svn rev        81115                       </span>
-<span class="co">#&gt; language       R                           </span>
-<span class="co">#&gt; version.string R version 4.1.2 (2021-11-01)</span>
-<span class="co">#&gt; nickname       Bird Hippie</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">R.version</span></span>
+<span><span class="co">#&gt;                _                                </span></span>
+<span><span class="co">#&gt; platform       x86_64-w64-mingw32               </span></span>
+<span><span class="co">#&gt; arch           x86_64                           </span></span>
+<span><span class="co">#&gt; os             mingw32                          </span></span>
+<span><span class="co">#&gt; crt            ucrt                             </span></span>
+<span><span class="co">#&gt; system         x86_64, mingw32                  </span></span>
+<span><span class="co">#&gt; status                                          </span></span>
+<span><span class="co">#&gt; major          4                                </span></span>
+<span><span class="co">#&gt; minor          2.0                              </span></span>
+<span><span class="co">#&gt; year           2022                             </span></span>
+<span><span class="co">#&gt; month          04                               </span></span>
+<span><span class="co">#&gt; day            22                               </span></span>
+<span><span class="co">#&gt; svn rev        82229                            </span></span>
+<span><span class="co">#&gt; language       R                                </span></span>
+<span><span class="co">#&gt; version.string R version 4.2.0 (2022-04-22 ucrt)</span></span>
+<span><span class="co">#&gt; nickname       Vigorous Calisthenics</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">allPackage</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html" class="external-link">installed.packages</a></span><span class="op">(</span><span class="va">.Library</span>, priority <span class="op">=</span> <span class="st">"high"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt;  chr [1:29, 1:16] "base" "boot" "class" "cluster" "codetools" "compiler" ...</span>
-<span class="co">#&gt;  - attr(*, "dimnames")=List of 2</span>
-<span class="co">#&gt;   ..$ : chr [1:29] "base" "boot" "class" "cluster" ...</span>
-<span class="co">#&gt;   ..$ : chr [1:16] "Package" "LibPath" "Version" "Priority" ...</span>
-
-<span class="va">allPackage</span> <span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">]</span>
-<span class="co">#&gt;            Package      Version   Priority     </span>
-<span class="co">#&gt; base       "base"       "4.1.2"   "base"       </span>
-<span class="co">#&gt; boot       "boot"       "1.3-28"  "recommended"</span>
-<span class="co">#&gt; class      "class"      "7.3-19"  "recommended"</span>
-<span class="co">#&gt; cluster    "cluster"    "2.1.2"   "recommended"</span>
-<span class="co">#&gt; codetools  "codetools"  "0.2-18"  "recommended"</span>
-<span class="co">#&gt; compiler   "compiler"   "4.1.2"   "base"       </span>
-<span class="co">#&gt; datasets   "datasets"   "4.1.2"   "base"       </span>
-<span class="co">#&gt; foreign    "foreign"    "0.8-81"  "recommended"</span>
-<span class="co">#&gt; graphics   "graphics"   "4.1.2"   "base"       </span>
-<span class="co">#&gt; grDevices  "grDevices"  "4.1.2"   "base"       </span>
-<span class="co">#&gt; grid       "grid"       "4.1.2"   "base"       </span>
-<span class="co">#&gt; KernSmooth "KernSmooth" "2.23-20" "recommended"</span>
-<span class="co">#&gt; lattice    "lattice"    "0.20-45" "recommended"</span>
-<span class="co">#&gt; MASS       "MASS"       "7.3-54"  "recommended"</span>
-<span class="co">#&gt; Matrix     "Matrix"     "1.3-4"   "recommended"</span>
-<span class="co">#&gt; methods    "methods"    "4.1.2"   "base"       </span>
-<span class="co">#&gt; mgcv       "mgcv"       "1.8-38"  "recommended"</span>
-<span class="co">#&gt; nlme       "nlme"       "3.1-153" "recommended"</span>
-<span class="co">#&gt; nnet       "nnet"       "7.3-16"  "recommended"</span>
-<span class="co">#&gt; parallel   "parallel"   "4.1.2"   "base"       </span>
-<span class="co">#&gt; rpart      "rpart"      "4.1-15"  "recommended"</span>
-<span class="co">#&gt; spatial    "spatial"    "7.3-14"  "recommended"</span>
-<span class="co">#&gt; splines    "splines"    "4.1.2"   "base"       </span>
-<span class="co">#&gt; stats      "stats"      "4.1.2"   "base"       </span>
-<span class="co">#&gt; stats4     "stats4"     "4.1.2"   "base"       </span>
-<span class="co">#&gt; survival   "survival"   "3.2-13"  "recommended"</span>
-<span class="co">#&gt; tcltk      "tcltk"      "4.1.2"   "base"       </span>
-<span class="co">#&gt; tools      "tools"      "4.1.2"   "base"       </span>
-<span class="co">#&gt; utils      "utils"      "4.1.2"   "base"       </span>
-<span class="co">#&gt;            Depends                                          </span>
-<span class="co">#&gt; base       NA                                               </span>
-<span class="co">#&gt; boot       "R (&gt;= 3.0.0), graphics, stats"                  </span>
-<span class="co">#&gt; class      "R (&gt;= 3.0.0), stats, utils"                     </span>
-<span class="co">#&gt; cluster    "R (&gt;= 3.4.0)"                                   </span>
-<span class="co">#&gt; codetools  "R (&gt;= 2.1)"                                     </span>
-<span class="co">#&gt; compiler   NA                                               </span>
-<span class="co">#&gt; datasets   NA                                               </span>
-<span class="co">#&gt; foreign    "R (&gt;= 4.0.0)"                                   </span>
-<span class="co">#&gt; graphics   NA                                               </span>
-<span class="co">#&gt; grDevices  NA                                               </span>
-<span class="co">#&gt; grid       NA                                               </span>
-<span class="co">#&gt; KernSmooth "R (&gt;= 2.5.0), stats"                            </span>
-<span class="co">#&gt; lattice    "R (&gt;= 3.0.0)"                                   </span>
-<span class="co">#&gt; MASS       "R (&gt;= 3.3.0), grDevices, graphics, stats, utils"</span>
-<span class="co">#&gt; Matrix     "R (&gt;= 3.5.0)"                                   </span>
-<span class="co">#&gt; methods    NA                                               </span>
-<span class="co">#&gt; mgcv       "R (&gt;= 3.6.0), nlme (&gt;= 3.1-64)"                 </span>
-<span class="co">#&gt; nlme       "R (&gt;= 3.4.0)"                                   </span>
-<span class="co">#&gt; nnet       "R (&gt;= 3.0.0), stats, utils"                     </span>
-<span class="co">#&gt; parallel   NA                                               </span>
-<span class="co">#&gt; rpart      "R (&gt;= 2.15.0), graphics, stats, grDevices"      </span>
-<span class="co">#&gt; spatial    "R (&gt;= 3.0.0), graphics, stats, utils"           </span>
-<span class="co">#&gt; splines    NA                                               </span>
-<span class="co">#&gt; stats      NA                                               </span>
-<span class="co">#&gt; stats4     NA                                               </span>
-<span class="co">#&gt; survival   "R (&gt;= 3.5.0)"                                   </span>
-<span class="co">#&gt; tcltk      NA                                               </span>
-<span class="co">#&gt; tools      NA                                               </span>
-<span class="co">#&gt; utils      NA</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">allPackage</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html" class="external-link">installed.packages</a></span><span class="op">(</span><span class="va">.Library</span>, priority <span class="op">=</span> <span class="st">"high"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  chr [1:29, 1:16] "base" "boot" "class" "cluster" "codetools" "compiler" ...</span></span>
+<span><span class="co">#&gt;  - attr(*, "dimnames")=List of 2</span></span>
+<span><span class="co">#&gt;   ..$ : chr [1:29] "base" "boot" "class" "cluster" ...</span></span>
+<span><span class="co">#&gt;   ..$ : chr [1:16] "Package" "LibPath" "Version" "Priority" ...</span></span>
+<span></span>
+<span><span class="va">allPackage</span> <span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co">#&gt;            Package      Version   Priority     </span></span>
+<span><span class="co">#&gt; base       "base"       "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt; boot       "boot"       "1.3-28"  "recommended"</span></span>
+<span><span class="co">#&gt; class      "class"      "7.3-20"  "recommended"</span></span>
+<span><span class="co">#&gt; cluster    "cluster"    "2.1.3"   "recommended"</span></span>
+<span><span class="co">#&gt; codetools  "codetools"  "0.2-18"  "recommended"</span></span>
+<span><span class="co">#&gt; compiler   "compiler"   "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt; datasets   "datasets"   "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt; foreign    "foreign"    "0.8-82"  "recommended"</span></span>
+<span><span class="co">#&gt; graphics   "graphics"   "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt; grDevices  "grDevices"  "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt; grid       "grid"       "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt; KernSmooth "KernSmooth" "2.23-20" "recommended"</span></span>
+<span><span class="co">#&gt; lattice    "lattice"    "0.20-45" "recommended"</span></span>
+<span><span class="co">#&gt; MASS       "MASS"       "7.3-57"  "recommended"</span></span>
+<span><span class="co">#&gt; Matrix     "Matrix"     "1.4-1"   "recommended"</span></span>
+<span><span class="co">#&gt; methods    "methods"    "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt; mgcv       "mgcv"       "1.8-40"  "recommended"</span></span>
+<span><span class="co">#&gt; nlme       "nlme"       "3.1-158" "recommended"</span></span>
+<span><span class="co">#&gt; nnet       "nnet"       "7.3-17"  "recommended"</span></span>
+<span><span class="co">#&gt; parallel   "parallel"   "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt; rpart      "rpart"      "4.1.16"  "recommended"</span></span>
+<span><span class="co">#&gt; spatial    "spatial"    "7.3-15"  "recommended"</span></span>
+<span><span class="co">#&gt; splines    "splines"    "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt; stats      "stats"      "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt; stats4     "stats4"     "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt; survival   "survival"   "3.3-1"   "recommended"</span></span>
+<span><span class="co">#&gt; tcltk      "tcltk"      "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt; tools      "tools"      "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt; utils      "utils"      "4.2.0"   "base"       </span></span>
+<span><span class="co">#&gt;            Depends                                          </span></span>
+<span><span class="co">#&gt; base       NA                                               </span></span>
+<span><span class="co">#&gt; boot       "R (&gt;= 3.0.0), graphics, stats"                  </span></span>
+<span><span class="co">#&gt; class      "R (&gt;= 3.0.0), stats, utils"                     </span></span>
+<span><span class="co">#&gt; cluster    "R (&gt;= 3.5.0)"                                   </span></span>
+<span><span class="co">#&gt; codetools  "R (&gt;= 2.1)"                                     </span></span>
+<span><span class="co">#&gt; compiler   NA                                               </span></span>
+<span><span class="co">#&gt; datasets   NA                                               </span></span>
+<span><span class="co">#&gt; foreign    "R (&gt;= 4.0.0)"                                   </span></span>
+<span><span class="co">#&gt; graphics   NA                                               </span></span>
+<span><span class="co">#&gt; grDevices  NA                                               </span></span>
+<span><span class="co">#&gt; grid       NA                                               </span></span>
+<span><span class="co">#&gt; KernSmooth "R (&gt;= 2.5.0), stats"                            </span></span>
+<span><span class="co">#&gt; lattice    "R (&gt;= 3.0.0)"                                   </span></span>
+<span><span class="co">#&gt; MASS       "R (&gt;= 3.3.0), grDevices, graphics, stats, utils"</span></span>
+<span><span class="co">#&gt; Matrix     "R (&gt;= 3.5.0)"                                   </span></span>
+<span><span class="co">#&gt; methods    NA                                               </span></span>
+<span><span class="co">#&gt; mgcv       "R (&gt;= 3.6.0), nlme (&gt;= 3.1-64)"                 </span></span>
+<span><span class="co">#&gt; nlme       "R (&gt;= 3.5.0)"                                   </span></span>
+<span><span class="co">#&gt; nnet       "R (&gt;= 3.0.0), stats, utils"                     </span></span>
+<span><span class="co">#&gt; parallel   NA                                               </span></span>
+<span><span class="co">#&gt; rpart      "R (&gt;= 2.15.0), graphics, stats, grDevices"      </span></span>
+<span><span class="co">#&gt; spatial    "R (&gt;= 3.0.0), graphics, stats, utils"           </span></span>
+<span><span class="co">#&gt; splines    NA                                               </span></span>
+<span><span class="co">#&gt; stats      NA                                               </span></span>
+<span><span class="co">#&gt; stats4     NA                                               </span></span>
+<span><span class="co">#&gt; survival   "R (&gt;= 3.5.0)"                                   </span></span>
+<span><span class="co">#&gt; tcltk      NA                                               </span></span>
+<span><span class="co">#&gt; tools      NA                                               </span></span>
+<span><span class="co">#&gt; utils      NA</span></span></code></pre></div>
 </div>
   </div>
 
@@ -250,7 +254,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.3</span>
       </span>
     </div>
 
@@ -106,35 +106,54 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">mod_number</span><span class="op">(</span><span class="va">x</span>, divideby <span class="op">=</span> <span class="fl">1000</span>, comma_seperator <span class="op">=</span> <span class="cn">TRUE</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">mod_number</span><span class="op">(</span><span class="va">x</span>, divideby <span class="op">=</span> <span class="fl">1000</span>, comma_seperator <span class="op">=</span> <span class="cn">TRUE</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A numeric.</p></dd>
+
+
 <dt>divideby</dt>
 <dd><p>The value you want all of your values divided by. Default = 1000.</p></dd>
+
+
 <dt>comma_seperator</dt>
 <dd><p>Do you want numbers to have commas in it ("1,000" (T) vs. "1000" (F). Default = TRUE.</p></dd>
+
+
 <dt>digits</dt>
 <dd><p>How many digits you would like your number to have. Default = 0.</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20000678660</span>, <span class="fl">234567</span>, <span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">2345</span>, <span class="fl">23</span><span class="op">)</span>,</span>
-<span class="r-in">       ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">mod_number</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in formatC(xx/divideby, digits = digits, trim = F, big.mark = ifelse(comma_seperator ==     T, ",", ""), format = "f"):</span> unused argument (trim = F)</span>
-<span class="r-in"><span class="fu">mod_number</span><span class="op">(</span><span class="va">x</span>,</span>
-<span class="r-in">       comma_seperator <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in formatC(xx/divideby, digits = digits, trim = F, big.mark = ifelse(comma_seperator ==     T, ",", ""), format = "f"):</span> unused argument (trim = F)</span>
-<span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200000</span>, <span class="fl">234567</span>, <span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">2345</span>, <span class="fl">23</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">mod_number</span><span class="op">(</span><span class="va">x</span>,</span>
-<span class="r-in">       divideby <span class="op">=</span> <span class="fl">1</span>,</span>
-<span class="r-in">       digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in formatC(xx/divideby, digits = digits, trim = F, big.mark = ifelse(comma_seperator ==     T, ",", ""), format = "f"):</span> unused argument (trim = F)</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20000678660</span>, <span class="fl">234567</span>, <span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">2345</span>, <span class="fl">23</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>       ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">mod_number</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]         [,2]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] "20,000,679" NA  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] "235"        "2" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] "0"          "0" </span>
+<span class="r-in"><span><span class="fu">mod_number</span><span class="op">(</span><span class="va">x</span>,</span></span>
+<span class="r-in"><span>       comma_seperator <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]       [,2]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] "20000679" NA  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] "235"      "2" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] "0"        "0" </span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200000</span>, <span class="fl">234567</span>, <span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">2345</span>, <span class="fl">23</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">mod_number</span><span class="op">(</span><span class="va">x</span>,</span></span>
+<span class="r-in"><span>       divideby <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>       digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] "200,000.00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] "234,567.00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] "1.00"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4,] NA          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5,] "2,345.00"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6,] "23.00"     </span>
 </code></pre></div>
     </div>
   </div>
@@ -149,7 +168,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

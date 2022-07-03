@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.3</span>
       </span>
     </div>
 
@@ -106,61 +106,76 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">buildReport</span><span class="op">(</span>
-  sections <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abstract"</span>, <span class="st">"introduction"</span>, <span class="st">"methods"</span>, <span class="st">"results"</span>, <span class="st">"discussion"</span>,
-    <span class="st">"endmatter"</span>, <span class="st">"presentation"</span><span class="op">)</span>,
-  report_authors <span class="op">=</span> <span class="st">""</span>,
-  report_title <span class="op">=</span> <span class="st">""</span>,
-  styles_reference_pptx <span class="op">=</span> <span class="st">"refppt_nmfs"</span>,
-  styles_reference_docx <span class="op">=</span> <span class="st">"refdoc_noaa_tech_memo"</span>,
-  bibliography.bib <span class="op">=</span> <span class="st">"bib_example"</span>,
-  csl <span class="op">=</span> <span class="st">"bulletin-of-marine-science"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">buildReport</span><span class="op">(</span></span>
+<span>  sections <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abstract"</span>, <span class="st">"introduction"</span>, <span class="st">"methods"</span>, <span class="st">"results"</span>, <span class="st">"discussion"</span>,</span>
+<span>    <span class="st">"endmatter"</span>, <span class="st">"presentation"</span><span class="op">)</span>,</span>
+<span>  report_authors <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  report_title <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  styles_reference_pptx <span class="op">=</span> <span class="st">"refppt_nmfs"</span>,</span>
+<span>  styles_reference_docx <span class="op">=</span> <span class="st">"refdoc_noaa_tech_memo"</span>,</span>
+<span>  bibliography.bib <span class="op">=</span> <span class="st">"bib_example"</span>,</span>
+<span>  csl <span class="op">=</span> <span class="st">"bulletin-of-marine-science"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>sections</dt>
 <dd><p>a string of the different sections of your report. Sections must be listed in order. Default = c("frontmatter", "abstract", "introduction", "methods", "results", "discussion", "endmatter"). Note that "frontmatter" and "endmatter" both have specific templates, and all others are from a blank template. "endmatter" will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list authors's ORCID and acknowlegelments.</p></dd>
+
+
 <dt>report_authors</dt>
 <dd><p>Default = "". Here, add all author's first and last name as it should appear in the report.You can change this later by editing this in the run.R file.</p></dd>
+
+
 <dt>report_title</dt>
 <dd><p>Default = "". Here, put the title of your report. You can change this later by editing this in the run.R file.</p></dd>
+
+
 <dt>styles_reference_pptx</dt>
 <dd><p>A style reference guide from a powerpoint document (.pptx). This pulls the styles from a powerpoint document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made templates ("refppt_nmfs"). Default = "refppt_nmfs". You can change this later by renaming the file in the code folder.</p></dd>
+
+
 <dt>styles_reference_docx</dt>
 <dd><p>A style reference guide from a word document (.docx). This pulls the styles from a word document where you have defined each style. Either use a local document (insert full path to local document) or some of the pre-made templates ("refdoc_noaa_tech_memo" or "refdoc_fisheries_economics_of_the_us"). Default = "refdoc_noaa_tech_memo". You can change this later by renaming the file in the code folder.</p></dd>
+
+
 <dt>bibliography.bib</dt>
 <dd><p>Either use a local document (.bib format; insert full "path") or the example file from the package ("bib_example"). Default = "bib_example". You can change this later by renaming the file in the cite folder.</p></dd>
+
+
 <dt>csl</dt>
 <dd><p>Citation style. Either use a local document (insert full path to local document) or some of the pre-made templates ("bulletin-of-marine-science"). A NOAA TM citation style needs to be created, but until then, the default = "bulletin-of-marine-science". You can change this later by renaming the file in the cite folder. Find citation styles at: https://github.com/citation-style-language/styles</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>complete initial architecture for your R Markdown Report.</p>
+    
+
+<p>complete initial architecture for your R Markdown Report.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">sections</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"frontmatter"</span>, <span class="st">"abstract"</span>, <span class="st">"introduction"</span>, <span class="st">"methods"</span>, <span class="st">"results"</span>,</span>
-<span class="r-in">            <span class="st">"discussion"</span>, <span class="st">"endmatter"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">authors</span> <span class="op">=</span> <span class="st">"Me, Myself, and I"</span></span>
-<span class="r-in"><span class="va">title</span> <span class="op">=</span> <span class="st">"Awesome Report!"</span></span>
-<span class="r-in"><span class="va">styles_reference_pptx</span> <span class="op">=</span> <span class="st">"refppt_nmfs"</span></span>
-<span class="r-in"><span class="va">styles_reference_docx</span> <span class="op">=</span> <span class="st">"refdoc_noaa_tech_memo"</span></span>
-<span class="r-in"><span class="va">bibliography.bib</span> <span class="op">=</span> <span class="st">"bib_example"</span></span>
-<span class="r-in"><span class="va">csl</span> <span class="op">=</span> <span class="st">"bulletin-of-marine-science"</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># not run:</span></span>
-<span class="r-in"><span class="co"># buildReport(</span></span>
-<span class="r-in"><span class="co">#   sections = sections,</span></span>
-<span class="r-in"><span class="co">#   report_authors = authors,</span></span>
-<span class="r-in"><span class="co">#   report_title = title,</span></span>
-<span class="r-in"><span class="co">#   styles_reference_pptx = styles_reference_pptx,</span></span>
-<span class="r-in"><span class="co">#   styles_reference_docx = styles_reference_docx,</span></span>
-<span class="r-in"><span class="co">#   bibliography.bib = bibliography.bib,</span></span>
-<span class="r-in"><span class="co">#   csl = csl</span></span>
-<span class="r-in"><span class="co"># )</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">sections</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"frontmatter"</span>, <span class="st">"abstract"</span>, <span class="st">"introduction"</span>, <span class="st">"methods"</span>, <span class="st">"results"</span>,</span></span>
+<span class="r-in"><span>            <span class="st">"discussion"</span>, <span class="st">"endmatter"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">authors</span> <span class="op">=</span> <span class="st">"Me, Myself, and I"</span></span></span>
+<span class="r-in"><span><span class="va">title</span> <span class="op">=</span> <span class="st">"Awesome Report!"</span></span></span>
+<span class="r-in"><span><span class="va">styles_reference_pptx</span> <span class="op">=</span> <span class="st">"refppt_nmfs"</span></span></span>
+<span class="r-in"><span><span class="va">styles_reference_docx</span> <span class="op">=</span> <span class="st">"refdoc_noaa_tech_memo"</span></span></span>
+<span class="r-in"><span><span class="va">bibliography.bib</span> <span class="op">=</span> <span class="st">"bib_example"</span></span></span>
+<span class="r-in"><span><span class="va">csl</span> <span class="op">=</span> <span class="st">"bulletin-of-marine-science"</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># not run:</span></span></span>
+<span class="r-in"><span><span class="co"># buildReport(</span></span></span>
+<span class="r-in"><span><span class="co">#   sections = sections,</span></span></span>
+<span class="r-in"><span><span class="co">#   report_authors = authors,</span></span></span>
+<span class="r-in"><span><span class="co">#   report_title = title,</span></span></span>
+<span class="r-in"><span><span class="co">#   styles_reference_pptx = styles_reference_pptx,</span></span></span>
+<span class="r-in"><span><span class="co">#   styles_reference_docx = styles_reference_docx,</span></span></span>
+<span class="r-in"><span><span class="co">#   bibliography.bib = bibliography.bib,</span></span></span>
+<span class="r-in"><span><span class="co">#   csl = csl</span></span></span>
+<span class="r-in"><span><span class="co"># )</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -175,7 +190,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

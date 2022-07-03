@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.3</span>
       </span>
     </div>
 
@@ -106,81 +106,95 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">add_table_footnotes</span><span class="op">(</span>
-  <span class="va">table</span>,
-  footnote <span class="op">=</span> <span class="cn">NULL</span>,
-  from_col <span class="op">=</span> <span class="st">""</span>,
-  to_col <span class="op">=</span> <span class="st">""</span>,
-  from_row <span class="op">=</span> <span class="st">""</span>,
-  to_row <span class="op">=</span> <span class="st">""</span>,
-  delim <span class="op">=</span> <span class="st">",,,"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">add_table_footnotes</span><span class="op">(</span></span>
+<span>  <span class="va">table</span>,</span>
+<span>  footnote <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  from_col <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  to_col <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  from_row <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  to_row <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  delim <span class="op">=</span> <span class="st">",,,"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>table</dt>
 <dd><p>The data.frame you are adding footnotes to (and possibly from).</p></dd>
+
+
 <dt>footnote</dt>
 <dd><p>A string that you want to add as a footnote to the table. Optional.</p></dd>
+
+
 <dt>from_col</dt>
 <dd><p>What column number or name you want to pull footnotes from.</p></dd>
+
+
 <dt>to_col</dt>
 <dd><p>What column number or name you want add footnotes to.</p></dd>
+
+
 <dt>from_row</dt>
 <dd><p>What row number or name you want to pull footnotes from.</p></dd>
+
+
 <dt>to_row</dt>
 <dd><p>What row number or name you want add footnotes to.</p></dd>
+
+
 <dt>delim</dt>
 <dd><p>A deliminator string that seperates if you have multiple footnotes stored in a cell. The deliminator can be anything, as long as it does not conflict with anything that can be interpreted by regex. Default = "&amp;&amp;&amp;"</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The table "tab" with the footnotes inserted into the table.</p>
+    
+
+<p>The table "tab" with the footnotes inserted into the table.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">table</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>,</span>
-<span class="r-in">                      x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
-<span class="r-in">                      y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
-<span class="r-in">                      footnotes <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">table</span><span class="op">$</span><span class="va">footnotes</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">&lt;-</span><span class="st">"Example footnote in a table 1."</span></span>
-<span class="r-in"><span class="va">table</span><span class="op">$</span><span class="va">footnotes</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">&lt;-</span><span class="st">"Example footnote in a table 2.&amp;&amp;&amp;Example footnote in a table 3."</span></span>
-<span class="r-in"><span class="va">table</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="mod_number.html">mod_number</a></span><span class="op">(</span><span class="va">table</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span>,</span>
-<span class="r-in">                                                     divideby <span class="op">=</span> <span class="fl">1</span>, <span class="co">#'</span></span>
-<span class="r-in">                                                     comma_seperator <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">                                                     digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in formatC(xx/divideby, digits = digits, trim = F, big.mark = ifelse(comma_seperator ==     T, ",", ""), format = "f"):</span> unused argument (trim = F)</span>
-<span class="r-in"><span class="co"># Here, add footnotes from the "footnotes" column to the content in the first column where necessary</span></span>
-<span class="r-in"><span class="va">table</span> <span class="op">&lt;-</span> <span class="fu">add_table_footnotes</span><span class="op">(</span>tab <span class="op">=</span> <span class="va">table</span>,</span>
-<span class="r-in">                                   from_col <span class="op">=</span> <span class="st">"footnotes"</span>, <span class="co"># either use the name of the column</span></span>
-<span class="r-in">                                   to_col <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># or the number of that column in that table</span></span>
-<span class="r-in"><span class="co"># Here, add a specific footnote to a specific place in the table</span></span>
-<span class="r-in"><span class="va">table</span> <span class="op">&lt;-</span> <span class="fu">add_table_footnotes</span><span class="op">(</span>tab <span class="op">=</span> <span class="va">table</span>,</span>
-<span class="r-in">                                   footnote <span class="op">=</span> <span class="st">"Example footnote in a table 4."</span>,</span>
-<span class="r-in">                                   to_row <span class="op">=</span> <span class="fl">2</span>,</span>
-<span class="r-in">                                   to_col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">table</span> <span class="op">&lt;-</span> <span class="fu">add_table_footnotes</span><span class="op">(</span>tab <span class="op">=</span> <span class="va">table</span>,</span>
-<span class="r-in">                                   footnote <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Example footnote in a table 5."</span>,</span>
-<span class="r-in">                                                <span class="st">"Example footnote in a table 6."</span><span class="op">)</span>,</span>
-<span class="r-in">                                   to_row <span class="op">=</span> <span class="fl">4</span>,</span>
-<span class="r-in">                                   to_col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">table</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">table</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>                      x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                      y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                      footnotes <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">table</span><span class="op">$</span><span class="va">footnotes</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">&lt;-</span><span class="st">"Example footnote in a table 1."</span></span></span>
+<span class="r-in"><span><span class="va">table</span><span class="op">$</span><span class="va">footnotes</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">&lt;-</span><span class="st">"Example footnote in a table 2.&amp;&amp;&amp;Example footnote in a table 3."</span></span></span>
+<span class="r-in"><span><span class="va">table</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="mod_number.html">mod_number</a></span><span class="op">(</span><span class="va">table</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>                                                     divideby <span class="op">=</span> <span class="fl">1</span>, <span class="co">#'</span></span></span>
+<span class="r-in"><span>                                                     comma_seperator <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>                                                     digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Here, add footnotes from the "footnotes" column to the content in the first column where necessary</span></span></span>
+<span class="r-in"><span><span class="va">table</span> <span class="op">&lt;-</span> <span class="fu">add_table_footnotes</span><span class="op">(</span>tab <span class="op">=</span> <span class="va">table</span>,</span></span>
+<span class="r-in"><span>                                   from_col <span class="op">=</span> <span class="st">"footnotes"</span>, <span class="co"># either use the name of the column</span></span></span>
+<span class="r-in"><span>                                   to_col <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># or the number of that column in that table</span></span></span>
+<span class="r-in"><span><span class="co"># Here, add a specific footnote to a specific place in the table</span></span></span>
+<span class="r-in"><span><span class="va">table</span> <span class="op">&lt;-</span> <span class="fu">add_table_footnotes</span><span class="op">(</span>tab <span class="op">=</span> <span class="va">table</span>,</span></span>
+<span class="r-in"><span>                                   footnote <span class="op">=</span> <span class="st">"Example footnote in a table 4."</span>,</span></span>
+<span class="r-in"><span>                                   to_row <span class="op">=</span> <span class="fl">2</span>,</span></span>
+<span class="r-in"><span>                                   to_col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">table</span> <span class="op">&lt;-</span> <span class="fu">add_table_footnotes</span><span class="op">(</span>tab <span class="op">=</span> <span class="va">table</span>,</span></span>
+<span class="r-in"><span>                                   footnote <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Example footnote in a table 5."</span>,</span></span>
+<span class="r-in"><span>                                                <span class="st">"Example footnote in a table 6."</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                                   to_row <span class="op">=</span> <span class="fl">4</span>,</span></span>
+<span class="r-in"><span>                                   to_col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">table</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |col                                                                 |x                                                  |          y|footnotes                                                       |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |:-------------------------------------------------------------------|:--------------------------------------------------|----------:|:---------------------------------------------------------------|</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |A                                                                   |0.534911083831096                                  | -0.5608291|NA                                                              |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |B                                                                   |0.755999556384641^[Example footnote in a table 4.] |  0.9973853|NA                                                              |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |C^[Example footnote in a table 1.]                                  |-0.466044817266978                                 | -1.2478942|Example footnote in a table 1.                                  |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |D^[Example footnote in a table 2.&amp;&amp;&amp;Example footnote in a table 3.] |1.3550186361626^[Example footnote in a table 5.]   |  0.4827543|Example footnote in a table 2.&amp;&amp;&amp;Example footnote in a table 3. |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |E                                                                   |-1.33578038955313                                  | -0.5712558|NA                                                              |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |F                                                                   |-0.0483997830361633                                | -0.5823778|NA                                                              |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |G                                                                   |2.2998961860833                                    | -0.1975882|NA                                                              |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |H                                                                   |0.34918126508629                                   | -0.3393197|NA                                                              |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |I                                                                   |-0.647709355887952                                 | -0.9081290|NA                                                              |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |J                                                                   |-0.362492259662118                                 |  0.0535487|NA                                                              |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |col                                                                 |x                                      |y     |footnotes                                                       |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |:-------------------------------------------------------------------|:--------------------------------------|:-----|:---------------------------------------------------------------|</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |A                                                                   |1.36                                   |-2.21 |NA                                                              |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |B                                                                   |0.10^[Example footnote in a table 4.]  |0.49  |NA                                                              |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |C^[Example footnote in a table 1.]                                  |0.34                                   |-1.10 |Example footnote in a table 1.                                  |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |D^[Example footnote in a table 2.&amp;&amp;&amp;Example footnote in a table 3.] |-0.57^[Example footnote in a table 5.] |-0.49 |Example footnote in a table 2.&amp;&amp;&amp;Example footnote in a table 3. |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |E                                                                   |0.57                                   |1.02  |NA                                                              |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |F                                                                   |0.98                                   |-0.37 |NA                                                              |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |G                                                                   |0.80                                   |1.11  |NA                                                              |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |H                                                                   |-0.14                                  |0.09  |NA                                                              |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |I                                                                   |0.87                                   |-0.15 |NA                                                              |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |J                                                                   |1.05                                   |0.71  |NA                                                              |</span>
 </code></pre></div>
     </div>
   </div>
@@ -195,7 +209,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

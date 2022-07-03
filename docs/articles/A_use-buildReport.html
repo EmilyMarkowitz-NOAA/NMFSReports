@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.3</span>
       </span>
     </div>
 
@@ -129,9 +129,10 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Use buildReport() to begin writing your report</h1>
+      <h1 data-toc-skip>Use buildReport() to begin writing your
+report</h1>
             
-            <h4 data-toc-skip class="date">May 03 2022</h4>
+            <h4 data-toc-skip class="date">July 03 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/EmilyMarkowitz-NOAA/NMFSReports/blob/HEAD/vignettes/A_use-buildReport.Rmd" class="external-link"><code>vignettes/A_use-buildReport.Rmd</code></a></small>
       <div class="hidden name"><code>A_use-buildReport.Rmd</code></div>
@@ -141,73 +142,86 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/" class="external-link">NMFSReports</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/" class="external-link">NMFSReports</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="quick-get-started">Quick! Get started!<a class="anchor" aria-label="anchor" href="#quick-get-started"></a>
 </h2>
-<p>Here, I’ll show a basic script that you can quickly run to get started.</p>
+<p>Here, I’ll show a basic script that you can quickly run to get
+started.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># 1. Load the NMFSReports Library</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"EmilyMarkowitz-NOAA/NMFSReports"</span>, force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/" class="external-link">NMFSReports</a></span><span class="op">)</span>
-
-<span class="co"># 2. Build your report</span>
-
-<span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
-  sections <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abstract"</span>, <span class="st">"introduction"</span>, <span class="st">"history"</span>, 
-               <span class="st">"methods"</span>, <span class="st">"results"</span>, 
-               <span class="st">"results_discussion"</span>, <span class="st">"endmatter"</span>, <span class="st">"presentation"</span><span class="op">)</span>,
-  report_authors <span class="op">=</span> <span class="st">"Me, Myself, and I"</span>,
-  report_title <span class="op">=</span> <span class="st">"The best report ever"</span>,
-  styles_reference_pptx <span class="op">=</span> <span class="st">"refppt_nmfs"</span>,
-  styles_reference_docx <span class="op">=</span> <span class="st">"refdoc_noaa_tech_memo"</span>,
-  bibliography.bib <span class="op">=</span> <span class="st">"bib_example"</span>,
-  csl <span class="op">=</span> <span class="st">"bulletin-of-marine-science"</span>
-<span class="op">)</span>
-
-<span class="co"># 3. Run your run.R file </span>
-<span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"./code/run.R"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># 1. Load the NMFSReports Library</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"EmilyMarkowitz-NOAA/NMFSReports"</span>, force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/" class="external-link">NMFSReports</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2. Build your report</span></span>
+<span></span>
+<span><span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span></span>
+<span>  sections <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abstract"</span>, <span class="st">"introduction"</span>, <span class="st">"history"</span>, </span>
+<span>               <span class="st">"methods"</span>, <span class="st">"results"</span>, </span>
+<span>               <span class="st">"results_discussion"</span>, <span class="st">"endmatter"</span>, <span class="st">"presentation"</span><span class="op">)</span>,</span>
+<span>  report_authors <span class="op">=</span> <span class="st">"Me, Myself, and I"</span>,</span>
+<span>  report_title <span class="op">=</span> <span class="st">"The best report ever"</span>,</span>
+<span>  styles_reference_pptx <span class="op">=</span> <span class="st">"refppt_nmfs"</span>,</span>
+<span>  styles_reference_docx <span class="op">=</span> <span class="st">"refdoc_noaa_tech_memo"</span>,</span>
+<span>  bibliography.bib <span class="op">=</span> <span class="st">"bib_example"</span>,</span>
+<span>  csl <span class="op">=</span> <span class="st">"bulletin-of-marine-science"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 3. Run your run.R file </span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"./code/run.R"</span><span class="op">)</span></span></code></pre></div>
 <p>More details about each option and step of the process is below!</p>
 </div>
 <div class="section level2">
 <h2 id="step-by-step-create-initial-structure-of-report">Step by Step: Create initial structure of report<a class="anchor" aria-label="anchor" href="#step-by-step-create-initial-structure-of-report"></a>
 </h2>
-<p>Do everyone here a favor and create a new R project or at least set up a working directory (<code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd()</a></code>). There will be a lot of file management here…</p>
-<p>To build your intitial architecture for your new NOAA Tech Memo or Report, simply run the below script:</p>
+<p>Do everyone here a favor and create a new R project or at least set
+up a working directory (<code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd()</a></code>). There will be a lot of
+file management here…</p>
+<p>To build your intitial architecture for your new NOAA Tech Memo or
+Report, simply run the below script:</p>
 <div class="section level3">
 <h3 id="buildreportreport_title">buildReport(report_title = …)<a class="anchor" aria-label="anchor" href="#buildreportreport_title"></a>
 </h3>
-<p>Default = ““. Here, put the title of your report. You can change this later in the <code>run.R</code> file in needed.</p>
+<p>Default = ““. Here, put the title of your report. You can change this
+later in the <code>run.R</code> file in needed.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">report_title</span> <span class="op">=</span> <span class="st">"My Awesome Report!"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">report_title</span> <span class="op">=</span> <span class="st">"My Awesome Report!"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="buildreportreport_authors">buildReport(report_authors = …)<a class="anchor" aria-label="anchor" href="#buildreportreport_authors"></a>
 </h3>
-<p>Here, add the first and last name of everyone who is producing the report. You can change this later in the <code>run.R</code> file in needed.</p>
+<p>Here, add the first and last name of everyone who is producing the
+report. You can change this later in the <code>run.R</code> file in
+needed.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">report_authors</span> <span class="op">=</span> <span class="st">"Me, Myself, and I"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">report_authors</span> <span class="op">=</span> <span class="st">"Me, Myself, and I"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="buildreportsections">buildReport(sections = …)<a class="anchor" aria-label="anchor" href="#buildreportsections"></a>
 </h3>
-<p>Let’s first think about what you want/need your Tech Memo to look like. For my purposes, I’ll assume that you need the below sections:</p>
+<p>Let’s first think about what you want/need your Tech Memo to look
+like. For my purposes, I’ll assume that you need the below sections:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># list the sections (that you will have different rmd scripts for) in order and with no spaces</span>
-<span class="va">sections</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"frontmatter"</span>, <span class="co"># This is a specific template that matches the NOAA Template</span>
-              <span class="st">"abstract"</span>, <span class="co"># This, and all others unless otherwise mentioned, come from the same plain-slate document but are appropriately named and linked up in the 'run' file. </span>
-              <span class="st">"introduction"</span>, 
-              <span class="st">"methods"</span>, 
-              <span class="st">"results"</span>, 
-              <span class="st">"discussion"</span>, 
-              <span class="st">"endmatter"</span> <span class="co"># This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. </span>
-<span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span><span class="co"># list the sections (that you will have different rmd scripts for) in order and with no spaces</span></span>
+<span><span class="va">sections</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"frontmatter"</span>, <span class="co"># This is a specific template that matches the NOAA Template</span></span>
+<span>              <span class="st">"abstract"</span>, <span class="co"># This, and all others unless otherwise mentioned, come from the same plain-slate document but are appropriately named and linked up in the 'run' file. </span></span>
+<span>              <span class="st">"introduction"</span>, </span>
+<span>              <span class="st">"methods"</span>, </span>
+<span>              <span class="st">"results"</span>, </span>
+<span>              <span class="st">"discussion"</span>, </span>
+<span>              <span class="st">"endmatter"</span> <span class="co"># This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. </span></span>
+<span><span class="op">)</span> </span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="buildreportstyles_reference_docx">buildReport(styles_reference_docx = …)<a class="anchor" aria-label="anchor" href="#buildreportstyles_reference_docx"></a>
 </h3>
-<p><code>styles_reference_docx</code> is a document style reference guide is essentially a word document where you have defined each style. Either use a local document (insert “path”) or some of the pre-made templates (“refdoc_noaa_tech_memo” or “refdoc_fisheries_economics_of_the_us”). Default = “refdoc_noaa_tech_memo”</p>
+<p><code>styles_reference_docx</code> is a document style reference
+guide is essentially a word document where you have defined each style.
+Either use a local document (insert “path”) or some of the pre-made
+templates (“refdoc_noaa_tech_memo” or
+“refdoc_fisheries_economics_of_the_us”). Default =
+“refdoc_noaa_tech_memo”</p>
 <p>To edit the stlyes in your word document, check out this <a href="https://support.microsoft.com/en-us/office/customize-or-create-new-styles-d38d6e47-f6fc-48eb-a607-1eb120dec563" class="external-link">resource</a>.</p>
 <p>Here’s what they look like:</p>
 <div class="section level4">
@@ -228,7 +242,12 @@
 <div class="section level3">
 <h3 id="buildreportstyles_reference_pptx">buildReport(styles_reference_pptx = …)<a class="anchor" aria-label="anchor" href="#buildreportstyles_reference_pptx"></a>
 </h3>
-<p><code>styles_reference_pptx</code> is a document style reference guide is essentially a word document where you have defined each style. Either use NULL to not have a presentation, a local document (insert full path to local document), or a pre-made template (“refpptx_nmfs”). Default = “refpptx_nmfs”. You can change this later by renaming the file in the code folder.</p>
+<p><code>styles_reference_pptx</code> is a document style reference
+guide is essentially a word document where you have defined each style.
+Either use NULL to not have a presentation, a local document (insert
+full path to local document), or a pre-made template (“refpptx_nmfs”).
+Default = “refpptx_nmfs”. You can change this later by renaming the file
+in the code folder.</p>
 <p>Here’s what they look like:</p>
 <div class="section level4">
 <h4 id="refpptx_nmfs">refpptx_nmfs<a class="anchor" aria-label="anchor" href="#refpptx_nmfs"></a>
@@ -241,87 +260,95 @@
 <div class="section level3">
 <h3 id="buildreportcsl">buildReport(csl = …)<a class="anchor" aria-label="anchor" href="#buildreportcsl"></a>
 </h3>
-<p><code>csl</code> is a citation style. Either use a local document (insert “path”) or some of the pre-made templates (“apa” or “bulletin-of-marine-science”). Default = “apa” because it was easy to find.</p>
-<p>A primer on creating and modifying CSL styles can be found at <a href="http://citationstyles.org/downloads/primer.html" class="external-link uri">http://citationstyles.org/downloads/primer.html</a>. A repository of CSL styles can be found at <a href="https://github.com/citation-style-language/styles" class="external-link uri">https://github.com/citation-style-language/styles</a>. See also <a href="http://zotero.org/styles" class="external-link uri">http://zotero.org/styles</a> for easy browsing.</p>
+<p><code>csl</code> is a citation style. Either use a local document
+(insert “path”) or some of the pre-made templates (“apa” or
+“bulletin-of-marine-science”). Default = “apa” because it was easy to
+find.</p>
+<p>A primer on creating and modifying CSL styles can be found at <a href="http://citationstyles.org/downloads/primer.html" class="external-link uri">http://citationstyles.org/downloads/primer.html</a>. A
+repository of CSL styles can be found at <a href="https://github.com/citation-style-language/styles" class="external-link uri">https://github.com/citation-style-language/styles</a>. See
+also <a href="http://zotero.org/styles" class="external-link uri">http://zotero.org/styles</a> for easy browsing.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">csl</span> <span class="op">=</span> <span class="st">"bulletin-of-marine-science"</span>
-<span class="co"># it looks something like this:</span>
-<span class="va">csl0</span> <span class="op">&lt;-</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"cite"</span>,<span class="st">"bulletin-of-marine-science.csl"</span>, package<span class="op">=</span><span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">csl0</span><span class="op">)</span>
-<span class="co">#&gt; [1] "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;"                                                                                                             </span>
-<span class="co">#&gt; [2] "&lt;style xmlns=\"http://purl.org/net/xbiblio/csl\" class=\"in-text\" version=\"1.0\" demote-non-dropping-particle=\"sort-only\" default-locale=\"en-US\"&gt;"</span>
-<span class="co">#&gt; [3] "  &lt;info&gt;"                                                                                                                                               </span>
-<span class="co">#&gt; [4] "    &lt;title&gt;Bulletin of Marine Science&lt;/title&gt;"                                                                                                          </span>
-<span class="co">#&gt; [5] "    &lt;id&gt;http://www.zotero.org/styles/bulletin-of-marine-science&lt;/id&gt;"                                                                                   </span>
-<span class="co">#&gt; [6] "    &lt;link href=\"http://www.zotero.org/styles/bulletin-of-marine-science\" rel=\"self\"/&gt;"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">csl</span> <span class="op">=</span> <span class="st">"bulletin-of-marine-science"</span></span>
+<span><span class="co"># it looks something like this:</span></span>
+<span><span class="va">csl0</span> <span class="op">&lt;-</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"cite"</span>,<span class="st">"bulletin-of-marine-science.csl"</span>, package<span class="op">=</span><span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">csl0</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;"                                                                                                             </span></span>
+<span><span class="co">#&gt; [2] "&lt;style xmlns=\"http://purl.org/net/xbiblio/csl\" class=\"in-text\" version=\"1.0\" demote-non-dropping-particle=\"sort-only\" default-locale=\"en-US\"&gt;"</span></span>
+<span><span class="co">#&gt; [3] "  &lt;info&gt;"                                                                                                                                               </span></span>
+<span><span class="co">#&gt; [4] "    &lt;title&gt;Bulletin of Marine Science&lt;/title&gt;"                                                                                                          </span></span>
+<span><span class="co">#&gt; [5] "    &lt;id&gt;http://www.zotero.org/styles/bulletin-of-marine-science&lt;/id&gt;"                                                                                   </span></span>
+<span><span class="co">#&gt; [6] "    &lt;link href=\"http://www.zotero.org/styles/bulletin-of-marine-science\" rel=\"self\"/&gt;"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="buildreportbibliography-bib">buildReport(bibliography.bib = …)<a class="anchor" aria-label="anchor" href="#buildreportbibliography-bib"></a>
 </h3>
-<p><code>bibliography.bib</code>: Either use a local document (.bib format; insert full “path”) or the example file from the package (“bib_example”). Default = “bib_example”.</p>
+<p><code>bibliography.bib</code>: Either use a local document (.bib
+format; insert full “path”) or the example file from the package
+(“bib_example”). Default = “bib_example”.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">csl</span> <span class="op">=</span> <span class="st">"bib_example"</span>
-<span class="co"># it looks something like this:</span>
-<span class="va">bib</span> <span class="op">&lt;-</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmd"</span>,<span class="st">"bib_example.bib"</span>, package<span class="op">=</span><span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">bib</span>
-<span class="co">#&gt;  [1] "ï»¿@article{RN621,"                                                                             </span>
-<span class="co">#&gt;  [2] "   author = {Arrhenius, Svante},"                                                               </span>
-<span class="co">#&gt;  [3] "   title = {Ãœber die Reaktionsgeschwindigkeit bei der Inversion von Rohrzucker durch SÃ¤uren},"</span>
-<span class="co">#&gt;  [4] "   journal = {Zeitschrift fÃ¼r physikalische Chemie},"                                          </span>
-<span class="co">#&gt;  [5] "   volume = {4},"                                                                               </span>
-<span class="co">#&gt;  [6] "   number = {1},"                                                                               </span>
-<span class="co">#&gt;  [7] "   pages = {226-248},"                                                                          </span>
-<span class="co">#&gt;  [8] "   ISSN = {2196-7156},"                                                                         </span>
-<span class="co">#&gt;  [9] "   year = {1889},"                                                                              </span>
-<span class="co">#&gt; [10] "   type = {Journal Article}"                                                                    </span>
-<span class="co">#&gt; [11] "}"                                                                                              </span>
-<span class="co">#&gt; [12] ""                                                                                               </span>
-<span class="co">#&gt; [13] "@book{RN686,"                                                                                   </span>
-<span class="co">#&gt; [14] "   author = {Fry, Frederick Ernest Joseph},"                                                    </span>
-<span class="co">#&gt; [15] "   title = {The Physiology of Fishes},"                                                         </span>
-<span class="co">#&gt; [16] "   publisher = {Academic Press},"                                                               </span>
-<span class="co">#&gt; [17] "   address = {London},"                                                                         </span>
-<span class="co">#&gt; [18] "   volume = {1},"                                                                               </span>
-<span class="co">#&gt; [19] "   series = {The Physiology of Fishes},"                                                        </span>
-<span class="co">#&gt; [20] "   pages = {iii},"                                                                              </span>
-<span class="co">#&gt; [21] "   ISBN = {978-1-4832-2817-4},"                                                                 </span>
-<span class="co">#&gt; [22] "   DOI = {https://doi.org/10.1016/B978-1-4832-2817-4.50001-9},"                                 </span>
-<span class="co">#&gt; [23] "   url = {http://www.sciencedirect.com/science/article/pii/B9781483228174500019},"              </span>
-<span class="co">#&gt; [24] "   year = {1957},"                                                                              </span>
-<span class="co">#&gt; [25] "   type = {Book}"                                                                               </span>
-<span class="co">#&gt; [26] "}"                                                                                              </span>
-<span class="co">#&gt; [27] ""                                                                                               </span>
-<span class="co">#&gt; [28] "@inbook{RN465,"                                                                                 </span>
-<span class="co">#&gt; [29] "   author = {Fry, Frederick Ernest Joseph},"                                                    </span>
-<span class="co">#&gt; [30] "   title = {The Effect of Environmental Factors on the Physiology of Fish},"                    </span>
-<span class="co">#&gt; [31] "   booktitle = {Fish Physiology},"                                                              </span>
-<span class="co">#&gt; [32] "   editor = {Hoar, W. S. and Randall, D. J.},"                                                  </span>
-<span class="co">#&gt; [33] "   publisher = {Academic Press},"                                                               </span>
-<span class="co">#&gt; [34] "   volume = {Volume 6},"                                                                        </span>
-<span class="co">#&gt; [35] "   pages = {1-98},"                                                                             </span>
-<span class="co">#&gt; [36] "   ISBN = {1546-5098},"                                                                         </span>
-<span class="co">#&gt; [37] "   DOI = {http://dx.doi.org/10.1016/S1546-5098(08)60146-6},"                                    </span>
-<span class="co">#&gt; [38] "   url = {http://www.sciencedirect.com/science/article/pii/S1546509808601466},"                 </span>
-<span class="co">#&gt; [39] "   year = {1971},"                                                                              </span>
-<span class="co">#&gt; [40] "   type = {Book Section}"                                                                       </span>
-<span class="co">#&gt; [41] "}"                                                                                              </span>
-<span class="co">#&gt; [42] ""</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">csl</span> <span class="op">=</span> <span class="st">"bib_example"</span></span>
+<span><span class="co"># it looks something like this:</span></span>
+<span><span class="va">bib</span> <span class="op">&lt;-</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmd"</span>,<span class="st">"bib_example.bib"</span>, package<span class="op">=</span><span class="st">"NMFSReports"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">bib</span></span>
+<span><span class="co">#&gt;  [1] "@article{RN621,"                                                                              </span></span>
+<span><span class="co">#&gt;  [2] "   author = {Arrhenius, Svante},"                                                             </span></span>
+<span><span class="co">#&gt;  [3] "   title = {Über die Reaktionsgeschwindigkeit bei der Inversion von Rohrzucker durch Säuren},"</span></span>
+<span><span class="co">#&gt;  [4] "   journal = {Zeitschrift für physikalische Chemie},"                                         </span></span>
+<span><span class="co">#&gt;  [5] "   volume = {4},"                                                                             </span></span>
+<span><span class="co">#&gt;  [6] "   number = {1},"                                                                             </span></span>
+<span><span class="co">#&gt;  [7] "   pages = {226-248},"                                                                        </span></span>
+<span><span class="co">#&gt;  [8] "   ISSN = {2196-7156},"                                                                       </span></span>
+<span><span class="co">#&gt;  [9] "   year = {1889},"                                                                            </span></span>
+<span><span class="co">#&gt; [10] "   type = {Journal Article}"                                                                  </span></span>
+<span><span class="co">#&gt; [11] "}"                                                                                            </span></span>
+<span><span class="co">#&gt; [12] ""                                                                                             </span></span>
+<span><span class="co">#&gt; [13] "@book{RN686,"                                                                                 </span></span>
+<span><span class="co">#&gt; [14] "   author = {Fry, Frederick Ernest Joseph},"                                                  </span></span>
+<span><span class="co">#&gt; [15] "   title = {The Physiology of Fishes},"                                                       </span></span>
+<span><span class="co">#&gt; [16] "   publisher = {Academic Press},"                                                             </span></span>
+<span><span class="co">#&gt; [17] "   address = {London},"                                                                       </span></span>
+<span><span class="co">#&gt; [18] "   volume = {1},"                                                                             </span></span>
+<span><span class="co">#&gt; [19] "   series = {The Physiology of Fishes},"                                                      </span></span>
+<span><span class="co">#&gt; [20] "   pages = {iii},"                                                                            </span></span>
+<span><span class="co">#&gt; [21] "   ISBN = {978-1-4832-2817-4},"                                                               </span></span>
+<span><span class="co">#&gt; [22] "   DOI = {https://doi.org/10.1016/B978-1-4832-2817-4.50001-9},"                               </span></span>
+<span><span class="co">#&gt; [23] "   url = {http://www.sciencedirect.com/science/article/pii/B9781483228174500019},"            </span></span>
+<span><span class="co">#&gt; [24] "   year = {1957},"                                                                            </span></span>
+<span><span class="co">#&gt; [25] "   type = {Book}"                                                                             </span></span>
+<span><span class="co">#&gt; [26] "}"                                                                                            </span></span>
+<span><span class="co">#&gt; [27] ""                                                                                             </span></span>
+<span><span class="co">#&gt; [28] "@inbook{RN465,"                                                                               </span></span>
+<span><span class="co">#&gt; [29] "   author = {Fry, Frederick Ernest Joseph},"                                                  </span></span>
+<span><span class="co">#&gt; [30] "   title = {The Effect of Environmental Factors on the Physiology of Fish},"                  </span></span>
+<span><span class="co">#&gt; [31] "   booktitle = {Fish Physiology},"                                                            </span></span>
+<span><span class="co">#&gt; [32] "   editor = {Hoar, W. S. and Randall, D. J.},"                                                </span></span>
+<span><span class="co">#&gt; [33] "   publisher = {Academic Press},"                                                             </span></span>
+<span><span class="co">#&gt; [34] "   volume = {Volume 6},"                                                                      </span></span>
+<span><span class="co">#&gt; [35] "   pages = {1-98},"                                                                           </span></span>
+<span><span class="co">#&gt; [36] "   ISBN = {1546-5098},"                                                                       </span></span>
+<span><span class="co">#&gt; [37] "   DOI = {http://dx.doi.org/10.1016/S1546-5098(08)60146-6},"                                  </span></span>
+<span><span class="co">#&gt; [38] "   url = {http://www.sciencedirect.com/science/article/pii/S1546509808601466},"               </span></span>
+<span><span class="co">#&gt; [39] "   year = {1971},"                                                                            </span></span>
+<span><span class="co">#&gt; [40] "   type = {Book Section}"                                                                     </span></span>
+<span><span class="co">#&gt; [41] "}"                                                                                            </span></span>
+<span><span class="co">#&gt; [42] ""</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="create-report-outline">Create Report Outline<a class="anchor" aria-label="anchor" href="#create-report-outline"></a>
 </h2>
-<p>Now, magic! Now for the sake of the vignette, I can’t actually run it here, but below is a picture of what this looks like:</p>
+<p>Now, magic! Now for the sake of the vignette, I can’t actually run it
+here, but below is a picture of what this looks like:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
-        sections <span class="op">=</span> <span class="va">sections</span>,
-        report_authors <span class="op">=</span> <span class="va">report_authors</span>,
-        report_title <span class="op">=</span> <span class="va">report_title</span>,
-        styles_reference_pptx <span class="op">=</span> <span class="va">styles_reference_pptx</span>,
-        styles_reference_docx <span class="op">=</span> <span class="va">styles_reference_docx</span>,
-        bibliography.bib <span class="op">=</span> <span class="va">bibliography.bib</span>,
-        csl <span class="op">=</span> <span class="va">csl</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span></span>
+<span>        sections <span class="op">=</span> <span class="va">sections</span>,</span>
+<span>        report_authors <span class="op">=</span> <span class="va">report_authors</span>,</span>
+<span>        report_title <span class="op">=</span> <span class="va">report_title</span>,</span>
+<span>        styles_reference_pptx <span class="op">=</span> <span class="va">styles_reference_pptx</span>,</span>
+<span>        styles_reference_docx <span class="op">=</span> <span class="va">styles_reference_docx</span>,</span>
+<span>        bibliography.bib <span class="op">=</span> <span class="va">bibliography.bib</span>,</span>
+<span>        csl <span class="op">=</span> <span class="va">csl</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <img src="../reference/figures/buildReport.JPG" alt=""><p class="caption">buildReport() output</p>
 </div>
@@ -333,44 +360,44 @@
 <h2 id="alternative-report-structures">Alternative report structures:<a class="anchor" aria-label="anchor" href="#alternative-report-structures"></a>
 </h2>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/" class="external-link">NMFSReports</a></span><span class="op">)</span>
-<span class="co"># Input variables for buildReport()</span>
-<span class="va">sections</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"coverpage"</span>, <span class="co"># This is a specific template for a 1 page coverpage</span>
-             <span class="st">"history"</span>, 
-             <span class="st">"studyimportance"</span>, 
-             <span class="st">"actions"</span>, 
-             <span class="st">"endmatter"</span><span class="op">)</span> <span class="co"># This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. </span>
-<span class="va">report_authors</span> <span class="op">=</span> <span class="st">"Very important people"</span>
-<span class="va">report_title</span> <span class="op">=</span> <span class="st">"Shorter Report!"</span>
-<span class="va">styles_reference_pptx</span> <span class="op">=</span> <span class="st">"refpptx_nmfs"</span>
-<span class="va">styles_reference_docx</span> <span class="op">=</span> <span class="st">"refdoc_fisheries_economics_of_the_us"</span>
-<span class="va">bibliography.bib</span> <span class="op">=</span> <span class="st">"bib_example"</span>
-<span class="co"># Find citation styles at: https://github.com/citation-style-language/styles</span>
-<span class="va">csl0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.delim</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/citation-style-language/styles/master/american-fisheries-society.csl"</span>, header <span class="op">=</span> <span class="cn">FALSE</span>, <span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">csl0</span><span class="op">)</span><span class="op">&lt;-</span><span class="cn">NULL</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">csl0</span><span class="op">)</span><span class="op">&lt;-</span><span class="cn">NULL</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.table</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">csl0</span>, file <span class="op">=</span> <span class="st">"csl.csl"</span>, 
-            quote <span class="op">=</span> <span class="cn">FALSE</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span>, col.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="va">csl</span> <span class="op">=</span> <span class="op">(</span><span class="st">"./csl.csl"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">csl0</span><span class="op">)</span>
-<span class="co">#&gt;                                                                                                                                      </span>
-<span class="co">#&gt; 1                                                                                                  &lt;?xml version=1.0 encoding=utf-8?&gt;</span>
-<span class="co">#&gt; 2 &lt;style xmlns=http://purl.org/net/xbiblio/csl class=in-text version=1.0 demote-non-dropping-particle=sort-only default-locale=en-US&gt;</span>
-<span class="co">#&gt; 3                                                                                                                              &lt;info&gt;</span>
-<span class="co">#&gt; 4                                                                                           &lt;title&gt;American Fisheries Society&lt;/title&gt;</span>
-<span class="co">#&gt; 5                                                                    &lt;id&gt;http://www.zotero.org/styles/american-fisheries-society&lt;/id&gt;</span>
-<span class="co">#&gt; 6                                                       &lt;link href=http://www.zotero.org/styles/american-fisheries-society rel=self/&gt;</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://EmilyMarkowitz-NOAA.github.io/NMFSReports/" class="external-link">NMFSReports</a></span><span class="op">)</span></span>
+<span><span class="co"># Input variables for buildReport()</span></span>
+<span><span class="va">sections</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"coverpage"</span>, <span class="co"># This is a specific template for a 1 page coverpage</span></span>
+<span>             <span class="st">"history"</span>, </span>
+<span>             <span class="st">"studyimportance"</span>, </span>
+<span>             <span class="st">"actions"</span>, </span>
+<span>             <span class="st">"endmatter"</span><span class="op">)</span> <span class="co"># This is a specific template that will document all of your citations throughout the report, the R packages you used to create this report. I'm biased, but please give credit where credit is due! There are also spots here to list people's ORCID numbers and acknowlegements. </span></span>
+<span><span class="va">report_authors</span> <span class="op">=</span> <span class="st">"Very important people"</span></span>
+<span><span class="va">report_title</span> <span class="op">=</span> <span class="st">"Shorter Report!"</span></span>
+<span><span class="va">styles_reference_pptx</span> <span class="op">=</span> <span class="st">"refpptx_nmfs"</span></span>
+<span><span class="va">styles_reference_docx</span> <span class="op">=</span> <span class="st">"refdoc_fisheries_economics_of_the_us"</span></span>
+<span><span class="va">bibliography.bib</span> <span class="op">=</span> <span class="st">"bib_example"</span></span>
+<span><span class="co"># Find citation styles at: https://github.com/citation-style-language/styles</span></span>
+<span><span class="va">csl0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.delim</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/citation-style-language/styles/master/american-fisheries-society.csl"</span>, header <span class="op">=</span> <span class="cn">FALSE</span>, <span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">csl0</span><span class="op">)</span><span class="op">&lt;-</span><span class="cn">NULL</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">csl0</span><span class="op">)</span><span class="op">&lt;-</span><span class="cn">NULL</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.table</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">csl0</span>, file <span class="op">=</span> <span class="st">"csl.csl"</span>, </span>
+<span>            quote <span class="op">=</span> <span class="cn">FALSE</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span>, col.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">csl</span> <span class="op">=</span> <span class="op">(</span><span class="st">"./csl.csl"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">csl0</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                                                                                                                                      </span></span>
+<span><span class="co">#&gt; 1                                                                                                  &lt;?xml version=1.0 encoding=utf-8?&gt;</span></span>
+<span><span class="co">#&gt; 2 &lt;style xmlns=http://purl.org/net/xbiblio/csl class=in-text version=1.0 demote-non-dropping-particle=sort-only default-locale=en-US&gt;</span></span>
+<span><span class="co">#&gt; 3                                                                                                                              &lt;info&gt;</span></span>
+<span><span class="co">#&gt; 4                                                                                           &lt;title&gt;American Fisheries Society&lt;/title&gt;</span></span>
+<span><span class="co">#&gt; 5                                                                    &lt;id&gt;http://www.zotero.org/styles/american-fisheries-society&lt;/id&gt;</span></span>
+<span><span class="co">#&gt; 6                                                       &lt;link href=http://www.zotero.org/styles/american-fisheries-society rel=self/&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Run buildReport() function</span>
-<span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span>
-        sections <span class="op">=</span> <span class="va">sections</span>,
-        report_authors <span class="op">=</span> <span class="va">report_authors</span>,
-        report_title <span class="op">=</span> <span class="va">report_title</span>,
-        styles_reference_pptx <span class="op">=</span> <span class="va">styles_reference_pptx</span>,
-        styles_reference_docx <span class="op">=</span> <span class="va">styles_reference_docx</span>,
-        bibliography.bib <span class="op">=</span> <span class="va">bibliography.bib</span>,
-        csl <span class="op">=</span> <span class="va">csl</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Run buildReport() function</span></span>
+<span><span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="../reference/buildReport.html">buildReport</a></span><span class="op">(</span></span>
+<span>        sections <span class="op">=</span> <span class="va">sections</span>,</span>
+<span>        report_authors <span class="op">=</span> <span class="va">report_authors</span>,</span>
+<span>        report_title <span class="op">=</span> <span class="va">report_title</span>,</span>
+<span>        styles_reference_pptx <span class="op">=</span> <span class="va">styles_reference_pptx</span>,</span>
+<span>        styles_reference_docx <span class="op">=</span> <span class="va">styles_reference_docx</span>,</span>
+<span>        bibliography.bib <span class="op">=</span> <span class="va">bibliography.bib</span>,</span>
+<span>        csl <span class="op">=</span> <span class="va">csl</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
   </div>
 
@@ -391,7 +418,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

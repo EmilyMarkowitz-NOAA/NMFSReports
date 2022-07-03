@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NMFSReports</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.3</span>
       </span>
     </div>
 
@@ -106,107 +106,135 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">save_tables</span><span class="op">(</span>
-  table_raw <span class="op">=</span> <span class="cn">NULL</span>,
-  table_print <span class="op">=</span> <span class="cn">NULL</span>,
-  list_tables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,
-  header <span class="op">=</span> <span class="st">""</span>,
-  footnotes <span class="op">=</span> <span class="st">""</span>,
-  filename0 <span class="op">=</span> <span class="st">"x"</span>,
-  cnt_chapt_content <span class="op">=</span> <span class="st">"001"</span>,
-  cnt <span class="op">=</span> <span class="st">"1"</span>,
-  path <span class="op">=</span> <span class="cn">NULL</span>,
-  output_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"csv"</span><span class="op">)</span>,
-  type <span class="op">=</span> <span class="st">"Table"</span>,
-  alttext <span class="op">=</span> <span class="st">""</span>,
-  filename_desc <span class="op">=</span> <span class="st">""</span>,
-  nickname <span class="op">=</span> <span class="st">""</span>,
-  message <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">save_tables</span><span class="op">(</span></span>
+<span>  table_raw <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  table_print <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  list_tables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  header <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  footnotes <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  filename0 <span class="op">=</span> <span class="st">"x"</span>,</span>
+<span>  cnt_chapt_content <span class="op">=</span> <span class="st">"001"</span>,</span>
+<span>  cnt <span class="op">=</span> <span class="st">"1"</span>,</span>
+<span>  path <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  output_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"csv"</span><span class="op">)</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"Table"</span>,</span>
+<span>  alttext <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  filename_desc <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  nickname <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  message <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>table_raw</dt>
 <dd><p>Optional. The data.frame that has no rounding and no dividing of numbers (good to save this for record keeping). Default = NA.</p></dd>
+
+
 <dt>table_print</dt>
 <dd><p>The data.frame as table will be seen in the report.</p></dd>
+
+
 <dt>list_tables</dt>
 <dd><p>Save tables in a list</p></dd>
+
+
 <dt>header</dt>
 <dd><p>The name and title of the figure. Default = "".</p></dd>
+
+
 <dt>footnotes</dt>
 <dd><p>Any footnote you want attached to this figure.</p></dd>
+
+
 <dt>filename0</dt>
 <dd><p>The filename set at the begining of the chapter</p></dd>
+
+
 <dt>cnt_chapt_content</dt>
 <dd><p>The order number that this exists in the chapter.</p></dd>
+
+
 <dt>cnt</dt>
 <dd><p>The figure number</p></dd>
+
+
 <dt>path</dt>
 <dd><p>The path the file needs to be saved to. Default = "NULL", meaning it wont save anything and will override all other saving elements.</p></dd>
+
+
 <dt>output_type</dt>
 <dd><p>Default = c("csv"). Can be anything supported by utils::write.table.</p></dd>
+
+
 <dt>type</dt>
 <dd><p>Default = "Table", but can be anything that the element needs to be called (e.g., "Graphic", "Fig.", "Graph") to fit in the phrase "Table 1. This is my spreadsheet!".</p></dd>
+
+
 <dt>alttext</dt>
 <dd><p>String with what the alternative text is.</p></dd>
+
+
 <dt>filename_desc</dt>
 <dd><p>Additional description text for the filename that will be added at the name of file before the filename extention, before the "_raw" or "_print". Default = "". Can be use to add a species name, location, or anything else that would make it easier to know what that file shows.</p></dd>
+
+
 <dt>nickname</dt>
 <dd><p>A unique name that can be used to identify the figure so it can be referenced later in the report.</p></dd>
+
+
 <dt>message</dt>
 <dd><p>TRUE/FALSE. Default = FALSE. If TRUE, it will print information about where your plot has been saved to.</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Select data and make plot</span></span>
-<span class="r-in"><span class="va">table_raw</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
-<span class="r-in">                      y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
-<span class="r-in">                      col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">table_print</span> <span class="op">&lt;-</span> <span class="va">table_raw</span></span>
-<span class="r-in"><span class="va">table_print</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="mod_number.html">mod_number</a></span><span class="op">(</span><span class="va">table_print</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span>,</span>
-<span class="r-in">                                                     divideby <span class="op">=</span> <span class="fl">1</span>,</span>
-<span class="r-in">                                                     comma_seperator <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">                                                     digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in formatC(xx/divideby, digits = digits, trim = F, big.mark = ifelse(comma_seperator ==     T, ",", ""), format = "f"):</span> unused argument (trim = F)</span>
-<span class="r-in"><span class="fu">save_tables</span><span class="op">(</span>table_raw <span class="op">=</span> <span class="va">table_raw</span>,</span>
-<span class="r-in">           table_print<span class="op">=</span><span class="va">table_print</span>,</span>
-<span class="r-in">           header <span class="op">=</span> <span class="st">"Here is a table!"</span>,</span>
-<span class="r-in">           footnote <span class="op">=</span> <span class="st">"A footnote for this table!"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Select data and make plot</span></span></span>
+<span class="r-in"><span><span class="va">table_raw</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                      y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                      col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">table_print</span> <span class="op">&lt;-</span> <span class="va">table_raw</span></span></span>
+<span class="r-in"><span><span class="va">table_print</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">NMFSReports</span><span class="fu">::</span><span class="fu"><a href="mod_number.html">mod_number</a></span><span class="op">(</span><span class="va">table_print</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>                                                     divideby <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>                                                     comma_seperator <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>                                                     digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">save_tables</span><span class="op">(</span>table_raw <span class="op">=</span> <span class="va">table_raw</span>,</span></span>
+<span class="r-in"><span>           table_print<span class="op">=</span><span class="va">table_print</span>,</span></span>
+<span class="r-in"><span>           header <span class="op">=</span> <span class="st">"Here is a table!"</span>,</span></span>
+<span class="r-in"><span>           footnote <span class="op">=</span> <span class="st">"A footnote for this table!"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$raw</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             x          y col</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0.3252664 -0.2921170   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  -0.4660541  0.2107180   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   0.1267069 -1.0398578   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.6317783  0.5998988   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  -0.4819340 -0.5799096   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  -0.5141632  0.7669335   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   0.3511783 -1.6007283   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  -1.6291670 -0.9184139   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   0.3174301  0.0668246   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 -0.4122937  1.6131163   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             x           y col</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1.0379533  2.06876529   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   0.5254896 -0.62656591   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   0.3251739 -1.51211413   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.5311803  0.58992218   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   0.2754395 -2.44141879   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   1.9727076  2.70386548   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  -0.1917737 -0.16820244   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   1.2696531 -1.03183454   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   0.1977604 -0.94837687   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 -1.1071036  0.06503036   a</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$print</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             x          y col</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0.3252664 -0.2921170   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  -0.4660541  0.2107180   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   0.1267069 -1.0398578   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.6317783  0.5998988   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  -0.4819340 -0.5799096   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  -0.5141632  0.7669335   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   0.3511783 -1.6007283   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  -1.6291670 -0.9184139   a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   0.3174301  0.0668246   b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 -0.4122937  1.6131163   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        x     y col</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1.04  2.07   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   0.53 -0.63   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   0.33 -1.51   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.53  0.59   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   0.28 -2.44   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   1.97  2.70   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  -0.19 -0.17   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   1.27 -1.03   a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   0.20 -0.95   b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 -1.11  0.07   a</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$caption</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Table [1](){#}. Here is a table!^[A footnote for this table!]"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Table [1](){#}. -- Here is a table!^[A footnote for this table!]"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$header</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Table [1](){#}. Here is a table!"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Table [1](){#}. -- Here is a table!"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$nickname</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] ""</span>
@@ -238,7 +266,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
