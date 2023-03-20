@@ -1,5 +1,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+# **This repo has now been ARCHIVED AND DEPRECIATED.** Only use this repository for reference. 
+
 # NMFSReports <a href={https://emilymarkowitz-noaa.github.io/NMFSReports}><img src="man/figures/logo.png" align="right" width=139 height=139 alt="logo with an image of a NOAA Fisheries report" />
 
 ### *Easily write NOAA reports and Tech Memos in R Markdown*
